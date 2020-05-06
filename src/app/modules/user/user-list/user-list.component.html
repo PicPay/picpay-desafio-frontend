@@ -1,0 +1,5 @@
+<div class="users">
+  <app-user-card *ngFor="let user of users" [user]="user"></app-user-card>
+</div>
+
+<app-modal *ngIf="isModalOpen"></app-modal>
