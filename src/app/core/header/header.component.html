@@ -1,0 +1,11 @@
+<header class="py-8 container mx-auto flex flex-wrap space-x-2 items-center px-6">
+  <a
+    [routerLink]="['/']"
+    routerLinkActive="router-link-active"
+    class="flex space-x-2 cursor-pointer"
+  >
+    <img class="w-6 h-6" [src]="payIcon" />
+    <p class="text-gray-800">{{ appName }}</p>
+  </a>
+  <p class="text-gray-600 text-sm hidden sm:block">{{ appDescription }}</p>
+</header>
