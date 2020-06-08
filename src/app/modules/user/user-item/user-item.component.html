@@ -1,0 +1,19 @@
+<div
+  class="py-4 rounded-md flex items-center space-x-4 border-b border-gray-200 justify-between w-full"
+>
+  <ng-container *ngIf="user; else loadingPlaceholder">
+    <app-user-content [user]="user"></app-user-content>
+  </ng-container>
+
+  <app-button
+    (click)="handlePayClick($event)"
+    kind="secondary"
+    [disabled]="user === null"
+  >
+    Pagar
+  </app-button>
+</div>
+
+<ng-template #loadingPlaceholder>
+  <app-user-content-placeholder></app-user-content-placeholder>
+</ng-template>

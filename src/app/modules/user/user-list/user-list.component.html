@@ -1,0 +1,35 @@
+<div class="md:w-8/12 lg:w-6/12 mx-auto">
+  <div class="pb-4">
+    <h1 class="text-gray-900 text-2xl">Usuários para pagar</h1>
+  </div>
+
+  <ul class="flex flex-col items-center">
+    <!-- Error List -->
+    <ng-container *ngIf="status === 'error'">
+      <li class="pt-4 flex items-center justify-center flex-col leading-tight">
+        <img class="w-64" [src]="blackCanvas" />
+        <div class="pt-4 text-center">
+          <h2 class="text-xl">Parece que você não tem ninguém para pagar</h2>
+          <p class="text-md text-gray-500 pt-1">Nenhum usuário encontrado</p>
+        </div>
+      </li>
+    </ng-container>
+
+    <!-- Loading list -->
+    <ng-container *ngIf="status === 'loading'">
+      <li class="w-full" *ngFor="let i of placeholderSize | numberLoop">
+        <app-user-item [user]="null"></app-user-item>
+      </li>
+    </ng-container>
+
+    <!-- Success list -->
+    <ng-container *ngIf="status === 'success'">
+      <li class="w-full" *ngFor="let user of users">
+        <app-user-item
+          [user]="user"
+          (payClick)="handlePayClick(user)"
+        ></app-user-item>
+      </li>
+    </ng-container>
+  </ul>
+</div>

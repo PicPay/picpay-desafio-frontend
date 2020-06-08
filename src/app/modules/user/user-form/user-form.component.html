@@ -1,0 +1,40 @@
+<form class="lg:px-10" [formGroup]="payForm" (ngSubmit)="handlePayFormSubmit()">
+  <app-user-content class="inline-block pb-5" [user]="user"></app-user-content>
+
+  <app-form-group preffix="R$" class="block pb-5">
+    <input
+      appCurrencyInput
+      currencyMask
+      type="tel"
+      name="value"
+      required
+      maxlength="7"
+      formControlName="value"
+    />
+  </app-form-group>
+
+  <app-form-group>
+    <select appInput name="card" required formControlName="card">
+      <option *ngFor="let card of cards" [value]="card.label">
+        {{ card.label }}
+      </option>
+    </select>
+  </app-form-group>
+
+  <footer class="text-right pt-6 sm:space-x-4">
+    <app-button
+      kind="tertiary"
+      (click)="handleCancelOperation()"
+      className="w-full sm:w-auto mb-2"
+    >
+      Cancelar Pagamento
+    </app-button>
+    <app-button
+      type="submit"
+      className="w-full sm:w-auto"
+      [disabled]="payForm.invalid"
+    >
+      Pagar {{ user.name }}
+    </app-button>
+  </footer>
+</form>

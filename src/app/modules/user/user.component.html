@@ -1,0 +1,69 @@
+<app-user-list
+  (payClick)="handlePayClick($event)"
+  (afterGetUsers)="handleAfterGetUsers($event)"
+></app-user-list>
+
+<!-- Modal -->
+<app-modal
+  label="Pagamento"
+  *ngIf="currentUser !== null"
+  (requestClose)="handleCancelOperation()"
+  class="w-full md:w-7/12 lg:w-5/12"
+>
+  <!-- Error -->
+  <ng-container *ngIf="status === 'error'">
+    <app-user-status
+      [figureSrc]="cancelFigure"
+      figureAlt="Imagem mostrando que algo aconteceu de errado com o processo"
+      title="Ops... parece que algo deu errado"
+      [description]="error | json"
+    >
+      <app-button
+        kind="tertiary"
+        (click)="handleCancelOperation()"
+        className="w-full sm:w-auto"
+      >
+        Cancelar operação
+      </app-button>
+      <app-button (click)="handleTryAgain()" className="w-full sm:w-auto">
+        Tentar novamente
+      </app-button>
+    </app-user-status>
+  </ng-container>
+
+  <!-- Loading -->
+  <ng-container *ngIf="status === 'loading'">
+    <app-user-status
+      [figureSrc]="loadingFigure"
+      figureAlt="Imagem mostrando que a transação está sendo processada"
+      title="Aguarde, sua transação está sendo processada"
+    ></app-user-status>
+  </ng-container>
+
+  <!-- Success -->
+  <ng-container *ngIf="status === 'success'">
+    <app-user-status
+      [figureSrc]="successFigure"
+      figureAlt="Imagem mostrando que o processo foi concluído com sucesso"
+      title="Parabéns! O pagamento foi feito com sucesso!"
+      description="{{ currentUser.name }} ficará bem feliz"
+    >
+      <app-button
+        (click)="handleCancelOperation()"
+        className="w-full sm:w-auto"
+      >
+        Fazer outra operação
+      </app-button>
+    </app-user-status>
+  </ng-container>
+
+  <!-- Form -->
+  <ng-container *ngIf="status === 'idle'">
+    <app-user-form
+      [user]="currentUser"
+      [cards]="serializedCards"
+      (submit)="handlePayFormSubmit($event)"
+      (cancel)="handleCancelOperation()"
+    ></app-user-form>
+  </ng-container>
+</app-modal>
