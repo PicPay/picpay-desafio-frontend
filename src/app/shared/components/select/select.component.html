@@ -1,0 +1,9 @@
+<div class="bg-gray-200 rounded-md flex items-center">
+  <select
+    [(ngModel)]="selectValue"
+    (ngModelChange)="handleSelectValueChange($event)"
+    [ngClass]="[selectDefaultClass]"
+  >
+    <ng-content></ng-content>
+  </select>
+</div>

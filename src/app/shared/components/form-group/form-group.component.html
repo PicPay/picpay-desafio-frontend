@@ -1,0 +1,9 @@
+<div class="bg-gray-200 rounded-md flex items-center relative">
+  <label *ngIf="label" [for]="for">
+    {{ label }}
+  </label>
+  <div *ngIf="preffix" class="text-gray-500 pl-3">
+    {{ preffix }}
+  </div>
+  <ng-content></ng-content>
+</div>

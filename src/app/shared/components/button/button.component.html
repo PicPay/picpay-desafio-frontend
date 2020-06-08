@@ -1,0 +1,14 @@
+<button
+  type="button"
+  [type]="type"
+  [disabled]="disabled"
+  [attr.aria-disabled]="disabled"
+  [ngClass]="[
+    defaultClass,
+    disabled ? disabledStateClass : getDynamicClass(),
+    className
+  ]"
+  (click)="onClickButton($event)"
+>
+  <ng-content></ng-content>
+</button>

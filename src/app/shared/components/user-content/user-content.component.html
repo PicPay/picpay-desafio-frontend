@@ -1,0 +1,13 @@
+<div class="flex items-center space-x-2">
+  <div class="relative">
+    <img
+      class="w-10 h-10 rounded-full bg-gray-200"
+      [src]="user.img"
+      [alt]="getImageAltText()"
+    />
+  </div>
+  <div class="flex flex-col leading-tight">
+    <span>{{ user.name }}</span>
+    <span class="opacity-50 text-xs">{{ user.username }}</span>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+<div
+  class="fixed flex flex-col justify-center items-stretch w-full h-full z-50 top-0 left-0"
+>
+  <div class="flex justify-center items-end md:items-center h-full p-2">
+    <!-- Modal body -->
+    <div
+      [id]="modalId"
+      [attr.aria-labelledby]="modalLabel"
+      role="dialog"
+      aria-modal="true"
+      tabindex="0"
+      [ngClass]="[defaultDialogClass, class]"
+    >
+      <header
+        *ngIf="label"
+        class="text-center border-b border-gray-200 relative py-5"
+      >
+        <h2 [id]="modalLabel" class="px-24 font-bold tracking-wide">
+          {{ label }}
+        </h2>
+
+        <div class="absolute top-1/2 w-full text-right pr-4">
+          <button
+            type="button"
+            class="bg-gray-200 text-gray-700 rounded-full p-2 hover:bg-gray-300 focus:bg-gray-400 focus:outline-none transform -translate-y-1/2"
+            (click)="handleRequestClose()"
+          >
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                fill-rule="evenodd"
+                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <section class="px-4 pt-4 pb-5">
+        <ng-content></ng-content>
+      </section>
+    </div>
+  </div>
+
+  <!-- Modal Overlay -->
+  <div class="absolute w-full h-full bg-gray-900 opacity-25"></div>
+</div>
