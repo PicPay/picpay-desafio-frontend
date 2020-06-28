@@ -24,6 +24,7 @@
     "jquery": "^3.5.1",
     "ng2-search-filter": "^0.5.1",
     "ngx-bootstrap": "^5.6.1",
+    "ngx-currency": "^2.3.3",
     "popper.js": "^1.16.1",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",

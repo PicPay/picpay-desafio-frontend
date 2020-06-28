@@ -3,6 +3,7 @@ import { PaymentService } from './../services/payment.service';
 import { Component, OnInit, ViewChild, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { ModalErrorComponent } from '../modal-error/modal-error.component';
 
 @Component({
   selector: 'app-payment-modal',
@@ -36,12 +37,7 @@ export class PaymentModalComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.user);
-    this.formConstr()
-  }
-
-  sendPayment() {
-    console.log('foi')
+      this.formConstr()
   }
 
   formConstr() {
@@ -50,22 +46,32 @@ export class PaymentModalComponent implements OnInit {
       value: new FormControl('', Validators.required),
       id: new FormControl(this.user.id),
     });
-
   }
-
-  get f() { return this.form.controls; }
+//coloquei para facilitar o acesso ao valor do form
+  get fieldValue() { return this.form.controls; }
 
   pay(form) {
     this.submitted = true;
     if (this.form.valid) {
       this.PaymentService.pay(form).subscribe(
-        (data) => { });
+        data => { 
+          this.modalSuccess();
+        },
+        error => {
+         this.modalError();
+        }
+        );
       this.bsModalRef.hide();
-      this.modalSuccess();
-      }
+     }
   }
   modalSuccess() {
     this.bsModalRef = this.modalService.show(ModalSuccessComponent, 
       {animated: true, class: 'modal-alert'});
   }
+
+  modalError() {
+    this.bsModalRef = this.modalService.show(ModalErrorComponent, 
+      {animated: true, class: 'modal-alert'});
+  }
+
 }

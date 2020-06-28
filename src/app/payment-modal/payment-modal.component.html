@@ -13,28 +13,28 @@
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item"><i class="fas fa-credit-card float-right"></i>
                             <label class="control-label">Cartão: </label>
-                            <select class="form-control" formControlName="card"
-                                [ngClass]="{ 'is-invalid': submitted && f.card.errors }">
-                                <option *ngFor="let card of cards" class="text-right" [ngValue]="card">-
+                            <select class="form-control card-line" formControlName="card"
+                                [ngClass]="{ 'is-invalid': submitted && fieldValue.card.errors }">
+                                <option *ngFor="let card of cards" class="text-right" [ngValue]="card">Final -
                                     {{card.card_number | slice:11:15}}</option>
                             </select>
-                            <div *ngIf="submitted && f.card.errors" class="invalid-feedback">
-                                <div *ngIf="f.card.errors.required">Selecione um cartão</div>
+                            <div *ngIf="submitted && fieldValue.card.errors" class="invalid-feedback">
+                                <div *ngIf="fieldValue.card.errors.required">Selecione um cartão</div>
                             </div>
                         </li>
                         <li class="list-group-item"><i class="fas fa-hand-holding-usd float-right"></i>
                             <label class="control-label">valor :</label>
-                            <input type="number" placeholder="Valor" class="form-control"
-                                [ngClass]="{ 'is-invalid': submitted && f.value.errors }" required
-                                formControlName="value">
-                            <div *ngIf="submitted && f.value.errors" class="invalid-feedback">
-                                <div *ngIf="f.value.errors.required">Insira um valor para continuar</div>
+                            <input currencyMask type="text" placeholder="Valor" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && fieldValue.value.errors }" required
+                                formControlName="value" [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"/>
+                            <div *ngIf="submitted && fieldValue.value.errors" class="invalid-feedback">
+                                <div *ngIf="fieldValue.value.errors.required">Insira um valor para continuar</div>
                             </div>
                         </li>
                     </ul>
-                    <button class="btn btn-success btn-md btn-block" [hidden]="this.form.get('value') === null"
-                        (click)="pay(form.value)">
-                        Pagar | R$ {{this.form.get('value').value}}
+                    <button class="btn btn-success btn-md btn-block" [disabled]="fieldValue.value.value === ''"
+                        (click)="pay(fieldValue)">
+                        Pagar <span [hidden]="fieldValue.value.value === ''" >| R$ {{fieldValue.value.value | currency:'BRL'}} </span>
                     </button>
                 </form>
             </div>

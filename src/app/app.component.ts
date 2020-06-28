@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { UserService } from './services/user.service';
 import { User } from './models/user';
-import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -24,7 +23,6 @@ export class AppComponent {
     const initialState = {
       user
     };
-    console.log(user)
     this.bsModalRef = this.modalService.show(PaymentModalComponent, 
       { initialState, animated: true, },   );
   }
@@ -32,7 +30,6 @@ export class AppComponent {
   getUsers() {
     this.UserService.getUsers().subscribe((users: User[]) => {
       this.users = users;
-      console.log(this.users)
-    });
+     });
   }
 }

@@ -11,7 +11,8 @@ import { User } from '../models/user';
 export class UserService {
   urlList = 'https://www.mocky.io/v2/5d531c4f2e0000620081ddce';
   urlUser = 'https://run.mocky.io/v3/ef0aefe0-fc17-423c-b548-c769e11eafe1'
-  constructor(private httpClient: HttpClient) { }
+  constructor(
+    private httpClient: HttpClient) { }
 
   getUsers(): Observable<User[]> {
     return this.httpClient.get<User[]>(this.urlList)
@@ -36,8 +37,7 @@ export class UserService {
       // Erro ocorreu no lado do servidor
       errorMessage = `Código do erro: ${error.status}, ` + `menssagem: ${error.message}`;
     }
-    console.log(errorMessage);
-    return throwError(errorMessage);
+      return throwError(errorMessage);
   };
 
 }

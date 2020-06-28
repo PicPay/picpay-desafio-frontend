@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+@import './assets/colors.scss';
+
 .modal.show .modal-dialog {
     min-height: calc(100vh - 60px) !important;
     display: flex;
@@ -21,12 +23,16 @@
 
 button.btn.mt-2.btn-success.btn-sm.mr-2 {
   background-color: transparent;
-  color: #11C76F;
+  color: $general ;
 
   :hover{
    
-      background-color: #11C76F;
-      color: #fff;
+      background-color: $general;
+      color: $light;
   
   }
+}
+
+i {
+  color:$general;
 }
