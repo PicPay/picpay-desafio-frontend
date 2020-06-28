@@ -14,26 +14,20 @@ export class AppComponent {
   bsModalRef: BsModalRef;
   user = {} as User;
   users: User[];
-
   constructor(
     private UserService: UserService,
-    private modalService: BsModalService) {}
-
- ngOnInit() {
+    private modalService: BsModalService) { }
+  ngOnInit() {
     this.getUsers();
   }
-
-  sendPay(user){
+  sendPay(user) {
     const initialState = {
-   
-        user
-   
+      user
     };
     console.log(user)
-      this.bsModalRef = this.modalService.show(PaymentModalComponent, {initialState});
+    this.bsModalRef = this.modalService.show(PaymentModalComponent, { initialState });
     this.bsModalRef.content.closeBtnName = 'Close';
   }
-
 
   getUsers() {
     this.UserService.getUsers().subscribe((users: User[]) => {
@@ -41,5 +35,4 @@ export class AppComponent {
       console.log(this.users)
     });
   }
-
 }

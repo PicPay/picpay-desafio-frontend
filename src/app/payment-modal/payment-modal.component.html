@@ -9,34 +9,35 @@
                         <p>{{user.name}}</p>
                     </div>
                 </div>
-                <form [formGroup] = "form">
+                <form [formGroup]="form">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item"><i class="fas fa-credit-card float-right"></i>
                             <label class="control-label">Cartão: </label>
                             <select class="form-control" formControlName="card"
-                            [ngClass]="{ 'is-invalid': submitted && f.card.errors }">
+                                [ngClass]="{ 'is-invalid': submitted && f.card.errors }">
                                 <option *ngFor="let card of cards" class="text-right" [ngValue]="card">-
                                     {{card.card_number | slice:11:15}}</option>
                             </select>
                             <div *ngIf="submitted && f.card.errors" class="invalid-feedback">
                                 <div *ngIf="f.card.errors.required">Selecione um cartão</div>
                             </div>
-                        </li>    
+                        </li>
                         <li class="list-group-item"><i class="fas fa-hand-holding-usd float-right"></i>
                             <label class="control-label">valor :</label>
-                            <input type="number" placeholder="Valor" class="form-control"   [ngClass]="{ 'is-invalid': submitted && f.value.errors }" required formControlName="value">
+                            <input type="number" placeholder="Valor" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f.value.errors }" required
+                                formControlName="value">
                             <div *ngIf="submitted && f.value.errors" class="invalid-feedback">
                                 <div *ngIf="f.value.errors.required">Insira um valor para continuar</div>
                             </div>
                         </li>
-                  </ul>
-      
-    
-    <button class="btn btn-success btn-md btn-block" [hidden]="this.form.get('value') === null"(click)="pay(form.value)">
-        Pagar | R$ {{this.form.get('value').value}}
-    </button>
-    </form>
-</div>
-</div>
-</div>
+                    </ul>
+                    <button class="btn btn-success btn-md btn-block" [hidden]="this.form.get('value') === null"
+                        (click)="pay(form.value)">
+                        Pagar | R$ {{this.form.get('value').value}}
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>

@@ -1,7 +1,6 @@
 import { PaymentModalComponent } from './payment-modal/payment-modal.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ModalSuccessComponent } from './modal-success/modal-success.component';

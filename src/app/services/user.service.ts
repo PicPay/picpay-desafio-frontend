@@ -9,7 +9,7 @@ import { User } from '../models/user';
   providedIn: 'root'
 })
 export class UserService {
-  url = 'https://www.mocky.io/v2/5d531c4f2e0000620081ddce'; 
+  url = 'https://www.mocky.io/v2/5d531c4f2e0000620081ddce';
   constructor(private httpClient: HttpClient) { }
 
   getUsers(): Observable<User[]> {

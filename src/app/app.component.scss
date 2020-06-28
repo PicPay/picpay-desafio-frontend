@@ -1,23 +1,21 @@
- .container{
-     background-color: #eeeeee;
-     max-width: 500px;
- }
-
- .line-user{
-   background-color: #fff;
- }
- 
- .avatar{
-    width: 60px;
-    min-width: 45px;
+.container {
+  background-color: #eeeeee;
+  max-width: 500px;
+}
+.line-user {
+  background-color: #fff;
+}
+.avatar {
+  width: 60px;
+  min-width: 45px;
 }
 .modal.show .modal-dialog {
-    min-height: calc(100vh - 60px) !important;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    overflow: auto;
-    @media(max-width: 768px) {
-      min-height: calc(100vh - 20px);
-    }
+  min-height: calc(100vh - 60px) !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: auto;
+  @media (max-width: 768px) {
+    min-height: calc(100vh - 20px);
   }
+}

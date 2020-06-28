@@ -13,7 +13,6 @@ export class PaymentModalComponent implements OnInit {
   user: any = {};
   modalRef: BsModalRef;
   form: FormGroup;
-
   cards = [
     // valid card
     {
@@ -30,21 +29,18 @@ export class PaymentModalComponent implements OnInit {
   ];
   submitted: boolean;
 
-
   constructor(
     private bsModalRef: BsModalRef,
     private modalService: BsModalService,
     private PaymentService: PaymentService
   ) { }
 
-
   ngOnInit() {
     console.log(this.user);
     this.formConstr()
   }
 
-
-  sendPayment(){
+  sendPayment() {
     console.log('foi')
   }
 
@@ -54,27 +50,24 @@ export class PaymentModalComponent implements OnInit {
       value: new FormControl('', Validators.required),
       id: new FormControl(this.user.id),
     });
-    
-  }
-
-  /*setTimeout(()=>{    //<<<---    using ()=> syntax
-    this.messageSuccess = false;
-}, 3000);*/
-get f() { return this.form.controls; }
-
-pay(form) {
-  this.submitted = true;
-
-  if (this.form.valid) {
-   this.PaymentService.pay(form).subscribe(
-    () =>
-      this.modalSuccess()
-   );
 
   }
-}
 
-  modalSuccess(){
+  get f() { return this.form.controls; }
+
+  pay(form) {
+    this.submitted = true;
+
+    if (this.form.valid) {
+      this.PaymentService.pay(form).subscribe(
+        () =>
+          this.modalSuccess()
+      );
+
+    }
+  }
+
+  modalSuccess() {
     this.bsModalRef = this.modalService.show(ModalSuccessComponent);
   }
 }
