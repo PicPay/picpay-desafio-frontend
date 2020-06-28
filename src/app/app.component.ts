@@ -1,6 +1,9 @@
 import { PaymentModalComponent } from './payment-modal/payment-modal.component';
 import { Component } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { UserService } from './services/user.service';
+import { User } from './models/user';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -9,24 +12,34 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 })
 export class AppComponent {
   bsModalRef: BsModalRef;
+  user = {} as User;
+  users: User[];
 
-  constructor(private modalService: BsModalService) {}
+  constructor(
+    private UserService: UserService,
+    private modalService: BsModalService) {}
 
-  sendPay(){
+ ngOnInit() {
+    this.getUsers();
+  }
+
+  sendPay(user){
     const initialState = {
-      size: "dialog-centered",
-      list: [
-        'Open a modal with component',
-        'Pass your data',
-        
-        'Do something else',
-        '...'
-      ],
-      title: 'Modal with component'
+   
+        user
+   
     };
-    this.bsModalRef = this.modalService.show(PaymentModalComponent, {initialState});
+    console.log(user)
+      this.bsModalRef = this.modalService.show(PaymentModalComponent, {initialState});
     this.bsModalRef.content.closeBtnName = 'Close';
   }
 
+
+  getUsers() {
+    this.UserService.getUsers().subscribe((users: User[]) => {
+      this.users = users;
+      console.log(this.users)
+    });
+  }
 
 }

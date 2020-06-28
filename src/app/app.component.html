@@ -1,15 +1,15 @@
 <div class="container p-2">
-  <div class="row line-user p-3 m-0 mb-1">
+  <div class="row line-user p-3 m-0 mb-1" *ngFor="let user of users">
     <div class="col-3  pr-0 pl-0">
-      <img src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="" class="img-thumbnail avatar rounded-circle">
+      <img [src]="user.img" alt="" class="img-thumbnail avatar rounded-circle">
     </div>
     <div class="col-7 text-left pr-0 pl-0">
-      <h6 class="mb-1 mt-1 pb-0 text-bold ">Nome do usuário: X</h6>
+      <h6 class="mb-1 mt-1 pb-0 text-bold ">{{user.name}}</h6>
       <p class="mb-0 pb-0 small"><span class="font-weight-bolder">Id</span>
-        1235 | <span class="font-weight-bolder"> Username</span> @usuarioX</p>
+        {{user.id}}<br> <span class="font-weight-bolder"> Username</span>{{user.username}}</p>
     </div>
     <div class="col-2 pr-0 pl-0">
-      <button class="btn  mt-2 btn-success btn-sm mr-2" (click)="sendPay()"> Pagar </button>
+      <button class="btn  mt-2 btn-success btn-sm mr-2" (click)="sendPay(user)"> Pagar </button>
     </div> 
   </div>
 </div>

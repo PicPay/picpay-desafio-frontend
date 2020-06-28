@@ -1,35 +1,35 @@
 <div class="container pt-4 pb-4">
-   <div class="row">
-       <div class="col-12">
-        <div class="card m-2">
-            <div class="card-body row">
-             
-                    <img src="https://bootdey.com/img/Content/avatar/avatar6.png" 
-                    alt="" class="img-thumbnail rounded-circle user">
-                <div class="col-12 card-title align-self-center mb-0 mt-5">
-                    <h5>Pagamento para Usuario:</h5>
-                    <p>Paul L. Goyette</p>
+    <div class="row">
+        <div class="col-12">
+            <div class="card m-2">
+                <div class="card-body row">
+                    <img [src]="user.img" alt="" class="img-thumbnail rounded-circle user">
+                    <div class="col-12 card-title align-self-center mb-0 mt-5">
+                        <h5>Pagamento para Usuario:</h5>
+                        <p>{{user.name}}</p>
+                    </div>
                 </div>
-            </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item"><i class="fa fa-envelope float-right"></i>
-                    <label class="control-label">Cartão :</label>
-                     <select class="form-control">
-                         <option>1234-5678-9869-597</option>
-                     </select>    
-                <li class="list-group-item"><i class="fa fa-phone float-right"></i>
-                    <label class="control-label">valor :</label> 
-                    <input type="text" placeholder="80,00" class="form-control">
-                   
-                </li>
-            </ul>
-           
-        </div>
-       </div>
-   </div> 
-
-   <button class="btn btn-success btn-md btn-block">
-    Pagar  | R$ 80,00
-</button>
-
-</div>   
+                <form [formGroup] = "form">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><i class="fas fa-credit-card float-right"></i>
+                            <label class="control-label">Cartão: </label>
+                            <select class="form-control" formControlName="card">
+                                <option *ngFor="let card of cards" class="text-right" [ngValue]="card">-
+                                    {{card.card_number | slice:11:15}}</option>
+                            </select>
+                        </li>    
+                        <li class="list-group-item"><i class="fas fa-hand-holding-usd float-right"></i>
+                            <label class="control-label">valor :</label>
+                            <input type="text" placeholder="80,00" class="form-control"  required formControlName="value">
+                       </li>
+                  </ul>
+      
+    
+    <button class="btn btn-success btn-md btn-block" [hidden]="this.form.get('value') === null"(click)="pay(form.value)">
+        Pagar | R$ {{this.form.get('value').value}}
+    </button>
+    </form>
+</div>
+</div>
+</div>
+</div>
