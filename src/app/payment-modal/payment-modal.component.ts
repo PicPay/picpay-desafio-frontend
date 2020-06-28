@@ -1,6 +1,6 @@
 import { ModalSuccessComponent } from './../modal-success/modal-success.component';
 import { PaymentService } from './../services/payment.service';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
@@ -57,14 +57,14 @@ export class PaymentModalComponent implements OnInit {
 
   pay(form) {
     this.submitted = true;
-
-    if (this.form.valid) {
+      if (this.form.valid) {
       this.PaymentService.pay(form).subscribe(
-        () =>
-          this.modalSuccess()
-      );
+        (data) => {
 
-    }
+        });
+        this.bsModalRef.hide();
+        this.modalSuccess();
+}
   }
 
   modalSuccess() {
