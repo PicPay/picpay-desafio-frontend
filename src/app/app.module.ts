@@ -7,13 +7,15 @@ import { ModalSuccessComponent } from './modal-success/modal-success.component';
 import { ModalErrorComponent } from './modal-error/modal-error.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PaymentModalComponent,
     ModalSuccessComponent,
-    ModalErrorComponent
+    ModalErrorComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -23,6 +25,9 @@ import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
     ModalModule.forRoot()
   ],
   providers: [],
+  exports:[
+    HeaderComponent,
+  ],
   entryComponents:[
     ModalSuccessComponent,
     ModalErrorComponent,

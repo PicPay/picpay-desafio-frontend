@@ -9,11 +9,19 @@ import { User } from '../models/user';
   providedIn: 'root'
 })
 export class UserService {
-  url = 'https://www.mocky.io/v2/5d531c4f2e0000620081ddce';
+  urlList = 'https://www.mocky.io/v2/5d531c4f2e0000620081ddce';
+  urlUser = 'https://run.mocky.io/v3/ef0aefe0-fc17-423c-b548-c769e11eafe1'
   constructor(private httpClient: HttpClient) { }
 
   getUsers(): Observable<User[]> {
-    return this.httpClient.get<User[]>(this.url)
+    return this.httpClient.get<User[]>(this.urlList)
+      .pipe(
+        retry(2),
+        catchError(this.handleError))
+  }
+
+  getUser(): Observable<User> {
+    return this.httpClient.get<User>(this.urlUser)
       .pipe(
         retry(2),
         catchError(this.handleError))

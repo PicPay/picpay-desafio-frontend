@@ -10,8 +10,23 @@
     }
   }
 
-
   app-modal-success {
     margin: 0 auto;
-    background-color: #ffff;
+  
+}
+.modal-alert{
+    width: 350px;
+    margin: 0 auto;
+}
+
+button.btn.mt-2.btn-success.btn-sm.mr-2 {
+  background-color: transparent;
+  color: #11C76F;
+
+  :hover{
+   
+      background-color: #11C76F;
+      color: #fff;
+  
+  }
 }

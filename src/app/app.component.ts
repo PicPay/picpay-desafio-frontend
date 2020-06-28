@@ -27,7 +27,6 @@ export class AppComponent {
     console.log(user)
     this.bsModalRef = this.modalService.show(PaymentModalComponent, 
       { initialState, animated: true, },   );
-    this.bsModalRef.content.closeBtnName = 'Close';
   }
 
   getUsers() {

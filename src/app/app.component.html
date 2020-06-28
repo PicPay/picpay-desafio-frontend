@@ -1,4 +1,11 @@
-<div class="container p-2">
+<div class="container  pt-0">
+  <app-header></app-header>
+  <div class="row">
+    <div class="col-12">
+      <h6 class="p-2 pb-0">Contatos</h6>
+      <hr>
+    </div>
+  </div>
   <div class="row line-user p-3 m-0 mb-1" *ngFor="let user of users">
     <div class="col-3  pr-0 pl-0">
       <img [src]="user.img" alt="" class="img-thumbnail avatar rounded-circle">

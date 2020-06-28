@@ -57,17 +57,15 @@ export class PaymentModalComponent implements OnInit {
 
   pay(form) {
     this.submitted = true;
-      if (this.form.valid) {
+    if (this.form.valid) {
       this.PaymentService.pay(form).subscribe(
-        (data) => {
-
-        });
-        this.bsModalRef.hide();
-        this.modalSuccess();
-}
+        (data) => { });
+      this.bsModalRef.hide();
+      this.modalSuccess();
+      }
   }
-
   modalSuccess() {
-    this.bsModalRef = this.modalService.show(ModalSuccessComponent);
+    this.bsModalRef = this.modalService.show(ModalSuccessComponent, 
+      {animated: true, class: 'modal-alert'});
   }
 }

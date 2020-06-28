@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-modal-success',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./modal-success.component.scss']
 })
 export class ModalSuccessComponent implements OnInit {
-
-  constructor() { }
-
+  constructor(
+    private bsModalRef: BsModalRef,
+  ) { }
   ngOnInit() {
+    setTimeout(() => {
+      this.bsModalRef.hide();
+    }, 2000);
   }
-
 }

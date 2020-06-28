@@ -2,11 +2,13 @@ h2 {
     font-size: 22px;
 }
 
-
-
 img.img-thumbnail.rounded-circle.success {
     position: absolute;
-    top: -53%;
-    max-width: 117px;
-    left: 29.3%;
+    top: -36%;
+    width: 80px;
+    left: 37.3%;
 }
+
+.modal-content{
+    background-color: transparent !important;
+  }
