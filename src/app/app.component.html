@@ -6,7 +6,14 @@
       <hr>
     </div>
   </div>
-  <div class="row line-user p-3 m-0 mb-1" *ngFor="let user of users">
+  <div class="row">
+    <div class="col-12">
+      <input class="form-control mb-2" type="text" name="search" 
+      placeholder="Localizar"
+      [(ngModel)]="searchText" autocomplete="off">
+    </div>
+  </div>
+  <div class="row line-user p-3 m-0 mb-1" *ngFor="let user of users | filter:searchText">
     <div class="col-3  pr-0 pl-0">
       <img [src]="user.img" alt="" class="img-thumbnail avatar rounded-circle">
     </div>

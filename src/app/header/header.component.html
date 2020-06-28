@@ -6,7 +6,7 @@
         <div class="row user-detail">
             <div class="col-lg-12 col-sm-12 col-12">
                 <h5>{{user.name}}</h5>
-                <img [src]="user.img" class="rounded-circle img-thumbnail">
+                <img [src]="user.img" *ngIf="user.img"  class="rounded-circle img-thumbnail">
                 
             </div>
         </div>

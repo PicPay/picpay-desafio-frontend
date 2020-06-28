@@ -8,6 +8,7 @@ import { ModalErrorComponent } from './modal-error/modal-error.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { HeaderComponent } from './header/header.component';
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    Ng2SearchPipeModule,
     ReactiveFormsModule,
     ModalModule.forRoot()
   ],
