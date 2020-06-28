@@ -1,16 +1,28 @@
+import { PaymentModalComponent } from './payment-modal/payment-modal.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { ModalSuccessComponent } from './modal-success/modal-success.component';
+import { ModalErrorComponent } from './modal-error/modal-error.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PaymentModalComponent,
+    ModalSuccessComponent,
+    ModalErrorComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    ModalModule.forRoot()
   ],
   providers: [],
+  entryComponents:[
+    ModalSuccessComponent,
+    ModalErrorComponent,
+    PaymentModalComponent ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

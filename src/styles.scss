@@ -1,10 +1,11 @@
-* {
-  box-sizing: border-box;
-}
-
-html,
-body {
-  font-family: sans-serif;
-  margin: 0;
-  padding: 0;
-}
+/* You can add global styles to this file, and also import other style files */
+.modal.show .modal-dialog {
+    min-height: calc(100vh - 60px) !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: auto;
+    @media(max-width: 768px) {
+      min-height: calc(100vh - 20px);
+    }
+  }
