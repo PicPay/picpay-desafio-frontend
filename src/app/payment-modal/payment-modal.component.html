@@ -26,7 +26,7 @@
                             <label class="control-label">valor :</label>
                             <input currencyMask type="text" placeholder="Valor" class="form-control"
                                 [ngClass]="{ 'is-invalid': submitted && fieldValue.value.errors }" required
-                                formControlName="value" [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"/>
+                                formControlName="value" [options]="{ prefix: 'R$ ', thousands: '.'}"/>
                             <div *ngIf="submitted && fieldValue.value.errors" class="invalid-feedback">
                                 <div *ngIf="fieldValue.value.errors.required">Insira um valor para continuar</div>
                             </div>
