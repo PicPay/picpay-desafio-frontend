@@ -1,0 +1,17 @@
+.success{
+    position: absolute;
+    top: -25%;
+    left: 31%;
+    max-width: 123px;
+    padding: 7px;
+}
+
+@media screen and (min-width: 500px) {
+   .success{
+    position: absolute;
+    top: -25%;
+    max-width: 123px;
+    padding: 7px;
+    left: 36.1%;
+   }
+}  

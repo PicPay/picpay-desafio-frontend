@@ -1,7 +1,7 @@
 import { ModalSuccessComponent } from './../modal-success/modal-success.component';
 import { PaymentService } from './../services/payment.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
@@ -28,6 +28,7 @@ export class PaymentModalComponent implements OnInit {
       expiry_date: '01/20',
     },
   ];
+  submitted: boolean;
 
 
   constructor(
@@ -49,8 +50,8 @@ export class PaymentModalComponent implements OnInit {
 
   formConstr() {
     this.form = new FormGroup({
-      card: new FormControl(),
-      value: new FormControl(),
+      card: new FormControl('', Validators.required),
+      value: new FormControl('', Validators.required),
       id: new FormControl(this.user.id),
     });
     
@@ -59,15 +60,19 @@ export class PaymentModalComponent implements OnInit {
   /*setTimeout(()=>{    //<<<---    using ()=> syntax
     this.messageSuccess = false;
 }, 3000);*/
-
+get f() { return this.form.controls; }
 
 pay(form) {
+  this.submitted = true;
+
+  if (this.form.valid) {
    this.PaymentService.pay(form).subscribe(
     () =>
       this.modalSuccess()
    );
 
   }
+}
 
   modalSuccess(){
     this.bsModalRef = this.modalService.show(ModalSuccessComponent);

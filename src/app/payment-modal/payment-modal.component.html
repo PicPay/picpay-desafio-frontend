@@ -1,4 +1,4 @@
-<div class="container pt-4 pb-4">
+<div class="container p-4">
     <div class="row">
         <div class="col-12">
             <div class="card m-2">
@@ -13,15 +13,22 @@
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item"><i class="fas fa-credit-card float-right"></i>
                             <label class="control-label">Cartão: </label>
-                            <select class="form-control" formControlName="card">
+                            <select class="form-control" formControlName="card"
+                            [ngClass]="{ 'is-invalid': submitted && f.card.errors }">
                                 <option *ngFor="let card of cards" class="text-right" [ngValue]="card">-
                                     {{card.card_number | slice:11:15}}</option>
                             </select>
+                            <div *ngIf="submitted && f.card.errors" class="invalid-feedback">
+                                <div *ngIf="f.card.errors.required">Selecione um cartão</div>
+                            </div>
                         </li>    
                         <li class="list-group-item"><i class="fas fa-hand-holding-usd float-right"></i>
                             <label class="control-label">valor :</label>
-                            <input type="text" placeholder="80,00" class="form-control"  required formControlName="value">
-                       </li>
+                            <input type="number" placeholder="Valor" class="form-control"   [ngClass]="{ 'is-invalid': submitted && f.value.errors }" required formControlName="value">
+                            <div *ngIf="submitted && f.value.errors" class="invalid-feedback">
+                                <div *ngIf="f.value.errors.required">Insira um valor para continuar</div>
+                            </div>
+                        </li>
                   </ul>
       
     
