@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { IUsersRepository } from '../core/interface/repositories/iusers-repository';
-import { UsersRepositoryService } from './repositories/users-repository.service';
+import { UsersRepositoryService, TransactionRepositoryService } from './repositories';
+import { IUsersRepository, ITransactionRepository } from '../core/interface';
 
 @NgModule({
   declarations: [],
@@ -11,7 +11,8 @@ import { UsersRepositoryService } from './repositories/users-repository.service'
     HttpClientModule
   ],
   providers: [
-    { provide: IUsersRepository, useClass: UsersRepositoryService }
+    { provide: IUsersRepository, useClass: UsersRepositoryService },
+    { provide: ITransactionRepository, useClass: TransactionRepositoryService }
   ]
 })
 export class DataModule { }

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IUsersUsecase } from './interface';
-import { UsersUsecaseService } from './usecases';
+import { IUsersUsecase, ITransactionUsecase } from './interface';
+import { UsersUsecaseService, TransactionUsecaseService } from './usecases';
 
 
 
@@ -11,7 +11,8 @@ import { UsersUsecaseService } from './usecases';
     CommonModule
   ],
   providers: [
-    { provide: IUsersUsecase, useClass: UsersUsecaseService }
+    { provide: IUsersUsecase, useClass: UsersUsecaseService },
+    { provide: ITransactionUsecase, useClass: TransactionUsecaseService },
   ]
 })
 export class CoreModule { }

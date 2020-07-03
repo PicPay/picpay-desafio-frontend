@@ -22,6 +22,7 @@ export class DialogService {
     config.width = '400px';
     config.data = new DialogData();
     config.data.title = 'Pagamento para ' + user.name;
+    config.data.data = user;
     config.data.component = PaymentComponent;
 
     this.dialog.open(DialogComponent, config);

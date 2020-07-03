@@ -1,20 +1,21 @@
-<form>
+<form [formGroup]="form">
     <div class="form-group">
-        <mat-form-field floatLabel="always">
-            <input matInput />
+        <mat-form-field>
+            <mat-label>Digite um valor</mat-label>
+            <input matInput formControlName="value" />
         </mat-form-field>
     </div>
     <div class="form-group">
-        <mat-form-field floatLabel="always">
-            <mat-label></mat-label>
-            <mat-select placeholder="teste">
-                <mat-option value="option1">Option 1</mat-option>
-                <mat-option value="option2">Option 2 (disabled)</mat-option>
-                <mat-option value="option3">Option 3</mat-option>
+        <mat-form-field>
+            <mat-label>Selecione um cartão</mat-label>
+            <mat-select formControlName="card">
+                <mat-option [value]="item" *ngFor="let item of cards">{{item.card_number}}</mat-option>
             </mat-select>
         </mat-form-field>
     </div>
     <div class="d-flex justify-content-center">
-        <button mat-button>Pagar</button>
+        <button mat-button (click)="transaction()">Pagar</button>
     </div>
 </form>
+
+{{form.value | json}}

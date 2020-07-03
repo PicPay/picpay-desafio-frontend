@@ -8,6 +8,7 @@ import {
   MatSelectModule,
   MatButtonModule
 } from '@angular/material';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -21,7 +22,8 @@ import {
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    MatButtonModule
+    MatButtonModule,
+    ReactiveFormsModule
   ]
 })
 export class PaymentModule { }
