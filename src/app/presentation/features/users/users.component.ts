@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IUsersUsecase } from '../../../core/interface/usecases/iusers-usecase';
 import { UserEntity } from '../../../core/entities/user-entity';
 import { finalize } from 'rxjs/operators';
+import { DialogService } from '../../shared/components/dialog/dialog.service';
 
 @Component({
   selector: 'app-users',
@@ -14,7 +15,8 @@ export class UsersComponent implements OnInit {
   isLoading = true;
 
   constructor(
-    private usersUsecase: IUsersUsecase
+    private usersUsecase: IUsersUsecase,
+    private dialogService: DialogService
   ) { }
 
   ngOnInit() {
@@ -28,6 +30,10 @@ export class UsersComponent implements OnInit {
         finalize(() => this.isLoading = false)
       )
       .subscribe((res: UserEntity[]) => this.users = res);
+  }
+
+  openPayment(user: UserEntity) {
+    this.dialogService.openPayment(user);
   }
 
 }

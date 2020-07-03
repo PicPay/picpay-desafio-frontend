@@ -1,0 +1,46 @@
+$textMap: (
+  regular: 'aktiv_groteskregular',
+  regularEx: 'aktiv_grotesk_exregular',
+  medium: 'aktiv_groteskmedium',
+  mediumEx: 'aktiv_grotesk_exmedium',
+  bold: 'aktiv_groteskbold',
+  boldEx: 'aktiv_grotesk_exbold'
+);
+
+$textSizeMap: (
+  'heading-1': 40px,
+  'heading-2': 32px,
+  'heading-3': 28px,
+  'heading-4': 24px,
+  'heading-5': 20px,
+  'heading-6': 16px,
+  'button-1': 28px,
+  'button-2': 20px,
+  'button-3': 16px,
+  'caption-1': 22px,
+  'caption-2': 18px,
+  'caption-3': 14px,
+  'lead': 16px,
+  'paragraph': 14px,
+  'hyperlink': 14px,
+  'footnote': 12px,
+  'notification': 11px,
+);
+
+$colorMap: (
+  'primary': #133A3B,
+  'secondary': #00837F,
+  'info': #A4D8DE,
+  'success': #28A777,
+  'disabled': #CCCCCC,
+  'active': #00524F,
+  'danger': #DC3545,
+  'warning': #FC9A45
+);
+
+$tokens: (
+  text: $textMap,
+  textSize: $textSizeMap,
+  color: $colorMap,
+  borderRadius: $borderRadiusMap
+);
