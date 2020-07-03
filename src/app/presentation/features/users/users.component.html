@@ -1,1 +1,14 @@
-<p>users works!</p>
+<section>
+    <div class="container">
+        <p *ngIf="isLoading else usersTemplate">Carregando....</p>
+    </div>
+</section>
+
+<ng-template #usersTemplate>
+    <div *ngFor="let item of users">
+        <img [attr.src]="item.img" [alt]="item.name" />
+        <h6>{{item.name}}</h6>
+        <small>#{{item.id}}</small>
+        <p>{{item.username}}</p>
+    </div>
+</ng-template>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IUsersRepository } from 'src/app/core/interface/repositories';
+import { IUsersRepository } from 'src/app/core/interface';
 import { Observable } from 'rxjs';
 import { UserEntity } from 'src/app/core/entities/user-entity';
 import { HttpClient } from '@angular/common/http';
