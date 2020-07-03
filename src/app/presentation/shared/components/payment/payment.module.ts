@@ -9,6 +9,7 @@ import {
   MatButtonModule
 } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ValidatorFieldMessageModule } from '../validator-field-message/validator-field-message.module';
 
 
 
@@ -23,7 +24,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatInputModule,
     MatSelectModule,
     MatButtonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ValidatorFieldMessageModule
   ]
 })
 export class PaymentModule { }

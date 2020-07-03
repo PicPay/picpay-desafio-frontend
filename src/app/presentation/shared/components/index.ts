@@ -12,3 +12,6 @@ export * from './user/user-action/user-action.component';
 export * from './user/user-avatar/user-avatar.component';
 export * from './user/user-subtitle/user-subtitle.component';
 export * from './user/user-title/user-title.component';
+
+export * from './validator-field-message/validator-field-message.component';
+export * from './validator-field-message/validator-field-message.module';

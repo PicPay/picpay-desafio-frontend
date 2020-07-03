@@ -3,5 +3,5 @@ import { Observable } from 'rxjs';
 import { TransactionResponseEntity } from '../../entities/transaction-response-entity';
 
 export abstract class ITransactionUsecase {
-    abstract transaction(param: TransactionPayloadEntity): Observable<TransactionResponseEntity>;
+    abstract transaction(param: TransactionPayloadEntity): Observable<boolean>;
 }

@@ -45,31 +45,46 @@ export class PaymentComponent implements OnInit {
   createForm() {
     this.form = this.fb.group({
       card: ['', Validators.required],
+      card_number: ['', Validators.required],
+      cvv: ['', Validators.required],
+      expiry_date: ['', Validators.required],
+      destination_user_id: ['', Validators.required],
       value: ['', Validators.required],
     });
+  }
+
+  onChangeCard(item: CardEntity) {
+    this.form.get('card_number').setValue(item.card_number);
+    this.form.get('cvv').setValue(item.cvv);
+    this.form.get('expiry_date').setValue(item.expiry_date);
   }
 
   transaction() {
     this.transactionUsecase
       .transaction(this.form.value)
-      .subscribe((res: TransactionResponseEntity) => {
-        let message = '';
+      .subscribe(
+        (res: boolean) => this.responseValidate(res),
+        err => this.showAlert('O pagamento não foi concluido com sucesso.'));
+  }
 
-        this.dialogService.close();
+  responseValidate(res: boolean) {
+    let message = '';
 
-        if (res.success && res.status === 'Aprovada') {
-          message = 'O pagamento foi concluido com sucesso.';
-        } else {
-          message = 'O pagamento não foi concluido com sucesso.';
-        }
+    if (res) {
+      message = 'O pagamento foi concluido com sucesso.';
+    } else {
+      message = 'O pagamento não foi concluido com sucesso.';
+    }
 
-        console.log(res);
+    this.showAlert(message);
+  }
 
-        this.dialogService.alert({
-          title: 'Recibo de pagamento',
-          description: message
-        });
-      });
+  showAlert(message: string) {
+    this.dialogService.close();
+    this.dialogService.alert({
+      title: 'Recibo de pagamento',
+      description: message
+    });
   }
 
 }
