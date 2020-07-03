@@ -5,10 +5,10 @@
 </section>
 
 <ng-template #usersTemplate>
-    <div *ngFor="let item of users">
-        <img [attr.src]="item.img" [alt]="item.name" />
-        <h6>{{item.name}}</h6>
-        <small>#{{item.id}}</small>
-        <p>{{item.username}}</p>
-    </div>
+    <app-user *ngFor="let item of users">
+        <app-user-avatar [src]="item.img"></app-user-avatar>
+        <app-user-title>{{item.name}}</app-user-title>
+        <app-user-subtitle>ID: {{item.id}} - Username: {{item.username}}</app-user-subtitle>
+        <app-user-action>Pagar</app-user-action>
+    </app-user>
 </ng-template>
