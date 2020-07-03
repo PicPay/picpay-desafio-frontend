@@ -3,6 +3,7 @@ import { IUsersUsecase } from '../../../core/interface/usecases/iusers-usecase';
 import { UserEntity } from '../../../core/entities/user-entity';
 import { finalize } from 'rxjs/operators';
 import { DialogService } from '../../shared/components/dialog/dialog.service';
+import { PaymentComponent } from '../../shared/components';
 
 @Component({
   selector: 'app-users',
@@ -33,7 +34,9 @@ export class UsersComponent implements OnInit {
   }
 
   openPayment(user: UserEntity) {
-    this.dialogService.openPayment(user);
+    this.dialogService.openPayment(user, {
+      component: PaymentComponent
+    });
   }
 
 }

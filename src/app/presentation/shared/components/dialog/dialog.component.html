@@ -1,3 +1,5 @@
 <mat-toolbar>
     <h1 mat-dialog-title>{{data.title}}</h1>
 </mat-toolbar>
+
+<p *ngIf="data.description" [innerHTML]="data.description"></p>

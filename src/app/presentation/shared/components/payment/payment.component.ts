@@ -5,6 +5,7 @@ import { UserEntity } from '../../../../core/entities/user-entity';
 import { CardEntity } from 'src/app/core/entities/card-entity';
 import { ITransactionUsecase } from 'src/app/core/interface';
 import { TransactionResponseEntity } from 'src/app/core/entities/transaction-response-entity';
+import { DialogService } from '../dialog/dialog.service';
 
 @Component({
   selector: 'app-payment',
@@ -31,7 +32,8 @@ export class PaymentComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA) public dialogData: any,
     private fb: FormBuilder,
-    private transactionUsecase: ITransactionUsecase
+    private transactionUsecase: ITransactionUsecase,
+    private dialogService: DialogService
   ) {
     this.user = dialogData.data;
   }
@@ -51,7 +53,22 @@ export class PaymentComponent implements OnInit {
     this.transactionUsecase
       .transaction(this.form.value)
       .subscribe((res: TransactionResponseEntity) => {
+        let message = '';
+
+        this.dialogService.close();
+
+        if (res.success && res.status === 'Aprovada') {
+          message = 'O pagamento foi concluido com sucesso.';
+        } else {
+          message = 'O pagamento não foi concluido com sucesso.';
+        }
+
         console.log(res);
+
+        this.dialogService.alert({
+          title: 'Recibo de pagamento',
+          description: message
+        });
       });
   }
 

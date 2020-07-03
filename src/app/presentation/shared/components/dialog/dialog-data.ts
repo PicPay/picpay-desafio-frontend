@@ -1,5 +1,6 @@
 export class DialogData {
-    title: string;
-    data: any;
-    component: any;
+    title?: string;
+    description?: string;
+    data?: any;
+    component?: any;
 }

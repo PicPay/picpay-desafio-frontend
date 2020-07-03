@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject, ComponentFactoryResolver, ViewContainerRef } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { DialogData } from './dialog-data';
 
 @Component({
   selector: 'app-dialog',
@@ -9,21 +10,27 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 export class DialogComponent implements OnInit {
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: any,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,
     private dialogRef: MatDialogRef<any>,
     private componentFactoryResolver: ComponentFactoryResolver,
     private viewContainerRef: ViewContainerRef
   ) { }
 
   ngOnInit() {
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.data.component);
+    this.instanceComponent();
+  }
 
-    this.viewContainerRef.clear();
+  instanceComponent() {
+    if (this.data && this.data.component) {
+      const componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.data.component);
 
-    const componentRef = this.viewContainerRef.createComponent(componentFactory).instance as DialogComponent;
+      this.viewContainerRef.clear();
 
-    componentRef.dialogRef = this.dialogRef;
-    componentRef.data = this.data;
+      const componentRef = this.viewContainerRef.createComponent(componentFactory).instance as DialogComponent;
+
+      componentRef.dialogRef = this.dialogRef;
+      componentRef.data = this.data;
+    }
   }
 
   close() {
