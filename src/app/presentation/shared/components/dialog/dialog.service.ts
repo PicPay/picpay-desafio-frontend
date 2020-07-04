@@ -3,8 +3,6 @@ import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material';
 import { DialogComponent } from './dialog.component';
 import { UserEntity } from 'src/app/core/entities/user-entity';
 import { DialogData } from './dialog-data';
-import { title } from 'process';
-// import { PaymentComponent } from '../payment/payment.component';
 
 @Injectable({
   providedIn: 'root'
@@ -35,9 +33,5 @@ export class DialogService {
     config.data.component = data.component;
 
     this.dialogRef = this.dialog.open(DialogComponent, config);
-  }
-
-  close() {
-    this.dialogRef.close();
   }
 }

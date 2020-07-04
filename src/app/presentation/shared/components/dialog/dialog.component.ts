@@ -22,15 +22,21 @@ export class DialogComponent implements OnInit {
 
   instanceComponent() {
     if (this.data && this.data.component) {
-      const componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.data.component);
-
-      this.viewContainerRef.clear();
-
-      const componentRef = this.viewContainerRef.createComponent(componentFactory).instance as DialogComponent;
+      const componentRef = this.createComponent();
 
       componentRef.dialogRef = this.dialogRef;
       componentRef.data = this.data;
     }
+  }
+
+  createComponent(): any {
+    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.data.component);
+
+    this.viewContainerRef.clear();
+
+    const componentRef = this.viewContainerRef.createComponent(componentFactory).instance;
+
+    return componentRef;
   }
 
   close() {

@@ -1,16 +1,49 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PaymentComponent } from './payment.component';
+import { MatDialogModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatButtonModule, MAT_DIALOG_DATA } from '@angular/material';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ValidatorFieldMessageModule } from '../validator-field-message/validator-field-message.module';
+import { ITransactionUsecase } from 'src/app/core/interface';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CardEntity } from '../../../../core/entities/card-entity';
+import { of, throwError } from 'rxjs';
+import { DialogService } from '../dialog/dialog.service';
 
 describe('PaymentComponent', () => {
   let component: PaymentComponent;
   let fixture: ComponentFixture<PaymentComponent>;
+  let transactionUsecase: jasmine.SpyObj<ITransactionUsecase>;
+  let dialogService: DialogService;
 
   beforeEach(async(() => {
+    const spyTransactionUsecase = jasmine.createSpyObj('ITransactionUsecase', ['transaction']);
+    const spyDialogService = jasmine.createSpyObj('DialogService', ['close', 'alert']);
+
     TestBed.configureTestingModule({
-      declarations: [ PaymentComponent ]
+      declarations: [ PaymentComponent ],
+      imports: [
+        BrowserAnimationsModule,
+        MatDialogModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule,
+        MatButtonModule,
+        ReactiveFormsModule,
+        ValidatorFieldMessageModule
+      ],
+      providers: [
+        { provide: ITransactionUsecase, useValue: spyTransactionUsecase },
+        { provide: DialogService, useValue: spyDialogService },
+        {
+          provide: MAT_DIALOG_DATA, useValue: {}
+        }
+      ]
     })
     .compileComponents();
+
+    transactionUsecase = TestBed.get(ITransactionUsecase);
+    dialogService = TestBed.get(DialogService);
   }));
 
   beforeEach(() => {
@@ -21,5 +54,78 @@ describe('PaymentComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should onChange card', () => {
+    const item = new CardEntity();
+
+    item.card_number = '1111111111111111';
+    item.cvv = 789;
+    item.expiry_date = '01/18';
+
+    component.onChangeCard(item);
+
+    expect(component.form.get('card_number').value).toEqual(item.card_number);
+    expect(component.form.get('cvv').value).toEqual(item.cvv);
+    expect(component.form.get('expiry_date').value).toEqual(item.expiry_date);
+  });
+
+  it('should transaction return true', () => {
+    spyOn(component, 'responseValidate');
+
+    transactionUsecase.transaction.and.returnValue(of(true));
+
+    component.transaction();
+
+    expect(component.responseValidate).toHaveBeenCalledWith(true);
+  });
+
+  it('should transaction return false', () => {
+    spyOn(component, 'responseValidate');
+
+    transactionUsecase.transaction.and.returnValue(of(false));
+
+    component.transaction();
+
+    expect(component.responseValidate).toHaveBeenCalledWith(false);
+  });
+
+  it('should transaction return error', () => {
+    spyOn(component, 'showAlert');
+
+    transactionUsecase.transaction.and.returnValue(throwError(null));
+
+    component.transaction();
+
+    expect(component.showAlert).toHaveBeenCalledWith('O pagamento não foi concluido com sucesso.');
+  });
+
+  it('should response validate payment success', () => {
+    spyOn(component, 'showAlert');
+
+    component.responseValidate(true);
+
+    expect(component.showAlert).toHaveBeenCalledWith('O pagamento foi concluido com sucesso.');
+  });
+
+  it('should response validate payment failed', () => {
+    spyOn(component, 'showAlert');
+
+    component.responseValidate(false);
+
+    expect(component.showAlert).toHaveBeenCalledWith('O pagamento não foi concluido com sucesso.');
+  });
+
+  it('should show alert', () => {
+    const message = '';
+    const alert = {
+      title: 'Recibo de pagamento',
+      description: message
+    };
+
+    component.showAlert(message);
+
+    // expect(dialogService.close).toHaveBeenCalled();
+    expect(dialogService.alert).toHaveBeenCalledWith(alert);
   });
 });

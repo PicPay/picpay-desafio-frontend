@@ -28,6 +28,12 @@
         width: 100%;
         padding: 16px 32px;
         @include background-color('white');
+
+        &:focus {
+            outline: none;
+            box-shadow: 0px 0px 0px 1px $clr-primary inset;
+            @include border-radius('md');
+        }
     }
 
     .app-user-description {

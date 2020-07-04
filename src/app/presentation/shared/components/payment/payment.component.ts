@@ -6,6 +6,7 @@ import { CardEntity } from 'src/app/core/entities/card-entity';
 import { ITransactionUsecase } from 'src/app/core/interface';
 import { TransactionResponseEntity } from 'src/app/core/entities/transaction-response-entity';
 import { DialogService } from '../dialog/dialog.service';
+import { DialogData } from '../dialog/dialog-data';
 
 @Component({
   selector: 'app-payment',
@@ -30,7 +31,7 @@ export class PaymentComponent implements OnInit {
   ];
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public dialogData: any,
+    @Inject(MAT_DIALOG_DATA) public dialogData: DialogData,
     private fb: FormBuilder,
     private transactionUsecase: ITransactionUsecase,
     private dialogService: DialogService
@@ -80,7 +81,7 @@ export class PaymentComponent implements OnInit {
   }
 
   showAlert(message: string) {
-    this.dialogService.close();
+    // this.dialogService.close();
     this.dialogService.alert({
       title: 'Recibo de pagamento',
       description: message

@@ -11,7 +11,7 @@ import { MatDialogModule, MatToolbarModule } from '@angular/material';
   imports: [
     CommonModule,
     MatDialogModule,
-    MatToolbarModule,
+    MatToolbarModule
   ]
 })
 export class DialogModule { }
