@@ -1,0 +1,40 @@
+/* List of Users */
+
+.user {
+  // background: linear-gradient(186.5deg, #3c3e64 0.83%, #1d1e2a 100%);
+  // background: linear-gradient(186.5deg, #3c3e64 0.83%, #1d1e2a 100%);
+  box-shadow: 0 1px 0 #ffffff, 0px -1px 0px #ffffff;
+  color: #3c3e64;
+  padding: 20px 40px;
+
+  display: flex;
+  align-items: center;
+
+  img {
+    border-radius: 50%;
+    height: 80px;
+    width: 80px;
+  }
+  .info-wrapper {
+    margin-left: 16px;
+  }
+  .pay-button {
+    margin-left: auto;
+    background: #3c3e64;
+    color: #ffffff;
+    border: 1px solid #3c3e64;
+    border-radius: 25px;
+    padding: 15px;
+    display: block;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    transition: transform 0.2s;
+    & + .pay-button {
+      margin-top: 16px;
+    }
+    &:hover {
+      transform: translateX(10px);
+    }
+  }
+}
