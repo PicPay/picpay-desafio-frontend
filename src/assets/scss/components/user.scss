@@ -1,29 +1,61 @@
 .app-user {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: block;
+    @include border-left(1px, 'gallery');
+    @include border-right(1px, 'gallery');
+    @include border-bottom(1px, 'gallery');
+
+    &:first-child,
+    &:last-child {
+        overflow: hidden;
+        position: relative;
+    }
+
+    &:first-child {
+        @include border-radius-top('md');
+        @include border-top(1px, 'gallery');
+    }
+
+    &:last-child {
+        @include border-radius-bottom('md');
+        @include border-bottom(1px, 'gallery');
+    }
+
+    .app-user-button {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: none;
+        width: 100%;
+        padding: 16px;
+        @include background-color('white');
+    }
 
     .app-user-description {
         display: flex;
         align-items: center;
+        text-align: left;
     }
 
     .app-user-avatar {
         width: 80px;
         height: 80px;
-        border-radius: 100%;
         display: flex;
         overflow: hidden;
         justify-content: center;
         align-items: center;
+        margin-right: 16px;
+        @include border-radius('circle');
+        @include border(2px, 'silver-chalice');
     }
 
     .app-user-title {
-
+        display: block;
+        @include font-heading;
     }
 
     .app-user-subtitle {
-
+        display: block;
+        @include font-display;
     }
 
     .app-user-action {

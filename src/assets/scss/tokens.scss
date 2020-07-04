@@ -3,19 +3,22 @@ $textMap: (
 );
 
 $textSizeMap: (
-  'heading': 40px,
-  'display': 30px,
-  'normal': 20px
+  'heading': 18px,
+  'display': 14px,
+  'normal': 16px
 );
 
 $colorMap: (
-  'light': #f9f9f9,
-  'dark': #4a4a4a,
-  'neutral-light': #b0b0b0,
-  'primary': #26cc98
+  'alabaster': #f9f9f9,
+  'tundora': #4a4a4a,
+  'silver-chalice': #b0b0b0,
+  'primary': #26cc98,
+  'white': #ffffff,
+  'gallery': #eaeaea
 );
 
 $borderRadiusMap: (
+  'md': 6px,
   'pill': 50px,
   'circle': 100%
 );

@@ -10,6 +10,14 @@ $borderRadius-circle: map-get($borderRadiusTokens, 'circle');
     border-radius: map-get($borderRadiusTokens, $value);
 }
 
+@mixin border-radius-top($value) {
+    border-radius: map-get($borderRadiusTokens, $value) map-get($borderRadiusTokens, $value) 0 0;
+}
+
+@mixin border-radius-bottom($value) {
+    border-radius: 0 0 map-get($borderRadiusTokens, $value) map-get($borderRadiusTokens, $value);
+}
+
 @mixin border($pixel, $color, $opacity: 1) {
     border: $pixel solid rgba(map-get($colorTokens, $color), $opacity) !important;
 }

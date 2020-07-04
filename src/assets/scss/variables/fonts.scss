@@ -12,16 +12,19 @@ $textSizeTokens: map-get($tokens, 'textSize');
 }
 
 @mixin font-heading {
+    font-weight: 700;
     @include fontFamily('primary');
     @include fontSize('heading');
 }
 
 @mixin font-display {
+    font-weight: 400;
     @include fontFamily('primary');
     @include fontSize('display');
 }
 
 @mixin font-normal {
+    font-weight: 400;
     @include fontFamily('primary');
     @include fontSize('normal');
 }

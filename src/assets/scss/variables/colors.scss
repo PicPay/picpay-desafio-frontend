@@ -2,10 +2,12 @@
 
 $colorTokens: map-get($tokens, 'color');
 
-$clr-light: map-get($colorTokens, 'light');
-$clr-dark: map-get($colorTokens, 'dark');
-$clr-neutral-light: map-get($colorTokens, 'neutral-light');
+$clr-alabaster: map-get($colorTokens, 'alabaster');
+$clr-tundora: map-get($colorTokens, 'tundora');
+$clr-silver-chalice: map-get($colorTokens, 'silver-chalice');
 $clr-primary: map-get($colorTokens, 'primary');
+$clr-white: map-get($colorTokens, 'white');
+$clr-gallery: map-get($colorTokens, 'gallery');
 
 @mixin color($color, $opacity: 1) {
     color: rgba(map-get($colorTokens, $color), $opacity) !important;
@@ -15,12 +17,16 @@ $clr-primary: map-get($colorTokens, 'primary');
     background-color: rgba(map-get($colorTokens, $color), $opacity) !important;
 }
 
-.app-clr-light { @include color('light'); }
-.app-clr-dark { @include color('dark'); }
-.app-clr-neutral-light { @include color('neutral-light'); }
+.app-clr-alabaster { @include color('alabaster'); }
+.app-clr-tundora { @include color('tundora'); }
+.app-clr-silver-chalice { @include color('silver-chalice'); }
 .app-clr-primary { @include color('primary'); }
+.app-clr-white { @include color('white'); }
+.app-clr-gallery { @include color('gallery'); }
 
-.app-bg-light { @include background-color('light'); }
-.app-bg-dark { @include background-color('dark'); }
-.app-bg-neutral-light { @include background-color('neutral-light'); }
+.app-bg-alabaster { @include background-color('alabaster'); }
+.app-bg-tundora { @include background-color('tundora'); }
+.app-bg-silver-chalice { @include background-color('silver-chalice'); }
 .app-bg-primary { @include background-color('primary'); }
+.app-bg-white { @include background-color('white'); }
+.app-bg-gallery { @include background-color('gallery'); }
