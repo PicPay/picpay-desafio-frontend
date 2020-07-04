@@ -17,6 +17,16 @@ $clr-gallery: map-get($colorTokens, 'gallery');
     background-color: rgba(map-get($colorTokens, $color), $opacity) !important;
 }
 
+@mixin background-linear-gradient($from, $to) {
+    background: $to !important;
+    background: -moz-linear-gradient(top, $from 0%, $to 100%) !important;
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,$from), color-stop(100%,$to)) !important;
+    background: -webkit-linear-gradient(top, $from 0%,$to 100%) !important;
+    background: -o-linear-gradient(top, $from 0%,$to 100%) !important;
+    background: linear-gradient(to right, $from 0%,$to 100%) !important;
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#{$from}, endColorstr=#{$to}) !important;
+}
+
 .app-clr-alabaster { @include color('alabaster'); }
 .app-clr-tundora { @include color('tundora'); }
 .app-clr-silver-chalice { @include color('silver-chalice'); }

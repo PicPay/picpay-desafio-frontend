@@ -6,6 +6,7 @@ import { UserSubtitleComponent } from './user-subtitle/user-subtitle.component';
 import { UserActionComponent } from './user-action/user-action.component';
 import { UserAvatarComponent } from './user-avatar/user-avatar.component';
 import { MatRippleModule } from '@angular/material';
+import { ButtonModule } from '../button/button.module';
 
 
 
@@ -26,7 +27,8 @@ import { MatRippleModule } from '@angular/material';
   ],
   imports: [
     CommonModule,
-    MatRippleModule
+    MatRippleModule,
+    ButtonModule
   ]
 })
 export class UserModule { }

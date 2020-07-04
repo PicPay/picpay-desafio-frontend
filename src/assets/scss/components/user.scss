@@ -26,7 +26,7 @@
         align-items: center;
         border: none;
         width: 100%;
-        padding: 16px;
+        padding: 16px 32px;
         @include background-color('white');
     }
 
@@ -45,11 +45,12 @@
         align-items: center;
         margin-right: 16px;
         @include border-radius('circle');
-        @include border(2px, 'silver-chalice');
+        @include border(2px, 'primary');
     }
 
     .app-user-title {
         display: block;
+        @include color('primary');
         @include font-heading;
     }
 
