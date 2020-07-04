@@ -1,0 +1,26 @@
+@import '../tokens';
+
+$colorTokens: map-get($tokens, 'color');
+
+$clr-light: map-get($colorTokens, 'light');
+$clr-dark: map-get($colorTokens, 'dark');
+$clr-neutral-light: map-get($colorTokens, 'neutral-light');
+$clr-primary: map-get($colorTokens, 'primary');
+
+@mixin color($color, $opacity: 1) {
+    color: rgba(map-get($colorTokens, $color), $opacity) !important;
+}
+
+@mixin background-color($color, $opacity: 1) {
+    background-color: rgba(map-get($colorTokens, $color), $opacity) !important;
+}
+
+.app-clr-light { @include color('light'); }
+.app-clr-dark { @include color('dark'); }
+.app-clr-neutral-light { @include color('neutral-light'); }
+.app-clr-primary { @include color('primary'); }
+
+.app-bg-light { @include background-color('light'); }
+.app-bg-dark { @include background-color('dark'); }
+.app-bg-neutral-light { @include background-color('neutral-light'); }
+.app-bg-primary { @include background-color('primary'); }

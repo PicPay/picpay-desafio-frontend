@@ -1,3 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat');
 @import '~bootstrap/dist/css/bootstrap.min.css';
+
+@import 'variables/colors.scss';
+@import 'variables/fonts.scss';
+@import 'variables/border.scss';
 
 @import 'components/user.scss';

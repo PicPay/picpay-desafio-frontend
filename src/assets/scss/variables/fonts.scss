@@ -1,0 +1,34 @@
+@import '../tokens';
+
+$textTokens: map-get($tokens, 'text');
+$textSizeTokens: map-get($tokens, 'textSize');
+
+@mixin fontFamily($family) {
+    font-family: map-get($textTokens, $family);
+}
+
+@mixin fontSize($size) {
+    font-size: map-get($textSizeTokens, $size);
+}
+
+@mixin font-heading {
+    @include fontFamily('primary');
+    @include fontSize('heading');
+}
+
+@mixin font-display {
+    @include fontFamily('primary');
+    @include fontSize('display');
+}
+
+@mixin font-normal {
+    @include fontFamily('primary');
+    @include fontSize('normal');
+}
+
+.app-font-size-heading { @include font-heading; }
+.app-font-size-display { @include font-display; }
+.app-font-size-normal { @include font-normal; }
+
+.app-font-primary { @include fontFamily('primary'); }
+

@@ -1,6 +1,21 @@
 .app-user {
-    .app-user-avatar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
+    .app-user-description {
+        display: flex;
+        align-items: center;
+    }
+
+    .app-user-avatar {
+        width: 80px;
+        height: 80px;
+        border-radius: 100%;
+        display: flex;
+        overflow: hidden;
+        justify-content: center;
+        align-items: center;
     }
 
     .app-user-title {
