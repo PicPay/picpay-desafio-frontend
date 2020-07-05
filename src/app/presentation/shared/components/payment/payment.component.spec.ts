@@ -1,7 +1,15 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PaymentComponent } from './payment.component';
-import { MatDialogModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatButtonModule, MAT_DIALOG_DATA } from '@angular/material';
+import {
+  MatDialogModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatSelectModule,
+  MatButtonModule,
+  MAT_DIALOG_DATA,
+  MatProgressSpinnerModule
+} from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ValidatorFieldMessageModule } from '../validator-field-message/validator-field-message.module';
 import { ITransactionUsecase } from 'src/app/core/interface';
@@ -31,6 +39,7 @@ describe('PaymentComponent', () => {
         MatInputModule,
         MatSelectModule,
         MatButtonModule,
+        MatProgressSpinnerModule,
         ReactiveFormsModule,
         ValidatorFieldMessageModule,
         DialogModule
