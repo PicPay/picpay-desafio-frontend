@@ -49,7 +49,7 @@ export class PaymentComponent implements OnInit {
       card_number: ['', Validators.required],
       cvv: ['', Validators.required],
       expiry_date: ['', Validators.required],
-      destination_user_id: ['', Validators.required],
+      destination_user_id: [this.dialogData.data.id, Validators.required],
       value: ['', Validators.required],
     });
   }
@@ -61,11 +61,15 @@ export class PaymentComponent implements OnInit {
   }
 
   transaction() {
-    this.transactionUsecase
-      .transaction(this.form.value)
-      .subscribe(
-        (res: boolean) => this.responseValidate(res),
-        err => this.showAlert('O pagamento não foi concluido com sucesso.'));
+    this.form.markAllAsTouched();
+
+    if (this.form.valid) {
+      this.transactionUsecase
+        .transaction(this.form.value)
+        .subscribe(
+          (res: boolean) => this.responseValidate(res),
+          err => this.showAlert('O pagamento não foi concluido com sucesso.'));
+    }
   }
 
   responseValidate(res: boolean) {

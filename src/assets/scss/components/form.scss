@@ -2,4 +2,10 @@
     .mat-form-field-wrapper {
         margin-bottom: -1.25em;
     }
+
+    .app-validator-field-message {
+        position: absolute;
+        bottom: -16px;
+        left: 0;
+    }
 }

@@ -1,20 +1,20 @@
 <app-dialog-content>
     <form [formGroup]="form">
-        <div class="form-group mb-4">
+        <div class="form-group mb-4 pb-3">
             <mat-form-field class="app-form-field">
                 <mat-label>Digite um valor</mat-label>
-                <input matInput formControlName="value" />
+                <input matInput formControlName="value" autocomplete="off" currencyMask />
+                <app-validator-field-message [control]="form.get('value')"></app-validator-field-message>
             </mat-form-field>
-            <app-validator-field-message [control]="form.get('value')"></app-validator-field-message>
         </div>
-        <div class="form-group mb-4">
+        <div class="form-group mb-4 pb-3">
             <mat-form-field class="app-form-field">
                 <mat-label>Selecione um cartão</mat-label>
                 <mat-select (valueChange)="onChangeCard($event)" formControlName="card">
                     <mat-option [value]="item" *ngFor="let item of cards">{{item.card_number}}</mat-option>
                 </mat-select>
+                <app-validator-field-message [control]="form.get('card')"></app-validator-field-message>
             </mat-form-field>
-            <app-validator-field-message [control]="form.get('card')"></app-validator-field-message>
         </div>
         <div class="d-flex justify-content-center pt-5">
             <button appButtonPrimary app-btn-block app-btn-lg (click)="transaction()">Pagar</button>
