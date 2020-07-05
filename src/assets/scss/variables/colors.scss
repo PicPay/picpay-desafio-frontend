@@ -8,6 +8,7 @@ $clr-silver-chalice: map-get($colorTokens, 'silver-chalice');
 $clr-primary: map-get($colorTokens, 'primary');
 $clr-white: map-get($colorTokens, 'white');
 $clr-gallery: map-get($colorTokens, 'gallery');
+$clr-danger: map-get($colorTokens, 'danger');
 
 @mixin color($color, $opacity: 1) {
     color: rgba(map-get($colorTokens, $color), $opacity) !important;
@@ -33,6 +34,7 @@ $clr-gallery: map-get($colorTokens, 'gallery');
 .app-clr-primary { @include color('primary'); }
 .app-clr-white { @include color('white'); }
 .app-clr-gallery { @include color('gallery'); }
+.app-clr-danger { @include color('danger'); }
 
 .app-bg-alabaster { @include background-color('alabaster'); }
 .app-bg-tundora { @include background-color('tundora'); }
@@ -40,3 +42,4 @@ $clr-gallery: map-get($colorTokens, 'gallery');
 .app-bg-primary { @include background-color('primary'); }
 .app-bg-white { @include background-color('white'); }
 .app-bg-gallery { @include background-color('gallery'); }
+.app-bg-danger { @include background-color('danger'); }

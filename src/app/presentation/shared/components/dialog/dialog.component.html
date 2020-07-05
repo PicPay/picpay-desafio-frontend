@@ -1,5 +1,15 @@
-<mat-toolbar>
-    <h1 mat-dialog-title>{{data.title}}</h1>
+<mat-toolbar class="app-dialog-toolbar">
+    <h6 class="app-dialog-title">{{data.title}}</h6>
+    <button mat-icon-button class="app-dialog-close" (click)="close()">
+        <mat-icon>close</mat-icon>
+    </button>
 </mat-toolbar>
 
-<p *ngIf="data.description" [innerHTML]="data.description"></p>
+<app-dialog-content *ngIf="data.description">
+    <div class="text-center">
+        <p class="app-dialog-description" [innerHTML]="data.description"></p>
+        <div class="pt-4">
+            <button appButtonPrimary app-btn-lg (click)="close()">Ok</button>
+        </div>
+    </div>
+</app-dialog-content>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, ComponentFactoryResolver, ViewContainerRef } from '@angular/core';
+import { Component, OnInit, Inject, ComponentFactoryResolver, ViewContainerRef, HostBinding } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { DialogData } from './dialog-data';
 
@@ -8,6 +8,8 @@ import { DialogData } from './dialog-data';
   styleUrls: ['./dialog.component.scss']
 })
 export class DialogComponent implements OnInit {
+
+  @HostBinding('class') class = 'app-dialog';
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: DialogData,

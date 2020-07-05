@@ -1,0 +1,31 @@
+.app-dialog-panel {
+    .mat-dialog-container {
+        padding: 0;
+        @include border-radius('lg');
+    }
+
+    .app-dialog-toolbar {
+        padding: 0 32px;
+        display: flex;
+        justify-content: space-between;
+        @include background-linear-gradient(#25edae, #18d1d8);
+
+        .app-dialog-title {
+            @include font-heading;
+            @include color('white');
+        }
+
+        .app-dialog-close {
+            @include color('white');
+            
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+
+    .app-dialog-content {
+        display: block;
+        padding: 32px;
+    }
+}

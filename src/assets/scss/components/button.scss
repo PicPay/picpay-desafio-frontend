@@ -43,4 +43,13 @@
             color: currentColor;
         }
     }
+
+    &[app-btn-block] {
+        width: 100%;
+    }
+
+    &[app-btn-block] {
+        width: 100%;
+        min-height: 60px;
+    }
 }

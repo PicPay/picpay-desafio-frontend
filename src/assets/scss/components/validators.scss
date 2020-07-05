@@ -1,0 +1,11 @@
+.app-validator-field-message {
+    display: block;
+    @include font-display;
+
+    .app-validator-field-message-erros {
+        .app-validator-field-message-error {
+            font-size: 75%;
+            @include color('danger');
+        }
+    }
+}

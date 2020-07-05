@@ -10,6 +10,7 @@ import { DialogData } from './dialog-data';
 export class DialogService {
 
   dialogRef: MatDialogRef<DialogComponent>;
+  private panelClass = 'app-dialog-panel';
 
   constructor(
     private dialog: MatDialog
@@ -18,6 +19,8 @@ export class DialogService {
   alert(data: DialogData) {
     const config = new MatDialogConfig();
 
+    config.width = '460px';
+    config.panelClass = this.panelClass;
     config.data = data;
 
     this.dialogRef = this.dialog.open(DialogComponent, config);
@@ -26,7 +29,8 @@ export class DialogService {
   openPayment(user: UserEntity, data?: DialogData) {
     const config = new MatDialogConfig();
 
-    config.width = '400px';
+    config.width = '700px';
+    config.panelClass = this.panelClass;
     config.data = new DialogData();
     config.data.title = 'Pagamento para ' + user.name;
     config.data.data = user;
