@@ -6,7 +6,8 @@ import {
   MatFormFieldModule,
   MatInputModule,
   MatSelectModule,
-  MatButtonModule
+  MatButtonModule,
+  MatProgressSpinnerModule
 } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ValidatorFieldMessageModule } from '../validator-field-message/validator-field-message.module';
@@ -37,6 +38,7 @@ export const customCurrencyMaskConfig = {
     MatInputModule,
     MatSelectModule,
     MatButtonModule,
+    MatProgressSpinnerModule,
     ReactiveFormsModule,
     ValidatorFieldMessageModule,
     ButtonModule,

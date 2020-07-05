@@ -36,6 +36,11 @@
             outline: none;
         }
 
+        &:disabled {
+            opacity: 0.8;
+            cursor: not-allowed;
+        }
+
         .app-btn-content {
             position: relative;
             z-index: 10;

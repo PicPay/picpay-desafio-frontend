@@ -7,6 +7,7 @@ import { UserActionComponent } from './user-action/user-action.component';
 import { UserAvatarComponent } from './user-avatar/user-avatar.component';
 import { MatRippleModule } from '@angular/material';
 import { ButtonModule } from '../button/button.module';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 
 
@@ -28,7 +29,8 @@ import { ButtonModule } from '../button/button.module';
   imports: [
     CommonModule,
     MatRippleModule,
-    ButtonModule
+    ButtonModule,
+    NgxSkeletonLoaderModule
   ]
 })
 export class UserModule { }

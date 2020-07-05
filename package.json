@@ -26,6 +26,7 @@
     "bootstrap": "^4.5.0",
     "hammerjs": "^2.0.8",
     "ngx-currency": "^2.3.3",
+    "ngx-skeleton-loader": "^2.2.1",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"

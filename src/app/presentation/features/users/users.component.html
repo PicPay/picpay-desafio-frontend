@@ -1,6 +1,6 @@
 <section class="app-bg-alabaster">
     <div class="container">
-        <p *ngIf="isLoading else usersTemplate">Carregando....</p>
+        <app-user [loading]="true" loadCount="10" *ngIf="isLoading else usersTemplate"></app-user>
     </div>
 </section>
 

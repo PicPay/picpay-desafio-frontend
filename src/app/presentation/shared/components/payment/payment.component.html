@@ -16,8 +16,14 @@
                 <app-validator-field-message [control]="form.get('card')"></app-validator-field-message>
             </mat-form-field>
         </div>
-        <div class="d-flex justify-content-center pt-5">
-            <button appButtonPrimary app-btn-block app-btn-lg (click)="transaction()">Pagar</button>
+        <div class="d-flex justify-content-center pt-4">
+            <button appButtonPrimary app-btn-block app-btn-lg (click)="transaction()" *ngIf="!isLoading else loadingTemplate">
+                Pagar
+            </button>
         </div>
     </form>
 </app-dialog-content>
+
+<ng-template #loadingTemplate>
+    <mat-spinner class="app-spinner app-clr-primary" diameter="60" strokeWidth="4"></mat-spinner>
+</ng-template>

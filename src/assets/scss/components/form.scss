@@ -8,4 +8,10 @@
         bottom: -16px;
         left: 0;
     }
+
+    .mat-form-field-underline {
+        .mat-form-field-ripple {
+            @include background-color('primary');
+        }
+    }
 }

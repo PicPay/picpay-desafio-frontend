@@ -7,6 +7,7 @@ import { ITransactionUsecase } from 'src/app/core/interface';
 import { TransactionResponseEntity } from 'src/app/core/entities/transaction-response-entity';
 import { DialogService } from '../dialog/dialog.service';
 import { DialogData } from '../dialog/dialog-data';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-payment',
@@ -17,6 +18,7 @@ export class PaymentComponent implements OnInit {
 
   form: FormGroup;
   user: UserEntity;
+  isLoading: boolean;
   cards: CardEntity[] = [
     {
       card_number: '1111111111111111',
@@ -64,8 +66,13 @@ export class PaymentComponent implements OnInit {
     this.form.markAllAsTouched();
 
     if (this.form.valid) {
+      this.isLoading = true;
+
       this.transactionUsecase
         .transaction(this.form.value)
+        .pipe(
+          finalize(() => this.isLoading = false)
+        )
         .subscribe(
           (res: boolean) => this.responseValidate(res),
           err => this.showAlert('O pagamento não foi concluido com sucesso.'));
