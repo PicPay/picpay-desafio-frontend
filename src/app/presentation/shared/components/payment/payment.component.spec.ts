@@ -9,6 +9,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CardEntity } from '../../../../core/entities/card-entity';
 import { of, throwError } from 'rxjs';
 import { DialogService } from '../dialog/dialog.service';
+import { DialogModule } from '../dialog/dialog.module';
+import { UserEntity } from '../../../../core/entities/user-entity';
 
 describe('PaymentComponent', () => {
   let component: PaymentComponent;
@@ -30,7 +32,8 @@ describe('PaymentComponent', () => {
         MatSelectModule,
         MatButtonModule,
         ReactiveFormsModule,
-        ValidatorFieldMessageModule
+        ValidatorFieldMessageModule,
+        DialogModule
       ],
       providers: [
         { provide: ITransactionUsecase, useValue: spyTransactionUsecase },
@@ -49,6 +52,7 @@ describe('PaymentComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(PaymentComponent);
     component = fixture.componentInstance;
+    component.dialogData.data = new UserEntity();
     fixture.detectChanges();
   });
 
@@ -70,13 +74,38 @@ describe('PaymentComponent', () => {
     expect(component.form.get('expiry_date').value).toEqual(item.expiry_date);
   });
 
-  it('should transaction return true', () => {
-    spyOn(component, 'responseValidate');
+  it('should transaction form invalid', () => {
+    spyOn(component.form, 'markAllAsTouched');
 
-    transactionUsecase.transaction.and.returnValue(of(true));
+    component.createForm();
 
     component.transaction();
 
+    expect(component.form.valid).toBeFalsy();
+    expect(component.form.invalid).toBeTruthy();
+  });
+
+  it('should transaction return true', () => {
+    spyOn(component, 'responseValidate');
+    spyOn(component.form, 'markAllAsTouched');
+
+    transactionUsecase.transaction.and.returnValue(of(true));
+
+    component.createForm();
+
+    component.form.setValue({
+      card: true,
+      card_number: '1111111111111111',
+      cvv: 789,
+      destination_user_id: 1015,
+      expiry_date: '01/18',
+      value: 1232.11
+    });
+
+    component.transaction();
+
+    expect(component.form.valid).toBeTruthy();
+    expect(component.form.invalid).toBeFalsy();
     expect(component.responseValidate).toHaveBeenCalledWith(true);
   });
 
@@ -85,8 +114,21 @@ describe('PaymentComponent', () => {
 
     transactionUsecase.transaction.and.returnValue(of(false));
 
+    component.createForm();
+
+    component.form.setValue({
+      card: true,
+      card_number: '4111111111111234',
+      cvv: 123,
+      destination_user_id: 1015,
+      expiry_date: '01/20',
+      value: 1232.11
+    });
+
     component.transaction();
 
+    expect(component.form.valid).toBeTruthy();
+    expect(component.form.invalid).toBeFalsy();
     expect(component.responseValidate).toHaveBeenCalledWith(false);
   });
 
@@ -95,8 +137,21 @@ describe('PaymentComponent', () => {
 
     transactionUsecase.transaction.and.returnValue(throwError(null));
 
+    component.createForm();
+
+    component.form.setValue({
+      card: true,
+      card_number: '4111111111111234',
+      cvv: 123,
+      destination_user_id: 1015,
+      expiry_date: '01/20',
+      value: 1232.11
+    });
+
     component.transaction();
 
+    expect(component.form.valid).toBeTruthy();
+    expect(component.form.invalid).toBeFalsy();
     expect(component.showAlert).toHaveBeenCalledWith('O pagamento não foi concluido com sucesso.');
   });
 
@@ -125,7 +180,6 @@ describe('PaymentComponent', () => {
 
     component.showAlert(message);
 
-    // expect(dialogService.close).toHaveBeenCalled();
     expect(dialogService.alert).toHaveBeenCalledWith(alert);
   });
 });

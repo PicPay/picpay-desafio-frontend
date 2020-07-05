@@ -1,8 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DialogComponent } from './dialog.component';
-import { MatDialogModule, MatToolbarModule, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { MatDialogModule, MatToolbarModule, MAT_DIALOG_DATA, MatDialogRef, MatIconModule } from '@angular/material';
 import { DialogData } from './dialog-data';
+import { DialogContentComponent } from './dialog-content/dialog-content.component';
 
 describe('DialogComponent', () => {
   let component: DialogComponent;
@@ -14,11 +15,13 @@ describe('DialogComponent', () => {
 
     TestBed.configureTestingModule({
       declarations: [
-        DialogComponent
+        DialogComponent,
+        DialogContentComponent
       ],
       imports: [
         MatDialogModule,
-        MatToolbarModule
+        MatToolbarModule,
+        MatIconModule
       ],
       providers: [
         {
