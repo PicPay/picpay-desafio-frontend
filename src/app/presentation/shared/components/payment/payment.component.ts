@@ -65,9 +65,6 @@ export class PaymentComponent implements OnInit {
   transaction() {
     this.form.markAllAsTouched();
 
-    console.log(this.form);
-    console.log(this.form.valid);
-
     if (this.form.valid) {
       this.isLoading = true;
 
@@ -95,7 +92,6 @@ export class PaymentComponent implements OnInit {
   }
 
   showAlert(message: string) {
-    // this.dialogService.close();
     this.dialogService.alert({
       title: 'Recibo de pagamento',
       description: message

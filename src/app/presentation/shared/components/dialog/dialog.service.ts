@@ -14,7 +14,7 @@ export class DialogService {
   private panelClass = 'app-dialog-panel';
 
   constructor(
-    private dialog: MatDialog
+    public dialog: MatDialog
   ) { }
 
   alert(data: DialogData): Observable<any> {
@@ -25,8 +25,6 @@ export class DialogService {
     config.data = data;
 
     return this.dialog.open(DialogComponent, config).afterClosed();
-
-    // this.dialogRef = this.dialog.open(DialogComponent, config);
   }
 
   openPayment(user: UserEntity, data?: DialogData) {

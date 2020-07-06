@@ -28,7 +28,7 @@ describe('PaymentComponent', () => {
 
   beforeEach(async(() => {
     const spyTransactionUsecase = jasmine.createSpyObj('ITransactionUsecase', ['transaction']);
-    const spyDialogService = jasmine.createSpyObj('DialogService', ['close', 'alert']);
+    // const spyDialogService = jasmine.createSpyObj('DialogService', ['close', 'alert']);
 
     TestBed.configureTestingModule({
       declarations: [ PaymentComponent ],
@@ -45,8 +45,9 @@ describe('PaymentComponent', () => {
         DialogModule
       ],
       providers: [
+        DialogService,
         { provide: ITransactionUsecase, useValue: spyTransactionUsecase },
-        { provide: DialogService, useValue: spyDialogService },
+        // { provide: DialogService, useValue: spyDialogService },
         {
           provide: MAT_DIALOG_DATA, useValue: {}
         }
@@ -181,7 +182,9 @@ describe('PaymentComponent', () => {
   });
 
   it('should show alert', () => {
-    const message = '';
+    spyOn(dialogService, 'alert').and.returnValue(of(true));
+
+    const message = 'Conteúdo de descrição';
     const alert = {
       title: 'Recibo de pagamento',
       description: message
@@ -189,6 +192,31 @@ describe('PaymentComponent', () => {
 
     component.showAlert(message);
 
+    dialogService.alert(alert).subscribe(res => {
+      expect(res).toBeTruthy();
+    });
+
     expect(dialogService.alert).toHaveBeenCalledWith(alert);
+  });
+
+  it('should reset form', () => {
+    component.createForm();
+
+    component.form.setValue({
+      card: true,
+      card_number: '4111111111111234',
+      cvv: 123,
+      destination_user_id: 1015,
+      expiry_date: '01/20',
+      value: 1232.11
+    });
+
+    component.resetForm();
+
+    expect(component.form.get('card').value).toBeNull();
+    expect(component.form.get('card_number').value).toBeNull();
+    expect(component.form.get('cvv').value).toBeNull();
+    expect(component.form.get('expiry_date').value).toBeNull();
+    expect(component.form.get('value').value).toBeNull();
   });
 });

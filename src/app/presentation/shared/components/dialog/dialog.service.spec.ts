@@ -23,6 +23,7 @@ class MatDialogRefMock {
 
 describe('DialogService', () => {
   let service: DialogService;
+  const dialogRefSpyObj = jasmine.createSpyObj({ afterClosed : of({}), close: null });
 
   beforeEach(() => {
     const spyDialogRef = jasmine.createSpyObj('MatDialogRef', ['close']);
@@ -45,6 +46,7 @@ describe('DialogService', () => {
     });
 
     service = TestBed.get(DialogService);
+    dialogRefSpyObj.componentInstance = { body: '' };
   });
 
   it('should be created', () => {
@@ -52,11 +54,15 @@ describe('DialogService', () => {
   });
 
   it('should alert', () => {
+    spyOn(service.dialog, 'open').and.returnValue(dialogRefSpyObj);
+
     const data = new DialogData();
 
-    service.alert(data);
+    service.alert(data).subscribe(res => {
+      expect(res).toBeTruthy();
+    });
 
-    expect(service.dialogRef).toBeTruthy();
+    expect(service.dialog.open).toHaveBeenCalled();
   });
 
   it('should open payment', () => {
