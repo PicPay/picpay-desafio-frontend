@@ -99,4 +99,10 @@
             }
         }
     }
+
+    @media (max-width: 768px) {
+        .app-user-load-action {
+            display: none;
+        }
+    }
 }
