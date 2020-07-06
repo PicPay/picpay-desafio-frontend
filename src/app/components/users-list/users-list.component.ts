@@ -54,7 +54,6 @@ export class UsersListComponent implements OnInit {
 
   handlePayment() {
     if (this.transactionForm.dirty && this.transactionForm.valid) {
-      console.log(this.transactionForm);
       const campos = {
         card_number: this.transactionForm.get('card').value.card_number,
         cvv: this.transactionForm.get('card').value.cvv,

@@ -20,13 +20,7 @@
 <app-modal title="Pagamento para Nome do Usuário" *ngIf="enabled$ | async">
   <div class="content" [formGroup]="transactionForm">
     <label for="value">Valor: </label>
-    <input
-      name="value"
-      currencyMask
-      type="text"
-      formControlName="value"
-      placeholder="R$ 0.00"
-    />
+    <input name="value" currencyMask type="text" formControlName="value" />
 
     <div class="cards">
       <label for="card">Cartão: </label>
