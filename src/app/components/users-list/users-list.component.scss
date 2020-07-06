@@ -1,4 +1,6 @@
 /* List of Users */
+$error: #df1919;
+
 %button {
   border-radius: 25px;
   padding: 15px;
@@ -30,8 +32,6 @@
   border: 1px solid #ccc;
   @extend %button;
 }
-
-$error: #df1919;
 
 .user {
   box-shadow: 0 1px 0 #ffffff, 0px -1px 0px #ffffff;
@@ -96,5 +96,27 @@ $error: #df1919;
         @extend %button-secondary;
       }
     }
+  }
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  align-content: center;
+  height: calc(100vh - 60px);
+
+  h1,
+  h2,
+  button {
+    margin: 15px 0;
+    text-align: center;
+  }
+  button {
+    @extend %button-primary;
+    text-align: center;
+    margin: 15px auto;
   }
 }

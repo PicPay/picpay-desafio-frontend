@@ -7,6 +7,10 @@ const routes: Routes = [
     path: '',
     component: UsersListComponent,
   },
+  {
+    path: '**',
+    component: UsersListComponent,
+  },
 ];
 
 @NgModule({

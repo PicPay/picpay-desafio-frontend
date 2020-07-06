@@ -1,4 +1,4 @@
-<div class="users" *ngIf="users$ | async as users">
+<div class="users" *ngIf="users$ | async as users; else dataEmpty">
   <div class="user" *ngFor="let user of users">
     <img [src]="user.img" />
     <div class="info-wrapper">
@@ -63,3 +63,10 @@
     </div>
   </div>
 </app-modal>
+<ng-template #dataEmpty>
+  <div class="empty">
+    <h1>Ops! Ocorreu um erro :( <br /></h1>
+    <h2>Tente novamente mais tarde</h2>
+    <button onClick="window.location.reload();">Refresh Page</button>
+  </div>
+</ng-template>
