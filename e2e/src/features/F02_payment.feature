@@ -10,7 +10,7 @@ Funcionalidade: Pagamento
     Cenário: Efetuar pagamento com sucesso
         Dado que eu esteja visualizando o formulário de 'Pagamento para'
         Quando devo digitar um valor com '10000'
-        Quando devo clicar em 'Selecione um cartão'
+        Quando devo clicar em Selecione um cartão
         Quando devo selecionar '1111111111111111'
         Quando devo clicar no botão 'Pagar'
         Quando devo visualizar o retorno de 'Recibo de pagamento'
@@ -20,7 +20,7 @@ Funcionalidade: Pagamento
     Cenário: Efetuar pagamento com sucesso
         Dado que eu esteja visualizando o formulário de 'Pagamento para'
         Quando devo digitar um valor com '20000'
-        Quando devo clicar em 'Selecione um cartão'
+        Quando devo clicar em Selecione um cartão
         Quando devo selecionar '4111111111111234'
         Quando devo clicar no botão 'Pagar'
         Quando devo visualizar o retorno de 'Recibo de pagamento'

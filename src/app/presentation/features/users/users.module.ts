@@ -3,7 +3,9 @@ import { CommonModule } from '@angular/common';
 
 import { UsersRoutingModule } from './users-routing.module';
 import { UsersComponent } from './users.component';
-import { SharedModule } from '../../shared/shared.module';
+import { UserModule } from '../../shared/components/user/user.module';
+import { DialogModule } from '../../shared/components/dialog/dialog.module';
+import { PaymentModule } from '../payment/payment.module';
 
 
 @NgModule({
@@ -11,7 +13,9 @@ import { SharedModule } from '../../shared/shared.module';
   exports: [UsersComponent],
   imports: [
     CommonModule,
-    SharedModule,
+    UserModule,
+    DialogModule,
+    PaymentModule,
     UsersRoutingModule
   ]
 })

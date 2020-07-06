@@ -3,7 +3,7 @@ import { IUsersUsecase } from '../../../core/interface/usecases/iusers-usecase';
 import { UserEntity } from '../../../core/entities/user-entity';
 import { finalize } from 'rxjs/operators';
 import { DialogService } from '../../shared/components/dialog/dialog.service';
-import { PaymentComponent } from '../../shared/components';
+import { PaymentComponent } from '../payment/payment.component';
 
 @Component({
   selector: 'app-users',

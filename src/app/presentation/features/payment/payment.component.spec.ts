@@ -11,14 +11,12 @@ import {
   MatProgressSpinnerModule
 } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ValidatorFieldMessageModule } from '../validator-field-message/validator-field-message.module';
 import { ITransactionUsecase } from 'src/app/core/interface';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CardEntity } from '../../../../core/entities/card-entity';
 import { of, throwError } from 'rxjs';
-import { DialogService } from '../dialog/dialog.service';
-import { DialogModule } from '../dialog/dialog.module';
-import { UserEntity } from '../../../../core/entities/user-entity';
+import { DialogService, ValidatorFieldMessageModule, DialogModule } from '../../shared/components';
+import { UserEntity } from 'src/app/core/entities/user-entity';
+import { CardEntity } from 'src/app/core/entities/card-entity';
 
 describe('PaymentComponent', () => {
   let component: PaymentComponent;
@@ -47,7 +45,6 @@ describe('PaymentComponent', () => {
       providers: [
         DialogService,
         { provide: ITransactionUsecase, useValue: spyTransactionUsecase },
-        // { provide: DialogService, useValue: spyDialogService },
         {
           provide: MAT_DIALOG_DATA, useValue: {}
         }

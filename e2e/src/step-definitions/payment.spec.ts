@@ -20,10 +20,14 @@ When('devo clicar no botão {string}', { timeout: browser.pageLoadingTimeout }, 
 });
 
 When('devo digitar um valor com {string}', { timeout: browser.pageLoadingTimeout }, async (text) => {
+    await expect(paymentPage.fieldValue.element(by.css('input')).isPresent()).to.eventually.equal(true);
+
     await paymentPage.fieldValue.element(by.css('input')).sendKeys(text);
 });
 
-When('devo clicar em {string}', { timeout: browser.pageLoadingTimeout }, async (text) => {
+When('devo clicar em Selecione um cartão', { timeout: browser.pageLoadingTimeout }, async () => {
+    await expect(paymentPage.fieldCard.isPresent()).to.eventually.equal(true);
+
     await browser.actions().mouseMove(paymentPage.fieldCard.element(by.css('mat-select'))).perform().then(() => {
         paymentPage.fieldCard.element(by.css('mat-select')).click();
 
@@ -32,6 +36,8 @@ When('devo clicar em {string}', { timeout: browser.pageLoadingTimeout }, async (
 });
 
 When('devo selecionar {string}', { timeout: browser.pageLoadingTimeout }, async (text) => {
+    await expect(paymentPage.selectPanel.element(by.cssContainingText('.mat-option-text', text)).isPresent()).to.eventually.equal(true);
+
     await browser.actions()
     .mouseMove(paymentPage.selectPanel.element(by.cssContainingText('.mat-option-text', text))).perform().then(() => {
         paymentPage.selectPanel.element(by.cssContainingText('.mat-option-text', text)).click();

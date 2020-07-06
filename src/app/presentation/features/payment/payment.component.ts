@@ -1,13 +1,11 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material';
-import { UserEntity } from '../../../../core/entities/user-entity';
 import { CardEntity } from 'src/app/core/entities/card-entity';
 import { ITransactionUsecase } from 'src/app/core/interface';
-import { TransactionResponseEntity } from 'src/app/core/entities/transaction-response-entity';
-import { DialogService } from '../dialog/dialog.service';
-import { DialogData } from '../dialog/dialog-data';
 import { finalize } from 'rxjs/operators';
+import { UserEntity } from 'src/app/core/entities/user-entity';
+import { DialogData, DialogService } from '../../shared/components';
 
 @Component({
   selector: 'app-payment',

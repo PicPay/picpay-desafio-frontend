@@ -21,6 +21,8 @@ When('devo Visualizar uma lista de usuários', { timeout: browser.pageLoadingTim
 });
 
 Then('devo clicar no primeiro item da lista', { timeout: browser.pageLoadingTimeout }, async () => {
+    await expect(usersPage.listUsers.isPresent()).to.eventually.equal(true);
+
     await browser.actions().mouseMove(usersPage.listUsers).perform().then(() => {
         usersPage.listUsers.element(by.css('.app-user-button')).click();
     });

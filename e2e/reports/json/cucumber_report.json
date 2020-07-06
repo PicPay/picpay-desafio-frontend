@@ -36,7 +36,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 6604000000
+              "duration": 8319000000
             }
           },
           {
@@ -49,7 +49,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1003000000
+              "duration": 1002000000
             }
           },
           {
@@ -62,7 +62,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1517000000
+              "duration": 2267000000
             }
           },
           {
@@ -84,7 +84,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1000000
+              "duration": 0
             }
           }
         ]
@@ -128,7 +128,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 64000000
+              "duration": 400000000
             }
           },
           {
@@ -141,7 +141,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 291000000
+              "duration": 4079000000
             }
           },
           {
@@ -150,11 +150,11 @@
             "line": 8,
             "name": "devo visualizar os retorno de validação 'Este campo é obrigatório'",
             "match": {
-              "location": "e2e\\src\\step-definitions\\payment.spec.ts:51"
+              "location": "e2e\\src\\step-definitions\\payment.spec.ts:57"
             },
             "result": {
               "status": "passed",
-              "duration": 208000000
+              "duration": 533000000
             }
           },
           {
@@ -165,7 +165,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 0
+              "duration": 1000000
             }
           },
           {
@@ -210,7 +210,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 97000000
+              "duration": 93000000
             }
           },
           {
@@ -223,20 +223,20 @@
             },
             "result": {
               "status": "passed",
-              "duration": 311000000
+              "duration": 1109000000
             }
           },
           {
             "arguments": [],
             "keyword": "Quando ",
             "line": 13,
-            "name": "devo clicar em 'Selecione um cartão'",
+            "name": "devo clicar em Selecione um cartão",
             "match": {
-              "location": "e2e\\src\\step-definitions\\payment.spec.ts:26"
+              "location": "e2e\\src\\step-definitions\\payment.spec.ts:28"
             },
             "result": {
               "status": "passed",
-              "duration": 1424000000
+              "duration": 3419000000
             }
           },
           {
@@ -245,11 +245,11 @@
             "line": 14,
             "name": "devo selecionar '1111111111111111'",
             "match": {
-              "location": "e2e\\src\\step-definitions\\payment.spec.ts:34"
+              "location": "e2e\\src\\step-definitions\\payment.spec.ts:38"
             },
             "result": {
               "status": "passed",
-              "duration": 1219000000
+              "duration": 2392000000
             }
           },
           {
@@ -262,7 +262,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 245000000
+              "duration": 198000000
             }
           },
           {
@@ -271,11 +271,11 @@
             "line": 16,
             "name": "devo visualizar o retorno de 'Recibo de pagamento'",
             "match": {
-              "location": "e2e\\src\\step-definitions\\payment.spec.ts:43"
+              "location": "e2e\\src\\step-definitions\\payment.spec.ts:49"
             },
             "result": {
               "status": "passed",
-              "duration": 663000000
+              "duration": 709000000
             }
           },
           {
@@ -284,11 +284,11 @@
             "line": 17,
             "name": "devo visualizar a mensagem de retorno 'O pagamento foi concluido com sucesso.'",
             "match": {
-              "location": "e2e\\src\\step-definitions\\payment.spec.ts:47"
+              "location": "e2e\\src\\step-definitions\\payment.spec.ts:53"
             },
             "result": {
               "status": "passed",
-              "duration": 102000000
+              "duration": 149000000
             }
           },
           {
@@ -297,11 +297,11 @@
             "line": 18,
             "name": "devo fechar o modal com o botão 'Ok'",
             "match": {
-              "location": "e2e\\src\\step-definitions\\payment.spec.ts:56"
+              "location": "e2e\\src\\step-definitions\\payment.spec.ts:62"
             },
             "result": {
               "status": "passed",
-              "duration": 252000000
+              "duration": 214000000
             }
           },
           {
@@ -323,7 +323,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1000000
+              "duration": 0
             }
           }
         ]
@@ -357,7 +357,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 184000000
+              "duration": 181000000
             }
           },
           {
@@ -370,20 +370,20 @@
             },
             "result": {
               "status": "passed",
-              "duration": 728000000
+              "duration": 475000000
             }
           },
           {
             "arguments": [],
             "keyword": "Quando ",
             "line": 23,
-            "name": "devo clicar em 'Selecione um cartão'",
+            "name": "devo clicar em Selecione um cartão",
             "match": {
-              "location": "e2e\\src\\step-definitions\\payment.spec.ts:26"
+              "location": "e2e\\src\\step-definitions\\payment.spec.ts:28"
             },
             "result": {
               "status": "passed",
-              "duration": 1148000000
+              "duration": 1199000000
             }
           },
           {
@@ -392,11 +392,11 @@
             "line": 24,
             "name": "devo selecionar '4111111111111234'",
             "match": {
-              "location": "e2e\\src\\step-definitions\\payment.spec.ts:34"
+              "location": "e2e\\src\\step-definitions\\payment.spec.ts:38"
             },
             "result": {
               "status": "passed",
-              "duration": 1146000000
+              "duration": 1254000000
             }
           },
           {
@@ -409,7 +409,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 167000000
+              "duration": 245000000
             }
           },
           {
@@ -418,11 +418,11 @@
             "line": 26,
             "name": "devo visualizar o retorno de 'Recibo de pagamento'",
             "match": {
-              "location": "e2e\\src\\step-definitions\\payment.spec.ts:43"
+              "location": "e2e\\src\\step-definitions\\payment.spec.ts:49"
             },
             "result": {
               "status": "passed",
-              "duration": 36000000
+              "duration": 67000000
             }
           },
           {
@@ -431,11 +431,11 @@
             "line": 27,
             "name": "devo visualizar a mensagem de retorno 'O pagamento não foi concluido com sucesso.'",
             "match": {
-              "location": "e2e\\src\\step-definitions\\payment.spec.ts:47"
+              "location": "e2e\\src\\step-definitions\\payment.spec.ts:53"
             },
             "result": {
               "status": "passed",
-              "duration": 36000000
+              "duration": 78000000
             }
           },
           {
@@ -444,11 +444,11 @@
             "line": 28,
             "name": "devo fechar o modal com o botão 'Ok'",
             "match": {
-              "location": "e2e\\src\\step-definitions\\payment.spec.ts:56"
+              "location": "e2e\\src\\step-definitions\\payment.spec.ts:62"
             },
             "result": {
               "status": "passed",
-              "duration": 128000000
+              "duration": 197000000
             }
           },
           {
@@ -459,7 +459,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1000000
+              "duration": 0
             }
           },
           {
@@ -470,7 +470,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 0
+              "duration": 1000000
             }
           }
         ]
