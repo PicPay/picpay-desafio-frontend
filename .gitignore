@@ -1,2 +1,7 @@
 node_modules/
 dist/
+.git
+.config
+.npm
+*.orig
+.ash_history
