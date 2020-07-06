@@ -1,0 +1,14 @@
+<div class="modal-backdrop">
+  <div class="modal">
+    <div class="title">
+      Recibo de pagamento {{ isApproved }}
+    </div>
+
+    <div class="content" *ngIf="isApproved === 'true'">
+      <div>O pagamento foi concluido com sucesso.</div>
+    </div>
+    <div class="content" *ngIf="isApproved === 'false'">
+      <div>O pagamento <strong>não</strong> foi concluido com sucesso.</div>
+    </div>
+  </div>
+</div>

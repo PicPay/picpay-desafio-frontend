@@ -1,0 +1,22 @@
+<div class="modal-backdrop">
+  <div class="modal">
+    <div class="title">Pagamento para <span>{{ name }}</span></div>
+
+    <div class="content">
+      <input type="text" name="txtamount" appCurrencyMask #payValue/> 
+
+      <div class="cards">
+        <select [(ngModel)]="selectedCard">
+          <option *ngFor="let card of cards" [ngValue]="card">Cartão com final {{ card.card_number | cardFilter }}</option>
+        </select>
+      </div>
+      <button type="button" class="pay-button" (click)="payUser(template, selectedCard, id, payValue)">
+        Pagar
+      </button>
+    </div>
+
+    <ng-template #template>
+      <app-confirm-payment card="{{card}}" isApproved="{{isApproved}}"></app-confirm-payment>
+    </ng-template>
+  </div>
+</div>
