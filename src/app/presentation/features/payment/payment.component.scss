@@ -8,7 +8,17 @@
         width: 360px;
         margin: 0 auto;
 
+        @media (max-width: 576px) {
+            width: 100%;
+        }
+
         .mat-form-field {
+            width: 100%;
+        }
+    }
+
+    .app-dialog-content {
+        @media (max-width: 576px) {
             width: 100%;
         }
     }

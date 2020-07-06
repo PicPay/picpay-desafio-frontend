@@ -29,9 +29,16 @@ $textSizeTokens: map-get($tokens, 'textSize');
     @include fontSize('normal');
 }
 
+@mixin font-small {
+    font-weight: 400;
+    @include fontFamily('primary');
+    @include fontSize('small');
+}
+
 .app-font-size-heading { @include font-heading; }
 .app-font-size-display { @include font-display; }
 .app-font-size-normal { @include font-normal; }
+.app-font-size-small { @include font-normal; }
 
 .app-font-primary { @include fontFamily('primary'); }
 

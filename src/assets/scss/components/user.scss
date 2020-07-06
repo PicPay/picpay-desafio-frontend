@@ -34,6 +34,10 @@
             box-shadow: 0px 0px 0px 1px $clr-primary inset;
             @include border-radius('md');
         }
+
+        @media (max-width: 768px) {
+            padding: 16px;
+        }
     }
 
     .app-user-description {
@@ -52,20 +56,47 @@
         margin-right: 16px;
         @include border-radius('circle');
         @include border(2px, 'primary');
+
+        @media (max-width: 768px) {
+            width: 40px;
+            height: 40px;
+            flex: 0 0 auto;
+            max-width: none;
+
+            img {
+                width: 40px;
+                height: 40px;
+            }
+        }
     }
 
     .app-user-title {
         display: block;
         @include color('primary');
         @include font-heading;
+
+        @media (max-width: 768px) {
+            @include fontSize('normal');
+        }
     }
 
     .app-user-subtitle {
         display: block;
         @include font-display;
+
+        @media (max-width: 768px) {
+            @include font-small;
+        }
     }
 
     .app-user-action {
-        
+        @media (max-width: 768px) {
+            .app-btn {
+                padding: 6px 10px;
+                min-width: 70px;
+                min-height: 12px;
+                @include fontSize('small');
+            }
+        }
     }
 }
