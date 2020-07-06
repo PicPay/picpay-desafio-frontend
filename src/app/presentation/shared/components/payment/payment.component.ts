@@ -65,6 +65,9 @@ export class PaymentComponent implements OnInit {
   transaction() {
     this.form.markAllAsTouched();
 
+    console.log(this.form);
+    console.log(this.form.valid);
+
     if (this.form.valid) {
       this.isLoading = true;
 
@@ -96,7 +99,17 @@ export class PaymentComponent implements OnInit {
     this.dialogService.alert({
       title: 'Recibo de pagamento',
       description: message
+    }).subscribe(res => {
+      this.resetForm();
     });
+  }
+
+  resetForm() {
+    this.form.get('card').reset();
+    this.form.get('card_number').reset();
+    this.form.get('cvv').reset();
+    this.form.get('expiry_date').reset();
+    this.form.get('value').reset();
   }
 
 }

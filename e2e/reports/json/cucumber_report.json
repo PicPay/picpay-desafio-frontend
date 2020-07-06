@@ -1,0 +1,480 @@
+[
+  {
+    "keyword": "Funcionalidade",
+    "name": "Usuários",
+    "line": 3,
+    "id": "usuários",
+    "tags": [],
+    "uri": "e2e\\src\\features\\F01_Users.feature",
+    "elements": [
+      {
+        "id": "usuários;visualizar-lista-de-usuários",
+        "keyword": "Scenario",
+        "line": 5,
+        "name": "Visualizar lista de usuários",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "match": {
+              "location": "e2e\\src\\step-definitions\\users.spec.ts:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Dado ",
+            "line": 6,
+            "name": "que estou na página inicial 'Picpay Desafio Frontend'",
+            "match": {
+              "location": "e2e\\src\\step-definitions\\users.spec.ts:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 6604000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Quando ",
+            "line": 7,
+            "name": "devo Visualizar uma lista de usuários",
+            "match": {
+              "location": "e2e\\src\\step-definitions\\users.spec.ts:19"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1003000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Então ",
+            "line": 8,
+            "name": "devo clicar no primeiro item da lista",
+            "match": {
+              "location": "e2e\\src\\step-definitions\\users.spec.ts:23"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1517000000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "e2e\\src\\support\\hooks.ts:4"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "node_modules\\protractor-cucumber-framework\\lib\\resultsCapturer.js:27"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "keyword": "Funcionalidade",
+    "name": "Pagamento",
+    "line": 3,
+    "id": "pagamento",
+    "tags": [],
+    "uri": "e2e\\src\\features\\F02_payment.feature",
+    "elements": [
+      {
+        "id": "pagamento;validar-campos-de-pagamento",
+        "keyword": "Scenario",
+        "line": 5,
+        "name": "Validar campos de pagamento",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "match": {
+              "location": "e2e\\src\\step-definitions\\users.spec.ts:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Dado ",
+            "line": 6,
+            "name": "que eu esteja visualizando o formulário de 'Pagamento para'",
+            "match": {
+              "location": "e2e\\src\\step-definitions\\payment.spec.ts:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 64000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Quando ",
+            "line": 7,
+            "name": "devo clicar no botão 'Pagar'",
+            "match": {
+              "location": "e2e\\src\\step-definitions\\payment.spec.ts:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 291000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Então ",
+            "line": 8,
+            "name": "devo visualizar os retorno de validação 'Este campo é obrigatório'",
+            "match": {
+              "location": "e2e\\src\\step-definitions\\payment.spec.ts:51"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 208000000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "e2e\\src\\support\\hooks.ts:4"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 0
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "node_modules\\protractor-cucumber-framework\\lib\\resultsCapturer.js:27"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 0
+            }
+          }
+        ]
+      },
+      {
+        "id": "pagamento;efetuar-pagamento-com-sucesso",
+        "keyword": "Scenario",
+        "line": 10,
+        "name": "Efetuar pagamento com sucesso",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "match": {
+              "location": "e2e\\src\\step-definitions\\users.spec.ts:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Dado ",
+            "line": 11,
+            "name": "que eu esteja visualizando o formulário de 'Pagamento para'",
+            "match": {
+              "location": "e2e\\src\\step-definitions\\payment.spec.ts:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 97000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Quando ",
+            "line": 12,
+            "name": "devo digitar um valor com '10000'",
+            "match": {
+              "location": "e2e\\src\\step-definitions\\payment.spec.ts:22"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 311000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Quando ",
+            "line": 13,
+            "name": "devo clicar em 'Selecione um cartão'",
+            "match": {
+              "location": "e2e\\src\\step-definitions\\payment.spec.ts:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1424000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Quando ",
+            "line": 14,
+            "name": "devo selecionar '1111111111111111'",
+            "match": {
+              "location": "e2e\\src\\step-definitions\\payment.spec.ts:34"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1219000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Quando ",
+            "line": 15,
+            "name": "devo clicar no botão 'Pagar'",
+            "match": {
+              "location": "e2e\\src\\step-definitions\\payment.spec.ts:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 245000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Quando ",
+            "line": 16,
+            "name": "devo visualizar o retorno de 'Recibo de pagamento'",
+            "match": {
+              "location": "e2e\\src\\step-definitions\\payment.spec.ts:43"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 663000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "E ",
+            "line": 17,
+            "name": "devo visualizar a mensagem de retorno 'O pagamento foi concluido com sucesso.'",
+            "match": {
+              "location": "e2e\\src\\step-definitions\\payment.spec.ts:47"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 102000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Então ",
+            "line": 18,
+            "name": "devo fechar o modal com o botão 'Ok'",
+            "match": {
+              "location": "e2e\\src\\step-definitions\\payment.spec.ts:56"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 252000000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "e2e\\src\\support\\hooks.ts:4"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 0
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "node_modules\\protractor-cucumber-framework\\lib\\resultsCapturer.js:27"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "pagamento;efetuar-pagamento-com-sucesso",
+        "keyword": "Scenario",
+        "line": 20,
+        "name": "Efetuar pagamento com sucesso",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "match": {
+              "location": "e2e\\src\\step-definitions\\users.spec.ts:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Dado ",
+            "line": 21,
+            "name": "que eu esteja visualizando o formulário de 'Pagamento para'",
+            "match": {
+              "location": "e2e\\src\\step-definitions\\payment.spec.ts:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 184000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Quando ",
+            "line": 22,
+            "name": "devo digitar um valor com '20000'",
+            "match": {
+              "location": "e2e\\src\\step-definitions\\payment.spec.ts:22"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 728000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Quando ",
+            "line": 23,
+            "name": "devo clicar em 'Selecione um cartão'",
+            "match": {
+              "location": "e2e\\src\\step-definitions\\payment.spec.ts:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1148000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Quando ",
+            "line": 24,
+            "name": "devo selecionar '4111111111111234'",
+            "match": {
+              "location": "e2e\\src\\step-definitions\\payment.spec.ts:34"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1146000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Quando ",
+            "line": 25,
+            "name": "devo clicar no botão 'Pagar'",
+            "match": {
+              "location": "e2e\\src\\step-definitions\\payment.spec.ts:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 167000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Quando ",
+            "line": 26,
+            "name": "devo visualizar o retorno de 'Recibo de pagamento'",
+            "match": {
+              "location": "e2e\\src\\step-definitions\\payment.spec.ts:43"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 36000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "E ",
+            "line": 27,
+            "name": "devo visualizar a mensagem de retorno 'O pagamento não foi concluido com sucesso.'",
+            "match": {
+              "location": "e2e\\src\\step-definitions\\payment.spec.ts:47"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 36000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Então ",
+            "line": 28,
+            "name": "devo fechar o modal com o botão 'Ok'",
+            "match": {
+              "location": "e2e\\src\\step-definitions\\payment.spec.ts:56"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 128000000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "e2e\\src\\support\\hooks.ts:4"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "node_modules\\protractor-cucumber-framework\\lib\\resultsCapturer.js:27"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 0
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

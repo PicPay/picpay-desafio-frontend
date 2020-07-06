@@ -1,4 +1,5 @@
-.app-dialog-panel {
+.app-dialog-panel,
+.app-dialog-panel-alert {
     .mat-dialog-container {
         padding: 0;
         @include border-radius('lg');

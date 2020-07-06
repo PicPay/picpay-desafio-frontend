@@ -5,7 +5,7 @@
 </section>
 
 <ng-template #usersTemplate>
-    <app-user *ngFor="let item of users" (click)="openPayment(item)">
+    <app-user [id]="'list-users' + i" *ngFor="let item of users; let i = index" (click)="openPayment(item)">
         <app-user-avatar [src]="item.img"></app-user-avatar>
         <app-user-title>{{item.name}}</app-user-title>
         <app-user-subtitle>ID: {{item.id}} - Username: {{item.username}}</app-user-subtitle>

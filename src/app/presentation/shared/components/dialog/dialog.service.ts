@@ -3,6 +3,7 @@ import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material';
 import { DialogComponent } from './dialog.component';
 import { UserEntity } from 'src/app/core/entities/user-entity';
 import { DialogData } from './dialog-data';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,14 +17,16 @@ export class DialogService {
     private dialog: MatDialog
   ) { }
 
-  alert(data: DialogData) {
+  alert(data: DialogData): Observable<any> {
     const config = new MatDialogConfig();
 
     config.width = '460px';
-    config.panelClass = this.panelClass;
+    config.panelClass = 'app-dialog-panel-alert';
     config.data = data;
 
-    this.dialogRef = this.dialog.open(DialogComponent, config);
+    return this.dialog.open(DialogComponent, config).afterClosed();
+
+    // this.dialogRef = this.dialog.open(DialogComponent, config);
   }
 
   openPayment(user: UserEntity, data?: DialogData) {
