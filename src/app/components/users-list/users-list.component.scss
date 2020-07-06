@@ -1,4 +1,37 @@
 /* List of Users */
+%button {
+  border-radius: 25px;
+  padding: 15px;
+  display: block;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  transition: transform 0.2s;
+  opacity: 0.6;
+  &:hover {
+    opacity: 1;
+  }
+  &:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+  }
+}
+
+%button-primary {
+  background: #3c3e64;
+  color: #ffffff;
+  border: 1px solid #3c3e64;
+  @extend %button;
+}
+
+%button-secondary {
+  background: #ccc;
+  color: #ffffff;
+  border: 1px solid #ccc;
+  @extend %button;
+}
+
+$error: #df1919;
 
 .user {
   // background: linear-gradient(186.5deg, #3c3e64 0.83%, #1d1e2a 100%);
@@ -17,24 +50,53 @@
   }
   .info-wrapper {
     margin-left: 16px;
+    .user-name {
+      font-weight: bolder;
+    }
   }
   .pay-button {
     margin-left: auto;
-    background: #3c3e64;
-    color: #ffffff;
-    border: 1px solid #3c3e64;
-    border-radius: 25px;
-    padding: 15px;
-    display: block;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    transition: transform 0.2s;
-    & + .pay-button {
-      margin-top: 16px;
+    @extend %button-primary;
+  }
+}
+
+.content {
+  input {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 32px;
+    height: 48px;
+    padding: 0 8px;
+  }
+
+  .cards {
+    margin-top: 15px;
+    select {
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 18px;
+      height: 48px;
+      margin-top: 12px;
+      width: 100%;
     }
-    &:hover {
-      transform: translateX(10px);
+  }
+
+  .form-error {
+    color: $error;
+    font-size: 12px;
+    margin-top: 15px;
+  }
+
+  .footer {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15px;
+    .pay-button {
+      @extend %button-primary;
+      &--secondary {
+        @extend %button-secondary;
+      }
     }
   }
 }

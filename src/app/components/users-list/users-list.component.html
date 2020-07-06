@@ -1,52 +1,71 @@
-<div class="users">
-  <div class="user">
-    <img src="https://randomuser.me/api/portraits/men/9.jpg" />
+<div class="users" *ngIf="users$ | async as users">
+  <div class="user" *ngFor="let user of users">
+    <img [src]="user.img" />
     <div class="info-wrapper">
       <div class="user-name">
-        Nome do Usuário X
+        {{ user.name }}
       </div>
 
       <div class="user-id-username">
-        ID: X - Username: @usuarioX
+        <div><strong>ID: </strong>{{ user.id }}</div>
+        <div><strong>Username: </strong>{{ user.username }}</div>
       </div>
     </div>
 
-    <button type="button" class="pay-button">
-      Pagar
-    </button>
-  </div>
-
-  <div class="user">
-    <img src="https://randomuser.me/api/portraits/men/12.jpg" />
-    <div class="info-wrapper">
-      <div class="user-name">
-        Nome do Usuário X
-      </div>
-
-      <div class="user-id-username">
-        ID: X - Username: @usuarioX
-      </div>
-    </div>
-
-    <button type="button" class="pay-button">
-      Pagar
-    </button>
-  </div>
-
-  <div class="user">
-    <img src="https://randomuser.me/api/portraits/men/13.jpg" />
-    <div class="info-wrapper">
-      <div class="user-name">
-        Nome do Usuário X
-      </div>
-
-      <div class="user-id-username">
-        ID: X - Username: @usuarioX
-      </div>
-    </div>
-
-    <button type="button" class="pay-button">
+    <button type="button" class="pay-button" (click)="showModal(user.id)">
       Pagar
     </button>
   </div>
 </div>
+<app-modal title="Pagamento para Nome do Usuário" *ngIf="enabled$ | async">
+  <div class="content" [formGroup]="transactionForm">
+    <label for="value">Valor: </label>
+    <input
+      name="value"
+      currencyMask
+      type="text"
+      formControlName="value"
+      placeholder="R$ 0.00"
+    />
+
+    <div class="cards">
+      <label for="card">Cartão: </label>
+      <select name="card" formControlName="card">
+        <option [ngValue]="null" disabled selected>Selecione um cartão</option>
+        <option *ngFor="let card of cards" [ngValue]="card"
+          >Cartão com final {{ card.card_number | slice: -4 }}</option
+        >
+      </select>
+    </div>
+
+    <span class="form-error">{{ formError }}</span>
+
+    <div class="footer">
+      <button
+        type="button"
+        class="pay-button--secondary"
+        (click)="enabled$.next(false)"
+      >
+        Fechar
+      </button>
+
+      <button type="button" class="pay-button" (click)="handlePayment()">
+        Pagar
+      </button>
+    </div>
+  </div>
+</app-modal>
+<app-modal title="Recibo de pagamento" *ngIf="transactionStatus">
+  <div class="content">
+    {{ transactionMessage }}<br />
+    <div class="footer">
+      <button
+        type="button"
+        class="pay-button"
+        (click)="transactionStatus = !transactionStatus"
+      >
+        Fechar
+      </button>
+    </div>
+  </div>
+</app-modal>
