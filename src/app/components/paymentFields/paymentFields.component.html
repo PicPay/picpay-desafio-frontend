@@ -1,0 +1,39 @@
+<ng-container>
+  <form [formGroup]="paymentForm" (ngSubmit)="submitForm()">
+    <input
+      type="number"
+      placeholder="R$ 0,00"
+      formControlName="paymentValue"
+      class="form-control input-field-lg"
+       [ngClass]="{ 'is-invalid': f.paymentValue.errors }"
+      required
+    />
+    <div
+      class="invalid"
+      *ngIf="f.paymentValue.touched && f.paymentValue.hasError('min')"
+    >
+      Transferência mínima: R$ 5
+    </div>
+
+    <div class="cards">
+      <select formControlName="cardSelection"
+        class="form-control input-field-lg"
+       [ngClass]="{ 'is-invalid': !!f.cardSelection.errors }"
+        required
+      >
+        <option
+          *ngFor="let card of cards"
+          [ngValue]="card">
+          {{card.card_number_occluded}}
+        </option>
+      </select>
+      <div class="invalid" *ngIf="f.cardSelection.touched && f.cardSelection.hasError('required')">
+        Obrigatório
+    </div>
+    </div>
+
+    <button class="btn btn-lg btn-primary margin-vertical-sm" [disabled]="!paymentForm.valid">
+      PAGAR
+    </button>
+  </form>
+</ng-container>
