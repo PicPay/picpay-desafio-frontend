@@ -1,0 +1,24 @@
+<div class="user">
+  <div class="info-wrapper">
+    <div class="user-name">
+      {{user.name}}
+    </div>
+
+    <div class="user-img margin-vertical-md">
+      <span class="user-id">#{{user.id}}</span>
+      <img src="{{user.img}}" />
+    </div>
+
+    <div class="user-username">
+      {{user.username}}
+    </div>
+  </div>
+
+  <button
+    type="button"
+    class="btn btn-secundary"
+    (click)="openModal(user)"
+  >
+    <img src="../../../assets/pay.svg" />
+  </button>
+</div>
