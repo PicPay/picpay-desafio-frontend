@@ -20,9 +20,32 @@ Abaixo você encontrará todos as informações necessárias para iniciar o seu 
 
 ## Como Rodar?
 
-- Instale as dependências usando o comando `npm install`
-- Na raiz do repositório, rode este comando `ng serve` para iniciar o servidor de desenvolvimento.
+### Linux
+
+- Instale o docker community (@19.x)
+- Execute o setup para criar o container em: `./picpay.sh setup` (`./picpay.sh` para mais detalhes)
+- Execute a instalação dos pacotes e a build usando: `./picpay.sh run`
+- Alternativamente, para acesso ao bash do container `./picpay.sh bash`
 - A Aplicação estará disponível na porta `http://localhost:4200/`
+
+### Windows
+
+- Instale o docker community (@19.x)
+- Crie a imagem do docker com o comando:
+```
+docker build --tag "picpay:latest" --build-arg uid=1000 --build-arg workdir=/picpay-app .
+```
+
+```
+docker run --rm -it --volume PASTA_LOCAL:/picpay-app --network host picpay npm start
+```
+- A Aplicação estará disponível na porta `http://localhost:4200/`
+
+### Local
+
+- Instale as dependências usando o comando npm install
+- Na raiz do repositório, rode este comando ng serve para iniciar o servidor de desenvolvimento.
+- A Aplicação estará disponível na porta http://localhost:4200/
 
 ## Como submeter?
 
