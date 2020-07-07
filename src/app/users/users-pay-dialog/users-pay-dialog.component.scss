@@ -47,12 +47,12 @@
   color: #cddc39;
 }
 
-.modal > .content {
+.modal > .content > form {
   padding: 32px;
   text-align: center;
 }
 
-.modal > .content > input {
+.modal > .content > form > input {
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 32px;
@@ -61,7 +61,7 @@
   padding: 0 8px;
 }
 
-.modal > .content > .cards > select {
+.modal > .content > form > .cards > select {
   background: #fff;
   border: 1px solid #ccc;
   border-radius: 6px;
@@ -71,7 +71,7 @@
   width: 100%;
 }
 
-.modal > .content > button {
+.modal > .content > form > button {
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 32px;

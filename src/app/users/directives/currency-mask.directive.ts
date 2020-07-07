@@ -35,7 +35,8 @@ export class CurrencyMaskDirective implements ControlValueAccessor {
       $event.target.value = 0
     }
 
-    var currencyFormated = parseFloat($event.target.value).toFixed(2);
+    const currencyFormated = parseFloat($event.target.value).toFixed(2);
     $event.target.value = currencyFormated
+    this.onChange(currencyFormated)
   }
 }

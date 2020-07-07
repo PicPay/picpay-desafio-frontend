@@ -1,8 +1,10 @@
-import { Component, Input, TemplateRef } from '@angular/core';
+import { Component, Input, TemplateRef, ViewChild } from '@angular/core';
 
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal'
 import { PaymentService } from '../service/payment.service';
-
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { PaymentResponseStatus, TransactionPayload } from '../models';
+import { map } from 'rxjs/operators'
 
 export interface DialogData {
   animal: string;
@@ -15,6 +17,8 @@ export interface DialogData {
   styleUrls: ['./users-pay-dialog.component.scss']
 })
 export class UsersPayDialogComponent {
+
+  @ViewChild("template", { static: false }) confirmPaymentModalTemplate;
 
   cards = [
     // valid card
@@ -32,30 +36,42 @@ export class UsersPayDialogComponent {
   ];
 
   @Input() name: string
-  @Input() id: string
+  @Input() id: number
 
   modalRef: BsModalRef;
   isApproved: boolean;
+  payForm: FormGroup = this.formBuilder.group({
+    payValue: ["10", Validators.required],
+    selectedCard: [null, Validators.required]
+  });
+  
 
   constructor(
     private modalService: BsModalService, 
-    private paymentService: PaymentService) {}
+    private paymentService: PaymentService,
+    private formBuilder: FormBuilder) {
+      console.log('pay form', this.payForm)
+    }
 
-  payUser(template: TemplateRef<any>, card, userId, payValue) {
-    this.paymentService.postPayment({
-      card_number: card.card_number,
-      cvv: card.cvv,
-      expiry_date: card.expiry_date,
-      destination_user_id: userId,
-      value: payValue.value
-    }).subscribe((data: any) => {
-      if (data.status === 'Aprovada') {
-        this.isApproved = true
-        this.modalRef = this.modalService.show(template);
-      } else {
-        this.isApproved = false
-        this.modalRef = this.modalService.show(template);
-      }
+
+  payUser() {
+    const { value: { payValue, selectedCard } } = this.payForm;
+    if (this.payForm.invalid) {
+      console.log('error')
+      return
+    }
+    const paymentData: TransactionPayload = {
+      card_number: selectedCard.card_number,
+      cvv: selectedCard.cvv,
+      expiry_date:selectedCard.expiry_date,
+      destination_user_id: this.id,
+      value: payValue
+    }
+    this.paymentService.postPayment(paymentData).pipe(
+        map(data => data.status)
+      ).subscribe((status) => {
+      this.isApproved = status === PaymentResponseStatus.approved
+      this.modalService.show(this.confirmPaymentModalTemplate)
     })
   }
 }

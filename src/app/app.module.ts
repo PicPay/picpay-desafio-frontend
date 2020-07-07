@@ -8,7 +8,7 @@ import { UsersService } from './users/service/users.service';
 import { UsersPayDialogComponent } from './users/users-pay-dialog/users-pay-dialog.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { CardFilterPipe } from './users/pipes/card-filter.pipe';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { CurrencyPipe } from '@angular/common';
 import { CurrencyMaskDirective } from './users/directives/currency-mask.directive';
 import { ConfirmPaymentComponent } from './users/users-pay-dialog/confirm-payment/confirm-payment.component';
@@ -27,6 +27,7 @@ import { ConfirmPaymentComponent } from './users/users-pay-dialog/confirm-paymen
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     ModalModule.forRoot()
   ],
   providers: [UsersService, UsersPayDialogComponent, CurrencyPipe],
