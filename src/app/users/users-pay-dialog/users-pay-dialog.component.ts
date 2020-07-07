@@ -37,7 +37,9 @@ export class UsersPayDialogComponent {
   modalRef: BsModalRef;
   isApproved: boolean;
 
-  constructor(private modalService: BsModalService, private paymentService: PaymentService) {}
+  constructor(
+    private modalService: BsModalService, 
+    private paymentService: PaymentService) {}
 
   payUser(template: TemplateRef<any>, card, userId, payValue) {
     this.paymentService.postPayment({
