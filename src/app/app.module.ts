@@ -8,10 +8,20 @@ import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { ApiService } from './services/api.service';
 
 import { AppComponent } from './app.component';
+import { UserSelectComponent } from './components/userSelect/userSelect.component';
+import { UsersListComponent } from './components/usersList/usersList.component';
+import { ModalComponent } from './components/modal/modal.component';
+import { PaymentFieldsComponent } from './components/paymentFields/paymentFields.component';
+import { PaymentResultComponent } from './components/paymentResult/paymentResult.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ModalComponent,
+    PaymentFieldsComponent,
+    PaymentResultComponent,
+    UsersListComponent,
+    UserSelectComponent
   ],
   imports: [
     BrowserModule,
