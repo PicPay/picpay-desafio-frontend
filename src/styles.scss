@@ -4,7 +4,70 @@
 
 html,
 body {
+  display: flex;
   font-family: sans-serif;
+  background-color: #545454;
   margin: 0;
   padding: 0;
+}
+
+.modal-backdrop.fade {
+  opacity: 0.5;
+}
+
+.modal-open .modal {
+  opacity: 1;
+}
+
+.margin-vertical-sm {
+  margin: 0.5rem auto !important;
+}
+
+.margin-vertical-md {
+  margin: 1rem auto !important;
+}
+
+.btn {
+  display: flex;
+  width: fit-content;
+  background-color: transparent;
+  border: none;
+  border-radius: 3px;
+  color: #ccc6f6;
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0.5rem;
+}
+
+.btn-lg {
+  border-radius: 6px;
+  font-size: 2rem;
+  height: 4rem;
+  padding: 1rem 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.btn-primary {
+  background-color: #474971;
+  border: none;
+  color: #ccc6f6;
+
+  &:disabled {
+    background-color: #959595;
+    color: #ccc;
+  }
+}
+
+.btn-secundary {
+  border: 2px solid #ccc6f6;
+  color: #ccc6f6;
+}
+
+.input-field-lg {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 2rem;
+  height: 4rem;
+  padding: 0 0.5rem;
 }
