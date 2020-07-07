@@ -1,0 +1,22 @@
+form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.cards > select {
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 2rem;
+  height: 4rem;
+  margin-top: 12px;
+}
+
+.ng-touched.ng-invalid:not(form)  {
+  border-left: 5px solid #a94442;
+}
+
+.invalid {
+  color: #a94442;
+}
