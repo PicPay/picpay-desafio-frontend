@@ -47,11 +47,11 @@ When('devo selecionar {string}', { timeout: browser.pageLoadingTimeout }, async 
 });
 
 When('devo visualizar o retorno de {string}', { timeout: browser.pageLoadingTimeout }, async (text) => {
-    expect(await paymentPage.dialogAlertTitle.getText()).to.contain(text);
+    await expect(await paymentPage.dialogAlertTitle.getText()).to.contain(text);
 });
 
 When('devo visualizar a mensagem de retorno {string}', { timeout: browser.pageLoadingTimeout }, async (text) => {
-    expect(await paymentPage.dialogAlertDescription.getText()).to.contain(text);
+    await expect(await paymentPage.dialogAlertDescription.getText()).to.contain(text);
 });
 
 Then('devo visualizar os retorno de validação {string}', { timeout: browser.pageLoadingTimeout }, async (text) => {
@@ -60,7 +60,7 @@ Then('devo visualizar os retorno de validação {string}', { timeout: browser.pa
 });
 
 Then('devo fechar o modal com o botão {string}', { timeout: browser.pageLoadingTimeout }, async (text) => {
-    expect(await paymentPage.dialogAlertButton.getText()).to.contain(text);
+    await expect(await paymentPage.dialogAlertButton.getText()).to.contain(text);
 
     await paymentPage.dialogAlertButton.click();
 });
