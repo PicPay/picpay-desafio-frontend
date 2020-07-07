@@ -1,0 +1,23 @@
+<div class="modal-backdrop">
+  <div class="modal">
+    <div class="title">
+      <p>{{title}}</p>
+      <button
+        type="button"
+        class="btn-primary close"
+        aria-label="Close"
+        (click)="closeModal()"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <div class="content">
+      <app-payment-fields *ngIf="!transaction.success">
+      </app-payment-fields>
+
+      <app-payment-result *ngIf="transaction.success" success="transaction.status === 'Aprovada'">
+      </app-payment-result>
+    </div>
+  </div>
+</div>
