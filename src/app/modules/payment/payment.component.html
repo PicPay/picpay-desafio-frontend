@@ -4,7 +4,7 @@
 
     <div class="content">
       <form [formGroup]="payForm" (submit)="payUser(payForm)">
-        <input type="text" name="txtamount" appCurrencyMask formControlName="payValue"/> 
+        <input type="text" name="txtamount" appCurrencyMask formControlName="payValue" placeholder="0.00"/> 
 
         <div class="cards">
           <select formControlName="selectedCard">

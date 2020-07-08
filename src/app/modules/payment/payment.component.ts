@@ -40,7 +40,7 @@ export class PaymentComponent {
   modalRef: BsModalRef;
   isApproved: boolean;
   payForm: FormGroup = this.formBuilder.group({
-    payValue: ["10", Validators.required],
+    payValue: ["0", [Validators.required, Validators.min(0.01)]],
     selectedCard: [null, Validators.required]
   });
   
