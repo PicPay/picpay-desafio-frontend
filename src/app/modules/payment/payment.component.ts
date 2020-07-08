@@ -1,10 +1,9 @@
-import { Component, Input, TemplateRef, ViewChild } from '@angular/core';
-
-import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal'
+import { Component, Input, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { map } from 'rxjs/operators'
-import { TransactionPayload, PaymentResponseStatus } from 'src/app/core/models';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { map } from 'rxjs/operators';
 import { PaymentService } from 'src/app/core/http';
+import { PaymentResponseStatus, TransactionPayload } from 'src/app/core/models';
 
 export interface DialogData {
   animal: string;
