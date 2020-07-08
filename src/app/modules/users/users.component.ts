@@ -1,13 +1,13 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
-import { UsersService } from './service/users.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal'
+import { UsersService } from 'src/app/core/http';
 
 
 
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
-  styleUrls: ['./users.component.scss']
+  styleUrls: ['../styles/users.scss']
 })
 export class UsersComponent implements OnInit {
 

@@ -2,23 +2,23 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { UsersComponent } from './users/users.component';
 import { HttpClientModule } from '@angular/common/http';
-import { UsersService } from './users/service/users.service';
-import { UsersPayDialogComponent } from './users/users-pay-dialog/users-pay-dialog.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
-import { CardFilterPipe } from './users/pipes/card-filter.pipe';
+import { CardFilterPipe } from './shared/pipes/card-filter.pipe';
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { CurrencyPipe } from '@angular/common';
-import { CurrencyMaskDirective } from './users/directives/currency-mask.directive';
-import { ConfirmPaymentComponent } from './users/users-pay-dialog/confirm-payment/confirm-payment.component';
+import { CurrencyMaskDirective } from './shared/directives/currency-mask.directive';
+import { PaymentComponent } from './modules/payment/payment.component';
+import { UsersComponent } from './modules/users/users.component';
+import { ConfirmPaymentComponent } from './modules/confirm-payment/confirm-payment.component';
+import { UsersService } from './core/http';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     UsersComponent,
-    UsersPayDialogComponent,
+    PaymentComponent,
     CardFilterPipe,
     CurrencyMaskDirective,
     ConfirmPaymentComponent
@@ -30,8 +30,8 @@ import { ConfirmPaymentComponent } from './users/users-pay-dialog/confirm-paymen
     ReactiveFormsModule,
     ModalModule.forRoot()
   ],
-  providers: [UsersService, UsersPayDialogComponent, CurrencyPipe],
-  entryComponents: [UsersPayDialogComponent],
+  providers: [UsersService, CurrencyPipe],
+  entryComponents: [PaymentComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,10 +1,10 @@
 import { Component, Input, TemplateRef, ViewChild } from '@angular/core';
 
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal'
-import { PaymentService } from '../service/payment.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { PaymentResponseStatus, TransactionPayload } from '../models';
 import { map } from 'rxjs/operators'
+import { TransactionPayload, PaymentResponseStatus } from 'src/app/core/models';
+import { PaymentService } from 'src/app/core/http';
 
 export interface DialogData {
   animal: string;
@@ -12,11 +12,11 @@ export interface DialogData {
 }
 
 @Component({
-  selector: 'app-users-pay-dialog',
-  templateUrl: './users-pay-dialog.component.html',
-  styleUrls: ['./users-pay-dialog.component.scss']
+  selector: 'app-payment',
+  templateUrl: './payment.component.html',
+  styleUrls: ['../styles/modal.scss']
 })
-export class UsersPayDialogComponent {
+export class PaymentComponent {
 
   @ViewChild("template", { static: false }) confirmPaymentModalTemplate;
 
@@ -49,9 +49,7 @@ export class UsersPayDialogComponent {
   constructor(
     private modalService: BsModalService, 
     private paymentService: PaymentService,
-    private formBuilder: FormBuilder) {
-      console.log('pay form', this.payForm)
-    }
+    private formBuilder: FormBuilder) { }
 
 
   payUser() {
