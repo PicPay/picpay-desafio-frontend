@@ -1,0 +1,20 @@
+<div class="users">
+    <div class="user">
+        <img [src]="payUser.img" />
+        <div class="info-wrapper">
+            <div class="user-name">
+                {{payUser.name}}
+            </div>
+            <div class="user-id-username">
+                ID: {{payUser.id}} - Username: {{payUser.username}}
+            </div>
+        </div>
+
+        <button type="button" class="pay-button" (click)="getUsersFilter(payUser.id)" (click)="openModal(payModal)">
+            Pagar
+        </button>
+    </div>
+
+    <ng-template #payModal>
+        <app-pay-modal [userModal]="payUser" [modalReference]="payModal"></app-pay-modal>
+    </ng-template>
