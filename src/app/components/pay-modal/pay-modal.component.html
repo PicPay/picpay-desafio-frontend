@@ -1,0 +1,22 @@
+<div class="todo-modal modal-content">
+  <form novalidate (ngSubmit)="payUserModal()">
+    <div class="modal-header">
+      <div class="title">Pagamento para <span>{{userModal.name}}</span>
+      </div>
+    </div>
+    <div class="modal-body">
+      <input type="number" placeholder="R$ 0,00" [(ngModel)]="valueSend" name="valueSend" required
+        (keyup)="getValueSend($event)" />
+      <div class="cards">
+        <select [(ngModel)]="cardSelected" #card name="selectedCard" (change)="selected()" required>
+          <option [ngValue]="null" [disabled]="true" >Please select your card...</option>
+          <option *ngFor="let card of cards" [ngValue]="card">Cartão com final {{card.card_number.slice(12,16)}}</option>
+        </select>
+      </div>
+
+      <button type="submit" class="pay-button">
+        Pagar
+      </button>
+    </div>
+  </form>
+</div>
