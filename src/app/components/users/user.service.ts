@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { User } from './user';
 
 const API = 'https://api.github.com';
 // const API = 'https://run.mocky.io';
@@ -13,7 +14,7 @@ export class UserService {
 
   listUser() {
     return this.http
-    .get<Object[]>(API + '/users');
+    .get<User[]>(API + '/users');
   }
 
   // listUser() {
