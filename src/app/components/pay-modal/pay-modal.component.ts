@@ -1,7 +1,8 @@
-import { Component, OnInit, OnDestroy, Input } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, OnDestroy, Input, ViewChild, ViewEncapsulation } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, NgForm } from '@angular/forms';
+import { map } from 'rxjs/operators';
 
-import { BsModalRef } from 'ngx-bootstrap/modal';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { PayUserService } from 'src/app/services/pay-users.service';
 
 
@@ -12,21 +13,27 @@ import { CreditCard } from 'src/app/models/credit-card';
 @Component({
   selector: 'app-pay-modal',
   templateUrl: './pay-modal.component.html',
-  styleUrls: ['./pay-modal.component.scss']
+  styleUrls: ['./pay-modal.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class PayModalComponent implements OnInit, OnDestroy {
 
-  @Input() modalReference: BsModalRef;
-  @Input() userModal: PayUser;
+  @Input() payModalReference: BsModalRef;
+  @Input() payModalMessage: BsModalRef;
 
-  constructor(private payUserService: PayUserService) {
+  @Input() userModal: PayUser;
+  @ViewChild('payForm', { static: true }) public payForm: NgForm;
+  @ViewChild('modalMessage', { static: true }) public modalMessage: any;
+
+  message: string ;
+
+  constructor(
+    private payUserService: PayUserService,
+    private modalService: BsModalService) {
 
   }
-  private payloadTransaction: TransactionPayLoad;
 
   private cards: Array<CreditCard> = [];
-  private cardSelected: CreditCard;
-  private valueSend: number;
 
   ngOnInit() {
     this.farmCards();
@@ -34,34 +41,32 @@ export class PayModalComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void { }
 
-  selected() {
-    console.log(this.userModal)
-    console.log(this.cardSelected);
-    console.log(this.valueSend);
-  }
-
   payUserModal() {
-    this.loadPayLoadTransaction();
-    if (this.payloadTransaction) {
-      console.log(this.payloadTransaction);
-      this.postSendPayment();
+    const payload = this.loadPayLoadTransaction();
+    if (payload) {
+      this.postSendPayment(payload);
     }
   }
-  
-  postSendPayment() {
-    this.payUserService.postSendPayment(this.payloadTransaction)
+
+  private postSendPayment(payload: TransactionPayLoad) {
+    this.payUserService.postSendPayment(payload)
       .subscribe(
-        () => this.onSuccess(),
-        (error) => this.handleError(error)
+        (parametro: any) => { console.log(parametro) },
+        (error: any) => this.handleError(error),
+        () => console.log("completou")
       )
+    this.payModalReference.hide();
   }
-  loadPayLoadTransaction() {
-    this.payloadTransaction = new TransactionPayLoad;
-    this.payloadTransaction.destination_user_id = this.userModal.id;
-    this.payloadTransaction.card_number = this.cardSelected.card_number;
-    this.payloadTransaction.cvv = this.cardSelected.cvv;
-    this.payloadTransaction.expiry_date = this.cardSelected.expiry_date;
-    this.payloadTransaction.value = this.valueSend;
+
+  private loadPayLoadTransaction(): TransactionPayLoad {
+    let payload: TransactionPayLoad = new TransactionPayLoad(
+      this.payForm.value.valueSend,
+      this.userModal.id,
+      this.payForm.value.selectedCard.card_number,
+      this.payForm.value.selectedCard.cvv,
+      this.payForm.value.selectedCard.expiry_date,
+    );
+    return payload;
   }
 
   onSuccess() {
@@ -69,7 +74,9 @@ export class PayModalComponent implements OnInit, OnDestroy {
   }
 
   handleError(error: string) {
-
+    this.message = "O pagamento NÃO foi concluido com sucesso.";
+    this.modalService.show(this.modalMessage);
+    console.log(error);
   }
 
   farmCards() {
@@ -89,7 +96,5 @@ export class PayModalComponent implements OnInit, OnDestroy {
     this.cards.push(cards[1])
   }
 
-  getValueSend(event: any){
-    this.valueSend = event.target.value;
-  }
+  
 }
