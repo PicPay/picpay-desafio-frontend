@@ -1,0 +1,33 @@
+<div class="modal-backdrop" *ngIf="flagBackdrop">
+  <div class="modal" *ngIf="flagModalPayment">
+
+    <span (click)="modalPaymentIsVisible(false)">X</span>
+
+    <div class="title">Pagamento para <span>{{ user.name }}</span></div>
+
+    <div class="content">
+      <input type="number" placeholder="R$ 0,00" (blur)="getValueOfPayment($event)"  />
+
+      <div class="cards">
+        <select name="selectedCard" [(ngModel)]="selectedCard">
+          <option *ngFor="let card of cards" [ngValue]="card">cartão com final {{card.card_number.substr(-4)}}</option>
+        </select>
+      </div>
+
+      <button type="button" class="pay-button" (click)="callPayment($event)" >
+        Pagar
+      </button>
+    </div>
+  </div>
+
+  <!-- <div class="modal">
+    <div class="title">
+      Recibo de pagamento
+    </div>
+
+    <div class="content">
+      O pagamento foi concluido com sucesso.<br />
+      O pagamento <strong>não</strong> foi concluido com sucesso.
+    </div>
+  </div> -->
+</div>
