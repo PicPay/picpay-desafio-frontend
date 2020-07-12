@@ -1,5 +1,5 @@
 * {
-  // box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html,
@@ -10,14 +10,19 @@ body {
 }
 
 :root {
+  //colors
   --green-font-color: #11C76F;
   --green-black-font-color: #11aa60;
-  --white-font-color: #F7F7F7;
   --grey-font-color: #484848;
+  --grey-white-color: #ececec;
+  --white-font-color: #F7F7F7;
+  --white-absolute-font-color: ##ffffff;
 
   --black-background-color: #000000;
   --white-background-color: #F7F7F7;
   --black-smooth-background-color: #191919;
   --black-grey-background-color: #1A1D21;
   --grey-background-color: #5a5b5c;
+  --grey-black-background-color: #414242;
+
 }
