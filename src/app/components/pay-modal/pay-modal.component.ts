@@ -17,11 +17,10 @@ import { Subscription } from 'rxjs';
 })
 export class PayModalComponent implements OnInit, OnDestroy {
 
-
   public payForm: FormGroup = new FormGroup({
     'valueSend': new FormControl(null, [Validators.required, Validators.minLength(1)]),
     'selectedCard': new FormControl(null, [Validators.required]),
-  })
+  });
 
   subscriptions: Array<Subscription> = [];
   @Input() payModalReference: BsModalRef;
@@ -56,22 +55,22 @@ export class PayModalComponent implements OnInit, OnDestroy {
   private postSendPayment(payload: TransactionPayLoad) {
     const sub = this.payUserService.postSendPayment(payload)
       .subscribe(
-        (process) => { console.log(process)},
+        (process) => { console.log(process); },
         (error: any) => this.onError(error),
         () => this.onSuccess(),
-      )
+      );
     this.payModalReference.hide();
     this.subscriptions.push(sub);
   }
 
   private onSuccess() {
-    this.message = "O pagamento foi concluido com sucesso.";
+    this.message = 'O pagamento foi concluido com sucesso.';
     this.modalService.show(this.modalMessage);
     this.closeModal();
   }
 
   private onError(error: string) {
-    this.message = "O pagamento NÃO foi concluido com sucesso.";
+    this.message = 'O pagamento NÃO foi concluido com sucesso.';
     this.modalService.show(this.modalMessage);
     console.log(error);
     this.closeModal();
@@ -81,9 +80,9 @@ export class PayModalComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       this.closeAllModals();
     }, 2800);
-    let body = document.querySelector("body");
+    const body = document.querySelector('body');
     if (body.classList.contains('modal-open')) {
-      body.classList.remove('modal-open')
+      body.classList.remove('modal-open');
     }
   }
 
@@ -97,7 +96,7 @@ export class PayModalComponent implements OnInit, OnDestroy {
     if (this.payForm.status === 'INVALID') {
       this.lightFields();
     } else {
-      let payload: TransactionPayLoad = new TransactionPayLoad(
+      const payload: TransactionPayLoad = new TransactionPayLoad(
         this.payForm.value.valueSend,
         this.userModal.id,
         this.payForm.value.selectedCard.card_number,
@@ -109,7 +108,7 @@ export class PayModalComponent implements OnInit, OnDestroy {
   }
 
   private farmCards() {
-    let cards: CreditCard[] = [
+    const cards: CreditCard[] = [
       {
         card_number: '1111111111111111',
         expiry_date: '01/18',
@@ -120,9 +119,9 @@ export class PayModalComponent implements OnInit, OnDestroy {
         expiry_date: '01/20',
         cvv: 123,
       }
-    ]
-    this.cards.push(cards[0])
-    this.cards.push(cards[1])
+    ];
+    this.cards.push(cards[0]);
+    this.cards.push(cards[1]);
   }
 
   private lightFields() {

@@ -13,13 +13,14 @@ export class PayUserComponent implements OnInit, OnDestroy {
 
   @Input() payUser: PayUser;
   @Input() modalReference: BsModalRef;
-  
+
   constructor(
     private payUserService: PayUserService,
     private modalService: BsModalService
   ) { }
 
   private subscriptions: Array<Subscription> = [];
+  userSendMoney: PayUser;
 
   ngOnInit() {
   }
@@ -28,17 +29,16 @@ export class PayUserComponent implements OnInit, OnDestroy {
     this.subscriptions.map(s => s.unsubscribe());
   }
 
-  userSendMoney: PayUser;
 
   getUsersFilter(id: number) {
     const sub = this.payUserService.getUsers()
       .subscribe((data) => {
-        this.userSendMoney = data.find(user => user.id == id);
-      })
+        this.userSendMoney = data.find(user => user.id === id);
+      });
     this.subscriptions.push(sub);
   }
 
-  openModal(template: ElementRef<any>){
+  openModal(template: ElementRef<any>) {
     this.modalReference = this.modalService.show(template);
   }
 

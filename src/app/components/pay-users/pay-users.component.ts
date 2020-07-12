@@ -20,7 +20,7 @@ export class PayUsersComponent implements OnInit {
   private getUsers() {
     this.payUserService.getUsers()
       .subscribe(users => {
-        this.payUsers = users
-      })
+        this.payUsers = users;
+      });
   }
 }
