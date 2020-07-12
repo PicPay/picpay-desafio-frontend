@@ -3,11 +3,8 @@
         <p class="title">Recibo de pagamento</p> 
     </div>
     <div class="modal-body-messsage">
-        <div class="payment-message" *ngIf="successMessage">
-            <p class="text-message">{{successMessage}}</p>
-        </div>
-        <div class="payment-message" *ngIf="errorMessage">
-            <p class="text-message">{{errorMessage}}</p>
+        <div class="payment-message" *ngIf="message">
+            <p class="text-message">{{message}}</p>
         </div>
     </div>
 </div>

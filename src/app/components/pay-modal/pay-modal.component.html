@@ -1,15 +1,16 @@
 <div class="pay-todo-modal">
-  <form #payForm="ngForm" (ngSubmit)="payUserModal()" novalidate>
+  <form [formGroup]="payForm" (ngSubmit)="payUserModal()" novalidate>
     <div class="pay-modal-head">
       <div class="title">Pagamento para <span>{{userModal.username}}</span>
       </div>
       <small class="small-text">{{userModal.name}}</small>
     </div>
     <div class="pay-modal-body">
-      <input class="pay-input" type="number" placeholder="R$ 0,00" ngModel [value]="payForm.value.valueSend " name="valueSend"
-        required #valueSend="ngModel" />
+      <label class="small-text-label">Value:</label>
+      <input class="pay-input" type="number" placeholder="R$ 0,00" formControlName="valueSend" required />
       <div class="cards">
-        <select ngModel name="selectedCard" #selectedCard="ngModel" required>
+        <label class="small-text-label">Please select your card...</label>
+        <select formControlName="selectedCard" required>
           <option disabled selected>Please select your card...</option>
           <option *ngFor="let card of cards" [ngValue]="card">Cartão com final {{card.card_number.slice(12,16)}}
           </option>
@@ -23,5 +24,5 @@
 </div>
 
 <ng-template #modalMessage>
-  <app-pay-message [successMessage]="message" [payModalMessage]="modalMessage"></app-pay-message>
+  <app-pay-message [message]="message"></app-pay-message>
 </ng-template>

@@ -1,15 +1,14 @@
 .todo-modal-messsage {
-    display: fixed;
     padding: 0.3rem;
     align-items: center;
-    background: var(--white-background-color);
+    background: var(--white-absolute-font-color);
     min-height: 8rem;
     min-width: 5;
     max-width: 22rem;
     padding: 0.5rem 0.5rem;
-    border: 0px;
+    border: 1px;
     border-radius: 0.7rem;
-    box-shadow: 0px 1px 3px #000;
+    box-shadow: 0px 0.5px 1px #000;
 }
 
 .modal-header-messsage {
@@ -40,24 +39,6 @@
         margin: 0px;
         font-family: sans-serif;
         font-size: medium;
-        color: var(--black-grey-background-color);
+        color: var(--grey-background-color);
     }
-}
-
-.modal-dialog {
-    min-height: auto;
-    min-width: 0;
-    max-width: 22rem;
-    border: 0px;
-    border-radius: 0.7rem;
-    box-shadow: 0px 1px 3px #000;
-}
-
-.modal-content {
-    min-height: 6rem;
-    min-width: 0;
-    max-width: 22rem;
-    border: 0px;
-    border-radius: 0.7rem;
-    box-shadow: 0px 1px 3px #000;
 }

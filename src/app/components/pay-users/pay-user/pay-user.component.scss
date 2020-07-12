@@ -1,17 +1,18 @@
 .user {
-  margin: 0.7rem 0.4rem;
+  min-width: 15rem;
+  margin: 0.3rem 0.3rem;
   padding: 10px 15px;
-  background: var(--white-background-color);
-  border: 1px;
+  background: var(--white-absolute-font-color);
+  border: 1.5px solid var(--grey-white-color);
   border-radius: 0.8rem;
-  box-shadow: 0.5px 0.5px 0.5px rgb(173, 173, 173);
+  box-shadow: 0.4px 0.2px 0.1px 0.1px var(--grey-white-color);
   color: var(--grey-font-color);
   display: flex;
   align-items: center;
 
   > img {
     border-radius: 50%;
-    border: 2px black;
+    border: 0.8px solid var(--grey-white-color);
     height: 80px;
     width: 80px;
     margin-right: 1rem;
@@ -19,13 +20,15 @@
 }
 
 .user-name {
-  font-size: 1em;
+  font-size: 1.1em;
   font-weight: bold;
+  color: var(--grey-black-background-color);
 }
 
 .user-id-username {
   font-size: 1.3em;
   font-weight: bold;
+  color: var(--grey-black-background-color);
 }
 
 x .user > .info-wrapper {
@@ -37,12 +40,10 @@ x .user > .info-wrapper {
 }
 
 .info-wrapper {
-  margin-right: 0.5rem;
+  margin-right: 0.6rem;
 }
 
 .pay-button {
-  display: inline-block;
-
   font-weight: bold;
   font-size: small;
   text-decoration: none;
@@ -50,17 +51,87 @@ x .user > .info-wrapper {
   text-align: center;
   align-items: center;
 
-  min-height: 2em;
-  min-width: 5.5em;
+  min-height: 3em;
+  min-width: 150px;
   margin: 0.4em;
 
   background: var(--green-font-color);
   color: var(--white-font-color);
   border: 0px;
   border-radius: 40px;
-  box-shadow: 0px 1px 1px rgb(92, 91, 91);
+  box-shadow: 0.8px 2px 1px var(--grey-white-color);
 }
 
 .pay-button:hover {
   background: var(--green-black-font-color);
+}
+
+//widths
+$breakpoint-table: 768px;
+$breakpoint-celphone: 420px;
+
+@media (max-width: $breakpoint-table) {
+  .user-name {
+    font-size: 0.8em;
+    font-weight: bold;
+    color: var(--grey-black-background-color);
+  }
+
+  .user-id-username {
+    font-size: 1em;
+    font-weight: bold;
+    color: var(--grey-black-background-color);
+  }
+
+  .info-wrapper {
+    margin-right: 0.3rem;
+  }
+}
+
+@media (max-width: $breakpoint-celphone) {
+  .user-name {
+    font-size: 0.6em;
+    font-weight: bold;
+    color: var(--grey-black-background-color);
+  }
+
+  .user-id-username {
+    font-size: 0.8em;
+    font-weight: bold;
+    color: var(--grey-black-background-color);
+  }
+
+  .info-wrapper {
+    margin-right: 0.1rem;
+  }
+
+  .user {
+    > img {
+      height: 50px;
+      width: 50px;
+    }
+  }
+
+  .pay-button {
+    font-weight: bold;
+    font-size: x-small;
+    text-decoration: none;
+    transition: 0.25s ease-in;
+    text-align: center;
+    align-items: center;
+  
+    min-height: 2.7em;
+    min-width: 7em;
+    margin: 0.3em;
+  
+    background: var(--green-font-color);
+    color: var(--white-font-color);
+    border: 0px;
+    border-radius: 40px;
+    box-shadow: 0.8px 1px 1px var(--grey-white-color);
+  }
+  
+  .pay-button:hover {
+    background: var(--green-black-font-color);
+  }
 }

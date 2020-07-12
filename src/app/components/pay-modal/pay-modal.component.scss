@@ -46,7 +46,20 @@
 .pay-input {
   padding: 0px;
   margin: 0.4em;
-  width: 15em;
+  width: 18em;
+  min-width: 8em;
+  min-height: 1.8em;
+  border-bottom: 1.2px solid var(--green-font-color);
+  border-top: 0px; 
+  border-right: 0px; 
+  border-left: 0px;
+  background-color: var(--white-background-color); 
+}
+
+.cards > select {
+  background-color: var(--white-background-color);
+  margin: 0.4em;
+  width: 18em;
   min-width: 8em;
   min-height: 1.8em;
   border-bottom: 1.2px solid var(--green-font-color);
@@ -55,15 +68,14 @@
   border-left: 0px; 
 }
 
-.cards > select {
-  margin: 0.4em;
-  width: 15em;
-  min-width: 8em;
-  min-height: 1.8em;
-  border-bottom: 1.2px solid var(--green-font-color);
-  border-top: 0px; 
-  border-right: 0px; 
-  border-left: 0px; 
+.small-text-label {
+  display: block;
+  padding: 0px;
+  margin: 0.01em 0.6em;
+  text-decoration: none;
+  font-size: x-small;
+  font-weight: bold ;
+  color: var(--green-font-color);
 }
 
 .pay-button-modal {
@@ -112,6 +124,8 @@ select.ng-valid.ng-touched {
   max-width: 22rem;
   border: 0px;
   border-radius: 2rem;
+  margin: auto;
+  margin-top: 6em;
 }
 
 .modal-content {
@@ -119,5 +133,5 @@ select.ng-valid.ng-touched {
   min-width: 0;
   max-width: 22rem;
   border: 0px;
-  border-radius: 2rem;
+  border-radius: 0.7rem;
 }
