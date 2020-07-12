@@ -1,8 +1,9 @@
 export class TransactionPayLoad {
-  card_number: string;
-  cvv: number;
-  expiry_date: string;
-  destination_user_id: number;
-  value: number;
-  }
-  
+  constructor(
+    public value: number,
+    public destination_user_id: number,
+    public card_number: string,
+    public cvv: number,
+    public expiry_date: string,
+  ) { }
+}

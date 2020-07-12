@@ -6,15 +6,14 @@ import { map } from 'rxjs/operators';
 import { PayUser } from 'src/app/components/pay-users/pay-user/pay-user.model';
 import { TransactionPayLoad } from 'src/app/models/TransactionPayLoad.model';
 
-// import { ErrorHandler } from '../app.error-handler';
-
 @Injectable()
 export class PayUserService {
 
     constructor(private http: HttpClient) { }
 
     getUsers(): Observable<PayUser[]> {
-        return this.http.get<PayUser[]>(`https://private-ba7f3-rprteste.apiary-mock.com/users`)
+        return this.http
+            .get<PayUser[]>(`https://private-ba7f3-rprteste.apiary-mock.com/users`)
             .pipe(map(response => response))
     }
 
