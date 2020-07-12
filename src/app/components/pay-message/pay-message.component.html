@@ -1,10 +1,13 @@
-<div class="modal">
-    <div class="title">
-        Recibo de pagamento
+<div class="todo-modal-messsage">
+    <div class="modal-header-messsage">
+        <p class="title">Recibo de pagamento</p> 
     </div>
-
-    <div class="content">
-        O pagamento foi concluido com sucesso.<br />
-        O pagamento <strong>não</strong> foi concluido com sucesso.
+    <div class="modal-body-messsage">
+        <div class="payment-message" *ngIf="successMessage">
+            <p class="text-message">{{successMessage}}</p>
+        </div>
+        <div class="payment-message" *ngIf="errorMessage">
+            <p class="text-message">{{errorMessage}}</p>
+        </div>
     </div>
 </div>

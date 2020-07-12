@@ -1,0 +1,63 @@
+.todo-modal-messsage {
+    display: fixed;
+    padding: 0.3rem;
+    align-items: center;
+    background: var(--white-background-color);
+    min-height: 8rem;
+    min-width: 5;
+    max-width: 22rem;
+    padding: 0.5rem 0.5rem;
+    border: 0px;
+    border-radius: 0.7rem;
+    box-shadow: 0px 1px 3px #000;
+}
+
+.modal-header-messsage {
+    margin-top: 0.4em;
+    margin-bottom: 0.4em;
+}
+
+.modal-body-messsage {
+    margin-top: 0.4em;
+    margin-bottom: 0.4em;
+}
+
+.title {
+    text-align: center;
+    padding: 0px;
+    margin: 0px;
+    font-weight: bold;
+    font-size: large;
+    font-family: sans-serif;
+    color: var(--green-font-color);
+}
+
+.payment-message {
+    margin-top: 0.5rem;
+    text-align: center;
+    > .text-message {
+        padding: 0px;
+        margin: 0px;
+        font-family: sans-serif;
+        font-size: medium;
+        color: var(--black-grey-background-color);
+    }
+}
+
+.modal-dialog {
+    min-height: auto;
+    min-width: 0;
+    max-width: 22rem;
+    border: 0px;
+    border-radius: 0.7rem;
+    box-shadow: 0px 1px 3px #000;
+}
+
+.modal-content {
+    min-height: 6rem;
+    min-width: 0;
+    max-width: 22rem;
+    border: 0px;
+    border-radius: 0.7rem;
+    box-shadow: 0px 1px 3px #000;
+}
