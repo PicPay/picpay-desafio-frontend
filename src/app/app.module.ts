@@ -9,7 +9,9 @@ import { PayUsersComponent } from './components/pay-users/pay-users.component';
 import { PayUserComponent } from './components/pay-users/pay-user/pay-user.component';
 import { PayMessageComponent } from './components/pay-message/pay-message.component';
 import { PayUserService } from './services/pay-users.service';
-import { ModalModule  } from 'ngx-bootstrap/modal';
+import { ModalModule } from 'ngx-bootstrap/modal';
+
+
 @NgModule({
   declarations: [
     AppComponent,
