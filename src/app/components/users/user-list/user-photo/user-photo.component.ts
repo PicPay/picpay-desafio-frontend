@@ -1,13 +1,14 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { User } from '../../user';
 import { UserService } from '../../user.service';
+import { User } from '../../user';
 
 @Component({
-  selector: 'app-user',
-  templateUrl: './user.component.html',
-  styleUrls: ['./user.component.scss']
+  selector: 'app-user-photo',
+  templateUrl: './user-photo.component.html',
+  styleUrls: ['./user-photo.component.scss']
 })
-export class UserComponent implements OnInit {
+export class UserPhotoComponent implements OnInit {
+  @Input() user = '';
   @Input() users: User[] = [];
 
   constructor(private userService: UserService) { }

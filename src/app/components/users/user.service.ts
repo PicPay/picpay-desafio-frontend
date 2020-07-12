@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { User } from './user';
 
 const API = 'https://api.github.com';
-// const API = 'https://run.mocky.io';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +18,6 @@ export class UserService {
 
   // listUser() {
   //   return this.http
-  //   .get<Object[]>(API + '/v3/533cd5d7-63d3-4488-bf8d-4bb8c751c989');
+  //   .get<User[]>('https://www.mocky.io/v2/5d531c4f2e0000620081ddce');
   // }
 }

@@ -1,12 +1,9 @@
 <div class="user" *ngFor="let user of users">
-  <img [src]="user" alt="Avatar do usuário">
+  <app-user-photo [user]="user.avatar_url"></app-user-photo>
 
   <div class="info-wrapper">
     <div class="user-name" >
-      <strong>
-        {{ user.login }}
-      </strong>
-      
+      <strong>{{ user.login }}</strong>
     </div>
 
     <div class="user-id-username">

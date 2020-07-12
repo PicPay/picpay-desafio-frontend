@@ -4,11 +4,13 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { UserListComponent } from './user-list/user-list.component';
 import { UserComponent } from './user-list/user/user.component';
+import { UserPhotoComponent } from './user-list/user-photo/user-photo.component';
 
 @NgModule({
   declarations: [ 
     UserComponent, 
-    UserListComponent 
+    UserListComponent,
+    UserPhotoComponent 
   ],
   imports: [ 
     CommonModule,
