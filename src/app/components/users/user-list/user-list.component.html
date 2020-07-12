@@ -1,4 +1,7 @@
-<app-user     
-  *ngFor="let user of users"
-  [photo]="user.avatar_url">
-</app-user>
+<ul>
+  <li *ngFor="let user of users">
+    <app-user     
+      [user]="user.avatar_url">
+    </app-user>
+  </li>
+</ul>
