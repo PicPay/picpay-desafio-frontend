@@ -1,0 +1,23 @@
+.user {
+  background: linear-gradient(186.5deg, #3c3e64 0.83%, #1d1e2a 100%);
+  box-shadow: 0 1px 0 #ffffff, 0px -1px 0px #ffffff;
+  color: #fff;
+  padding: 20px 40px;
+
+  display: flex;
+  align-items: center;
+}
+
+.user > img {
+  border-radius: 50%;
+  height: 80px;
+  width: 80px;
+}
+
+.user > .info-wrapper {
+  margin-left: 16px;
+}
+
+.user > .pay-button {
+  margin-left: auto;
+}
