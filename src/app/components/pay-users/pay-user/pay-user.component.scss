@@ -1,24 +1,66 @@
 .user {
-    background: linear-gradient(186.5deg, #3c3e64 0.83%, #1d1e2a 100%);
-    box-shadow: 0 1px 0 #ffffff, 0px -1px 0px #ffffff;
-    color: #fff;
-    padding: 20px 40px;
-  
-    display: flex;
-    align-items: center;
-  }
-  
-  .user > img {
+  margin: 0.7rem 0.4rem;
+  padding: 10px 15px;
+  background: var(--white-background-color);
+  border: 1px;
+  border-radius: 0.8rem;
+  box-shadow: 0.5px 0.5px 0.5px rgb(173, 173, 173);
+  color: var(--grey-font-color);
+  display: flex;
+  align-items: center;
+
+  > img {
     border-radius: 50%;
+    border: 2px black;
     height: 80px;
     width: 80px;
     margin-right: 1rem;
   }
-  x
-  .user > .info-wrapper {
-    margin-left: 16px;
-  }
-  
-  .user > .pay-button {
-    margin-left: auto;
-  }
+}
+
+.user-name {
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.user-id-username {
+  font-size: 1.3em;
+  font-weight: bold;
+}
+
+x .user > .info-wrapper {
+  margin-left: 16px;
+}
+
+.user > .pay-button {
+  margin-left: auto;
+}
+
+.info-wrapper {
+  margin-right: 0.5rem;
+}
+
+.pay-button {
+  display: inline-block;
+
+  font-weight: bold;
+  font-size: small;
+  text-decoration: none;
+  transition: 0.25s ease-in;
+  text-align: center;
+  align-items: center;
+
+  min-height: 2em;
+  min-width: 5.5em;
+  margin: 0.4em;
+
+  background: var(--green-font-color);
+  color: var(--white-font-color);
+  border: 0px;
+  border-radius: 40px;
+  box-shadow: 0px 1px 1px rgb(92, 91, 91);
+}
+
+.pay-button:hover {
+  background: var(--green-black-font-color);
+}

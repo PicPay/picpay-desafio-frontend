@@ -6,7 +6,7 @@
                 {{payUser.name}}
             </div>
             <div class="user-id-username">
-                ID: {{payUser.id}} - Username: {{payUser.username}}
+                {{payUser.username}}
             </div>
         </div>
 
@@ -16,5 +16,6 @@
     </div>
 
     <ng-template #payModal>
-        <app-pay-modal [userModal]="payUser" [modalReference]="payModal"></app-pay-modal>
+        <app-pay-modal [userModal]="payUser" [payModalReference]="modalReference"></app-pay-modal>
     </ng-template>
+</div>

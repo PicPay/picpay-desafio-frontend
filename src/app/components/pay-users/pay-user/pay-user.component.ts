@@ -13,16 +13,13 @@ export class PayUserComponent implements OnInit, OnDestroy {
 
   @Input() payUser: PayUser;
   @Input() modalReference: BsModalRef;
-
+  
   constructor(
     private payUserService: PayUserService,
     private modalService: BsModalService
   ) { }
 
   private subscriptions: Array<Subscription> = [];
-
-  modalRef: any;
-
 
   ngOnInit() {
   }
