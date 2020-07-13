@@ -1,10 +1,30 @@
+@import './app/variables/colors.scss';
+
 * {
   box-sizing: border-box;
 }
 
 html,
 body {
-  font-family: sans-serif;
+  font-family: 'Roboto';
   margin: 0;
   padding: 0;
+}
+
+.highlight {
+  color: $highlight-text;
+}
+
+
+// CUSTOM FONTS - Icons made by Fontello.com
+@font-face {
+  font-family: 'picpay-icons';
+  src: url('./assets/fonts/picpay-icons.eot?10841239');
+  src: url('./assets/fonts/picpay-icons.eot?10841239#iefix') format('embedded-opentype'),
+       url('./assets/fonts/picpay-icons.woff2?10841239') format('woff2'),
+       url('./assets/fonts/picpay-icons.woff?10841239') format('woff'),
+       url('./assets/fonts/picpay-icons.ttf?10841239') format('truetype'),
+       url('./assets/fonts/picpay-icons.svg?10841239#picpay-icons') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }

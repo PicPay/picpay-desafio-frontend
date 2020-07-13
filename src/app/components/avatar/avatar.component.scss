@@ -1,0 +1,12 @@
+@import "../../variables/colors.scss";
+
+.avatar {
+  display: block;
+  border-radius: 50%;
+  height: 80px;
+  width: 80px;
+}
+
+.stroke {
+  border: solid 1px $primary-color;
+}

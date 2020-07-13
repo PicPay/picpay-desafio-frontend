@@ -1,0 +1,44 @@
+<section class="payment">
+  <header>
+    <h1 class="title">Pagamento</h1>
+    <p class="subtitle">Escolha o usuário que deseja efetuar um pagamento:</p>
+  </header>
+  
+  <!-- User list, only visible when the web service loads -->
+  <div *ngIf="!loadingUsers" class="users">
+    <app-user-card
+      *ngFor="let user of users"
+      [user]="user"
+      (payClick)="payClickHandler($event)"
+    ></app-user-card>
+  </div>
+  <!-- Loading icon for the user list -->
+  <div *ngIf="loadingUsers" class="loading-container">
+    <app-spinner></app-spinner>
+  </div>
+</section>
+
+<app-modal
+  *ngIf="showPaymentModal"
+  headerContent="Pagamento para <strong class='highlight'>{{user.name}}</strong>"
+  (closeClick)="paymentFormHandleClose()"
+>
+  <app-payment-form></app-payment-form>
+</app-modal>
+
+<app-modal
+  *ngIf="showFeedbackModal"
+  headerContent="Recibo de pagamento"
+  (closeClick)="paymentFeedbackHandleClose()"
+>
+  <div class="payment-feedback">
+    <div>
+      <i class="icon icon-ok-circled success"></i>
+      <p>O pagamento foi concluido com sucesso.</p>
+    </div>
+    <div>
+      <i class="icon icon-cancel-circled error"></i>
+      <p>O pagamento <strong>não</strong> foi concluido com sucesso.</p>
+    </div>
+  </div>
+</app-modal>

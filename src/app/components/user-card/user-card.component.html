@@ -1,0 +1,23 @@
+<div class="user">
+  <app-avatar
+    [outline]=true
+    [imageUrl]=user.img>
+  </app-avatar>
+  <div class="info-wrapper">
+    <div class="user-name">
+      {{user.name}}
+    </div>
+
+    <div class="user-id-username">
+      ID: {{user.id}} - Username: {{user.username}}
+    </div>
+  </div>
+
+  <div class="button-container">
+    <app-button-common
+      (buttonClick)="clickHandler($event)"
+      [rounded]=true
+      label="{{'Pagar' | uppercase}}">
+    </app-button-common>
+  </div>
+</div>

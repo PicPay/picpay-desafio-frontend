@@ -1,0 +1,39 @@
+@import '../../variables/colors.scss';
+@import '../../variables/font.scss';
+
+.button {
+    @include font-regular;
+    cursor: pointer;
+    padding: 5px 15px;
+    background-color: $primary-color;
+    color: $white;
+    border: 0;
+    transition: all 0.3s ease;
+
+    &:hover {
+        opacity: .9;
+    }
+
+    &:focus {
+        outline: none;
+    }
+    
+    &:active {
+        opacity: .5;
+    }
+}
+
+.button.rounded {
+    border-radius: 4px;
+}
+
+.button.outlined {
+    background-color: transparent;
+    border: 1px solid $primary-color;
+    color: $primary-color;
+}
+
+.button.big {
+    padding: 10px 20px;
+    font-size: 25px;
+}

@@ -1,0 +1,54 @@
+@import '../../variables/colors.scss';
+@import '../../variables/font.scss';
+
+.payment-form {
+  padding: 20px;
+  text-align: left;
+}
+
+.payment-form > .form-field {
+  width: 100%;
+  border: 1px solid $primary-color;
+  border-radius: 6px;
+  font-size: 32px;
+  height: 48px;
+  padding: 0 13px;
+}
+
+.payment-form > .form-select {
+  width: 100%;
+  background: #fff;
+  border: 1px solid $primary-color;
+  border-radius: 6px;
+  font-size: 30px;
+  height: 48px;
+  margin-top: 0;
+}
+
+.payment-form > .error {
+  color: $error-color;
+  border: 1px solid $error-color;
+}
+
+.payment-form > .error-msg {
+  padding-top: 5px;
+  color: $error-color;
+  @include font-thin;
+  font-size: $font-size-small;
+}
+
+.payment-form > .form-label {
+  display: block;
+  @include font-regular;
+  font-size: $font-size-default;
+  color: $primary-color;
+  margin: 0 0 8px;
+}
+
+.payment-form > .form-label.top-space {
+  margin-top: 20px;
+}
+
+.payment-form > .button-container {
+  margin-top: 20px;
+}

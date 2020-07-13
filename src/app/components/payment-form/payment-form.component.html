@@ -1,0 +1,46 @@
+<div>
+  <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()" class="payment-form">
+    <!-- Money amount input -->
+    <label class="form-label" for="amout">Valor</label>
+    <input
+      currencyMask
+      [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align: 'left' }"
+      formControlName="amount"
+      id="amount"
+      name="amount"
+      type="phone"
+      placeholder="R$ 0,00"
+      class="form-field"
+      [ngClass]="{ 'error': submitted && form.amount.errors }"
+    />
+    <div *ngIf="submitted && form.amount.errors" class="error-msg">
+      <span *ngIf="form.amount.errors.hasvalue">Valor é obrigatório</span>
+      <span *ngIf="form.amount.errors.amount">Valor muito baixo</span>
+    </div>
+    <!-- Credit card select -->
+    <label class="form-label top-space" for="car">Cartão de crédito</label>
+    <select
+      formControlName="card" 
+      id="card"
+      name="card"
+      class="form-select"
+      [ngClass]="{ 'error': submitted && form.card.errors }"
+    >
+      <option disabled selected>Selecione...</option>
+      <option>Cartão com final 0123</option>
+      <option>Cartão com final 0123</option>
+    </select>
+    <div *ngIf="submitted && form.card.errors" class="error-msg">
+      <span *ngIf="form.card.errors.required">Selecione um cartão</span>
+    </div>
+    <!-- Submit -->
+    <div class="button-container">
+      <app-button-common
+        [type]="'submit'"
+        [larger]=true
+        [rounded]=true
+        label="{{'Pagar' | uppercase}}"
+      ></app-button-common>
+    </div>
+  </form>
+</div>

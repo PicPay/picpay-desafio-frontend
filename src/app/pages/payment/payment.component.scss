@@ -1,0 +1,61 @@
+@import '../../variables/colors.scss';
+@import '../../variables/font.scss';
+
+.payment {
+  padding: 15px 40px 40px;
+}
+
+.title {
+  @include font-bold;
+  font-size: $font-size-big;
+  color: $primary-color;
+  margin: 0;
+  padding-bottom: 7px;
+}
+
+.subtitle {
+  @include font-regular;
+  font-size: $font-size-default;
+  color: $black;
+  margin: 0;
+  padding-bottom: 25px;
+}
+
+.users {
+  border-radius: 4px;
+  border: 1px solid $primary-color;
+  overflow: hidden;
+}
+
+.payment-feedback {
+  padding: 20px;
+  text-align: center;
+}
+
+.icon {
+  font-family: 'picpay-icons';
+  font-style: normal;
+  font-weight: normal;
+  font-size: $font-size-big;
+
+  &.success {
+    color: $primary-color;
+  }
+
+  &.error {
+    color: $error-color;
+  }
+}
+
+.loading-container {
+  text-align: center;
+}
+
+.icon-ok-circled:before { content: '\e800'; } /* '' */
+.icon-cancel-circled:before { content: '\e801'; } /* '' */
+
+@media only screen and (max-width: 768px) {
+  .payment {
+    padding: 20px;
+  }
+}

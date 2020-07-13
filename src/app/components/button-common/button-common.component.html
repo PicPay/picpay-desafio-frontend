@@ -1,0 +1,12 @@
+<button
+  type="{{type ? type : 'button'}}"
+  class="button"
+  [ngClass]="{
+    'outlined': outlined,
+    'rounded': rounded,
+    'big': larger
+  }"
+  (click)="onClickButton($event)"
+>
+  {{label}}
+</button>

@@ -1,0 +1,33 @@
+@import '../../variables/colors.scss';
+
+.user {
+  background: linear-gradient(180deg, $white 0.83%, $gray 100%);
+  box-shadow: 0 1px 0 $primary-color, 0px -1px 0px $primary-color;
+  color: $primary-color;
+  padding: 20px 40px;
+
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    background: $shadow;
+  }
+}
+
+.user > .info-wrapper {
+  margin-left: 16px;
+}
+
+.user > .button-container {
+  margin-left: auto;
+}
+
+.user > .info-wrapper > .user-id-username {
+  color: $black;
+}
+
+@media only screen and (max-width: 768px) { 
+  .user {
+    padding: 20px;
+  }
+}

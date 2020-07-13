@@ -1,0 +1,22 @@
+// Basic font variables
+$font-family: 'Roboto';
+$font-size-default: 16px;
+$font-size-small: 11px;
+$font-size-big: 30px;
+
+
+// Font mixins
+@mixin font-thin {
+    font-family: $font-family;
+    font-weight: 100;
+}
+
+@mixin font-regular {
+    font-family: $font-family;
+    font-weight: 400;
+}
+
+@mixin font-bold {
+    font-family: $font-family;
+    font-weight: 700;
+}
