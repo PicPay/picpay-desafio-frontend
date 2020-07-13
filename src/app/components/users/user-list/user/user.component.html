@@ -1,13 +1,13 @@
 <div class="user" *ngFor="let user of users">
-  <app-user-photo [user]="user.avatar_url"></app-user-photo>
+  <app-user-photo [user]="user.img"></app-user-photo>
 
   <div class="info-wrapper">
     <div class="user-name" >
-      <strong>{{ user.login }}</strong>
+      <strong>{{ user.name }}</strong>
     </div>
 
     <div class="user-id-username">
-      <p>ID: {{ user.id }} - Username: {{ user.login }}</p>
+      <p>ID: {{ user.id }} - Username: {{ user.username }}</p>
     </div>
   </div>
 

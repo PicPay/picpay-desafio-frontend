@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { User } from './user';
+import { Transaction } from './transaction';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class TransactionService {
 
   constructor(private http: HttpClient) { }
 
   listUser() {
     return this.http
-    .get<User[]>('https://www.mocky.io/v2/5d531c4f2e0000620081ddce');
+    .post<Transaction[]>('https://run.mocky.io/v3/533cd5d7-63d3-4488-bf8d-4bb8c751c989');
   }
 }
