@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http'
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal';
 
@@ -12,6 +12,7 @@ import { PayUserComponent } from './components/pay-users/pay-user/pay-user.compo
 import { PayMessageComponent } from './components/pay-message/pay-message.component';
 
 import { PayUserService } from './services/pay-users.service';
+import { CurrencyFormatPipe } from './pipes/currency-format.pipe';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { PayUserService } from './services/pay-users.service';
     PayModalComponent,
     PayUsersComponent,
     PayUserComponent,
-    PayMessageComponent
+    PayMessageComponent,
+    CurrencyFormatPipe
   ],
   imports: [
     BrowserModule,
@@ -29,9 +31,17 @@ import { PayUserService } from './services/pay-users.service';
     ReactiveFormsModule,
     FormsModule
   ],
+  exports: [
+    AppComponent,
+    PayModalComponent,
+    PayUsersComponent,
+    PayUserComponent,
+    PayMessageComponent
+  ],
   providers: [
     PayUserService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }
