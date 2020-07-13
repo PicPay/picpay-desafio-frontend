@@ -7,7 +7,7 @@
     </div>
     <div class="pay-modal-body">
       <label class="small-text-label">Value:</label>
-      <input class="pay-input" type="number" placeholder="R$ 0,00" formControlName="valueSend" required />
+      <input class="pay-input" placeholder="R$ 0,00" formControlName="valueSend" [value]="payForm.get('valueSend').value | currencyFormat:'BRL':false" required/>
       <div class="cards">
         <label class="small-text-label">Please select your card...</label>
         <select formControlName="selectedCard" required>

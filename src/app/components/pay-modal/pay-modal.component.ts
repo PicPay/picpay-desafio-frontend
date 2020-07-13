@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, Input, ViewChild, ViewEncapsulation } from '@angular/core';
-import { NgForm, FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { PayUserService } from 'src/app/services/pay-users.service';
@@ -52,7 +52,7 @@ export class PayModalComponent implements OnInit, OnDestroy {
     }
   }
 
-  private postSendPayment(payload: TransactionPayLoad) {
+  postSendPayment(payload: TransactionPayLoad) {
     const sub = this.payUserService.postSendPayment(payload)
       .subscribe(
         (process) => { console.log(process); },

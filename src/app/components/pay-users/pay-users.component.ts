@@ -17,7 +17,7 @@ export class PayUsersComponent implements OnInit {
     this.getUsers();
   }
 
-  private getUsers() {
+  getUsers() {
     this.payUserService.getUsers()
       .subscribe(users => {
         this.payUsers = users;
