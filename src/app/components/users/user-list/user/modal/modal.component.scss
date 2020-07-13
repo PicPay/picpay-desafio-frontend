@@ -1,22 +1,3 @@
-.user {
-  background: #fff;
-  box-shadow: 0 1px 0 #fff, 0px -1px 0px #11c76f;
-  color: #1A1D21;
-  padding: 20px 40px;
-
-  display: flex;
-  align-items: center;
-}
-
-.user > .info-wrapper {
-  margin-left: 16px;
-}
-
-.user > .pay-button {
-  margin-left: auto;
-}
-
-
 /* Payment Modal */
 .modal-backdrop {
   display: flex;
@@ -53,6 +34,22 @@
   background: #fff;
   margin: 32px 0;
   width: 420px;
+  border-radius: 15px;
+}
+
+.modal > .header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #11c76f;
+}
+
+.modal > .header > button {
+  border: none;
+  background: none;
+  padding: 10px;
+  cursor: pointer;
+  outline: none;
 }
 
 .modal > .title {
@@ -87,6 +84,14 @@
   font-size: 32px;
   height: 48px;
   margin-top: 12px;
+}
+
+.modal > .content > .response {
+  font-size: 32px;
+  height: 48px;
+  padding: 0 8px;
+  margin-top: 24px;
+  text-decoration: underline;
 }
 
 .modal > .content > button {
