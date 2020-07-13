@@ -1,19 +1,29 @@
-/* List of Users */
+@import '../../../styles.scss';
 
+/* List of Users */
 .user {
-    background: linear-gradient(186.5deg, #3c3e64 0.83%, #1d1e2a 100%);
+    background-color: $green_color;
     box-shadow: 0 1px 0 #ffffff, 0px -1px 0px #ffffff;
     color: #fff;
-    padding: 20px 40px;
+    padding: 15px 40px;
   
     display: flex;
     align-items: center;
+
+    @media screen and (max-width: $sm) {
+      padding: 15px;
+    }
   }
   
   .user > img {
     border-radius: 50%;
-    height: 80px;
-    width: 80px;
+    height: 100px;
+    width: 100px;
+
+    @media screen and (max-width: $sm) {
+      height: 60px;
+      width: 60px;
+    }
   }
   
   .user > .info-wrapper {
@@ -21,5 +31,77 @@
   }
   
   .user > .pay-button {
+    display: inline-block;
+    color: $green_color;
     margin-left: auto;
+    border: 2px solid $green_color;
+    border-radius: 40px;
+    transition: 0.25s ease-in;
+    text-align: center;
+    line-height: 40px;
+    font-weight: bold;
+    padding: 2px 16px;
+    font-size: 16px;
+    text-decoration: none;
+    background: white;
+    width: 100%;
+    max-width: 180px;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:hover {
+      cursor: pointer;
+      // background-color: $green_color;
+      // color: white;
+      // border: 2px solid white;
+    }
+
+    @media screen and (max-width: $sm) {
+      width: 100%;
+      max-width: 75px;
+      line-height: 30px;
+      font-size: 14px;
+    }
+  }
+
+  .user > .info-wrapper > .user-id-username {
+    font-family: Signika;
+    font-size: 22px;
+    font-weight: bold;
+    line-height: inherit;
+    margin-bottom: 10px;
+
+    @media screen and (max-width: $xs) {
+      font-size: 16px;
+      text-overflow: ellipsis;
+      max-width: 100px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    @media screen and (max-width: $sm) {
+      font-size: 16px;
+    }
+  }
+
+  .user > .info-wrapper > .user-name {
+    font-family: Signika;
+    font-size: 18px;
+    line-height: inherit;
+
+    @media screen and (max-width: $xs) {
+      font-size: 14px;
+      text-overflow: ellipsis;
+      max-width: 100px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    @media screen and (max-width: $sm) {
+      font-size: 14px;
+    }
   }

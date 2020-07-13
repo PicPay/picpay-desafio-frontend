@@ -14,10 +14,12 @@ export class ModalPaymentComponent implements OnInit {
 
     flagBackdrop = false;
     flagModalPayment = false;
+    flagConfirmationPayment = false;
+    flagPaymentSuccess = false;
     user;
     userName: string;
     valueOfPayment;
-    private cards: Array<Object> = [
+    private cards: Array<object> = [
       // valid card
       {
         card_number: '1111111111111111',
@@ -32,6 +34,7 @@ export class ModalPaymentComponent implements OnInit {
       },
     ];
     selectedCard;
+    enableButton = false;
 
     constructor(private router: Router, private modalPaymentService: ModalPaymentService) { }
 
@@ -40,21 +43,22 @@ export class ModalPaymentComponent implements OnInit {
       this.modalPaymentService.currentUser.subscribe(user => {
         this.user = user;
         this.modalPaymentIsVisible(true);
-      })
+      });
     }
 
-    getValueOfPayment(event: any) { // without type info
-      this.valueOfPayment = event.target.value
+    getValueOfPayment() {
+      this.enableButton = true;
     }
-    
+
     modalPaymentIsVisible(param) {
       this.flagBackdrop = param;
-      this.flagModalPayment = param; 
+      this.flagModalPayment = param;
+      this.flagConfirmationPayment = false;
     }
 
     callPayment() {
       // Card Info
-      let payload = {
+      const payload = {
         card_number: this.selectedCard.card_number,
         cvv: this.selectedCard.cvv,
         expiry_date: this.selectedCard.expiry_date,
@@ -62,10 +66,23 @@ export class ModalPaymentComponent implements OnInit {
         value: this.valueOfPayment
       };
 
-      this.modalPaymentService.postPayment(payload).subscribe((res: any) => {
-        // aguardando a api voltar
-      }, err => {
-        console.log(err);
-      });
+      // simulando cenário de erro para cartões diferente do '1111111111111111'
+      if (payload.card_number === '1111111111111111') {
+        this.modalPaymentService.postPayment(payload).subscribe((res: any) => {
+          // aguardando a api voltar
+          console.log(res);
+          this.flagConfirmationPayment = true;
+          this.flagPaymentSuccess = true;
+        }, err => {
+          console.log(err);
+          this.flagConfirmationPayment = true;
+          this.flagPaymentSuccess = false;
+        });
+      } else {
+        this.flagConfirmationPayment = true;
+        this.flagPaymentSuccess = false;
+      }
+
+      this.valueOfPayment = null;
     }
 }

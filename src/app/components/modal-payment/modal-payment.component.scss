@@ -1,3 +1,17 @@
+@import '../../../styles.scss';
+
+// Change placeholder color
+::-webkit-input-placeholder { /* Edge */
+  color: $blue_color;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: $blue_color;
+}
+
+::placeholder {
+  color: $blue_color;
+}
 /* Payment Modal */
 .modal-backdrop {
   display: flex;
@@ -31,50 +45,186 @@
 }
 
 .modal {
-  background: #fff;
-  margin: 32px 0;
-  width: 420px;
+  position: fixed;
+  border-radius: 12px;
+  border: 1px solid #535353;
+  background-color: #fff;
+  width: 600px;
+  overflow: hidden;
+
+  @media screen and (max-width: $xs) {
+    width: 100%
+  }
+
+  @media screen and (max-width: $sm) {
+    width: 90%
+  }
 }
 
-.modal > .title {
-  background: #474971;
-  color: #ffffff;
-  font-weight: 500;
-  font-size: 16px;
+.modal > .modal-content {
+    padding: 50px 40px;
+    max-height: 560px;
+    justify-content: center;
+
+    @media screen and (max-width: $xs) {
+      padding: 30px;
+    }
+}
+
+.modal > .modal-content > .close-button {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  font-size: 25px;
+  cursor: pointer;
+
+  @media screen and (max-width: $xs) {
+    right: 15px;
+    top: 15px;
+    font-size: 20px;
+  }
+}
+
+.modal > .modal-content > .title {
+  color: $grey_color;
   padding: 16px 24px;
+  font-family: Signika;
+  text-align: center;
+  font-weight: 600;
+  font-size: 30px;
+
+  @media screen and (max-width: $sm) {
+    padding: 15px;
+    font-size: 22px;
+  }
 }
 
-.modal > .title > span {
-  color: #cddc39;
+.modal > .modal-content > .title > span {
+  color: $blue_color;
 }
 
-.modal > .content {
+.modal > .modal-content > .content {
   padding: 32px;
   text-align: center;
+
+  @media screen and (max-width: $sm) {
+    padding: 0px;
+  }
 }
 
-.modal > .content > input {
-  border: 1px solid #ccc;
+.modal > .modal-content > .content > input {
+  border: 1px solid $grey_border_color;
   border-radius: 6px;
-  font-size: 32px;
   height: 48px;
   padding: 0 8px;
+  // color: #666;
+  color: $blue_color;
+  font-family: MuseoSans;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 32px;
+  width: 82%;
+  border-bottom: 1px solid $grey_border_color;
+
+  &:focus {
+    outline: none;
+  }
+
+  @media screen and (max-width: $xs) {
+    height: 40px;
+    font-size: 14px;
+  }
+
+  @media screen and (max-width: $sm) {
+    height: 40px;
+    font-size: 16px;
+  }
 }
 
-.modal > .content > .cards > select {
-  background: #fff;
-  border: 1px solid #ccc;
+.modal > .modal-content > .content > .cards > select {
+  border: 1px solid $grey_border_color;
   border-radius: 6px;
-  font-size: 32px;
-  height: 48px;
-  margin-top: 12px;
-}
-
-.modal > .content > button {
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 32px;
   height: 48px;
   padding: 0 8px;
-  margin-top: 24px;
+  color: $blue_color;
+  font-family: MuseoSans;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 32px;
+  width: 82%;
+  border-bottom: 1px solid $grey_border_color;
+  margin-top: 15px;
+  text-transform: uppercase;
+
+  @media screen and (max-width: $xs) {
+    height: 40px;
+    font-size: 14px;
+  }
+
+  @media screen and (max-width: $sm) {
+    height: 40px;
+    font-size: 16px;
+  }
+}
+
+.modal > .modal-content > .content > button {
+  display: inline-block;
+  color: $green_color;
+  margin-left: auto;
+  border: 2px solid $green_color;
+  border-radius: 40px;
+  transition: 0.25s ease-in;
+  text-align: center;
+  line-height: 45px;
+  font-weight: bold;
+  padding: 2px 16px;
+  font-size: 22px;
+  text-decoration: none;
+  background: white;
+  width: 100%;
+  margin-top: 25px;
+  max-width: 250px;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    cursor: pointer;
+    background-color: $green_color;
+    color: white;
+    border: 2px solid $green_color;
+  }
+
+  @media screen and (max-width: $sm) {
+    width: 82%;
+    font-size: 18px;
+  }
+}
+
+.modal > .modal-content > .content > .payment {
+  color: $blue_color;
+  font-family: Signika;
+  text-align: center;
+  font-weight: 600;
+  font-size: 30px;
+
+  @media screen and (max-width: $sm) {
+    font-size: 22px;
+  }
+}
+
+.modal > .modal-content > .content > .payment > .img-payment {
+  text-align: center;
+  padding-bottom: 40px;
+
+  @media screen and (max-width: $sm) {
+    padding: 15px 25px 25px
+  }
+}
+
+.modal > .modal-content > .content > .payment > .img-payment > img{
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
 }

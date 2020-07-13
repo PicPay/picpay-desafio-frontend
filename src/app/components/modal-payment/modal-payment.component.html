@@ -1,33 +1,46 @@
 <div class="modal-backdrop" *ngIf="flagBackdrop">
   <div class="modal" *ngIf="flagModalPayment">
-
-    <span (click)="modalPaymentIsVisible(false)">X</span>
-
-    <div class="title">Pagamento para <span>{{ user.name }}</span></div>
-
-    <div class="content">
-      <input type="number" placeholder="R$ 0,00" (blur)="getValueOfPayment($event)"  />
-
-      <div class="cards">
-        <select name="selectedCard" [(ngModel)]="selectedCard">
-          <option *ngFor="let card of cards" [ngValue]="card">cartão com final {{card.card_number.substr(-4)}}</option>
-        </select>
+    <div class="modal-content">
+      <div class="close-button">
+        <span (click)="modalPaymentIsVisible(false)">X</span>
       </div>
-
-      <button type="button" class="pay-button" (click)="callPayment($event)" >
-        Pagar
-      </button>
+  
+      <div class="title">Pagamento para: <span> @{{ user.username }}</span></div>
+  
+      <div class="content">
+        <input name="sampleName" currencyMask [(ngModel)]="valueOfPayment" placeholder="R$ 0,00" (keyup)="getValueOfPayment(event)"/>
+  
+        <div class="cards">
+          <select name="selectedCard" [(ngModel)]="selectedCard">
+            <option *ngFor="let card of cards" [ngValue]="card">Cartão com final {{card.card_number.substr(-4)}}</option>
+          </select>
+        </div>
+  
+        <button type="button" class="pay-button" [attr.disabled]="enableButton? null : true" (click)="callPayment($event)">Pagar</button>
+      </div>
     </div>
   </div>
 
-  <!-- <div class="modal">
-    <div class="title">
-      Recibo de pagamento
+  <div class="modal" *ngIf="flagConfirmationPayment">
+    <div class="modal-content">
+      <div class="title">Recibo de pagamento</div>
+      <div class="content">
+        <div class="payment" *ngIf="flagPaymentSuccess">
+          <div class="img-payment">
+            <img src="\assets\img\aprovado.svg" alt="Pagamento aprovado">
+          </div>
+          <span>O pagamento foi concluído com sucesso.</span>
+        </div>
+        <div class="payment" *ngIf="!flagPaymentSuccess">
+          <div class="img-payment">
+            <img src="\assets\img\nao-aprovado.svg" alt="Pagamento não aprovado">
+          </div>
+          <span>O pagamento não foi concluído com sucesso.</span>
+        </div>
+        <button type="button" class="pay-button" (click)="modalPaymentIsVisible(false)">
+          OK!
+        </button>
+      </div>
     </div>
-
-    <div class="content">
-      O pagamento foi concluido com sucesso.<br />
-      O pagamento <strong>não</strong> foi concluido com sucesso.
-    </div>
-  </div> -->
+  </div>
 </div>
