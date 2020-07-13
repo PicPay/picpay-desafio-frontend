@@ -5,6 +5,7 @@ import { takeUntil } from 'rxjs/operators';
 
 import { checkMinAmount, checkIfValueIsZero } from '../../utils/customValidations';
 import { CreditCard } from '../../interfaces/credit-card';
+import { CreditCardService } from '../../services/credit-card.service';
 
 @Component({
   selector: 'app-payment-form',
@@ -13,18 +14,36 @@ import { CreditCard } from '../../interfaces/credit-card';
 })
 export class PaymentFormComponent implements OnInit {
   private minimumAmount = 1; // Should this be an env variable?
+
+  // Cards model
+  public cards: CreditCard[];
+
+  // Form controls
   public paymentForm: FormGroup;
   public submitted = false;
 
+  // Unsubscribe subject
+  private readonly unsubscribe$ = new Subject<void>();
+
+  // Callback function when the transaction is completed
   @Output() submitCallback = new EventEmitter<MouseEvent>();
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private cardService: CreditCardService
+  ) { }
 
   ngOnInit() {
     this.paymentForm = this.formBuilder.group({
       amount: ['', [checkIfValueIsZero(), checkMinAmount(this.minimumAmount)]],
       card: ['', Validators.required]
     });
+
+  }
+
+  getCreditCards(): void {
+    this.cardService.getCards()
+      .subscribe()
   }
 
   onSubmit() {
