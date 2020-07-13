@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ModalPaymentService } from 'src/app/services/modal-payment.service';
 
-
 @Component({
   selector: 'app-modal-payment',
   templateUrl: './modal-payment.component.html',
@@ -69,8 +68,6 @@ export class ModalPaymentComponent implements OnInit {
       // simulando cenário de erro para cartões diferente do '1111111111111111'
       if (payload.card_number === '1111111111111111') {
         this.modalPaymentService.postPayment(payload).subscribe((res: any) => {
-          // aguardando a api voltar
-          console.log(res);
           this.flagConfirmationPayment = true;
           this.flagPaymentSuccess = true;
         }, err => {
@@ -84,5 +81,6 @@ export class ModalPaymentComponent implements OnInit {
       }
 
       this.valueOfPayment = null;
+      this.enableButton = false;
     }
 }

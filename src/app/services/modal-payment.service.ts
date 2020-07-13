@@ -14,7 +14,7 @@ export class ModalPaymentService {
   currentUser = this.user.asObservable();
   payment = new Subject<any>();
 
-  private gatewayUrl = 'https://paymentteste.free.beeceptor.com/payment';  // URL to web api
+  private paymentUrl = 'https://run.mocky.io/v3/533cd5d7-63d3-4488-bf8d-4bb8c751c989';  // URL to web api
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -28,7 +28,7 @@ export class ModalPaymentService {
   }
 
   postPayment(payload): Observable<TransactionPayload[]> {
-    return this.http.post<TransactionPayload[]>(this.gatewayUrl, payload).pipe(
+    return this.http.post<TransactionPayload[]>(this.paymentUrl, payload).pipe(
       map((obj) => obj),
       catchError((e) => this.handleError(e))
     );

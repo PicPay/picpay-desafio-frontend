@@ -1,4 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
+import { ModalPaymentComponent } from './components/modal-payment/modal-payment.component';
+
+@NgModule({
+  declarations: [ AppComponent, ModalPaymentComponent ],
+  bootstrap: [ AppComponent ]
+})
 
 @Component({
   selector: 'app-root',
@@ -6,5 +12,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Desafio Picpay Front-end';
+  title = 'picpay-desafio-frontend';
 }

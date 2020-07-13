@@ -9,8 +9,7 @@ import { map, catchError } from 'rxjs/operators';
 })
 export class UsersService {
 
-  // private getUsersUrl = 'https://www.mocky.io/v2/5d531c4f2e0000620081ddce';  // URL to web api
-  private getUsersUrl = 'https://jsonplaceholder.typicode.com/users';
+  private getUsersUrl = 'https://www.mocky.io/v2/5d531c4f2e0000620081ddce';  // URL to web api
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })

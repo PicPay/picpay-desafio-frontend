@@ -4,19 +4,16 @@
       <div class="close-button">
         <span (click)="modalPaymentIsVisible(false)">X</span>
       </div>
-  
-      <div class="title">Pagamento para: <span> @{{ user.username }}</span></div>
-  
+      <div class="title">Pagamento para: <span> {{ user.username }}</span></div>
       <div class="content">
-        <input name="sampleName" currencyMask [(ngModel)]="valueOfPayment" placeholder="R$ 0,00" (keyup)="getValueOfPayment(event)"/>
-  
+        <input currencyMask [(ngModel)]="valueOfPayment" placeholder="R$ 0,00" (keyup)="getValueOfPayment(event)" />
         <div class="cards">
           <select name="selectedCard" [(ngModel)]="selectedCard">
             <option *ngFor="let card of cards" [ngValue]="card">Cartão com final {{card.card_number.substr(-4)}}</option>
           </select>
         </div>
-  
-        <button type="button" class="pay-button" [attr.disabled]="enableButton? null : true" (click)="callPayment($event)">Pagar</button>
+        <button type="button" class="pay-button" [attr.disabled]="enableButton? null : true"
+          (click)="callPayment($event)">Pagar</button>
       </div>
     </div>
   </div>

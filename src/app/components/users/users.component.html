@@ -1,20 +1,13 @@
 <div class="users">
-    <div class="user" *ngFor="let user of users">
-      <!-- <img src="{{ user.img }}" /> -->
-      <img src="https://randomuser.me/api/portraits/men/9.jpg" />
-      <div class="info-wrapper">
-        <div class="user-id-username">
-          @{{ user.username }}
-        </div>
-        <div class="user-name">
-          {{ user.name }}
-        </div>
-      </div>
-  
-      <button type="button" class="pay-button" (click)="callModalPayment(user)">
-        Pagar
-      </button>
+  <div class="user" *ngFor="let user of users">
+    <img src="{{ user.img }}" />
+    <div class="info-wrapper">
+      <div class="user-id-username">{{ user.username }}</div>
+      <div class="user-name">{{ user.name }}</div>
     </div>
+    <button type="button" class="pay-button" (click)="callModalPayment(user)">Pagar</button>
+  </div>
 </div>
 
-  <app-modal-payment></app-modal-payment>
+<app-modal-payment>a</app-modal-payment>
+

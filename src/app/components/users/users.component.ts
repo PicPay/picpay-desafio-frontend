@@ -1,9 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgModule } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Observable } from 'rxjs';
 import { UsersService } from '../../services/users.service';
 import { ModalPaymentService } from 'src/app/services/modal-payment.service';
+import { ModalPaymentComponent } from '../modal-payment/modal-payment.component';
+
+@NgModule({
+  imports: [ ModalPaymentComponent ]
+})
 
 @Component({
   selector: 'app-users',

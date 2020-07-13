@@ -26,8 +26,8 @@ export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     FormsModule,
+    AppRoutingModule,
     CurrencyMaskModule,
     HttpClientModule,
   ],
