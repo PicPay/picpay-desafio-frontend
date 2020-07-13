@@ -4,51 +4,61 @@
 .payment-form {
   padding: 20px;
   text-align: left;
+
+  .form-field {
+    width: 100%;
+    border: 1px solid $primary-color;
+    border-radius: 6px;
+    font-size: 32px;
+    height: 48px;
+    padding: 0 13px;
+  }
+
+  .form-select {
+    width: 100%;
+    background: #fff;
+    border: 1px solid $primary-color;
+    border-radius: 6px;
+    font-size: 28px;
+    height: 48px;
+    margin-top: 0;
+    padding-left: 11px;
+  }
+
+  .error {
+    color: $error-color;
+    border: 1px solid $error-color;
+  }
+
+  .error-msg {
+    padding-top: 5px;
+    color: $error-color;
+    @include font-thin;
+    font-size: $font-size-small;
+  }
+
+  .form-label {
+    display: block;
+    @include font-regular;
+    font-size: $font-size-default;
+    color: $primary-color;
+    margin: 0 0 8px;
+
+    &.top-space {
+      margin-top: 20px;
+    }
+  }
+
+  .button-container, .loading-container {
+    margin-top: 20px;
+  }
 }
 
-.payment-form > .form-field {
-  width: 100%;
-  border: 1px solid $primary-color;
-  border-radius: 6px;
-  font-size: 32px;
-  height: 48px;
-  padding: 0 13px;
-}
-
-.payment-form > .form-select {
-  width: 100%;
-  background: #fff;
-  border: 1px solid $primary-color;
-  border-radius: 6px;
-  font-size: 30px;
-  height: 48px;
-  margin-top: 0;
-}
-
-.payment-form > .error {
-  color: $error-color;
-  border: 1px solid $error-color;
-}
-
-.payment-form > .error-msg {
-  padding-top: 5px;
-  color: $error-color;
-  @include font-thin;
-  font-size: $font-size-small;
-}
-
-.payment-form > .form-label {
-  display: block;
-  @include font-regular;
-  font-size: $font-size-default;
-  color: $primary-color;
-  margin: 0 0 8px;
-}
-
-.payment-form > .form-label.top-space {
-  margin-top: 20px;
-}
-
-.payment-form > .button-container {
-  margin-top: 20px;
+@media only screen and (max-width: 768px) { 
+  .payment-form {
+    .form-select {
+      font-size: 20px;
+      height: 48px;
+    }
+  }
 }

@@ -13,6 +13,7 @@ import { AvatarComponent } from './components/avatar/avatar.component';
 import { PaymentComponent } from './pages/payment/payment.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { HideCardPipePipe } from './pipes/hide-card-pipe.pipe';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
     UserCardComponent,
     AvatarComponent,
     PaymentComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    HideCardPipePipe
   ],
   imports: [
     HttpClientModule,

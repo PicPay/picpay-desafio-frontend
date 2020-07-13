@@ -10,3 +10,10 @@
 .stroke {
   border: solid 1px $primary-color;
 }
+
+@media only screen and (max-width: 768px) { 
+  .avatar {
+    height: 55px;
+    width: 55px;
+  }
+}

@@ -11,5 +11,10 @@ export interface Payment {
   cvv: number;
   expiry_date: string;
   destination_user_id: number;
-  value: number;
+  value: number; // Format is debatable, backend should define behavior and type
+}
+
+export interface PaymentResult {
+  status: string;
+  success: boolean;
 }

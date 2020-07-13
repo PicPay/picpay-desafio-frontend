@@ -12,22 +12,36 @@
   &:hover {
     background: $shadow;
   }
-}
 
-.user > .info-wrapper {
-  margin-left: 16px;
-}
+  .info-wrapper {
+    margin-left: 16px;
 
-.user > .button-container {
-  margin-left: auto;
-}
-
-.user > .info-wrapper > .user-id-username {
-  color: $black;
+    .user-id-username {
+      color: $black;
+    }
+  }
+  
+  .button-container {
+    margin-left: auto;
+  }
 }
 
 @media only screen and (max-width: 768px) { 
   .user {
-    padding: 20px;
+    padding: 20px 10px;
+
+    .info-wrapper {
+      font-size: 14px;
+      margin: 0;
+      padding: 0 10px;
+      max-width: 50%;
+      
+      .user-id-username {
+        word-wrap: break-word;
+        // white-space: nowrap;
+        // overflow: hidden;
+        // text-overflow: ellipsis;
+      }
+    }
   }
 }

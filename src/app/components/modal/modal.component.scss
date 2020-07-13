@@ -13,69 +13,86 @@
 
   height: 100vh;
   width: 100vw;
+
+  &.hidden {
+    display: none;
+  }
+  
+  &:after {
+    content: "";
+  
+    background: rgba(0, 0, 0, 0.5);
+  
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+  }
+  
+  .invisible-block {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+    background-color: transparent;
+  }
+  
+  .modal {
+    position: relative;
+    background: #fff;
+    margin: 32px 0;
+    width: 420px;
+    border-radius: 4px;
+    z-index: 2;
+
+    .title {
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+      background: $primary-color;
+      color: $white;
+      font-weight: 500;
+      font-size: $font-size-default;
+      padding: 16px 24px;
+    }
+    
+    .close-button {
+      position: absolute;
+      top: 13px;
+      right: 10px;
+      @include font-regular;
+      color: $white;
+      border: 1px solid $white;
+      border-radius: 50%;
+      width: 25px;
+      height: 25px;
+      cursor: pointer;
+      padding: 2px 6px;
+      user-select: none;
+    
+      &:active {
+        opacity: .7;
+      }
+    }
+  }
 }
 
-.modal-backdrop.hidden {
-  display: none;
-}
+@media only screen and (max-width: 768px) { 
+  .modal-backdrop {
+    .modal {
+      max-width: 85vw;
+      max-height: 85vh;
+      overflow-y: auto;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
 
-.modal-backdrop:after {
-  content: "";
-
-  background: rgba(0, 0, 0, 0.5);
-
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  z-index: -1;
-}
-
-.invisible-block {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  z-index: 1;
-  background-color: transparent;
-}
-
-.modal {
-  position: relative;
-  background: #fff;
-  margin: 32px 0;
-  width: 420px;
-  border-radius: 4px;
-  z-index: 2;
-}
-
-.modal > .title {
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
-  background: $primary-color;
-  color: $white;
-  font-weight: 500;
-  font-size: 16px;
-  padding: 16px 24px;
-}
-
-.modal > .close-button {
-  position: absolute;
-  top: 13px;
-  right: 10px;
-  @include font-regular;
-  color: $white;
-  border: 1px solid $white;
-  border-radius: 50%;
-  width: 25px;
-  height: 25px;
-  cursor: pointer;
-  padding: 2px 6px;
-  user-select: none;
-
-  &:active {
-    opacity: .7;
+      .title {
+        font-size: 14px;
+        padding: 16px 44px 16px 24px;
+      }
+    }
   }
 }

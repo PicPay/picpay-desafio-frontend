@@ -21,19 +21,19 @@
     &:active {
         opacity: .5;
     }
-}
 
-.button.rounded {
-    border-radius: 4px;
-}
-
-.button.outlined {
-    background-color: transparent;
-    border: 1px solid $primary-color;
-    color: $primary-color;
-}
-
-.button.big {
-    padding: 10px 20px;
-    font-size: 25px;
+    &.rounded {
+        border-radius: 4px;
+    }
+    
+    &.outlined {
+        background-color: transparent;
+        border: 1px solid $primary-color;
+        color: $primary-color;
+    }
+    
+    &.big {
+        padding: 10px 20px;
+        font-size: 25px;
+    }
 }

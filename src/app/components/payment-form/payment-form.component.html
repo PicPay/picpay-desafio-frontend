@@ -1,5 +1,8 @@
 <div>
-  <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()" class="payment-form">
+  <div *ngIf="loadingCards" class="loading-container">
+    <app-spinner></app-spinner>
+  </div>
+  <form *ngIf="!loadingCards" [formGroup]="paymentForm" (ngSubmit)="onSubmit()" class="payment-form">
     <!-- Money amount input -->
     <label class="form-label" for="amout">Valor</label>
     <input
@@ -26,15 +29,22 @@
       class="form-select"
       [ngClass]="{ 'error': submitted && form.card.errors }"
     >
-      <option disabled selected>Selecione...</option>
-      <option>Cartão com final 0123</option>
-      <option>Cartão com final 0123</option>
+      <option [ngValue]="null" [disabled]="true" [selected]="true">Selecione...</option>
+      <option
+        *ngFor="let card of cards; let i = index"
+        [ngValue]="i"
+      >
+        Cartão com final {{card.card_number | hideCardPipe}}
+      </option>
     </select>
     <div *ngIf="submitted && form.card.errors" class="error-msg">
       <span *ngIf="form.card.errors.required">Selecione um cartão</span>
     </div>
-    <!-- Submit -->
-    <div class="button-container">
+    <!-- Submit and loading -->
+    <div *ngIf="loadingPayment" class="loading-container">
+      <app-spinner></app-spinner>
+    </div>
+    <div *ngIf="!loadingPayment" class="button-container">
       <app-button-common
         [type]="'submit'"
         [larger]=true

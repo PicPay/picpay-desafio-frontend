@@ -5,6 +5,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { User } from '../../interfaces/user';
+import { PaymentResult } from '../../interfaces/payment';
 import { UserService } from '../../services/user.service';
 
 @Component({
@@ -16,11 +17,15 @@ export class PaymentComponent implements OnInit, OnDestroy {
   // Models
   public users: User[];
   public user: User;
+  public paymentResult: PaymentResult;
+
   // Modal controls
   public showPaymentModal = false;
   public showFeedbackModal = false;
-  // Initial loading for fetching users
+
+  // Misc
   public loadingUsers = true;
+
   // Unsubscribe subject
   private readonly unsubscribe$ = new Subject<void>();
 
@@ -79,5 +84,11 @@ export class PaymentComponent implements OnInit, OnDestroy {
   paymentFeedbackHandleClose(): void {
     this.location.go('payment');
     this.showFeedbackModal = false;
+  }
+
+  paymentSubmitCallback(result: PaymentResult) {
+    this.paymentResult = result;
+    this.showPaymentModal = false;
+    this.showFeedbackModal = true;
   }
 }

@@ -23,7 +23,10 @@
   headerContent="Pagamento para <strong class='highlight'>{{user.name}}</strong>"
   (closeClick)="paymentFormHandleClose()"
 >
-  <app-payment-form></app-payment-form>
+  <app-payment-form
+    [user]="user"
+    (submitCallback)="paymentSubmitCallback($event)"
+  ></app-payment-form>
 </app-modal>
 
 <app-modal
@@ -32,11 +35,11 @@
   (closeClick)="paymentFeedbackHandleClose()"
 >
   <div class="payment-feedback">
-    <div>
+    <div *ngIf="paymentResult.success" class="feedback-continer">
       <i class="icon icon-ok-circled success"></i>
       <p>O pagamento foi concluido com sucesso.</p>
     </div>
-    <div>
+    <div *ngIf="!paymentResult.success" class="feedback-continer">
       <i class="icon icon-cancel-circled error"></i>
       <p>O pagamento <strong>não</strong> foi concluido com sucesso.</p>
     </div>
