@@ -6,10 +6,11 @@
     </div>
 
     <div class="content">
-      <input type="number" placeholder="R$ 0,00" />
+      <input type="number" id="transaction-value" formControlName='transaction-value' placeholder="R$ 0,00" />
 
-      <select>
-        <option selected>Cartão com final 0123</option>
+      <select  id="transaction-card">
+        <option [disabled]="true">Número do cartão</option>
+        <option *ngFor="let card of cards">{{ card.card_number }}</option>
       </select>
       
       <div class="footer">

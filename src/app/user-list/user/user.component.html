@@ -6,12 +6,13 @@
       <strong>{{ user.name }}</strong>
     </div>
 
-    <div class="user-id-username">
-      <p>ID: {{ user.id }} - Username: {{ user.username }}</p>
+    <div class="user-info">
+      <p>ID: {{ user.id }}</p>
+      <p>Username: {{ user.username }}</p>
     </div>
   </div>
 
-  <app-pay-button class="pay-button" (click)="showDialog = !showDialog"></app-pay-button>
+  <app-pay-button class="pay-button" (click)="openTransaction()"></app-pay-button>
 </main>
 
 <app-modal [(visible)]="showDialog"></app-modal>

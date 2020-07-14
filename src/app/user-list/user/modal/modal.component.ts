@@ -16,6 +16,7 @@ export class ModalComponent implements OnInit {
   @Input() transactions: Transaction[] = [];
 
   status = false;
+
   cards = [
     // valid card
     {
@@ -34,9 +35,17 @@ export class ModalComponent implements OnInit {
   constructor(private transactionService: TransactionService) { }
 
   ngOnInit() { 
+    
     this.transactionService
       .listUser()
       .subscribe(transactions => this.transactions = transactions);
+      
+      // .subscribe(transactions => {
+      //   console.log(transactions);
+      //   this.transactions = transactions,
+
+      //   err => console.log(err)
+      // })
   }
 
   close() {
