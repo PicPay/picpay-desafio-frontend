@@ -33,7 +33,7 @@ export class PaymentComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private location: Location,
     private userService: UserService
-  ) { }
+  ) {}
 
   ngOnInit() {
     if (!this.users) {
@@ -47,20 +47,21 @@ export class PaymentComponent implements OnInit, OnDestroy {
   }
 
   getUsers(): void {
-    this.userService.getUsers()
+    this.userService
+      .getUsers()
       .pipe(takeUntil(this.unsubscribe$))
-        .subscribe(users => {
-          const id = +this.route.snapshot.paramMap.get('id');
-          this.users = users;
-          this.loadingUsers = false;
-          if (id) {
-            this.forcePaymentModal(id);
-          }
-        });
+      .subscribe((users) => {
+        const id = +this.route.snapshot.paramMap.get('id');
+        this.users = users;
+        this.loadingUsers = false;
+        if (id) {
+          this.forcePaymentModal(id);
+        }
+      });
   }
 
   forcePaymentModal(userId: number): void {
-    const filteredUser = this.users.filter(item => item.id === userId);
+    const filteredUser = this.users.filter((item) => item.id === userId);
     if (filteredUser.length > 0) {
       this.user = filteredUser[0];
       this.showPaymentModal = true;
