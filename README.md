@@ -18,22 +18,22 @@ A Aplicação estará disponível na porta:
 
 ### Layout Mobile
 
-<img src="./screenshots/mobile.png" alt="Pagina inicial mobile" style="width: 100%; max-width: 400px;">
+<img src="./screenshots/mobile.PNG" alt="Pagina inicial mobile" style="width: 100%; max-width: 400px;">
 
 ### Layout Desktop
 
-<img src="./screenshots/desktop.png" alt="Pagina inicial desktop" style="width: 100%; max-width: 400px;">
+<img src="./screenshots/desktop.PNG" alt="Pagina inicial desktop" style="width: 100%; max-width: 400px;">
 
 ### Modal de pagamento
 
-<img src="./screenshots/modal-pagamento-cartao.png" alt="Modal de pagamento" style="width: 100%; max-width: 400px;">
+<img src="./screenshots/modal-pagamento-cartao.PNG" alt="Modal de pagamento" style="width: 100%; max-width: 400px;">
 
 ### Modal de pagamento concluído com sucesso
 
-<img src="./screenshots/modal-aprovado.png" alt="Modal de pagamento com sucesso" style="width: 100%; max-width: 400px;">
+<img src="./screenshots/modal-aprovado.PNG" alt="Modal de pagamento com sucesso" style="width: 100%; max-width: 400px;">
 
 ### Modal de pagamento não concluído com sucesso
 
-<img src="./screenshots/modal-nao-aprovado.png" alt="Modal de erro no pagamento" style="width: 100%; max-width: 400px;">
+<img src="./screenshots/modal-nao-aprovado.PNG" alt="Modal de erro no pagamento" style="width: 100%; max-width: 400px;">
 
 obs: os endpoints disponibilizados para o teste ficaram offline durante o final de semana, utilizei outras API's mockadas para o desenvolvimento.
