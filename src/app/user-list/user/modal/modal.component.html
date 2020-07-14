@@ -1,0 +1,22 @@
+<section *ngIf="visible" class="modal-backdrop">
+  <div class="modal">
+    <div class="header">
+      <p>Pagamento para <span>Nome do Usuário</span></p>
+      <button class="close" *ngIf="closable" (click)="close()" aria-label="Close">X</button>
+    </div>
+
+    <div class="content">
+      <input type="number" placeholder="R$ 0,00" />
+
+      <select>
+        <option selected>Cartão com final 0123</option>
+      </select>
+      
+      <div class="footer">
+        <app-pay-button class="pay-button" (click)="confirmTransaction()"></app-pay-button>
+
+        <strong class="response" *ngIf="status">Transação {{ transactions.status }}! ;)</strong>
+      </div>
+    </div>
+  </div>
+</section>

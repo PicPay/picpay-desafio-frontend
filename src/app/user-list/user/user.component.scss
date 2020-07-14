@@ -1,0 +1,17 @@
+.user {
+  background: #fff;
+  box-shadow: 0 1px 0 #fff, 0px -1px 0px #11c76f;
+  color: #1A1D21;
+  padding: 20px 40px;
+
+  display: flex;
+  align-items: center;
+
+  .info-wrapper {
+    margin-left: 16px;
+  }
+  
+  .pay-button {
+    margin-left: auto;
+  }
+}

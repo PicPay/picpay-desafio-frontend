@@ -1,4 +1,4 @@
-<div class="user" *ngFor="let user of users">
+<main class="user" *ngFor="let user of users">
   <app-user-photo [user]="user.img"></app-user-photo>
 
   <div class="info-wrapper">
@@ -11,7 +11,7 @@
     </div>
   </div>
 
-  <button type="button" class="pay-button" (click)="showDialog = !showDialog">Pagar</button>
-</div>
+  <app-pay-button class="pay-button" (click)="showDialog = !showDialog"></app-pay-button>
+</main>
 
-<app-modal [(visible)]="showDialog" title="My First Mpdal"></app-modal>
+<app-modal [(visible)]="showDialog"></app-modal>

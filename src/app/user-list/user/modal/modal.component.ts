@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Transaction } from '../../../transaction';
-import { TransactionService } from '../../../transaction.service';
+
+import { Transaction } from 'src/app/services/transaction';
+import { TransactionService } from 'src/app/services/transaction.service';
 
 @Component({
   selector: 'app-modal',
@@ -14,6 +15,7 @@ export class ModalComponent implements OnInit {
   
   @Input() transactions: Transaction[] = [];
 
+  status = false;
   cards = [
     // valid card
     {
@@ -40,5 +42,9 @@ export class ModalComponent implements OnInit {
   close() {
     this.visible = false;
     this.visibleChange.emit(this.visible);
+  }
+
+  confirmTransaction() {
+    this.status = !this.status;
   }
 }
