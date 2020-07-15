@@ -17,24 +17,5 @@ export class UserListComponent implements OnInit {
     this.userService
       .listUser()
       .subscribe(users => this.users = users);
-
-
-    // this.userService
-    //   .listUser()
-    //   .subscribe(users => {
-    //     console.log(users);
-    //     this.users = users,
-
-    //     err => console.log(err)
-    //   })
-
-    // http
-    //   .get<User[]>('https://api.github.com/users')
-    //   .subscribe(users => {
-    //     console.log(users);
-    //     this.users = users,
-
-    //     err => console.log(err)
-    //   })
   }
 }

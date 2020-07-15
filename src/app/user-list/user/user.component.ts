@@ -13,7 +13,9 @@ import { TransactionService } from 'src/app/services/transaction.service';
 export class UserComponent implements OnInit {
   @Input() users: User[] = [];
   @Input() transactions: Transaction[] = [];
-
+  @Input() userName: string;
+  
+  selectedUserName;
   showDialog = false;
 
   constructor(
@@ -28,12 +30,10 @@ export class UserComponent implements OnInit {
     this.transactionService
     .listUser()
     .subscribe(transactions => this.transactions = transactions);
-
   }
 
-  openTransaction() {
+  openTransaction(selected) {
     this.showDialog = !this.showDialog
-    
-    // como saber qual foi clicado?
+    this.selectedUserName = selected.name;
   }
 }

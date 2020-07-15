@@ -12,7 +12,7 @@ export class ModalComponent implements OnInit {
   @Input() closable = true;
   @Input() visible: boolean;
   @Output() visibleChange: EventEmitter<boolean> = new EventEmitter<boolean>();
-  
+
   @Input() transactions: Transaction[] = [];
 
   status = false;
@@ -39,13 +39,6 @@ export class ModalComponent implements OnInit {
     this.transactionService
       .listUser()
       .subscribe(transactions => this.transactions = transactions);
-      
-      // .subscribe(transactions => {
-      //   console.log(transactions);
-      //   this.transactions = transactions,
-
-      //   err => console.log(err)
-      // })
   }
 
   close() {
