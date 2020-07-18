@@ -21,8 +21,11 @@
     "@angular/platform-browser": "~8.2.13",
     "@angular/platform-browser-dynamic": "~8.2.13",
     "@angular/router": "~8.2.13",
+    "ngx-currency": "^2.3.3",
+    "prettier": "^2.0.5",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
+    "tslint-config-prettier": "^1.18.0",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {

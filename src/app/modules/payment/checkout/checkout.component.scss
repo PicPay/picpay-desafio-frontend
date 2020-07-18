@@ -1,0 +1,186 @@
+@import "src/styles.scss";
+
+.head {
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  .return {
+    position: absolute;
+    left: 15px;
+    top: 5px;
+    display: flex;
+    font-size: 14px;
+    color: $gray;
+    align-items: center;
+    height: 50px;
+    font-weight: $medium;
+    text-decoration: none;
+
+    &:hover {
+      color: $primary;
+
+      i {
+        color: $primary;
+      }
+    }
+
+    i {
+      margin-right: 4px;
+      font-size: 25px;
+      color: $gray;
+    }
+  }
+
+  .title {
+    font-size: 18px;
+    color: $black;
+  }
+}
+
+.card {
+  width: 100%;
+  background: $white;
+  border: 2px solid $gray;
+  border-radius: 15px;
+
+  .header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 78px;
+    border-bottom: 2px solid $gray;
+
+    .user {
+      width: 100%;
+      height: 62px;
+      display: flex;
+      justify-content: center;;
+
+      .picture {
+        height: 60px;
+        width: 60px;
+        min-width: 60px;
+        border: 2px solid $gray;
+        margin-right: 12px;
+        border-radius: 42px;
+        position: relative;
+        z-index: 1;
+
+        img {
+          height: 100%;
+          width: 100%;
+        }
+      }
+
+      .name {
+        height: 100%;
+        width: auto;
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+
+        .full {
+          font-size: 18px;
+          font-weight: $regular;
+          color: $black;
+        }
+
+        .username {
+          font-size: 14px;
+          font-weight: $medium;
+          color: $primary;
+        }
+      }
+    }
+  }
+
+  .content {
+    padding: 30px;
+
+    .how-much {
+      font-size: 13px;
+      color: $black;
+      text-align: center;
+      font-weight: $regular;
+      margin-top: 15px;
+    }
+
+    .money-input {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      width: 100%;
+      max-width: 150px;
+      margin: 0 auto;
+      margin-bottom: 45px;
+
+      .prefix {
+        font-size: 14px;
+        color: $gray;
+        padding-bottom: 10px;
+        font-weight: $medium;
+      }
+
+      input {
+        width: 100%;
+        border: 0;
+        outline: none;
+        font-size: 64px;
+        color: $gray;
+      }
+    }
+
+    .payment-form {
+      display: flex;
+      justify-content: center;
+      border-top: 2px solid $gray;
+      padding-top: 15px;
+      margin-bottom: 35px;
+      cursor: pointer;
+      text-decoration: none;
+
+      &.danger {
+
+        i {
+          color: $danger;
+        }
+
+        .info {
+          color: $danger;
+        }
+
+        .card-type {
+          text-decoration: underline;
+        }
+      }
+
+      i {
+        font-size: 44px;
+        color: $black;
+        margin-right: 10px;
+      }
+
+      .info {
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        color: $black;
+
+        .form {
+          font-size: 13px;
+        }
+
+        .card-type {
+          font-size: 14px;
+
+          strong {
+            font-weight: $medium;
+          }
+        }
+      }
+    }
+  }
+}

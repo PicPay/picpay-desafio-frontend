@@ -1,0 +1,67 @@
+<div class="head">
+  <a routerLink="/" class="return">
+    <i class="material-icons">
+      chevron_left
+    </i>
+    Voltar
+  </a>
+  <span class="title">
+    Realizar Pagamento
+  </span>
+</div>
+
+<div class="card">
+  <div class="header">
+    <div class="user">
+      <div class="picture">
+        <img src="assets/img/user.png" alt="Imagem do usuário">
+      </div>
+      <div class="name">
+        <div class="full">
+          Eduardo Santos
+        </div>
+        <div class="username">
+          @eduardo.santos
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="content">
+    <div class="how-much">
+      Qual será o valor?
+    </div>
+    <div class="money-input">
+      <span class="prefix">R$</span>
+      <input currencyMask formControlName="value" [options]="{ prefix: '', thousands: '.', decimal: ',' }" />
+    </div>
+    <a class="payment-form" routerLink="">
+      <i class="material-icons">
+        credit_card
+      </i>
+      <div class="info">
+        <div class="form">
+          Forma de pagamento
+        </div>
+        <div class="card-type">
+          <strong>Cartão de Crédito</strong> com final <strong>0364</strong>
+        </div>
+      </div>
+    </a>
+    <div class="payment-form danger" routerLink="">
+      <i class="material-icons">
+        credit_card
+      </i>
+      <div class="info">
+        <div class="form">
+          Você não possui cartão cadastrado
+        </div>
+        <div class="card-type">
+          <strong>Cadastrar agora</strong>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-primary">
+      Pagar agora
+    </button>
+  </div>
+</div>
