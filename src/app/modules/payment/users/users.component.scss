@@ -1,0 +1,168 @@
+@import "src/styles.scss";
+
+.head {
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .title {
+    font-size: 18px;
+    color: $black;
+  }
+}
+
+.list {
+  width: 100%;
+
+  .card {
+    width: 100%;
+    height: 123px;
+    background: $white;
+    border: 2px solid $gray;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+    position: relative;
+    margin-bottom: 11px;
+
+    &:hover {
+      border-color: $primary;
+
+      &::before {
+        background: $primary;
+      }
+
+      .user {
+
+        .picture {
+          border-color: $primary;
+        }
+      }
+
+      .pay {
+        color: $primary;
+
+        i {
+          color: $primary;
+        }
+      }
+    }
+
+    &::before {
+      content: '';
+      height: 100%;
+      background: $gray;
+      width: 67px;
+      border-top-left-radius: 12px;
+      border-bottom-left-radius: 12px;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    .user {
+      width: 100%;
+      height: 86px;
+      display: flex;
+
+      .picture {
+        height: 84px;
+        width: 84px;
+        min-width: 84px;
+        border: 2px solid $gray;
+        margin-right: 24px;
+        border-radius: 42px;
+        position: relative;
+        z-index: 1;
+
+        img {
+          height: 100%;
+          width: 100%;
+        }
+      }
+
+      .name {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+
+        .full {
+          font-size: 18px;
+          font-weight: $regular;
+          color: $black;
+        }
+
+        .username {
+          font-size: 14px;
+          font-weight: $medium;
+          color: $primary;
+        }
+      }
+    }
+
+    .pay {
+      width: 66px;
+      height: 50px;
+      text-decoration: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: $gray;
+      font-weight: $medium;
+      font-size: 14px;
+      cursor: pointer;
+
+      &:hover {
+        width: 80px;
+
+        i {
+          transition: 0.2s;
+          transform: rotate(180deg);
+        }
+      }
+
+      i {
+        width: 24px;
+        font-size: 24px;
+        color: $gray;
+        transition: 0.2s;
+      }
+    }
+
+    @media (max-width: 576px) {
+      height: 80px;
+      padding: 0 16px;
+      border-color: $primary;
+
+      &::before {
+        width: 43px;
+        background-color: $primary;
+      }
+
+      .user {
+        height: 54px;
+
+        .picture {
+          border-color: $primary;
+          height: 54px;
+          min-width: 54px;
+          width: 54px;
+          margin-right: 16px;
+        }
+      }
+
+      .pay {
+        color: $primary;
+
+        i {
+          color: $primary;
+        }
+      }
+    }
+  }
+}
