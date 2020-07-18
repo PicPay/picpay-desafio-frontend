@@ -51,6 +51,7 @@
     justify-content: center;
     align-items: center;
     border-radius: 10px;
+    cursor: pointer;
 
     &:hover {
       background: $primary;
@@ -70,7 +71,6 @@
     .card {
       display: flex;
       justify-content: center;
-      cursor: pointer;
       text-decoration: none;
 
       i {
@@ -98,5 +98,31 @@
         }
       }
     }
+  }
+}
+
+.new {
+  width: 120px;
+  height: 50px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  font-weight: $medium;
+  color: $primary;
+  cursor: pointer;
+
+  &:hover {
+    color: $darkPrimary;
+
+    i {
+      color: $darkPrimary;
+    }
+  }
+
+  i {
+    font-size: 24px;
+    color: $primary;
   }
 }

@@ -11,7 +11,7 @@
 </div>
 
 <div class="card-list">
-  <div class="select">
+  <div class="select" *ngFor="let card of cards" (click)="selectCard(card)">
     <a class="card">
       <i class="material-icons">
         credit_card
@@ -21,9 +21,17 @@
           Cartão de Crédito
         </div>
         <div class="number">
-          <strong>**** **** **** 0897</strong>
+          <strong> {{card.card_number}} </strong>
         </div>
       </div>
     </a>
   </div>
 </div>
+
+
+<a class="new" routerLink="/novo-cartao">
+  <i class="material-icons">
+    add_circle
+  </i>
+  Novo Cartão
+</a>

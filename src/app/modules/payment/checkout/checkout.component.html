@@ -34,7 +34,7 @@
       <span class="prefix">R$</span>
       <input currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',' }" />
     </div>
-    <a class="payment-form" routerLink="/cartoes">
+    <a *ngIf="hasCard" class="payment-form" routerLink="/cartoes">
       <i class="material-icons">
         credit_card
       </i>
@@ -47,7 +47,7 @@
         </div>
       </div>
     </a>
-    <a class="payment-form danger" routerLink="/novo-cartao">
+    <a *ngIf="!hasCard" class="payment-form danger" routerLink="/novo-cartao">
       <i class="material-icons">
         credit_card
       </i>

@@ -31,6 +31,10 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+a {
+  text-decoration: none;
+}
+
 .container {
   width: 100%;
   max-width: 646px;
@@ -80,8 +84,8 @@ body {
       color: darken($gray, 20);
   }
   .mat-form-field-underline {
-      background-color: darken($gray, 20);
-      border-bottom: 2px solid darken($gray, 20);
+      background-color: $gray;
+      border-bottom: 1px solid $gray;
   }
   .mat-form-field-ripple {
       background-color: darken($gray, 20);

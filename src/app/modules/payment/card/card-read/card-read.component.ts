@@ -1,4 +1,7 @@
+import { Card } from './../card.model';
+import { CardService } from './../card.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-card-read',
@@ -7,9 +10,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CardReadComponent implements OnInit {
 
-  constructor() { }
+  cards: Card[];
+
+  constructor(
+    private cardService: CardService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
+    this.cardService.read().subscribe(cards => {
+      this.cards = cards;
+      console.log(this.cards);
+    });
   }
 
+  selectCard(card: Card): void {
+    this.cardService.setCurrentCard(card);
+    this.router.navigate(['/pagamento']);
+  }
 }

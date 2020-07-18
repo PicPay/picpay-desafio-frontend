@@ -20,15 +20,41 @@ export class CardService {
   }
 
   create(card: Card): Observable<Card[]> {
-    const STORED_CARDS = JSON.parse(localStorage.getItem('cards')) || [];
+    let cards = [];
 
-    const CARDS = [...STORED_CARDS, card];
+    this.read().subscribe(storedCards => {
+      cards = [...storedCards, card];
 
+      localStorage.setItem(
+        'cards',
+        JSON.stringify(cards)
+      );
+    });
+
+    return of(cards);
+  }
+
+  read(): Observable<Card[]> {
+    return of(JSON.parse(localStorage.getItem('cards')) || []);
+  }
+
+  setCurrentCard(card: Card): Observable<Card> {
     localStorage.setItem(
-      'cards',
-      JSON.stringify(CARDS)
+      'card',
+      JSON.stringify(card)
     );
 
-    return of(CARDS);
+    return of(card);
+  }
+
+  getCurrentCard(): Observable<Card> {
+    let storedCard = JSON.parse(localStorage.getItem('card')) || null;
+    this.read().subscribe(cards => {
+      if (cards.length > 0) {
+        storedCard = cards[0];
+        this.setCurrentCard(cards[0]);
+      }
+    });
+    return of(storedCard);
   }
 }

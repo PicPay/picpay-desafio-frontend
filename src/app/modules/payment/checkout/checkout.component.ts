@@ -1,3 +1,5 @@
+import { Card } from './../card/card.model';
+import { CardService } from './../card/card.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CheckoutComponent implements OnInit {
 
-  constructor() { }
+  hasCard = false;
+  currentCard: Card;
+
+  constructor(
+    private cardService: CardService
+  ) { }
 
   ngOnInit() {
+    this.cardService.getCurrentCard().subscribe(card => {
+      if (card) {
+        this.hasCard = true;
+        this.currentCard = card;
+      }
+    });
   }
 
 }
