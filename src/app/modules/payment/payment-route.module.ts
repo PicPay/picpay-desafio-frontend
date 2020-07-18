@@ -1,3 +1,5 @@
+import { CardReadComponent } from './card/card-read/card-read.component';
+import { CardCreateComponent } from './card/card-create/card-create.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { UsersComponent } from './users/users.component';
 import { NgModule } from '@angular/core';
@@ -12,6 +14,14 @@ const routes: Routes = [
   {
     path: 'pagamento',
     component: CheckoutComponent
+  },
+  {
+    path: 'novo-cartao',
+    component: CardCreateComponent
+  },
+  {
+    path: 'cartoes',
+    component: CardReadComponent
   },
 ];
 

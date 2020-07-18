@@ -32,9 +32,9 @@
     </div>
     <div class="money-input">
       <span class="prefix">R$</span>
-      <input currencyMask formControlName="value" [options]="{ prefix: '', thousands: '.', decimal: ',' }" />
+      <input currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',' }" />
     </div>
-    <a class="payment-form" routerLink="">
+    <a class="payment-form" routerLink="/cartoes">
       <i class="material-icons">
         credit_card
       </i>
@@ -47,7 +47,7 @@
         </div>
       </div>
     </a>
-    <div class="payment-form danger" routerLink="">
+    <a class="payment-form danger" routerLink="/novo-cartao">
       <i class="material-icons">
         credit_card
       </i>
@@ -59,7 +59,7 @@
           <strong>Cadastrar agora</strong>
         </div>
       </div>
-    </div>
+    </a>
     <button class="btn btn-primary">
       Pagar agora
     </button>

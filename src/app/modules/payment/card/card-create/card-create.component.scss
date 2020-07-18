@@ -1,0 +1,70 @@
+@import "src/styles.scss";
+
+.head {
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  .return {
+    position: absolute;
+    left: 15px;
+    top: 5px;
+    display: flex;
+    font-size: 14px;
+    color: $gray;
+    align-items: center;
+    height: 50px;
+    font-weight: $medium;
+    text-decoration: none;
+
+    &:hover {
+      color: $primary;
+
+      i {
+        color: $primary;
+      }
+    }
+
+    i {
+      margin-right: 4px;
+      font-size: 25px;
+      color: $gray;
+    }
+  }
+
+  .title {
+    font-size: 18px;
+    color: $black;
+  }
+}
+
+.card {
+  width: 100%;
+  background: $white;
+  border: 2px solid $gray;
+  border-radius: 15px;
+
+  .header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 78px;
+    border-bottom: 2px solid $gray;
+
+    i {
+      font-size: 40px;
+      margin-right: 10px;
+    }
+  }
+
+  .content {
+    padding: 30px;
+
+    form {
+      display: flex;
+      flex-flow: column;
+    }
+  }
+}

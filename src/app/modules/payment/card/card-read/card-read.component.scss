@@ -1,0 +1,102 @@
+@import "src/styles.scss";
+
+.head {
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  .return {
+    position: absolute;
+    left: 15px;
+    top: 5px;
+    display: flex;
+    font-size: 14px;
+    color: $gray;
+    align-items: center;
+    height: 50px;
+    font-weight: $medium;
+    text-decoration: none;
+
+    &:hover {
+      color: $primary;
+
+      i {
+        color: $primary;
+      }
+    }
+
+    i {
+      margin-right: 4px;
+      font-size: 25px;
+      color: $gray;
+    }
+  }
+
+  .title {
+    font-size: 18px;
+    color: $black;
+  }
+}
+
+.card-list {
+  max-width: 348px;
+  margin: 0 auto;
+
+  .select {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+
+    &:hover {
+      background: $primary;
+
+      .card {
+
+        i {
+          color: $white;
+        }
+
+        .info {
+          color: $white;
+        }
+      }
+    }
+
+    .card {
+      display: flex;
+      justify-content: center;
+      cursor: pointer;
+      text-decoration: none;
+
+      i {
+        font-size: 50px;
+        color: $black;
+        margin-right: 10px;
+      }
+
+      .info {
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        color: $black;
+
+        .type {
+          font-size: 13px;
+        }
+
+        .number {
+          font-size: 14px;
+
+          strong {
+            font-weight: $medium;
+          }
+        }
+      }
+    }
+  }
+}

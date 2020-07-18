@@ -1,0 +1,36 @@
+<div class="head">
+  <a routerLink="/pagamento" class="return">
+    <i class="material-icons">
+      chevron_left
+    </i>
+    Voltar
+  </a>
+  <span class="title">
+    Novo Cartão
+  </span>
+</div>
+
+<div class="card">
+  <div class="header">
+    <i class="material-icons">
+      payment
+    </i>
+    Dados do Cartão
+  </div>
+  <div class="content">
+    <form>
+      <mat-form-field>
+        <input matInput placeholder="Número do Cartão" mask="0000 0000 0000 0000" [(ngModel)]="card.card_number" name="name">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="CVV" mask="000" [(ngModel)]="card.cvv" name="cvv">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Data de Validade" [dropSpecialCharacters]="false" mask="00/00" [(ngModel)]="card.expiry_date" name="expiry_date">
+      </mat-form-field>
+    </form>
+    <button class="btn btn-primary" (click)="createCard()">
+      Cadastrar cartão
+    </button>
+  </div>
+</div>
