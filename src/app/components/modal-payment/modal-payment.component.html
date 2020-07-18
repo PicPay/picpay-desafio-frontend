@@ -1,0 +1,20 @@
+<h1 class="modal-header" mat-dialog-title>Pagamento para {{data.name}}</h1>
+<div mat-dialog-content class="content-dialog">
+    <p>Informe o valor à pagar:</p>
+    <input matInput type="text" placeholder="R$" [ngModel]="value | currency:'R$':'symbol':'2.2'"
+        [ngModelOptions]="{updateOn:'blur'}" (ngModelChange)="value=$event" />
+    <p>Selecione o cartão de crédito para pagamento:</p>
+    <mat-form-field appearance="fill">
+        <mat-label>Cartão de Crédito</mat-label>
+        <mat-select [(value)]="selectedCard">
+            <mat-option *ngFor="let card of cards" [value]="card">
+                Cartão com final {{card.card_number.slice(12,16)}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
+<div mat-dialog-actions class="dialog-buttons">
+    <button class="payment-button" mat-raised-button color="success" (click)="openSuccessOrErrorModal()"
+        cdkFocusInitial>Pagar</button>
+    <button mat-raised-button color="warn" (click)="cancelar()">Cancelar</button>
+</div>
