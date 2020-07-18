@@ -1,0 +1,43 @@
+.users {
+  display: inline-flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.user {
+  background: linear-gradient(186.5deg, #8cb269  0.83%, #81ca86 100%);
+  color: #fff;
+  padding: 20px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 25vw;
+  min-height: 15rem;
+  margin: 0.5rem;
+}
+
+.user > img {
+  margin-right: 10px;
+  border-radius: 50%;
+  height: 80px;
+  width: 80px;
+}
+
+.user-name {
+  margin-top: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.user-img {
+  display: flex;
+  justify-content: center;
+}
+
+.user > .pay-button {
+  margin-top: 20px;
+  margin-left: 10px;
+  margin-right: 15px;
+  background-color: #0B9854;
+}
