@@ -15,9 +15,9 @@ import { PaymentReturn } from 'src/app/models/payment-return.model';
 export class ModalPaymentComponent implements OnInit {
 
   constructor(private paymentService: PaymentService,
-    public dialog: MatDialog,
-    public dialogRef: MatDialogRef<ModalPaymentComponent>,
-    @Optional() @Inject(MAT_DIALOG_DATA) public data: User) { }
+              public dialog: MatDialog,
+              public dialogRef: MatDialogRef<ModalPaymentComponent>,
+              @Optional() @Inject(MAT_DIALOG_DATA) public data: User) { }
 
   cards: Array<CreditCard> = [];
   selectedCard: CreditCard;
