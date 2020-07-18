@@ -13,6 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxMaskModule } from 'ngx-mask';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MaskNumber } from './card/card.pipe';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     PaymentComponent,
     CheckoutComponent,
     CardCreateComponent,
-    CardReadComponent
+    CardReadComponent,
+    MaskNumber
   ],
   imports: [
     PaymentRoutingModule,

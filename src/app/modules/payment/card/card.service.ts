@@ -49,12 +49,14 @@ export class CardService {
 
   getCurrentCard(): Observable<Card> {
     let storedCard = JSON.parse(localStorage.getItem('card')) || null;
-    this.read().subscribe(cards => {
-      if (cards.length > 0) {
-        storedCard = cards[0];
-        this.setCurrentCard(cards[0]);
-      }
-    });
+    if (!storedCard) {
+      this.read().subscribe(cards => {
+        if (cards.length > 0) {
+          storedCard = cards[0];
+          this.setCurrentCard(cards[0]);
+        }
+      });
+    }
     return of(storedCard);
   }
 }

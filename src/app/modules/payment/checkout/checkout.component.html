@@ -43,7 +43,7 @@
           Forma de pagamento
         </div>
         <div class="card-type">
-          <strong>Cartão de Crédito</strong> com final <strong>0364</strong>
+          <strong>Cartão de Crédito</strong> com final <strong>{{ currentCard.card_number | cardMask: 'lastFour'}}</strong>
         </div>
       </div>
     </a>
