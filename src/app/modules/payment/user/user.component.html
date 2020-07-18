@@ -4,21 +4,21 @@
   </span>
 </div>
 <div class="list">
-  <div class="card">
+  <div class="card" *ngFor="let user of users">
     <div class="user">
       <div class="picture">
-        <img src="assets/img/user.png" alt="Imagem do usuário">
+        <img [src]="user.img" alt="Imagem do usuário">
       </div>
       <div class="name">
         <div class="full">
-          Eduardo Santos
+          {{ user.name }}
         </div>
         <div class="username">
-          @eduardo.santos
+          {{ user.username }}
         </div>
       </div>
     </div>
-    <a class="pay" routerLink="/pagamento">
+    <a class="pay" (click)="payUser(user)">
       <i class="material-icons">
         attach_money
       </i>

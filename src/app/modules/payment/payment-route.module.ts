@@ -1,7 +1,7 @@
 import { CardReadComponent } from './card/card-read/card-read.component';
 import { CardCreateComponent } from './card/card-create/card-create.component';
 import { CheckoutComponent } from './checkout/checkout.component';
-import { UsersComponent } from './users/users.component';
+import { UserComponent } from './user/user.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -9,7 +9,7 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    component: UsersComponent
+    component: UserComponent
   },
   {
     path: 'pagamento',

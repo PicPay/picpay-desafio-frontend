@@ -2,7 +2,7 @@ import { CardCreateComponent } from './card/card-create/card-create.component';
 import { CardReadComponent } from './card/card-read/card-read.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UsersComponent } from './users/users.component';
+import { UserComponent } from './user/user.component';
 import { PaymentComponent } from './payment.component';
 import { PaymentRoutingModule } from './payment-route.module';
 import { CheckoutComponent } from './checkout/checkout.component';
@@ -14,11 +14,12 @@ import { NgxMaskModule } from 'ngx-mask';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MaskNumber } from './card/card.pipe';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
   declarations: [
-    UsersComponent,
+    UserComponent,
     PaymentComponent,
     CheckoutComponent,
     CardCreateComponent,
@@ -35,7 +36,8 @@ import { MaskNumber } from './card/card.pipe';
     ReactiveFormsModule,
     NgxMaskModule.forRoot(),
     BrowserAnimationsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    HttpClientModule
   ],
   exports: [PaymentComponent]
 })

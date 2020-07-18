@@ -20,7 +20,6 @@ export class CardReadComponent implements OnInit {
   ngOnInit() {
     this.cardService.read().subscribe(cards => {
       this.cards = cards;
-      console.log(this.cards);
     });
   }
 
