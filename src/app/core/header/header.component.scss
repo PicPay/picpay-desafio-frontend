@@ -1,0 +1,20 @@
+@import "src/styles.scss";
+
+#header {
+  width: 100%;
+  background: $primary;
+  height: 60px;
+
+  .container {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .title {
+      font-weight: $medium;
+      color: $white;
+      font-size: 18px;
+    }
+  }
+}

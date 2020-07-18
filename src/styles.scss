@@ -1,10 +1,39 @@
+//Font weight
+$thin: 200;
+$light: 300;
+$regular: normal;
+$medium: 500;
+$semibold: 600;
+$bold: bold;
+
+//Font
+$font: Montserrat;
+
+//Colors
+$primary: #11C76F;
+$darkPrimary: #0D9855;
+$white: #fff;
+$black: #484848;
+$gray: #DADADA;
+$danger: #E74C3C;
+
 * {
   box-sizing: border-box;
 }
 
 html,
 body {
-  font-family: sans-serif;
+  height: 100%;
+}
+
+body {
   margin: 0;
-  padding: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.container {
+  width: 100%;
+  max-width: 646px;
+  padding: 0 15px;
+  margin: 0 auto;
 }
