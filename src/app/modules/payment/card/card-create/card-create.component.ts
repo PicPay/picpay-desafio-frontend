@@ -30,7 +30,7 @@ export class CardCreateComponent implements OnInit {
   createCard(): void {
     this.cardService.create(this.card).subscribe(() => {
       this.cardService.showMessage('Cartão cadastrado!');
-      this.router.navigate(['/pagamento']);
+      this.router.navigate(['/cartoes']);
     });
   }
 
