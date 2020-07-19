@@ -13,7 +13,11 @@
       </small>
     </div>
   </div>
-  <div class="row users-list-header px-4 py-1 d-none d-lg-flex">
+  <app-loading *ngIf="!isLoaded"></app-loading>
+  <div
+    *ngIf="isLoaded"
+    class="row users-list-header px-4 py-1 d-none d-lg-flex"
+  >
     <div class="col-8 mt-4 my-sm-0 d-flex flex-wrap align-items-center">
       <div class="col-3">
         <strong><span class="user-list-header-title">Foto</span></strong>
@@ -36,8 +40,9 @@
       </div>
     </div>
   </div>
-  <div class="row users-list-container mt-3 px-4 px-md-0">
+  <div *ngIf="isLoaded" class="row users-list-container mt-3 px-4 px-md-0">
     <div
+      @fadeIn
       *ngFor="let item of usersList"
       class="col-12 d-flex flex-wrap user-card mt-4 px-1 px-sm-4 py-1"
     >
