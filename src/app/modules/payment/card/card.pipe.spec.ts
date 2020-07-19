@@ -1,8 +1,8 @@
-import { CardPipe } from './card.pipe';
+import { MaskNumber } from './card.pipe';
 
 describe('CardPipe', () => {
   it('create an instance', () => {
-    const pipe = new CardPipe();
+    const pipe = new MaskNumber();
     expect(pipe).toBeTruthy();
   });
 });

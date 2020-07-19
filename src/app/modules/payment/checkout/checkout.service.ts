@@ -20,7 +20,7 @@ export class CheckoutService {
   showMessage(msg: string, isError: boolean = false): void {
     this.snackBar.open(msg, 'X', {
       duration: 3000,
-      horizontalPosition: 'right',
+      horizontalPosition: 'center',
       verticalPosition: 'top',
       panelClass: isError ? ['msg-error'] : ['msg-success']
     });
