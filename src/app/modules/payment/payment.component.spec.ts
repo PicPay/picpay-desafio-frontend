@@ -1,25 +1,32 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientModule } from '@angular/common/http';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PaymentComponent } from './payment.component';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { Router } from '@angular/router';
 
 describe('PaymentComponent', () => {
   let component: PaymentComponent;
   let fixture: ComponentFixture<PaymentComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ PaymentComponent ]
-    })
-    .compileComponents();
-  }));
-
   beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [PaymentComponent],
+      schemas: [NO_ERRORS_SCHEMA],
+      imports: [HttpClientModule],
+      providers: [
+        {
+          provide: Router,
+          useClass: class { navigate = jasmine.createSpy('navigate'); }
+        }
+      ]
+    });
+
     fixture = TestBed.createComponent(PaymentComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('deve criar', () => {
+    expect(component).toBeDefined();
   });
 });
