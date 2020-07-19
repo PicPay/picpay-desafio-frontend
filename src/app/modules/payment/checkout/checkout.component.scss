@@ -13,33 +13,6 @@
   align-items: center;
   position: relative;
 
-  .return {
-    position: absolute;
-    left: 15px;
-    top: 5px;
-    display: flex;
-    font-size: 14px;
-    color: $gray;
-    align-items: center;
-    height: 50px;
-    font-weight: $medium;
-    text-decoration: none;
-
-    &:hover {
-      color: $primary;
-
-      i {
-        color: $primary;
-      }
-    }
-
-    i {
-      margin-right: 4px;
-      font-size: 25px;
-      color: $gray;
-    }
-  }
-
   .title {
     font-size: 18px;
     color: $black;
@@ -136,6 +109,12 @@
         outline: none;
         font-size: 64px;
         color: $gray;
+
+        @media (max-width: 576px) {
+          font-size: 38px;
+          width: 260px;
+          margin-top: 8px;
+        }
 
         &.enable {
           color: $primary;

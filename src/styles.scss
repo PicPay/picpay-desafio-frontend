@@ -110,5 +110,42 @@ a {
   }
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.return {
+  position: absolute;
+  left: 15px;
+  top: 5px;
+  display: flex;
+  font-size: 14px;
+  color: $gray;
+  align-items: center;
+  height: 50px;
+  font-weight: $medium;
+  text-decoration: none;
+
+  &:hover {
+    color: $primary;
+
+    i {
+      color: $primary;
+    }
+  }
+
+  i {
+    margin-right: 4px;
+    font-size: 25px;
+    color: $gray;
+  }
+
+  @media (max-width: 576px) {
+    left: 0;
+
+    .text {
+      display: none;
+    }
+
+    i {
+      color: $black;
+      font-size: 40px;
+    }
+  }
+}
