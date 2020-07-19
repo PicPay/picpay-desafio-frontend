@@ -1,0 +1,16 @@
+.user-card {
+  height: 100px;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
+    0 15px 40px rgba(166, 173, 201, 0.2);
+}
+
+.user-photo {
+  height: 80px;
+  border-radius: 50%;
+}
+
+.user-list-header-title {
+  color: #595959;
+}
