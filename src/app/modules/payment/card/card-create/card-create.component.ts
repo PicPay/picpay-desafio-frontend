@@ -17,6 +17,8 @@ export class CardCreateComponent implements OnInit {
     expiry_date: ''
   };
 
+  canCreateCard = false;
+
   constructor(
     private cardService: CardService,
     private router: Router
@@ -30,6 +32,15 @@ export class CardCreateComponent implements OnInit {
       this.cardService.showMessage('Cartão cadastrado!');
       this.router.navigate(['/pagamento']);
     });
+  }
+
+  verifyFields(): void {
+    if (this.card.card_number.length === 16 &&
+      this.card.cvv &&
+      this.card.cvv.toString().length === 3 &&
+      this.card.expiry_date.length === 5) {
+      this.canCreateCard = true;
+    }
   }
 
 }

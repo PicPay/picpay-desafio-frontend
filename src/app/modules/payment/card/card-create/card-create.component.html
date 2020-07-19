@@ -22,16 +22,32 @@
   <div class="content">
     <form>
       <mat-form-field>
-        <input matInput placeholder="Número do Cartão" mask="0000 0000 0000 0000" [(ngModel)]="card.card_number" name="name">
+        <input matInput 
+          placeholder="Número do Cartão" 
+          mask="0000 0000 0000 0000" 
+          [(ngModel)]="card.card_number" 
+          name="card_number"
+          (keyup)="verifyFields()">
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="CVV" mask="000" [(ngModel)]="card.cvv" name="cvv">
+        <input matInput 
+          placeholder="CVV" 
+          mask="000" 
+          [(ngModel)]="card.cvv" 
+          name="cvv"
+          (keyup)="verifyFields()">
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Data de Validade" [dropSpecialCharacters]="false" mask="00/00" [(ngModel)]="card.expiry_date" name="expiry_date">
+        <input matInput 
+          placeholder="Data de Validade" 
+          [dropSpecialCharacters]="false" 
+          mask="00/00" 
+          [(ngModel)]="card.expiry_date" 
+          name="expiry_date"
+          (keyup)="verifyFields()">
       </mat-form-field>
     </form>
-    <button class="btn btn-primary" (click)="createCard()">
+    <button class="btn btn-primary" (click)="createCard()" [disabled]="!canCreateCard">
       Cadastrar cartão
     </button>
   </div>

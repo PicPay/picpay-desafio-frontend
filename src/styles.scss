@@ -64,6 +64,17 @@ a {
       background: $darkPrimary;
     }
   }
+
+  &:disabled {
+    background: $gray;
+    color: $white;
+    cursor: initial;
+
+    &:hover {
+      background: $gray;
+      color: $white;
+    }
+  }
 }
 
 .msg-success {

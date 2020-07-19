@@ -67,7 +67,7 @@
         </div>
       </div>
     </a>
-    <button class="btn btn-primary" (click)="sendPayment()">
+    <button class="btn btn-primary" (click)="sendPayment()" [disabled]="!canPay">
       <ng-template [ngIf]="loading">
         <mat-spinner [diameter]="20"></mat-spinner>
       </ng-template>
