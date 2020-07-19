@@ -1,51 +1,83 @@
-<div class="container p-5">
-  <div class="row">
-    <h1 class="title">Bem vindo ao sistema!</h1>
-  </div>
-  <div class="row mb-5">
-    <small class="text-grey">
-      A lista abaixo apresenta os usuários em sua rede. Utilize o botão "pagar"
-      para efetuar o pagamento de valores até R$ 8.000.
-    </small>
-  </div>
-  <div class="row users-list-header px-4 py-1">
-    <div class="col-2">
-      <b><span class="user-list-header-title">Foto</span></b>
-    </div>
-    <div class="col-2">
-      <b><span class="user-list-header-title">Código</span></b>
-    </div>
-    <div class="col-2">
-      <b><span class="user-list-header-title">Nome</span></b>
-    </div>
-    <div class="col-2">
-      <b><span class="user-list-header-title">Nome de usuário</span></b>
-    </div>
-    <div class="col-4 text-center">
-      <b><span class="user-list-header-title">Ações</span></b>
+<div class="container py-5 px-3 px-lg-5">
+  <div class="row px-4 px-md-0">
+    <div class="col">
+      <h1 class="title">Bem vindo ao sistema!</h1>
     </div>
   </div>
-  <div class="row users-list-container">
+  <div class="row mb-5 px-4 px-md-0">
+    <div class="col">
+      <small class="text-grey">
+        A lista abaixo apresenta os {{ usersList.length }} usuários ativos em
+        sua rede. Utilize o botão "pagar" para efetuar o pagamento de valores
+        até R$ 8.000 (limite diário).
+      </small>
+    </div>
+  </div>
+  <div class="row users-list-header px-4 py-1 d-none d-lg-flex">
+    <div class="col-8 mt-4 my-sm-0 d-flex flex-wrap align-items-center">
+      <div class="col-3">
+        <strong><span class="user-list-header-title">Foto</span></strong>
+      </div>
+      <div class="col-3">
+        <strong><span class="user-list-header-title">Código</span></strong>
+      </div>
+      <div class="col-3">
+        <strong><span class="user-list-header-title">Nome</span></strong>
+      </div>
+      <div class="col-3">
+        <strong>
+          <span class="user-list-header-title">Nome de usuário</span>
+        </strong>
+      </div>
+    </div>
+    <div class="col-4 mt-4 my-sm-0 d-flex flex-wrap align-items-center">
+      <div class="col-12 text-center">
+        <strong><span class="user-list-header-title">Ações</span></strong>
+      </div>
+    </div>
+  </div>
+  <div class="row users-list-container mt-3 px-4 px-md-0">
     <div
       *ngFor="let item of usersList"
-      class="col-12 user-card my-4 d-flex align-items-center px-4 py-1"
+      class="col-12 d-flex flex-wrap user-card mt-4 px-1 px-sm-4 py-1"
     >
-      <div class="col-2">
-        <img [src]="item.img" [alt]="item.name" class="user-photo" />
+      <div
+        class="col-12 col-sm-8 mt-4 my-sm-0 info-user d-flex flex-wrap align-items-center"
+      >
+        <div class="col-4 col-lg-3 foto-user-container">
+          <img [src]="item.img" [alt]="item.name" class="user-photo" />
+        </div>
+        <div class="col-8 col-lg-9 d-flex flex-wrap text-data-container">
+          <div class="col-12 col-lg-4 mb-2 mb-lg-0">
+            <strong>
+              <span class="mr-2 d-inline d-lg-none">Cód.:</span>
+            </strong>
+            <strong>
+              <span>{{ item.id }}</span>
+            </strong>
+          </div>
+          <div class="col-12 col-lg-4">
+            <span>{{ item.name }}</span>
+          </div>
+          <div class="col-12 col-lg-4 text-grey">
+            <span>{{ item.username }}</span>
+          </div>
+        </div>
       </div>
-      <div class="col-2">
-        <b>
-          <span>{{ item.id }}</span>
-        </b>
-      </div>
-      <div class="col-2">
-        <span>{{ item.name }}</span>
-      </div>
-      <div class="col-2 text-grey">
-        <span>{{ item.username }}</span>
-      </div>
-      <div class="col-4 text-center">
-        <button class="btn btn-primary">Efetuar Pagamento</button>
+      <div
+        class="col-12 col-sm-4 mt-5 mt-sm-0 mb-3 mb-sm-0 actions-user d-flex align-items-center"
+      >
+        <div class="col-12 text-center">
+          <button
+            type="button"
+            class="btn btn-success action-payment"
+            (click)="makePayment()"
+          >
+            {{
+              windowWidth && windowWidth >= 768 ? 'Efetuar Pagamento' : 'Pagar'
+            }}
+          </button>
+        </div>
       </div>
     </div>
   </div>

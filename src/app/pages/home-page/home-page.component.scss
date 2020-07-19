@@ -1,9 +1,14 @@
 .user-card {
-  height: 100px;
+  height: 115px;
   background-color: white;
-  border-radius: 20px;
+  border-radius: 5px;
   box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
     0 15px 40px rgba(166, 173, 201, 0.2);
+  transition: all 0.3s;
+
+  &:hover {
+    transform: scale(1.02);
+  }
 }
 
 .user-photo {
@@ -13,4 +18,18 @@
 
 .user-list-header-title {
   color: #595959;
+}
+
+.action-payment {
+  padding: 0.5rem 1rem;
+}
+
+@media (max-width: 576px) {
+  .user-card {
+    height: fit-content;
+  }
+
+  .action-payment {
+    min-width: 100%;
+  }
 }

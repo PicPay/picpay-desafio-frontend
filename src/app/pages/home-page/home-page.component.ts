@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { Users } from 'src/app/models/users';
 import { UsersService } from 'src/app/services/users.service';
 import { Subscription } from 'rxjs';
@@ -11,6 +11,7 @@ import { Subscription } from 'rxjs';
 export class HomePageComponent implements OnInit, OnDestroy {
   subscriptions = new Subscription();
   usersList = [] as Users[];
+  windowWidth = window.screen.width;
 
   constructor(private usersService: UsersService) {}
 
@@ -34,7 +35,16 @@ export class HomePageComponent implements OnInit, OnDestroy {
     }
   }
 
+  makePayment() {
+    alert('é nois');
+  }
+
   ngOnDestroy() {
     this.subscriptions.unsubscribe();
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.windowWidth = event.target.innerWidth;
   }
 }

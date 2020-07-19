@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Asap:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Asap:wght@400;500;600;700&display=swap');
 
 body {
   font-family: 'Asap', sans-serif;
@@ -11,3 +11,64 @@ body {
 .title {
   font-family: 'Anton', sans-serif;
 }
+
+/* 
+  Override do Bootstrap
+*/
+
+.btn-success {
+  font-weight: 500;
+  background-color: #00d68f;
+  border-color: #00d68f;
+
+  &:hover {
+    background-color: #2ce69b;
+    border-color: #2ce69b;
+  }
+
+  &:focus {
+    background-color: #00b887;
+    border-color: #00b887;
+    box-shadow: 0 0 0 0.2rem rgb(0 184 135 / 0.4);
+  }
+
+  &:active {
+    background-color: #00b887;
+    border-color: #00b887;
+  }
+}
+
+.btn-success:not(:disabled):not(.disabled).active,
+.btn-success:not(:disabled):not(.disabled):active,
+.show > .btn-success.dropdown-toggle {
+  background-color: #00b887;
+  border-color: #00b887;
+}
+
+@media (max-width: 576px) {
+  h1 {
+    font-size: 2rem;
+  }
+}
+
+/* Fim do Override */
+
+/* Scroll */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Fim do estilo para Scroll */
