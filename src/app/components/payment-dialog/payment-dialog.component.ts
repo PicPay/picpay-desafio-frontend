@@ -38,10 +38,7 @@ export class PaymentDialogComponent implements OnInit, ModalData<User> {
     },
   ] as PaymentCard[];
   transactionForm = this.fb.group({
-    card_number: [
-      null,
-      [Validators.required, Validators.min(16), Validators.max(15)],
-    ],
+    card_number: [null, [Validators.required]],
     value: [
       null,
       [
@@ -65,9 +62,12 @@ export class PaymentDialogComponent implements OnInit, ModalData<User> {
 
   onSubmit() {
     this.transactionForm.markAllAsTouched();
+    this.transactionForm.updateValueAndValidity();
+
     if (this.transactionForm.valid) {
       alert('valido');
     } else {
+      console.log(this.transactionForm);
       alert('inválido');
     }
     console.log(this.transactionForm.getRawValue());

@@ -1,0 +1,42 @@
+<div
+  *ngIf="
+    form && field && form.controls[field].touched && form.controls[field].errors
+  "
+  class="row mt-2"
+>
+  <div class="col-12">
+    <span class="text-danger" *ngIf="form.controls[field].errors.minlength">
+      * O campo {{ field }} precisa ter no mínimo
+      {{ form.controls[field].errors.minlength.requiredLength }} dígitos, sem
+      considerar as pontuações.
+    </span>
+  </div>
+  <div class="col-12">
+    <span class="text-danger" *ngIf="form.controls[field].errors.maxlength">
+      * O campo {{ field }} precisa ter no máximo
+      {{ form.controls[field].errors.minlength.requiredLength }} dígitos,
+      considerando as pontuações.
+    </span>
+  </div>
+  <div class="col-12">
+    <span class="text-danger" *ngIf="form.controls[field].errors.max">
+      * {{ maxValueMsg }}
+    </span>
+  </div>
+  <div class="col-12">
+    <span class="text-danger" *ngIf="form.controls[field].errors.min">
+      * {{ minValueMsg }}
+    </span>
+  </div>
+  <div class="col-12">
+    <span class="text-danger" *ngIf="form.controls[field].errors.mask">
+      * O campo {{ field }} está em um formato incorreto (deveria se assemelhar
+      a: {{ form.controls[field].errors.mask.requiredMask }}).
+    </span>
+  </div>
+  <div class="col-12">
+    <span class="text-danger" *ngIf="form.controls[field].errors.required">
+      * {{ requiredMsg }}
+    </span>
+  </div>
+</div>

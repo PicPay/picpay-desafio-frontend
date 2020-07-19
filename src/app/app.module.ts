@@ -9,6 +9,7 @@ import { PaymentDialogComponent } from './components/payment-dialog/payment-dial
 import { CurrencyMaskModule, CURRENCY_MASK_CONFIG } from 'ng2-currency-mask';
 import { ReactiveFormsModule } from '@angular/forms';
 import { customCurrencyMaskConfig } from './configs/curency-mask';
+import { ErrorsInputModule } from './components/errors-input/errors-input.module';
 
 @NgModule({
   declarations: [AppComponent, PaymentDialogComponent],
@@ -20,6 +21,7 @@ import { customCurrencyMaskConfig } from './configs/curency-mask';
     AppRoutingModule,
     ModalModule.forRoot(),
     CurrencyMaskModule,
+    ErrorsInputModule,
   ],
   providers: [
     { provide: CURRENCY_MASK_CONFIG, useValue: customCurrencyMaskConfig },

@@ -2,6 +2,7 @@
   class="container px-5 py-3"
   [formGroup]="transactionForm"
   (ngSubmit)="onSubmit()"
+  autocomplete="off"
 >
   <div class="row">
     <div class="col-12 modal-header">
@@ -79,6 +80,13 @@
                 </div>
               </label>
             </div>
+            <div class="col-12">
+              <app-errors-input
+                [form]="transactionForm"
+                [field]="'card_number'"
+                [requiredMsg]="'É necessário selecionar um cartão'"
+              ></app-errors-input>
+            </div>
           </div>
         </div>
       </div>
@@ -99,12 +107,20 @@
             maxlength="11"
             formControlName="value"
           />
+          <app-errors-input
+            [form]="transactionForm"
+            [field]="'value'"
+            [minValueMsg]="'O valor mínimo permitido para pagamentos é R$ 0,01'"
+            [maxValueMsg]="
+              'O valor máximo permitido para pagamentos é R$ 5.000,00 por dia'
+            "
+          ></app-errors-input>
         </div>
       </div>
     </div>
   </div>
   <div class="row">
-    <div class="col-12 modal-footer pt-4 pb-2">
+    <div class="col-12 modal-footer pt-4 pb-2 px-0">
       <button type="button" class="btn btn-light" (click)="closeDialog()">
         Cancelar
       </button>
