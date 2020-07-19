@@ -34,6 +34,7 @@
     </div>
     <div class="money-input">
       <input 
+        name="value"
         currencyMask 
         [options]="{ align: 'center', prefix: 'R$ ', thousands: '.', decimal: ',' }" 
         [(ngModel)]="checkout.value"
@@ -67,7 +68,7 @@
         </div>
       </div>
     </a>
-    <button class="btn btn-primary" (click)="sendPayment()" [disabled]="!canPay">
+    <button id="send-payment" class="btn btn-primary" (click)="sendPayment()" [disabled]="!canPay">
       <ng-template [ngIf]="loading">
         <mat-spinner [diameter]="20"></mat-spinner>
       </ng-template>
