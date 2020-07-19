@@ -5,17 +5,26 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PaymentDialogComponent } from './components/payment-dialog/payment-dialog.component';
+import { CurrencyMaskModule, CURRENCY_MASK_CONFIG } from 'ng2-currency-mask';
+import { ReactiveFormsModule } from '@angular/forms';
+import { customCurrencyMaskConfig } from './configs/curency-mask';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, PaymentDialogComponent],
   imports: [
+    ReactiveFormsModule,
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
     ModalModule.forRoot(),
+    CurrencyMaskModule,
   ],
-  providers: [],
+  providers: [
+    { provide: CURRENCY_MASK_CONFIG, useValue: customCurrencyMaskConfig },
+  ],
   bootstrap: [AppComponent],
+  entryComponents: [PaymentDialogComponent],
 })
 export class AppModule {}

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Asap:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Asap:wght@400;500;600;700&display=swap');
 
 body {
   font-family: 'Asap', sans-serif;
@@ -9,7 +9,13 @@ body {
 }
 
 .title {
-  font-family: 'Anton', sans-serif;
+  font-family: 'Asap', sans-serif;
+  font-weight: 700;
+}
+
+.input-title {
+  color: #545b62;
+  font-weight: bold;
 }
 
 /* 
@@ -51,6 +57,28 @@ body {
   }
 }
 
+.form-control {
+  height: 50px;
+  font-size: 1.3rem;
+  &:focus {
+    border: 1px solid #6c757d;
+    // box-shadow: 0 0 0 0.2rem rgba(108, 117, 125, 0.22);
+    box-shadow: unset;
+  }
+  &::placeholder {
+    color: #8f9bb3;
+  }
+
+  &.ng-touched.ng-invalid {
+    border: 1px solid #ff5768;
+  }
+}
+
+.modal-content {
+  border: none;
+  border-radius: 10px;
+}
+
 /* Fim do Override */
 
 /* Scroll */
@@ -72,3 +100,7 @@ body {
 }
 
 /* Fim do estilo para Scroll */
+
+.modal-580 {
+  min-width: 580px;
+}

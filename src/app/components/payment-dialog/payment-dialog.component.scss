@@ -1,0 +1,122 @@
+/* Fonte: https://codepen.io/daya_s/pen/oNvyoaJ */
+
+.card {
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0.65rem;
+}
+
+hr.style-1 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 2px solid rgba(0, 0, 0, 0.07);
+}
+
+.fw-500 {
+  font-weight: 400;
+}
+
+.fw-600 {
+  font-weight: 500;
+}
+
+.mt_2 {
+  margin-top: 2rem !important;
+}
+
+/*Simple radio btn input CSS*/
+.custom-control-label {
+  cursor: pointer;
+}
+
+.cap-opt-1 {
+  display: inline-block;
+  min-width: 50px;
+}
+
+.custom-control-input:checked ~ .custom-control-label::before {
+  color: #fff;
+  border-color: #59a9f7;
+  background-color: #59a9f7;
+}
+/*Card Button CSS*/
+
+.card-input-element + .card {
+  width: 105px;
+  height: 105px;
+  justify-content: center;
+  color: #545b62;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  text-align: center;
+  -webkit-box-shadow: 0 4px 25px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 25px 0 rgba(0, 0, 0, 0.1);
+}
+
+.card-input-element + .card:hover {
+  cursor: pointer;
+}
+
+.card-input-element:checked + .card {
+  border: 2px solid #17a2b8;
+  -webkit-transition: border 0.3s;
+  -o-transition: border 0.3s;
+  transition: border 0.3s;
+}
+
+.card-input-element:checked + .card::after {
+  content: '\f058';
+  color: #17a2b8;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  font-family: 'Font Awesome 5 Free';
+  font-style: normal;
+  font-size: 1rem;
+  font-weight: 900;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-animation-name: fadeInCheckbox;
+  animation-name: fadeInCheckbox;
+  -webkit-animation-duration: 0.3s;
+  animation-duration: 0.3s;
+  -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.payment-card-info {
+  text-align: left;
+  max-height: 25px;
+  font-size: 0.9rem;
+}
+
+.payment-card-illustration {
+  height: 50px;
+}
+
+@-webkit-keyframes fadeInCheckbox {
+  from {
+    opacity: 0;
+    -webkit-transform: rotateZ(-20deg);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: rotateZ(0deg);
+  }
+}
+
+@keyframes fadeInCheckbox {
+  from {
+    opacity: 0;
+    transform: rotateZ(-20deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: rotateZ(0deg);
+  }
+}

@@ -1,0 +1,114 @@
+<form
+  class="container px-5 py-3"
+  [formGroup]="transactionForm"
+  (ngSubmit)="onSubmit()"
+>
+  <div class="row">
+    <div class="col-12 modal-header">
+      <h3 class="title modal-title pull-left">Pagar à {{ outerData.name }}</h3>
+      <button
+        type="button"
+        class="close pull-right"
+        aria-label="Close"
+        (click)="closeDialog()"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+  <div class="row my-4">
+    <div class="col-12 modal-body">
+      <div class="row mb-4">
+        <div class="col-12">
+          <span class="text-grey">
+            Selecione um cartão, informe um valor e clique em "Pagar" para
+            concluir a transação.
+          </span>
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col-12 payment-card-container">
+          <div class="row">
+            <div class="col-12">
+              <label class="input-title mb-3">
+                Selecione seu cartão de crédito:
+              </label>
+            </div>
+          </div>
+          <div class="row">
+            <div
+              *ngFor="let card of cards"
+              class="col-12 payment-card-container"
+            >
+              <label class="card-radio-btn w-100">
+                <input
+                  #input
+                  type="radio"
+                  class="card-input-element d-none"
+                  formControlName="card_number"
+                  [value]="card.card_number"
+                />
+                <div
+                  class="card card-body col-12 d-flex flex-row w-100 my-2 p-2"
+                >
+                  <div class="col-8 d-flex flex-wrap align-items-center">
+                    <div class="col-12 payment-card-info">
+                      <strong class="mr-2">CVV:</strong>
+                      <span>{{ card.cvv }}</span>
+                    </div>
+                    <div class="col-12 payment-card-info">
+                      <strong class="mr-2">Vencimento:</strong>
+                      <span>{{ card.expiry_date }}</span>
+                    </div>
+                    <div class="col-12 payment-card-info">
+                      <strong class="mr-2">Quatro dígitos finais:</strong>
+                      <span>{{ card.card_number | slice: 0:4 }}</span>
+                    </div>
+                  </div>
+                  <div class="col-4 d-flex flex-wrap align-items-center">
+                    <img
+                      class="payment-card-illustration"
+                      [src]="
+                        card.cvv === 789
+                          ? '../../../assets/svgs/undraw_Credit_card_3ed6.svg'
+                          : '../../../assets/svgs/undraw_Credit_card_3ed6_color2.svg'
+                      "
+                      alt="Cartão"
+                    />
+                  </div>
+                </div>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col-12 form-group">
+          <label class="input-title mb-3" for="transaction-value-input">
+            Valor a pagar (R$):
+          </label>
+          <input
+            #input
+            required
+            currencyMask
+            min="0.01"
+            max="5000"
+            id="transaction-value-input"
+            class="form-control"
+            placeholder="ex: R$100,00"
+            maxlength="11"
+            formControlName="value"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 modal-footer pt-4 pb-2">
+      <button type="button" class="btn btn-light" (click)="closeDialog()">
+        Cancelar
+      </button>
+      <button type="submit" class="btn btn-success">Concluir pagamento</button>
+    </div>
+  </div>
+</form>

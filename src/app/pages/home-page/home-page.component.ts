@@ -1,9 +1,11 @@
 import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
-import { Users } from 'src/app/models/users';
-import { UsersService } from 'src/app/services/users.service';
+import { User } from 'src/app/models/user';
+import { UsersService } from 'src/app/services/users/users.service';
 import { Subscription } from 'rxjs';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { trigger, transition, style, animate } from '@angular/animations';
+import { PaymentDialogComponent } from 'src/app/components/payment-dialog/payment-dialog.component';
+import { ModalData } from 'src/app/models/modal-data';
 
 @Component({
   selector: 'app-home-page',
@@ -20,9 +22,9 @@ import { trigger, transition, style, animate } from '@angular/animations';
 })
 export class HomePageComponent implements OnInit, OnDestroy {
   subscriptions = new Subscription();
-  usersList = [] as Users[];
+  usersList = [] as User[];
   windowWidth = window.screen.width;
-  bsModalRef: BsModalRef;
+  modalRef: BsModalRef;
   isLoaded = false;
 
   constructor(
@@ -43,7 +45,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
     );
   }
 
-  private handleListOfUsersResponse(response: Users[]) {
+  private handleListOfUsersResponse(response: User[]) {
     if (response && response.length) {
       this.usersList = response;
     } else {
@@ -51,20 +53,24 @@ export class HomePageComponent implements OnInit, OnDestroy {
     }
   }
 
-  makePayment() {
-    const initialState = {
-      list: [
-        'Open a modal with component',
-        'Pass your data',
-        'Do something else',
-        '...',
-      ],
-      title: 'Modal with component',
+  openMakePaymentDialog(user: User) {
+    const modalData: ModalData<User> = {
+      outerData: user,
     };
-    this.bsModalRef = this.modalService.show(ModalContentComponent, {
-      initialState,
+
+    this.modalRef = this.modalService.show(PaymentDialogComponent, {
+      class: 'modal-580 modal-dialog-centered',
+      ignoreBackdropClick: true,
+      initialState: modalData,
     });
-    this.bsModalRef.content.closeBtnName = 'Close';
+  }
+
+  handleClosingDialog() {
+    this.subscriptions.add(
+      this.modalService.onHide.subscribe(() => {
+        this.modalRef.hide();
+      }),
+    );
   }
 
   ngOnDestroy() {

@@ -1,16 +1,16 @@
 <div class="container py-5 px-3 px-lg-5">
   <div class="row px-4 px-md-0">
     <div class="col">
-      <h1 class="title">Bem vindo ao sistema!</h1>
+      <h1 class="title">Bem vindo(a) ao sistema!</h1>
     </div>
   </div>
   <div class="row mb-5 px-4 px-md-0">
     <div class="col">
-      <small class="text-grey">
+      <span class="text-grey">
         A lista abaixo apresenta os {{ usersList.length }} usuários ativos em
         sua rede. Utilize o botão "pagar" para efetuar o pagamento de valores
-        até R$ 8.000 (limite diário).
-      </small>
+        até R$ 5.000,00 (limite diário).
+      </span>
     </div>
   </div>
   <app-loading *ngIf="!isLoaded"></app-loading>
@@ -43,14 +43,14 @@
   <div *ngIf="isLoaded" class="row users-list-container mt-3 px-4 px-md-0">
     <div
       @fadeIn
-      *ngFor="let item of usersList"
+      *ngFor="let user of usersList"
       class="col-12 d-flex flex-wrap user-card mt-4 px-1 px-sm-4 py-1"
     >
       <div
         class="col-12 col-sm-8 mt-4 my-sm-0 info-user d-flex flex-wrap align-items-center"
       >
         <div class="col-4 col-lg-3 foto-user-container">
-          <img [src]="item.img" [alt]="item.name" class="user-photo" />
+          <img [src]="user.img" [alt]="user.name" class="user-photo" />
         </div>
         <div class="col-8 col-lg-9 d-flex flex-wrap text-data-container">
           <div class="col-12 col-lg-4 mb-2 mb-lg-0">
@@ -58,14 +58,14 @@
               <span class="mr-2 d-inline d-lg-none">Cód.:</span>
             </strong>
             <strong>
-              <span>{{ item.id }}</span>
+              <span>{{ user.id }}</span>
             </strong>
           </div>
           <div class="col-12 col-lg-4">
-            <span>{{ item.name }}</span>
+            <span>{{ user.name }}</span>
           </div>
           <div class="col-12 col-lg-4 text-grey">
-            <span>{{ item.username }}</span>
+            <span>{{ user.username }}</span>
           </div>
         </div>
       </div>
@@ -76,7 +76,7 @@
           <button
             type="button"
             class="btn btn-success action-payment"
-            (click)="makePayment()"
+            (click)="openMakePaymentDialog(user)"
           >
             {{
               windowWidth && windowWidth >= 768 ? 'Efetuar Pagamento' : 'Pagar'
