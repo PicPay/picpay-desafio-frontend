@@ -1,5 +1,5 @@
 export interface CreditCard {
     card_number: string;
-    ccv: number;
+    cvv: number;
     expire_date: string;
 }

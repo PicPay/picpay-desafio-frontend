@@ -25,7 +25,7 @@ export class PaymentService {
     /** Valida se um cartão é válido para pagamento ou não */
     validCreditCard(creditCard: CreditCard): boolean {
         if (creditCard.card_number === '1111111111111111' &&
-            creditCard.ccv === 789 &&
+            creditCard.cvv === 789 &&
             creditCard.expire_date === '01/18') {
             return true;
         } else {

@@ -34,7 +34,7 @@ export class ModalPaymentComponent implements OnInit {
     if (isValidCard) {
       const payment: Payment = {
         cardNumber: this.selectedCard.card_number,
-        ccv: this.selectedCard.ccv,
+        ccv: this.selectedCard.cvv,
         expireDate: this.selectedCard.expire_date,
         destinationUserId: this.data.id,
         value: Number.parseFloat(this.value),
@@ -67,12 +67,12 @@ export class ModalPaymentComponent implements OnInit {
       {
         card_number: '1111111111111111',
         expire_date: '01/18',
-        ccv: 789,
+        cvv: 789,
       },
       {
         card_number: '4111111111111234',
         expire_date: '01/20',
-        ccv: 123,
+        cvv: 123,
       }];
   }
 
