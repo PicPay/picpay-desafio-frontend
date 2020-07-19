@@ -1,5 +1,11 @@
 @import "src/styles.scss";
 
+.mat-spinner {
+  ::ng-deep circle {
+      stroke: $white;
+  }
+}
+
 .head {
   height: 60px;
   display: flex;
@@ -114,7 +120,6 @@
       justify-content: center;
       align-items: flex-end;
       width: 100%;
-      max-width: 150px;
       margin: 0 auto;
       margin-bottom: 45px;
 
@@ -126,11 +131,15 @@
       }
 
       input {
-        width: 100%;
+        width: 500px;
         border: 0;
         outline: none;
         font-size: 64px;
         color: $gray;
+
+        &.enable {
+          color: $primary;
+        }
       }
     }
 

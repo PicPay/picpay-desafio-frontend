@@ -31,8 +31,13 @@
       Qual será o valor?
     </div>
     <div class="money-input">
-      <span class="prefix">R$</span>
-      <input currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',' }" />
+      <input 
+        currencyMask 
+        [options]="{ align: 'center', prefix: 'R$ ', thousands: '.', decimal: ',' }" 
+        [(ngModel)]="checkout.value"
+        maxlength="8"
+        (keyup)="valueChange()"
+        [ngClass]="{enable: canPay}"/>
     </div>
     <a *ngIf="hasCard" class="payment-form" routerLink="/cartoes">
       <i class="material-icons">
@@ -60,8 +65,11 @@
         </div>
       </div>
     </a>
-    <button class="btn btn-primary">
-      Pagar agora
+    <button class="btn btn-primary" (click)="sendPayment()">
+      <ng-template [ngIf]="loading">
+        <mat-spinner [diameter]="20"></mat-spinner>
+      </ng-template>
+      <ng-template [ngIf]="!loading">Pagar agora</ng-template>
     </button>
   </div>
 </div>

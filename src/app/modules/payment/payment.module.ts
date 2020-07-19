@@ -9,6 +9,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { NgxCurrencyModule } from 'ngx-currency';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxMaskModule } from 'ngx-mask';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -24,7 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
     CheckoutComponent,
     CardCreateComponent,
     CardReadComponent,
-    MaskNumber
+    MaskNumber,
   ],
   imports: [
     PaymentRoutingModule,
@@ -32,6 +33,7 @@ import { HttpClientModule } from '@angular/common/http';
     NgxCurrencyModule,
     MatFormFieldModule,
     MatInputModule,
+    MatProgressSpinnerModule,
     FormsModule,
     ReactiveFormsModule,
     NgxMaskModule.forRoot(),

@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class UserComponent implements OnInit {
 
   users: User[];
+  loading = false;
 
   constructor(
     private userService: UserService,
@@ -18,7 +19,9 @@ export class UserComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.loading = true;
     this.userService.read().subscribe(users => {
+      this.loading = false;
       this.users = users;
     });
   }

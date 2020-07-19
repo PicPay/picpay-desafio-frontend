@@ -3,26 +3,31 @@
     Usuários
   </span>
 </div>
-<div class="list">
-  <div class="card" *ngFor="let user of users">
-    <div class="user">
-      <div class="picture">
-        <img [src]="user.img" alt="Imagem do usuário">
-      </div>
-      <div class="name">
-        <div class="full">
-          {{ user.name }}
+<ng-template [ngIf]="loading">
+  <mat-spinner [diameter]="50"></mat-spinner>
+</ng-template>
+<ng-template [ngIf]="!loading">
+  <div class="list">
+    <div class="card" *ngFor="let user of users">
+      <div class="user">
+        <div class="picture">
+          <img [src]="user.img" alt="Imagem do usuário">
         </div>
-        <div class="username">
-          {{ user.username }}
+        <div class="name">
+          <div class="full">
+            {{ user.name }}
+          </div>
+          <div class="username">
+            {{ user.username }}
+          </div>
         </div>
       </div>
+      <a class="pay" (click)="payUser(user)">
+        <i class="material-icons">
+          attach_money
+        </i>
+        Pagar
+      </a>
     </div>
-    <a class="pay" (click)="payUser(user)">
-      <i class="material-icons">
-        attach_money
-      </i>
-      Pagar
-    </a>
   </div>
-</div>
+</ng-template>
