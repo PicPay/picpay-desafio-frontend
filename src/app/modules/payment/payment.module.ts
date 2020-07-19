@@ -1,6 +1,6 @@
 import { CardCreateComponent } from './card/card-create/card-create.component';
 import { CardReadComponent } from './card/card-read/card-read.component';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UserComponent } from './user/user.component';
 import { PaymentComponent } from './payment.component';
@@ -40,6 +40,9 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     MatSnackBarModule,
     HttpClientModule
+  ],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
   ],
   exports: [PaymentComponent]
 })
