@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Usuários</h1>
+      <div>
+        <div *ngIf="arrUsers.length === 0">
+          <ngx-skeleton-loader
+            count="10"
+            [theme]="{
+              'border-radius': '10px',
+              height: '120px'
+            }"
+          ></ngx-skeleton-loader>
+        </div>
+        <ul class="users" *ngIf="arrUsers.length > 0">
+          <li class="users__item" *ngFor="let user of arrUsers">
+            <div class="d-flex">
+              <img [src]="user.img" [alt]="user.name" />
+              <div class="users__body">
+                <div>
+                  <p class="users__title title">
+                    {{ user.name }}
+                  </p>
+                  <p class="users__desc">ID: {{ user.id }}</p>
+                </div>
+                <p class="users__hash d-flex">
+                  <span class="d-none d-sm-block">Username:&nbsp;</span>
+                  <span>{{ user.username }}</span>
+                </p>
+              </div>
+            </div>
+
+            <button (click)="modalPayment(user)" class="btn-primary">
+              Pagar
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

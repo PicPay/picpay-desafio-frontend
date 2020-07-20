@@ -1,0 +1,62 @@
+<app-spinner *ngIf="loading"></app-spinner>
+<div class="modal-header">
+  <h4 class="modal-title pull-left">Pagamento para {{ user?.name }}</h4>
+  <button
+    type="button"
+    class="close pull-right"
+    aria-label="Close"
+    (click)="bsModalRef.hide()"
+  >
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body d-flex flex-column" [formGroup]="paymentForm">
+  <p>Selecione ao menos um cartão para realizar o pagamento:</p>
+  <div class="cards-payment d-flex justify-content-center flex-wrap">
+    <div
+      class="card__payment d-flex flex-column justify-content-end"
+      *ngFor="let card of cards"
+      (click)="toggleCard(card)"
+      [ngClass]="{ actived: selectedCard?.card_number === card.card_number }"
+    >
+      <div class="card__payment__numbers">
+        {{ card.card_number | maskCard }}
+      </div>
+      <div class="card__payment__footer d-flex">
+        <div class="cvv">
+          <p>CVV</p>
+          <P>{{ card.cvv }}</P>
+        </div>
+        <div class="valid">
+          <p>VALID THRU</p>
+          <P>{{ card.expiry_date }}</P>
+        </div>
+      </div>
+    </div>
+    <div class="erros" *ngIf="submitted && !selectedCard">
+      <p>É necessário selecionar um cartão</p>
+    </div>
+  </div>
+
+  <div class="form-group value-transf mt-4">
+    <label for="payment">Valor a pagar</label>
+    <input
+      currencyMask
+      type="tel"
+      class="form-control"
+      id="payment"
+      placeholder="R$ 0,00"
+      [ngClass]="{ 'is-invalid': submitted && control.value.errors }"
+      formControlName="value"
+    />
+    <app-errors-input
+      [errors]="submitted && control.value.errors"
+    ></app-errors-input>
+  </div>
+</div>
+<div class="modal-footer">
+  <button (click)="bsModalRef.hide()">
+    Fechar
+  </button>
+  <button class="btn-primary" (click)="submit()">Pagar</button>
+</div>

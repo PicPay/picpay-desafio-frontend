@@ -1,0 +1,46 @@
+img {
+  max-width: 100%;
+  width: 80px;
+}
+
+.modal-body.done {
+  background-color: #27ae60;
+}
+
+.modal-body.error {
+  background-color: #c0392b;
+}
+
+.modal__body--title {
+  font-weight: 700;
+  color: #fff;
+}
+
+.modal-footer {
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  > button {
+    background: #fff;
+    font-weight: 700;
+    border-radius: 6px;
+    width: 80%;
+    padding: 1rem;
+  }
+}
+
+.modal-footer.done {
+  background: #27ae60;
+  button {
+    color: #27ae60;
+  }
+}
+
+.modal-footer.error {
+  background: #c0392b;
+  button {
+    color: #c0392b;
+  }
+}

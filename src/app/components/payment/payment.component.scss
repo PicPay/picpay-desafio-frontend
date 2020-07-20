@@ -1,0 +1,106 @@
+.modal-header {
+  padding: 2rem;
+  background-color: #1b1264;
+
+  > h4 {
+    font-weight: 700;
+    color: #fff;
+  }
+}
+
+.modal-body {
+  > p {
+    margin: 0.5em 0 0.8em 23px;
+    font-weight: 700;
+    color: #707070;
+  }
+}
+
+.card__payment {
+  width: 300px;
+  height: 150px;
+  background-color: #dedede;
+  border-radius: 10px;
+  padding: 1rem 2rem;
+  margin: 10px;
+  cursor: pointer;
+  transition: all 0.1s;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+
+  &:hover,
+  &.actived {
+    background-color: #1b1264;
+    color: #fff;
+    .card__payment__numbers {
+      color: #fff;
+    }
+  }
+
+  .card__payment__numbers {
+    font-weight: 800;
+    color: #3e3e3e;
+    font-size: 1.1rem;
+  }
+
+  .card__payment__footer {
+    margin-top: 20px;
+    font-size: 0.8rem;
+    div {
+      > p:nth-child(1) {
+        opacity: 0.5;
+      }
+      > p:nth-child(2) {
+        font-weight: 800;
+      }
+    }
+  }
+}
+.cvv {
+  margin-right: 20px;
+}
+
+.value-transf {
+  padding: 0 23px;
+  label {
+    font-weight: 600;
+    color: #707070;
+  }
+  input {
+    height: 50px;
+  }
+}
+
+.modal-footer {
+  button:nth-child(1) {
+    border: 1px solid #06bbd2;
+    padding: 0.7125rem 2.125rem;
+    color: #06bbd2;
+    margin-right: 15px;
+    background-color: #fff;
+    font-weight: 700;
+    border-radius: 6px;
+    outline: none;
+  }
+}
+
+.erros {
+  width: 100%;
+  padding: 0 23px;
+  p {
+    margin: 5px 0 0 0;
+    padding: 0;
+    font-size: 0.8rem;
+    color: red;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .modal-footer {
+    button:nth-child(1) {
+      flex: 0 1 40%;
+    }
+    button:nth-child(2) {
+      flex: 0 1 50%;
+    }
+  }
+}

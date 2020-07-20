@@ -1,0 +1,13 @@
+<p *ngIf="errosTemp?.required">Campo de preenchimento obrigatório</p>
+<p *ngIf="errosTemp?.email">Informe um endereço de email válido</p>
+<p *ngIf="errosTemp?.cpf">Informe de um CPF válido</p>
+<p *ngIf="errosTemp?.telefone">Informe um telefone válido</p>
+<p *ngIf="errosTemp?.filesLimit">
+  Permitido no máximo: {{ errosTemp?.filesLimit.max }} arquivo(s)
+</p>
+<p *ngIf="errosTemp?.maxlength">
+  Permitido no máximo: {{ errosTemp?.maxlength.requiredLength }} caracteres.
+  Atualmente: {{ errosTemp?.maxlength.actualLength }}
+</p>
+<p *ngIf="errosTemp?.min">Valor mínimo para pagamento R$ 10,00</p>
+<p *ngIf="errosTemp?.max">Valor máximo para pagamento R$ 10.000,00</p>

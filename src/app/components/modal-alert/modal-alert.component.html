@@ -1,0 +1,41 @@
+<div class="modal-body" [ngClass]="data?.success ? 'done' : 'error'">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h3 class="text-center mt-5 mb-5 text-white font-weight-bold">
+          Recibo de pagamento
+        </h3>
+      </div>
+      <div class="col-md-12 text-center">
+        <img
+          *ngIf="data?.success"
+          src="../../../assets/img/done.svg"
+          alt="Sucesso"
+        />
+        <img
+          *ngIf="!data?.success"
+          src="../../../assets/img/close.svg"
+          alt="Erro"
+        />
+        <div class="msg text-center mt-5">
+          <h3 class="text-white font-weight-normal">
+            {{ data?.success ? 'Sucesso' : 'Falha' }}!
+          </h3>
+          <h4 class="mt-3 text-white font-weight-normal">
+            O seu pagamento {{ data?.success ? '' : 'não' }} foi realizado
+            {{ data?.success ? '😎' : '😭' }}.
+          </h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-footer" [ngClass]="data?.success ? 'done' : 'error'">
+  <button
+    type="button"
+    class="btn btn-default mt-5 mb-5"
+    (click)="bsModalRef.hide()"
+  >
+    Continuar
+  </button>
+</div>

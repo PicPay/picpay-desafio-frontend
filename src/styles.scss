@@ -1,10 +1,45 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap');
+
 * {
   box-sizing: border-box;
 }
 
 html,
-body {
-  font-family: sans-serif;
+body,
+P {
+  font-family: 'Nunito', sans-serif;
   margin: 0;
   padding: 0;
+}
+
+.modal-dialog {
+  max-width: 700px;
+}
+
+.close {
+  color: #fff;
+  text-shadow: none;
+  opacity: 1;
+  outline: none;
+  &:hover {
+    color: #fff;
+    opacity: 1;
+  }
+  &:focus {
+    outline: none;
+  }
+}
+
+button.btn-primary {
+  border-radius: 6px;
+  border: none;
+  color: #fff;
+  background-color: #06bbd2;
+  padding: 0.8125rem 3.125rem;
+  font-weight: 700;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  transition: all 0.5s;
+  outline: none;
+  user-select: none;
 }
