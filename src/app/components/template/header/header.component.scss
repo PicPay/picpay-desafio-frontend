@@ -1,0 +1,25 @@
+@charset 'UTF-8';
+@import './src/assets/colors/colors.scss';
+$displayflex: 'flex';
+$alignItens: 'center';
+
+.header {
+    display: displayflex;
+    align-items: alignItens;
+    padding-top: 0.5rem;
+    background-color: $myDarkBlue;
+    margin-bottom: 5px;
+    .a {
+        display: displayflex;
+        align-items: alignItens;
+        text-decoration: none;
+    }
+
+    .logo {
+        max-height: 50px;
+    }
+    span {
+        padding-right: 0.5rem;
+        color: $myGreen;
+    }
+}

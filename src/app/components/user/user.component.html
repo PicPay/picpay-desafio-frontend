@@ -1,0 +1,15 @@
+<div class="users" *ngFor="let user of users">
+  <div class="user">
+    <app-user-picture [image]="user.img"></app-user-picture>
+    <app-username [user]="user"></app-username>
+    <div class="pay-button" (click)="open('payment-modal', user)">
+     <a type="button"> Pagar</a>
+    </div>
+  </div>
+</div>
+<modal id="payment-modal">
+<app-payment-form [showModal]="showModal" [transaction]="transaction" (response)="getResponseMessage($event)"></app-payment-form>
+</modal>
+<modal id="message-modal">
+  <app-message [showMessage]="showMessage" [message]="message"></app-message>
+</modal>

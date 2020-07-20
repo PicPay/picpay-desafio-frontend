@@ -1,0 +1,93 @@
+@charset 'UTF-8';
+@import './src/assets/colors/colors.scss';
+
+.modal-backdrop {
+  height: 400px;
+  width: 450px;
+  background-color: shade($backgroundColor, 96%);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;       
+
+   .title {
+    font-weight: 500;
+    font-size: 16px;
+    padding: 25px 25px;
+    background-color: $myDarkBlue;
+    width: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .modal-payment > .title > span {
+    color: $myGreen;
+  }
+  
+  .modal-payment > .content {
+    padding: 0px 32px 32px;
+    text-align: center;
+  }
+
+   .input-value > input,  .modal-payment > .content > .cards > .select-card {
+    background: $myWhite;
+    border: $inputBorderColor;
+    border-radius: 6px;
+    font-size: 25px;
+    height: 48px;
+    padding: 0 8px;
+    width: 70%;
+    margin-top: 12px;
+    -moz-appearance: textfield;
+    appearance: textfield;
+    &:hover,
+    &:focus,
+    &:active,
+    &:focus{
+      background-color: $myWhite;
+      transition:0.5s;
+    }
+    
+  }  
+ 
+  .pay-button {
+    margin-left: auto;
+    background:$myGreen;
+    border-radius: 40px;
+    color: $myWhite;
+    width: 100%;
+    display: inline-block;
+    line-height: 40px;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.25s ease-in;
+    max-width: 154px;
+    text-align: center;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0 8px;
+    margin: 24px 2px 2px 2px;
+    outline-style: none;
+    border:none;
+    &:hover {
+      background-color: $buttonHover;
+    }  
+  }
+
+  .user {
+    background: shade($backgroundColor, 96%);;
+    color: $myDarkBlue;
+    padding: 30px 10px 15px 10px;  
+ 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    }
+  }  
