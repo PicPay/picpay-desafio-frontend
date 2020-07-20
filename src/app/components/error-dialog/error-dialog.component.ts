@@ -1,4 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-error-dialog',
@@ -9,7 +10,11 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 export class ErrorDialogComponent implements OnInit {
   msg = '';
 
-  constructor() {}
+  constructor(private modalRef: BsModalRef) {}
 
   ngOnInit() {}
+
+  closeDialog() {
+    this.modalRef.hide();
+  }
 }

@@ -4,6 +4,22 @@
   Override do Bootstrap
 */
 
+.page-link {
+  color: #17a2b8;
+  margin: 0 15px;
+  font-size: 1rem;
+  border: none;
+}
+
+.page-link:focus {
+  box-shadow: 0 0 0 0.2rem #545b6247;
+}
+
+.page-item.active .page-link {
+  border-color: #545b62;
+  background-color: #545b62;
+}
+
 button {
   &:focus {
     outline: none !important;
@@ -169,6 +185,10 @@ button {
   }
 }
 
+.modal-dialog {
+  transition: 0.2s ease-in-out;
+}
+
 @media (max-width: 576px) {
   h1 {
     font-size: 2rem;
@@ -192,5 +212,9 @@ button {
   .modal-footer {
     display: flex;
     flex-wrap: wrap;
+  }
+  .page-link {
+    margin: 0 5px;
+    font-size: 1.2rem;
   }
 }

@@ -24,9 +24,12 @@ import { AlertsService } from 'src/app/services/alerts/alerts.service';
 export class HomePageComponent implements OnInit, OnDestroy {
   subscriptions = new Subscription();
   usersList = [] as User[];
+  usersListAux = [] as User[];
   windowWidth = window.screen.width;
   modalRef: BsModalRef;
   isLoaded = false;
+  rowsPerPage = 4;
+  selectedPage = 1;
 
   constructor(
     private alert: AlertsService,
@@ -53,6 +56,12 @@ export class HomePageComponent implements OnInit, OnDestroy {
     } else {
       this.alert.showErrorToast();
     }
+  }
+
+  pageChanged(event: any) {
+    this.isLoaded = false;
+    this.selectedPage = event.page;
+    this.isLoaded = true;
   }
 
   openMakePaymentDialog(user: User) {

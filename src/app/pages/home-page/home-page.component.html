@@ -40,10 +40,17 @@
       </div>
     </div>
   </div>
-  <div *ngIf="isLoaded" class="row users-list-container mt-3 px-4 px-md-0">
+  <div *ngIf="isLoaded" class="row users-list-container my-3 px-4 px-md-0">
     <div
       @fadeIn
-      *ngFor="let user of usersList"
+      *ngFor="
+        let user of usersList
+          | slice
+            : (selectedPage === 1
+                ? 0
+                : selectedPage * rowsPerPage - rowsPerPage)
+            : (selectedPage === 1 ? rowsPerPage : selectedPage * rowsPerPage)
+      "
       class="col-12 d-flex flex-wrap user-card mt-4 px-1 px-sm-4 py-1"
     >
       <div
@@ -84,6 +91,21 @@
           </button>
         </div>
       </div>
+    </div>
+  </div>
+  <div *ngIf="usersList" class="row mt-5">
+    <div
+      class="col-12 px-4 px-md-0 d-flex justify-content-center align-items-center pagination-container"
+    >
+      <pagination
+        previousText="&lsaquo;"
+        nextText="&rsaquo;"
+        firstText="&laquo;"
+        lastText="&raquo;"
+        (pageChanged)="pageChanged($event)"
+        [boundaryLinks]="true"
+        [totalItems]="usersList.length"
+      ></pagination>
     </div>
   </div>
 </div>
