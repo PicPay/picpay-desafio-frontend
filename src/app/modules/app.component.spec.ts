@@ -33,17 +33,17 @@ describe('AppComponent', () => {
   });
 
   it('deve criar', () => {
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
+    const APP = fixture.debugElement.componentInstance;
+    expect(APP).toBeTruthy();
   });
 
   it(`deve ter o título 'Desafio Front-End'`, () => {
-    const de = fixture.debugElement.query(By.css('#header>.container>.text')).nativeElement;
-    expect(de.innerText).toContain('Desafio Front-End');
+    const DE = fixture.debugElement.query(By.css('#header>.container>.text')).nativeElement;
+    expect(DE.innerText).toContain('Desafio Front-End');
   });
 
   it('deve renderizar a logo', () => {
-    const de = fixture.debugElement.query(By.css('#header>.container>.logo')).nativeElement;
-    expect(de.src).toContain('assets/img/logo.png');
+    const DE = fixture.debugElement.query(By.css('#header>.container>.logo')).nativeElement;
+    expect(DE.src).toContain('assets/img/logo.png');
   });
 });

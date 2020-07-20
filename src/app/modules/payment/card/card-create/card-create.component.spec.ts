@@ -49,8 +49,8 @@ describe('CardCreateComponent', () => {
 
     fixture.detectChanges();
 
-    const button = fixture.debugElement.query(By.css('.btn-primary')).nativeElement;
+    const BUTTON = fixture.debugElement.query(By.css('.btn-primary')).nativeElement;
 
-    expect(button.disabled).toEqual(false);
+    expect(BUTTON.disabled).toEqual(false);
   });
 });

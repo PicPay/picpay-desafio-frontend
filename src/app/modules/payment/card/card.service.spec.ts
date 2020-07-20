@@ -32,7 +32,7 @@ describe('CardService', () => {
     };
   });
 
-  it('deve ser criado', () => {
+  it('deve criar', () => {
     expect(service).toBeTruthy();
   });
 

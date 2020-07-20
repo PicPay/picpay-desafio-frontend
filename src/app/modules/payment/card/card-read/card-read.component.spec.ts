@@ -13,8 +13,6 @@ describe('CardReadComponent', () => {
   let component: CardReadComponent;
   let fixture: ComponentFixture<CardReadComponent>;
 
-  let card: Card[];
-
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
@@ -34,29 +32,9 @@ describe('CardReadComponent', () => {
 
     fixture = TestBed.createComponent(CardReadComponent);
     component = fixture.componentInstance;
-
-    card = [
-      {
-        card_number: '1111111111111111',
-        cvv: 789,
-        expiry_date: '01/18'
-      }
-    ];
-
-    component.cards = card;
   });
 
   it('deve criar', () => {
     expect(component).toBeDefined();
-  });
-
-  describe('verifica conteúdo exibido no HTML', () => {
-    it('deve ter um cartao', () => {
-      fixture.detectChanges();
-
-      const de = fixture.debugElement.query(By.css('.number')).nativeElement;
-
-      expect(de.innerText).toContain('**** **** **** 1111');
-    });
   });
 });

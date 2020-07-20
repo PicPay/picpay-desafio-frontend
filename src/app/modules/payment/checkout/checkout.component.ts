@@ -63,6 +63,6 @@ export class CheckoutComponent implements OnInit {
   }
 
   valueChange(): void {
-    this.canPay = this.checkout.value > 0 ? true : false;
+    this.canPay = this.checkout.value > 0 && this.hasCard ? true : false;
   }
 }

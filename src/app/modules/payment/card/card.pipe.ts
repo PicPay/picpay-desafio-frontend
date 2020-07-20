@@ -6,11 +6,11 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class MaskNumber implements PipeTransform {
 
   transform(value: string, type: string = 'maskNumber'): string {
-    const lastFour = value.substr(value.length - 4);
+    const LAST_FOUR = value.substr(value.length - 4);
     if (type === 'lastFour') {
-      return lastFour;
+      return LAST_FOUR;
     }
-    return `**** **** **** ${lastFour}`;
+    return `**** **** **** ${LAST_FOUR}`;
   }
 
 }

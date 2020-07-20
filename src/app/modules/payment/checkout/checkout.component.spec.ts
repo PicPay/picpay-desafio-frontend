@@ -1,7 +1,9 @@
+import { UserService } from './../user/user.service';
+import { User } from './../user/user.model';
 import { MaskNumber } from './../card/card.pipe';
 import { By } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 
 import { CheckoutComponent } from './checkout.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
@@ -12,6 +14,10 @@ import { Overlay } from '@angular/cdk/overlay';
 describe('CheckoutComponent', () => {
   let component: CheckoutComponent;
   let fixture: ComponentFixture<CheckoutComponent>;
+
+  let user: User;
+
+  let service: UserService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -33,6 +39,17 @@ describe('CheckoutComponent', () => {
 
     fixture = TestBed.createComponent(CheckoutComponent);
     component = fixture.componentInstance;
+
+    service = TestBed.get(UserService);
+
+    user = {
+      id: 1,
+      name: 'Nome',
+      img: 'Imagem',
+      username: 'Nome de usuário'
+    };
+
+    service.setCurrentUser(user).subscribe();
   });
 
   it('deve criar', () => {
@@ -40,39 +57,38 @@ describe('CheckoutComponent', () => {
   });
 
   describe('verifica conteúdo exibido no HTML', () => {
-    it('deve ter um nome', () => {
+    it('deve ter um nome', async(() => {
       fixture.detectChanges();
 
-      const de = fixture.debugElement.query(By.css('.full')).nativeElement;
+      const DE = fixture.debugElement.query(By.css('.full')).nativeElement;
 
-      expect(de.innerText).toContain('Bernardo');
-    });
+      expect(DE.innerText).toContain('Nome');
+    }));
 
     it('deve ter um nome de usuário', () => {
       fixture.detectChanges();
 
-      const de = fixture.debugElement.query(By.css('.username')).nativeElement;
+      const DE = fixture.debugElement.query(By.css('.username')).nativeElement;
 
-      expect(de.innerText).toContain('bernardosm');
+      expect(DE.innerText).toContain('Nome de usuário');
     });
 
     it('deve ter uma imagem', () => {
       fixture.detectChanges();
 
-      const de = fixture.debugElement.query(By.css('.picture>img')).nativeElement;
+      const DE = fixture.debugElement.query(By.css('.picture>img')).nativeElement;
 
-      expect(de.src).toContain('Imagem');
+      expect(DE.src).toContain('Imagem');
     });
 
-    it('deve remover o disabled do botão quando o usuário digitar o valor', () => {
-      component.checkout.value = 1;
-      component.valueChange();
+    it('deve remover o disabled do botão quando o usuário digitar o valor e tiver cartão', () => {
+      component.canPay = true;
 
       fixture.detectChanges();
 
-      const button = fixture.debugElement.query(By.css('.btn-primary')).nativeElement;
+      const BUTTON = fixture.debugElement.query(By.css('.btn-primary')).nativeElement;
 
-      expect(button.disabled).toEqual(false);
+      expect(BUTTON.disabled).toEqual(false);
     });
   });
 });
