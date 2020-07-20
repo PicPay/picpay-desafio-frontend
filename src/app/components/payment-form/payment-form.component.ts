@@ -22,7 +22,7 @@ export class PaymentFormComponent implements OnInit {
   showError: boolean = false;
   formSend: boolean = false;
   form: FormGroup;
-  testPrice = 0;
+
   constructor(private cardService: CardService,
     private paymentService: PaymentService,
     private modalService: ModalService,
@@ -42,7 +42,7 @@ export class PaymentFormComponent implements OnInit {
       if (form.value) {
         let v: number = this.getNumber(form.value);
         this.form.patchValue({
-          value: this.currencyPipe.transform(v, 'BRL', 'symbol', '1.0-0')
+          value: this.currencyPipe.transform(form.value.replace(/\D/g, ''), 'BRL', 'symbol', '1.0-0')
         }, { emitEvent: false });
       }
     });
@@ -62,21 +62,27 @@ export class PaymentFormComponent implements OnInit {
 
   onSubmit() {
     this.formSend = true;
-    console.log(this.form.get('card').valid)
-    if ((this.form.get('value').valid && this.form.get('card').valid)) {      
+    let value = this.getNumber(this.form.get('value').value);
+    
+    if ((this.form.get('value').valid && 
+        this.form.get('card').valid) &&
+        value > 0) {      
       let selectedCard : Card = this.form.value.card;
       this.transaction.card_number = selectedCard.card_number;
       this.transaction.cvv = selectedCard.cvv;
       this.transaction.expiry_date = selectedCard.expiry_date;
-      this.transaction.value = this.getNumber(this.form.value.value);
+      this.transaction.value = value;
       this.createPayment(this.transaction);
     }
     else {
+      
       this.showError = true;
     }
   }
   getNumber(value: any): number {
-    return Number(value.replace(/\D/g, '').replace(/^0+/, ''));
+    if(value){
+    return Number(value.replace(/\D/g, '').replace(/^0+/, ''));}
+    return 0;
   }
 
   createPayment(transaction: TransactionPayload): void {
@@ -86,6 +92,7 @@ export class PaymentFormComponent implements OnInit {
           this.response.emit(response)
           this.form.get('value').reset()
           this.formSend = false;
+          this.showError = false;
         },
         (error: any) => console.log("Ocorreu um erro..."))
   }

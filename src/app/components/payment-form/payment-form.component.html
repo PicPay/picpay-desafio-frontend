@@ -9,7 +9,7 @@
             <div class="input-value">
                 <input matInput placeholder="R$ 0,00" class="form-control" formControlName="value" required min="0" autofocus>
             </div>
-            <div *ngIf="(!form.get('value').valid) && formSend">
+            <div *ngIf="((!form.get('value').valid) && formSend) || showError">
                 <mat-error>
                     Por favor insira um valor válido
                 </mat-error>
