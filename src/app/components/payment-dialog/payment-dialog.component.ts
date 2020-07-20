@@ -1,14 +1,13 @@
 import {
   Component,
   OnInit,
-  ChangeDetectionStrategy,
   ViewChildren,
   QueryList,
   ElementRef,
 } from '@angular/core';
 import { User } from 'src/app/models/user';
 import { ModalData } from 'src/app/models/modal-data';
-import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 import { FormBuilder, Validators, NgForm } from '@angular/forms';
 import { TransactionPayload } from 'src/app/models/transaction';
 import { TransactionsService } from 'src/app/services/transactions/transactions.service';
@@ -89,7 +88,7 @@ export class PaymentDialogComponent implements OnInit, ModalData<User> {
       this.isLoaded = true;
       this.modalRef.hide();
       this.alert.showErrorDialog(
-        'Houve um problema com a aprovação do seu cartão e o pagamento não foi aprovado :/. Você receberá mais informações em seu e-mail.',
+        'Houve um problema com a aprovação do seu cartão e o pagamento não foi aprovado. Você receberá mais informações em seu e-mail.',
       );
     }, 3000);
   }
@@ -111,6 +110,7 @@ export class PaymentDialogComponent implements OnInit, ModalData<User> {
         this.resetFormWithValue(ngForm);
       }
     } catch (ex) {
+      this.alert.showErrorToast();
       console.error(ex);
     } finally {
       this.isLoaded = true;

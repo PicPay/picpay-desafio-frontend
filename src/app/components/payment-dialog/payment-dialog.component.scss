@@ -121,6 +121,12 @@ hr.style-1 {
   }
 }
 
+@media (max-width: 360px) {
+  .payment-card-info {
+    font-size: 0.8rem;
+  }
+}
+
 @media (max-width: 580px) {
   .payment-card-info-container {
     height: fit-content;

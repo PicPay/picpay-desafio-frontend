@@ -7,9 +7,12 @@
   <div class="row mb-5 px-4 px-md-0">
     <div class="col">
       <span class="text-grey">
-        A lista abaixo apresenta os {{ usersList.length }} usuários ativos em
-        sua rede. Utilize o botão "pagar" para efetuar o pagamento de valores
-        até R$ 5.000,00 (limite diário).
+        A lista abaixo apresenta os usuários ativos em sua rede ({{
+          usersList.length
+        }}
+        no total). Utilize o botão
+        {{ windowWidth && windowWidth >= 768 ? 'Efetuar Pagamento' : 'Pagar' }}
+        para efetuar o pagamento de valores até R$ 5.000,00 (limite diário).
       </span>
     </div>
   </div>
@@ -93,7 +96,7 @@
       </div>
     </div>
   </div>
-  <div *ngIf="usersList" class="row mt-5">
+  <div *ngIf="usersList && isLoaded" class="row mt-5">
     <div
       class="col-12 px-4 px-md-0 d-flex justify-content-center align-items-center pagination-container"
     >

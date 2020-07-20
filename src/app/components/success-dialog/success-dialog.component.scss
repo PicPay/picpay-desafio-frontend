@@ -14,6 +14,12 @@
   border-top: none;
 }
 
+@media (max-width: 360px) {
+  .payment-success-image {
+    height: 185px;
+  }
+}
+
 @media (max-width: 576px) {
   .modal-footer {
     position: absolute;

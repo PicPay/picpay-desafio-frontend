@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { BsModalService } from 'ngx-bootstrap/modal';
 import { SuccessDialogComponent } from 'src/app/components/success-dialog/success-dialog.component';
-import { ModalData } from 'src/app/models/modal-data';
 import { ErrorDialogComponent } from 'src/app/components/error-dialog/error-dialog.component';
 
 @Injectable({

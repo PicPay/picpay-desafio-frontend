@@ -7,7 +7,7 @@ import {
   HttpErrorResponse,
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError, take, retry, tap } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 import { AlertsService } from '../alerts/alerts.service';
 
 @Injectable()
