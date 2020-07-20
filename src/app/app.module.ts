@@ -15,6 +15,18 @@ import { UserService } from './services/user/user.service';
 import { PaymentService } from './services/payment/payment.service';
 import { MatInputModule } from '@angular/material/input';
 import { ModalSuccessErrorComponent } from './components/modal-success-error/modal-success-error.component';
+import { CurrencyMaskConfig, CurrencyMaskModule, CURRENCY_MASK_CONFIG } from 'ng2-currency-mask';
+import { ReactiveFormsModule } from '@angular/forms';
+
+export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
+  align: 'left',
+  allowNegative: false,
+  decimal: ',',
+  precision: 2,
+  prefix: 'R$ ',
+  suffix: '',
+  thousands: '.'
+};
 
 
 @NgModule({
@@ -28,17 +40,20 @@ import { ModalSuccessErrorComponent } from './components/modal-success-error/mod
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
     MatButtonModule,
     MatDialogModule,
     MatFormFieldModule,
     FormsModule,
     MatSelectModule,
     BrowserAnimationsModule,
-    MatInputModule
+    MatInputModule,
+    CurrencyMaskModule
   ],
   providers: [
     PaymentService,
-    UserService
+    UserService,
+    { provide: CURRENCY_MASK_CONFIG, useValue: CustomCurrencyMaskConfig }
   ],
   bootstrap: [
     AppComponent

@@ -6,6 +6,8 @@ import { User } from 'src/app/models/user.model';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { ModalSuccessErrorComponent } from '../modal-success-error/modal-success-error.component';
 import { PaymentReturn } from 'src/app/models/payment-return.model';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { PaymentForm } from 'src/app/models/payment-form.model';
 
 @Component({
   selector: 'app-modal-payment',
@@ -17,27 +19,34 @@ export class ModalPaymentComponent implements OnInit {
   constructor(private paymentService: PaymentService,
               public dialog: MatDialog,
               public dialogRef: MatDialogRef<ModalPaymentComponent>,
-              @Optional() @Inject(MAT_DIALOG_DATA) public data: User) { }
+              @Optional() @Inject(MAT_DIALOG_DATA) public data: User,
+              private fb: FormBuilder) { }
 
   cards: Array<CreditCard> = [];
-  selectedCard: CreditCard;
-  value: string;
+  // selectedCard: CreditCard;
+  // value: string;
   message: string;
   responseStatus: PaymentReturn;
+  formPayment: FormGroup;
+  form: PaymentForm = new PaymentForm();
 
   ngOnInit() {
     this.loadCreditCards();
+    this.formPayment = new FormGroup({
+      moneyValue: new FormControl('', [Validators.required, Validators.minLength(2)]),
+      selectedCard: new FormControl('', [Validators.required])
+    });
   }
 
   async openSuccessOrErrorModal() {
-    const isValidCard = this.paymentService.validCreditCard(this.selectedCard);
+    const isValidCard = this.paymentService.validCreditCard(this.form.selectedCard);
     if (isValidCard) {
       const payment: Payment = {
-        cardNumber: this.selectedCard.card_number,
-        ccv: this.selectedCard.cvv,
-        expireDate: this.selectedCard.expire_date,
+        cardNumber: this.form.selectedCard.card_number,
+        ccv: this.form.selectedCard.cvv,
+        expireDate: this.form.selectedCard.expire_date,
         destinationUserId: this.data.id,
-        value: Number.parseFloat(this.value),
+        value: Number.parseFloat(this.form.moneyValue),
       };
       await this.postSendPayment(payment);
       this.message = 'O Pagamento foi concluído com sucesso!';
