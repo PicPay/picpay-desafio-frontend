@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 modal-header">
+      <button
+        type="button"
+        class="close pull-right"
+        aria-label="Close"
+        (click)="closeDialog()"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="container modal-body">
+      <div class="row my-4">
+        <div class="col-12">
+          <div class="col-12 d-flex justify-content-center align-items-center">
+            <img
+              class="payment-success-image"
+              alt="Pagamento confirmado"
+              src="../../../assets/svgs/undraw_order_confirmed_aaw7.svg"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="row my-3">
+        <div class="col-12 text-center">
+          <h1 class="title">Sucesso!</h1>
+        </div>
+      </div>
+      <div class="row my-3">
+        <div class="col-12 text-center">
+          <span class="text-grey">
+            {{ msg }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer pb-4 px-4">
+    <button
+      class="btn btn-success w-100 confirm-button"
+      (click)="closeDialog()"
+    >
+      Confirmar
+    </button>
+  </div>
+</div>

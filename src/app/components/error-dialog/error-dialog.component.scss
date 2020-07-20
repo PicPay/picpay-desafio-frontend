@@ -1,0 +1,24 @@
+.payment-error-image {
+  height: 235px;
+}
+
+.confirm-button {
+  height: 50px;
+}
+
+.modal-header {
+  border-bottom: none;
+}
+
+.modal-footer {
+  border-top: none;
+}
+
+@media (max-width: 576px) {
+  .modal-footer {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+  }
+}

@@ -8,13 +8,13 @@ import {
 } from '@angular/core';
 import { User } from 'src/app/models/user';
 import { ModalData } from 'src/app/models/modal-data';
-import { BsModalService } from 'ngx-bootstrap/modal';
-import { ModalDirective } from 'ngx-bootstrap/modal';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { FormBuilder, Validators, NgForm } from '@angular/forms';
 import { TransactionPayload } from 'src/app/models/transaction';
 import { TransactionsService } from 'src/app/services/transactions/transactions.service';
 import { PaymentCard } from 'src/app/models/payment-card';
 import * as dayjs from 'dayjs';
+import { AlertsService } from 'src/app/services/alerts/alerts.service';
 
 @Component({
   selector: 'app-payment-dialog',
@@ -34,7 +34,7 @@ export class PaymentDialogComponent implements OnInit, ModalData<User> {
     {
       card_number: '4111111111111234',
       cvv: 123,
-      expiry_date: dayjs('2020-08-31').format('MM/YY'),
+      expiry_date: dayjs('2020-01-31').format('MM/YY'),
     },
   ] as PaymentCard[];
   transactionForm = this.fb.group({
@@ -43,7 +43,7 @@ export class PaymentDialogComponent implements OnInit, ModalData<User> {
       null,
       [
         Validators.required,
-        Validators.min(0.01),
+        Validators.min(10.0),
         Validators.max(5000),
         Validators.maxLength(11),
       ],
@@ -51,45 +51,79 @@ export class PaymentDialogComponent implements OnInit, ModalData<User> {
   });
 
   transaction: TransactionPayload;
+  isLoaded = true;
 
   constructor(
     private fb: FormBuilder,
-    private modalService: BsModalService,
+    private alert: AlertsService,
+    private modalRef: BsModalRef,
     private transactionService: TransactionsService,
   ) {}
 
   ngOnInit() {}
 
-  onSubmit() {
+  onSubmit(ngForm: NgForm) {
     this.transactionForm.markAllAsTouched();
-    this.transactionForm.updateValueAndValidity();
 
     if (this.transactionForm.valid) {
-      alert('valido');
+      // Validação fake por conta do retorno sempre do servidor ser sempre positivo.
+      switch (this.transactionForm.get('card_number').value) {
+        case '4111111111111234':
+          this.showPaymentError();
+          break;
+        default:
+          this.postPayment(ngForm);
+      }
     } else {
-      console.log(this.transactionForm);
-      alert('inválido');
+      this.resetFormWithValue(ngForm);
+      this.alert.showErrorToast(
+        'Verifique o preenchimento das informações na tela',
+      );
     }
-    console.log(this.transactionForm.getRawValue());
   }
 
-  async postPayment() {
+  showPaymentError() {
+    // Código fake para simular uma request com falha
+    this.isLoaded = false;
+    setTimeout(() => {
+      this.isLoaded = true;
+      this.modalRef.hide();
+      this.alert.showErrorDialog(
+        'Houve um problema com a aprovação do seu cartão e o pagamento não foi aprovado :/. Você receberá mais informações em seu e-mail.',
+      );
+    }, 3000);
+  }
+
+  async postPayment(ngForm: NgForm) {
     try {
+      this.isLoaded = false;
       const response = await this.transactionService
         .postTransaction(this.transaction)
         .toPromise();
 
       if (response && response.success) {
-        // ... Sucesso
+        this.modalRef.hide();
+        this.alert.showSuccessDialog(
+          'O pagamento foi efetivado com sucesso. O comprovante será enviado para o seu e-mail e também para seu amigo(a).',
+        );
       } else {
-        // ... Falha
+        this.alert.showErrorToast();
+        this.resetFormWithValue(ngForm);
       }
     } catch (ex) {
       console.error(ex);
+    } finally {
+      this.isLoaded = true;
     }
   }
 
+  resetFormWithValue(ngForm: NgForm) {
+    ngForm.resetForm(ngForm.value);
+    ngForm.form.markAllAsTouched();
+    ngForm.form.updateValueAndValidity();
+  }
+
   closeDialog() {
-    this.modalService.hide(1);
+    this.modalRef.hide();
   }
 }

@@ -1,7 +1,8 @@
 <form
-  class="container px-5 py-3"
+  class="container px-0 px-sm-5 py-3 modal-container"
+  #transactionNgForm="ngForm"
   [formGroup]="transactionForm"
-  (ngSubmit)="onSubmit()"
+  (ngSubmit)="onSubmit(transactionNgForm)"
   autocomplete="off"
 >
   <div class="row">
@@ -18,6 +19,7 @@
     </div>
   </div>
   <div class="row my-4">
+    <app-loading [fullRelativeScreen]="true" *ngIf="!isLoaded"></app-loading>
     <div class="col-12 modal-body">
       <div class="row mb-4">
         <div class="col-12">
@@ -52,7 +54,9 @@
                 <div
                   class="card card-body col-12 d-flex flex-row w-100 my-2 p-2"
                 >
-                  <div class="col-8 d-flex flex-wrap align-items-center">
+                  <div
+                    class="col-8 d-flex flex-wrap align-items-center payment-card-info-container"
+                  >
                     <div class="col-12 payment-card-info">
                       <strong class="mr-2">CVV:</strong>
                       <span>{{ card.cvv }}</span>
@@ -84,7 +88,7 @@
               <app-errors-input
                 [form]="transactionForm"
                 [field]="'card_number'"
-                [requiredMsg]="'É necessário selecionar um cartão'"
+                [requiredMsg]="'É necessário selecionar um cartão acima'"
               ></app-errors-input>
             </div>
           </div>
@@ -99,7 +103,7 @@
             #input
             required
             currencyMask
-            min="0.01"
+            min="10.00"
             max="5000"
             id="transaction-value-input"
             class="form-control"
@@ -110,7 +114,9 @@
           <app-errors-input
             [form]="transactionForm"
             [field]="'value'"
-            [minValueMsg]="'O valor mínimo permitido para pagamentos é R$ 0,01'"
+            [minValueMsg]="
+              'O valor mínimo permitido para pagamentos é R$ 10,00'
+            "
             [maxValueMsg]="
               'O valor máximo permitido para pagamentos é R$ 5.000,00 por dia'
             "
@@ -120,11 +126,21 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-12 modal-footer pt-4 pb-2 px-0">
-      <button type="button" class="btn btn-light" (click)="closeDialog()">
+    <div class="col-12 modal-footer pt-4 pb-2 px-3 px-md-0">
+      <button
+        type="button"
+        class="btn btn-light action-payment-cancel my-2 mx-1 col-12 col-sm-3"
+        (click)="closeDialog()"
+      >
         Cancelar
       </button>
-      <button type="submit" class="btn btn-success">Concluir pagamento</button>
+      <button
+        type="submit"
+        class="btn btn-success action-payment-confirm my-2 mx-1 col-12 col-sm-5"
+        [disabled]="transactionNgForm.submitted"
+      >
+        Concluir pagamento
+      </button>
     </div>
   </div>
 </form>

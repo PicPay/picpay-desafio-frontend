@@ -6,6 +6,7 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { PaymentDialogComponent } from 'src/app/components/payment-dialog/payment-dialog.component';
 import { ModalData } from 'src/app/models/modal-data';
+import { AlertsService } from 'src/app/services/alerts/alerts.service';
 
 @Component({
   selector: 'app-home-page',
@@ -28,6 +29,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
   isLoaded = false;
 
   constructor(
+    private alert: AlertsService,
     private usersService: UsersService,
     private modalService: BsModalService,
   ) {}
@@ -49,7 +51,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
     if (response && response.length) {
       this.usersList = response;
     } else {
-      alert('Houve um erro com sua requisição');
+      this.alert.showErrorToast();
     }
   }
 
@@ -61,6 +63,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
     this.modalRef = this.modalService.show(PaymentDialogComponent, {
       class: 'modal-580 modal-dialog-centered',
       ignoreBackdropClick: true,
+      animated: false,
       initialState: modalData,
     });
   }

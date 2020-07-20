@@ -1,0 +1,196 @@
+@import './variables.scss';
+
+/* 
+  Override do Bootstrap
+*/
+
+button {
+  &:focus {
+    outline: none !important;
+  }
+}
+
+.btn-danger {
+  font-weight: 500;
+  background-color: $danger-color;
+  border-color: $danger-color;
+
+  &:disabled {
+    background-color: $danger-color;
+    border-color: $danger-color;
+  }
+
+  &:hover:not(:disabled) {
+    background-color: $danger-color-hover;
+    border-color: $danger-color-hover;
+  }
+
+  &:focus:not(:disabled) {
+    background-color: $danger-color-focus-and-active;
+    border-color: $danger-color-focus-and-active;
+    box-shadow: 0 0 0 0.2rem rgb(255 0 71 / 40%);
+  }
+
+  &:active:not(:disabled) {
+    background-color: $danger-color-focus-and-active;
+    border-color: $danger-color-focus-and-active;
+  }
+}
+
+.btn-success {
+  font-weight: 500;
+  background-color: $success-color;
+  border-color: $success-color;
+
+  &:disabled {
+    background-color: $success-color;
+    border-color: $success-color;
+  }
+
+  &:hover:not(:disabled) {
+    background-color: $success-color-hover;
+    border-color: $success-color-hover;
+  }
+
+  &:focus:not(:disabled) {
+    background-color: $success-color-focus-and-active;
+    border-color: $success-color-focus-and-active;
+    box-shadow: 0 0 0 0.2rem rgb(0 184 135 / 0.4);
+  }
+
+  &:active:not(:disabled) {
+    background-color: $success-color-focus-and-active;
+    border-color: $success-color-focus-and-active;
+  }
+}
+
+.btn-success:not(:disabled):not(.disabled).active,
+.btn-success:not(:disabled):not(.disabled):active,
+.show > .btn-success.dropdown-toggle {
+  background-color: $success-color-focus-and-active;
+  border-color: $success-color-focus-and-active;
+}
+
+.form-control {
+  height: 50px;
+  font-size: 1.3rem;
+  &:focus {
+    border: 1px solid #6c757d;
+    // box-shadow: 0 0 0 0.2rem rgba(108, 117, 125, 0.22);
+    box-shadow: unset;
+  }
+  &::placeholder {
+    color: $default-grey;
+  }
+
+  &.ng-touched.ng-invalid {
+    border: 1px solid $danger-color;
+  }
+}
+
+.modal-content {
+  border: none;
+  border-radius: 10px;
+}
+
+@media (max-width: 360px) {
+  .col,
+  .col-1,
+  .col-10,
+  .col-11,
+  .col-12,
+  .col-2,
+  .col-3,
+  .col-4,
+  .col-5,
+  .col-6,
+  .col-7,
+  .col-8,
+  .col-9,
+  .col-auto,
+  .col-lg,
+  .col-lg-1,
+  .col-lg-10,
+  .col-lg-11,
+  .col-lg-12,
+  .col-lg-2,
+  .col-lg-3,
+  .col-lg-4,
+  .col-lg-5,
+  .col-lg-6,
+  .col-lg-7,
+  .col-lg-8,
+  .col-lg-9,
+  .col-lg-auto,
+  .col-md,
+  .col-md-1,
+  .col-md-10,
+  .col-md-11,
+  .col-md-12,
+  .col-md-2,
+  .col-md-3,
+  .col-md-4,
+  .col-md-5,
+  .col-md-6,
+  .col-md-7,
+  .col-md-8,
+  .col-md-9,
+  .col-md-auto,
+  .col-sm,
+  .col-sm-1,
+  .col-sm-10,
+  .col-sm-11,
+  .col-sm-12,
+  .col-sm-2,
+  .col-sm-3,
+  .col-sm-4,
+  .col-sm-5,
+  .col-sm-6,
+  .col-sm-7,
+  .col-sm-8,
+  .col-sm-9,
+  .col-sm-auto,
+  .col-xl,
+  .col-xl-1,
+  .col-xl-10,
+  .col-xl-11,
+  .col-xl-12,
+  .col-xl-2,
+  .col-xl-3,
+  .col-xl-4,
+  .col-xl-5,
+  .col-xl-6,
+  .col-xl-7,
+  .col-xl-8,
+  .col-xl-9,
+  .col-xl-auto {
+    padding-right: 13px;
+    padding-left: 13px;
+  }
+}
+
+@media (max-width: 576px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  .btn {
+    height: 50px;
+  }
+
+  .modal-container {
+    margin: 0;
+    padding: 15px 15px !important;
+  }
+  .modal-dialog {
+    min-width: 100%;
+    margin: 0;
+  }
+  .modal-content {
+    border-radius: 0px;
+  }
+  .modal-footer {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}

@@ -1,0 +1,22 @@
+@import './variables.scss';
+
+.toast-success {
+  background-color: $success-color;
+}
+
+.toast-warning {
+  background-color: $warning-color;
+}
+
+.toast-error {
+  background-color: $danger-color;
+}
+
+.toast-container .ngx-toastr {
+  width: 385px;
+  box-shadow: none !important;
+
+  &:hover {
+    box-shadow: none !important;
+  }
+}
