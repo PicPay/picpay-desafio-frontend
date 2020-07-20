@@ -1,5 +1,6 @@
 @charset 'UTF-8';
 @import './src/assets/colors/colors.scss';
+@import './src/assets/button/button';
 
 .modal-backdrop {
   height: 400px;
@@ -51,43 +52,21 @@
     &:focus{
       background-color: $myWhite;
       transition:0.5s;
-    }
-    
-  }  
+    }    
+  }
  
   .pay-button {
-    margin-left: auto;
-    background:$myGreen;
-    border-radius: 40px;
-    color: $myWhite;
-    width: 100%;
-    display: inline-block;
-    line-height: 40px;
-    font-size: 16px;
-    font-weight: bold;
-    text-decoration: none;
-    transition: 0.25s ease-in;
-    max-width: 154px;
-    text-align: center;
-    box-sizing: border-box;
-    cursor: pointer;
-    transition: all 0.3s ease;
     padding: 0 8px;
     margin: 24px 2px 2px 2px;
-    outline-style: none;
-    border:none;
-    &:hover {
-      background-color: $buttonHover;
-    }  
   }
 
   .user {
     background: shade($backgroundColor, 96%);;
     color: $myDarkBlue;
     padding: 30px 10px 15px 10px;  
- 
     display: flex;
     align-items: center;
     justify-content: center;
+    
     }
   }  

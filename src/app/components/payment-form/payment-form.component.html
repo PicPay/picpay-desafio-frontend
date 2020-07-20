@@ -7,9 +7,9 @@
         </div>
         <form class="content" formGroup [formGroup]="form" (ngSubmit)="onSubmit(f)">
             <div class="input-value">
-                <input matInput placeholder="R$ 0,00" class="form-control" formControlName="value" required min="0" autofocus>
+                <input matInput placeholder="R$ 0,00" class="form-control" formControlName="value" required autofocus>
             </div>
-            <div *ngIf="((!form.get('value').valid) && formSend) || showError">
+            <div *ngIf="!form.get('value').valid && formSend">
                 <mat-error>
                     Por favor insira um valor válido
                 </mat-error>
@@ -22,7 +22,7 @@
                     </option>
                 </select>
             </div>
-            <div *ngIf="(!form.get('card').valid) && formSend">
+            <div *ngIf="!form.get('card').valid && formSend">
                 <mat-error>
                     Por favor insira um cartão válido
                 </mat-error>
