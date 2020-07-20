@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ErrorDialogComponent } from './error-dialog.component';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 
 describe('ErrorDialogComponent', () => {
   let component: ErrorDialogComponent;
@@ -8,9 +9,9 @@ describe('ErrorDialogComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ErrorDialogComponent ]
-    })
-    .compileComponents();
+      declarations: [ErrorDialogComponent],
+      providers: [BsModalRef],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

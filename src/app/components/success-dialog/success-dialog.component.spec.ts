@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SuccessDialogComponent } from './success-dialog.component';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 
 describe('SuccessDialogComponent', () => {
   let component: SuccessDialogComponent;
@@ -8,9 +9,9 @@ describe('SuccessDialogComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SuccessDialogComponent ]
-    })
-    .compileComponents();
+      providers: [BsModalRef],
+      declarations: [SuccessDialogComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

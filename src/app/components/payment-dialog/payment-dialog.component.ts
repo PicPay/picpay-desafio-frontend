@@ -110,7 +110,7 @@ export class PaymentDialogComponent implements OnInit, ModalData<User> {
         this.resetFormWithValue(ngForm);
       }
     } catch (ex) {
-      this.alert.showErrorToast();
+      this.resetFormWithValue(ngForm);
       console.error(ex);
     } finally {
       this.isLoaded = true;

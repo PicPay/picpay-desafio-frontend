@@ -5,7 +5,7 @@
   (ngSubmit)="onSubmit(transactionNgForm)"
   autocomplete="off"
 >
-  <div class="row">
+  <div *ngIf="outerData" class="row">
     <div class="col-12 modal-header">
       <h3 class="title modal-title pull-left">Pagar à {{ outerData.name }}</h3>
       <button
