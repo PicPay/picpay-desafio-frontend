@@ -1,0 +1,19 @@
+@charset 'UTF-8';
+$myWhite: hsl(150, 18%, 96%);
+$myShadow:  0 1px 0 hsl(0, 1%, 15%), 0px -1px 0px hsl(0, 9%, 82%);
+$borderBottom: 1px solid $myWhite;
+$myDarkBlue: hsl(195, 78%, 13%);
+
+
+$myGreen: hsl(151, 84%, 42%);
+$buttonHover: #11c76f85;
+$userNameColor: #072d3aa8;
+$backgroundColor: #f7fff7;
+
+$inputBorderColor:2px solid #ccc;
+
+@function shade($color, $percentage) {
+    @return mix($color, black, $percentage);
+  }
+
+  $hoverCloseButton: hsla(195, 79%, 13%, 0.705);

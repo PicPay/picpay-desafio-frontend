@@ -1,0 +1,5 @@
+@charset 'UTF-8';
+@import './src/assets/colors/colors';
+.transaction {
+    background: shade($backgroundColor, 92%);;
+}
