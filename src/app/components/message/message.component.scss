@@ -1,5 +1,5 @@
 @charset 'UTF-8';
-@import'./src/assets/colors/colors.scss';
+@import'./src/assets/colors/colors';
 .message {
  width: 400px; 
  height: 200px;
@@ -7,7 +7,7 @@
 .title {
     background: $myDarkBlue;
     font-weight: 500;
-    font-size: 16px;
+    font-size: 20px;
     padding: 16px 24px;
     text-align: center;
     span {
@@ -22,6 +22,6 @@
     text-align: center;
     height: 150px;
     background: shade($backgroundColor, 96%);
-
+    color: $myDarkBlue;
   }
 }

@@ -1,5 +1,5 @@
 @charset 'UTF-8';
-@import './src/assets/colors/colors.scss';
+@import './src/assets/colors/colors';
 @import './src/assets/button/button';
 
 .modal-backdrop {
@@ -17,7 +17,7 @@
 
    .title {
     font-weight: 500;
-    font-size: 16px;
+    font-size: 20px;
     padding: 25px 25px;
     background-color: $myDarkBlue;
     width: 450px;

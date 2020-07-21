@@ -14,10 +14,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalModule } from './components/template/modal/';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { TransformCardNumber } from './components/pipes/transform-card-number.pipe';
 import { UserPictureComponent } from './components/user-picture/user-picture.component';
 import { UsernameComponent } from './components/username/username.component';
 import { CurrencyPipe } from '@angular/common';
+import { CardNumberPipe } from './components/pipes/card-number.pipe';
 
 @NgModule({
   declarations: [
@@ -27,9 +27,9 @@ import { CurrencyPipe } from '@angular/common';
     HeaderComponent,
     TransactionComponent,
     MessageComponent,
-    TransformCardNumber,
     UserPictureComponent,
-    UsernameComponent
+    UsernameComponent,
+    CardNumberPipe
   ],
   imports: [
     BrowserModule,

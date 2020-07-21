@@ -1,5 +1,5 @@
 @charset 'UTF-8';
-@import './src/assets/colors/colors.scss';
+@import './src/assets/colors/colors';
 @import './src/assets/button/button';
 .user {
     background: shade($backgroundColor, 96%);
