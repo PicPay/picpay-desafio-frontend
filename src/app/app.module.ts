@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { LOCALE_ID, NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
 import { UserComponent } from './components/user/user.component';
 import { PaymentFormComponent } from './components/payment-form/payment-form.component';
@@ -13,11 +12,11 @@ import { MessageComponent } from './components/message/message.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalModule } from './components/template/modal/';
 import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
 import { UserPictureComponent } from './components/user-picture/user-picture.component';
 import { UsernameComponent } from './components/username/username.component';
 import { CurrencyPipe } from '@angular/common';
 import { CardNumberPipe } from './components/pipes/card-number.pipe';
+
 
 @NgModule({
   declarations: [
@@ -39,8 +38,7 @@ import { CardNumberPipe } from './components/pipes/card-number.pipe';
     FormsModule,
     ReactiveFormsModule,
     ModalModule,
-    MatInputModule,
-    MatSelectModule
+    MatInputModule
   ],
   providers: [CurrencyPipe, {
     provide: LOCALE_ID,

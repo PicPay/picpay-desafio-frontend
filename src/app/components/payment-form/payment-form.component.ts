@@ -1,12 +1,12 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CurrencyPipe } from '@angular/common';
 import { PaymentService } from 'src/app/services/payment/payment.service';
 import { CardService } from 'src/app/services/card/card.service';
 import { Card } from 'src/app/models/card/card.model';
 import { TransactionPayload } from 'src/app/models/payment/transaction-payload.model';
 import { PaymentResponse } from 'src/app/models/result/payment-response.model';
 import { ModalService } from '../template/modal';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CurrencyPipe } from '@angular/common';
 import { NumberValidator } from './validators/numberValidator';
 
 @Component({
@@ -42,7 +42,6 @@ export class PaymentFormComponent implements OnInit {
 
     this.form.valueChanges.subscribe(form => {
       if (form.value) {
-
         this.form.patchValue({
           value: this.currencyPipe.transform(form.value.replace(/\D/g, ''), 'BRL', 'symbol', '1.0-0')
         }, { emitEvent: false });
@@ -66,13 +65,16 @@ export class PaymentFormComponent implements OnInit {
     this.formSend = true;
     if ((this.form.get('value').valid &&
       this.form.get('card').valid)) {
-      let selectedCard: Card = this.form.value.card;
-      this.transaction.card_number = selectedCard.card_number;
-      this.transaction.cvv = selectedCard.cvv;
-      this.transaction.expiry_date = selectedCard.expiry_date;
-      this.transaction.value = this.form.get('value').value;
-      this.createPayment(this.transaction);
+      this.createTransaction()
     }
+  }
+  createTransaction(): void {
+    let selectedCard: Card = this.form.value.card;
+    this.transaction.card_number = selectedCard.card_number;
+    this.transaction.cvv = selectedCard.cvv;
+    this.transaction.expiry_date = selectedCard.expiry_date;
+    this.transaction.value = (this.form.get('value').value).replace(/[^0-9.-]+/g,"");
+    this.createPayment(this.transaction);
   }
 
   createPayment(transaction: TransactionPayload): void {

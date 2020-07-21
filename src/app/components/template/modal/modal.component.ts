@@ -1,5 +1,4 @@
 import { Component, ViewEncapsulation, ElementRef, Input, OnInit, OnDestroy } from '@angular/core';
-
 import { ModalService } from './modal.service';
 
 @Component({
