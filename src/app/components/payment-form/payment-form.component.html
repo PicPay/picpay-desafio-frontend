@@ -7,13 +7,13 @@
         </div>
         <form class="content" formGroup [formGroup]="form" (ngSubmit)="onSubmit(f)">
             <div class="input-value">
-                <input type="text" matInput placeholder="R$ 0,00" class="form-control" formControlName="value" required autofocus>
+                <input #inputValue type="text" matInput placeholder="R$ 0,00" class="form-control" formControlName="value" [currencyMask]="{prefix: 'R$'}" required autofocus>
             </div>
             <div *ngIf="!form.get('value').valid && formSend">
-                <mat-error>
-                    Por favor insira um valor válido
+                <mat-error class="error">
+                    O valor mínimo de pagamento é de <b>R$ 0,50</b>
                 </mat-error>
-            </div> 
+            </div>
             <div class="cards">
                 <select class="select-card" formControlName="card" autofocus>
                     <option [disabled]="true" [selected]="true" [value]="">Selecione um cartão</option>
@@ -23,14 +23,14 @@
                 </select>
             </div>
             <div *ngIf="!form.get('card').valid && formSend">
-                <mat-error>
+                <mat-error class="error">
                     Por favor insira um cartão válido
                 </mat-error>
             </div> 
-            <button type="submit" class="pay-button">
+            <button type="submit" class="pay-button" (click)="inputValue.value = 'R$ 0,00'">
                 Pagar
             </button>
-            <button class="close-button" type="button" (click)="close('payment-modal')">
+            <button class="close-button" type="button" (click)="close()">
                 Fechar
             </button>
         </form>

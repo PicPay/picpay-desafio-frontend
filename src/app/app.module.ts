@@ -14,8 +14,8 @@ import { ModalModule } from './components/template/modal/';
 import { MatInputModule } from '@angular/material/input';
 import { UserPictureComponent } from './components/user-picture/user-picture.component';
 import { UsernameComponent } from './components/username/username.component';
-import { CurrencyPipe } from '@angular/common';
 import { CardNumberPipe } from './components/pipes/card-number.pipe';
+import { CurrencyMaskDirective } from './directives/currency-mask.directive';
 
 
 @NgModule({
@@ -28,7 +28,8 @@ import { CardNumberPipe } from './components/pipes/card-number.pipe';
     MessageComponent,
     UserPictureComponent,
     UsernameComponent,
-    CardNumberPipe
+    CardNumberPipe,
+    CurrencyMaskDirective
   ],
   imports: [
     BrowserModule,
@@ -40,10 +41,7 @@ import { CardNumberPipe } from './components/pipes/card-number.pipe';
     ModalModule,
     MatInputModule
   ],
-  providers: [CurrencyPipe, {
-    provide: LOCALE_ID,
-    useValue: "en-US"
-  }],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

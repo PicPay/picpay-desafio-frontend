@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CurrencyPipe } from '@angular/common';
 import { PaymentService } from 'src/app/services/payment/payment.service';
 import { CardService } from 'src/app/services/card/card.service';
 import { Card } from 'src/app/models/card/card.model';
@@ -15,20 +14,17 @@ import { NumberValidator } from './validators/numberValidator';
   styleUrls: ['./payment-form.component.scss']
 })
 export class PaymentFormComponent implements OnInit {
-  creditCards: Card[];
   @Input() transaction: TransactionPayload;
-  @Input() showModal: boolean = false;
-  @Output() response = new EventEmitter<PaymentResponse>();
-  errorResponse: PaymentResponse = { status: '', success: false };
-  showError: boolean = false;
+  @Output() response = new EventEmitter<PaymentResponse>();  
+  @Input() showModal:boolean;
+  creditCards: Card[];
+  idModal: string = 'payment-modal';
   formSend: boolean = false;
   form: FormGroup;
-
   constructor(private cardService: CardService,
     private paymentService: PaymentService,
     private modalService: ModalService,
-    private formBuilder: FormBuilder,
-    private currencyPipe: CurrencyPipe) { }
+    private formBuilder: FormBuilder) { }
 
 
   ngOnInit() {
@@ -39,14 +35,6 @@ export class PaymentFormComponent implements OnInit {
       value: ['', [Validators.required, NumberValidator.minValue()]],
       card: [null, Validators.required]
     });
-
-    this.form.valueChanges.subscribe(form => {
-      if (form.value) {
-        this.form.patchValue({
-          value: this.currencyPipe.transform(form.value.replace(/\D/g, ''), 'BRL', 'symbol', '1.0-0')
-        }, { emitEvent: false });
-      }
-    });
   }
 
   getCards(): void {
@@ -55,8 +43,8 @@ export class PaymentFormComponent implements OnInit {
     );
   }
 
-  close(id: string): void {
-    this.modalService.close(id);
+  close(): void {
+    this.modalService.close(this.idModal);
     this.form.get('value').reset()
     this.formSend = false;
   }
@@ -66,6 +54,7 @@ export class PaymentFormComponent implements OnInit {
     if ((this.form.get('value').valid &&
       this.form.get('card').valid)) {
       this.createTransaction()
+      this.modalService.close(this.idModal)
     }
   }
   createTransaction(): void {
@@ -73,7 +62,7 @@ export class PaymentFormComponent implements OnInit {
     this.transaction.card_number = selectedCard.card_number;
     this.transaction.cvv = selectedCard.cvv;
     this.transaction.expiry_date = selectedCard.expiry_date;
-    this.transaction.value = Number((this.form.get('value').value).replace(/[^0-9.-]+/g,""));
+    this.transaction.value = Number((this.form.get('value').value).replace(/[^0-9.-]+/g, ""));
     this.createPayment(this.transaction);
   }
 
