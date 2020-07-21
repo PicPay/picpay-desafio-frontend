@@ -73,7 +73,7 @@ export class PaymentFormComponent implements OnInit {
     this.transaction.card_number = selectedCard.card_number;
     this.transaction.cvv = selectedCard.cvv;
     this.transaction.expiry_date = selectedCard.expiry_date;
-    this.transaction.value = (this.form.get('value').value).replace(/[^0-9.-]+/g,"");
+    this.transaction.value = Number((this.form.get('value').value).replace(/[^0-9.-]+/g,""));
     this.createPayment(this.transaction);
   }
 

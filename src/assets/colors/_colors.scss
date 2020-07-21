@@ -15,3 +15,5 @@ $inputBorderColor:2px solid #ccc;
 @function shade($color, $percentage) {
     @return mix($color, black, $percentage);
   }
+
+  $hoverCloseButton: hsla(195, 79%, 13%, 0.705);

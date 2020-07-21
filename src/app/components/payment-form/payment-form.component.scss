@@ -10,20 +10,15 @@
   right: 0;
   bottom: 0;
   left: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;       
+  display: inline-block;
+  text-align: center;
 
    .title {
     font-weight: 500;
     font-size: 20px;
-    padding: 25px 25px;
+    padding: 20px 20px;
     background-color: $myDarkBlue;
     width: 450px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
   
   .modal-payment > .title > span {
@@ -32,41 +27,37 @@
   
   .modal-payment > .content {
     padding: 0px 32px 32px;
-    text-align: center;
   }
 
    .input-value > input,  .modal-payment > .content > .cards > .select-card {
     background: $myWhite;
     border: $inputBorderColor;
     border-radius: 6px;
-    font-size: 25px;
-    height: 48px;
+    font-size: 20px;
+    height: 40px;
     padding: 0 8px;
-    width: 70%;
-    margin-top: 12px;
-    -moz-appearance: textfield;
-    appearance: textfield;
+    width: 75%;
+    margin-top: 12px; 
     &:hover,
     &:focus,
     &:active,
-    &:focus{
+    &:focus {
       background-color: $myWhite;
       transition:0.5s;
     }    
   }
- 
+
   .pay-button {
     padding: 0 8px;
-    margin: 24px 2px 2px 2px;
+    margin: 15px 2px 2px 2px;
   }
 
   .user {
-    background: shade($backgroundColor, 96%);;
+    background: shade($backgroundColor, 96%);
     color: $myDarkBlue;
     padding: 30px 10px 15px 10px;  
     display: flex;
     align-items: center;
-    justify-content: center;
-    
+    justify-content: center;    
     }
   }  

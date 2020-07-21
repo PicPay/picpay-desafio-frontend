@@ -7,7 +7,7 @@
         </div>
         <form class="content" formGroup [formGroup]="form" (ngSubmit)="onSubmit(f)">
             <div class="input-value">
-                <input matInput placeholder="R$ 0,00" class="form-control" formControlName="value" required autofocus>
+                <input type="text" matInput placeholder="R$ 0,00" class="form-control" formControlName="value" required autofocus>
             </div>
             <div *ngIf="!form.get('value').valid && formSend">
                 <mat-error>
@@ -30,7 +30,7 @@
             <button type="submit" class="pay-button">
                 Pagar
             </button>
-            <button class="pay-button" type="button" (click)="close('payment-modal')">
+            <button class="close-button" type="button" (click)="close('payment-modal')">
                 Fechar
             </button>
         </form>

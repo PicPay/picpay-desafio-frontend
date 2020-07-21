@@ -19,6 +19,15 @@
     border:none;
     font-family: Roboto, "Helvetica Neue", sans-serif;
     &:hover {
-      background-color: $buttonHover;
+      background: $buttonHover;
     }     
+  }
+
+  .close-button {
+    @extend .pay-button;
+    background-color: $myDarkBlue;
+    color: $myGreen;
+    &:hover {
+      background:  $hoverCloseButton;
+    }
   }
