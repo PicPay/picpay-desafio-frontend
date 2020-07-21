@@ -24,7 +24,7 @@ export class CurrencyMaskDirective implements ControlValueAccessor, OnInit {
 
   ngOnInit() {
     this.decimalSeparator = this.mask.decimal || ',';
-    this.thousandSeparator = this.mask.milhar || '.';
+    this.thousandSeparator = this.mask.thousand || '.';
     this.prefix = this.mask.prefix || '';
   }
 
