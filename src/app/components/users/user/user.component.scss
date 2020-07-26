@@ -1,0 +1,86 @@
+@import "../../../themes/variables";
+
+.user {
+    background: #edf5ed;
+    box-shadow: 0 1px 0 hsl(0, 0%, 15%), 0px -1px 0px hsl(0, 10%, 85%);
+    border: 1.5px solid var(--border);
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+
+    > img {
+        border-radius: 50%;
+        height: 80px;
+        width: 80px;
+        border: 0.6px solid var(--white);
+    }
+
+    > .info-wrapper {
+        margin-left: 16px;
+    }
+}
+
+.pay-button {
+    margin-left: auto;
+    background: var(--picGreen);
+    border-radius: 30px;
+    color: var(--white);
+    min-width: 150px;    
+    line-height: 40px;
+    font-size: small;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.25s ease-in;
+    text-align: center;
+    cursor: pointer;
+    outline-style: none;
+    border: none;
+    margin-right: 2%;
+
+    &:hover {
+        background-color: var(--buttonHover);
+    }
+}
+
+@media (max-width: $mobile-break) {
+    .user {
+        background: #edf5ed;
+        box-shadow: 0 1px 0 hsl(0, 0%, 15%), 0px -1px 0px hsl(0, 10%, 85%);
+        border: 1.5px solid var(--border);
+        padding: 10px 15px;
+        display: flex;
+        align-items: center;
+
+        > img {
+            border-radius: 50%;
+            height: 60px;
+            width: 60px;
+            border: 0.6px solid var(--white);
+        }
+
+        > .info-wrapper {
+            margin-left: 16px;
+
+            > .user-name {
+                font-size: 0.9em;
+            }
+
+            > .user-id-username {
+                font-size: 0.8em;
+            }
+        }
+    }
+
+    .pay-button {
+        margin-left: auto;
+        background: var(--picGreen);
+        min-width: 70px;
+        color: var(--white);
+        line-height: 25px;
+        font-size: 13px;
+        font-weight: bold;
+        text-align: center;
+        cursor: pointer;
+        border: none;
+    }
+}

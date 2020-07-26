@@ -1,0 +1,14 @@
+<div class="user">
+    <img src="{{user.img}}" />
+    <div class="info-wrapper">
+        <div class="user-name">
+            {{user.name}}
+        </div>
+        <div class="user-id-username">
+            {{user.id}} - {{user.username}}
+        </div>
+    </div>
+    <button type="button" class="pay-button" (click)="openModal(user)">
+        Pagar
+    </button>    
+</div>
