@@ -1,0 +1,37 @@
+<div class="backdrop">
+    <div class="modal-payment">
+        <div class="title"><span>Pagamento para</span></div>
+        <div class="user">
+            <img class="image" src="{{user.img}}" />
+            <div class="username">
+                <p><strong>{{user.name}}</strong></p>
+                <p>{{user.username}}</p>
+            </div>
+        </div>
+        <form class="content" [formGroup]="form" (ngSubmit)="submit()">
+            <div class="input-value">                
+                <input required autofocus placeholder="R$ 0,00" class="form-control"  currencyMask formControlName="value" [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"/>
+            </div>
+            <div class="invalid" *ngIf="formControls.value.invalid && formControls.value.dirty">
+                É necessário informar um valor maior que R$0,00 para realizar a transação.
+            </div>
+            <div class="cards">
+                <select class="select-card" formControlName="card" autofocus>
+                    <option [disabled]="true" [selected]="true" [ngValue]="">Selecione um cartão</option>
+                    <option *ngFor="let card of cards" [ngValue]="card">
+                        {{ card.card_last_numbers}}
+                    </option>
+                </select>
+            </div>
+            <div class="invalid" *ngIf="formControls.card.invalid && formControls.card.dirty">
+                É necessário informar um cartão válido.
+            </div>
+            <button *ngIf="form.valid" type="submit" class="pay-button">
+                Pagar
+            </button>
+            <button class="close-button" type="button" (click)="close()">
+                Fechar
+            </button>
+        </form>
+    </div>
+</div>

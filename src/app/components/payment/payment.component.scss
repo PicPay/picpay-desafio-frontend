@@ -1,0 +1,100 @@
+.backdrop {
+    min-height: 400px;
+
+    > .modal-payment {
+        > .title {
+            text-align: center;
+            color: var(--white);
+            background-color: var(--picGreen);
+            font-size: 1.3rem;
+        }
+
+        > .user {
+            padding: 0.6rem;
+            text-align: center;
+
+            > .username p {
+                margin-bottom: 0;
+            }
+            > .image {
+                border-radius: 50%;
+            }
+        }
+
+        > .content {
+            text-align: center;
+            padding: 0rem 0.6rem;
+
+            > .input-value {
+                > input {
+                    background: #f3f7f5;
+                    border: 2px solid #ccc;
+                    border-radius: 0.4rem;
+                    font-size: 1.3rem;
+                    text-align: left !important;
+                }
+            }
+
+            > .invalid {
+                color: red;
+                font-size: 12px;
+                margin: 0.4rem 0rem 0rem 0rem;
+            }
+
+            > .cards > .select-card {
+                font: Arial;
+                background: var(--white);
+                border: 2px solid #ccc;
+                border-radius: 0.4rem;
+                font-size: 1rem;
+                padding: 0.6rem;
+                margin: 0.6rem 0rem;
+                width: 100%;
+            }
+
+            > .pay-button {
+                margin-left: auto;
+                background: var(--picGreen);
+                border-radius: 30px;
+                color: var(--white);
+                min-width: 90px;
+                line-height: 35px;
+                font-size: small;
+                font-weight: bold;
+                text-decoration: none;
+                transition: 0.25s ease-in;
+                text-align: center;
+                cursor: pointer;
+                outline-style: none;
+                border: none;
+                margin-right: 2%;
+
+                &:hover {
+                    background-color: var(--buttonHover);
+                }
+            }
+
+            > .close-button {
+                margin-left: auto;
+                background: var(--picClose);
+                border-radius: 30px;
+                color: var(--white);
+                min-width: 90px;
+                line-height: 35px;
+                font-size: small;
+                font-weight: bold;
+                text-decoration: none;
+                transition: 0.25s ease-in;
+                text-align: center;
+                cursor: pointer;
+                outline-style: none;
+                border: none;
+                margin-right: 2%;
+
+                &:hover {
+                    background-color: var(--buttonHover);
+                }
+            }
+        }
+    }
+}
