@@ -1,3 +1,5 @@
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+
 * {
   box-sizing: border-box;
 }
@@ -7,4 +9,13 @@ body {
   font-family: sans-serif;
   margin: 0;
   padding: 0;
+}
+
+:root {
+  --picGreen: hsl(151, 84%, 42%);
+  --white: hsl(150, 18%, 96%);
+  --border: 1px solid --white;
+  --buttonHover: #11c76f85;
+  --background: #f7fff7;
+  --picClose : #545b62;
 }
