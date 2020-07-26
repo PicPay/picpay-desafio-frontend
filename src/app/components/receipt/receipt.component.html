@@ -1,0 +1,9 @@
+<div class="receipt">
+    <div class="title">
+        Recibo de pagamento
+    </div>
+    <div class="content">
+        <span *ngIf="status"> O pagamento foi concluido com sucesso.</span>
+        <span *ngIf="!status"> O pagamento <strong>não</strong> foi concluido com sucesso.</span>
+    </div>
+</div>
