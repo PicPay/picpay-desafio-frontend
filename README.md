@@ -1,3 +1,20 @@
+# Fluxo final das telas
+
+## Web 
+<img src="./screenshots/WebViewList.png" alt="Modal de pagamento" style="width: 100%; max-width: 400px;">
+
+<img src="./screenshots/WebViewPaymentModal.png" alt="Modal de pagamento" style="width: 100%; max-width: 400px;">
+
+<img src="./screenshots/WebViewReceipt.png" alt="Modal de pagamento" style="width: 100%; max-width: 400px;">
+
+## Mobile 
+
+<img src="./screenshots/MobileViewList.png" alt="Modal de pagamento" style="width: 100%; max-width: 400px;">
+
+<img src="./screenshots/MobileViewPaymentModal.png" alt="Modal de pagamento" style="width: 100%; max-width: 400px;">
+
+<img src="./screenshots/MobileViewReceipt.png" alt="Modal de pagamento" style="width: 100%; max-width: 400px;">
+
 # Desafio Front-end PicPay
 
 Primeiramente, obrigado pelo seu interesse em trabalhar na melhor plataforma de pagamentos do mundo!
