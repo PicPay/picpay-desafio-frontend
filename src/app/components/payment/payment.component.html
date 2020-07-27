@@ -2,10 +2,10 @@
     <div class="modal-payment">
         <div class="title"><span>Pagamento para</span></div>
         <div class="user">
-            <img class="image" src="{{user.img}}" />
+            <img class="image" src="{{user?.img}}" />
             <div class="username">
-                <p><strong>{{user.name}}</strong></p>
-                <p>{{user.username}}</p>
+                <p><strong>{{user?.name}}</strong></p>
+                <p>{{user?.username}}</p>
             </div>
         </div>
         <form class="content" [formGroup]="form" (ngSubmit)="submit()">

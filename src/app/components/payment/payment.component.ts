@@ -2,8 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { User } from 'src/app/models/user.model';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormBuilder, Validators, FormControl, AbstractControl } from '@angular/forms';
-import cards, { Card } from 'src/app/models/cards.model';
-import { CurrencyPipe } from '@angular/common';
+import cards from 'src/app/models/cards.model';
 
 @Component({
   selector: 'app-payment',
@@ -22,8 +21,7 @@ export class PaymentComponent implements OnInit {
 
   constructor(
     public activeModal: NgbActiveModal,
-    private formBuilder: FormBuilder,
-    private currencyPipe: CurrencyPipe
+    private formBuilder: FormBuilder
   ) { }
 
   ngOnInit() {
