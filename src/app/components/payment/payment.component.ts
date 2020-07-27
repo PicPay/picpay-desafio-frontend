@@ -34,7 +34,7 @@ export class PaymentComponent implements OnInit {
   }
 
   public close() {
-    this.activeModal.close(false);
+    this.activeModal.close();
   }
 
   submit() {
