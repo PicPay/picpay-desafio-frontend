@@ -1,7 +1,9 @@
-export interface Transaction {
-    card_number: string;
-    cvv: number;
-    expiry_date: string;
-    destination_user_id: number;
-    value: number;
+export class Transaction {
+    constructor(
+        public card_number: string,
+        public cvv: number,
+        public expiry_date: string,
+        public destination_user_id: number,
+        public value: number,
+    ) { }
 }
