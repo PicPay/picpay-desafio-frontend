@@ -6,7 +6,7 @@ import { UserComponent } from './components/users/user/user.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { UserService } from './services/user/user.service';
 import { HttpClientModule } from '@angular/common/http';
-import { NgbActiveModal, NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CurrencyPipe } from '@angular/common';
 import { ReceiptComponent } from './components/receipt/receipt.component';
