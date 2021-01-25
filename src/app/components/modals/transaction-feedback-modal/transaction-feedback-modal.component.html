@@ -1,0 +1,19 @@
+<div class="c-feedback-modal">
+    <div class="c-feedback-modal__title">
+        Recibo de pagamento
+    </div>
+
+    <div class="c-feedback-modal__content" *ngIf="transactionStatus">
+        <ng-container *ngIf="transactionStatus?.success; else failure">
+            <div>
+                O pagamento foi concluido com sucesso.
+            </div>
+        </ng-container>
+    </div>
+</div>
+
+<ng-template #failure>
+    <div>
+        O pagamento <strong>não</strong> foi concluido com sucesso.
+    </div>
+</ng-template>
