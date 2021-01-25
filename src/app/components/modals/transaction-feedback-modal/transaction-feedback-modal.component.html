@@ -5,7 +5,7 @@
 
     <div class="c-feedback-modal__content" *ngIf="transactionStatus">
         <ng-container *ngIf="transactionStatus?.success; else failure">
-            <div>
+            <div class="c-feedback-modal__content-text">
                 O pagamento foi concluido com sucesso.
             </div>
         </ng-container>
@@ -13,7 +13,7 @@
 </div>
 
 <ng-template #failure>
-    <div>
+    <div class="c-feedback-modal__content-text">
         O pagamento <strong>não</strong> foi concluido com sucesso.
     </div>
 </ng-template>

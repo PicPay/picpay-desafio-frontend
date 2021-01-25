@@ -1,7 +1,7 @@
 <div class="c-button" matRipple (click)="onButtonClick()">
     <div *ngIf="text">
         <ng-container *ngIf="!isLoading; else loading">
-            <div>
+            <div class="c-button__text">
                 {{ text }}
             </div>
         </ng-container>

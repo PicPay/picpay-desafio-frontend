@@ -15,7 +15,9 @@ import { TransactionFeedbackModalComponent } from "../transaction-feedback-modal
 })
 export class PaymentModalComponent implements OnInit, OnDestroy {
   private readonly unsubscribe$: Subject<void> = new Subject<void>();
+  
   @Input() public user: User;
+
   public transactionForm: FormGroup;
   public isLoading: boolean = false;
 
