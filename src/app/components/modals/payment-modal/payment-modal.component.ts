@@ -17,6 +17,7 @@ export class PaymentModalComponent implements OnInit, OnDestroy {
   private readonly unsubscribe$: Subject<void> = new Subject<void>();
   @Input() public user: User;
   public transactionForm: FormGroup;
+  public isLoading: boolean = false;
 
   public cards = [
     // valid card
@@ -58,6 +59,8 @@ export class PaymentModalComponent implements OnInit, OnDestroy {
       return;
     }
 
+    this.isLoading = true;
+
     const form = this.transactionForm.getRawValue();
     const selectedCard = this.cards.find(
       (card) => card.card_number === form.card
@@ -79,6 +82,7 @@ export class PaymentModalComponent implements OnInit, OnDestroy {
           TransactionFeedbackModalComponent
         );
         feedbackModal.componentInstance.transactionStatus = response;
+        this.isLoading = false;
       });
   }
 }

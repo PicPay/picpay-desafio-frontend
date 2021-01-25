@@ -25,8 +25,9 @@
             </mat-form-field>
         </form>
 
-        <button type="button" class="c-payment-modal__content-button" (click)="onPayment(user?.id)">
-            Pagar
-        </button>
+        <app-button [isLoading]="isLoading" class="c-payment-modal__content-button" class="c-users__user-pay"
+            text="Pagar" (buttonClick)="onPayment(user?.id)">
+        </app-button>
+
     </div>
 </div>
