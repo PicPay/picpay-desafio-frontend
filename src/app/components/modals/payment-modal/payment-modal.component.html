@@ -1,0 +1,32 @@
+<div class="c-payment-modal">
+    <div class="c-payment-modal__title">Pagamento para
+        <span class="c-payment-modal__title-name" *ngIf="user?.name">
+            {{ user.name }}
+        </span>
+    </div>
+
+    <div class="c-payment-modal__content">
+
+        <form [formGroup]="transactionForm" class="c-payment-modal__content-form">
+            <mat-form-field appearance="outline">
+                <mat-label>Valor</mat-label>
+                <input matInput placeholder="R$ 0,00" formControlName="value" currencyMask />
+                <mat-error *ngIf="transactionForm.controls['value'].hasError('required')">
+                    Por favor, digite um valor para o pagamento
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-select placeholder="Selecione um cartão" formControlName="card">
+                    <mat-option *ngFor="let card of cards" [value]="card.card_number">Cartão com final
+                        {{ card.card_number.slice(-4) }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </form>
+
+        <button type="button" class="c-payment-modal__content-button" (click)="onPayment(user?.id)">
+            Pagar
+        </button>
+    </div>
+</div>

@@ -1,0 +1,72 @@
+import { Component, Input, OnDestroy, OnInit } from "@angular/core";
+import { User } from "src/app/interfaces/user.interface";
+import { MatDialogRef } from "@angular/material/dialog";
+import { TransactionService } from "src/app/services/transaction/transaction.service";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { TransactionPayload, TransactionStatus } from 'src/app/interfaces/transaction.interface';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+
+
+@Component({
+  selector: "app-payment-modal",
+  templateUrl: "./payment-modal.component.html",
+  styleUrls: ["./payment-modal.component.scss"],
+})
+export class PaymentModalComponent implements OnInit, OnDestroy {
+  private readonly unsubscribe$: Subject<void> = new Subject<void>();
+  @Input() public user: User;
+  public transactionForm: FormGroup;
+
+  public cards = [
+    // valid card
+    {
+      card_number: "1111111111111111",
+      cvv: 789,
+      expiry_date: "01/18",
+    },
+    // invalid card
+    {
+      card_number: "4111111111111234",
+      cvv: 123,
+      expiry_date: "01/20",
+    },
+  ];
+
+  constructor(
+    public dialog: MatDialogRef<PaymentModalComponent>,
+    private FormBuilder: FormBuilder,
+    private TransactionService: TransactionService
+  ) {
+    this.transactionForm = this.FormBuilder.group({
+      value: ["", Validators.required],
+      card: [Validators.required],
+    });
+  }
+
+  ngOnInit() {}
+
+  public ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
+  }
+
+  public onPayment(userId: number): void {
+    if (this.transactionForm.invalid) {
+      return;
+    }
+
+    const form = this.transactionForm.getRawValue();
+    const selectedCard = this.cards.find(card => card.card_number === form.card)
+
+    const params: TransactionPayload = {
+      card_number: selectedCard.card_number,
+      cvv: selectedCard.cvv,
+      expiry_date: selectedCard.expiry_date,
+      destination_user_id: userId,
+      value: form.value
+    }
+
+    this.TransactionService.payload(params).pipe(takeUntil(this.unsubscribe$)).subscribe(response => console.log(response))
+  }
+}
