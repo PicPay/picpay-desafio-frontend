@@ -4,7 +4,7 @@ import { By } from "@angular/platform-browser";
 
 import { ButtonComponent } from "./button.component";
 
-fdescribe("ButtonComponent", () => {
+describe("ButtonComponent", () => {
   let component: ButtonComponent;
   let fixture: ComponentFixture<ButtonComponent>;
 
@@ -44,9 +44,9 @@ fdescribe("ButtonComponent", () => {
   });
 
   it("function shouldn't trigger the emit when loading is true", () => {
-    component.isLoading = true
+    component.isLoading = true;
     fixture.detectChanges();
-    
+
     const button = fixture.debugElement.query(By.css(".c-button"));
     const spy = spyOn(component.buttonClick, "emit");
 
@@ -55,7 +55,7 @@ fdescribe("ButtonComponent", () => {
   });
 
   it("if loading is true, spinner class should exist", () => {
-    component.isLoading = true
+    component.isLoading = true;
     fixture.detectChanges();
 
     const spinner = fixture.debugElement.query(By.css(".c-button__spinner"));
