@@ -1,0 +1,16 @@
+<div class="c-button" matRipple (click)="onButtonClick()">
+    <div *ngIf="text">
+        <ng-container *ngIf="!isLoading; else loading">
+            <div>
+                {{ text }}
+            </div>
+        </ng-container>
+    </div>
+</div>
+
+<ng-template #loading>
+    <div class="c-button__spinner">
+        <mat-spinner mode="indeterminate" diameter="28" strokeWidth="4">
+        </mat-spinner>
+    </div>
+</ng-template>

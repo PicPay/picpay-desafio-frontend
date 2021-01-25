@@ -17,7 +17,7 @@
             </mat-form-field>
 
             <mat-form-field appearance="outline">
-                <mat-select placeholder="Selecione um cartão" formControlName="card">
+                <mat-select placeholder="Selecione um cartão" formControlName="card" required>
                     <mat-option *ngFor="let card of cards" [value]="card.card_number">Cartão com final
                         {{ card.card_number.slice(-4) }}
                     </mat-option>

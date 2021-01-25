@@ -9,8 +9,9 @@ import { TransactionFeedbackModalComponent } from "./components/modals/transacti
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatDialogModule } from "@angular/material/dialog";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatInputModule, MatSelectModule } from '@angular/material';
+import { MatInputModule, MatProgressSpinnerModule, MatRippleModule, MatSelectModule } from '@angular/material';
 import { NgxCurrencyModule } from "ngx-currency";
+import { ButtonComponent } from './components/button/button.component';
 
 export const customCurrencyMaskConfig = {
   align: "left",
@@ -37,6 +38,7 @@ const modals = [
     UsersListComponent,
     PaymentModalComponent,
     TransactionFeedbackModalComponent,
+    ButtonComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,6 +49,8 @@ const modals = [
     FormsModule,
     MatInputModule,
     MatSelectModule,
+    MatRippleModule,
+    MatProgressSpinnerModule,
     NgxCurrencyModule.forRoot(customCurrencyMaskConfig)
   ],
   providers: [],

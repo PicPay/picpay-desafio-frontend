@@ -41,7 +41,7 @@ export class PaymentModalComponent implements OnInit, OnDestroy {
   ) {
     this.transactionForm = this.FormBuilder.group({
       value: ["", Validators.required],
-      card: [Validators.required],
+      card: [],
     });
   }
 
@@ -54,6 +54,7 @@ export class PaymentModalComponent implements OnInit, OnDestroy {
 
   public onPayment(userId: number): void {
     if (this.transactionForm.invalid) {
+      this.transactionForm.markAllAsTouched();
       return;
     }
 
