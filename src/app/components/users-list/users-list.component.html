@@ -1,17 +1,22 @@
-<div class="users" *ngIf="users">
-    <div class="user" *ngFor="let user of users">
-        <img [src]="user.img" />
-        <div class="info-wrapper">
-            <div class="user-name">
+<div class="c-users" *ngIf="users">
+    <div class="c-users__user" *ngFor="let user of users">
+        <img class="c-users__user-img" [src]="user.img" />
+        <div class="c-users__user-info">
+            <div class="c-users__user-info--name">
                 {{user.name}}
             </div>
 
-            <div class="user-id-username">
-                ID: {{user.id}} - Username: {{user.username}}
+            <div class="c-users__user-info--data">
+                <div class="c-users__user-info--id">
+                    ID: {{user.id}} -&nbsp;
+                </div>
+                <div class="c-users__user-info--username">
+                    Username: {{user.username}}
+                </div>
             </div>
         </div>
 
-        <button type="button" class="pay-button" (click)="openPaymentModal(user)">
+        <button type="button" class="c-users__user-pay" (click)="openPaymentModal(user)">
             Pagar
         </button>
     </div>
