@@ -4,7 +4,7 @@ import { By } from "@angular/platform-browser";
 
 import { TransactionFeedbackModalComponent } from "./transaction-feedback-modal.component";
 
-fdescribe("TransactionFeedbackModalComponent", () => {
+describe("TransactionFeedbackModalComponent", () => {
   let component: TransactionFeedbackModalComponent;
   let fixture: ComponentFixture<TransactionFeedbackModalComponent>;
 

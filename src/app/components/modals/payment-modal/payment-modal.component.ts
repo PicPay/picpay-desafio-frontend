@@ -46,7 +46,7 @@ export class PaymentModalComponent implements OnInit, OnDestroy {
     public dialog: MatDialog
   ) {
     this.transactionForm = this.FormBuilder.group({
-      value: ["", Validators.required],
+      value: ['', Validators.required],
       card: [],
     });
   }
