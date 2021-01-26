@@ -16,9 +16,12 @@
     "@angular/compiler": "~8.2.13",
     "@angular/core": "~8.2.13",
     "@angular/forms": "~8.2.13",
+    "@angular/material": "^8.2.3",
     "@angular/platform-browser": "~8.2.13",
     "@angular/platform-browser-dynamic": "~8.2.13",
     "@angular/router": "~8.2.13",
+    "@mdi/font": "^5.5.55",
+    "normalize.css": "^8.0.1",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
