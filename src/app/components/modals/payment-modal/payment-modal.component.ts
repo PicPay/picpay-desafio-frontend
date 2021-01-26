@@ -3,7 +3,10 @@ import { User } from "src/app/interfaces/user.interface";
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { TransactionService } from "src/app/services/transaction/transaction.service";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { TransactionPayload } from "src/app/interfaces/transaction.interface";
+import {
+  TransactionPayload,
+  TransactionStatus,
+} from "src/app/interfaces/transaction.interface";
 import { Subject } from "rxjs";
 import { takeUntil } from "rxjs/operators";
 import { TransactionFeedbackModalComponent } from "../transaction-feedback-modal/transaction-feedback-modal.component";
@@ -15,7 +18,7 @@ import { TransactionFeedbackModalComponent } from "../transaction-feedback-modal
 })
 export class PaymentModalComponent implements OnInit, OnDestroy {
   private readonly unsubscribe$: Subject<void> = new Subject<void>();
-  
+
   @Input() public user: User;
 
   public transactionForm: FormGroup;
@@ -80,11 +83,13 @@ export class PaymentModalComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((response) => {
         this.dialogRef.close();
-        const feedbackModal = this.dialog.open(
-          TransactionFeedbackModalComponent
-        );
-        feedbackModal.componentInstance.transactionStatus = response;
+        this.openFeedbackModal(response);
         this.isLoading = false;
       });
+  }
+
+  public openFeedbackModal(transactionStatus: TransactionStatus): void {
+    const feedbackModal = this.dialog.open(TransactionFeedbackModalComponent);
+    feedbackModal.componentInstance.transactionStatus = transactionStatus;
   }
 }
