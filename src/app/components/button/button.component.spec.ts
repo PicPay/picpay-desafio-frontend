@@ -54,6 +54,14 @@ describe("ButtonComponent", () => {
     expect(spy).not.toHaveBeenCalled();
   });
 
+  it("function should trigger the emit when loading is false", () => {
+    const button = fixture.debugElement.query(By.css(".c-button"));
+    const spy = spyOn(component.buttonClick, "emit");
+
+    button.triggerEventHandler("click", null);
+    expect(spy).toHaveBeenCalled();
+  });
+
   it("if loading is true, spinner class should exist", () => {
     component.isLoading = true;
     fixture.detectChanges();

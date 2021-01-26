@@ -13,14 +13,14 @@ import { PaymentModalComponent } from "./payment-modal.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { By } from "@angular/platform-browser";
 import { TransactionService } from "src/app/services/transaction/transaction.service";
-import { of } from "rxjs";
+import { TransactionServiceMock } from "src/app/services/transaction/transaction.service.mock";
 import { TransactionFeedbackModalComponent } from "../transaction-feedback-modal/transaction-feedback-modal.component";
 import { BrowserDynamicTestingModule } from "@angular/platform-browser-dynamic/testing";
 
 describe("PaymentModalComponent", () => {
   let component: PaymentModalComponent;
   let fixture: ComponentFixture<PaymentModalComponent>;
-  let TransactionServiceMock: TransactionService;
+  let transactionServiceMock: TransactionService;
   let MatDialog: MatDialogRef<TransactionFeedbackModalComponent>;
 
   beforeEach(async(() => {
@@ -46,7 +46,7 @@ describe("PaymentModalComponent", () => {
           provide: MatDialog,
           useValue: { open: () => {}, componentInstance: {} },
         },
-        TransactionService,
+        { provide: TransactionService, useClass: TransactionServiceMock },
       ],
     })
       .overrideModule(BrowserDynamicTestingModule, {
@@ -58,7 +58,7 @@ describe("PaymentModalComponent", () => {
   beforeEach(() => {
     const formBuilder = new FormBuilder();
     fixture = TestBed.createComponent(PaymentModalComponent);
-    TransactionServiceMock = TestBed.get(TransactionService);
+    transactionServiceMock = TestBed.get(TransactionService);
     component = fixture.componentInstance;
     component.isLoading = false;
     component.cards = [
@@ -111,7 +111,7 @@ describe("PaymentModalComponent", () => {
     const button = fixture.debugElement.query(
       By.css(".c-payment-modal__content-button")
     );
-    const spy = spyOn(TransactionServiceMock, "payload");
+    const spy = spyOn(transactionServiceMock, "payload");
 
     button.triggerEventHandler("buttonClick", 1016);
     expect(spy).not.toHaveBeenCalled();
@@ -123,9 +123,9 @@ describe("PaymentModalComponent", () => {
     );
 
     const transactionSpy = spyOn(
-      TransactionServiceMock,
+      transactionServiceMock,
       "payload"
-    ).and.returnValue(of());
+    ).and.callThrough();
 
     component.transactionForm.get("value").setValue(10000);
     component.transactionForm.get("card").setValue("4111111111111234");
@@ -140,7 +140,7 @@ describe("PaymentModalComponent", () => {
       By.css(".c-payment-modal__content-button")
     );
 
-    spyOn(TransactionServiceMock, "payload").and.returnValue(of(null));
+    spyOn(transactionServiceMock, "payload").and.callThrough();
 
     const modalSpy = spyOn(component, "openFeedbackModal");
 
