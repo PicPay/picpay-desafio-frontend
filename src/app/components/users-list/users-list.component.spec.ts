@@ -1,11 +1,14 @@
 import { HttpClientTestingModule } from "@angular/common/http/testing";
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
-import { MatDialogModule, MatProgressSpinnerModule } from "@angular/material";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDialogModule, MatInputModule, MatProgressSpinnerModule, MatSelectModule } from "@angular/material";
 import { By } from "@angular/platform-browser";
+import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { of } from "rxjs";
 import { UsersService } from "src/app/services/user-service/users.service";
 import { ButtonComponent } from "../button/button.component";
+import { PaymentModalComponent } from '../modals/payment-modal/payment-modal.component';
 
 import { UsersListComponent } from "./users-list.component";
 
@@ -16,15 +19,23 @@ describe("UsersListComponent", () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [UsersListComponent, ButtonComponent],
+      declarations: [UsersListComponent, ButtonComponent, PaymentModalComponent],
       imports: [
         MatProgressSpinnerModule,
         HttpClientTestingModule,
         MatDialogModule,
         BrowserAnimationsModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatInputModule,
+        MatSelectModule,
       ],
       providers: [UsersService],
-    }).compileComponents();
+    })
+    .overrideModule(BrowserDynamicTestingModule, {
+      set: { entryComponents: [PaymentModalComponent] },
+    })
+    .compileComponents();
   }));
 
   beforeEach(() => {
