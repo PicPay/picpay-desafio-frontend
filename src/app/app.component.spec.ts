@@ -5,7 +5,7 @@ import { AppComponent } from "./app.component";
 import { ButtonComponent } from "./components/button/button.component";
 import { UsersListComponent } from "./components/users-list/users-list.component";
 
-fdescribe("AppComponent", () => {
+describe("AppComponent", () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [AppComponent, UsersListComponent, ButtonComponent],
