@@ -9,7 +9,7 @@ import { ButtonComponent } from "../button/button.component";
 
 import { UsersListComponent } from "./users-list.component";
 
-fdescribe("UsersListComponent", () => {
+describe("UsersListComponent", () => {
   let component: UsersListComponent;
   let fixture: ComponentFixture<UsersListComponent>;
   let UserServiceMock: UsersService;

@@ -125,7 +125,7 @@ describe("PaymentModalComponent", () => {
     const transactionSpy = spyOn(
       TransactionServiceMock,
       "payload"
-    ).and.returnValue(of(null));
+    ).and.returnValue(of());
 
     component.transactionForm.get("value").setValue(10000);
     component.transactionForm.get("card").setValue("4111111111111234");
