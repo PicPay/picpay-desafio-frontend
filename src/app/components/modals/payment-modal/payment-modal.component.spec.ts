@@ -17,7 +17,7 @@ import { of } from "rxjs";
 import { TransactionFeedbackModalComponent } from "../transaction-feedback-modal/transaction-feedback-modal.component";
 import { BrowserDynamicTestingModule } from "@angular/platform-browser-dynamic/testing";
 
-fdescribe("PaymentModalComponent", () => {
+describe("PaymentModalComponent", () => {
   let component: PaymentModalComponent;
   let fixture: ComponentFixture<PaymentModalComponent>;
   let TransactionServiceMock: TransactionService;
