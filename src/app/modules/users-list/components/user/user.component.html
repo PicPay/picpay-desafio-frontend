@@ -1,6 +1,8 @@
 <div>
 <mat-list-item >
+    <img matListAvatar [src]="user.img" alt="user.name">
     <h3 matLine>{{user.name}}</h3>
     <p matLine>ID: {{user.id}} - Username: {{user.username}}</p>
+    <button mat-raised-button color="primary">Pagar</button>
 </mat-list-item>
 </div>
