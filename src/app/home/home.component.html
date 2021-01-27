@@ -1,0 +1,11 @@
+<mat-list>
+    <div mat-subheader>Amigos</div>
+    <mat-list-item *ngFor="let user of users">
+      <picpay-avatar mat-list-icon url='{{user.img}}'></picpay-avatar>
+      <div mat-line>{{user.name}}</div>
+      <div mat-line> {{user.username}} </div>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+</mat-list>
+  
+

@@ -1,0 +1,37 @@
+* {
+    box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100vh;
+    }
+    .card {
+      position: relative;
+      display: flex;
+      align-items: center;
+      width: 20px;
+    }
+    .card__avatar {
+      position: relative;
+      display: flex;
+      margin-right: 12px;
+    }
+    .border {
+      stroke-width: 10;
+      stroke: rgba(255, 255, 255, 0.4);
+      fill: none;
+    }
+    .badge {
+      position: absolute;
+      right: 7px;
+      bottom: 7px;
+      width: 22px;
+      height: 22px;
+      background: #5ad539;
+      border-radius: 50%;
+    }
