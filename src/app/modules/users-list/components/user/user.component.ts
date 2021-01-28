@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import User from 'src/app/shared/models/user/user.model';
 
 
 @Component({
@@ -9,12 +10,16 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 export class UserComponent implements OnInit {
 
   @Input() user: User
-  @Output() userSelected = new EventEmitter<User>()
+  @Output() selectedRecipient = new EventEmitter<User>()
 
   constructor() {
    }
 
   ngOnInit() {
+  }
+
+  onUserClicked(user: User){
+    this.selectedRecipient.emit(user)
   }
 
 }

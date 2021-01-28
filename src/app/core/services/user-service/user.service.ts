@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import User from 'src/app/shared/models/user/user.model';
 import { ApiService } from '../api-service/api.service';
 import UserData from './user.data';
 
