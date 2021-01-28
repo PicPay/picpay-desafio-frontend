@@ -22,6 +22,9 @@
       "@service/*": [
         "src/app/service/*"
       ],
+      "@model/*": [
+        "src/app/model/*"
+      ],
       "@env": [
         "src/environments/environment"
       ],

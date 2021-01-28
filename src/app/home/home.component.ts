@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '@service/user.service';
-import { User } from '../model/user';
-import {FormControl} from '@angular/forms';
+import { User } from '@model/user';
+import { dynamicSort } from '../utils/sort';
 
 @Component({
   selector: 'app-home',
@@ -10,12 +10,8 @@ import {FormControl} from '@angular/forms';
 })
 export class HomeComponent implements OnInit {
 
-  public users: User[];
+  public users: User[]
 
-  toppings = new FormControl();
-
-  toppingList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
-  
   constructor(private userService: UserService){
   }
 
@@ -25,6 +21,7 @@ export class HomeComponent implements OnInit {
 
   getAllUser(){
     this.userService.getAll().subscribe(response =>{
+      response.sort(dynamicSort('name'))
       this.users = response
     })
   }

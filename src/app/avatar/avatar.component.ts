@@ -5,15 +5,10 @@ import { Component, Input, OnInit } from '@angular/core';
   templateUrl: './avatar.component.html',
   styleUrls: ['./avatar.component.scss']
 })
-export class AvatarComponent implements OnInit {
+export class AvatarComponent  {
 
   @Input()
   public url: string
 
   constructor() { }
-
-  ngOnInit() {
-    console.info(`url`,this.url)
-  }
-
 }

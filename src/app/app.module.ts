@@ -7,6 +7,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatListModule } from '@angular/material/list';
 import { MatSelectModule } from '@angular/material/select';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatInputModule } from '@angular/material/input';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 
 import { ApiService } from '@service/api.service';
@@ -17,13 +19,15 @@ import { HomeComponent } from './home/home.component';
 import { AvatarComponent } from './avatar/avatar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToolbarComponent } from './toolbar/toolbar.component';
+import { FilterPipe } from './filter.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     AvatarComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    FilterPipe,
   ],
   imports: [
     BrowserModule,
@@ -34,7 +38,9 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
     BrowserAnimationsModule,
     MatListModule,
     MatSelectModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatInputModule,
+    MatGridListModule
   ],
   providers: [
     ApiService,

@@ -1,9 +1,22 @@
 <mat-list>
-    <div mat-subheader>Amigos</div>
-    <mat-list-item *ngFor="let user of users">
-      <picpay-avatar mat-list-icon url='{{user.img}}'></picpay-avatar>
-      <div mat-line>{{user.name}}</div>
-      <div mat-line> {{user.username}} </div>
+
+  <mat-grid-list cols="1" rowHeight="70px">
+    <mat-grid-tile>
+      <mat-form-field >
+        <input matInput id="search-text" aria-describedby="search-text" 
+        [(ngModel)]="searchText" placeholder="O que você quer pagar?" 
+        autofocus>    
+      </mat-form-field>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <mat-list-item *ngFor="let user of users | appFilter: searchText:'name'" #shoes>
+    <picpay-avatar mat-list-icon url='{{user.img}}'></picpay-avatar>
+    <div mat-line>{{user.name}}</div>
+    <div mat-line> {{user.username}} </div>
+    <mat-action-list>
+      <button mat-list-item (click)="save()">Pagar</button>
+    </mat-action-list>
     </mat-list-item>
     <mat-divider></mat-divider>
 </mat-list>
