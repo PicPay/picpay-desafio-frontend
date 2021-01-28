@@ -32,6 +32,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatRippleModule } from '@angular/material';
 
 
 @NgModule({
@@ -70,6 +71,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
         MatPaginatorModule
     ],
     exports: [
+        MatRippleModule,
         MatCheckboxModule,
         MatCheckboxModule,
         MatButtonModule,

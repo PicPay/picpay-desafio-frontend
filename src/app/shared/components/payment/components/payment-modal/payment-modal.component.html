@@ -1,0 +1,45 @@
+<div class="payment-modal">
+
+  <h1 mat-dialog-title>Pagamento para {{recipient.name}}</h1>
+  <form [formGroup]="paymentForm" (ngSubmit)="pay()">
+    <div mat-dialog-content>
+      <div class="row">
+        <div class="col payment-modal__picture-container">
+          <picture class="payment-modal__picture">
+            <img class="payment-modal__image" [src]="recipient.img" [alt]="recipient.name">
+          </picture>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="payment-modal__field">
+            <mat-label>Valor a ser pago</mat-label>
+            <input currencyMask matInput formControlName="value" autocomplete="off" [options]="currencyMask" min="0,00"
+              max="9999,99" placeholder="R$0,00">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="payment-modal__field">
+            <mat-label>Cartão</mat-label>
+            <mat-select matInput formControlName="card">
+              <mat-option *ngFor="let card of savedCards" [value]="card">Cartão com final
+                <b>{{card.card_number.slice(-4)}}</b>
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <div mat-dialog-actions align="end">
+      <button mat-stroked-button color="primary" (click)="onNoClick()" [disabled]="isPaying">Cancelar</button>
+      <button type="submit" mat-flat-button color="primary" [disabled]="isPaying || !isPaymentFormValid"> <span
+          *ngIf="!isPaying">Pagar</span>
+        <pp-loader small="true" *ngIf="isPaying"></pp-loader>
+      </button>
+    </div>
+  </form>
+</div>
