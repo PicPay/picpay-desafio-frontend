@@ -11,7 +11,7 @@ export default class PaymentData {
     isDisplayingPaymentModal: boolean
     
     constructor(){
-        this.paymentStatus = new PaymentStatus()
+        
         this.selectedRecipient = new User()
         this.isDisplayingPaymentModal = false
         this.savedCards = new Array()

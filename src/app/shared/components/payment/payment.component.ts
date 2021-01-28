@@ -16,7 +16,6 @@ export class PaymentComponent implements OnInit {
   }
 
   openDialog(): void {
-
     this.dialog.open(PaymentModalComponent);
   }
 

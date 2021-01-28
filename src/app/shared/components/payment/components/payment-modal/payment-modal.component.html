@@ -35,7 +35,7 @@
       </div>
     </div>
     <div mat-dialog-actions align="end">
-      <button mat-stroked-button color="primary" (click)="onNoClick()" [disabled]="isPaying">Cancelar</button>
+      <button type="button" mat-stroked-button  color="primary" (click)="onNoClick()" [disabled]="isPaying">Cancelar</button>
       <button type="submit" mat-flat-button color="primary" [disabled]="isPaying || !isPaymentFormValid"> <span
           *ngIf="!isPaying">Pagar</span>
         <pp-loader small="true" *ngIf="isPaying"></pp-loader>
