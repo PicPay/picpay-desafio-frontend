@@ -4,7 +4,7 @@
     <mat-grid-tile>
       <mat-form-field >
         <input matInput id="search-text" aria-describedby="search-text" 
-        [(ngModel)]="searchText" placeholder="O que você quer pagar?" 
+        [(ngModel)]="searchText" placeholder="Quem você quer pagar?" 
         autofocus>    
       </mat-form-field>
     </mat-grid-tile>
@@ -13,7 +13,7 @@
   <mat-list-item *ngFor="let user of users | appFilter: searchText:'name'" #shoes>
     <picpay-avatar mat-list-icon url='{{user.img}}'></picpay-avatar>
     <div mat-line>{{user.name}}</div>
-    <div mat-line> {{user.username}} </div>
+    <div mat-line class="username"> {{user.username}} </div>
     <mat-action-list>
       <button mat-list-item (click)="save()">Pagar</button>
     </mat-action-list>
