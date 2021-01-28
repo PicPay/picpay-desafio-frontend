@@ -1,0 +1,21 @@
+.loader{
+    color: var(--primary-lighter-color);
+    font-size: 33px;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    flex-direction: column;
+
+    &__icon{
+        text-align: center;
+        &--large{
+            font-size: 46px;
+        }
+        &--small{
+            font-size: 22px;
+        }
+    }
+    &__content{
+        display: block;
+    }
+}
