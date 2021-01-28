@@ -1,5 +1,3 @@
 <mat-list>
-    <pp-user *ngFor="let user of users" [user]="user"></pp-user>
+    <pp-user *ngFor="let user of users" [user]="user" (selectedRecipient)="openPaymentModal($event)"></pp-user>
 </mat-list>
-
-
