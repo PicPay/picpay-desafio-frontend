@@ -35,7 +35,7 @@ export class PaymentService {
   async pay(paymentRequest: Payment): Promise<void> {
     this.data.currentPayment = paymentRequest
     let paymentStatus = await this.apiService.post<PaymentStatus>(`${this.domain}/533cd5d7-63d3-4488-bf8d-4bb8c751c989`, paymentRequest)
-    paymentStatus = this.mockPaymentError(paymentRequest, paymentStatus)
+    this.mockPaymentError(paymentRequest, paymentStatus)
     this.data.paymentStatus = paymentStatus
   }
 
@@ -44,16 +44,10 @@ export class PaymentService {
     this.data.savedCards = savedCards
   }
 
-  mockPaymentError(payment: Payment, paymentStatus: PaymentStatus) : PaymentStatus{
-    let finalPaymentStatus = paymentStatus
+  mockPaymentError(payment: Payment, paymentStatus: PaymentStatus): void {
     if (payment.card_number === '4111111111111234') {
-      finalPaymentStatus = new PaymentStatus(false, 'Reprovada')
+      throw Error(paymentStatus.status) //Caso o backend retornasse um erro invés de { success:false }, poderia ser interessante criar um interceptor para capturar os erros em requisições automaticamente.
     }
-
-    return finalPaymentStatus
-
-    //Poderia ser em uma única linha:
-    //return payment.card_number === '4111111111111234'
   }
 
 
