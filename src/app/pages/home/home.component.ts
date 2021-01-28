@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '@service/user.service';
 import { User } from '@model/user';
-import { dynamicSort } from '../utils/sort';
+import { dynamicSort } from 'src/app/utils/sort';
 
 @Component({
   selector: 'app-home',

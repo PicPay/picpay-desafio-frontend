@@ -15,11 +15,13 @@ import { ApiService } from '@service/api.service';
 import { UserService } from '@service/user.service';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { AvatarComponent } from './avatar/avatar.component';
+import { HomeComponent } from './pages/home/home.component';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ToolbarComponent } from './toolbar/toolbar.component';
-import { FilterPipe } from './filter.pipe';
+import { AvatarComponent } from './component/avatar/avatar.component';
+import { FilterPipe } from './pipe/filter.pipe';
+import { ToolbarComponent } from './component/toolbar/toolbar.component';
+
 
 @NgModule({
   declarations: [
