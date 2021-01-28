@@ -20,12 +20,13 @@ export class PaymentModalComponent implements OnInit {
   recipient: User
   paymentForm: FormGroup
   isPaying: boolean
+  isLoadingSavedCards: boolean
 
   get isPaymentFormValid(): boolean {
     return this.paymentForm.valid;
   }
-  get value(): number { return this.paymentForm.get('value').value }
-  get card(): Card { return this.paymentForm.get('card').value }
+  get value() { return this.paymentForm.get('value') }
+  get card() { return this.paymentForm.get('card') }
   currencyMask = {
     align: "left",
     allowZero: true,
@@ -45,7 +46,7 @@ export class PaymentModalComponent implements OnInit {
     this.isPaying = false
     this.recipient = this.paymentService.data.selectedRecipient
     this.paymentForm = this.formBuilder.group({
-      value: new FormControl('', Validators.required),
+      value: new FormControl('', [Validators.required, Validators.min(0.01), Validators.max(9999.99)]),
       card: new FormControl('', Validators.required)
     })
   }
@@ -60,12 +61,14 @@ export class PaymentModalComponent implements OnInit {
   }
 
   async retrieveSavedCards() {
+    this.isLoadingSavedCards = true
     await this.paymentService.retrieveSavedCards()
     this.savedCards = this.paymentService.data.savedCards
+    this.isLoadingSavedCards = false
   }
 
   async pay() {
-    this.payment = new Payment(this.card, this.recipient.id, this.value)
+    this.payment = new Payment(this.card.value, this.recipient.id, this.value.value)
     this.isPaying = true
     this.paymentForm.disable()
     try {

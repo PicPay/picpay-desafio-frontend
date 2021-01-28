@@ -5,7 +5,9 @@
     align-self: center;
     justify-content: center;
     flex-direction: column;
-
+    padding-left: 10px;
+    padding-right: 10px;
+    
     &__icon{
         text-align: center;
         &--large{
