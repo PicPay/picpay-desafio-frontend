@@ -8,11 +8,12 @@ import { PaymentComponent } from './components/payment/payment.component';
 import { PaymentModalComponent } from "./components/payment/components/payment-modal/payment-modal.component";
 import { MessageComponent } from './components/message/message.component';
 import { MessageModalComponent } from './components/message/components/message-modal/message-modal.component';
+import { CardSecrecy as CardSecrecyPipe } from "./pipes/card-secrecy.pipe";
 
 
 
 @NgModule({
-    declarations: [PaymentComponent, LoaderComponent, PaymentComponent, PaymentModalComponent, MessageComponent, MessageModalComponent],
+    declarations: [PaymentComponent, LoaderComponent, PaymentComponent, PaymentModalComponent, MessageComponent, MessageModalComponent, CardSecrecyPipe],
     imports: [
         CommonModule, 
         MaterialDesignModule, 

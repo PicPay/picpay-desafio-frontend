@@ -27,7 +27,7 @@
             <mat-label>Cartão</mat-label>
             <mat-select matInput formControlName="card">
               <mat-option *ngFor="let card of savedCards" [value]="card">Cartão com final
-                <b>{{card.card_number.slice(-4)}}</b>
+                <b>{{card.card_number | cardSecrecy}}</b>
               </mat-option>
             </mat-select>
           </mat-form-field>
