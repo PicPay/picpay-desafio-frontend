@@ -21,4 +21,10 @@
         width: 100%;
     }
 
+    &__title{
+        &--strong{
+            font-weight: bold;
+        }
+    }
+
 }

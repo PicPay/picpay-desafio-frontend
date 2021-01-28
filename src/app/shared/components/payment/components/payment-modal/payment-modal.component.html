@@ -1,6 +1,6 @@
 <div class="payment-modal">
 
-  <h1 mat-dialog-title>Pagamento para {{recipient.name}}</h1>
+  <h1 mat-dialog-title class="payment-modal__title">Pagamento para <span class="payment-modal__title payment-modal__title--strong">{{recipient.name}}</span></h1>
   <form [formGroup]="paymentForm" (ngSubmit)="pay()">
     <div mat-dialog-content>
       <div class="row">
