@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-pagamento-concluido-modal',
@@ -6,6 +6,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./pagamento-concluido-modal.component.scss']
 })
 export class PagamentoConcluidoModalComponent implements OnInit {
+  @Input() sucesso: boolean;
   @Output() OnClose = new EventEmitter<void>();
   constructor() { }
 

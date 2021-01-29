@@ -1,3 +1,3 @@
 <app-user-row *ngFor="let row of usersData.data" [user]="row" trackBy:row.id (OnPagar)="OnPagar($event)"></app-user-row>
 <app-pagamento-modal *ngIf="selectedUser" [user]="selectedUser" [cards]="cards" (OnPagar)="RealizaPagamento($event)" (OnClose)="Close()"></app-pagamento-modal>
-<app-pagamento-concluido-modal (OnClose)="Close()" *ngIf="pagamentoComSucesso"></app-pagamento-concluido-modal>
+<app-pagamento-concluido-modal [sucesso]="pagamentoComSucesso" (OnClose)="Close()" *ngIf="pagamentoComSucesso != null"></app-pagamento-concluido-modal>
