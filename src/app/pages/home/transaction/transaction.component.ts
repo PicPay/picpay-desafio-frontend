@@ -92,7 +92,7 @@ export class TransactionComponent {
           )
         );
       } else {
-        this.snackBar.open("Houve um problema durante a transação.", null, {
+        this.snackBar.open("Transação não aprovada.", null, {
           panelClass: "error-toast",
           horizontalPosition: "center",
           verticalPosition: "top",
