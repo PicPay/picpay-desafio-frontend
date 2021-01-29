@@ -1,43 +1,38 @@
 <mat-list>
-
   <mat-grid-list cols="1" rowHeight="70px">
     <mat-grid-tile>
-      <mat-form-field >
-        <input matInput id="search-text" aria-describedby="search-text"  maxlength="50"
-        [(ngModel)]="searchText" placeholder="Quem você quer pagar?" 
-        autofocus>    
+      <mat-form-field>
+        <input
+          matInput
+          id="search-text"
+          aria-describedby="search-text"
+          maxlength="50"
+          [(ngModel)]="searchText"
+          placeholder="Quem você quer pagar?"
+          autofocus
+        />
       </mat-form-field>
     </mat-grid-tile>
   </mat-grid-list>
 
-  <!-- <mat-list-item *ngFor="let user of users | appFilter: searchText:'name'" class="bolado">
-    <picpay-avatar mat-list-icon url='{{user.img}}'></picpay-avatar>
-    <div mat-line>{{user.username}}</div>
-    <div mat-line class="name"> {{user.name}} </div>
-    <mat-action-list>
-      <button mat-list-item class="btn" (click)="openPay(user)">Pagar</button>
-    </mat-action-list>
-    </mat-list-item> -->
-
-    <ul class="c-card">
-      <li class="c-card-content" *ngFor="let user of users | appFilter: searchText:'name'">
-
-        <div class="c-card-content-data">
-          <img [src]="user.img" alt="Foto do usuário">
-          <div class="c-card-content-info">
-            <strong> {{user.username}} </strong>
-            <p> {{user.name}} </p>
-          </div>
+  <ul class="c-card">
+    <li
+      class="c-card-content"
+      *ngFor="let user of users | appFilter: searchText:'name'"
+    >
+      <div class="c-card-content-data">
+        <img [src]="user.img" alt="Foto do usuário" />
+        <div class="c-card-content-info">
+          <strong> {{ user.username }} </strong>
+          <p>{{ user.name }}</p>
         </div>
+      </div>
 
-        <div class="c-card-content-action">
-          <button (click)="openPay(user)" class="cta-button">Pagar</button>
-        </div>
+      <div class="c-card-content-action">
+        <button (click)="openPay(user)" class="cta-button">Pagar</button>
+      </div>
+    </li>
+  </ul>
 
-      </li>
-    </ul>
-
-    <mat-divider></mat-divider>
+  <mat-divider></mat-divider>
 </mat-list>
-  
-
