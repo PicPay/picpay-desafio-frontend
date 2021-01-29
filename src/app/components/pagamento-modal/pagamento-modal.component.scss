@@ -20,8 +20,13 @@
     margin-top: 12px;
     width: 100%;
   }
-  
-  .content > button {
+  .content > .button-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .content > .button-container > button {
     border: 1px solid #ccc;
     border-radius: 6px;
     font-size: 32px;

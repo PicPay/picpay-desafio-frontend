@@ -10,8 +10,14 @@
                 </select>
             </div>
 
-            <button type="button" class="pay-button" (click)="onPagar()">
-                Pagar
-            </button>
+            <div class="button-container">
+                <button type="button" class="pay-button" (click)="onClose()">
+                    Voltar
+                </button>
+                
+                <button type="button" class="pay-button" (click)="onPagar()">
+                    Pagar
+                </button>
+            </div>
         </div>
 </app-modal>

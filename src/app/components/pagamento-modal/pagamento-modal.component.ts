@@ -10,25 +10,29 @@ import { ICard } from 'src/app/interfaces/card.interface';
 })
 export class PagamentoModalComponent implements OnInit {
 
-  @Input() user:IUser;
-  @Input() cards:ICard[];
-  @Output() OnPagar = new EventEmitter<{user:IUser,card:ICard,valor:number}>();
-  valor:number;
-  card:ICard;
+  @Input() user: IUser;
+  @Input() cards: ICard[];
+  @Output() OnPagar = new EventEmitter<{ user: IUser, card: ICard, valor: number }>();
+  @Output() OnClose = new EventEmitter<void>();
+  valor: number;
+  card: ICard;
   constructor() { }
 
   ngOnInit() {
     this.card = this.cards[0];
   }
-  onPagar(){
-    this.OnPagar.next({user:this.user,card:this.card,valor:this.valor})
+  onPagar() {
+    this.OnPagar.next({ user: this.user, card: this.card, valor: this.valor })
+  }
+  onClose() {
+    this.OnClose.next();
   }
 
-  changeCard(newCard){
+  changeCard(newCard) {
     this.card = newCard;
   }
 
-  changeValor(newValor){
-    this.valor = newValor.replace(/\D/g, "")/100
+  changeValor(newValor) {
+    this.valor = newValor.replace(/\D/g, "") / 100
   }
 }
