@@ -16,7 +16,7 @@
         <div class="col">
           <mat-form-field class="payment-modal__field">
             <mat-label>Valor a ser pago</mat-label>
-            <input currencyMask matInput formControlName="value" autocomplete="off" [options]="currencyMask" 
+            <input id="inform-payment-value-input" currencyMask matInput formControlName="value" autocomplete="off" [options]="currencyMask" 
                placeholder="R$ 0,00">
                <mat-error *ngIf="value.errors && value.errors.required">
                 Informe um valor
@@ -35,7 +35,7 @@
           <mat-form-field class="payment-modal__field">
             <pp-loader matPrefix small="true" *ngIf="isLoadingSavedCards"></pp-loader>
             <mat-label>Cartão</mat-label>
-            <mat-select matInput formControlName="card">
+            <mat-select matInput formControlName="card" id="inform-card-select">
               <mat-option *ngFor="let card of savedCards" [value]="card">Cartão com final
                 <b>{{card.card_number | cardSecrecy}}</b>
               </mat-option>
@@ -45,8 +45,8 @@
       </div>
     </div>
     <div mat-dialog-actions align="end">
-      <button type="button" mat-stroked-button  color="primary" (click)="onNoClick()" [disabled]="isPaying">Cancelar</button>
-      <button type="submit" mat-flat-button color="primary" [disabled]="isPaying || !isPaymentFormValid"> 
+      <button id="cancel-payment" type="button" mat-stroked-button  color="primary" (click)="onNoClick()" [disabled]="isPaying">Cancelar</button>
+      <button id="confirm-payment" type="submit" mat-flat-button color="primary" [disabled]="isPaying || !isPaymentFormValid"> 
         
         <span
           *ngIf="!isPaying">Pagar</span>

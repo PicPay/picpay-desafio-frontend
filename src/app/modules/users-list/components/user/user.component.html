@@ -5,5 +5,5 @@
         <h3 class="user__name"  >{{user.name}}</h3>
     </div>
     <p matLine>ID: {{user.id}} - Username: {{user.username}}</p>
-    <button mat-raised-button color="primary" (click)="onUserClicked(user)">Pagar</button>
+    <button id="pay-user-{{user.id}}-btn" mat-raised-button color="primary" (click)="onUserClicked(user)">Pagar</button>
 </mat-list-item>
