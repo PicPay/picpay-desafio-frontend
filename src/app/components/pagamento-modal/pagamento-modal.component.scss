@@ -1,0 +1,31 @@
+.title > span {
+    color: #cddc39;
+}
+
+.content > input {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 32px;
+    height: 48px;
+    padding: 0 8px;
+    width: 100%;
+  }
+  
+  .content > .cards > select {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 32px;
+    height: 48px;
+    margin-top: 12px;
+    width: 100%;
+  }
+  
+  .content > button {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 32px;
+    height: 48px;
+    padding: 0 8px;
+    margin-top: 24px;
+  }

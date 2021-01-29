@@ -7,6 +7,8 @@ import { AvatarComponent } from './components/avatar/avatar.component';
 import { UserRowComponent } from './components/user-row/user-row.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { HomeComponent } from './pages/home/home.component';
+import { PagamentoModalComponent } from './components/pagamento-modal/pagamento-modal.component';
+import { PagamentoConcluidoModalComponent } from './components/pagamento-concluido-modal/pagamento-concluido-modal.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { HomeComponent } from './pages/home/home.component';
     AvatarComponent,
     UserRowComponent,
     ModalComponent,
-    HomeComponent
+    HomeComponent,
+    PagamentoModalComponent,
+    PagamentoConcluidoModalComponent
   ],
   imports: [
     BrowserModule,

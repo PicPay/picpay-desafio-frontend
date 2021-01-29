@@ -1,1 +1,3 @@
-<app-user-row></app-user-row>
+<app-user-row *ngFor="let row of usersData.data" [user]="row" trackBy:row.id (OnPagar)="OnPagar($event)"></app-user-row>
+<app-pagamento-modal *ngIf="selectedUser" [user]="selectedUser"></app-pagamento-modal>
+<app-pagamento-concluido-modal *ngIf="pagamentoComSucesso"></app-pagamento-concluido-modal>

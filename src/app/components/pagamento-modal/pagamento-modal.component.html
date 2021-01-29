@@ -1,0 +1,17 @@
+<app-modal>
+        <div class="title" title>Pagamento para <span>{{user.name}}</span></div>
+
+        <div class="content" content>
+            <input type="text" placeholder="R$ 0,00" [value]="valor | currency: 'BRL'" (keyup)="changeValor($event.target.value)"/>
+
+            <div class="cards">
+                <select>
+                    <option selected>Cartão com final 0123</option>
+                </select>
+            </div>
+
+            <button type="button" class="pay-button" (click)="onPagar()">
+                Pagar
+            </button>
+        </div>
+</app-modal>
