@@ -9,7 +9,7 @@ describe('UserRowComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserRowComponent,AvatarComponent ]
+      declarations: [ UserRowComponent,AvatarComponent ],
     })
     .compileComponents();
   }));

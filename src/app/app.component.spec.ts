@@ -1,18 +1,22 @@
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, async, ComponentFixtureAutoDetect } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { UserRowComponent } from './components/user-row/user-row.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { AvatarComponent } from './components/avatar/avatar.component';
+import { AppModule } from './app.module';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent,
-        UserRowComponent,
-        ModalComponent,
-        AvatarComponent
+        
       ],
+      imports:[
+        AppModule,
+        HttpClientModule
+
+      ]
     }).compileComponents();
   }));
 
