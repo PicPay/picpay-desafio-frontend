@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UserRowComponent } from './user-row.component';
+import { AvatarComponent } from '../avatar/avatar.component';
 
 describe('UserRowComponent', () => {
   let component: UserRowComponent;
@@ -8,7 +9,7 @@ describe('UserRowComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserRowComponent ]
+      declarations: [ UserRowComponent,AvatarComponent ]
     })
     .compileComponents();
   }));
