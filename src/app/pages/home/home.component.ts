@@ -74,4 +74,8 @@ export class HomeComponent implements OnInit, OnDestroy {
        this.selectedUser = null;
     })
   }
+  Close(){
+    this.selectedUser = null;
+    this.pagamentoComSucesso = null;
+  }
 }

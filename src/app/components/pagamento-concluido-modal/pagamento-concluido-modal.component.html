@@ -6,5 +6,9 @@
     <div class="content" content>
         <div *ngIf="true">O pagamento foi concluido com sucesso.<br /></div>
         <div *ngIf="false">O pagamento <strong>não</strong> foi concluido com sucesso.</div>
+        <button type="button" class="pay-button" (click)="close()">
+                Ok
+        </button>
     </div>
+   
 </app-modal>
