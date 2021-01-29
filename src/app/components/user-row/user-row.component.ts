@@ -1,7 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ApiService } from 'src/app/services/api/api.service';
-import { IApi } from 'src/app/services/api/interfaces/api.interface';
-import { ApiMockService } from 'src/app/services/api/api-mock.service';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { IUser } from 'src/app/services/api/interfaces/api.interface';
 
 @Component({
   selector: 'app-user-row',
@@ -10,10 +8,15 @@ import { ApiMockService } from 'src/app/services/api/api-mock.service';
 })
 export class UserRowComponent implements OnInit {
 
+  @Input() user:IUser;
+  @Output() OnPagar = new EventEmitter<IUser>();
+
   constructor() { }
 
-  ngOnInit() {
-  
+  ngOnInit() {}
+
+  onPagar(){
+    this.OnPagar.next(this.user);
   }
 
 }
