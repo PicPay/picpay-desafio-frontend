@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { IUser } from 'src/app/interfaces/user.interface';
+import { ICard } from 'src/app/interfaces/card.interface';
 
 
 @Component({
@@ -10,17 +11,23 @@ import { IUser } from 'src/app/interfaces/user.interface';
 export class PagamentoModalComponent implements OnInit {
 
   @Input() user:IUser;
-  @Output() OnPagar = new EventEmitter<{user:IUser,card:any}>();
-  valor:Number = 15;
-
+  @Input() cards:ICard[];
+  @Output() OnPagar = new EventEmitter<{user:IUser,card:ICard,valor:number}>();
+  valor:number;
+  card:ICard;
   constructor() { }
 
   ngOnInit() {
+    this.card = this.cards[0];
   }
   onPagar(){
-    console.log(this.valor);
-    this.OnPagar.next({user:this.user,card:"aaaa"})
+    this.OnPagar.next({user:this.user,card:this.card,valor:this.valor})
   }
+
+  changeCard(newCard){
+    this.card = newCard;
+  }
+
   changeValor(newValor){
     this.valor = newValor.replace(/\D/g, "")/100
   }

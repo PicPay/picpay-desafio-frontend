@@ -3,6 +3,7 @@ import { ApiService } from 'src/app/services/api/api.service';
 import { IApi } from 'src/app/interfaces/api.interface';
 import { Observable, Subscription } from 'rxjs';
 import { IUser } from 'src/app/interfaces/user.interface';
+import { ICard } from 'src/app/interfaces/card.interface';
 
 @Component({
   selector: 'app-home',
@@ -16,6 +17,20 @@ export class HomeComponent implements OnInit, OnDestroy {
     error:null,
     data:null
   }
+
+  cards:ICard[] = [
+    {
+      card_number: 1111111111111111,
+      cvv: 789,
+      expiry_date: '01/18',
+    },
+    {
+      card_number: 4111111111111234,
+      cvv: 123,
+      expiry_date: '01/20',
+    },
+  ]
+
   selectedUser:IUser;
   getUsersSubscription:Subscription;
   pagamentoComSucesso:boolean = null;

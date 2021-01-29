@@ -2,11 +2,11 @@
         <div class="title" title>Pagamento para <span>{{user.name}}</span></div>
 
         <div class="content" content>
-            <input type="text" placeholder="R$ 0,00" [value]="valor | currency: 'BRL'" (keyup)="changeValor($event.target.value)"/>
+            <input type="text" ng-pattern="/^\d+$/" placeholder="R$ 0,00" [value]="valor | currency: 'BRL'" (keyup)="changeValor($event.target.value)"/>
 
             <div class="cards">
-                <select>
-                    <option selected>Cartão com final 0123</option>
+                <select (change)="changeCard(cards[$event.target.value])">
+                    <option *ngFor="let card of cards; let i=index"  [value]="i">Cartão com final {{card.card_number.toString().substr(card.card_number.toString().length - 4)}}</option>
                 </select>
             </div>
 
