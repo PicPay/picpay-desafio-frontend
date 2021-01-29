@@ -9,6 +9,7 @@ import { ModalComponent } from './components/modal/modal.component';
 import { HomeComponent } from './pages/home/home.component';
 import { PagamentoModalComponent } from './components/pagamento-modal/pagamento-modal.component';
 import { PagamentoConcluidoModalComponent } from './components/pagamento-concluido-modal/pagamento-concluido-modal.component';
+import { InputCurrencyDirective } from './directive/input-currency.directive';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { PagamentoConcluidoModalComponent } from './components/pagamento-conclui
     ModalComponent,
     HomeComponent,
     PagamentoModalComponent,
-    PagamentoConcluidoModalComponent
+    PagamentoConcluidoModalComponent,
+    InputCurrencyDirective
   ],
   imports: [
     BrowserModule,
