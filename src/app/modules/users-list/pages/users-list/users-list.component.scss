@@ -1,0 +1,10 @@
+.users-list {
+    display: flex;
+    justify-content: center;
+    background-color: var(--primary-lighter-color);
+    &__list {
+        background-color: white;
+        max-width: 600px;
+        width: 100%;
+    }
+}
