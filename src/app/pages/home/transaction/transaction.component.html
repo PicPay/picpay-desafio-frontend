@@ -1,0 +1,82 @@
+<div class="flex column">
+  <div mat-dialog-content class="flex column">
+    <div class="flex row center">
+      <picpay-avatar
+        class="avatar"
+        mat-list-icon
+        url="{{ user.img }}"
+      ></picpay-avatar>
+      <div class="item grow2">
+        <h1 class="title">{{ user.username }}</h1>
+        <h1 class="title-name">{{ user.name }}</h1>
+      </div>
+    </div>
+
+    <form
+      class="flex column center"
+      [formGroup]="paymentForm"
+      (ngSubmit)="onSubmit()"
+    >
+      <small class="text-gray payment-title"
+        >Selecione um cartão para efetuar o pagamento:
+      </small>
+      <mat-card
+        class="item card"
+        *ngFor="let card of cards"
+        (click)="cardSelected = card"
+        [ngClass]="{
+          'card-selected': cardSelected?.card_number === card.card_number
+        }"
+      >
+        <div class="mat-card-content-container flex justify-content-between">
+          <div class="flex column">
+            <div class="text-left">{{ card.card_number | creditCardMask }}</div>
+            <div class="text-left">{{ card.expiry_date }}</div>
+          </div>
+          <div class="card-image">
+            <div class="mc">&nbsp;</div>
+          </div>
+        </div>
+      </mat-card>
+
+      <mat-form-field appearance="outline" class="w-100 value-input">
+        <mat-label> Valor da transferência: </mat-label>
+        <input
+          matInput
+          currencyMask
+          [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"
+          id="value"
+          class="form-control cta"
+          formControlName="value"
+          type="text"
+          maxlength="20"
+        />
+        <mat-error *ngIf="paymentFormControls.value?.errors?.min">
+          O valor mínimo para pagamento é:
+          {{ paymentFormControls.value.errors.min.min | currency: "BRL" }}
+        </mat-error>
+        <mat-error *ngIf="paymentFormControls.value?.errors?.max">
+          O valor máximo para pagamento é:
+          {{ paymentFormControls.value.errors.max.max | currency: "BRL" }}
+        </mat-error>
+      </mat-form-field>
+      <div mat-dialog-actions class="w-100">
+        <button
+          type="submit"
+          class="cta-button w-100 payment-button"
+          mat-button
+          [disabled]="
+            paymentForm.pristine || paymentForm.invalid || isOnTransaction
+          "
+        >
+          <div *ngIf="isOnTransaction; then thenBlock; else elseBlock"></div>
+          <ng-template #thenBlock>
+            <mat-spinner diameter="20"></mat-spinner>
+            <span>Efetuando transação...</span></ng-template
+          >
+          <ng-template #elseBlock>Pagar</ng-template>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+.mat-card:not([class*="mat-elevation-z"]) {
+  box-shadow: 0 7px 30px -10px rgba(150, 170, 180, 0.5);
+}
+
+.success-toast {
+  background-color: #00c16a !important;
+}
+
+.error-toast {
+  background-color: #f44336 !important;
+}
