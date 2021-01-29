@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PagamentoConcluidoModalComponent } from './pagamento-concluido-modal.component';
+import { ModalComponent } from '../modal/modal.component';
 
 describe('PagamentoConcluidoModalComponent', () => {
   let component: PagamentoConcluidoModalComponent;
@@ -8,7 +9,7 @@ describe('PagamentoConcluidoModalComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PagamentoConcluidoModalComponent ]
+      declarations: [ PagamentoConcluidoModalComponent,ModalComponent ]
     })
     .compileComponents();
   }));
