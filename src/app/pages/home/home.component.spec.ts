@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HomeComponent } from './home.component';
 import { UserRowComponent } from 'src/app/components/user-row/user-row.component';
 import { AvatarComponent } from 'src/app/components/avatar/avatar.component';
-import { IApi } from 'src/app/services/api/interfaces/api.interface';
+import { IApi } from 'src/app/interfaces/api.interface';
 import { ApiMockService } from 'src/app/services/api/api-mock.service';
 
 describe('HomeComponent', () => {

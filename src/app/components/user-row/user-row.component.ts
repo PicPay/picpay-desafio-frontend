@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { IUser } from 'src/app/services/api/interfaces/api.interface';
+import { IUser } from 'src/app/interfaces/user.interface';
 
 @Component({
   selector: 'app-user-row',

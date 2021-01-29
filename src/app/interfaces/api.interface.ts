@@ -1,12 +1,6 @@
 import { Observable } from "rxjs";
+import { IUser } from './user.interface';
 
 export abstract class IApi {
     abstract getUsers(): Observable<IUser[]> 
-}
-
-export interface IUser {
-    id:number,
-    name:String,
-    img:String,
-    username:String
 }

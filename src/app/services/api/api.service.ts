@@ -3,7 +3,8 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { retry, catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs/internal/observable/throwError';
-import { IUser, IApi } from './interfaces/api.interface'
+import { IApi } from '../../interfaces/api.interface'
+import { IUser } from 'src/app/interfaces/user.interface';
 
 
 @Injectable({
