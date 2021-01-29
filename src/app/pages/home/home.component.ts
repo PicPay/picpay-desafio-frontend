@@ -59,5 +59,19 @@ export class HomeComponent implements OnInit, OnDestroy {
   OnPagar(user:IUser){
     this.selectedUser=user;
   }
-
+  RealizaPagamento(pagamentoInfo:{ user: IUser; card: ICard; valor: number; }){
+    const { user, card, valor } = pagamentoInfo;
+    this.api.postTransacao({
+      ...card,
+      destination_user_id:user.id,
+      value:valor
+    }).subscribe(val => {
+      this.pagamentoComSucesso = val.status === "Aprovada";
+      this.selectedUser = null;
+    }
+     ,val => {
+       this.pagamentoComSucesso = false;
+       this.selectedUser = null;
+    })
+  }
 }
