@@ -8,7 +8,7 @@ import { TransactionPayload } from "../models/TransactionPayload";
   providedIn: "root",
 })
 export class PaymentService {
-  private url: string =
+  API_URL: string =
     "https://run.mocky.io/v3/533cd5d7-63d3-4488-bf8d-4bb8c751c989";
 
   constructor(private http: HttpClient) {}
@@ -18,7 +18,7 @@ export class PaymentService {
       .pipe(
         switchMap((isValid) => {
           if (isValid) {
-            return this.http.post(this.url, transaction);
+            return this.http.post(this.API_URL, transaction);
           } else {
             throw throwError({ status: "Cartão inválido" });
           }
