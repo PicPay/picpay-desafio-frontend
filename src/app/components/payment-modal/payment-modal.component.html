@@ -1,0 +1,44 @@
+<ng-template [ngIf]="showModal">
+  <div class="modal-backdrop" (click)="hideModal()"></div>
+  <ng-container *ngIf="showConfirmation; else paymentTemplate">
+    <div class="modal">
+      <div class="title">Recibo de pagamento</div>
+      <ng-container *ngIf="hasError; else showMessageTemplate">
+        <div class="content">
+          O pagamento <strong>não</strong> foi concluido com sucesso.
+        </div>
+      </ng-container>
+      <ng-template #showMessageTemplate>
+        <div class="content">O pagamento foi concluido com sucesso.<br /></div>
+      </ng-template>
+    </div>
+  </ng-container>
+  <ng-template #paymentTemplate>
+    <form [formGroup]="form" (ngSubmit)="submit($event)">
+      <div class="modal">
+        <div class="title">
+          Pagamento para <span>{{ selectedUser?.name }}</span>
+        </div>
+
+        <div class="content">
+          <input formControlName="value" type="number" placeholder="R$ 0,00" />
+
+          <div class="cards">
+            <select formControlName="card">
+              <option
+                *ngFor="let card of cards$ | async"
+                [value]="card.card_number"
+              >
+                {{ card.card_number | cardMask }}
+              </option>
+            </select>
+          </div>
+
+          <button [disabled]="form.invalid" type="submit" class="pay-button">
+            Pagar
+          </button>
+        </div>
+      </div>
+    </form>
+  </ng-template>
+</ng-template>
