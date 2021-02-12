@@ -1,0 +1,58 @@
+<header>
+  <div>
+    <aside class="user_info">
+      <div class="user_info__avatar">
+        <img src="https://i.pravatar.cc/50" alt="" />
+      </div>
+      <div class="user_info__text">
+        <span>Flavio F.</span>
+        <small>Gold</small>
+      </div>
+    </aside>
+
+    <nav class="appmenu">
+      <ul>
+        <li *ngFor="let item of menuItems">
+          <a
+            picButton
+            iconAlign="start"
+            transparent
+            [routerLink]="item.routerLink"
+            [routerLinkActive]="['active']"
+            [title]="item.title"
+          >
+            <mat-icon aria-hidden="false">{{ item.icon }}</mat-icon>
+            <span>{{ item.text }}</span>
+          </a>
+        </li>
+        <!-- <li>
+          <a [routerLink]="['payments']">
+            <mat-icon aria-hidden="false" aria-label="Página Dashboard">payments</mat-icon>
+            <span> Pagamentos </span>
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <mat-icon aria-hidden="false" aria-label="Página Dashboard">report</mat-icon>
+
+            <span>Notificações</span>
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <mat-icon aria-hidden="false" aria-label="Página Dashboard"
+              >miscellaneous_services</mat-icon
+            >
+
+            <span>Serviços</span>
+          </a>
+        </li> -->
+      </ul>
+    </nav>
+  </div>
+
+  <button picButton [iconAlign]="'start'" transparent>
+    <mat-icon aria-hidden="false" aria-label="sair">logout</mat-icon>
+    Logout
+  </button>
+</header>

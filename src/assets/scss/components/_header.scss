@@ -1,0 +1,52 @@
+@use '../helpers/config-variables' as v;
+@use '../helpers/rem' as r;
+
+app-header {
+  @extend %absolute;
+  background-color: transparent; // deixar dinamico conforme tela
+
+  width: calc(100vw - #{v.$menu-aside-width});
+
+  height: v.$header-height;
+  top: 0;
+  left: v.$menu-aside-width;
+  padding: r.rem(20);
+
+  header {
+    @extend %flex;
+    @extend %space-between;
+    width: 100%;
+
+    nav {
+      ul {
+        li {
+          display: inline-block;
+
+          &:not(:last-of-type) {
+            margin-right: 15px;
+          }
+
+          a {
+            @extend %flex;
+            @extend %decorationNone;
+
+            border: 1px solid transparent;
+            border-radius: 4px;
+            letter-spacing: r.rem(1);
+            text-shadow: r.rem(2) r.rem(1) r.rem(2) rgba(#000, 0.7);
+            color: #fff;
+            transition: all ease-in 0.3s;
+
+            padding: r.rem(5) r.rem(20);
+
+            &:hover,
+            &:focus {
+              outline: none;
+              border-color: #fff;
+            }
+          }
+        }
+      }
+    }
+  }
+}

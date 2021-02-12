@@ -1,0 +1,65 @@
+app-user-menu {
+  width: rem(200px);
+  height: 100vh;
+  padding: rem(30px) 0;
+
+  @extend %flex;
+
+  header {
+    @extend %flex;
+    @extend %direction-column;
+    @extend %space-between;
+
+    width: 100%;
+
+    .user_info {
+      @extend %flex;
+      @extend %direction-row;
+
+      padding: 0 rem(30px);
+
+      &__avatar {
+        width: rem(50px);
+        height: rem(50px);
+
+        img {
+          @extend %border-radius50;
+        }
+      }
+
+      &__text {
+        margin-left: rem(20px);
+
+        span {
+          @extend %block;
+          @extend %bold;
+        }
+      }
+    }
+
+    .appmenu {
+      @extend %block;
+      margin: rem(40px) 0 0 0;
+
+      ul {
+        @extend %flex;
+        @extend %direction-column;
+
+        li {
+          &:not(:last-of-type) {
+            margin-bottom: rem(15px);
+          }
+
+          a {
+            font-weight: bold;
+            color: #c2cbd7;
+
+            &.active {
+              color: #000;
+            }
+          }
+        }
+      }
+    }
+  }
+}

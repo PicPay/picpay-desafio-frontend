@@ -26,16 +26,4 @@ $picpay-desafio-frontend-theme: mat-light-theme($picpay-desafio-frontend-primary
 // that you are using.
 @include angular-material-theme($picpay-desafio-frontend-theme);
 
-* {
-  box-sizing: border-box;
-}
-
-html,
-body {
-  font-family: sans-serif;
-  margin: 0;
-  padding: 0;
-}
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@import './assets/scss/styles';

@@ -1,0 +1,7 @@
+@function handleUnit($value) {
+    @return $value / ($value * 0 + 1);
+}
+
+@function rem($value) {
+    @return #{handleUnit($value) / handleUnit(16px)}rem;
+}
