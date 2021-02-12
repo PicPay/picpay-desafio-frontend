@@ -4,13 +4,11 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: 'dashboard',
-    loadChildren: () =>
-      import('./view/dashboard/dashboard.module').then(m => m.DashboardModule),
+    loadChildren: () => import('./view/dashboard/dashboard.module').then((m) => m.DashboardModule),
   },
   {
     path: 'payments',
-    loadChildren: () =>
-      import('./view/payments/payments.module').then(m => m.PaymentsModule),
+    loadChildren: () => import('./view/payments/payments.module').then((m) => m.PaymentsModule),
   },
   {
     path: '**',
@@ -21,11 +19,11 @@ const routes: Routes = [
     path: '',
     redirectTo: 'dashboard',
     pathMatch: 'full',
-  }
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
