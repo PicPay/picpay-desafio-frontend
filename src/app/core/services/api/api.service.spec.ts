@@ -31,6 +31,18 @@ describe('ApiService', () => {
     request.flush([{ id: 1 }]);
   });
 
+  it('should send http post method', () => {
+    apiService
+      .post<{ id: number } | { payload: { id: number } }>('someUrl', { id: 1 })
+      .subscribe((result) => expect(result).toEqual({ payload: { id: 1 } }));
+
+    const request = httpTestingController.expectOne('someUrl');
+
+    expect(request.request.method).toEqual('POST');
+
+    request.flush({ payload: { id: 1 } });
+  });
+
   afterEach(() => {
     httpTestingController.verify();
   });
