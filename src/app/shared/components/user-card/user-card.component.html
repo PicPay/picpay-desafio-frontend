@@ -1,0 +1,33 @@
+<mat-card>
+
+  <mat-card-content fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayoutAlign="space-between center"
+    fxLayoutGap.xs="8px" fxLayoutGap.sm="8px" fxLayoutGap.md="16px">
+    <div>
+      <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayoutAlign="space-between center">
+        <div fxLayoutAlign="center center">
+          <figure class="image">
+            <img class="is-rounded" [src]="user.img" [alt]="user.name" />
+          </figure>
+        </div>
+        <div>
+          <p>
+            <span class="label">Nome do usuário:</span>
+            <span class="data">{{user.name}}</span>
+          </p>
+          <p>
+            <span class="label">ID:</span>
+            <span class="data">{{user.id}}</span>
+          </p>
+          <p>
+            <span class="label">Username:</span>
+            <span class="data">{{user.username}}</span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="user-card-button">
+      <button mat-raised-button color="primary" class="is-full-width" (click)="onClickPay(user)">PAGAR</button>
+    </div>
+  </mat-card-content>
+
+</mat-card>
