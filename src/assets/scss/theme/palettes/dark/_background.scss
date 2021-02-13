@@ -1,0 +1,25 @@
+$dark-background: #2c2c2c;
+$dark-bg-lighter-5: lighten($dark-background, 5%);
+$dark-bg-lighter-10: lighten($dark-background, 10%);
+$dark-bg-lighter-20: lighten($dark-background, 20%);
+$dark-bg-lighter-30: lighten($dark-background, 30%);
+$light-bg-alpha-4: rgba(#fafafa, 0.04);
+$light-bg-alpha-12: rgba(#fafafa, 0.12);
+
+$mat-dark-theme-background: (
+  background: $dark-background,
+  status-bar: $dark-bg-lighter-20,
+  app-bar: $dark-bg-lighter-5,
+  hover: $light-bg-alpha-4,
+  card: $dark-bg-lighter-5,
+  dialog: $dark-bg-lighter-5,
+  tooltip: $dark-bg-lighter-20,
+  disabled-button: $light-bg-alpha-12,
+  raised-button: $dark-bg-lighter-5,
+  focused-button: $light-focused,
+  selected-button: $dark-bg-lighter-20,
+  selected-disabled-button: $dark-bg-lighter-30,
+  disabled-button-toggle: $dark-bg-lighter-10,
+  unselected-chip: $dark-bg-lighter-20,
+  disabled-list-option: $dark-bg-lighter-10,
+);
