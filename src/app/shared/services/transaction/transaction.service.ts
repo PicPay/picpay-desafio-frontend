@@ -3,7 +3,8 @@ import { TransactionPayload } from '@core/domains/transaction/transaction-payloa
 import { Transaction } from '@core/domains/transaction/transaction.domain';
 import { APIBaseRoutes } from '@core/services/api/api-base.routes';
 import { ApiService } from '@core/services/api/api.service';
-import { Observable } from 'rxjs';
+import { MOCK_INVALID_CARD } from '@shared/mocks/card/card.mock';
+import { Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 export interface TransactionAPIResult {
@@ -21,6 +22,10 @@ export class TransactionService {
   postTransaction(
     transactionPayload: TransactionPayload
   ): Observable<Transaction> {
+    if (transactionPayload.card_number === MOCK_INVALID_CARD.card_number) {
+      return throwError({status: 'Não foi possível fazer a transação, número de cartão inválido'});
+    }
+
     return this.apiService
       .post<TransactionAPIResult | TransactionPayload>(
         `${APIBaseRoutes.BASE_TRANSACTION_API_URL}${this.endpoints.post}/${transactionPayload.destination_user_id}`,
