@@ -20,6 +20,7 @@
     ],
     "paths": {
       "@env/*": ["src/environments/*"],
+      "@core/*": ["src/app/core/*"],
     }
   },
   "angularCompilerOptions": {
