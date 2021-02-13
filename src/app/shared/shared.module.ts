@@ -10,10 +10,17 @@ import { MatButtonModule } from '@angular/material/button';
 
 import { RouterModule } from '@angular/router';
 import { ButtonComponent } from './components/button/button.component';
+import { CreditCardComponent } from './components/credit-card/credit-card.component';
 
 @NgModule({
-  declarations: [HeaderComponent, SkeletonDirective, UserMenuComponent, ButtonComponent],
-  imports: [CommonModule, MatRippleModule, MatIconModule,MatButtonModule, RouterModule],
-  exports: [HeaderComponent, UserMenuComponent, ButtonComponent],
+  declarations: [
+    HeaderComponent,
+    SkeletonDirective,
+    UserMenuComponent,
+    ButtonComponent,
+    CreditCardComponent,
+  ],
+  imports: [CommonModule, MatRippleModule, MatIconModule, MatButtonModule, RouterModule],
+  exports: [HeaderComponent, UserMenuComponent, ButtonComponent, CreditCardComponent],
 })
 export class SharedModule {}

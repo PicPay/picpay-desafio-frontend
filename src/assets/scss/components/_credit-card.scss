@@ -1,0 +1,60 @@
+.card {
+  width: 320px;
+  height: 400px;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: translateZ(-140px);
+  transition: transform 350ms cubic-bezier(0.39, 0.575, 0.565, 1);
+  cursor: pointer;
+
+  > div {
+    position: absolute;
+    width: 320px;
+    height: 400px;
+    padding: 34px 21px;
+    transition: all 350ms cubic-bezier(0.39, 0.575, 0.565, 1);
+  }
+
+  .front {
+    background-image: linear-gradient(180deg, rgba(145, 141, 144, 1) 0%, rgba(92, 91, 94, 0) 100%);
+    transform: rotateY(0deg) translateZ(160px);
+    border-radius: 34px 3px 0 0;
+
+    @extend %flex;
+    @extend %direction-column;
+    @extend %space-between;
+  }
+
+  .back {
+    background-image: linear-gradient(0deg, rgba(145, 141, 144, 1) 0%, rgba(92, 91, 94, 0) 100%);
+    opacity: 0.08;
+    transform: rotateY(90deg) translateZ(160px);
+    border-radius: 0 0 3px 34px;
+  }
+
+  h1,h2{
+    margin: 0;
+    font-size: 38px;
+    letter-spacing: -.25px;
+    transform: translateX(-44px);
+    font-family: 'Sarala';
+    font-weight: 700;
+  }
+
+  h2{
+    font-size: 21px;
+    transform: translateX(-34px);
+  }
+
+  &:hover {
+    transform: translateZ(-160px) rotateY(-90deg);
+
+    .front {
+      opacity: 0;
+    }
+
+    .back {
+      opacity: 1;
+    }
+  }
+}

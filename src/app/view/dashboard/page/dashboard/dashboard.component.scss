@@ -1,0 +1,9 @@
+.cards-list {
+  li {
+    display: inline-block;
+
+    &:not(:last-of-type) {
+      margin-right: 60px;
+    }
+  }
+}

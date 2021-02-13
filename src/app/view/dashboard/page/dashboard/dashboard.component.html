@@ -1,1 +1,5 @@
-<p>dashboard works!</p>
+<ul class="cards-list">
+  <li *ngFor="let card of creditCards">
+    <app-credit-card [cardInformation]="card"></app-credit-card>
+  </li>
+</ul>
