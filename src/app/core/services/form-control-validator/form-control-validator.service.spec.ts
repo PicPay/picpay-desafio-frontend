@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { AbstractControl, FormControl, Validators } from '@angular/forms';
-import { FormValidatorMessage } from '@shared/enums/form-validator-message.enum';
+import { FormValidatorMessage } from '@core/enums/form-validator-message.enum';
 import { SharedModule } from '@shared/shared.module';
 import { FormControlValidatorService } from './form-control-validator.service';
 
