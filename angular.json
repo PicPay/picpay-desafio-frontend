@@ -47,7 +47,7 @@
               "namedChunks": false,
               "aot": true,
               "extractLicenses": true,
-              "vendorChunk": false,
+              "vendorChunk": true,
               "buildOptimizer": true,
               "budgets": [
                 {
@@ -76,7 +76,7 @@
               "namedChunks": false,
               "aot": true,
               "extractLicenses": true,
-              "vendorChunk": false,
+              "vendorChunk": true,
               "buildOptimizer": true,
               "budgets": [
                 {
@@ -101,6 +101,9 @@
           "configurations": {
             "production": {
               "browserTarget": "picpay-desafio-frontend:build:production"
+            },
+            "development": {
+              "browserTarget": "picpay-desafio-frontend:build:development"
             }
           }
         },
