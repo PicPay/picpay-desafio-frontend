@@ -1,0 +1,22 @@
+body {
+  --warn-color: #ff8f8f;
+  --warn-lighter-color: #ffdddd;
+  --warn-darker-color: #ff7070;
+  --text-warn-color: #{$light-primary-text};
+  --text-warn-lighter-color: #{$dark-primary-text};
+  --text-warn-darker-color: #{$light-primary-text};
+}
+
+$mat-warn: (
+  main: #ff8f8f,
+  lighter: #ffdddd,
+  darker: #ff7070,
+  200: #ff8f8f,
+  contrast:
+    (
+      main: $light-primary-text,
+      lighter: $dark-primary-text,
+      darker: $light-primary-text,
+    ),
+);
+$theme-warn: mat-palette($mat-warn, main, lighter, darker);

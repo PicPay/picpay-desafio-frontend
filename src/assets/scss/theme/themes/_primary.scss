@@ -1,0 +1,21 @@
+body {
+  --primary-color: #426dff;
+  --primary-lighter-color: #c6d3ff;
+  --primary-darker-color: #2b50ff;
+  --text-primary-color: #{$light-primary-text};
+  --text-primary-lighter-color: #{$dark-primary-text};
+  --text-primary-darker-color: #{$light-primary-text};
+}
+
+$mat-primary: (
+  main: #426dff,
+  lighter: #c6d3ff,
+  darker: #2b50ff,
+  200: #426dff,
+  contrast: (
+    main: $light-primary-text,
+    lighter: $dark-primary-text,
+    darker: $light-primary-text,
+  ),
+);
+$theme-primary: mat-palette($mat-primary, main, lighter, darker);

@@ -1,0 +1,21 @@
+body {
+  --accent-color: #50d67b;
+  --accent-lighter-color: #cbf3d7;
+  --accent-darker-color: #37c65e;
+  --text-accent-color: #{$dark-primary-text};
+  --text-accent-lighter-color: #{$dark-primary-text};
+  --text-accent-darker-color: #{$dark-primary-text};
+}
+
+$mat-accent: (
+  main: #50d67b,
+  lighter: #cbf3d7,
+  darker: #37c65e,
+  200: #50d67b,
+  contrast: (
+    main: $dark-primary-text,
+    lighter: $dark-primary-text,
+    darker: $dark-primary-text,
+  ),
+);
+$theme-accent: mat-palette($mat-accent, main, lighter, darker);
