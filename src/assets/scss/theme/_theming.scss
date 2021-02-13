@@ -1,0 +1,43 @@
+@import '~@angular/material/theming';
+
+// Fonts Config
+@import './fonts';
+@include mat-core($fontConfig);
+
+// Themes Config
+@import './themes/all';
+
+$theme: mat-light-theme($theme-primary, $theme-accent, $theme-warn);
+$altTheme: mat-dark-theme($theme-primary, $theme-accent, $theme-warn);
+
+// Theme Init
+@include angular-material-theme($theme);
+
+.theme-alternate {
+  @include angular-material-theme($altTheme);
+  background-color: mat-color($mat-dark-theme-background, background);
+
+  .mat-slide-toggle-content {
+    color: mat-color($mat-dark-theme-foreground, text);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
