@@ -16,9 +16,13 @@ $altTheme: mat-dark-theme($theme-primary, $theme-accent, $theme-warn);
 .theme-alternate {
   @include angular-material-theme($altTheme);
   background-color: mat-color($mat-dark-theme-background, background);
-
+  
   .mat-slide-toggle-content {
     color: mat-color($mat-dark-theme-foreground, text);
+  }
+  .mat-card {
+    background-color: mat-color($mat-dark-theme-background, card)!important;
+    color: mat-color($mat-dark-theme-foreground, text)!important;
   }
 }
 
