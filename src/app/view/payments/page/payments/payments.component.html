@@ -1,1 +1,37 @@
-<p>payments works!</p>
+<div class="credit-card-list">
+    Cartões disponiveis:
+
+    <button picButton (click)="openCreditCardVisualization()">
+      **** 3232
+      <mat-icon>credit_card</mat-icon>
+    </button>
+  <!-- <div>
+    <app-credit-card></app-credit-card>
+  </div> -->
+</div>
+
+
+<cdk-virtual-scroll-viewport itemSize="30" class="users-list">
+  <mat-card *cdkVirtualFor="let user of users$ | async">
+    <mat-card-header>
+      <div>
+        <img [src]="user.img" [alt]="user.name" />
+      </div>
+      <div class="text">
+        <mat-card-title>{{ user.name }}</mat-card-title>
+        <mat-card-subtitle>{{ user.username }}</mat-card-subtitle>
+      </div>
+    </mat-card-header>
+    <mat-card-actions>
+      <button mat-raised-button (click)="openPaymentModal(user)">
+        Pagar
+        <mat-icon>paid</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</cdk-virtual-scroll-viewport>
+
+
+<div class="users-list">
+
+</div>

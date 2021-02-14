@@ -1,0 +1,6 @@
+app-payments {
+  @extend %block;
+  max-height: 100vh;
+  overflow: hidden;
+  padding: rem(20px);
+}

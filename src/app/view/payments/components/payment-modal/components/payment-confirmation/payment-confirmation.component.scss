@@ -1,0 +1,21 @@
+.payment_confirmation {
+  &__title {
+  }
+
+  &__amount {
+    font-size: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__user {
+    span {
+      font-weight: bold;
+    }
+  }
+
+  button {
+    display: block;
+  }
+}

@@ -9,10 +9,44 @@
 // Be sure that you only ever include this mixin once!
 @include mat-core();
 
+$pic-primary: (
+  50: #1dc264,
+  100: #1dc264,
+  200: #1dc264,
+  300: #1dc264,
+  400: #1dc264,
+  500: #1dc264,
+  600: #1dc264,
+  700: #1dc264,
+  800: #1dc264,
+  900: #1dc264,
+  A100: #1dc264,
+  A200: #1dc264,
+  A400: #1dc264,
+  A700: #1dc264,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $light-primary-text,
+    400: $light-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $light-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text,
+  )
+);
+
+
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$picpay-desafio-frontend-primary: mat-palette($mat-indigo);
+$picpay-desafio-frontend-primary: mat-palette($pic-primary);
 $picpay-desafio-frontend-accent: mat-palette($mat-pink, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).

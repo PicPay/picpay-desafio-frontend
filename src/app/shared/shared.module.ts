@@ -11,6 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
 import { ButtonComponent } from './components/button/button.component';
 import { CreditCardComponent } from './components/credit-card/credit-card.component';
+import { MainColorDirective } from './directives/main-color.directive';
 
 @NgModule({
   declarations: [
@@ -19,8 +20,9 @@ import { CreditCardComponent } from './components/credit-card/credit-card.compon
     UserMenuComponent,
     ButtonComponent,
     CreditCardComponent,
+    MainColorDirective,
   ],
-  imports: [CommonModule, MatRippleModule, MatIconModule, MatButtonModule, RouterModule],
+  imports: [CommonModule, MatRippleModule, MatIconModule, MatButtonModule, RouterModule,],
   exports: [HeaderComponent, UserMenuComponent, ButtonComponent, CreditCardComponent],
 })
 export class SharedModule {}

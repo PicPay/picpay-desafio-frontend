@@ -17,8 +17,8 @@ body,
 
 body {
   -webkit-font-smoothing: antialiased;
-  background: #f0f7ff;
-  background: linear-gradient(186deg, #f0f7ff 0%, rgba(#beadde, 0.9) 100%);
+  background: #131313;
+  background: linear-gradient(186deg, #131313 0%, #060606 100%);
 }
 
 body,
@@ -37,4 +37,26 @@ button {
 
 app-root {
   display: flex;
+}
+
+#main_area {
+  width: calc(100vw - #{rem(250px)});
+}
+
+.cdk-virtual-scroll-content-wrapper {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: rem(20px);
+  padding-bottom: rem(20px);
+}
+
+.mat-dialog-container {
+  background: #1f1f1f;
+}
+
+.credit-card-modal {
+  .mat-dialog-container {
+    padding: 0;
+    background: transparent;
+  }
 }

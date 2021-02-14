@@ -4,7 +4,7 @@
 @import "./globals/structure";
 // @import "./globals/main";
 
-// @import './helpers/colors';
+@import './helpers/colors';
 // @import './helpers/config-variables';
 @import "./helpers/placeholders";
 
@@ -12,8 +12,9 @@
 @import "./components/button";
 @import "./components/user-menu";
 @import "./components/credit-card";
+@import "./components/payment-modal";
 
 // @import "./pages/landing";
-// @import "./pages/search";
+@import "./pages/payments";
 
 

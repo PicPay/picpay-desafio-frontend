@@ -1,4 +1,7 @@
 .cards-list {
+  display: flex;
+  justify-content: center;
+
   li {
     display: inline-block;
 

@@ -1,0 +1,37 @@
+app-payment-modal {
+  display: flex;
+  width: rem(400px);
+
+  app-payment-select-amount,
+  app-payment-confirmation {
+    width: 100%;
+
+    .payment-modal {
+      &--title {
+        font-size: rem(25px);
+        letter-spacing: rem(2px);
+      }
+
+      &--smalltext {
+        letter-spacing: rem(2px);
+        color: #fff;
+      }
+    }
+    .mat-form-field {
+      width: 100%;
+      color: #fff;
+    }
+    .mat-form-field.edit-value {
+      font-size: rem(40px);
+    }
+    .bottom-action {
+      @extend %flex;
+      justify-content: flex-end;
+      align-items: center;
+
+      > span {
+        margin-right: 20px;
+      }
+    }
+  }
+}
