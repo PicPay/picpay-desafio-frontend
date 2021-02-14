@@ -1,4 +1,15 @@
+@import 'src/assets/styles/theme/theming';
+
 :host {
+  .app-header {
+    background-color: mat-color($theme-accent, darker);
+    color: mat-color($theme-accent, $mat-accent);
+    text-transform: uppercase;
+    padding: 24px 0;
+    .mat-title {
+      margin: 0;
+    }
+  }
   .user-card {
     ::ng-deep {
       .mat-card {
