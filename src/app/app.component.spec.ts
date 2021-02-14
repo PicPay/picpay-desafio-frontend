@@ -1,8 +1,9 @@
 import { DebugElement } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { MOCK_TRANSACTION_FORM_DATA } from '@shared/mocks/transaction/transaction-form.mock';
 import { MOCK_TRANSACTION } from '@shared/mocks/transaction/transaction.mock';
-import { MOCK_USERS } from '@shared/mocks/user/user.mock';
+import { MOCK_USER, MOCK_USERS } from '@shared/mocks/user/user.mock';
 import { TransactionService } from '@shared/services/transaction/transaction.service';
 import { UserService } from '@shared/services/user/user.service';
 import { of } from 'rxjs';
@@ -51,8 +52,12 @@ describe('AppComponent', () => {
     expect(appUserCardList.length).toBe(MOCK_USERS.length);
   });
 
-  xit('should post transaction', () => {
+  it('should post transaction', () => {
+    component.selectedUser = MOCK_USER;
     transactionServiceSpy.postTransaction.and.returnValue(of(MOCK_TRANSACTION));
     fixture.detectChanges();
+    component.sendTransaction(MOCK_TRANSACTION_FORM_DATA);
+    fixture.detectChanges();
+    expect(component.paidUsers.length).toBe(1);
   });
 });
