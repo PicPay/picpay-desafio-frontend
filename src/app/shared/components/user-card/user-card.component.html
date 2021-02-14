@@ -1,4 +1,4 @@
-<mat-card [ngClass]="{'user-card-paid': isPaid}">
+<mat-card [ngClass]="{'user-card-paid': isPaid}" [matTooltip]="isPaid ? user.name +  ' já foi pago': ''">
 
   <mat-card-content fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayoutAlign="space-between center"
     fxLayoutGap.xs="8px" fxLayoutGap.sm="8px" fxLayoutGap.md="16px">
@@ -26,8 +26,8 @@
       </div>
     </div>
     <div class="user-card-button">
-      <button mat-raised-button [disabled]="isPaid" color="primary" class="is-full-width"
-        (click)="onClickPay(user)">PAGAR</button>
+      <button [matTooltip]="!isPaid ? 'Pagar ' + user.name : ''" mat-raised-button [disabled]="isPaid" color="primary"
+        class="is-full-width" (click)="onClickPay(user)">PAGAR</button>
     </div>
   </mat-card-content>
 
