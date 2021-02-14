@@ -1,16 +1,31 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { CoreModule } from '@core/core.module';
 import { NgModule } from '@angular/core';
-
+import { FlexLayoutModule } from '@angular/flex-layout';
+import {
+  MatButtonModule,
+  MatSnackBarModule,
+  MatTooltipModule,
+} from '@angular/material';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { BrowserModule } from '@angular/platform-browser';
+import { SharedModule } from '@shared/shared.module';
 import { AppComponent } from './app.component';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
-    BrowserModule
+    BrowserModule,
+    MatButtonModule,
+    MatTooltipModule,
+    MatSnackBarModule,
+    MatDialogModule,
+    MatSlideToggleModule,
+    FlexLayoutModule,
+    SharedModule,
+    CoreModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
