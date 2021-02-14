@@ -10,6 +10,8 @@ export class UserCardComponent implements OnInit {
 
   @Input() user: User;
 
+  @Input() isPaid: boolean;
+
   @Output() pay: EventEmitter<User> = new EventEmitter();
 
   constructor() { }
