@@ -42,4 +42,14 @@ describe('UserCardComponent', () => {
       MOCK_USER.username
     );
   });
+
+  it('should disabled button and show user-paid card class ', () => {
+    component.isPaid = true;
+    fixture.detectChanges();
+    const card = debugElement.queryAll(By.css('.user-card-paid'))[0];
+    expect(card).toBeTruthy();
+
+    const button = debugElement.queryAll(By.css('.user-card-button button'))[0];
+    expect(button.attributes.disabled).toBeTruthy();
+  });
 });
