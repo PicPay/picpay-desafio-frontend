@@ -2,7 +2,7 @@
 
   <header class="app-header" fxLayout="row wrap" fxLayoutAlign="space-around center">
     <h1 class="mat-title">Simulação de pagamento</h1>
-    <mat-slide-toggle (change)="changeTheme()" color="primary" [checked]="isAlternateTheme$ | async">
+    <mat-slide-toggle (change)="changeTheme()" color="primary" [checked]="isAlternateTheme$ | async" matTooltip="Mudar tema">
       Modo escuro
     </mat-slide-toggle>
   </header>
