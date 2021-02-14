@@ -1,83 +1,18 @@
-<div class="users">
-  <div class="user">
-    <img src="https://randomuser.me/api/portraits/men/9.jpg" />
-    <div class="info-wrapper">
-      <div class="user-name">
-        Nome do Usuário X
-      </div>
+<section fxLayout="column" fxLayoutAlign="start" fxLayoutGap="24px">
 
-      <div class="user-id-username">
-        ID: X - Username: @usuarioX
-      </div>
-    </div>
+  <header fxLayout="row wrap" fxLayoutAlign="space-between center">
+    <h1>Simulação de pagamento</h1>
+    <mat-slide-toggle (click)="changeTheme()" color="primary" [checked]="isAlternateTheme$ | async">
+      Modo escuro
+    </mat-slide-toggle>
+  </header>
 
-    <button type="button" class="pay-button">
-      Pagar
-    </button>
-  </div>
+  <article fxLayout="row wrap" fxLayout.md="column" fxLayout.sm="column" fxLayout.xs="column"
+    fxLayoutAlign="space-around center" fxLayoutAlign.md="start" fxLayoutAlign.sm="start"
+    fxLayoutAlign.xs="start center">
+    <app-user-card class="user-card" [isPaid]="getPaidUser(user)" *ngFor="let user of users$ | async" [user]="user"
+      (pay)="openTransactionModal($event)">
+    </app-user-card>
+  </article>
 
-  <div class="user">
-    <img src="https://randomuser.me/api/portraits/men/12.jpg" />
-    <div class="info-wrapper">
-      <div class="user-name">
-        Nome do Usuário X
-      </div>
-
-      <div class="user-id-username">
-        ID: X - Username: @usuarioX
-      </div>
-    </div>
-
-    <button type="button" class="pay-button">
-      Pagar
-    </button>
-  </div>
-
-  <div class="user">
-    <img src="https://randomuser.me/api/portraits/men/13.jpg" />
-    <div class="info-wrapper">
-      <div class="user-name">
-        Nome do Usuário X
-      </div>
-
-      <div class="user-id-username">
-        ID: X - Username: @usuarioX
-      </div>
-    </div>
-
-    <button type="button" class="pay-button">
-      Pagar
-    </button>
-  </div>
-</div>
-
-<div class="modal-backdrop">
-  <div class="modal">
-    <div class="title">Pagamento para <span>Nome do Usuário</span></div>
-
-    <div class="content">
-      <input type="number" placeholder="R$ 0,00" />
-
-      <div class="cards">
-        <select>
-          <option selected>Cartão com final 0123</option>
-        </select>
-      </div>
-
-      <button type="button" class="pay-button">
-        Pagar
-      </button>
-    </div>
-  </div>
-
-  <div class="modal">
-    <div class="title">
-      Recibo de pagamento
-    </div>
-
-    <div class="content">
-      O pagamento foi concluido com sucesso.<br />
-      O pagamento <strong>não</strong> foi concluido com sucesso.
-    </div>
-  </div>
-</div>
+</section>
