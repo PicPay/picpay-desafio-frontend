@@ -1,4 +1,9 @@
+@import 'src/assets/styles/theme/theming';
+
 :host {
+  .user-card-paid {
+    background-color: mat-color($theme-accent, darker) !important;
+  }
   .user-card-button {
     max-width: 350px;
     width: 100%;
