@@ -1,0 +1,49 @@
+{
+  "core": {
+    "form-control-validator": {
+      "required": "é obrigatório",
+      "minLength": "deve ser maior que"
+    }
+  },
+  "shared": {
+    "components": {
+      "user-card": {
+        "username": "username:",
+        "id": "id:",
+        "name": "nome do usuário:",
+        "pay": "Pagar",
+        "paid": "já recebeu o dinheiro"
+      },
+      "transaction-form-modal": {
+        "title": "pagamento para: ",
+        "value": "valor",
+        "clearValue": "limpar valor",
+        "card": "cartão",
+        "pay": "pagar",
+        "cancel": "cancelar",
+        "selectLabel": "com final:"
+      }
+    },
+    "transaction": {
+      "success": "recebeu o dinheiro com sucesso :)",
+      "invalidCard": "cartão inválido :(",
+      "errors": "ocorreu um erro no servidor :("
+    }
+  },
+  "app": {
+    "header": {
+      "title": "Simulação de pagamento",
+      "themeSwitcher": "modo escuro",
+      "changeTheme": "mudar tema",
+      "userFilter": {
+        "label": "Filtrar usuário por: ",
+        "all": "todos",
+        "paid": "pagos",
+        "pending": "pendentes"
+      }
+    },
+    "snackBar": {
+      "close": "fechar"
+    }
+  }
+}
