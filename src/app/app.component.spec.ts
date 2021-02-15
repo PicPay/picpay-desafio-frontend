@@ -1,11 +1,17 @@
 import { DebugElement } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {
+  async,
+  ComponentFixture,
+  fakeAsync,
+  flush,
+  TestBed,
+} from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { MOCK_TRANSACTION_FORM_DATA } from '@shared/mocks/transaction/transaction-form.mock';
 import { MOCK_TRANSACTION } from '@shared/mocks/transaction/transaction.mock';
-import { MOCK_USER, MOCK_USERS } from '@shared/mocks/user/user.mock';
+import { MOCK_USERS } from '@shared/mocks/user/user.mock';
 import { TransactionService } from '@shared/services/transaction/transaction.service';
-import { UserService } from '@shared/services/user/user.service';
+import { UserFilter, UserService } from '@shared/services/user/user.service';
 import { of } from 'rxjs';
 import { AppComponent } from './app.component';
 import { AppModule } from './app.module';
@@ -52,12 +58,50 @@ describe('AppComponent', () => {
     expect(appUserCardList.length).toBe(MOCK_USERS.length);
   });
 
-  it('should post transaction', () => {
-    component.selectedUser = MOCK_USER;
+  it('should post transaction', fakeAsync(() => {
+    userServiceSpy.listUsers.and.returnValue(of(MOCK_USERS));
+    component.selectedUser = MOCK_USERS[0];
     transactionServiceSpy.postTransaction.and.returnValue(of(MOCK_TRANSACTION));
+
     fixture.detectChanges();
     component.sendTransaction(MOCK_TRANSACTION_FORM_DATA);
+
     fixture.detectChanges();
-    expect(component.paidUsers.length).toBe(1);
-  });
+
+    component.setUserToUserPaid(MOCK_USERS[0]);
+
+    fixture.detectChanges();
+
+    flush();
+
+    component.users$.toPromise().then((users) => {
+      const userPaid = users.find((user) => MOCK_USERS[0].id === user.id);
+      expect(userPaid.name).toEqual(MOCK_USERS[0].name);
+      expect(userPaid.isPaid).toBe(true);
+    });
+  }));
+
+  it('should filter user', fakeAsync(() => {
+    userServiceSpy.listUsers.and.returnValue(of(MOCK_USERS));
+
+    fixture.detectChanges();
+
+    component.setUserToUserPaid(MOCK_USERS[0]);
+
+    fixture.detectChanges();
+
+    flush();
+
+    component.filterUser(UserFilter.PAID);
+
+    fixture.detectChanges();
+
+    flush();
+
+    component.filteredUsers$.toPromise().then((filteredUsers) => {
+      expect(filteredUsers).toBeTruthy();
+      expect(filteredUsers.length).toBe(1);
+      expect(filteredUsers[0].id).toBe(MOCK_USERS[0].id);
+    });
+  }));
 });
