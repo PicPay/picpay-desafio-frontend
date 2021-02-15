@@ -45,11 +45,8 @@ describe('HeaderComponent', () => {
   });
 
   it('should change theme', fakeAsync(() => {
-    themeServiceSpy.isAlternateTheme.and.returnValue(of(true));
-    fixture.detectChanges();
+    themeServiceSpy.changeTheme();
     component.changeTheme();
-
-    fixture.detectChanges();
     flush();
     const body = document.getElementsByTagName('body').item(0);
     expect(body).toBeTruthy();
