@@ -16,6 +16,8 @@ import {
   TransactionForm,
   TransactionFormModalComponent,
 } from '@shared/components/transaction-form-modal/transaction-form-modal.component';
+import { ActionText } from '@shared/enum/actions-text.enum';
+import { SuccessMessage } from '@shared/enum/messages.enum';
 import { MOCK_TRANSACTION_FORM_CARDS } from '@shared/mocks/transaction/transaction-form.mock';
 import { TransactionService } from '@shared/services/transaction/transaction.service';
 import { UserService } from '@shared/services/user/user.service';
@@ -96,12 +98,15 @@ export class AppComponent implements OnInit {
         this.paidUsers.push({ ...this.selectedUser, isPaid: true });
 
         this.showSnackBarMessage(
-          `${transaction.destination_user.name} foi pago com sucesso`,
-          'fechar'
+          `${transaction.destination_user.name} ${SuccessMessage.TRANSACTION_SUCCESS}`,
+          ActionText.SNACKBAR_CLOSE
         );
       },
       (error: HttpErrorResponse) => {
-        this.showSnackBarMessage(error.status.toString(), 'fechar')
+        this.showSnackBarMessage(
+          error.status.toString(),
+          ActionText.SNACKBAR_CLOSE
+        )
           .afterDismissed()
           .subscribe(() => {
             this.openTransactionModal(this.selectedUser, {
@@ -121,6 +126,7 @@ export class AppComponent implements OnInit {
       duration: 3000,
       verticalPosition: 'top',
     };
+
     return this.snackBar.open(message, actionName, snackBarConfig);
   }
 
