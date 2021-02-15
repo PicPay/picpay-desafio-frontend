@@ -4,14 +4,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   MatButtonModule,
   MatCardModule,
+  MatDialogModule,
   MatDividerModule,
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
   MatSelectModule,
-  MatTooltipModule
+  MatTooltipModule,
 } from '@angular/material';
-import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { REAL_CURRENCY_MASK_CONFIG } from '@shared/constants/currency-config.const';
@@ -37,7 +37,7 @@ import { UserCardComponent } from './user-card/user-card.component';
     MatIconModule,
     MatTooltipModule,
     MatDialogModule,
-    FlexLayoutModule
+    FlexLayoutModule,
   ],
   exports: [UserCardComponent],
 })
