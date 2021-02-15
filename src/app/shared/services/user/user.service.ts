@@ -18,3 +18,9 @@ export class UserService {
     );
   }
 }
+
+export enum UserFilter {
+  ALL = 1,
+  PAID = 2,
+  PENDING = 3,
+}
