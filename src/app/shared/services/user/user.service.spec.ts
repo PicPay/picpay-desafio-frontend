@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { ApiService } from '@core/services/api/api.service';
 import { MOCK_USERS } from '@shared/mocks/user/user.mock';
 import { of } from 'rxjs';
-import { UserService } from './user.service';
+import { UserFilter, UserService } from './user.service';
 
 describe('UserService', () => {
   let apiServiceSpy: jasmine.SpyObj<ApiService>;
@@ -26,5 +26,19 @@ describe('UserService', () => {
       expect(users.length).toEqual(10, 'Unexpected users length');
       expect(users[0].name).toEqual('Mock User 1');
     });
+  });
+
+  it('should retrive all user filter key', () => {
+    const keys = userService.listUserFilterKeys();
+    expect(keys.length).toBe(3);
+    expect(
+      keys.find((key) => key.toLowerCase() === UserFilter[1].toLowerCase())
+    ).toBe('ALL');
+    expect(
+      keys.find((key) => key.toLowerCase() === UserFilter[2].toLowerCase())
+    ).toBe('PAID');
+    expect(
+      keys.find((key) => key.toLowerCase() === UserFilter[3].toLowerCase())
+    ).toBe('PENDING');
   });
 });

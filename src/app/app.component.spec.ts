@@ -25,7 +25,7 @@ describe('AppComponent', () => {
   let transactionServiceSpy: jasmine.SpyObj<TransactionService>;
 
   beforeEach(async(() => {
-    userServiceSpy = jasmine.createSpyObj('UserService', ['listUsers']);
+    userServiceSpy = jasmine.createSpyObj('UserService', ['listUsers', 'listUserFilterKeys']);
     transactionServiceSpy = jasmine.createSpyObj('TransactionService', [
       'postTransaction',
     ]);
