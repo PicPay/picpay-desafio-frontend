@@ -39,6 +39,11 @@ import { UserCardComponent } from './user-card/user-card.component';
     MatDialogModule,
     FlexLayoutModule,
   ],
-  exports: [UserCardComponent],
+  exports: [
+    UserCardComponent,
+    BrowserAnimationsModule,
+    BrowserModule,
+    FormsModule,
+  ],
 })
 export class ComponentsModule {}
