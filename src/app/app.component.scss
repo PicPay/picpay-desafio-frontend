@@ -2,15 +2,10 @@
 
 :host {
   .app-header {
-    background-color: mat-color($theme-accent, darker);
-    color: mat-color($theme-accent, $mat-accent);
-    text-transform: uppercase;
-    padding: 24px 0;
-    .mat-title {
-      margin: 0;
-    }
+    display: block;
   }
   .user-card {
+    display: block;
     ::ng-deep {
       .mat-card {
         margin: 0 24px 16px;
