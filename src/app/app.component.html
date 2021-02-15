@@ -1,18 +1,32 @@
 <section fxLayout="column" fxLayoutAlign="start" fxLayoutGap="24px">
 
-  <header class="app-header" fxLayout="row wrap" fxLayoutAlign="space-around center">
+  <header @items class="app-header" fxLayout="row wrap" fxLayoutAlign="space-around center">
     <h1 class="mat-title">Simulação de pagamento</h1>
-    <mat-slide-toggle (change)="changeTheme()" color="primary" [checked]="isAlternateTheme$ | async" matTooltip="Mudar tema">
+    <mat-slide-toggle (change)="changeTheme()" color="primary" [checked]="isAlternateTheme$ | async"
+      matTooltip="Mudar tema">
       Modo escuro
     </mat-slide-toggle>
+  </header>
+
+  <header @items fxLayout="row wrap" fxLayoutAlign="space-around center">
+    <label class="mat-title" id="user-filter">Mostrar usuários:</label>
+    <mat-radio-group aria-labelledby="user-filter" [(ngModel)]="userFilter" (change)="filterUser(userFilter)">
+      <mat-radio-button [value]="userFilterEnum[filter]" *ngFor="let filter of userFilterKeys">
+        {{filter}}
+      </mat-radio-button>
+    </mat-radio-group>
   </header>
 
   <article fxLayout="row wrap" fxLayout.md="column" fxLayout.sm="column" fxLayout.xs="column"
     fxLayoutAlign="space-around center" fxLayoutAlign.md="start" fxLayoutAlign.sm="start"
     fxLayoutAlign.xs="start center">
-    <app-user-card class="user-card" [isPaid]="getPaidUser(user)" *ngFor="let user of users$ | async" [user]="user"
-      (pay)="openTransactionModal($event)">
-    </app-user-card>
+    <div @list *ngFor="let user of filteredUsers$ | async">
+      <div @items>
+        <app-user-card class="user-card" [user]="user" [isPaid]="getPaidUser(user) | async"
+          (pay)="openTransactionModal($event)">
+        </app-user-card>
+      </div>
+    </div>
   </article>
 
 </section>
