@@ -1,3 +1,4 @@
+import { APP_VOCABULARY } from './app.component.vocabulary';
 import {
   animate,
   animateChild,
@@ -5,7 +6,7 @@ import {
   stagger,
   style,
   transition,
-  trigger
+  trigger,
 } from '@angular/animations';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
@@ -13,7 +14,7 @@ import {
   MatSnackBar,
   MatSnackBarConfig,
   MatSnackBarRef,
-  SimpleSnackBar
+  SimpleSnackBar,
 } from '@angular/material';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Card } from '@core/domains/card/card.domain';
@@ -24,15 +25,14 @@ import { User } from '@core/domains/user/user.domain';
 import { ThemeService } from '@core/services/theme/theme.service';
 import {
   TransactionForm,
-  TransactionFormModalComponent
+  TransactionFormModalComponent,
 } from '@shared/components/transaction-form-modal/transaction-form-modal.component';
-import { ActionText } from '@shared/enum/actions-text.enum';
-import { SuccessMessage } from '@shared/enum/messages.enum';
 import { MOCK_TRANSACTION_FORM_CARDS } from '@shared/mocks/transaction/transaction-form.mock';
 import { TransactionService } from '@shared/services/transaction/transaction.service';
 import { UserFilter, UserService } from '@shared/services/user/user.service';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -66,6 +66,8 @@ import { map, shareReplay } from 'rxjs/operators';
   ],
 })
 export class AppComponent implements OnInit {
+  vocabulary = { ...APP_VOCABULARY, ...this.transactionService.vocabulary };
+
   cards: Card[] = MOCK_TRANSACTION_FORM_CARDS;
 
   users$: Observable<PaidUser[]>;
@@ -86,13 +88,14 @@ export class AppComponent implements OnInit {
     private transactionService: TransactionService,
     private dialog: MatDialog,
     private snackBar: MatSnackBar,
-    private themeService: ThemeService
+    private themeService: ThemeService,
+    private translateService: TranslateService
   ) {}
 
   ngOnInit(): void {
     this.users$ = this.userService.listUsers().pipe(
       shareReplay(),
-      map((users) =>
+      map((users): PaidUser[] =>
         users.map((user) => {
           return { ...user, isPaid: false };
         })
@@ -148,14 +151,16 @@ export class AppComponent implements OnInit {
         this.setUserToUserPaid(this.selectedUser);
 
         this.showSnackBarMessage(
-          `${transaction.destination_user.name} ${SuccessMessage.TRANSACTION_SUCCESS}`,
-          ActionText.SNACKBAR_CLOSE
+          `${transaction.destination_user.name} ${this.translateService.instant(
+            this.vocabulary.success
+          )}`,
+          `${this.translateService.instant(this.vocabulary.snackBar.close)}`
         );
       },
       (error: HttpErrorResponse) => {
         this.showSnackBarMessage(
           error.status.toString(),
-          ActionText.SNACKBAR_CLOSE
+          `${this.translateService.instant(this.vocabulary.snackBar.close)}`
         )
           .afterDismissed()
           .subscribe(() => {
@@ -209,6 +214,9 @@ export class AppComponent implements OnInit {
   }
 
   setUserToUserPaid(selectedUser: User) {
-    this.users$ = this.userService.editUserToPaidUser(selectedUser, this.users$);
+    this.users$ = this.userService.editUserToPaidUser(
+      selectedUser,
+      this.users$
+    );
   }
 }

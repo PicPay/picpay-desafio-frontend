@@ -1,21 +1,32 @@
 <section fxLayout="column" fxLayoutAlign="start" fxLayoutGap="24px">
 
   <header @items class="app-header" fxLayout="row wrap" fxLayoutAlign="space-around center">
-    <h1 class="mat-title">Simulação de pagamento</h1>
-    <mat-slide-toggle (change)="changeTheme()" color="primary" [checked]="isAlternateTheme$ | async"
-      matTooltip="Mudar tema">
-      Modo escuro
-    </mat-slide-toggle>
+    <h1 class="mat-title">{{vocabulary.header.title | translate}}</h1>
+    <div class="app-header-actions" fxLayout="row" fxLayoutGap="24px" fxLayoutAlign="start center">
+      <mat-slide-toggle (change)="changeTheme()" color="primary" [checked]="isAlternateTheme$ | async"
+        [matTooltip]="vocabulary.header.changeTheme | translate">
+        {{vocabulary.header.themeSwitcher | translate}}
+      </mat-slide-toggle>
+      <app-translate-switcher></app-translate-switcher>
+    </div>
   </header>
 
   <header @items fxLayout="row" fxLayoutAlign="space-around center">
-    <label class="mat-title" id="user-filter">Mostrar usuários:</label>
+    <label class="mat-title" id="user-filter">
+      {{vocabulary.header.userFilter.label | translate}}
+    </label>
+
     <mat-radio-group fxLayout="row" fxLayoutGap="8px" fxLayoutAlign="start center" aria-labelledby="user-filter"
       [(ngModel)]="userFilter" (change)="filterUser(userFilter)">
+
       <mat-radio-button [value]="userFilterEnum[filter]" *ngFor="let filter of userFilterKeys">
-        <span class="mat-subheading-2">{{filter}}</span>
+        <span class="mat-subheading-2">
+          {{vocabulary.header.userFilter[filter.toLowerCase()] | translate}}
+        </span>
       </mat-radio-button>
+
     </mat-radio-group>
+
   </header>
 
   <article fxLayout="row wrap" fxLayout.md="column" fxLayout.sm="column" fxLayout.xs="column"
