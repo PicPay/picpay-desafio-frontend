@@ -2,6 +2,8 @@
 
 
 <ng-container [ngSwitch]="activeStep | async">
-  <app-payment-select-amount *ngSwitchDefault (changeStep)="setActiveStep($event)"></app-payment-select-amount>
+  <app-payment-select-amount *ngSwitchDefault ></app-payment-select-amount>
   <app-payment-confirmation *ngSwitchCase="'confirmData'"></app-payment-confirmation>
+  <app-payment-success *ngSwitchCase="'success'"></app-payment-success>
+  <app-payment-error *ngSwitchCase="'error'"></app-payment-error>
 </ng-container>

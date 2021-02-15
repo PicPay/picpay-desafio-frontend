@@ -14,12 +14,16 @@ app-payment-modal {
 
       &--smalltext {
         letter-spacing: rem(2px);
-        color: #fff;
+        color: $color-gray;
       }
     }
-    .mat-form-field {
+    .mat-form-field,
+    input {
       width: 100%;
       color: #fff;
+      &[disabled] {
+        color: #fff;
+      }
     }
     .mat-form-field.edit-value {
       font-size: rem(40px);
@@ -34,4 +38,99 @@ app-payment-modal {
       }
     }
   }
+
+  .payment-modal {
+    &__success_user {
+      background: #131313;
+      border-radius: 10px;
+      width: 100%;
+      padding: rem(10px) rem(20px);
+      margin: rem(20px) 0;
+
+      @extend %flex;
+      @extend %items-center;
+
+      img {
+        width: 60px;
+        border-radius: 50%;
+        margin-right: rem(15px);
+      }
+
+      span {
+        display: block;
+
+        color: #fff;
+      }
+
+      small {
+        color: $color-gray;
+      }
+    }
+
+    &__total {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      color: $color-gray;
+
+      span,
+      small,
+      strong {
+        letter-spacing: 1px;
+        @extend %block;
+      }
+
+      strong {
+        font-size: rem(35px);
+        color: $primary-green;
+        letter-spacing: 2px;
+        margin: rem(15px) 0;
+      }
+    }
+  }
+
+  .payment-success-container,
+  .payment-error-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .mat-icon {
+      width: rem(60px);
+      height: rem(60px);
+      font-size: rem(60px);
+      color: #131313;
+      margin-bottom: rem(15px);
+    }
+
+    .pic-button {
+      background: $bg-gray-dark;
+      color: $color-gray;
+      width: 100%;
+      margin-top: rem(50px);
+    }
+  }
+
+  app-payment-error {
+    small {
+      text-align: center;
+      margin-top: rem(30px);
+    }
+  }
+  .mat-input-element,
+  .mat-select-value-text,
+  .mat-form-field-label {
+    color: $color-gray;
+  }
+
+  .mat-form-field-label {
+    color: $color-gray !important;
+  }
+
+  @media screen and (max-width: 1024px) {
+    width: 100%;
+  }
+
 }

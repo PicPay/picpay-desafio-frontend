@@ -1,25 +1,33 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { createMockFor } from '../../../../../../../../test.utils';
+import { PaymentStepService } from '../../payment-step.service';
 import { PaymentSelectAmoutComponent } from './payment-select-amout.component';
 
 describe('PaymentSelectAmoutComponent', () => {
-  let component: PaymentSelectAmoutComponent;
-  let fixture: ComponentFixture<PaymentSelectAmoutComponent>;
+  function createSubject({ paymentStep = createMockFor(PaymentStepService) } = {}) {
+    return {
+      subject: new PaymentSelectAmoutComponent(paymentStep),
+      paymentStep,
+    };
+  }
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ PaymentSelectAmoutComponent ]
-    })
-    .compileComponents();
-  }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(PaymentSelectAmoutComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+  it('should create instance', () => {
+    const { subject } = createSubject();
+    expect(subject).toBeTruthy();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should set active step', () => {
+    const { subject, paymentStep } = createSubject();
+
+    subject.setActiveStep();
+
+    expect(paymentStep.setActiveStep).toHaveBeenCalled();
+  });
+
+  it('should format number to currency', () => {
+    const { subject } = createSubject();
+
+    const number = subject.formatNumber('100');
+
+    expect(number).toEqual('R$ 1,00');
   });
 });

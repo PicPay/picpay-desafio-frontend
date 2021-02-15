@@ -1,25 +1,43 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { PaymentConfirmationComponent } from './payment-confirmation.component';
 
 describe('PaymentConfirmationComponent', () => {
-  let component: PaymentConfirmationComponent;
-  let fixture: ComponentFixture<PaymentConfirmationComponent>;
+  function createSubject() {
+    return {
+      subject: new PaymentConfirmationComponent(),
+    };
+  }
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ PaymentConfirmationComponent ]
-    })
-    .compileComponents();
-  }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(PaymentConfirmationComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+  it('should create instance', () => {
+    const { subject } = createSubject();
+    expect(subject).toBeTruthy();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should set value with mask', () => {
+    const { subject } = createSubject();
+    const value = {
+      value: '100',
+    }
+    subject.handleInputMask(value);
+
+    expect(subject.value).toEqual('R$ 1,00');
+
+  });
+
+  it('should set value with mask with more thna 6 digits', () => {
+    const { subject } = createSubject();
+    const value = {
+      value: '10000000',
+    }
+    subject.handleInputMask(value);
+
+    expect(subject.value).toEqual('R$ 100.000,00');
+
+  });
+
+  it('should set disabled to false', () => {
+    const { subject } = createSubject();
+    subject.handleValueEdition();
+
+    expect(subject.disabled).toBeFalsy();
   });
 });

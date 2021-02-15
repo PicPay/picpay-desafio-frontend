@@ -1,36 +1,33 @@
-import { Component, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
+import { User } from 'src/app/core/interfaces/user.interface';
+import { formatNumberToCurrency } from 'src/app/data/utils/data-format.util';
 import { PaymentStepService } from '../../payment-step.service';
+import { UserStateService } from '../../user-state.service';
 
 @Component({
   selector: 'app-payment-select-amount',
   templateUrl: './payment-select-amout.component.html',
-  styleUrls: ['./payment-select-amout.component.scss']
+  styleUrls: ['./payment-select-amout.component.scss'],
 })
 export class PaymentSelectAmoutComponent {
   value = '100';
+  user: User;
 
-  constructor(private paymentStep: PaymentStepService) {
-    this.value = this.formatNumber(this.value);
+  constructor(private paymentStep: PaymentStepService, private userState: UserStateService) {
+    this.value = formatNumberToCurrency(this.value);
+
+    this.userState.getUserSelectedForPayment().subscribe((user) => {
+      this.user = user;
+    });
   }
 
   setActiveStep() {
+    this.userState.setPaymentValue(this.value);
+
     this.paymentStep.setActiveStep('confirmData');
   }
 
-  formatNumber = (n: string) => {
-    let t = n.replace(/[\D]+/g,'')
-    t = t.replace(/([0-9]{2})$/g, ",$1");
-
-    if (n.length > 6) {
-      t = t.replace(/([0-9]{3}),([0-9]{2}$)/g, ".$1,$2");
-    }
-
-    return `R$ ${t}`;
+  handleValueFormat({ value }) {
+    this.value = formatNumberToCurrency(value);
   }
-
-  teste(n) {
-    console.log( 'porra', n.value)
-    this.value = this.formatNumber(n.value);
-  }
-
 }

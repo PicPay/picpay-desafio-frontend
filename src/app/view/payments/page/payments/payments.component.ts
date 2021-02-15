@@ -5,6 +5,11 @@ import { UserUsecasesService } from 'src/app/data/usecases/user/user-usecases.se
 import { Observable } from 'rxjs';
 import { User } from './../../../../core/interfaces/user.interface';
 import { CreditCardVisualizationComponent } from '../../components/credit-card-visualization/credit-card-visualization.component';
+import { finalize } from 'rxjs/operators';
+import { UserStateService } from '../../components/payment-modal/user-state.service';
+import { TransactionPayload } from 'src/app/core/interfaces/transaction-payload.interface';
+import { creditCard } from 'src/app/core/types/credit-card.type';
+import { formatCardNumberMask } from 'src/app/data/utils/data-format.util';
 
 @Component({
   selector: 'app-payments',
@@ -13,27 +18,43 @@ import { CreditCardVisualizationComponent } from '../../components/credit-card-v
 })
 export class PaymentsComponent implements OnInit {
   users$: Observable<User[]>;
+  loadingUsers = false;
+  skeletonItems = new Array(15);
+  creditCardsList;
 
-  constructor(private dialog: MatDialog, private userUsecases: UserUsecasesService) {}
+  constructor(
+    private dialog: MatDialog,
+    private userUsecases: UserUsecasesService,
+    private userState: UserStateService,
+  ) {}
 
   ngOnInit() {
-    this.users$ = this.userUsecases.getAllUsers<User[]>();
+    this.users$ = this.getAllUsers();
 
-    // const user: User = {
-    //   id: 1001,
-    //   name: 'Eduardo Santos',
-    //   img: 'https://randomuser.me/api/portraits/men/9.jpg',
-    //   username: '@eduardo.santos',
-    // };
+    this.getAvailableCreditCards();
+  }
 
-    // this.dialog.open(PaymentModalComponent, { data: { user }, panelClass: 'payment-modal' });
+  getAvailableCreditCards() {
+    this.creditCardsList = formatCardNumberMask(this.userState.userCreditCards)
+  }
+
+  getAllUsers() {
+    this.loadingUsers = true;
+    return this.userUsecases
+      .getAllUsers<User[]>()
+      .pipe(finalize(() => (this.loadingUsers = false)));
   }
 
   openPaymentModal(user: User): void {
     this.dialog.open(PaymentModalComponent, { data: { user }, panelClass: 'payment-modal' });
   }
 
-  openCreditCardVisualization(): void {
-    this.dialog.open(CreditCardVisualizationComponent, { panelClass: 'credit-card-modal' })
+  openCreditCardVisualization(card: creditCard): void {
+    this.dialog.open(CreditCardVisualizationComponent, {
+      panelClass: 'credit-card-modal',
+      data: {
+        card,
+      },
+    });
   }
 }

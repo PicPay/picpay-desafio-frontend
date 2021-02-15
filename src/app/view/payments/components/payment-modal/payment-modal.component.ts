@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { PaymentsUsecasesService } from 'src/app/data/usecases/payments/payments-usecases.service';
 import { PaymentStepService } from './payment-step.service';
 import { User } from 'src/app/core/interfaces/user.interface';
+import { TransactionPayload } from 'src/app/core/interfaces/transaction-payload.interface';
+import { UserStateService } from './user-state.service';
 
 type stepType = 'selectAmount' | 'confirmData' | 'success' | 'error';
 
@@ -14,15 +16,16 @@ type stepType = 'selectAmount' | 'confirmData' | 'success' | 'error';
 })
 export class PaymentModalComponent implements OnDestroy {
   activeStep: Observable<stepType>;
-  userData: User;
 
   constructor(
     private paymentStep: PaymentStepService,
     @Inject(MAT_DIALOG_DATA) private data: { user: User },
-    private paymentsUsecases: PaymentsUsecasesService
+    private paymentsUsecases: PaymentsUsecasesService,
+    private userState: UserStateService,
   ) {
     this.activeStep = this.paymentStep.getActiveStep();
-    this.userData = this.data.user;
+
+    this.userState.setUSerSelectedForPayment(this.data.user);
 
     const payload: TransactionPayload = {
       card_number: '212121',
@@ -34,9 +37,14 @@ export class PaymentModalComponent implements OnDestroy {
       value: 2332,
     };
 
-    this.paymentsUsecases
+    this.sendPayment(payload)
+    .subscribe((resp) => console.log('transaction', resp));
+
+  }
+
+  sendPayment(payload) {
+    return this.paymentsUsecases
       .sendMoney<TransactionPayload>(payload)
-      .subscribe((resp) => console.log('transaction', resp));
   }
 
   ngOnDestroy() {

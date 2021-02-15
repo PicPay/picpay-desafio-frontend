@@ -1,0 +1,22 @@
+<mat-icon>paid</mat-icon>
+
+<h3 class="payment-modal--title color-primary">Seu pagamento foi enviado com sucesso!</h3>
+<small class="payment-modal--smalltext color-gray-primary">Pagamento enviado para</small>
+
+<div class="payment-modal__success_user">
+  <img [src]="user?.img" [alt]="user?.name" />
+  <div>
+    <span>{{ user?.name }}</span>
+    <small>{{ user?.username }}</small>
+  </div>
+</div>
+
+<div class="payment-modal__total">
+  <span>Valor do pagamento</span>
+  <strong>{{ paymentValue | async }}</strong>
+  <small>21/10/2021</small>
+</div>
+
+<button picButton (click)="closeModal()">Fechar</button>
+
+<span></span>

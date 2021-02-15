@@ -1,5 +1,18 @@
 $primary-green: #1dc264;
+$bg-gray-dark: #131313;
+$bg-gray-light: #1f1f1f;
+$color-gray: #6B6B67;
+$color-error: #f44336;
 
 .color-primary {
   color: $primary-green;
 }
+
+.color-gray-primary {
+  color: $color-gray;
+}
+
+.color-error {
+  color: $color-error;
+}
+

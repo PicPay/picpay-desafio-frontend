@@ -1,8 +1,10 @@
 <div class="credit-card-list">
-    Cartões disponiveis:
+    <span>
+      Cartões de crédito disponiveis:
+    </span>
 
-    <button picButton (click)="openCreditCardVisualization()">
-      **** 3232
+    <button picButton matTooltip="Visualizar cartão" (click)="openCreditCardVisualization(card)" *ngFor="let card of creditCardsList">
+      {{ card.numberView }}
       <mat-icon>credit_card</mat-icon>
     </button>
   <!-- <div>
@@ -10,9 +12,13 @@
   </div> -->
 </div>
 
+<cdk-virtual-scroll-viewport itemSize="30" class="users-list" *ngIf="loadingUsers">
+  <mat-card *ngFor="let user of skeletonItems" skeleton [loading]="true">
+  </mat-card>
+</cdk-virtual-scroll-viewport>
 
-<cdk-virtual-scroll-viewport itemSize="30" class="users-list">
-  <mat-card *cdkVirtualFor="let user of users$ | async">
+<cdk-virtual-scroll-viewport itemSize="30" class="users-list" *ngIf="users$">
+  <mat-card *cdkVirtualFor="let user of users$ | async" skeleton [loading]="loadingUsers">
     <mat-card-header>
       <div>
         <img [src]="user.img" [alt]="user.name" />

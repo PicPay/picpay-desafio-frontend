@@ -1,25 +1,24 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { CreditCardComponent } from './credit-card.component';
 
 describe('CreditCardComponent', () => {
-  let component: CreditCardComponent;
-  let fixture: ComponentFixture<CreditCardComponent>;
+  function createSubject() {
+    return {
+      subject: new CreditCardComponent(),
+    };
+  }
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ CreditCardComponent ]
-    })
-    .compileComponents();
-  }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(CreditCardComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+  it('should create instance', () => {
+    const { subject } = createSubject();
+    expect(subject).toBeTruthy();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should have credit card input data', () => {
+    const { subject } = createSubject();
+
+    subject.cardInformation = {
+      cvv: '123',
+    };
+
+    expect(subject.card).toEqual({ cvv: '123' });
   });
 });

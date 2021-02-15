@@ -1,9 +1,18 @@
 <h3 class="payment-modal--title color-primary">Qual é o valor do pagamento?</h3>
-<small class="payment-modal--smalltext">Saldo disponível de <strong>R$ 11,00</strong></small>
+<small class="payment-modal--smalltext color-gray-primary"
+  >Selecione o valor para do pagamento para <strong>{{ user?.name }}</strong
+  >.</small
+>
 
 <div>
   <mat-form-field class="edit-value">
-    <input matInput (input)="teste(tt)" #tt [(ngModel)]="value" />
+    <input
+      matInput
+      autofocus
+      (input)="handleValueFormat(paymentAmount)"
+      #paymentAmount
+      [(ngModel)]="value"
+    />
   </mat-form-field>
 </div>
 

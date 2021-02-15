@@ -1,25 +1,25 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { async, TestBed } from '@angular/core/testing';
 import { CreditCardVisualizationComponent } from './credit-card-visualization.component';
 
-describe('CreditCardVisualizationComponent', () => {
-  let component: CreditCardVisualizationComponent;
-  let fixture: ComponentFixture<CreditCardVisualizationComponent>;
 
+describe('CreditCardVisualizationComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CreditCardVisualizationComponent ]
-    })
-    .compileComponents();
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      declarations: [CreditCardVisualizationComponent],
+    }).compileComponents();
   }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(CreditCardVisualizationComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+  it('should create the app', () => {
+    const fixture = TestBed.createComponent(CreditCardVisualizationComponent);
+    const app = fixture.debugElement.componentInstance;
+    expect(app).toBeTruthy();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should match the snapshot', () => {
+    const fixture = TestBed.createComponent(CreditCardVisualizationComponent);
+    const el = fixture.debugElement.nativeElement.outerHTML;
+    expect(el).toMatchSnapshot();
   });
 });

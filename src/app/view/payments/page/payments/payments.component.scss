@@ -5,6 +5,20 @@
   align-items: center;
   height: 60px;
   padding-bottom: 20px;
+
+  button {
+    background: #1f1f1f;
+    color: #6B6B67;
+
+    &:not(:last-of-type) {
+      margin-right: 15px;
+    }
+  }
+
+  span {
+    margin-right: 20px;
+    color: #6B6B67;
+  }
 }
 
 .users-list {
@@ -34,7 +48,7 @@
 
 
     .mat-card-title {
-      color: #fff;;
+      color: #fff;
     }
 
     .mat-card-subtitle{

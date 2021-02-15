@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { HeaderComponent } from './components/header/header.component';
-import { SkeletonDirective } from './skeleton.directive';
 import { UserMenuComponent } from './components/user-menu/user-menu.component';
 
 import { MatRippleModule } from '@angular/material/core';
@@ -16,7 +15,6 @@ import { MainColorDirective } from './directives/main-color.directive';
 @NgModule({
   declarations: [
     HeaderComponent,
-    SkeletonDirective,
     UserMenuComponent,
     ButtonComponent,
     CreditCardComponent,
