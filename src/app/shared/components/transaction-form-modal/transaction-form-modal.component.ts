@@ -9,6 +9,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Card } from '@core/domains/card/card.domain';
 import { User } from '@core/domains/user/user.domain';
 import { FormControlValidatorService } from '@core/services/form-control-validator/form-control-validator.service';
+import { TRANSACTION_FORM_VOCABULARY } from './transaction-form-modal.component.vocabulary';
 
 export interface TransactionForm {
   user: User;
@@ -26,6 +27,7 @@ export class TransactionFormModalComponent implements OnInit {
   cards: Card[];
   user: User;
   transactionForm: FormGroup;
+  vocabulary = TRANSACTION_FORM_VOCABULARY;
 
   constructor(
     private formBuilder: FormBuilder,
