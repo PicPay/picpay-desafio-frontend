@@ -1,14 +1,14 @@
-import { CoreModule } from '@core/core.module';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {
   MatButtonModule,
+  MatDialogModule,
+  MatSlideToggleModule,
   MatSnackBarModule,
-  MatTooltipModule,
+  MatTooltipModule
 } from '@angular/material';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { BrowserModule } from '@angular/platform-browser';
+import { CoreModule } from '@core/core.module';
 import { SharedModule } from '@shared/shared.module';
 import { AppComponent } from './app.component';
 
