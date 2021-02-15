@@ -8,11 +8,12 @@
     </mat-slide-toggle>
   </header>
 
-  <header @items fxLayout="row wrap" fxLayoutAlign="space-around center">
+  <header @items fxLayout="row" fxLayoutAlign="space-around center">
     <label class="mat-title" id="user-filter">Mostrar usuários:</label>
-    <mat-radio-group aria-labelledby="user-filter" [(ngModel)]="userFilter" (change)="filterUser(userFilter)">
+    <mat-radio-group fxLayout="row" fxLayoutGap="8px" fxLayoutAlign="start center" aria-labelledby="user-filter"
+      [(ngModel)]="userFilter" (change)="filterUser(userFilter)">
       <mat-radio-button [value]="userFilterEnum[filter]" *ngFor="let filter of userFilterKeys">
-        {{filter}}
+        <span class="mat-subheading-2">{{filter}}</span>
       </mat-radio-button>
     </mat-radio-group>
   </header>
