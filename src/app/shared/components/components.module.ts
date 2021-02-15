@@ -1,3 +1,4 @@
+import { HeaderComponent } from './header/header.component';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -9,7 +10,9 @@ import {
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
+  MatRadioModule,
   MatSelectModule,
+  MatSlideToggleModule,
   MatTooltipModule,
 } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
@@ -26,8 +29,9 @@ import { UserCardComponent } from './user-card/user-card.component';
     UserCardComponent,
     TransactionFormModalComponent,
     TranslateSwitcherComponent,
+    HeaderComponent,
   ],
-  entryComponents: [TransactionFormModalComponent],
+  entryComponents: [TransactionFormModalComponent, TranslateSwitcherComponent],
   imports: [
     BrowserModule,
     FormsModule,
@@ -43,12 +47,14 @@ import { UserCardComponent } from './user-card/user-card.component';
     MatIconModule,
     MatTooltipModule,
     MatDialogModule,
+    MatSlideToggleModule,
+    MatRadioModule,
     FlexLayoutModule,
     CoreModule,
   ],
   exports: [
     UserCardComponent,
-    TranslateSwitcherComponent,
+    HeaderComponent,
     CoreModule,
     BrowserAnimationsModule,
     BrowserModule,
