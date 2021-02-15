@@ -6,21 +6,19 @@ import { AppComponent } from './app.component';
 
 import { ServicesModule } from './services/services.module';
 import { HttpClientModule } from '@angular/common/http';
-import { Last4DigitsPipe } from './pipes/card.pipe';
-import { ReactiveFormsModule } from '@angular/forms';
 import { ModalModule } from './components/modal/modal.module';
+import { FormPaymentModule } from './components/form-payment/form-payment.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    Last4DigitsPipe,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    ReactiveFormsModule,
     OverlayModule,
     ModalModule,
+    FormPaymentModule,
     ServicesModule,
   ],
   providers: [],

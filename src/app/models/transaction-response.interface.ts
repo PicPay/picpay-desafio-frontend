@@ -1,4 +1,4 @@
 export interface TransactionResponse {
     success: boolean;
-    status: string;
+    status: 'Aprovada' | 'Reprovada';
 }

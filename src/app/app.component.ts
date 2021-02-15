@@ -1,12 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Card } from './models/card.interface';
-import { TransactionPayload } from './models/transaction-payload.interface';
+
+import { FormPaymentComponent } from './components/form-payment/form-payment.component';
 import { TransactionResponse } from './models/transaction-response.interface';
 import { User } from './models/user.interface';
-import { CardService } from './services/card.service';
-import { PaymentService } from './services/payment.service';
+import { ModalService } from './services/modal.service';
 import { UserService } from './services/user.service';
 
 @Component({
@@ -16,25 +14,18 @@ import { UserService } from './services/user.service';
 })
 export class AppComponent implements OnInit {
 
+  @ViewChild('paymentMessageResponse', { static: true })
+  private paymentMessageResponseTpl: TemplateRef<any>;
+
   title = 'Desafio Picpay Front-end';
   users: Observable<User[]>;
-  cards: Observable<Card[]>;
   showModalPayment = false;
   showModalPaymentMessage = false;
-
-  paymentForm = new FormGroup({
-    cardNumber: new FormControl('', [
-      Validators.required
-    ]),
-    value: new FormControl('', [
-      Validators.required
-    ]),
-  });
+  paymentStatus: 'Aprovada' | 'Reprovada';
 
   constructor(
     private userService: UserService,
-    private paymentService: PaymentService,
-    private cardService: CardService,
+    private modalService: ModalService,
   ) { }
 
   ngOnInit(): void {
@@ -42,23 +33,22 @@ export class AppComponent implements OnInit {
   }
 
   public payUserModal(user: User): void {
-    this.showModalPayment = true;    
-    this.cards = this.cardService.getCards();
+    const modalTitle = `Pagamento para ${user.name}`
+    const modalRef = this.modalService.open(FormPaymentComponent, modalTitle, user);
+
+    modalRef.afterClosed$.subscribe((res) => {
+      if(res && res.data) {
+        this.showModalPaymentMessageResponse(res.data);
+      }
+    });
   }
 
-  public payUser(): void {
-
-    const payload: TransactionPayload = {
-      card_number: this.paymentForm.get('cardNumber').value,
-      cvv: 789,
-      expiry_date: '01/18',
-      destination_user_id: 123,
-      value: this.paymentForm.get('value').value,
-    };
-
-    this.paymentService.payUser(payload).subscribe((result: TransactionResponse) => {
-      // TODO: show payment status message
-      console.log(result);
-    });
+  public showModalPaymentMessageResponse(transaction: TransactionResponse): void {
+    this.paymentStatus = transaction.status;
+    this.modalService.open(
+      this.paymentMessageResponseTpl,
+      'Recibo de pagamento',
+      null
+    );
   }
 }

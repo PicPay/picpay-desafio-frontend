@@ -17,39 +17,13 @@
   </div>
 </div>
 
-<div class="modal-backdrop" *ngIf="showModalPayment || showModalPaymentMessage">
-  <div class="modal" *ngIf="showModalPayment">
-    <div class="title">Pagamento para <span>Nome do Usuário</span></div>
-
-    <div class="content">
-      <form [formGroup]="paymentForm" (ngSubmit)="payUser()">
-        <input type="number" formControlName="value" placeholder="R$ 0,00">
-
-        <div class="cards">
-          <select formControlName="cardNumber">
-            <option>Selecione um cartão</option>
-            <option
-              *ngFor="let card of cards | async"
-              [value]="card.card_number"
-            >Cartão com final {{ card.card_number | last4Digits }}</option>
-          </select>
-        </div>
-
-        <button type="submit" class="pay-button" [disabled]="!paymentForm.valid">
-          Pagar
-        </button>
-      </form>
-    </div>
-  </div>
-
-  <div class="modal" *ngIf="showModalPaymentMessage">
-    <div class="title">
-      Recibo de pagamento
-    </div>
-
-    <div class="content">
-      O pagamento foi concluido com sucesso.<br />
-      O pagamento <strong>não</strong> foi concluido com sucesso.
-    </div>
-  </div>
-</div>
+<ng-template #paymentMessageResponse>
+  <ng-container [ngSwitch]="paymentStatus">
+    <ng-container *ngSwitchCase="'Aprovada'">
+      <p>O pagamento foi concluido com sucesso.</p>
+    </ng-container>
+    <ng-container *ngSwitchCase="'Reprovada'">
+      <p>O pagamento <strong>não</strong> foi concluido com sucesso.</p>
+    </ng-container>
+  </ng-container>
+</ng-template>
