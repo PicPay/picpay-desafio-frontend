@@ -5,12 +5,13 @@ import { AppComponent } from './app.component';
 
 import { ServicesModule } from './services/services.module';
 import { HttpClientModule } from '@angular/common/http';
+import { Last4DigitsPipe } from './pipes/card.pipe';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AppComponent
+    Last4DigitsPipe,
   ],
   imports: [
     BrowserModule,
