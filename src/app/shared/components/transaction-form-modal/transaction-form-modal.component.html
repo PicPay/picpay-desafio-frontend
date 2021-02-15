@@ -10,7 +10,7 @@
 
     <button mat-button *ngIf="transactionForm.get('value')" matSuffix mat-icon-button aria-label="Clear"
       (click)="transactionForm.get('value').setValue(0)">
-      <mat-icon>close</mat-icon>
+      <mat-icon matTooltip="Limpar valor">close</mat-icon>
     </button>
 
     <mat-error *ngIf="transactionForm.get('value').invalid">
