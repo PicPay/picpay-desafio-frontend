@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --configuration=development",
+    "start": "ng serve --configuration=development ----proxy-config proxy.config.json",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -22,6 +22,8 @@
     "@angular/platform-browser": "~8.2.13",
     "@angular/platform-browser-dynamic": "~8.2.13",
     "@angular/router": "~8.2.13",
+    "@ngx-translate/core": "^12.0.0",
+    "@ngx-translate/http-loader": "^4.0.0",
     "hammerjs": "^2.0.8",
     "ngx-currency": "^2.5.2",
     "rxjs": "~6.4.0",
