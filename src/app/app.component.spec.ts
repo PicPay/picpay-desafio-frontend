@@ -4,12 +4,12 @@ import {
   ComponentFixture,
   fakeAsync,
   flush,
-  TestBed,
+  TestBed
 } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { MOCK_TRANSACTION_FORM_DATA } from '@shared/mocks/transaction/transaction-form.mock';
 import { MOCK_TRANSACTION } from '@shared/mocks/transaction/transaction.mock';
-import { MOCK_USERS } from '@shared/mocks/user/user.mock';
+import { MOCK_PAID_USERS, MOCK_USERS } from '@shared/mocks/user/user.mock';
 import { TransactionService } from '@shared/services/transaction/transaction.service';
 import { UserFilter, UserService } from '@shared/services/user/user.service';
 import { of } from 'rxjs';
@@ -25,7 +25,7 @@ describe('AppComponent', () => {
   let transactionServiceSpy: jasmine.SpyObj<TransactionService>;
 
   beforeEach(async(() => {
-    userServiceSpy = jasmine.createSpyObj('UserService', ['listUsers', 'listUserFilterKeys']);
+    userServiceSpy = jasmine.createSpyObj('UserService', ['listUsers', 'listUserFilterKeys', 'editUserToPaidUser']);
     transactionServiceSpy = jasmine.createSpyObj('TransactionService', [
       'postTransaction',
     ]);
@@ -60,7 +60,10 @@ describe('AppComponent', () => {
 
   it('should post transaction', fakeAsync(() => {
     userServiceSpy.listUsers.and.returnValue(of(MOCK_USERS));
+    userServiceSpy.editUserToPaidUser.and.returnValue(of(MOCK_PAID_USERS));
+
     component.selectedUser = MOCK_USERS[0];
+
     transactionServiceSpy.postTransaction.and.returnValue(of(MOCK_TRANSACTION));
 
     fixture.detectChanges();
@@ -81,8 +84,9 @@ describe('AppComponent', () => {
     });
   }));
 
-  it('should filter user', fakeAsync(() => {
+  it('should filter user', () => {
     userServiceSpy.listUsers.and.returnValue(of(MOCK_USERS));
+    userServiceSpy.editUserToPaidUser.and.returnValue(of(MOCK_PAID_USERS));
 
     fixture.detectChanges();
 
@@ -90,18 +94,14 @@ describe('AppComponent', () => {
 
     fixture.detectChanges();
 
-    flush();
-
     component.filterUser(UserFilter.PAID);
 
     fixture.detectChanges();
 
-    flush();
-
     component.filteredUsers$.toPromise().then((filteredUsers) => {
       expect(filteredUsers).toBeTruthy();
-      expect(filteredUsers.length).toBe(1);
       expect(filteredUsers[0].id).toBe(MOCK_USERS[0].id);
     });
-  }));
+
+  });
 });
