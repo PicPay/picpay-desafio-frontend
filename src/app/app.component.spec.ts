@@ -1,10 +1,12 @@
+import { APP_VOCABULARY } from './app.component.vocabulary';
+import { TranslateService } from '@ngx-translate/core';
 import { DebugElement } from '@angular/core';
 import {
   async,
   ComponentFixture,
   fakeAsync,
   flush,
-  TestBed
+  TestBed,
 } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { MOCK_TRANSACTION_FORM_DATA } from '@shared/mocks/transaction/transaction-form.mock';
@@ -15,19 +17,28 @@ import { UserFilter, UserService } from '@shared/services/user/user.service';
 import { of } from 'rxjs';
 import { AppComponent } from './app.component';
 import { AppModule } from './app.module';
+import { TRANSACTION_SERVICE_VOCABULARY } from '@shared/services/transaction/transaction.service.vocabulary';
 
 describe('AppComponent', () => {
   let component: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
   let debugElement: DebugElement;
 
+  let translateService: TranslateService;
+
   let userServiceSpy: jasmine.SpyObj<UserService>;
   let transactionServiceSpy: jasmine.SpyObj<TransactionService>;
 
   beforeEach(async(() => {
-    userServiceSpy = jasmine.createSpyObj('UserService', ['listUsers', 'listUserFilterKeys', 'editUserToPaidUser']);
+    userServiceSpy = jasmine.createSpyObj('UserService', [
+      'listUsers',
+      'listUserFilterKeys',
+      'editUserToPaidUser',
+    ]);
+
     transactionServiceSpy = jasmine.createSpyObj('TransactionService', [
       'postTransaction',
+      'vocabulary'
     ]);
 
     TestBed.configureTestingModule({
@@ -35,10 +46,12 @@ describe('AppComponent', () => {
       providers: [
         { provide: UserService, useValue: userServiceSpy },
         { provide: TransactionService, useValue: transactionServiceSpy },
+        TranslateService,
       ],
     })
       .compileComponents()
       .then(() => {
+        translateService = TestBed.get(TranslateService);
         fixture = TestBed.createComponent(AppComponent);
         component = fixture.componentInstance;
         debugElement = fixture.debugElement;
@@ -61,11 +74,17 @@ describe('AppComponent', () => {
   it('should post transaction', fakeAsync(() => {
     userServiceSpy.listUsers.and.returnValue(of(MOCK_USERS));
     userServiceSpy.editUserToPaidUser.and.returnValue(of(MOCK_PAID_USERS));
+    expect(transactionServiceSpy.vocabulary).toBeTruthy();
 
     component.selectedUser = MOCK_USERS[0];
 
-    transactionServiceSpy.postTransaction.and.returnValue(of(MOCK_TRANSACTION));
+    component.vocabulary = {...APP_VOCABULARY, ...TRANSACTION_SERVICE_VOCABULARY};
 
+    fixture.detectChanges();
+
+    expect(component.vocabulary.success).toContain(TRANSACTION_SERVICE_VOCABULARY.success);
+
+    transactionServiceSpy.postTransaction.and.returnValue(of(MOCK_TRANSACTION));
     fixture.detectChanges();
     component.sendTransaction(MOCK_TRANSACTION_FORM_DATA);
 
@@ -98,10 +117,9 @@ describe('AppComponent', () => {
 
     fixture.detectChanges();
 
-    component.filteredUsers$.toPromise().then((filteredUsers) => {
+    component.filteredUsers$.subscribe((filteredUsers) => {
       expect(filteredUsers).toBeTruthy();
       expect(filteredUsers[0].id).toBe(MOCK_USERS[0].id);
     });
-
   });
 });
