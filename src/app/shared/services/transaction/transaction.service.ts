@@ -6,7 +6,7 @@ import { ApiService } from '@core/services/api/api.service';
 import { ErrorMessage } from '@shared/enum/messages.enum';
 import { MOCK_INVALID_CARD } from '@shared/mocks/card/card.mock';
 import { Observable, throwError } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 
 export interface TransactionAPIResult {
   transaction: Transaction;
@@ -37,7 +37,8 @@ export class TransactionService {
           (response: TransactionAPIResult): Transaction => {
             return response.transaction;
           }
-        )
+        ),
+        catchError(() => throwError({ status: ErrorMessage.SERVER_ERROR }))
       );
   }
 }
