@@ -40,7 +40,7 @@ import { Observable } from 'rxjs';
   animations: [
     trigger('items', [
       transition(':enter', [
-        style({ transform: 'scale(0.5)', opacity: 0 }), // initial
+        style({ transform: 'scale(0.5)', opacity: 0 }),
         animate(
           '1s cubic-bezier(.8, -0.6, 0.2, 1.5)',
           style({ transform: 'scale(1)', opacity: 1 })
@@ -77,9 +77,7 @@ export class AppComponent implements OnInit {
 
   userFilter: UserFilter = UserFilter.ALL;
 
-  userFilterKeys: string[] = Object.keys(UserFilter).filter((value) =>
-    isNaN(+value)
-  );
+  userFilterKeys: string[] = this.userService.listUserFilterKeys();
   userFilterEnum = UserFilter;
 
   constructor(
