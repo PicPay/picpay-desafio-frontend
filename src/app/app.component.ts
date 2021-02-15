@@ -1,4 +1,3 @@
-import { map, shareReplay } from 'rxjs/operators';
 import {
   animate,
   animateChild,
@@ -6,7 +5,7 @@ import {
   stagger,
   style,
   transition,
-  trigger,
+  trigger
 } from '@angular/animations';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
@@ -14,17 +13,18 @@ import {
   MatSnackBar,
   MatSnackBarConfig,
   MatSnackBarRef,
-  SimpleSnackBar,
+  SimpleSnackBar
 } from '@angular/material';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Card } from '@core/domains/card/card.domain';
 import { TransactionPayload } from '@core/domains/transaction/transaction-payload.domain';
 import { Transaction } from '@core/domains/transaction/transaction.domain';
+import { PaidUser } from '@core/domains/user/paid-user.domain';
 import { User } from '@core/domains/user/user.domain';
 import { ThemeService } from '@core/services/theme/theme.service';
 import {
   TransactionForm,
-  TransactionFormModalComponent,
+  TransactionFormModalComponent
 } from '@shared/components/transaction-form-modal/transaction-form-modal.component';
 import { ActionText } from '@shared/enum/actions-text.enum';
 import { SuccessMessage } from '@shared/enum/messages.enum';
@@ -32,6 +32,7 @@ import { MOCK_TRANSACTION_FORM_CARDS } from '@shared/mocks/transaction/transacti
 import { TransactionService } from '@shared/services/transaction/transaction.service';
 import { UserFilter, UserService } from '@shared/services/user/user.service';
 import { Observable } from 'rxjs';
+import { map, shareReplay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -67,9 +68,9 @@ import { Observable } from 'rxjs';
 export class AppComponent implements OnInit {
   cards: Card[] = MOCK_TRANSACTION_FORM_CARDS;
 
-  users$: Observable<(User & { isPaid: boolean })[]>;
+  users$: Observable<PaidUser[]>;
 
-  filteredUsers$: Observable<(User & { isPaid: boolean })[]>;
+  filteredUsers$: Observable<PaidUser[]>;
 
   isAlternateTheme$: Observable<boolean>;
 
@@ -208,15 +209,6 @@ export class AppComponent implements OnInit {
   }
 
   setUserToUserPaid(selectedUser: User) {
-    this.users$ = this.users$.pipe(
-      map((users) =>
-        users.map((user) => {
-          if (selectedUser.id === user.id) {
-            user.isPaid = true;
-          }
-          return user;
-        })
-      )
-    );
+    this.users$ = this.userService.editUserToPaidUser(selectedUser, this.users$);
   }
 }
