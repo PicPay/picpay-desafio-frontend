@@ -1,0 +1,50 @@
+{
+  "core": {
+    "form-control-validator": {
+      "required": "is required",
+      "minLength": "should be greather than"
+    }
+  },
+  "shared": {
+    "components": {
+      "user-card": {
+        "username": "username:",
+        "id": "id:",
+        "name": "name of the user:",
+        "pay": "Pay",
+        "paid": "already paid"
+      },
+      "transaction-form-modal": {
+        "title": "payment to",
+        "value": "value",
+        "valueError": "value should be greather than",
+        "clearValue": "clear value",
+        "card": "card",
+        "pay": "pay",
+        "cancel": "cancel",
+        "selectLabel": "with last four numbers:"
+      }
+    },
+    "transaction": {
+      "success": "was pay with success :)",
+      "invalidCard": "invalid card :(",
+      "errors": "internal server error :("
+    }
+  },
+  "app": {
+    "header": {
+      "title": "payment simulation",
+      "themeSwitcher": "dark theme",
+      "changeTheme": "change theme",
+      "userFilter": {
+        "label": "Filter user by:",
+        "all": "all",
+        "paid": "paid",
+        "pending": "pending"
+      }
+    },
+    "snackBar": {
+      "close": "close"
+    }
+  }
+}
