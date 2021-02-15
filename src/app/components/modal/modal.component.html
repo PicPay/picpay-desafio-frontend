@@ -1,0 +1,23 @@
+<div class="modal-backdrop">
+  <div class="modal">
+    <div class="title">
+      {{ modalTitle }}
+      <button (click)="close()" class="modal-close is-large" aria-label="close">
+        x
+      </button>
+    </div>
+    <div class="content">
+      <ng-container [ngSwitch]="contentType">
+    
+        <ng-container *ngSwitchCase="'template'">
+          <ng-container *ngTemplateOutlet="content; context: context"></ng-container>
+        </ng-container>
+    
+        <ng-container *ngSwitchCase="'component'">
+          <ng-container *ngComponentOutlet="content"></ng-container>
+        </ng-container>
+    
+      </ng-container>
+    </div>
+  </div>
+</div>
