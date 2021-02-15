@@ -81,14 +81,12 @@ export class AppComponent implements OnInit {
   userFilter: UserFilter = UserFilter.ALL;
 
   userFilterKeys: string[] = this.userService.listUserFilterKeys();
-  userFilterEnum = UserFilter;
 
   constructor(
     private userService: UserService,
     private transactionService: TransactionService,
     private dialog: MatDialog,
     private snackBar: MatSnackBar,
-    private themeService: ThemeService,
     private translateService: TranslateService
   ) {}
 
@@ -101,7 +99,6 @@ export class AppComponent implements OnInit {
         })
       )
     );
-    this.isAlternateTheme$ = this.themeService.isAlternateTheme();
 
     this.filterUser(this.userFilter);
   }
@@ -178,15 +175,11 @@ export class AppComponent implements OnInit {
     actionName: string
   ): MatSnackBarRef<SimpleSnackBar> {
     const snackBarConfig: MatSnackBarConfig = {
-      duration: 3000,
+      duration: 1500,
       verticalPosition: 'top',
     };
 
     return this.snackBar.open(message, actionName, snackBarConfig);
-  }
-
-  changeTheme() {
-    this.themeService.changeTheme();
   }
 
   getPaidUser(paidUser: User): Observable<boolean> {
