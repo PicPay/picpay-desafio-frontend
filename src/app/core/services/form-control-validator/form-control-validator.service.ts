@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
-import { FormValidatorMessage } from '@core/enums/form-validator-message.enum';
+import { TranslateService } from '@ngx-translate/core';
+import { FORM_CONTROL_VALIDATOR_VOCABULARY } from './form-control-validator.service.vocabulary';
 
 @Injectable()
 export class FormControlValidatorService {
-  constructor() {}
+  vocabulary = FORM_CONTROL_VALIDATOR_VOCABULARY;
+
+  constructor(private translateService: TranslateService) {}
 
   findError(control: AbstractControl, formFieldName: string): string {
     return (
@@ -15,17 +18,16 @@ export class FormControlValidatorService {
   }
 
   getMinLengthErrorMessage(minLength: number, formFieldName: string): string {
-    const replaceMinLengthMessage = (fieldName: string, length: number) =>
-      FormValidatorMessage.MINLENGTH.replace('[FIELD]', fieldName).replace(
-        '[LENGTH]',
-        length.toString()
-      );
-    return replaceMinLengthMessage(formFieldName, minLength);
+    const fieldName = this.translateService.instant(formFieldName);
+    const message = this.translateService.instant(this.vocabulary.minLength);
+
+    return `${fieldName} ${message} ${minLength}`;
   }
 
   getRequiredMessage(formFieldName: string): string {
-    const replaceRequiredMessage = (fieldName: string) =>
-      FormValidatorMessage.REQUIRED.replace('[FIELD]', fieldName);
-    return replaceRequiredMessage(formFieldName);
+    const fieldName = this.translateService.instant(formFieldName);
+    const message = this.translateService.instant(this.vocabulary.required);
+
+    return `${fieldName} ${message}`;
   }
 }
