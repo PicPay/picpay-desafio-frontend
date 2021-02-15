@@ -1,3 +1,4 @@
+import { USER_CARD_VOCABULARY } from './user-card.component.vocabulary';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { User } from '@core/domains/user/user.domain';
 
@@ -7,6 +8,7 @@ import { User } from '@core/domains/user/user.domain';
   styleUrls: ['./user-card.component.scss']
 })
 export class UserCardComponent implements OnInit {
+  vocabulary = USER_CARD_VOCABULARY;
 
   @Input() user: User;
 
