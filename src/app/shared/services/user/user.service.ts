@@ -1,3 +1,5 @@
+import { map } from 'rxjs/operators';
+import { PaidUser } from './../../../core/domains/user/paid-user.domain';
 import { Injectable } from '@angular/core';
 import { User } from '@core/domains/user/user.domain';
 import { APIBaseRoutes } from '@core/services/api/api-base.routes';
@@ -15,6 +17,19 @@ export class UserService {
   listUsers(): Observable<User[]> {
     return this.apiService.list<User[]>(
       `${APIBaseRoutes.BASE_USERS_API_URL}${this.endpoints.list}`
+    );
+  }
+
+  editUserToPaidUser(selectedUser: User, userObservable$: Observable<PaidUser[]>): Observable<PaidUser[]> {
+    return userObservable$.pipe(
+      map((users) =>
+        users.map((user) => {
+          if (selectedUser.id === user.id) {
+            user.isPaid = true;
+          }
+          return user;
+        })
+      )
     );
   }
 
