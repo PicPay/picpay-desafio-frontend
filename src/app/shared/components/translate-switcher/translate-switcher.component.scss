@@ -1,0 +1,17 @@
+@import "src/assets/styles/theme/theming";
+
+:host {
+  span {
+    text-transform: uppercase;
+    cursor: pointer;
+    color: mat-color($theme-primary, lighter);
+    transition: color 500ms;
+    &.selected {
+      font-weight: bold;
+      color: $dark-primary-text;
+    }
+    &:hover {
+      color: mat-color($theme-primary, 200);
+    }
+  }
+}

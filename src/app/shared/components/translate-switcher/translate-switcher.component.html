@@ -1,0 +1,6 @@
+<div class="translate-switcher-header" fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="8px">
+  <span [ngClass]="language === translateService.translate.currentLang ? 'selected' : 'lang'"
+    *ngFor="let language of translateService.translate.getLangs()" (click)="translateService.switchLang(language)">
+    {{language}}.
+  </span>
+</div>
