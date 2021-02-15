@@ -1,4 +1,4 @@
-<mat-card [ngClass]="{'user-card-paid': isPaid}" [matTooltip]="isPaid ? user.name +  ' já foi pago': ''">
+<mat-card [ngClass]="{'user-card-paid': isPaid}" [matTooltip]="isPaid ? user.name + ' ' + (vocabulary.paid | translate) : ''">
 
   <mat-card-content fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayoutAlign="space-between center"
     fxLayoutGap.xs="8px" fxLayoutGap.sm="8px" fxLayoutGap.md="16px">
@@ -11,23 +11,24 @@
         </div>
         <div>
           <p>
-            <span class="label">Nome do usuário:</span>
+            <span class="label">{{vocabulary.name | translate}}</span>
             <span class="data">{{user.name}}</span>
           </p>
           <p>
-            <span class="label">ID:</span>
+            <span class="label">{{vocabulary.id | translate}}</span>
             <span class="data">{{user.id}}</span>
           </p>
           <p>
-            <span class="label">Username:</span>
-            <span class="data">{{user.username}}</span>
+            <span class="label">{{vocabulary.username | translate}}</span>
+            <span class="data --data-username">{{user.username}}</span>
           </p>
         </div>
       </div>
     </div>
     <div class="user-card-button">
-      <button [matTooltip]="!isPaid ? 'Pagar ' + user.name : ''" mat-raised-button [disabled]="isPaid" color="primary"
-        class="is-full-width" (click)="onClickPay(user)">PAGAR</button>
+      <button [matTooltip]="!isPaid ? (vocabulary.pay | translate) + ' ' + user.name : ''" mat-raised-button
+        [disabled]="isPaid" color="primary" class="is-full-width" (click)="onClickPay(user)">{{vocabulary.pay |
+        translate}}</button>
     </div>
   </mat-card-content>
 
