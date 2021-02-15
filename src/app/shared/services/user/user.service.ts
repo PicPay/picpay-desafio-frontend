@@ -12,10 +12,14 @@ export class UserService {
 
   constructor(private apiService: ApiService) {}
 
-  public listUsers(): Observable<User[]> {
+  listUsers(): Observable<User[]> {
     return this.apiService.list<User[]>(
       `${APIBaseRoutes.BASE_USERS_API_URL}${this.endpoints.list}`
     );
+  }
+
+  listUserFilterKeys(): string[] {
+    return Object.keys(UserFilter).filter((value) => isNaN(+value));
   }
 }
 
