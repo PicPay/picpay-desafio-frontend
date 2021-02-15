@@ -1,3 +1,4 @@
+import { PaidUser } from '@core/domains/user/paid-user.domain';
 import { User } from '@core/domains/user/user.domain';
 
 let id = 0;
@@ -20,3 +21,8 @@ export const MOCK_USER: User = {
   name: `Mock User ${id}`,
   username: `mockuser ${id}`,
 };
+
+export const MOCK_PAID_USERS: PaidUser[] = users.map((user, index) => {
+  user.isPaid = index % 2 === 0;
+  return user;
+});
