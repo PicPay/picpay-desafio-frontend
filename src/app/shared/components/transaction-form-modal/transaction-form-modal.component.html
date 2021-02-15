@@ -1,39 +1,39 @@
-<form fxLayout="column" fxLayoutGap="16px" [formGroup]="transactionForm" (ngSubmit)="onSubmit()">
-  <h1>Pagamento para: {{user.name}}</h1>
+<form class="transaction-form" fxLayout="column" fxLayoutGap="16px" [formGroup]="transactionForm" (ngSubmit)="onSubmit()">
+  <h1>{{vocabulary.title | translate}} {{user.name}}</h1>
 
   <mat-divider></mat-divider>
 
   <mat-form-field>
-    <mat-label>Valor R$: </mat-label>
+    <mat-label>{{vocabulary.value | translate}} R$: </mat-label>
 
     <input currencyMask matInput type="tel" formControlName="value" autocomplete="off">
 
     <button mat-button *ngIf="transactionForm.get('value')" matSuffix mat-icon-button aria-label="Clear"
       (click)="transactionForm.get('value').setValue(0)">
-      <mat-icon matTooltip="Limpar valor">close</mat-icon>
+      <mat-icon [matTooltip]="vocabulary.clearValue | translate">close</mat-icon>
     </button>
 
     <mat-error *ngIf="transactionForm.get('value').invalid">
-      {{getErrorMessage(transactionForm.get('value'), 'Valor')}}
+      {{getErrorMessage(transactionForm.get('value'), vocabulary.value)}}
     </mat-error>
   </mat-form-field>
 
   <mat-form-field appearance="fill">
-    <mat-label>Cartão</mat-label>
+    <mat-label>{{vocabulary.card | translate}}</mat-label>
 
     <mat-select formControlName="card_number">
       <mat-option [value]="card.card_number" class="option" *ngFor="let card of cards">
-        com final {{getLastFourNumbers(card.card_number)}}
+        {{vocabulary.selectLabel | translate}} {{getLastFourNumbers(card.card_number)}}
       </mat-option>
     </mat-select>
 
     <mat-error *ngIf="transactionForm.get('card_number').invalid">
-      {{getErrorMessage(transactionForm.get('card_number'), 'cartão')}}
+      {{getErrorMessage(transactionForm.get('card_number'), vocabulary.card)}}
     </mat-error>
   </mat-form-field>
 
   <mat-divider></mat-divider>
 
-  <button type="submit" mat-raised-button color="primary">Pagar</button>
-  <button type='button' (click)="dialogRef.close()" mat-button>Cancelar</button>
+  <button type="submit" mat-raised-button color="primary">{{vocabulary.pay | translate}}</button>
+  <button type='button' (click)="dialogRef.close()" mat-button>{{vocabulary.cancel | translate}}</button>
 </form>
