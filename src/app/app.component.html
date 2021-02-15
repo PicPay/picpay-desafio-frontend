@@ -1,76 +1,48 @@
 <div class="users">
-  <div class="user">
-    <img src="https://randomuser.me/api/portraits/men/9.jpg" />
+  <div class="user" *ngFor="let user of users | async">
+    <img [src]="user.img" />
     <div class="info-wrapper">
       <div class="user-name">
-        Nome do Usuário X
+        {{ user.name }}
       </div>
 
       <div class="user-id-username">
-        ID: X - Username: @usuarioX
+        ID: {{ user.id }} - {{ user.username }}
       </div>
     </div>
 
-    <button type="button" class="pay-button">
-      Pagar
-    </button>
-  </div>
-
-  <div class="user">
-    <img src="https://randomuser.me/api/portraits/men/12.jpg" />
-    <div class="info-wrapper">
-      <div class="user-name">
-        Nome do Usuário X
-      </div>
-
-      <div class="user-id-username">
-        ID: X - Username: @usuarioX
-      </div>
-    </div>
-
-    <button type="button" class="pay-button">
-      Pagar
-    </button>
-  </div>
-
-  <div class="user">
-    <img src="https://randomuser.me/api/portraits/men/13.jpg" />
-    <div class="info-wrapper">
-      <div class="user-name">
-        Nome do Usuário X
-      </div>
-
-      <div class="user-id-username">
-        ID: X - Username: @usuarioX
-      </div>
-    </div>
-
-    <button type="button" class="pay-button">
+    <button type="button" class="pay-button" (click)="payUserModal(user)">
       Pagar
     </button>
   </div>
 </div>
 
-<div class="modal-backdrop">
-  <div class="modal">
+<div class="modal-backdrop" *ngIf="showModalPayment || showModalPaymentMessage">
+  <div class="modal" *ngIf="showModalPayment">
     <div class="title">Pagamento para <span>Nome do Usuário</span></div>
 
     <div class="content">
-      <input type="number" placeholder="R$ 0,00" />
+      <form [formGroup]="paymentForm" (ngSubmit)="payUser()">
+        <input type="number" formControlName="value" placeholder="R$ 0,00">
 
-      <div class="cards">
-        <select>
-          <option selected>Cartão com final 0123</option>
-        </select>
-      </div>
+        <div class="cards">
+          <select formControlName="cardNumber">
+            <option>Selecione um cartão</option>
+            <option
+              *ngFor="let card of cards | async"
+              [value]="card.card_number"
+            >Cartão com final {{ card.card_number | last4Digits }}</option>
+          </select>
+        </div>
 
-      <button type="button" class="pay-button">
-        Pagar
-      </button>
+        <button type="submit" class="pay-button" [disabled]="!paymentForm.valid">
+          Pagar
+        </button>
+      </form>
     </div>
   </div>
 
-  <div class="modal">
+  <div class="modal" *ngIf="showModalPaymentMessage">
     <div class="title">
       Recibo de pagamento
     </div>
