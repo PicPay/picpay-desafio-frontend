@@ -12,8 +12,5 @@ import { ModalComponent } from './modal.component';
   entryComponents: [
     ModalComponent,
   ],
-  exports: [
-    ModalComponent,
-  ]
 })
 export class ModalModule { }

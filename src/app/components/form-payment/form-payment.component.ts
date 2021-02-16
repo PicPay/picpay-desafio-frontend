@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { ModalRef } from 'src/app/modal-ref';
-import { Card } from 'src/app/models/card.interface';
-import { TransactionPayload } from 'src/app/models/transaction-payload.interface';
-import { TransactionResponse } from 'src/app/models/transaction-response.interface';
-import { User } from 'src/app/models/user.interface';
-import { CardService } from 'src/app/services/card.service';
-import { PaymentService } from 'src/app/services/payment.service';
+import { ModalRef } from '../../modal-ref';
+import { Card } from '../../models/card.interface';
+import { TransactionPayload } from '../../models/transaction-payload.interface';
+import { TransactionResponse } from '../../models/transaction-response.interface';
+import { User } from '../../models/user.interface';
+import { CardService } from '../../services/card.service';
+import { PaymentService } from '../../services/payment.service';
 
 @Component({
   selector: 'app-form-payment',

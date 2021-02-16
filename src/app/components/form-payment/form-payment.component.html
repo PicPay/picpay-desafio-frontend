@@ -1,17 +1,15 @@
 <form [formGroup]="paymentForm" (ngSubmit)="payUser()">
-    <input type="number" formControlName="value" placeholder="R$ 0,00">
+  <input type="number" formControlName="value" placeholder="R$ 0,00">
 
-    <div class="cards">
-      <select formControlName="cardNumber">
-        <option>Selecione um cartão</option>
-        <option
-          *ngFor="let card of cards"
-          [value]="card.card_number"
-        >Cartão com final {{ card.card_number | last4Digits }}</option>
-      </select>
-    </div>
+  <div class="cards">
+    <select formControlName="cardNumber">
+      <option>Selecione um cartão</option>
+      <option *ngFor="let card of cards" [value]="card.card_number">Cartão com final {{ card.card_number | last4Digits
+        }}</option>
+    </select>
+  </div>
 
-    <button type="submit" class="pay-button" [disabled]="!paymentForm.valid">
-      Pagar
-    </button>
-  </form>
+  <button type="submit" class="pay-button" [disabled]="!paymentForm.valid">
+    Pagar
+  </button>
+</form>

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormPaymentComponent } from './form-payment.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { Last4DigitsPipe } from 'src/app/pipes/card.pipe';
+import { Last4DigitsPipe } from '../../pipes/card.pipe';
 
 @NgModule({
   declarations: [
@@ -16,8 +16,5 @@ import { Last4DigitsPipe } from 'src/app/pipes/card.pipe';
   entryComponents: [
     FormPaymentComponent,
   ],
-  exports: [
-    FormPaymentComponent,
-  ]
 })
 export class FormPaymentModule { }
