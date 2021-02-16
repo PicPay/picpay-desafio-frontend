@@ -8,8 +8,8 @@ import { creditCard } from 'src/app/core/types/credit-card.type';
 import { PaymentsUsecasesService } from 'src/app/data/usecases/payments/payments-usecases.service';
 import { DataFormatService } from 'src/app/data/utils/data-format.service';
 import { fadeIn } from 'src/app/shared/animations/fade.animations';
-import { PaymentStepService } from '../../payment-step.service';
-import { UserStateService } from '../../user-state.service';
+import { PaymentStepService } from '../../services/payment-step.service';
+import { UserStateService } from '../../services/user-state.service';
 
 @Component({
   selector: 'app-payment-confirmation',

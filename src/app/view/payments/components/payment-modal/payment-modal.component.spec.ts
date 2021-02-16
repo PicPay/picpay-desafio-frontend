@@ -1,7 +1,7 @@
 import { createMockFor } from './../../../../../../test.utils';
 import { PaymentModalComponent } from './payment-modal.component';
-import { PaymentStepService } from './payment-step.service';
-import { UserStateService } from './user-state.service';
+import { PaymentStepService } from './services/payment-step.service';
+import { UserStateService } from './services/user-state.service';
 
 describe('PaymentModalComponent', () => {
   function createSubject({

@@ -1,8 +1,8 @@
 import { PaymentConfirmationComponent } from './payment-confirmation.component';
 import { createMockFor } from './../../../../../../../../test.utils';
 import { PaymentsUsecasesService } from 'src/app/data/usecases/payments/payments-usecases.service';
-import { PaymentStepService } from '../../payment-step.service';
-import { UserStateService } from '../../user-state.service';
+import { PaymentStepService } from '../../services/payment-step.service';
+import { UserStateService } from '../../services/user-state.service';
 import { DataFormatService } from 'src/app/data/utils/data-format.service';
 import { of } from 'rxjs';
 import { creditCard } from 'src/app/core/types/credit-card.type';

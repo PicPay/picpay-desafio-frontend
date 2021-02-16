@@ -9,7 +9,7 @@ import { DataFormatService } from 'src/app/data/utils/data-format.service';
 import { fadeIn } from 'src/app/shared/animations/fade.animations';
 import { CreditCardVisualizationComponent } from '../../components/credit-card-visualization/credit-card-visualization.component';
 import { PaymentModalComponent } from '../../components/payment-modal/payment-modal.component';
-import { UserStateService } from '../../components/payment-modal/user-state.service';
+import { UserStateService } from '../../components/payment-modal/services/user-state.service';
 import { User } from './../../../../core/interfaces/user.interface';
 
 /**

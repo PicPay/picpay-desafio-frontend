@@ -1,7 +1,7 @@
 import { createMockFor } from '../../../../../../../../test.utils';
-import { PaymentStepService } from '../../payment-step.service';
+import { PaymentStepService } from '../../services/payment-step.service';
 import { PaymentSelectAmoutComponent } from './payment-select-amout.component';
-import { UserStateService } from '../../user-state.service';
+import { UserStateService } from '../../services/user-state.service';
 import { DataFormatService } from 'src/app/data/utils/data-format.service';
 
 describe('PaymentSelectAmoutComponent', () => {

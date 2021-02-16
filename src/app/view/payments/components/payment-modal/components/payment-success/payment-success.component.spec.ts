@@ -1,6 +1,5 @@
-import { DialogService } from 'src/app/data/utils/dialog.service';
 import { createMockFor } from '../../../../../../../../test.utils';
-import { UserStateService } from '../../user-state.service';
+import { UserStateService } from '../../services/user-state.service';
 import { PaymentSuccessComponent } from './payment-success.component';
 import { of } from 'rxjs';
 import { MatDialogRef } from '@angular/material/dialog';

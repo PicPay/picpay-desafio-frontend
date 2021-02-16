@@ -3,8 +3,8 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/core/interfaces/user.interface';
 import { fadeIn } from 'src/app/shared/animations/fade.animations';
-import { PaymentStepService } from './payment-step.service';
-import { UserStateService } from './user-state.service';
+import { PaymentStepService } from './services/payment-step.service';
+import { UserStateService } from './services/user-state.service';
 
 type stepType = 'selectAmount' | 'confirmData' | 'success' | 'error';
 

@@ -17,9 +17,9 @@ import { PaymentErrorComponent } from './components/payment-modal/components/pay
 import { PaymentSelectAmoutComponent } from './components/payment-modal/components/payment-select-amout/payment-select-amout.component';
 import { PaymentSuccessComponent } from './components/payment-modal/components/payment-success/payment-success.component';
 import { PaymentModalComponent } from './components/payment-modal/payment-modal.component';
+import { SkeletonDirective } from './directives/skeleton.directive';
 import { PaymentsComponent } from './page/payments/payments.component';
 import { PaymentsRoutingModule } from './payments-routing.module';
-import { SkeletonDirective } from './skeleton.directive';
 
 const modules = [
   CommonModule,

@@ -3,7 +3,7 @@ import { createMockFor } from '../../../../../../test.utils';
 import { UserUsecasesService } from 'src/app/data/usecases/user/user-usecases.service';
 import { MatDialog } from '@angular/material/dialog';
 import { of } from 'rxjs';
-import { UserStateService } from '../../components/payment-modal/user-state.service';
+import { UserStateService } from '../../components/payment-modal/services/user-state.service';
 import { DataFormatService } from 'src/app/data/utils/data-format.service';
 
 const users = [

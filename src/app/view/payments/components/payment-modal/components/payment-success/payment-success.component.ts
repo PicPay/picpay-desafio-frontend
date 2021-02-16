@@ -4,7 +4,7 @@ import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { User } from 'src/app/core/interfaces/user.interface';
 import { PaymentModalComponent } from '../../payment-modal.component';
-import { UserStateService } from '../../user-state.service';
+import { UserStateService } from '../../services/user-state.service';
 
 @Component({
   selector: 'app-payment-success',

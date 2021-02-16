@@ -4,8 +4,8 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { User } from 'src/app/core/interfaces/user.interface';
 import { DataFormatService } from 'src/app/data/utils/data-format.service';
-import { PaymentStepService } from '../../payment-step.service';
-import { UserStateService } from '../../user-state.service';
+import { PaymentStepService } from '../../services/payment-step.service';
+import { UserStateService } from '../../services/user-state.service';
 
 /**
  * This class represents the PaymentSelectAmoutComponent and it handles the payment amount to be send.
