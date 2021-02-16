@@ -8,6 +8,7 @@ import { ServicesModule } from './services/services.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ModalModule } from './components/modal/modal.module';
 import { FormPaymentModule } from './components/form-payment/form-payment.module';
+import { CardUserModule } from './components/card-user/card-user.module';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { FormPaymentModule } from './components/form-payment/form-payment.module
     OverlayModule,
     ModalModule,
     FormPaymentModule,
+    CardUserModule,
     ServicesModule,
   ],
   providers: [],

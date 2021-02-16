@@ -1,0 +1,27 @@
+<div class="user">
+  <img [src]="user.img" />
+  <div class="info-wrapper">
+    <div class="user-name">
+      {{ user.name }}
+    </div>
+
+    <div class="user-id-username">
+      ID: {{ user.id }} - {{ user.username }}
+    </div>
+  </div>
+
+  <button type="button" class="pay-button" (click)="payUserModal(user)">
+    Pagar
+  </button>
+</div>
+
+<ng-template #paymentMessageResponse>
+  <ng-container [ngSwitch]="paymentStatus">
+    <ng-container *ngSwitchCase="'Aprovada'">
+      <p>O pagamento foi concluido com sucesso.</p>
+    </ng-container>
+    <ng-container *ngSwitchCase="'Reprovada'">
+      <p>O pagamento <strong>não</strong> foi concluido com sucesso.</p>
+    </ng-container>
+  </ng-container>
+</ng-template>
