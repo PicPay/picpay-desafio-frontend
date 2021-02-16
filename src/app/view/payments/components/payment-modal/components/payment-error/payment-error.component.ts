@@ -11,8 +11,11 @@ export class PaymentErrorComponent {
   @HostBinding('class.payment-error-container')
   paymentContainer = true;
 
-  constructor(private matDialog: MatDialogRef<PaymentModalComponent>) {}
+  constructor(private matDialog: MatDialogRef<PaymentModalComponent | any>) {}
 
+  /**
+   * Method that closes PaymentModal/
+   */
   closeModal() {
     this.matDialog.close();
   }

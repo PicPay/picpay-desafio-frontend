@@ -10,8 +10,6 @@ type stepType = 'selectAmount' | 'confirmData' | 'success' | 'error';
 export class PaymentStepService {
   private activeStep = new BehaviorSubject<stepType>('selectAmount');
 
-  constructor() { }
-
   getActiveStep(): Observable<stepType> {
     return this.activeStep.asObservable();
   }

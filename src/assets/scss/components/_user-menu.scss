@@ -35,6 +35,10 @@ app-user-menu {
           @extend %block;
           @extend %bold;
         }
+
+        small {
+          @extend %bold;
+        }
       }
     }
 
@@ -53,10 +57,10 @@ app-user-menu {
 
           a {
             font-weight: bold;
-            color: #c2cbd7;
+            color: $color-gray;
 
             &.active {
-              color: #1dc264;
+              color: $primary-green;
             }
           }
         }
@@ -66,5 +70,16 @@ app-user-menu {
 
   @media screen and (max-width: 1024px) {
     display: none;
+  }
+
+  .log-out {
+    font-weight: bold;
+    text-transform: uppercase;
+    color: $color-gray;
+    letter-spacing: 3px;
+
+    .mat-icon {
+      color: $color-error;
+    }
   }
 }

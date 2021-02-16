@@ -1,20 +1,17 @@
 @import './helpers/rem';
 @import './helpers/colors';
+@import './globals/theme';
+@import './globals/animations/animations';
 
 @import "./globals/reset";
 @import "./globals/structure";
-// @import "./globals/main";
 
-// @import './helpers/config-variables';
 @import "./helpers/placeholders";
 
-// @import "./components/header";
 @import "./components/button";
 @import "./components/user-menu";
 @import "./components/credit-card";
 @import "./components/payment-modal";
 
-// @import "./pages/landing";
 @import "./pages/payments";
-
 

@@ -1,8 +1,7 @@
-import { PaymentsUsecasesService } from 'src/app/data/usecases/payments/payments-usecases.service';
 import { createMockFor } from './../../../../../../test.utils';
 import { PaymentModalComponent } from './payment-modal.component';
 import { PaymentStepService } from './payment-step.service';
-import { of } from 'rxjs';
+import { UserStateService } from './user-state.service';
 
 describe('PaymentModalComponent', () => {
   function createSubject({
@@ -13,26 +12,17 @@ describe('PaymentModalComponent', () => {
       img: 'https://randomuser.me/api/portraits/men/9.jpg',
       username: '@eduardo.santos',
     },
-    repo = createMockFor(PaymentsUsecasesService),
+    userState = createMockFor(UserStateService),
   } = {}) {
-    repo.sendMoney.mockReturnValue(of({ res: true }));
     return {
-      subject: new PaymentModalComponent(paymentStep, { user: data }, repo),
+      subject: new PaymentModalComponent(paymentStep, { user: data }, userState),
       paymentStep,
-      repo
+      userState
     };
   }
 
   it('should create instance', () => {
     const { subject } = createSubject();
     expect(subject).toBeTruthy();
-  });
-
-  it('should send payment', () => {
-    const { subject, repo } = createSubject();
-
-    subject.sendPayment({}).subscribe(res => expect(res).toBeTruthy());
-
-    expect(repo.sendMoney).toHaveBeenCalled();
   });
 });

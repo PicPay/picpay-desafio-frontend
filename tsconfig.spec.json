@@ -16,6 +16,12 @@
   "exclude": [
     "src/environments/*.ts",
     "main.ts",
-    "polyfills.ts"
+    "polyfills.ts",
+    "cypress/**/*.js",
+    "cypress/integration/payments.spec.js",
+    "src/**/*.js",
+    "src/app/shared/components/button/button.component.ts",
+    "src/app/view/payments/components/payment-modal/components/payment-success/payment-success.component.ts",
+    "src/app/view/payments/components/payment-modal/components/payment-error/payment-error.component.ts"
   ]
 }

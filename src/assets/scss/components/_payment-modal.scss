@@ -25,6 +25,11 @@ app-payment-modal {
         color: #fff;
       }
     }
+    .mat-form-field {
+      .mat-error {
+        font-size: rem(12px);
+      }
+    }
     .mat-form-field.edit-value {
       font-size: rem(40px);
     }
@@ -34,7 +39,24 @@ app-payment-modal {
       align-items: center;
 
       > span {
-        margin-right: 20px;
+        margin-right: rem(20px);
+      }
+
+      .mat-spinner,
+      .mat-spinner > svg {
+        width: rem(30px) !important;
+        height: rem(30px) !important;
+
+        // circle {
+        //   stroke: $bg-gray-light;
+        // }
+      }
+
+      button {
+        &.loading-payment {
+          background: transparent;
+          box-shadow: none;
+        }
       }
     }
   }
@@ -132,5 +154,4 @@ app-payment-modal {
   @media screen and (max-width: 1024px) {
     width: 100%;
   }
-
 }

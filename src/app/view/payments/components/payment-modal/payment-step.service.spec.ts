@@ -1,12 +1,23 @@
-import { TestBed } from '@angular/core/testing';
 
 import { PaymentStepService } from './payment-step.service';
 
 describe('PaymentStepService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+  function createSubject() {
+    return {
+      subject: new PaymentStepService(),
+    };
+  }
 
-  it('should be created', () => {
-    const service: PaymentStepService = TestBed.get(PaymentStepService);
-    expect(service).toBeTruthy();
+  it('should create instance', () => {
+    const { subject } = createSubject();
+    expect(subject).toBeTruthy();
+  });
+
+  it('should set active step', () => {
+    const { subject } = createSubject();
+
+    subject.setActiveStep('confirmData');
+
+    subject.getActiveStep().subscribe(res => expect(res).toEqual('confirmData'))
   });
 });

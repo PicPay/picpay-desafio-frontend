@@ -7,7 +7,7 @@
 
   <form [formGroup]="confirmationForm">
     <span class="payment_confirmation__amount">
-      <mat-form-field class="edit-value">
+      <mat-form-field class="edit-value" [ngClass]="{ 'disabled-input': disabled }">
         <input
           matInput
           (input)="handleInputMask(tt)"
@@ -16,6 +16,14 @@
           (blur)="handleValueEdition()"
           (click)="handleValueEdition()"
         />
+        <mat-error
+          *ngIf="
+            confirmationForm.controls.paymentAmount?.errors?.required &&
+            confirmationForm.controls.paymentAmount?.touched
+          "
+        >
+          Campo obrigatório
+        </mat-error>
       </mat-form-field>
 
       <button mat-icon-button (click)="handleValueEdition()">
@@ -25,12 +33,20 @@
 
     <mat-form-field>
       <mat-label>Selecione um cartão de crédito</mat-label>
-      <mat-select formControlName="creditCard">
+      <mat-select formControlName="creditCard" id="selectCreditCard">
         <mat-option *ngFor="let card of creditCardList" [value]="card.card_number">
           <!-- <mat-icon>credit_card</mat-icon> -->
           {{ card?.numberView }}
         </mat-option>
       </mat-select>
+      <mat-error
+        *ngIf="
+          confirmationForm.controls.creditCard?.errors?.required &&
+          confirmationForm.controls.creditCard?.touched
+        "
+      >
+        Campo obrigatório
+      </mat-error>
     </mat-form-field>
   </form>
 
@@ -42,9 +58,13 @@
       mat-fab
       color="primary"
       [disabled]="confirmationForm?.invalid"
-      (click)="changePaymentStep()"
+      [ngClass]="{ 'loading-payment': loadingPayment }"
+      (click)="sendPayment()"
+      [autofocus]="disabled"
+      id="sendPaymentBtn"
     >
-      <mat-icon>navigate_next</mat-icon>
+      <mat-icon *ngIf="!loadingPayment">navigate_next</mat-icon>
+      <mat-spinner *ngIf="loadingPayment"></mat-spinner>
     </button>
   </div>
 </article>

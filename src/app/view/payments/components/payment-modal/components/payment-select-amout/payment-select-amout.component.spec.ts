@@ -1,11 +1,17 @@
 import { createMockFor } from '../../../../../../../../test.utils';
 import { PaymentStepService } from '../../payment-step.service';
 import { PaymentSelectAmoutComponent } from './payment-select-amout.component';
+import { UserStateService } from '../../user-state.service';
+import { DataFormatService } from 'src/app/data/utils/data-format.service';
 
 describe('PaymentSelectAmoutComponent', () => {
-  function createSubject({ paymentStep = createMockFor(PaymentStepService) } = {}) {
+  function createSubject({
+    paymentStep = createMockFor(PaymentStepService),
+    userStore = createMockFor(UserStateService),
+    dataFormat = createMockFor(DataFormatService),
+  } = {}) {
     return {
-      subject: new PaymentSelectAmoutComponent(paymentStep),
+      subject: new PaymentSelectAmoutComponent(paymentStep, userStore, dataFormat),
       paymentStep,
     };
   }
@@ -21,13 +27,5 @@ describe('PaymentSelectAmoutComponent', () => {
     subject.setActiveStep();
 
     expect(paymentStep.setActiveStep).toHaveBeenCalled();
-  });
-
-  it('should format number to currency', () => {
-    const { subject } = createSubject();
-
-    const number = subject.formatNumber('100');
-
-    expect(number).toEqual('R$ 1,00');
   });
 });

@@ -1,25 +1,26 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { MatDialogRef } from '@angular/material/dialog';
+import { createMockFor } from '../../../../../../../../test.utils';
 import { PaymentErrorComponent } from './payment-error.component';
+import { PaymentModalComponent } from '../../payment-modal.component';
+import { DialogService } from 'src/app/data/utils/dialog.service';
 
 describe('PaymentErrorComponent', () => {
-  let component: PaymentErrorComponent;
-  let fixture: ComponentFixture<PaymentErrorComponent>;
+  function createSubject({ matDialogRef = createMockFor(MatDialogRef) } = {}) {
+    return {
+      subject: new PaymentErrorComponent(matDialogRef),
+      matDialogRef,
+    };
+  }
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ PaymentErrorComponent ]
-    })
-    .compileComponents();
-  }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(PaymentErrorComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+  it('should create instance', () => {
+    const { subject } = createSubject();
+    expect(subject).toBeTruthy();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should call closeAll modals', () => {
+    const { subject, matDialogRef } = createSubject();
+    subject.closeModal();
+
+    expect(matDialogRef.close).toHaveBeenCalled();
   });
 });

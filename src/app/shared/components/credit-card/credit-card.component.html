@@ -1,30 +1,14 @@
-<!-- <div class="wrapper">
-  <div class="card">
-    <div class="front">
-      <span>
-        <h1>{{ card?.ownerName }}</h1>
-        <p>{{ card?.card_number }}</p>
-      </span>
-      <p class="price">$ 89.00</p>
-    </div>
-    <div class="back">
-      <h2>Signature</h2>
-    </div>
-  </div>
-</div> -->
-
-
 <div class="flip">
   <div class="front">
     <div>
       <span>Flavio Maran Florentino</span>
     </div>
     <div class="info">
-      <span>{{ card?.card_number }}</span>
+      <span>{{ cardNumberFormatted }}</span>
       <span>{{ card?.expiry_date }}</span>
     </div>
   </div>
   <div class="back">
-    card back
+    <span>CVV: {{ card?.cvv }}</span>
   </div>
 </div>

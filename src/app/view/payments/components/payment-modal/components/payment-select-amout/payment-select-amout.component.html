@@ -4,17 +4,24 @@
   >.</small
 >
 
-<div>
+<form [formGroup]="selectAmountForm">
   <mat-form-field class="edit-value">
     <input
       matInput
-      autofocus
       (input)="handleValueFormat(paymentAmount)"
       #paymentAmount
-      [(ngModel)]="value"
+      formControlName="paymentAmount"
+      id="paymentAmountInput"
     />
+    <mat-error
+      *ngIf="
+        selectAmountForm?.controls?.paymentAmount?.errors?.required &&
+        selectAmountForm?.controls?.paymentAmount?.touched
+      "
+      >Campo obrigatório</mat-error
+    >
   </mat-form-field>
-</div>
+</form>
 
 <div class="bottom-action">
   <button
@@ -22,6 +29,8 @@
     mat-fab
     color="primary"
     aria-label="Example icon button with a delete icon"
+    [disabled]="selectAmountForm?.invalid"
+    id="confirmData"
   >
     <mat-icon>navigate_next</mat-icon>
   </button>

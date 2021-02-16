@@ -19,3 +19,7 @@
     display: block;
   }
 }
+
+.disabled-input {
+  pointer-events: none;
+}

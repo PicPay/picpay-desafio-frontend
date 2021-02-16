@@ -1,11 +1,7 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 
 const routes: Routes = [
-  {
-    path: 'dashboard',
-    loadChildren: () => import('./view/dashboard/dashboard.module').then((m) => m.DashboardModule),
-  },
   {
     path: 'payments',
     loadChildren: () => import('./view/payments/payments.module').then((m) => m.PaymentsModule),
@@ -23,7 +19,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

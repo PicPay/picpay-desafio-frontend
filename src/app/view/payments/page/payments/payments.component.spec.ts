@@ -3,6 +3,8 @@ import { createMockFor } from '../../../../../../test.utils';
 import { UserUsecasesService } from 'src/app/data/usecases/user/user-usecases.service';
 import { MatDialog } from '@angular/material/dialog';
 import { of } from 'rxjs';
+import { UserStateService } from '../../components/payment-modal/user-state.service';
+import { DataFormatService } from 'src/app/data/utils/data-format.service';
 
 const users = [
   {
@@ -209,10 +211,12 @@ describe('PaymentsComponent', () => {
   function createSubject({
     dialog = createMockFor(MatDialog),
     userUsecases = createMockFor(UserUsecasesService),
+    userState = createMockFor(UserStateService),
+    dataFormat = createMockFor(DataFormatService),
   } = {}) {
     userUsecases.getAllUsers.mockReturnValue(of(users));
     return {
-      subject: new PaymentsComponent(dialog, userUsecases),
+      subject: new PaymentsComponent(dialog, userUsecases, userState, dataFormat),
       dialog,
       userUsecases,
     };
