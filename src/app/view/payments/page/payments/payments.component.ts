@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy } from '@angular/compiler/src/core';
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Observable, Subject } from 'rxjs';
-import { finalize, takeUntil } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { finalize } from 'rxjs/operators';
 import { creditCard } from 'src/app/core/types/credit-card.type';
 import { UserUsecasesService } from 'src/app/data/usecases/user/user-usecases.service';
 import { DataFormatService } from 'src/app/data/utils/data-format.service';
@@ -23,7 +23,6 @@ import { User } from './../../../../core/interfaces/user.interface';
   animations: [fadeIn],
 })
 export class PaymentsComponent {
-  private destroy$: Subject<boolean> = new Subject<boolean>();
   users$: Observable<User[]>;
   loadingUsers = false;
   skeletonItems = new Array(15);
@@ -55,10 +54,9 @@ export class PaymentsComponent {
   getAllUsers(): Observable<User[]> {
     this.loadingUsers = true;
 
-    return this.userUsecases.getAllUsers<User[]>().pipe(
-      takeUntil(this.destroy$),
-      finalize(() => (this.loadingUsers = false))
-    );
+    return this.userUsecases
+      .getAllUsers<User[]>()
+      .pipe(finalize(() => (this.loadingUsers = false)));
   }
 
   /**
