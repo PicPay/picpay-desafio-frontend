@@ -1,8 +1,9 @@
-import { UserFilter } from '@shared/services/user/user.service';
-import { APP_VOCABULARY } from 'src/app/app.component.vocabulary';
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { HeaderContext } from '@contexts/shared/components/header/header-context.interface';
 import { ThemeService } from '@core/services/theme/theme.service';
+import { UserFilter } from '@shared/services/user/user.service';
+import { Observable } from 'rxjs';
+import { HEADER_VOCABULARY } from './header.component.vocabulary';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +11,7 @@ import { ThemeService } from '@core/services/theme/theme.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  vocabulary = APP_VOCABULARY;
+  vocabulary: HeaderContext = HEADER_VOCABULARY;
 
   userFilterEnum = UserFilter;
 
