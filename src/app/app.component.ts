@@ -1,4 +1,3 @@
-import { APP_VOCABULARY } from './app.component.vocabulary';
 import {
   animate,
   animateChild,
@@ -6,33 +5,35 @@ import {
   stagger,
   style,
   transition,
-  trigger,
+  trigger
 } from '@angular/animations';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
   MatSnackBar,
   MatSnackBarConfig,
   MatSnackBarRef,
-  SimpleSnackBar,
+  SimpleSnackBar
 } from '@angular/material';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { AppContext } from '@contexts/app/app-context.interface';
+import { TransactionContext } from '@contexts/shared/services/transaction/transaction-context.interface';
 import { Card } from '@core/domains/card/card.domain';
 import { TransactionPayload } from '@core/domains/transaction/transaction-payload.domain';
 import { Transaction } from '@core/domains/transaction/transaction.domain';
 import { PaidUser } from '@core/domains/user/paid-user.domain';
 import { User } from '@core/domains/user/user.domain';
-import { ThemeService } from '@core/services/theme/theme.service';
+import { TranslateService } from '@ngx-translate/core';
 import {
   TransactionForm,
-  TransactionFormModalComponent,
+  TransactionFormModalComponent
 } from '@shared/components/transaction-form-modal/transaction-form-modal.component';
 import { MOCK_TRANSACTION_FORM_CARDS } from '@shared/mocks/transaction/transaction-form.mock';
 import { TransactionService } from '@shared/services/transaction/transaction.service';
 import { UserFilter, UserService } from '@shared/services/user/user.service';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import { TranslateService } from '@ngx-translate/core';
+import { APP_VOCABULARY } from './app.component.vocabulary';
 
 @Component({
   selector: 'app-root',
@@ -65,8 +66,11 @@ import { TranslateService } from '@ngx-translate/core';
     ]),
   ],
 })
-export class AppComponent implements OnInit {
-  vocabulary = { ...APP_VOCABULARY, ...this.transactionService.vocabulary };
+export class AppComponent implements OnInit, OnDestroy {
+  vocabulary: AppContext & TransactionContext = {
+    ...APP_VOCABULARY,
+    ...this.transactionService.vocabulary,
+  };
 
   cards: Card[] = MOCK_TRANSACTION_FORM_CARDS;
 
@@ -81,6 +85,8 @@ export class AppComponent implements OnInit {
   userFilter: UserFilter = UserFilter.ALL;
 
   userFilterKeys: string[] = this.userService.listUserFilterKeys();
+
+  subscriptions = new Subscription();
 
   constructor(
     private userService: UserService,
@@ -142,31 +148,37 @@ export class AppComponent implements OnInit {
       destination_user_id: this.selectedUser.id,
     };
 
-    this.transactionService.postTransaction(payload).subscribe(
-      (transaction: Transaction) => {
-        transaction.destination_user = this.selectedUser;
-        this.setUserToUserPaid(this.selectedUser);
+    this.subscriptions.add(
+      this.transactionService.postTransaction(payload).subscribe(
+        (transaction: Transaction) => {
+          transaction.destination_user = this.selectedUser;
+          this.setUserToUserPaid(this.selectedUser);
 
-        this.showSnackBarMessage(
-          `${transaction.destination_user.name} ${this.translateService.instant(
-            this.vocabulary.success
-          )}`,
-          `${this.translateService.instant(this.vocabulary.snackBar.close)}`
-        );
-      },
-      (error: HttpErrorResponse) => {
-        this.showSnackBarMessage(
-          error.status.toString(),
-          `${this.translateService.instant(this.vocabulary.snackBar.close)}`
-        )
-          .afterDismissed()
-          .subscribe(() => {
-            this.openTransactionModal(this.selectedUser, {
-              value,
-              card_number,
+          this.showSnackBarMessage(
+            `${
+              transaction.destination_user.name
+            } ${this.translateService.instant(this.vocabulary.success)}`,
+            `${this.translateService.instant(
+              this.vocabulary['snackBar-context'].close
+            )}`
+          );
+        },
+        (error: HttpErrorResponse) => {
+          this.showSnackBarMessage(
+            error.status.toString(),
+            `${this.translateService.instant(
+              this.vocabulary['snackBar-context'].close
+            )}`
+          )
+            .afterDismissed()
+            .subscribe(() => {
+              this.openTransactionModal(this.selectedUser, {
+                value,
+                card_number,
+              });
             });
-          });
-      }
+        }
+      )
     );
   }
 
@@ -211,5 +223,9 @@ export class AppComponent implements OnInit {
       selectedUser,
       this.users$
     );
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.unsubscribe();
   }
 }
