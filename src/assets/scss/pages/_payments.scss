@@ -29,8 +29,8 @@ app-payments {
 
   .users-list {
     overflow-y: auto;
-    height: calc(100vh - 80px);
-    width: calc(100vw - #{rem(250px)}) !important;
+    height: calc(100vh - 100px);
+    width: 100% !important;
 
     padding-bottom: 20px;
 
