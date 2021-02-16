@@ -16,7 +16,9 @@
     "paths": {
       "@env/*": ["src/environments/*"],
       "@core/*": ["src/app/core/*"],
-      "@shared/*": ["src/app/shared/*"]
+      "@shared/*": ["src/app/shared/*"],
+      "@assets/*": ["src/assets/*"],
+      "@contexts/*": ["src/app/core/languages/contexts/*"]
     }
   },
   "angularCompilerOptions": {
