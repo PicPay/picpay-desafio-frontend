@@ -44,15 +44,6 @@ describe('HeaderComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should change theme', fakeAsync(() => {
-    themeServiceSpy.changeTheme();
-    component.changeTheme();
-    flush();
-    const body = document.getElementsByTagName('body').item(0);
-    expect(body).toBeTruthy();
-    expect(body.className).toContain('theme-alternate');
-  }));
-
   it('should list user filter keys', () => {
     component.userFilterKeys = Object.keys(UserFilter).filter((value) =>
       isNaN(+value)

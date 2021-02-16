@@ -22,14 +22,10 @@ export class HeaderComponent implements OnInit {
 
   @Output() filter: EventEmitter<UserFilter> = new EventEmitter();
 
-  constructor(private themeService: ThemeService) {}
+  constructor(public themeService: ThemeService) {}
 
   ngOnInit() {
     this.isAlternateTheme$ = this.themeService.isAlternateTheme();
-  }
-
-  changeTheme() {
-    this.themeService.changeTheme();
   }
 
   filterUser(userFilter: UserFilter) {

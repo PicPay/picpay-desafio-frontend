@@ -1,7 +1,7 @@
 <header class="app-header" fxLayout="row wrap" fxLayoutAlign="space-around center">
   <h1 class="mat-title">{{vocabulary.header.title | translate}}</h1>
   <div class="app-header-actions" fxLayout="row" fxLayoutGap="24px" fxLayoutAlign="start center">
-    <mat-slide-toggle (change)="changeTheme()" color="primary" [checked]="isAlternateTheme$ | async"
+    <mat-slide-toggle (change)="themeService.changeTheme()" color="primary" [checked]="isAlternateTheme$ | async"
       [matTooltip]="vocabulary.header.changeTheme | translate">
       {{vocabulary.header.themeSwitcher | translate}}
     </mat-slide-toggle>
