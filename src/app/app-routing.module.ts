@@ -8,12 +8,12 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'dashboard',
+    redirectTo: 'payments',
     pathMatch: 'full',
   },
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'payments',
     pathMatch: 'full',
   },
 ];

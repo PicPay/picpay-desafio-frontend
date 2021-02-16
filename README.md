@@ -20,10 +20,12 @@ Gostaria de agradeçer a oportunidade de participar do processo seletivo :)
 ## Rodando testes
 
 ### Testes unitários
+Comando ira acionar o `jest`.
 
 - `npm run test`
 
 ### Teste e2e
+Comando ira acionar o `cypress`.
 
 - `npm run cypress:run` ou `npm run cypress:open`
 
