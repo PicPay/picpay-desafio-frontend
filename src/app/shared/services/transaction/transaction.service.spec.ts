@@ -1,3 +1,4 @@
+import { MOCK_INVALID_CARD } from './../../mocks/card/card.mock';
 import { TestBed } from '@angular/core/testing';
 import { ApiService } from '@core/services/api/api.service';
 import { TranslateService } from '@ngx-translate/core';
@@ -7,6 +8,7 @@ import {
 } from '@shared/mocks/transaction/transaction.mock';
 import { of } from 'rxjs';
 import { TransactionService } from './transaction.service';
+import { TRANSACTION_SERVICE_VOCABULARY } from './transaction.service.vocabulary';
 
 describe('TransactionService', () => {
   let apiServiceSpy: jasmine.SpyObj<ApiService>;
@@ -38,5 +40,17 @@ describe('TransactionService', () => {
           MOCK_TRANSACTION_PAYLOAD.destination_user_id
         );
       });
+  });
+
+  it('should return invalid card error', () => {
+    transactionService.verifyCard(MOCK_INVALID_CARD.toString()).subscribe(
+      () => {},
+      (err) => {
+        expect(err.status).toBeTruthy();
+        expect(err.status).toContain(
+          TRANSACTION_SERVICE_VOCABULARY.invalidCard
+        );
+      }
+    );
   });
 });
