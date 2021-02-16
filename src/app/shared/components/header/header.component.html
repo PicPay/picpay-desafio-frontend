@@ -1,9 +1,9 @@
 <header class="app-header" fxLayout="row wrap" fxLayoutAlign="space-around center">
-  <h1 class="mat-title">{{vocabulary.header.title | translate}}</h1>
+  <h1 class="mat-title">{{vocabulary.title | translate}}</h1>
   <div class="app-header-actions" fxLayout="row" fxLayoutGap="24px" fxLayoutAlign="start center">
     <mat-slide-toggle (change)="themeService.changeTheme()" color="primary" [checked]="isAlternateTheme$ | async"
-      [matTooltip]="vocabulary.header.changeTheme | translate">
-      {{vocabulary.header.themeSwitcher | translate}}
+      [matTooltip]="vocabulary.changeTheme | translate">
+      {{vocabulary.themeSwitcher | translate}}
     </mat-slide-toggle>
     <app-translate-switcher></app-translate-switcher>
   </div>
@@ -11,7 +11,7 @@
 
 <header fxLayout="row" fxLayoutAlign="space-around center">
   <label class="mat-title" id="user-filter">
-    {{vocabulary.header.userFilter.label | translate}}
+    {{vocabulary['userFilter-context'].label | translate}}
   </label>
 
   <mat-radio-group fxLayout="row" fxLayoutGap="8px" fxLayoutAlign="start center" aria-labelledby="user-filter"
@@ -19,7 +19,7 @@
 
     <mat-radio-button [value]="userFilterEnum[filter]" *ngFor="let filter of userFilterKeys">
       <span class="mat-subheading-2">
-        {{vocabulary.header.userFilter[filter.toLowerCase()] | translate}}
+        {{vocabulary['userFilter-context'][filter.toLowerCase()] | translate}}
       </span>
     </mat-radio-button>
 
