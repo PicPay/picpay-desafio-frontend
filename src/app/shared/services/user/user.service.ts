@@ -1,5 +1,5 @@
 import { map } from 'rxjs/operators';
-import { PaidUser } from './../../../core/domains/user/paid-user.domain';
+import { PaidUser } from '@core/domains/user/paid-user.domain';
 import { Injectable } from '@angular/core';
 import { User } from '@core/domains/user/user.domain';
 import { APIBaseRoutes } from '@core/services/api/api-base.routes';
@@ -20,7 +20,10 @@ export class UserService {
     );
   }
 
-  editUserToPaidUser(selectedUser: User, userObservable$: Observable<PaidUser[]>): Observable<PaidUser[]> {
+  editUserToPaidUser(
+    selectedUser: User,
+    userObservable$: Observable<PaidUser[]>
+  ): Observable<PaidUser[]> {
     return userObservable$.pipe(
       map((users) =>
         users.map((user) => {

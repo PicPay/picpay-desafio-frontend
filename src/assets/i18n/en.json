@@ -1,49 +1,52 @@
 {
-  "core": {
-    "form-control-validator": {
-      "required": "is required",
-      "minLength": "should be greather than"
+  "core-context": {
+    "services-context": {
+      "form-control-validator-context": {
+        "required": "is required",
+        "minLength": "should be greather than"
+      }
     }
   },
-  "shared": {
-    "components": {
-      "user-card": {
+  "shared-context": {
+    "components-context": {
+      "user-card-context": {
         "username": "username:",
         "id": "id:",
         "name": "name of the user:",
         "pay": "Pay",
         "paid": "already paid"
       },
-      "transaction-form-modal": {
+      "transaction-form-modal-context": {
         "title": "payment to",
         "value": "value",
-        "valueError": "value should be greather than",
         "clearValue": "clear value",
         "card": "card",
         "pay": "pay",
         "cancel": "cancel",
         "selectLabel": "with last four numbers:"
+      },
+      "header-context": {
+        "title": "payment simulation",
+        "themeSwitcher": "dark theme",
+        "changeTheme": "change theme",
+        "userFilter-context": {
+          "label": "Filter user by:",
+          "all": "all",
+          "paid": "paid",
+          "pending": "pending"
+        }
       }
     },
-    "transaction": {
-      "success": "was pay with success :)",
-      "invalidCard": "invalid card :(",
-      "errors": "internal server error :("
+    "services-context": {
+      "transaction-context": {
+        "success": "was pay with success :)",
+        "invalidCard": "invalid card :(",
+        "errors": "internal server error :("
+      }
     }
   },
-  "app": {
-    "header": {
-      "title": "payment simulation",
-      "themeSwitcher": "dark theme",
-      "changeTheme": "change theme",
-      "userFilter": {
-        "label": "Filter user by:",
-        "all": "all",
-        "paid": "paid",
-        "pending": "pending"
-      }
-    },
-    "snackBar": {
+  "app-context": {
+    "snackBar-context": {
       "close": "close"
     }
   }

@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
+import { FormControlValidatorContext } from '@contexts/core/services/form-control-validator/form-control-validator.interface';
 import { TranslateService } from '@ngx-translate/core';
 import { FORM_CONTROL_VALIDATOR_VOCABULARY } from './form-control-validator.service.vocabulary';
 
 @Injectable()
 export class FormControlValidatorService {
-  vocabulary = FORM_CONTROL_VALIDATOR_VOCABULARY;
+  vocabulary: FormControlValidatorContext = FORM_CONTROL_VALIDATOR_VOCABULARY;
 
   constructor(private translateService: TranslateService) {}
 

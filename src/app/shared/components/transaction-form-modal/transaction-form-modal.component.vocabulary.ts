@@ -1,9 +1,16 @@
-export const TRANSACTION_FORM_VOCABULARY = {
-  title: 'shared.components.transaction-form-modal.title',
-  value: 'shared.components.transaction-form-modal.value',
-  clearValue: 'shared.components.transaction-form-modal.clearValue',
-  card: 'shared.components.transaction-form-modal.card',
-  pay: 'shared.components.transaction-form-modal.pay',
-  cancel: 'shared.components.transaction-form-modal.cancel',
-  selectLabel: 'shared.components.transaction-form-modal.selectLabel',
+import { TransactionFormModalContext } from '@contexts/shared/components/transaction-form-modal/transaction-form-modal-context.interface';
+
+export const TRANSACTION_FORM_VOCABULARY: TransactionFormModalContext = {
+  title:
+    'shared-context.components-context.transaction-form-modal-context.title',
+  value:
+    'shared-context.components-context.transaction-form-modal-context.value',
+  clearValue:
+    'shared-context.components-context.transaction-form-modal-context.clearValue',
+  card: 'shared-context.components-context.transaction-form-modal-context.card',
+  pay: 'shared-context.components-context.transaction-form-modal-context.pay',
+  cancel:
+    'shared-context.components-context.transaction-form-modal-context.cancel',
+  selectLabel:
+    'shared-context.components-context.transaction-form-modal-context.selectLabel',
 };
