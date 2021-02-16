@@ -7,7 +7,7 @@ import { APIBaseRoutes } from '@core/services/api/api-base.routes';
 import { ApiService } from '@core/services/api/api.service';
 import { MOCK_INVALID_CARD } from '@shared/mocks/card/card.mock';
 import { Observable, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, map, switchMap } from 'rxjs/operators';
 
 export interface TransactionAPIResult {
   transaction: Transaction;
@@ -29,28 +29,38 @@ export class TransactionService {
   postTransaction(
     transactionPayload: TransactionPayload
   ): Observable<Transaction> {
-    if (transactionPayload.card_number === MOCK_INVALID_CARD.card_number) {
-      return throwError({
-        status: this.translateService.instant(this.vocabulary.invalidCard),
-      });
-    }
+    return this.verifyCard(transactionPayload.card_number).pipe(
+      switchMap(() => {
+        return this.apiService
+          .post<TransactionAPIResult | TransactionPayload>(
+            `${APIBaseRoutes.BASE_TRANSACTION_API_URL}${this.endpoints.post}`,
+            transactionPayload
+          )
+          .pipe(
+            map(
+              (response: TransactionAPIResult): Transaction => {
+                return response.transaction;
+              }
+            ),
+            catchError(() =>
+              throwError({
+                status: this.translateService.instant(this.vocabulary.errors),
+              })
+            )
+          );
+      }),
+      catchError((err) => throwError(err))
+    );
+  }
 
-    return this.apiService
-      .post<TransactionAPIResult | TransactionPayload>(
-        `${APIBaseRoutes.BASE_TRANSACTION_API_URL}${this.endpoints.post}`,
-        transactionPayload
-      )
-      .pipe(
-        map(
-          (response: TransactionAPIResult): Transaction => {
-            return response.transaction;
-          }
-        ),
-        catchError(() =>
-          throwError({
-            status: this.translateService.instant(this.vocabulary.errors),
-          })
-        )
-      );
+  verifyCard(cardNumber: string): Observable<unknown> {
+    return new Observable((observer) => {
+      if (cardNumber === MOCK_INVALID_CARD.card_number) {
+        return observer.error({
+          status: this.translateService.instant(this.vocabulary.invalidCard),
+        });
+      }
+      return observer.next();
+    });
   }
 }
