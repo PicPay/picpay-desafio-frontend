@@ -39,7 +39,13 @@ Run `npm run test`.
   - I decided to put the user list and transaction modal in app.component.* Because the project is small.
 
 4. `src/assets/styles`
- - This folder constains scss config themes colors, typography, overrides material classes and utils scss.
+ - This folder contains scss config 
+ 
+5. `src/assets/i18n/*`
+ - This folder contains the project vocabulary jsons
 
-5. `styles.scss`
+7. `src/app/core/languages/contexts/*`
+ - This folder contains the context interface referring to vocabularies jsons
+
+8. `styles.scss`
   - The global styles
