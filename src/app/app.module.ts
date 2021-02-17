@@ -14,8 +14,6 @@ import { MatDialogModule } from '@angular/material/dialog';
     AppRoutingModule,
     BrowserAnimationsModule,
     CoreModule,
-    HttpClientModule,
-    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
