@@ -24,7 +24,7 @@ export class PaymentSuccessComponent implements OnInit {
     private userStore: UserStateService
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getUserSelected()
       .pipe(takeUntil(this.destroy$))
       .subscribe((user) => {
@@ -33,7 +33,7 @@ export class PaymentSuccessComponent implements OnInit {
     this.paymentValue = this.getPaymentStateData();
   }
 
-  getUserSelected() {
+  getUserSelected(): Observable<User> {
     return this.userStore.getUserSelectedForPayment();
   }
 
@@ -47,7 +47,7 @@ export class PaymentSuccessComponent implements OnInit {
   /**
    * Method that closes PaymentModal.
    */
-  closeModal() {
+  closeModal(): void {
     this.matDialog.close();
   }
 }

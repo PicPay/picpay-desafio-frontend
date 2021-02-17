@@ -16,7 +16,7 @@ export class PaymentErrorComponent {
   /**
    * Method that closes PaymentModal/
    */
-  closeModal() {
+  closeModal(): void {
     this.matDialog.close();
   }
 }

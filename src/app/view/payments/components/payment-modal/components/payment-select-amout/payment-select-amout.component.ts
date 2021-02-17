@@ -28,7 +28,7 @@ export class PaymentSelectAmoutComponent implements OnInit {
     private dataFormat: DataFormatService
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.value = this.dataFormat.formatNumberToCurrency(this.value);
 
     this.userState
@@ -48,7 +48,7 @@ export class PaymentSelectAmoutComponent implements OnInit {
   /**
    * Method that changes the payment step to data confirmation.
    */
-  setActiveStep() {
+  setActiveStep(): void {
     this.paymentStep.setActiveStep('confirmData');
   }
 
@@ -56,7 +56,7 @@ export class PaymentSelectAmoutComponent implements OnInit {
    * Method that transforms the value inputted to currency.
    * @param value to be formatted.
    */
-  handleValueFormat({ value }) {
+  handleValueFormat({ value }): void {
     this.selectAmountForm.controls.paymentAmount.setValue(
       this.dataFormat.formatNumberToCurrency(value)
     );

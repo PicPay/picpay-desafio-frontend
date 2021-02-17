@@ -5,8 +5,6 @@ app-payments {
   padding: rem(20px);
 
   .credit-card-list {
-    // display: grid;
-    // grid-template-columns: 1fr 1fr;
     display: flex;
     align-items: center;
     height: 60px;
@@ -45,6 +43,13 @@ app-payments {
 
         mat-icon {
           color: $primary-green;
+          transition: all .3s ease-in;
+        }
+
+        &:hover {
+          mat-icon {
+            transform: rotate(360deg);
+          }
         }
       }
     }
@@ -83,22 +88,21 @@ app-payments {
   }
 
   .cdk-virtual-scroll-content-wrapper,
-.users-list {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: rem(20px);
-  padding-bottom: rem(20px);
+  .users-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: rem(20px);
+    padding-bottom: rem(20px);
 
-  @media screen and (max-width: 1024px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
+    @media screen and (max-width: 1024px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
 
-  @media screen and (max-width: 676px) {
-    grid-template-columns: repeat(1, 1fr);
+    @media screen and (max-width: 676px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
   }
 }
-}
-
 
 .users-list {
   overflow-y: auto;

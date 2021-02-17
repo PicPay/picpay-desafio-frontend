@@ -42,7 +42,7 @@ export class PaymentsComponent {
   /**
    * Method that gets available credit cards and format it's number.
    */
-  getAvailableCreditCards() {
+  getAvailableCreditCards(): void {
     this.creditCardsList = this.dataFormat.formatCardNumberMask(this.userState.userCreditCards);
   }
 
@@ -80,7 +80,7 @@ export class PaymentsComponent {
     });
   }
 
-  trackByFn(_, user) {
-    return user.name;
+  trackByFn(_, user): number {
+    return user.id;
   }
 }

@@ -9,7 +9,6 @@ import { creditCard } from 'src/app/core/types/credit-card.type';
 })
 export class UserStateService {
   private userSelectedForPayment: BehaviorSubject<User> = new BehaviorSubject(null);
-  private cardSelectedForPayment: Subject<creditCard> = new Subject();
   private paymentAmout: BehaviorSubject<string> = new BehaviorSubject('100');
   userCreditCards: creditCard[] = [
   // valid card

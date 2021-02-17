@@ -33,7 +33,7 @@ export class PaymentConfirmationComponent implements OnInit {
     private dataFormat: DataFormatService
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getUserDataFromState();
 
     this.createForm();
@@ -42,7 +42,7 @@ export class PaymentConfirmationComponent implements OnInit {
   /**
    * Method that gets all need information from user state.
    */
-  getUserDataFromState() {
+  getUserDataFromState(): void {
     this.creditCardList = this.dataFormat.formatCardNumberMask(this.userStore.userCreditCards);
 
     this.userStore
@@ -63,7 +63,7 @@ export class PaymentConfirmationComponent implements OnInit {
   /**
    * Method that create the modal form.
    */
-  createForm() {
+  createForm(): void {
     this.confirmationForm = new FormGroup({
       paymentAmount: new FormControl(this.value, { validators: [Validators.required] }),
       creditCard: new FormControl(null, { validators: [Validators.required] }),
@@ -73,7 +73,7 @@ export class PaymentConfirmationComponent implements OnInit {
   /**
    * Method that handles the disabled status of the input component for editing payment amount.
    */
-  handleValueEdition() {
+  handleValueEdition(): void {
     this.disabled = !this.disabled;
   }
 
@@ -81,7 +81,7 @@ export class PaymentConfirmationComponent implements OnInit {
    * Method that transforms the value inputted to currency.
    * @param value to be formatted.
    */
-  handleInputMask({ value }) {
+  handleInputMask({ value }): void {
     this.confirmationForm.controls.paymentAmount.setValue(
       this.dataFormat.formatNumberToCurrency(value)
     );
@@ -109,7 +109,7 @@ export class PaymentConfirmationComponent implements OnInit {
   /**
    * Method executes the payment HTTP request and send payment.
    */
-  sendPayment() {
+  sendPayment(): void {
     const payload = this.handlePaymentStateData();
 
     this.loadingPayment = true;

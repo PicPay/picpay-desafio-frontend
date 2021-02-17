@@ -62,6 +62,11 @@ app-payment-modal {
   }
 
   .payment-modal {
+
+    .mat-icon {
+      color: $bg-gray-dark;
+    }
+
     &__success_user {
       background: #131313;
       border-radius: 10px;
@@ -123,7 +128,7 @@ app-payment-modal {
       width: rem(60px);
       height: rem(60px);
       font-size: rem(60px);
-      color: #131313;
+      color: $bg-gray-dark;
       margin-bottom: rem(15px);
     }
 
