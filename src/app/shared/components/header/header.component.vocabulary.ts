@@ -5,14 +5,12 @@ export const HEADER_VOCABULARY: HeaderContext = {
   themeSwitcher:
     'shared-context.components-context.header-context.themeSwitcher',
   changeTheme: 'shared-context.components-context.header-context.changeTheme',
-  ['userFilter-context']: {
-    label:
-      'shared-context.components-context.header-context.userFilter-context.label',
-    all:
-      'shared-context.components-context.header-context.userFilter-context.all',
-    paid:
-      'shared-context.components-context.header-context.userFilter-context.paid',
-    pending:
-      'shared-context.components-context.header-context.userFilter-context.pending',
-  },
+  ['userFilter-label']:
+    'shared-context.components-context.header-context.userFilter-label',
+  ['userFilter-all']:
+    'shared-context.components-context.header-context.userFilter-all',
+  ['userFilter-paid']:
+    'shared-context.components-context.header-context.userFilter-paid',
+  ['userFilter-pending']:
+    'shared-context.components-context.header-context.userFilter-pending',
 };
