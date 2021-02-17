@@ -9,6 +9,7 @@ import { CardService } from '../../services/card.service';
 import { ModalRef } from '../../modal-ref';
 import { Card } from 'src/app/models/card.interface';
 import { of } from 'rxjs';
+import { CurrencyMaskModule } from 'ng2-currency-mask';
 
 describe('FormPaymentComponent', () => {
   let component: FormPaymentComponent;
@@ -26,6 +27,7 @@ describe('FormPaymentComponent', () => {
       imports: [
         ReactiveFormsModule,
         HttpClientTestingModule,
+        CurrencyMaskModule,
       ],
       providers: [
         PaymentService,

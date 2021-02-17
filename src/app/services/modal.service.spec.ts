@@ -7,6 +7,7 @@ describe('ModalService', () => {
   beforeEach(() => TestBed.configureTestingModule({
     providers: [
       Overlay,
+      ModalService,
     ]
   }));
 

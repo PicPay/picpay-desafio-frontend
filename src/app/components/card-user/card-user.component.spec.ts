@@ -1,6 +1,7 @@
 import { Overlay } from '@angular/cdk/overlay';
 import { Component } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ModalService } from 'src/app/services/modal.service';
 import { User } from '../../models/user.interface';
 
 import { CardUserComponent } from './card-user.component';
@@ -12,10 +13,12 @@ describe('CardUserComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        CardUserComponent, AppTestHostComponent
+        CardUserComponent,
+        AppTestHostComponent
       ],
       providers: [
-        Overlay
+        Overlay,
+        ModalService,
       ],
     })
     .compileComponents();
@@ -32,8 +35,8 @@ describe('CardUserComponent', () => {
   });
 
   it('should show the user info', () => {
-    expect(testHostFixture.nativeElement.querySelector('.user-name').innerText).toEqual('Eduardo Santos');
-    expect(testHostFixture.nativeElement.querySelector('.user-id-username').innerText).toEqual('ID: 1001 - @eduardo.santos');
+    expect(testHostFixture.nativeElement.querySelector('.card-title').innerText).toEqual('Eduardo Santos');
+    expect(testHostFixture.nativeElement.querySelector('.user-name').innerText).toEqual('@eduardo.santos');
     expect(testHostFixture.nativeElement.querySelector('img').src).toEqual('https://randomuser.me/api/portraits/men/9.jpg');
   });
 
