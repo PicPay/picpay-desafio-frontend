@@ -4,9 +4,6 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class ApiService {
-  private headers: HttpHeaders = new HttpHeaders({
-    'Content-Type': 'application/json',
-  });
   constructor(private httpClient: HttpClient) {}
 
   list<T>(url: string): Observable<T> {
@@ -14,6 +11,6 @@ export class ApiService {
   }
 
   post<T>(url: string, body: T): Observable<T> {
-    return this.httpClient.post<T>(`${url}`, body, { headers: this.headers });
+    return this.httpClient.post<T>(`${url}`, body);
   }
 }
