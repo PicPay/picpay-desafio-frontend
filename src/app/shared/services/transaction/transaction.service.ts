@@ -10,16 +10,12 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
 import { TRANSACTION_SERVICE_VOCABULARY } from './transaction.service.vocabulary';
 
-export interface TransactionAPIResult {
-  transaction: Transaction;
-}
-
 @Injectable()
 export class TransactionService {
   vocabulary: TransactionContext = TRANSACTION_SERVICE_VOCABULARY;
 
   private endpoints = {
-    post: '5d542ec72f000048248614b3',
+    post: '533cd5d7-63d3-4488-bf8d-4bb8c751c989',
   };
 
   constructor(
@@ -33,16 +29,12 @@ export class TransactionService {
     return this.verifyCard(transactionPayload.card_number).pipe(
       switchMap(() => {
         return this.apiService
-          .post<TransactionAPIResult | TransactionPayload>(
+          .post<Transaction | TransactionPayload>(
             `${APIBaseRoutes.BASE_TRANSACTION_API_URL}${this.endpoints.post}`,
             transactionPayload
           )
           .pipe(
-            map(
-              (response: TransactionAPIResult): Transaction => {
-                return response.transaction;
-              }
-            ),
+            map((response: Transaction): Transaction => response),
             catchError(() =>
               throwError({
                 status: this.translateService.instant(this.vocabulary.errors),
