@@ -18,7 +18,8 @@
       "@core/*": ["src/app/core/*"],
       "@shared/*": ["src/app/shared/*"],
       "@assets/*": ["src/assets/*"],
-      "@contexts/*": ["src/app/core/languages/contexts/*"]
+      "@contexts/*": ["src/app/core/languages/contexts/*"],
+      "@animations/*": ["src/app/core/animations/*"]
     }
   },
   "angularCompilerOptions": {

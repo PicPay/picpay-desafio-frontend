@@ -11,6 +11,9 @@
         (pay)="openTransactionModal($event)">
       </app-user-card>
     </div>
+    <ng-container *ngIf="!(filteredUsers$ | async)?.length">
+      <h1 class="mat-title">{{vocabulary.notfound | translate}}</h1>
+    </ng-container>
   </article>
 
 </section>

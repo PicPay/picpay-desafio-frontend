@@ -44,6 +44,7 @@
     }
   },
   "app-context": {
-    "snackBar-close": "fechar"
+    "snackBar-close": "fechar",
+    "notfound": "nenhum resultado encontrado :("
   }
 }
