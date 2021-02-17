@@ -1,12 +1,3 @@
-import {
-  animate,
-  animateChild,
-  query,
-  stagger,
-  style,
-  transition,
-  trigger,
-} from '@angular/animations';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
@@ -20,7 +11,6 @@ import { AppContext } from '@contexts/app/app-context.interface';
 import { TransactionContext } from '@contexts/shared/services/transaction/transaction-context.interface';
 import { Card } from '@core/domains/card/card.domain';
 import { TransactionPayload } from '@core/domains/transaction/transaction-payload.domain';
-import { Transaction } from '@core/domains/transaction/transaction.domain';
 import { PaidUser } from '@core/domains/user/paid-user.domain';
 import { User } from '@core/domains/user/user.domain';
 import { TranslateService } from '@ngx-translate/core';
@@ -34,37 +24,14 @@ import { UserFilter, UserService } from '@shared/services/user/user.service';
 import { Observable, Subscription } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { APP_VOCABULARY } from './app.component.vocabulary';
+import { itemsAnimation } from '@animations/items.animation';
+import { listAnimation } from '@animations/list.animation';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  animations: [
-    trigger('items', [
-      transition(':enter', [
-        style({ transform: 'scale(0.5)', opacity: 0 }),
-        animate(
-          '1s cubic-bezier(.8, -0.6, 0.2, 1.5)',
-          style({ transform: 'scale(1)', opacity: 1 })
-        ),
-      ]),
-      transition(':leave', [
-        style({ transform: 'scale(1)', opacity: 1, height: '*' }),
-        animate(
-          '1s cubic-bezier(.8, -0.6, 0.2, 1.5)',
-          style({
-            transform: 'scale(0.5)',
-            opacity: 0,
-            height: '0px',
-            margin: '0px',
-          })
-        ),
-      ]),
-    ]),
-    trigger('list', [
-      transition(':enter', [query('@items', stagger(300, animateChild()))]),
-    ]),
-  ],
+  animations: [itemsAnimation, listAnimation],
 })
 export class AppComponent implements OnInit, OnDestroy {
   vocabulary: AppContext & TransactionContext = {
