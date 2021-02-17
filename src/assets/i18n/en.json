@@ -29,12 +29,10 @@
         "title": "payment simulation",
         "themeSwitcher": "dark theme",
         "changeTheme": "change theme",
-        "userFilter-context": {
-          "label": "Filter user by:",
-          "all": "all",
-          "paid": "paid",
-          "pending": "pending"
-        }
+        "userFilter-label": "Filter user by:",
+        "userFilter-all": "all",
+        "userFilter-paid": "paid",
+        "userFilter-pending": "pending"
       }
     },
     "services-context": {
@@ -46,8 +44,6 @@
     }
   },
   "app-context": {
-    "snackBar-context": {
-      "close": "close"
-    }
+    "snackBar-close": "close"
   }
 }

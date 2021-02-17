@@ -29,12 +29,10 @@
         "title": "Simulação de pagamento",
         "themeSwitcher": "modo escuro",
         "changeTheme": "mudar tema",
-        "userFilter-context": {
-          "label": "Filtrar usuário por: ",
-          "all": "todos",
-          "paid": "pagos",
-          "pending": "pendentes"
-        }
+        "userFilter-label": "Filtrar usuário por: ",
+        "userFilter-all": "todos",
+        "userFilter-paid": "pagos",
+        "userFilter-pending": "pendentes"
       }
     },
     "services-context": {
@@ -46,8 +44,6 @@
     }
   },
   "app-context": {
-    "snackBar-context": {
-      "close": "fechar"
-    }
+    "snackBar-close": "fechar"
   }
 }
