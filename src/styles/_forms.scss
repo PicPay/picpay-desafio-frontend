@@ -6,9 +6,11 @@
 
 .form-field {
     border: 1px solid $form-field-border-color;
+    background-color: $white-color;
     padding: $base-vertical-padding $base-horizontal-padding;
     border-radius: $base-border-radius;
     font-size: $base-font-size;
     width: 100%;
     margin-bottom: $base-horizontal-padding;
+    text-align: left !important; // overwrite ng2-currency-mask formatting :(
 }

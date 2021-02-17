@@ -2,7 +2,8 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  width: 100%;
+  margin-right: -$base-horizontal-padding;
+  margin-left: -$base-horizontal-padding;
 
   .col {
     padding-right: $base-horizontal-padding;
@@ -13,8 +14,13 @@
       width: 25%; 
     }
 
+    &.col-50 {
+      width: 50%; 
+    }
+
     @media (max-width: $screen-sm) {
-      &.col-25 {
+      &.col-25,
+      &.col-50 {
           width: 100%;
       }
     }

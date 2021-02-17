@@ -37,6 +37,11 @@ export class FormPaymentComponent implements OnInit {
     this.user = this.modalRef.data;
     this.cardService.getCards().subscribe((cards: Card[]) => {
       this.cards = cards;
+
+      // Select default first option
+      this.paymentForm.patchValue({
+        cardNumber: this.cards[0].card_number
+      });
     });
   }
 
