@@ -11,7 +11,7 @@
 
 <header fxLayout="row" fxLayoutAlign="space-around center">
   <label class="mat-title" id="user-filter">
-    {{vocabulary['userFilter-context'].label | translate}}
+    {{vocabulary['userFilter-label'] | translate}}
   </label>
 
   <mat-radio-group fxLayout="row" fxLayoutGap="8px" fxLayoutAlign="start center" aria-labelledby="user-filter"
@@ -19,7 +19,7 @@
 
     <mat-radio-button [value]="userFilterEnum[filter]" *ngFor="let filter of userFilterKeys">
       <span class="mat-subheading-2">
-        {{vocabulary['userFilter-context'][filter.toLowerCase()] | translate}}
+        {{vocabulary['userFilter-' + filter.toLowerCase()] | translate}}
       </span>
     </mat-radio-button>
 

@@ -1,12 +1,9 @@
-
 export interface HeaderContext {
   title: string;
   themeSwitcher: string;
   changeTheme: string;
-  ['userFilter-context']: {
-    label: string,
-    all: string,
-    paid: string,
-    pending: string,
-  };
+  ['userFilter-label']: string;
+  ['userFilter-all']: string;
+  ['userFilter-paid']: string;
+  ['userFilter-pending']: string;
 }
