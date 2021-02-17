@@ -4,9 +4,10 @@ import { Injectable, Injector, TemplateRef, Type } from '@angular/core';
 
 import { ModalRef } from '../modal-ref';
 import { ModalComponent } from '../components/modal/modal.component';
+import { ServicesModule } from './services.module';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: ServicesModule
 })
 export class ModalService {
 
