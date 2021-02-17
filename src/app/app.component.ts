@@ -5,7 +5,7 @@ import {
   stagger,
   style,
   transition,
-  trigger
+  trigger,
 } from '@angular/animations';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
@@ -13,7 +13,7 @@ import {
   MatSnackBar,
   MatSnackBarConfig,
   MatSnackBarRef,
-  SimpleSnackBar
+  SimpleSnackBar,
 } from '@angular/material';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AppContext } from '@contexts/app/app-context.interface';
@@ -26,7 +26,7 @@ import { User } from '@core/domains/user/user.domain';
 import { TranslateService } from '@ngx-translate/core';
 import {
   TransactionForm,
-  TransactionFormModalComponent
+  TransactionFormModalComponent,
 } from '@shared/components/transaction-form-modal/transaction-form-modal.component';
 import { MOCK_TRANSACTION_FORM_CARDS } from '@shared/mocks/transaction/transaction-form.mock';
 import { TransactionService } from '@shared/services/transaction/transaction.service';
@@ -150,16 +150,15 @@ export class AppComponent implements OnInit, OnDestroy {
 
     this.subscriptions.add(
       this.transactionService.postTransaction(payload).subscribe(
-        (transaction: Transaction) => {
-          transaction.destination_user = this.selectedUser;
+        () => {
           this.setUserToUserPaid(this.selectedUser);
 
           this.showSnackBarMessage(
-            `${
-              transaction.destination_user.name
-            } ${this.translateService.instant(this.vocabulary.success)}`,
+            `${this.selectedUser.name} ${this.translateService.instant(
+              this.vocabulary.success
+            )}`,
             `${this.translateService.instant(
-              this.vocabulary['snackBar-context'].close
+              this.vocabulary['snackBar-close']
             )}`
           );
         },
@@ -167,7 +166,7 @@ export class AppComponent implements OnInit, OnDestroy {
           this.showSnackBarMessage(
             error.status.toString(),
             `${this.translateService.instant(
-              this.vocabulary['snackBar-context'].close
+              this.vocabulary['snackBar-close']
             )}`
           )
             .afterDismissed()
