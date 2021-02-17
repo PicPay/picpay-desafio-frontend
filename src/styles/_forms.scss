@@ -1,0 +1,14 @@
+.form-label {
+    font-size: $base-font-size * .8;
+    font-weight: $font-weight-bold;
+    text-transform: uppercase;
+}
+
+.form-field {
+    border: 1px solid $form-field-border-color;
+    padding: $base-vertical-padding $base-horizontal-padding;
+    border-radius: $base-border-radius;
+    font-size: $base-font-size;
+    width: 100%;
+    margin-bottom: $base-horizontal-padding;
+}

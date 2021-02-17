@@ -1,0 +1,22 @@
+.row {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  width: 100%;
+
+  .col {
+    padding-right: $base-horizontal-padding;
+    padding-left: $base-horizontal-padding;
+    margin-bottom: $base-space * 2;
+
+    &.col-25 {
+      width: 25%; 
+    }
+
+    @media (max-width: $screen-sm) {
+      &.col-25 {
+          width: 100%;
+      }
+    }
+  }
+}

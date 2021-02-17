@@ -1,0 +1,59 @@
+/* Payment Modal */
+.modal-backdrop {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100vh;
+	width: 100vw;
+
+	&:after {
+		content: "";
+		background-color: $modal-backdrop-color;
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
+		z-index: -1;
+	}
+}
+
+.modal {
+	background-color: $white-color;
+	border-radius: $base-border-radius;
+	width: $modal-base-width;
+	overflow: hidden;
+
+	@media (max-width: $screen-sm) {
+		& {
+			width: calc(100% - 20px);
+		}
+	}
+
+	> .title {
+		background-color: $primary-color;
+		color: $white-color;
+		font-weight: $font-weight-bold;
+		font-size: $base-font-size;
+		padding: ($base-space * 2) ($base-space * 3);
+
+		> .close {
+			float: right;
+			border: none;
+			background: none;
+			color: $white-color;
+			font-size: ($base-font-size * 1.4);
+			cursor: pointer;
+			font-weight: bold;
+			padding: 0;
+		}
+	}
+	
+	> .content {
+		padding: ($base-space * 3);
+	}
+}

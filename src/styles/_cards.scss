@@ -1,0 +1,20 @@
+.card {
+  padding: $base-space * 2;
+  width: 100%;
+  height: 100%;
+  border: 1px solid $card-border-color;
+  box-shadow: $card-box-shadow;
+  border-radius: $base-border-radius;
+  text-align: center;
+
+  .card-img {
+    border-radius: 50%;
+    height: 120px;
+    width: 120px;
+  }
+
+  .card-title {
+    font-size: $base-font-size * 1.2;
+    font-weight: $font-weight-bold;
+  }
+}

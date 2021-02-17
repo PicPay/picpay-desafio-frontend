@@ -1,0 +1,27 @@
+.btn {
+	border-radius: $base-border-radius;
+	border: none;
+	background-color: $primary-color;
+	color: $white-color;
+	padding: $base-vertical-padding $base-horizontal-padding;
+	cursor: pointer;
+	font-size: $base-font-size;
+
+	&:hover {
+		background-color: darken($primary-color, 10%);
+	}
+
+	&.btn-50 {
+		width: 50%;
+	}
+
+	&.btn-100 {
+		width: 100%;
+	}
+
+	&[disabled] {
+		opacity: .8;
+		cursor: not-allowed;
+		background-color: $primary-color;
+	}
+}

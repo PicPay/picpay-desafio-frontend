@@ -1,0 +1,30 @@
+.page-title {
+  padding-right: $base-horizontal-padding;
+  padding-left: $base-horizontal-padding;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.container {
+  margin: 0 auto;
+}
+
+@media (min-width: $screen-sm) {
+  .container {
+      width: 750px;
+  }
+}
+
+@media (min-width: $screen-md) {
+  .container {
+      width: 970px;
+  }
+}
+
+@media (min-width: $screen-lg) {
+  .container {
+      width: 1170px;
+  }
+}

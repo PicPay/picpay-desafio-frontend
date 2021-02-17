@@ -1,6 +1,10 @@
-<div class="users">
-  <app-card-user
-    [user]="user"
-    *ngFor="let user of users | async"
-  ></app-card-user>
+<div class="container">
+  <h1 class="page-title">Desafio PicPay - Pagar usuários</h1>
+  <div class="row">
+    <app-card-user
+      class="col col-25"
+      [user]="user"
+      *ngFor="let user of users | async"
+    ></app-card-user>
+  </div>  
 </div>

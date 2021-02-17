@@ -1,18 +1,18 @@
-<div class="user">
-  <img [src]="user.img" />
-  <div class="info-wrapper">
-    <div class="user-name">
-      {{ user.name }}
+<div class="card">
+  <div class="card-body">
+    <img class="card-img" [src]="user.img">
+    <div class="info-wrapper">
+      <p class="card-title">
+        {{ user.name }}
+      </p>
+      <p>
+        {{ user.username }}
+      </p>
     </div>
-
-    <div class="user-id-username">
-      ID: {{ user.id }} - {{ user.username }}
-    </div>
+    <button type="button" class="btn btn-100" (click)="payUserModal(user)">
+      Pagar
+    </button>
   </div>
-
-  <button type="button" class="pay-button" (click)="payUserModal(user)">
-    Pagar
-  </button>
 </div>
 
 <ng-template #paymentMessageResponse>
