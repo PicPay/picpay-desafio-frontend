@@ -1,9 +1,9 @@
-import { TestBed } from '@angular/core/testing';
+import { fakeAsync, flush, TestBed } from '@angular/core/testing';
 import { ApiService } from '@core/services/api/api.service';
 import { TranslateService } from '@ngx-translate/core';
 import {
   MOCK_TRANSACTION,
-  MOCK_TRANSACTION_PAYLOAD
+  MOCK_TRANSACTION_PAYLOAD,
 } from '@shared/mocks/transaction/transaction.mock';
 import { of } from 'rxjs';
 import { MOCK_INVALID_CARD } from './../../mocks/card/card.mock';
@@ -38,15 +38,22 @@ describe('TransactionService', () => {
       });
   });
 
-  it('should return invalid card error', () => {
-    transactionService.verifyCard(MOCK_INVALID_CARD.toString()).subscribe(
-      () => {},
-      (err) => {
-        expect(err.status).toBeTruthy();
-        expect(err.status).toContain(
-          TRANSACTION_SERVICE_VOCABULARY.invalidCard
-        );
-      }
+  it('should return invalid card error', fakeAsync(() => {
+    translateServiceSpy.instant.and.returnValue(
+      transactionService.vocabulary.invalidCard
     );
-  });
+    transactionService
+      .verifyCard(MOCK_INVALID_CARD.card_number.toString())
+      .subscribe(
+        (success) => {
+          expect(success).toBeFalsy();
+        },
+        (err) => {
+          expect(err.status).toBeTruthy();
+          expect(err.status).toContain(
+            TRANSACTION_SERVICE_VOCABULARY.invalidCard
+          );
+        }
+      );
+  }));
 });
