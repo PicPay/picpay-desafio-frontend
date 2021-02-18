@@ -22,7 +22,7 @@ import { MOCK_TRANSACTION_FORM_CARDS } from '@shared/mocks/transaction/transacti
 import { TransactionService } from '@shared/services/transaction/transaction.service';
 import { UserFilter, UserService } from '@shared/services/user/user.service';
 import { Observable, Subscription } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
+import { delay, map, shareReplay } from 'rxjs/operators';
 import { APP_VOCABULARY } from './app.component.vocabulary';
 import { itemsAnimation } from '@animations/items.animation';
 import { listAnimation } from '@animations/list.animation';
@@ -170,6 +170,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   filterUser(userFilter: UserFilter) {
+    this.userFilter = userFilter;
     this.filteredUsers$ = this.users$.pipe(
       map((users) => {
         switch (userFilter) {
@@ -189,6 +190,7 @@ export class AppComponent implements OnInit, OnDestroy {
       selectedUser,
       this.users$
     );
+    this.filterUser(this.userFilter);
   }
 
   ngOnDestroy() {

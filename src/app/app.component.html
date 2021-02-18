@@ -12,7 +12,7 @@
       </app-user-card>
     </div>
     <ng-container *ngIf="!(filteredUsers$ | async)?.length">
-      <h1 class="mat-title">{{vocabulary.notfound | translate}}</h1>
+      <h1 @items class="mat-title">{{vocabulary.notfound | translate}}</h1>
     </ng-container>
   </article>
 
