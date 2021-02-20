@@ -1,26 +1,55 @@
-/* List of Users */
-
-.user {
-    background: linear-gradient(186.5deg, #3c3e64 0.83%, #1d1e2a 100%);
-    box-shadow: 0 1px 0 #ffffff, 0px -1px 0px #ffffff;
-    color: #fff;
-    padding: 20px 40px;
-  
+.users {
+  &__list {
     display: flex;
+    flex-direction: column;
+    color: #fff;
+    background: linear-gradient(186.5deg, #689288 0.83%, #1d1e2a 100%);
+    box-shadow: 0 1px 0 #ffffff, 0px -1px 0px #ffffff;
     align-items: center;
+    padding: 20px 40px;
   }
-  
-  .user > img {
+  &__img {
     border-radius: 50%;
     height: 80px;
     width: 80px;
   }
-  
-  .user > .info-wrapper {
-    margin-left: 16px;
+  &__info {
+    padding: 15px;
+    align-self: center;
   }
-  
-  .user > .pay-button {
-    margin-left: auto;
+  &__payment {
+    display: flex;
   }
-  
+  &__btn {
+    padding: 10px;
+    margin-top: 10px;
+    width: 230px;
+    border-radius: 20px;
+    cursor: pointer;
+    background: #11c76f;
+    color: #ffffff;
+    border: none;
+  }
+  &__btn:hover {
+    background-color: #0d9855;
+  }
+}
+
+@media (min-width: 1115px) {
+  .users {
+    &__list {
+      display: inline-flex;
+      width: 31.9%;
+      margin: 8px;
+    }
+  }
+}
+@media (min-width: 690px) and (max-width: 1114px) {
+  .users {
+    &__list {
+      display: inline-flex;
+      margin: 2px;
+      width: 49.4%;
+    }
+  }
+}

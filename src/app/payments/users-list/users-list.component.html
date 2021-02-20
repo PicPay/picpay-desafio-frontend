@@ -1,18 +1,19 @@
-<div class="users">
-    <div class="user" *ngFor="let user of usersList$ | async ">
-      <img [src]="user.img" />
-      <div class="info-wrapper">
-        <div class="user-name">
+  <div class="users">
+    <div class="users__list" *ngFor="let user of usersList$ | async ">
+      <img class="users__img" [src]="user.img" />
+      <div class="users__info">
+        <div class="users__id">
+          ID: {{user.id}}
+        </div>
+        <div class="users__name">
           {{user.name}}
         </div>
-  
-        <div class="user-id-username">
-          ID: {{user.id}} - Username: {{user.username}}
+        <div class="users__username">
+          Username: {{user.username}}
         </div>
       </div>
-  
-      <button type="button" class="pay-button" (click)='openModal(user.name, user.id)'>
-        Pagar
+      <button type="button" class="users__btn" (click)='openModal(user.name, user.id)'>
+          Pagar
       </button>
     </div>
   </div>
