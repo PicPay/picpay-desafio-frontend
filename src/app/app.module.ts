@@ -1,9 +1,12 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { AppRoutingModule } from './app.routing.module';
+
+import { PaymentsModule } from './payments/payments.module';
+import { SharedModule } from './shared/shared.module';
 
 import { AppComponent } from './app.component';
-import { PaymentsModule } from './payments/payments.module';
-import { AppRoutingModule } from './app.routing.module';
+
 
 @NgModule({
   declarations: [
@@ -12,7 +15,8 @@ import { AppRoutingModule } from './app.routing.module';
   imports: [
     BrowserModule,
     PaymentsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

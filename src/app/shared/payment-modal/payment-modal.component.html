@@ -1,0 +1,32 @@
+<div class="modal-backdrop">
+    <form class="modal" [formGroup]='paymentForm' (submit)=payment()>
+      <div class="title">{{ modalData.title }}</div>
+  
+      <div class="content">
+        <input currencyMask formControlName='payment_value' [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" required />
+  
+        <div class="cards">
+          <select [(ngModel)]="card" (change)=getInfo($event.target.value) [ngModelOptions]="{standalone: true}">
+            <option disabled selected [ngValue]="undefined">Selecione o cartão</option> 
+            <option *ngFor="let card of cardList; index as i" [value]='i'>Cartão com final {{card.card_number | slice:12}}</option>
+          </select>
+        </div>
+  
+        <button type="button" class="pay-button" (click)=payment()>
+          Pagar
+        </button>
+      </div>
+    </form>
+  
+    <!-- <div class="modal">
+      <div class="title">
+        Recibo de pagamento
+      </div>
+  
+      <div class="content">
+        O pagamento foi concluido com sucesso.<br />
+        O pagamento <strong>não</strong> foi concluido com sucesso.
+      </div>
+    </div> -->
+  </div>
+  
