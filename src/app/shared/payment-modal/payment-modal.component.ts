@@ -1,8 +1,10 @@
 import { Component, Inject, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
+import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 import { TransactionPayload } from "src/app/payments/interfaces/payment";
 import { PaymentService } from "src/app/payments/services/payment.service";
+import { ErrorModalComponent } from "../error-modal/error-modal.component";
+import { SuccessModalComponent } from "../success-modal/success-modal.component";
 let cards = [
   // valid card
   {
@@ -27,11 +29,13 @@ export class PaymentModalComponent implements OnInit{
   valid_card = '1111111111111111';
   cardList = [];
   paymentForm: FormGroup;
+  bla;
     constructor(
         public dialogRef: MatDialogRef<PaymentModalComponent>,
         @Inject(MAT_DIALOG_DATA) private modalData: any,
         private paymentService: PaymentService,
-        private fb: FormBuilder
+        private fb: FormBuilder,
+        private matDialog: MatDialog
     ){
     }
     ngOnInit(): void {
@@ -49,19 +53,35 @@ export class PaymentModalComponent implements OnInit{
        this.paymentForm.controls['cvv'].setValue(cards[i].cvv)
        this.paymentForm.controls['expiry_date'].setValue(cards[i].expiry_date)
     }
-    payment(){
+    onSubmit(){
       if(this.paymentForm.get('payment_card').value == this.valid_card){
         this.paymentService.payment(this.paymentForm.value).subscribe(
           success => {
-              console.log('cartao valido')
+            this.bla = true;
+            const dialogConfig = new MatDialogConfig();
+            dialogConfig.id = "success-modal.component";
+            dialogConfig.data = {
+              title: 'Recibo de pagamento',
+              text: 'O pagamento foi concluido com sucesso'
+            }
+            const modalDialog = this.matDialog.open(SuccessModalComponent, dialogConfig);
           },
-          err => console.log(err)
+          err => {console.log(err)}
         )
       } else {
-        console.log('cartao invalido')
+        const dialogConfig = new MatDialogConfig();
+        dialogConfig.id = "error-modal.component";
+        dialogConfig.data = {
+          title: 'Cartão inválido',
+          text: 'O pagamento não foi concluido com sucesso, tente novamente selecionando um novo cartão'
+        }
+        const modalDialog = this.matDialog.open(ErrorModalComponent, dialogConfig);
       }
       console.log(this.paymentForm.value)
     }
 
+    openModal(name: string, id:number){
+
+    }
 
 }

@@ -1,9 +1,9 @@
-<div class="modal-backdrop">
-    <form class="modal" [formGroup]='paymentForm' (submit)=payment()>
+<div class="modal-backdrop" *ngIf="!bla">
+    <form class="modal" [formGroup]='paymentForm' (ngSubmit)=onSubmit()>
       <div class="title">{{ modalData.title }}</div>
   
       <div class="content">
-        <input currencyMask formControlName='payment_value' [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" required />
+        <input currencyMask formControlName='payment_value' [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" />
   
         <div class="cards">
           <select [(ngModel)]="card" (change)=getInfo($event.target.value) [ngModelOptions]="{standalone: true}">
@@ -12,21 +12,10 @@
           </select>
         </div>
   
-        <button type="button" class="pay-button" (click)=payment()>
+        <button type="submit" mat-dialog-close class="pay-button" [disabled]="!paymentForm.valid">
           Pagar
         </button>
       </div>
     </form>
-  
-    <!-- <div class="modal">
-      <div class="title">
-        Recibo de pagamento
-      </div>
-  
-      <div class="content">
-        O pagamento foi concluido com sucesso.<br />
-        O pagamento <strong>não</strong> foi concluido com sucesso.
-      </div>
-    </div> -->
   </div>
   

@@ -27,7 +27,7 @@ export class UsersListComponent implements OnInit {
   }
   openModal(name: string, id:number){
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.id = "modal-component";
+    dialogConfig.id = "payment-modal.component";
     dialogConfig.data = {
       title: 'Pagamento para ' + name,
       id: id
