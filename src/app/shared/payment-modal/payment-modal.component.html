@@ -1,21 +1,25 @@
-<div class="modal-backdrop" *ngIf="!bla">
-    <form class="modal" [formGroup]='paymentForm' (ngSubmit)=onSubmit()>
-      <div class="title">{{ modalData.title }}</div>
+<div class="payment" *ngIf="!pago">
+    <form class="payment__form" [formGroup]='paymentForm' (ngSubmit)=onSubmit()>
+      <div class="payment__title">{{ modalData.title }}</div>
   
-      <div class="content">
-        <input currencyMask formControlName='payment_value' [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" />
-  
+      <div class="payment__content">
+        <img class="payment__img" [src]="modalData.img"/>
+        <input 
+          class="payment__input"
+          currencyMask 
+          formControlName='payment_value'
+        />
         <div class="cards">
-          <select [(ngModel)]="card" (change)=getInfo($event.target.value) [ngModelOptions]="{standalone: true}">
+          <select class="payment__select" [(ngModel)]="card" (change)=getInfo($event.target.value) [ngModelOptions]="{standalone: true}">
             <option disabled selected [ngValue]="undefined">Selecione o cartão</option> 
             <option *ngFor="let card of cardList; index as i" [value]='i'>Cartão com final {{card.card_number | slice:12}}</option>
           </select>
         </div>
   
-        <button type="submit" mat-dialog-close class="pay-button" [disabled]="!paymentForm.valid">
+        <button type="submit" class="payment__btn" [disabled]="!paymentForm.valid">
           Pagar
         </button>
       </div>
     </form>
   </div>
-  
+  <mat-spinner *ngIf="showSpinner"></mat-spinner>

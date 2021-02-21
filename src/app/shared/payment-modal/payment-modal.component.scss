@@ -1,5 +1,5 @@
 /* Payment Modal */
-.modal-backdrop {
+.payment {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -11,70 +11,63 @@
 
   height: 100vh;
   width: 100vw;
-}
-
-.modal-backdrop.hidden {
-  display: none;
-}
-
-.modal-backdrop:after {
-  content: '';
-
-  background: rgba(0, 0, 0, 0.5);
-
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  z-index: -1;
-}
-
-.modal {
-  background: #fff;
-  margin: 32px 0;
-  width: 420px;
-}
-
-.modal > .title {
-  background: #474971;
-  color: #ffffff;
-  font-weight: 500;
-  font-size: 16px;
-  padding: 16px 24px;
-}
-
-.modal > .title > span {
-  color: #cddc39;
-}
-
-.modal > .content {
-  padding: 32px;
-  text-align: center;
-}
-
-.modal > .content > input {
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 32px;
-  height: 48px;
-  padding: 0 8px;
-}
-
-.modal > .content > .cards > select {
-  background: #fff;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 32px;
-  height: 48px;
-  margin-top: 12px;
-}
-
-.modal > .content > button {
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 32px;
-  height: 48px;
-  padding: 0 8px;
-  margin-top: 24px;
+  &__form {
+    background: #fff;
+    margin: 32px 0;
+    width: auto;
+    height: auto;
+  }
+  &__title {
+    background: #11c76f;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 16px 24px;
+  }
+  &__img {
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+    margin-bottom: 10px;
+  }
+  &__content {
+    padding: 32px;
+    text-align: center;
+  }
+  &__input {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1.5rem;
+    height: 48px;
+    padding: 0 8px;
+    width: 100%;
+  }
+  &__select {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1.5rem;
+    height: 48px;
+    margin-top: 12px;
+    width: 100%;
+  }
+  &__btn {
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    font-size: 1.5rem;
+    height: 48px;
+    padding: 0 8px;
+    margin-top: 24px;
+    cursor: pointer;
+    background: #11c76f;
+    color: white;
+    width: 50%;
+  }
+  &__btn:hover {
+    background-color: #0d9855;
+  }
+  &__btn:disabled {
+    background-color: #797777;
+    opacity: 0.2;
+  }
 }

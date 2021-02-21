@@ -11,12 +11,17 @@ export class SuccessModalComponent implements OnInit {
 
   @Input() bodyMessage: string;
   @Input() title: string;
+  showSpinner = false;
   constructor(
     @Inject(MAT_DIALOG_DATA) 
     private modalData: any,
     public dialogRef: MatDialogRef<PaymentModalComponent>) { }
 
   ngOnInit() {
+    this.showSpinner = true;
+    setTimeout(() => {
+         this.showSpinner = false
+       }, 2000);
   }
 
   close(){

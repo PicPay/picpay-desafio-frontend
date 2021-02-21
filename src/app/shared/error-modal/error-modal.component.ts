@@ -19,4 +19,7 @@ export class ErrorModalComponent implements OnInit {
   ngOnInit() {
   }
 
+  close(){
+    this.dialogRef.close();
+  }
 }

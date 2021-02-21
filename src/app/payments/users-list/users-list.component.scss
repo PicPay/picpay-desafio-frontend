@@ -33,6 +33,9 @@
   &__btn:hover {
     background-color: #0d9855;
   }
+  &__btn:focus {
+    outline: 0;
+  }
 }
 
 @media (min-width: 1115px) {

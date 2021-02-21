@@ -1,10 +1,12 @@
-<div class="modal">
-    <div class="title">
+<div class="error">
+  <div class="error__body">
+    <div class="error__title">
       {{modalData.title}}
     </div>
 
-    <div class="content">
+    <div class="error__content">
       {{modalData.text}}.<br />
-      <!-- O pagamento <strong>não</strong> foi concluido com sucesso. -->
+      <button class="error__btn" type='button' (click)='close()'>Fechar</button>
     </div>
+  </div>
 </div>

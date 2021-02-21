@@ -1,11 +1,16 @@
-<div class="modal">
-    <div class="title">
+<div class="success" *ngIf="!showSpinner">
+  <div class="success__body">
+    <div class="success__title">
       {{modalData.title}}
     </div>
 
-    <div class="content">
+    <div class="success__content">
       {{modalData.text}}.<br />
+      <button class="success__btn" type='button' (click)='close()'>Fechar</button>
     </div>
 
-    <button class="pay-button" type='button' (click)='close()'>Fechar</button>
-</div>
+  </div>
+  </div>
+  <div class="spinner">
+    <mat-spinner *ngIf="showSpinner"></mat-spinner>
+  </div>

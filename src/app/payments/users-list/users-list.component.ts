@@ -21,16 +21,13 @@ export class UsersListComponent implements OnInit {
   ngOnInit() {
     this.usersList$ = this.PaymentService.listUser();
   }
-  payment(){
-    //this.payment$ = this.PaymentService.payment();
-    //console.log(this.PaymentService.payment())
-  }
-  openModal(name: string, id:number){
+  openModal(name: string, id:number, img:string){
     const dialogConfig = new MatDialogConfig();
     dialogConfig.id = "payment-modal.component";
     dialogConfig.data = {
       title: 'Pagamento para ' + name,
-      id: id
+      id: id,
+      img: img
     }
     const modalDialog = this.matDialog.open(PaymentModalComponent, dialogConfig);
   }
