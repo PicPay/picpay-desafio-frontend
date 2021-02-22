@@ -49,10 +49,13 @@ export class PaymentModalComponent implements OnInit{
           expiry_date:['']
       })
     }
-    getInfo(i){
+    getInfo(i:number){
        this.paymentForm.controls['payment_card'].setValue(cards[i].card_number)
        this.paymentForm.controls['cvv'].setValue(cards[i].cvv)
        this.paymentForm.controls['expiry_date'].setValue(cards[i].expiry_date)
+    }
+    close(){
+      this.dialogRef.close()
     }
     onSubmit(){
       if(this.paymentForm.get('payment_card').value == this.valid_card){
