@@ -1,4 +1,4 @@
-/* Payment Modal */
+@import '../../../assets/style.mixins.scss';
 .payment {
   display: flex;
   align-items: center;
@@ -70,26 +70,16 @@
     margin-top: 12px;
     width: 100%;
   }
+  @include picpayButton;
   &__btn {
-    border: 1px solid #ccc;
-    border-radius: 20px;
+    width: 30%;
     font-size: 1.5rem;
     height: 48px;
-    padding: 0 8px;
-    margin-top: 24px;
-    cursor: pointer;
-    background: #11c76f;
-    color: white;
     width: 50%;
-  }
-  &__btn:hover {
-    background-color: #0d9855;
+    margin-top: 24px;
   }
   &__btn:disabled {
     background-color: #797777;
     opacity: 0.2;
-  }
-  &__btn:focus {
-    outline: 0;
   }
 }

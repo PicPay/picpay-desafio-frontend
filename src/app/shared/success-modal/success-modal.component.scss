@@ -1,3 +1,4 @@
+@import '../../../assets/style.mixins.scss';
 .success {
   display: flex;
   align-items: center;
@@ -27,38 +28,14 @@
     align-items: center;
     flex-direction: column;
   }
+  @include picpayButton;
   &__btn {
-    border: none;
-    border-radius: 20px;
     font-size: 1rem;
     height: 35px;
     padding: 0 8px;
-    cursor: pointer;
-    background: #11c76f;
-    color: white;
     width: 30%;
     margin-top: 15px;
   }
-  &__btn:hover {
-    background-color: #0d9855;
-  }
-  &__btn:focus {
-    outline: 0;
-  }
-}
-.success.hidden {
-  display: none;
-}
-
-.success:after {
-  content: '';
-  background: rgba(0, 0, 0, 0.5);
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  z-index: -1;
 }
 .spinner ::ng-deep .mat-progress-spinner circle,
 .mat-spinner circle {

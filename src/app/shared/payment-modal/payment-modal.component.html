@@ -1,4 +1,4 @@
-<div class="payment" *ngIf="!pago">
+<div class="payment" *ngIf="!payed">
     <form class="payment__form" [formGroup]='paymentForm' (ngSubmit)=onSubmit()>
       <div class="payment__title">
         {{ modalData.title }}

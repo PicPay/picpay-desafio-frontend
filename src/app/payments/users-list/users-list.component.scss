@@ -1,3 +1,4 @@
+@import '../../../assets/style.mixins.scss';
 .users {
   &__list {
     display: flex;
@@ -20,21 +21,9 @@
   &__payment {
     display: flex;
   }
+  @include picpayButton;
   &__btn {
-    padding: 10px;
-    margin-top: 10px;
     width: 230px;
-    border-radius: 20px;
-    cursor: pointer;
-    background: #11c76f;
-    color: #ffffff;
-    border: none;
-  }
-  &__btn:hover {
-    background-color: #0d9855;
-  }
-  &__btn:focus {
-    outline: 0;
   }
 }
 

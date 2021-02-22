@@ -1,31 +1,29 @@
-import { Component, Inject, Input, OnInit } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { PaymentModalComponent } from '../payment-modal/payment-modal.component';
+import { Component, Inject, Input, OnInit } from '@angular/core'
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material'
 
 @Component({
   selector: 'app-success-modal',
   templateUrl: './success-modal.component.html',
-  styleUrls: ['./success-modal.component.scss']
+  styleUrls: ['./success-modal.component.scss'],
 })
 export class SuccessModalComponent implements OnInit {
-
-  @Input() bodyMessage: string;
-  @Input() title: string;
-  showSpinner = false;
+  @Input() bodyMessage: string
+  @Input() title: string
+  showSpinner = false
   constructor(
-    @Inject(MAT_DIALOG_DATA) 
+    @Inject(MAT_DIALOG_DATA)
     private modalData: any,
-    public dialogRef: MatDialogRef<PaymentModalComponent>) { }
+    public dialogRef: MatDialogRef<SuccessModalComponent>,
+  ) {}
 
   ngOnInit() {
-    this.showSpinner = true;
+    this.showSpinner = true
     setTimeout(() => {
-         this.showSpinner = false
-       }, 2000);
+      this.showSpinner = false
+    }, 2000)
   }
 
-  close(){
-    this.dialogRef.close();
+  close() {
+    this.dialogRef.close()
   }
-
 }
