@@ -1,0 +1,37 @@
+.user {
+    background: white;
+
+    color: #404040;
+    padding: 2rem 2rem;
+  
+    display: flex;
+    align-items: center;
+  }
+  
+  .user > img {
+    border-radius: 50%;
+    height: 80px;
+    width: 80px;
+  }
+  
+  .user > .info-wrapper {
+    margin-left: 16px;
+  }
+  
+  .user > .pay-button {
+    margin-left: auto;
+  }
+
+  .name {
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .user .username {
+    color: #848484;
+  }
+
+  .user .username::before {
+    content: '@';
+  }
