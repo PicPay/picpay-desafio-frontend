@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { UserCardComponent } from './components/users/user-card/user-card.component';
@@ -33,6 +34,7 @@ export const customCurrencyMaskConfig = {
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     ReactiveFormsModule,
     NgxCurrencyModule.forRoot(customCurrencyMaskConfig)
   ],

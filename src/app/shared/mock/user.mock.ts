@@ -8,3 +8,10 @@ export const USERS: User[] = [
     { id: 5, name: 'Daniel Henrique', username: 'dhenrique', img: '' },
     { id: 6, name: 'Marvin Souza', username: 'msouza', img: '' }
 ];
+
+export const CURRENT_USER: User = {
+    id: 0,
+    img: '',
+    name: 'Carolynne Padilha da Silva',
+    username: 'carodilha'
+};
