@@ -12,6 +12,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { UserService } from './shared/services/user.service';
 import { TransactionService } from './shared/services/transaction.service';
 import { ReceiptCardComponent } from './components/transaction/receipt-card/receipt-card.component';
+import { CreditCardComponent } from './components/transaction/credit-card/credit-card.component';
 
 export const customCurrencyMaskConfig = {
   align: "left",
@@ -34,7 +35,8 @@ export const customCurrencyMaskConfig = {
     UserCardComponent,
     UsersListComponent,
     TransactionCardComponent,
-    ReceiptCardComponent
+    ReceiptCardComponent,
+    CreditCardComponent
   ],
   imports: [
     BrowserModule,
