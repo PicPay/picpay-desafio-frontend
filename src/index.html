@@ -1,17 +1,54 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <script src="https://kit.fontawesome.com/1241698858.js" crossorigin="anonymous"></script>
 
-    <meta charset="utf-8" />
+<head>
+  <style>
+    .container {
+      background-color: white;
+      padding: 15px;
+      margin: 15px auto 15px auto;
+    }
+    @media (min-width: 768px) {
+      .container {
+        width: 750px;
+      }
+    }
+    @media (min-width: 992px) {
+      .container {
+        width: 970px;
+      }
+    }
+    @media (min-width: 1200px) {
+      .container {
+        width: 1170px;
+      }
+    }
+  </style>
+  <script src="https://kit.fontawesome.com/1241698858.js" crossorigin="anonymous"></script>
 
-    <title>Picpay Desafio Frontend</title>
+  <meta charset="utf-8" />
 
-    <base href="/" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/x-icon" href="favicon.ico" />
-  </head>
-  <body>
+  <title>Picpay Desafio Frontend</title>
+
+  <base href="/" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="icon" type="image/x-icon" href="assets/img/favicon.png" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="header">
+    <ul class="header-text">
+      <li>
+        <i class="fas fa-cube text-white p-1" title="PicCube"></i>
+      </li>
+      <li><a class="active" href="#home">Contatos</a></li>
+    </ul>
+  </div>
+  <div class="container">
     <app-root></app-root>
-  </body>
+  </div>
+</body>
+
 </html>

@@ -4,9 +4,10 @@
 
 html,
 body {
-  font-family: sans-serif;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
   margin: 0;
   padding: 0;
+  background-color: #F1F1F1;
 }
 
 .rounded-border {
@@ -14,16 +15,12 @@ body {
   border-radius: 12px;
 }
 
-/* Hide Arrows From Number Input (Chrome, Safari, Edge, Opera) */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+.text-white {
+  color: white;
 }
 
-/* Hide Arrows From Number Input (Firefox) */
-input[type=number] {
-  -moz-appearance: textfield;
+.p-1 {
+  padding: 1rem;
 }
 
 /* Modal Backdrop */
@@ -56,4 +53,41 @@ input[type=number] {
   height: 100%;
   width: 100%;
   z-index: -1;
+}
+
+.header-text {
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.75rem;
+}
+
+/* Navbar */
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #4CAF50;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #449E48;
+}
+
+li a.active {
+  color: white;
+  background-color: #449E48;
 }
