@@ -15,7 +15,12 @@
 
                 <div class="cards">
                     <select>
-                        <option selected>Cartão com final 0123</option>
+                        <option selected>Selecione</option>
+                        <option 
+                            *ngFor="let card of availableCards"
+                            [value]="card.card_number">
+                            {{ '**** **** **** ' + getLastFourDigits(card.card_number) }}
+                        </option>
                     </select>
                 </div>
 
