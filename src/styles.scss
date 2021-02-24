@@ -33,6 +33,12 @@ body {
   background-color: #449E48;
 }
 
+button:disabled, button[disabled], button:disabled, button:disabled:hover {
+  background-color: #E3E3E3;
+  color: #808080;
+  cursor: not-allowed;
+}
+
 /* Input & Select */
 input, select {
   font-size: 1.2rem;
@@ -73,6 +79,10 @@ form label {
 
 .mb-1 {
   margin-bottom: 1rem;
+}
+
+.mt-1 {
+  margin-top: 1rem;
 }
 
 .pull-left {
