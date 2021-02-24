@@ -15,4 +15,8 @@ export class CreditCardComponent implements OnInit {
   public cardOwnerName: string;
 
   ngOnInit() { }
+
+  getLastFourDigits(cardNumber: string): string {
+    return cardNumber ? cardNumber.trim().substr(cardNumber.length - 4) : '';
+  }
 }
