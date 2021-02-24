@@ -10,6 +10,54 @@ body {
   background-color: #F1F1F1;
 }
 
+/* Buttons */
+.btn {
+  margin: 0.5rem;
+  padding: 0.75rem 2.3rem 0.75rem 2.3rem;
+  border: none;
+  border-radius: 100px;
+
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+
+  cursor: pointer;
+}
+
+.btn-green {
+  color: white;
+  background-color: #4CAF50;
+}
+
+.btn-green:hover {
+  background-color: #449E48;
+}
+
+/* Input & Select */
+input, select {
+  font-size: 1.2rem;
+  outline: 0;
+  border-width: 0 0 1px;
+  border-color: #E3E3E3;
+
+  height: 48px;
+  padding: 0 0.7rem;
+  width: 100%;
+
+  margin-bottom: 0.35rem;
+}
+
+input:focus, select:focus {
+  border-color: #4CAF50;
+}
+
+form label {
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: #808080;
+  margin-left: 0.4rem;
+}
+
 .rounded-border {
   border: 1px solid #E3E3E3;
   border-radius: 12px;
@@ -21,6 +69,14 @@ body {
 
 .p-1 {
   padding: 1rem;
+}
+
+.mb-1 {
+  margin-bottom: 1rem;
+}
+
+.pull-left {
+  text-align: left;
 }
 
 /* Modal Backdrop */
