@@ -57,7 +57,7 @@ export class TransactionCardComponent implements OnInit {
   }
 
   private isPaymentValid(value: number, cardNumber: string) {
-    const title = "Houston, we have a problem.";
+    const title = "Houston, we have a problem!";
 
     if (!value) {
       this.toastr.error("Ei! Você não pode pagar \"nada\" para uma pessoa.", title);
@@ -72,7 +72,7 @@ export class TransactionCardComponent implements OnInit {
     }
 
     if (!this.validCardRegex.test(cardNumber)) {
-      this.toastr.error("O cartão informado é inválido! :-(", title);
+      this.toastr.error("O cartão informado é inválido. :-(", title);
 
       return false;
     }
