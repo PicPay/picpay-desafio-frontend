@@ -1,5 +1,5 @@
 <div class="modal-backdrop">
-    <form [formGroup]="formGroup">
+    <form [formGroup]="formGroup" (ngSubmit)="pay(selectedUser.id)">
         <div class="modal">
             <div class="title">Pagamento para 
                 <span class="username">{{ selectedUser.username }}</span>
@@ -14,8 +14,8 @@
                     formControlName="value" />
 
                 <div class="cards">
-                    <select>
-                        <option selected>Selecione</option>
+                    <select formControlName="cardNumber">
+                        <option>Selecione</option>
                         <option 
                             *ngFor="let card of availableCards"
                             [value]="card.card_number">
@@ -24,7 +24,7 @@
                     </select>
                 </div>
 
-                <button type="button" class="pay-button">
+                <button type="submit" class="pay-button">
                     Pagar
                 </button>
             </div>
