@@ -1,5 +1,5 @@
 <div class="user rounded-border" (click)="showPayableCard = !showPayableCard">
-    <img src="{{ user.img || placeholder }}" alt="{{ user.name }}">
+    <img src="{{ user.img }}" alt="{{ user.name }}">
     <div class="info-wrapper">
         <div class="name">
             {{ user.name }}
@@ -10,5 +10,5 @@
 </div>
 <app-transaction-card
     *ngIf="isPayableCard && showPayableCard"
-    [selectedUser]="user"
-></app-transaction-card>
+    [selectedUser]="user">
+</app-transaction-card>
