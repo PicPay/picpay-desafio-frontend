@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { User } from 'src/app/shared/models/user.model';
 
 @Component({
   selector: 'app-credit-card',
@@ -6,6 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./credit-card.component.scss']
 })
 export class CreditCardComponent implements OnInit {
+
+  @Input()
+  public creditCard: any;
+
+  @Input()
+  public cardOwnerName: string;
 
   ngOnInit() { }
 }

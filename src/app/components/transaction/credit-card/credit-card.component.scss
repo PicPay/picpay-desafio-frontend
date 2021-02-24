@@ -16,7 +16,8 @@
 	height: 100%;
 	box-shadow: 0 15px 35px rgba(0,0,0,0.5);
 	border-radius: 15px;
-	background: #4CAF50;
+	background: rgb(76,175,80);
+	background: linear-gradient(148deg, rgba(76,175,80,1) 0%, rgba(39,92,41,1) 52%);
 	backdrop-filter: blur(10px);
 	transform-style: preserve-3d;
 	transition: 1s;
