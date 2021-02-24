@@ -1,0 +1,38 @@
+<div class="modal-backdrop">
+    <form [formGroup]="formGroup">
+        <div class="modal">
+            <div class="title">Pagamento para 
+                <span class="username">{{ selectedUser.username }}</span>
+            </div>
+
+            <div class="content">
+                <input 
+                    type="number" 
+                    placeholder="R$ 0,00"
+                    autofocus
+                    formControlName="value" />
+
+                <div class="cards">
+                    <select>
+                        <option selected>Cartão com final 0123</option>
+                    </select>
+                </div>
+
+                <button type="button" class="pay-button">
+                    Pagar
+                </button>
+            </div>
+        </div>
+    </form>
+
+    <div class="modal">
+        <div class="title">
+            Recibo de pagamento
+        </div>
+
+        <div class="content">
+            O pagamento foi concluido com sucesso.<br />
+            O pagamento <strong>não</strong> foi concluido com sucesso.
+        </div>
+    </div>
+</div>
