@@ -11,7 +11,12 @@ const placeholder: string = '/assets/img/user_placeholder.png';
 export class UserCardComponent implements OnInit {
 
   @Input()
-  public user: User;
+  user: User;
+
+  @Input()
+  isPayableCard: boolean = true;
+
+  showPayableCard: boolean = false;
 
   constructor() { }
 
