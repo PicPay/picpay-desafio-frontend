@@ -1,30 +1,36 @@
 .user {
-    background: white;
-    background-color: #F5F6F8;
+  padding: 1rem 1rem;
+  margin: 0.5rem;
 
-    color: #404040;
-    padding: 2rem 2rem;
-  
-    display: flex;
-    align-items: center;
-  }
-  
-  .user > img {
-    border-radius: 50%;
-    height: 80px;
-    width: 80px;
-  }
-  
-  .user > .info-wrapper {
-    margin-left: 16px;
-  }
+  background-color: #F5F6F8;
 
-  .name {
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
+  display: flex;
+  align-items: center;
 
-  .user .username {
-    color: #848484;
-  }
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
+.user:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.user > img {
+  border-radius: 50%;
+  height: 80px;
+  width: 80px;
+}
+
+.user > .info-wrapper {
+  margin-left: 16px;
+}
+
+.name {
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.user .username {
+  color: #848484;
+}
