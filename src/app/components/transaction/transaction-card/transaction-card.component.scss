@@ -1,19 +1,26 @@
   .modal {
+    border: 1px solid #E3E3E3;
+    border-radius: 12px;
     background: #fff;
     margin: 32px 0;
     width: 420px;
   }
   
   .modal > .title {
-    background: #474971;
-    color: #ffffff;
+    border-radius: 12px 12px 0 0;
+    padding: 16px 24px;
+
+    cursor: default;
+
+    background: #E3E3E3;
+    color: #404040;
+
     font-weight: 500;
     font-size: 16px;
-    padding: 16px 24px;
   }
   
   .modal > .title > span {
-    color: #cddc39;
+    color: #4CAF50;
   }
   
   .modal > .content {
