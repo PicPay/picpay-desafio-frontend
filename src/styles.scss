@@ -8,6 +8,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: #F1F1F1;
+  color: #404040;
 }
 
 /* Buttons */
@@ -73,8 +74,16 @@ form label {
   color: white;
 }
 
+.text-green {
+  color: #4CAF50;
+}
+
 .p-1 {
   padding: 1rem;
+}
+
+.m-1 {
+  margin: 1rem;
 }
 
 .mb-1 {
@@ -126,34 +135,4 @@ form label {
   text-transform: uppercase;
   letter-spacing: 1px;
   font-size: 0.75rem;
-}
-
-/* Navbar */
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #4CAF50;
-}
-
-li {
-  float: left;
-}
-
-li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-li a:hover:not(.active) {
-  background-color: #449E48;
-}
-
-li a.active {
-  color: white;
-  background-color: #449E48;
 }

@@ -13,14 +13,10 @@
     clear: both;
 }
 
-.card {
-    padding: 1rem;
-}
-
 @media screen and (max-width: 600px) {
     .column {
         width: 100%;
         display: block;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
     }
 }
