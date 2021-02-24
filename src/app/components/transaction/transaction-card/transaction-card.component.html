@@ -24,7 +24,7 @@
                 <div class="cards">
                     <div class="pull-left">
                         <select formControlName="cardNumber">
-                            <option>Selecione</option>
+                            <option disabled selected hidden>Selecione</option>
                             <option 
                                 *ngFor="let card of availableCards"
                                 [value]="card.card_number">
@@ -38,12 +38,18 @@
                     </div>
                 </div>
 
-                <div>
-                    <app-credit-card></app-credit-card>
+                <div class="mt-1" *ngIf="formGroup.value.cardNumber !== 'Selecione'">
+                    <app-credit-card
+                        [cardOwnerName]="currentUserName"
+                        [creditCard]="selectedCard">
+                    </app-credit-card>
                 </div>
             </div>
             <div class="footer">
-                <button type="submit" class="btn btn-green">
+                <button 
+                    type="submit" 
+                    class="btn btn-green"
+                    [disabled]="disablePaymentButton()">
                     Pagar
                 </button>
             </div>

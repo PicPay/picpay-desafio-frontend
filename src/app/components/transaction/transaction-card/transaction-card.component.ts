@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { CARDS } from 'src/app/shared/mock/card.mock';
 import { User } from 'src/app/shared/models/user.model';
 import { TransactionService } from 'src/app/shared/services/transaction.service';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-transaction-card',
@@ -30,11 +31,29 @@ export class TransactionCardComponent implements OnInit {
     ])
   });
 
+  public currentUserName: string;
+
+  public selectedCard: any;
+
   constructor(
     private toastr: ToastrService,
+    private userService: UserService,
     private transactionService: TransactionService) { }
 
   ngOnInit() {
+    this.userService.getCurrentUser().subscribe((val) => {
+      let splitted = val.name.split(" ");
+
+      if (splitted.length > 2) {
+        let lastNameIndex = splitted.length - 1;
+
+        this.currentUserName = `${splitted[0]} ${splitted[lastNameIndex]}`;
+
+        return;
+      } 
+
+      this.currentUserName = val.name;
+    });
   }
 
   getLastFourDigits(cardNumber: string): string {
@@ -54,6 +73,13 @@ export class TransactionCardComponent implements OnInit {
       if (result['success'])
         this.success = true;
     });
+  }
+
+  public disablePaymentButton() {
+    return !(this.formGroup.controls['value'].value &&
+      this.formGroup.controls['value'].value > 0 &&
+      this.formGroup.controls['cardNumber'].value &&
+      this.formGroup.controls['cardNumber'].value !== 'Selecione');
   }
 
   private isPaymentValid(value: number, cardNumber: string) {
