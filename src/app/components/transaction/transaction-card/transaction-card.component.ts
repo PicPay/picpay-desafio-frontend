@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { CARDS } from 'src/app/shared/mock/card.mock';
@@ -15,6 +15,9 @@ export class TransactionCardComponent implements OnInit {
 
   @Input()
   public selectedUser: User;
+
+  @Output()
+  public closeModal = new EventEmitter<boolean>();
 
   public availableCards: any[] = CARDS;
 
@@ -73,6 +76,10 @@ export class TransactionCardComponent implements OnInit {
       if (result['success'])
         this.success = true;
     });
+  }
+
+  close() {
+    this.closeModal.emit(true);
   }
 
   public disablePaymentButton() {
