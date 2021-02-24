@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+
+.card {
+	position: relative;
+	width: 330.2px;
+	height: 204.1px;
+	transform-style: preserve-3d;
+	perspective: 325px;
+}
+
+.card .face {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+	border-radius: 15px;
+	background: #4CAF50;
+	backdrop-filter: blur(10px);
+	transform-style: preserve-3d;
+	transition: 1s;
+	backface-visibility: hidden;
+}
+
+.card:hover .face.front {
+	transform: rotateY(180deg);
+}
+
+.card .face.back {
+	transform: rotateY(180deg);
+}
+
+.card:hover .face.back {
+	transform: rotateY(360deg);
+}
+
+.card .face.front::before {
+	content: '';
+	position: aboslute;
+	bottom: 26px;
+	right: 26px;
+	width: 39px;
+	height: 39px;
+	background: white;
+	border-radius: 50%;
+	opacity: 0.5;
+}
+
+.card .face.front::after {
+	content: '';
+	position: aboslute;
+	bottom: 26px;
+	right: 52px;
+	width: 39px;
+	height: 39px;
+	background: white;
+	border-radius: 50%;
+	opacity: 0.7;
+}
+
+.card .face.front .credit {
+	position: absolute;
+	left: 26px;
+	top: 19.5px;
+	color: white;
+	font-weight: 500;
+}
+
+.card .face.front .bank {
+	position: absolute;
+	right: 26px;
+	color: white;
+	font-weight: 500;
+	font-style: italic;
+	font-size: 19.5px;
+}
+
+.card .face.front .chip {
+	position: absolute;
+	top: 57.2px;
+	left: 32.5px;
+	max-width: 41.6px;
+}
+
+.card .face.front .number {
+	position: absolute;
+	bottom: 84.5px;
+	left: 26px;
+	color: white;
+	font-weight: 500;
+	letter-spacing: 3px;
+	font-size: 11.7px;
+	text-shadow: 0 2px 1px #0005;
+	font-family: 'Orbitron', sans-serif;
+}
+
+.card .face.front .valid {
+	position: absolute;
+	bottom: 58.5px;
+	left: 26px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	font-weight: 300;
+	line-height: 1em;
+	text-align: right;
+}
+
+.card .face.front .valid span:last-child {
+	margin-left: 20px;
+	font-size: 16px;
+	font-weight: 400;
+	letter-spacing: 2px;
+}
+
+.card .face.front .cardHolder {
+	position: absolute;
+  	bottom: 26px;
+	left: 26px;
+	color: white;
+	font-weight: 300; 
+	font-size: 16px; 
+	letter-spacing: 2px;
+}
+
+.card .face.back .blackbar {
+	position: absolute;
+	width: 100%;
+	top: 26px;
+	height: 39px;
+	background-color: black;
+}
+
+.card .face.back .cvvtext {
+	position: absolute;
+	top: 78px;
+	left: 19.5px;
+}
+
+.card .face.back .cvvtext h5 {
+	color: white;
+	font-weight: 400;
+	font-size: 7.8px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+}
+
+.card .face.back .whitebar {
+	position: absolute;
+	width: 260px;
+	height: 26px;
+	background-color: white;
+	margin-top: 5px;
+}
+
+.card .face.back .cvvtext .cvv {
+	position: relative;
+	top: -22.75px;
+	left: 256.75px;
+	background: white;
+	color: black;
+	width: 50px;
+	height: 19.5px;
+	font-weight: 600;
+	letter-spacing: 3px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.card .face.back .text {
+	position: absolute;
+	bottom: 19.5px;
+	left: 19.5px;
+	right: 19.5px;
+	color: black;
+	font-size: 0.65px;
+	line-height: 1.4em;
+	font-weight: 300;
+}

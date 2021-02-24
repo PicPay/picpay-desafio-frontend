@@ -1,30 +1,49 @@
 <div class="modal-backdrop">
     <form [formGroup]="formGroup" (ngSubmit)="pay(selectedUser.id)">
         <div class="modal">
-            <div class="title">Pagamento para 
-                <span class="username">{{ selectedUser.username }}</span>
+            <div class="header">
+                <div class="title">Pagamento para 
+                    <span class="username">{{ selectedUser.username }}</span>
+                    <i class="fas fa-times" title="Cancelar"></i>
+                </div>
             </div>
 
             <div class="content">
-                <input 
-                    type="text" 
-                    placeholder="R$ 0,00"
-                    autofocus
-                    currencyMask 
-                    formControlName="value" />
-
-                <div class="cards">
-                    <select formControlName="cardNumber">
-                        <option>Selecione</option>
-                        <option 
-                            *ngFor="let card of availableCards"
-                            [value]="card.card_number">
-                            {{ '**** **** **** ' + getLastFourDigits(card.card_number) }}
-                        </option>
-                    </select>
+                <div class="pull-left mb-1">
+                    <input 
+                        type="text" 
+                        placeholder="R$ 0,00"
+                        autofocus
+                        currencyMask 
+                        formControlName="value" />
+                    <label for="value ">
+                        Valor À Pagar
+                    </label>
                 </div>
 
-                <button type="submit" class="pay-button">
+                <div class="cards">
+                    <div class="pull-left">
+                        <select formControlName="cardNumber">
+                            <option>Selecione</option>
+                            <option 
+                                *ngFor="let card of availableCards"
+                                [value]="card.card_number">
+                                {{ '**** **** **** ' + getLastFourDigits(card.card_number) }}
+                            </option>
+                        </select>
+                        <label for="cardNumberName">
+                            Meio de Pagamento
+                        </label>
+                        <div class="card-wrapper"></div>
+                    </div>
+                </div>
+
+                <div>
+                    <app-credit-card></app-credit-card>
+                </div>
+            </div>
+            <div class="footer">
+                <button type="submit" class="btn btn-green">
                     Pagar
                 </button>
             </div>
