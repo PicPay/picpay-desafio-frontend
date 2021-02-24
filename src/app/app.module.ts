@@ -11,6 +11,7 @@ import { CurrencyMaskInputMode, NgxCurrencyModule } from "ngx-currency";
 import { ToastrModule } from 'ngx-toastr';
 import { UserService } from './shared/services/user.service';
 import { TransactionService } from './shared/services/transaction.service';
+import { ReceiptCardComponent } from './components/transaction/receipt-card/receipt-card.component';
 
 export const customCurrencyMaskConfig = {
   align: "left",
@@ -32,7 +33,8 @@ export const customCurrencyMaskConfig = {
     AppComponent,
     UserCardComponent,
     UsersListComponent,
-    TransactionCardComponent
+    TransactionCardComponent,
+    ReceiptCardComponent
   ],
   imports: [
     BrowserModule,
