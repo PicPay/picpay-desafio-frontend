@@ -1,3 +1,4 @@
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, of } from "rxjs";
 import { tap } from "rxjs/internal/operators";
@@ -8,7 +9,10 @@ import { User } from "../models/user.model";
     providedIn: 'root'
 })
 export class UserService {
-    constructor() {}
+    constructor(
+        private http: HttpClient) {}
+
+    private readonly API_URL: string = "https://www.mocky.io/v2/";
 
     private currentUser: User;
 
@@ -16,5 +20,9 @@ export class UserService {
         return this.currentUser ? 
                 of(CURRENT_USER) : 
                 of(CURRENT_USER).pipe(tap((currentUser) => this.currentUser = currentUser)); 
+    }
+
+    public getAllContacts(): Observable<User[]> {
+        return this.http.get<User[]>(`${this.API_URL}5d531c4f2e0000620081ddce`);
     }
 }

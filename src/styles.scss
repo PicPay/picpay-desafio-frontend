@@ -14,10 +14,6 @@ body {
   border-radius: 12px;
 }
 
-.username::before {
-  content: '@';
-}
-
 /* Hide Arrows From Number Input (Chrome, Safari, Edge, Opera) */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
