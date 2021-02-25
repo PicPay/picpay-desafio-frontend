@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { User } from 'src/app/shared/models/user.model';
+import { StringUtils } from 'src/app/shared/utils/stringutils';
 
 @Component({
   selector: 'app-credit-card',
@@ -17,6 +17,6 @@ export class CreditCardComponent implements OnInit {
   ngOnInit() { }
 
   getLastFourDigits(cardNumber: string): string {
-    return cardNumber ? cardNumber.trim().substr(cardNumber.length - 4) : '';
+    return StringUtils.getLastFourDigits(cardNumber);
   }
 }
