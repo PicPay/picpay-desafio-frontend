@@ -13,6 +13,12 @@
     clear: both;
 }
 
+.scrollable {
+    width: fit-content; 
+    height: 80vh; 
+    overflow-y: scroll;
+}
+
 @media screen and (max-width: 600px) {
     .column {
         width: 100%;

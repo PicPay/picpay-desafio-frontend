@@ -1,10 +1,10 @@
-<div class="row">
-    <div class="column" *ngFor="let user of users$ | async">
-      <div class="card">
-          <app-user-card 
-            [isPayableCard]="true"
-            [user]="user">
-          </app-user-card>
-      </div>
+<div class="scrollable mt-1">
+  <div class="column">
+    <div class="card" *ngFor="let user of users$ | async">
+        <app-user-card 
+          [isPayableCard]="true"
+          [user]="user">
+        </app-user-card>
     </div>
+  </div>
 </div>
