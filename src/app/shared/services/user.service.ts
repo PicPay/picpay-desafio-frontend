@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, of } from "rxjs";
-import { tap } from "rxjs/internal/operators";
+import { map, tap, toArray } from "rxjs/internal/operators";
 import { CURRENT_USER } from "../mock/user.mock";
 import { User } from "../models/user.model";
 
@@ -24,5 +24,12 @@ export class UserService {
 
     public getAllContacts(): Observable<User[]> {
         return this.http.get<User[]>(`${this.API_URL}5d531c4f2e0000620081ddce`);
+    }
+
+    public getUserById(userId: number): Observable<User[]> {
+        return this.getAllContacts()
+            .pipe(
+                map(data => data.filter(user => user.id == userId), toArray())
+            );
     }
 }
