@@ -16,7 +16,13 @@ export class UserCardComponent implements OnInit {
   @Input()
   isPayableCard: boolean = true;
 
+  transaction: any;
+
   showPayableCard: boolean = false;
+
+  showReceiptCard: boolean = false;
+
+  success: boolean = false;
 
   constructor() { }
 
@@ -29,4 +35,20 @@ export class UserCardComponent implements OnInit {
       this.user.img = placeholder;
   }
 
+  openPayableCard() {
+    if (this.isPayableCard)
+      this.showPayableCard = true;
+  }
+
+  openReceiptModal(event: any) {
+    if (event) {
+      this.success = event['success'];
+    }
+
+    this.transaction = event;
+
+    this.showPayableCard = false;
+
+    this.showReceiptCard = true;
+  }
 }

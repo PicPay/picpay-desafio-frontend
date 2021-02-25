@@ -1,4 +1,4 @@
-<div class="user rounded-border" (click)="showPayableCard = true">
+<div class="user rounded-border" (click)="openPayableCard()">
     <img src="{{ user.img }}" alt="{{ user.name }}">
     <div class="info-wrapper">
         <div class="name">
@@ -9,7 +9,15 @@
     </div>
 </div>
 <app-transaction-card
-    (closeModal)="showPayableCard = false"
+    (closePaymentModal)="showPayableCard = false"
+    (transaction)="openReceiptModal($event)"
     *ngIf="isPayableCard && showPayableCard"
     [selectedUser]="user">
 </app-transaction-card>
+
+<app-receipt-card
+    *ngIf="showReceiptCard"
+    (closeReceiptModal)="showReceiptCard = false"
+    [transaction]="transaction"
+    [success]="success">    
+</app-receipt-card>
