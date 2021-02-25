@@ -5,6 +5,7 @@ import { CARDS } from 'src/app/shared/mock/card.mock';
 import { User } from 'src/app/shared/models/user.model';
 import { TransactionService } from 'src/app/shared/services/transaction.service';
 import { UserService } from 'src/app/shared/services/user.service';
+import { StringUtils } from 'src/app/shared/utils/stringutils';
 
 @Component({
   selector: 'app-transaction-card',
@@ -17,11 +18,12 @@ export class TransactionCardComponent implements OnInit {
   public selectedUser: User;
 
   @Output()
-  public closeModal = new EventEmitter<boolean>();
+  public closePaymentModal = new EventEmitter<boolean>();
+
+  @Output()
+  public transaction = new EventEmitter<TransactionPayload>();
 
   public availableCards: any[] = CARDS;
-
-  public success: boolean = false;
 
   public validCardRegex: RegExp = /^[1]{16}$/;
 
@@ -60,7 +62,7 @@ export class TransactionCardComponent implements OnInit {
   }
 
   getLastFourDigits(cardNumber: string): string {
-    return cardNumber.trim().substr(cardNumber.length - 4);
+    return StringUtils.getLastFourDigits(cardNumber);
   }
 
   pay(recipientUserId: number) {
@@ -69,17 +71,43 @@ export class TransactionCardComponent implements OnInit {
     const cardNumber = this.formGroup.controls['cardNumber'].value;
 
     if (!this.isPaymentValid(value, cardNumber)) {
-      this.success = false;
+      return;
     }
 
-    this.transactionService.payUser(recipientUserId, value).subscribe((result) => {
-      if (result['success'])
-        this.success = true;
+    this.transactionService.payUser(recipientUserId, value).subscribe(() => {
+      let cardNumber = this.formGroup.controls['cardNumber'].value;
+
+      let card = this.availableCards.find((c) => c.card_number == cardNumber);
+
+      let transactionPayload: TransactionPayload = {
+        value: value,
+        destination_user_id: recipientUserId,
+        card_number: card.card_number,
+        cvv: card.cvv,
+        expiry_date: card.expiry_date
+      };
+
+      if (Math.floor(Math.random() * 2)) {
+        this.toastr.success("Seu pagamento foi efetuado e aprovado com sucesso.");
+
+        transactionPayload['success'] = true;
+
+        this.transaction.emit(transactionPayload); 
+      }
+      else {
+        this.toastr.warning("Erro proposital e aleatório.", "Atenção, recrutadores!");
+
+        this.toastr.error("Houve um problema com o pagamento efetuado. Tente novamente mais tarde.");
+
+        transactionPayload['success'] = false;
+
+        this.transaction.emit(transactionPayload); 
+      }
     });
   }
 
   close() {
-    this.closeModal.emit(true);
+    this.closePaymentModal.emit(true);
   }
 
   public disablePaymentButton() {
