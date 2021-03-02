@@ -1,10 +1,33 @@
+:root {
+  --primary: #50d67b;
+  --secondary: #0f6e42;
+  --fonts1: #f0f1e8;
+  --fonts2: #484848;
+  --gray : #c7c7c7;
+  --padding: 15px;
+}
+
 * {
   box-sizing: border-box;
 }
 
 html,
 body {
-  font-family: sans-serif;
+  font-family: "Montserrat", sans-serif;
   margin: 0;
   padding: 0;
+}
+
+body {
+  background-color: var(--fonts1);
+}
+
+.container {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1200px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }

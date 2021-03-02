@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from './../models/user';
-import { UserService } from './../services/user.service';
+import { User } from './../../models/user';
+import { UserService } from './../../services/user.service';
 
 @Component({
   selector: 'app-users-list',
@@ -10,6 +10,7 @@ import { UserService } from './../services/user.service';
 export class UsersListComponent implements OnInit {
 
   users: User[] = [];
+  selectedUser?: User;
 
   constructor(private userService: UserService) { }
 
@@ -21,6 +22,11 @@ export class UsersListComponent implements OnInit {
     this.userService.getUsers().subscribe((users: User[]) => {
       this.users = users;
     });
+  }
+
+  onSelect(user: User): void {
+    this.selectedUser = user;
+    console.log(user);
   }
 
 }

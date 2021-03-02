@@ -1,0 +1,54 @@
+/* List of Users */
+.user {
+  background: white;
+  border: 1px solid var(--gray);
+  border-radius: 20px;
+  box-shadow: 0 1px 0 var(--gray);
+  color: #fff;
+  margin: 5px 0;
+  padding: 20px 40px;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+}
+
+.user > img {
+  border: 1px solid var(--gray);
+  border-radius: 50%;
+  height: 80px;
+  width: 80px;
+}
+
+.user > .info-wrapper {
+  margin-left: 16px;
+}
+
+.user-id,
+.user-name {
+  color: var(--fonts2);
+}
+
+.user-name {
+  padding: 3px 0;
+}
+
+.user-username {
+  color: black;
+  font-weight: 600;
+}
+
+.user > .pay-button {
+  background-color: var(--primary);
+  border: 0;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+  margin-left: auto;
+  padding: 15px 25px;
+
+  &:hover {
+    background-color: var(--secondary);
+  }
+}

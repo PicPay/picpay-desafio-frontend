@@ -1,0 +1,18 @@
+<div>
+  
+  <div class="users" *ngFor="let user of users" [class.selected]="user === selectedUser">
+    <div class="container">
+      <div class="user">
+        <img [src]="user.img" [alt]="user.name" />
+        <div class="info-wrapper">
+          <small class="user-id">ID: {{ user.id }}</small>
+          <div class="user-name">{{ user.name }}</div>
+          <div class="user-username">{{ user.username }}</div>
+        </div>
+        <button type="button" class="pay-button" (click)="onSelect(user)">Pagar</button>
+      </div>
+    </div>
+  </div>
+
+  <app-payment-modal [user]="selectedUser"></app-payment-modal>
+</div>
