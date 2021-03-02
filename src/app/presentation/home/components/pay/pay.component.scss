@@ -1,0 +1,44 @@
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  span {
+    font-size: 10px;
+    color: red;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+
+  > button {
+    padding: 12px 0px;
+    width: 200px;
+    border-radius: 5px;
+    margin: 4px;
+    cursor: pointer;
+    border: none;
+    color: white;
+    text-transform: uppercase;
+    background: #5cd67b;
+
+    &[disabled] {
+      background-color: rgb(144 216 162 / 67%);
+      cursor: not-allowed;
+      color: aliceblue;
+    }
+  }
+}
+
+.input-pay {
+  margin: 5px 0px;
+  height: 40px;
+  width: 200px;
+  background: white;
+  border-radius: 5px;
+  outline: 0;
+  border: solid 1px #ccc;
+  &:focus {
+    border: solid 2px #5cd67b;
+  }
+}

@@ -1,0 +1,85 @@
+/* Payment Modal */
+.modal-backdrop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  height: 100vh;
+  width: 100vw;
+}
+
+.modal-backdrop.hidden {
+  display: none;
+}
+
+.modal-backdrop:after {
+  content: '';
+
+  background: rgba(0, 0, 0, 0.5);
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+}
+
+.modal {
+  background: #fff;
+  margin: 32px 0;
+  width: 420px;
+  border-radius: 8px;
+}
+
+.modal > .title {
+  display: flex;
+  justify-content: space-between;
+  background: #5cd67b;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 16px 24px;
+  border-radius: 8px 8px 0px 0px;
+}
+
+.modal > .title > span {
+  color: black;
+  cursor: pointer;
+}
+
+.modal > .content {
+  padding: 32px;
+  text-align: center;
+}
+
+.modal > .content > input {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 32px;
+  height: 48px;
+  padding: 0 8px;
+}
+
+.modal > .content > .cards > select {
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 32px;
+  height: 48px;
+  margin-top: 12px;
+}
+
+.modal > .content > button {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 32px;
+  height: 48px;
+  padding: 0 8px;
+  margin-top: 24px;
+}

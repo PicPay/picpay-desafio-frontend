@@ -1,0 +1,7 @@
+<app-user (payUser)="handlePayUser($event)"></app-user>
+<app-pay
+  (hide)="paymentForm = false"
+  *ngIf="paymentForm"
+  [user]="settedUser"
+  [cards]="cards"
+></app-pay>

@@ -1,0 +1,11 @@
+<app-modal (hide)="handlerHide()">
+  <div title>Recibo de Pagamento</div>
+  <span content>
+    <span *ngIf="status.success; else statusFailed">
+      O pagamento foi concluido com sucesso.</span
+    >
+    <ng-template #statusFailed>
+      <span> O pagamento <strong>não</strong> foi concluido com sucesso. </span>
+    </ng-template>
+  </span>
+</app-modal>

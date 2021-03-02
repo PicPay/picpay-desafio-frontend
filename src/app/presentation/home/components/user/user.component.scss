@@ -1,0 +1,44 @@
+.users {
+  padding: 0px 10%;
+}
+
+.user {
+  color: #333;
+  padding: 20px 0px;
+  display: flex;
+  align-items: center;
+
+  img {
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+  }
+
+  .user-data {
+    display: flex;
+    align-items: center;
+
+    .info-wrapper {
+      margin: 0px 16px;
+      .user-name {
+        margin-top: 8px;
+        color: #666;
+        font-size: 14px;
+      }
+    }
+  }
+
+  .pay-button {
+    margin-left: auto;
+    padding: 8px 16px;
+    background: #5cd67b;
+    border: none;
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+
+    &:hover {
+      background: #51c46e;
+    }
+  }
+}

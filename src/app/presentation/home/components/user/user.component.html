@@ -1,0 +1,16 @@
+<div class="users">
+  <div *ngFor="let user of users" class="user">
+    <div class="user-data">
+      <img [src]="user.img" />
+      <div class="info-wrapper">
+        <div class="user-username">
+          {{ user.username }}
+        </div>
+        <div class="user-name">{{ user.name }}</div>
+      </div>
+    </div>
+    <button type="button" class="pay-button" (click)="handleClick(user)">
+      Pagar
+    </button>
+  </div>
+</div>

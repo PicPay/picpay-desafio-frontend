@@ -1,0 +1,11 @@
+<div class="modal-backdrop">
+  <div class="modal">
+    <div class="title">
+      <ng-content select="[title]"></ng-content>
+      <span (click)="handlerHide()">X</span>
+    </div>
+    <div class="content">
+      <ng-content select="[content]"></ng-content>
+    </div>
+  </div>
+</div>

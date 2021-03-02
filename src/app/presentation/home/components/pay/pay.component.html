@@ -1,0 +1,40 @@
+<app-modal *ngIf="!notify; else notifyStatus" (hide)="handlerHide()">
+  <div title>
+    Pagamento para <span>{{ user.username }}</span>
+  </div>
+
+  <div content>
+    <form [formGroup]="payForm" (ngSubmit)="pay(selectedCard)">
+      <input
+        type="number"
+        name="value"
+        formControlName="value"
+        class="input-pay input"
+      />
+
+      <ng-container *ngIf="payForm.controls.value.touched">
+        <span *ngIf="payForm.controls.value.errors?.required">
+          Campo obrigatório
+        </span>
+        <span *ngIf="payForm.controls.value.errors?.min">
+          O valor mínimo para pagamento é R$ 1,00
+        </span>
+      </ng-container>
+      <div class="cards">
+        <select formControlName="selectedCard" class="select input-pay">
+          <option [value]="card.card_number" *ngFor="let card of cards">
+            Cartão com final {{ card.card_number | cardFinal }}
+          </option>
+        </select>
+      </div>
+
+      <button [disabled]="!payForm.valid" type="submit" class="pay-button">
+        Pagar
+      </button>
+    </form>
+  </div>
+</app-modal>
+
+<ng-template #notifyStatus>
+  <app-notify [status]="settedStatus" (hide)="handlerHide()"></app-notify>
+</ng-template>
