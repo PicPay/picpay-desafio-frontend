@@ -1,21 +1,27 @@
 <div *ngIf="statement && statement.length > 0; else noResults">
+    <div class="pull-right">
+        <span class="text-grey statement-order" (click)="sortAscending()">
+            ORDENAR POR STATUS &nbsp;<i [class]="'fas fa-angle-' + (sortedAscending ? 'up' : 'down')"></i>
+        </span>
+    </div>
+    <br>
     <div *ngFor="let transaction of statement" id="list">
         <div class="pull-left">
             <div class="mt-1">
                 <div class="row">
-                    <div class="mb-1 column">
+                    <div class="column">
                         <b>Cartão: </b>
                         Final {{ transaction['payment_method'] }}
                     </div>
-                    <div class="mb-1 column">
+                    <div class="column">
                         <b>Data: </b>
                         {{ transaction['date'] }}
                     </div>
-                    <div class="mb-1 column">
+                    <div class="column">
                         <b>Valor: </b>
-                        {{ transaction['value'] }}
+                        {{ getBrazilianCurrency(transaction['value']) }}
                     </div>
-                    <div class="mb-1 column pull-right">
+                    <div class="column pull-right">
                         <div [ngClass]="'text-bold ' + (transaction['success'] ? 'text-green' : 'text-red')">
                             <b>{{ transaction['success'] ? 'Aprovado' : 'Reprovado' }}</b>
                         </div>

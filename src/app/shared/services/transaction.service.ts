@@ -45,12 +45,12 @@ export class TransactionService {
             delete transaction.expiry_date;
             delete transaction.card_number;
 
-            const statement: TransactionPayload[] = [ transaction ];
+            let statement: TransactionPayload[] = [ transaction ];
 
             const stringifiedStatement = localStorage.getItem(this.LOCAL_STORAGE_FIELD);
 
             if (stringifiedStatement) {
-                statement.concat(JSON.parse(stringifiedStatement));
+                statement = statement.concat(JSON.parse(stringifiedStatement));
             }
 
             localStorage.setItem(this.LOCAL_STORAGE_FIELD, JSON.stringify(statement));

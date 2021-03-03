@@ -97,10 +97,6 @@ export class TransactionCardComponent implements OnInit {
         this.toastr.success("Seu pagamento foi efetuado e aprovado com sucesso.");
 
         transactionPayload['success'] = true;
-
-        this.transactionService.updateStatement(transactionPayload, this.currentUserId);
-
-        this.transaction.emit(transactionPayload); 
       }
       else {
         this.toastr.warning("Erro proposital e aleatório.", "Atenção, recrutadores!", { timeOut: 5000 });
@@ -108,11 +104,12 @@ export class TransactionCardComponent implements OnInit {
         this.toastr.error("Houve um problema com o pagamento efetuado. Tente novamente mais tarde.");
 
         transactionPayload['success'] = false;
-
-        this.transactionService.updateStatement(transactionPayload, this.currentUserId);
-
-        this.transaction.emit(transactionPayload); 
       }
+
+      this.transactionService.updateStatement(transactionPayload, this.currentUserId);
+
+      this.transaction.emit(transactionPayload); 
+      
     });
   }
 
