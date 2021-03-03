@@ -12,7 +12,7 @@ export const USERS: User[] = [
 ];
 
 export const CURRENT_USER: User = {
-    id: 0,
+    id: 999,
     img: image_url.replace("{id}", "0"),
     name: 'Carolynne Padilha da Silva',
     username: '@carodilha'
