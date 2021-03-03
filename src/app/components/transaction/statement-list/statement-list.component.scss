@@ -1,0 +1,16 @@
+.column {
+    float: left;
+    width: 25%;
+    padding: 1rem;
+    border-bottom: 1px solid #E3E3E3;
+}
+
+.row:after {
+content: "";
+    display: table;
+    clear: both;
+}
+
+.pull-right {
+    text-align: right;
+}

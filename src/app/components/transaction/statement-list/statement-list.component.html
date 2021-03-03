@@ -1,0 +1,35 @@
+<div *ngIf="statement && statement.length > 0; else noResults">
+    <div *ngFor="let transaction of statement" id="list">
+        <div class="pull-left">
+            <div class="mt-1">
+                <div class="row">
+                    <div class="mb-1 column">
+                        <b>Cartão: </b>
+                        Final {{ transaction['payment_method'] }}
+                    </div>
+                    <div class="mb-1 column">
+                        <b>Data: </b>
+                        {{ transaction['date'] }}
+                    </div>
+                    <div class="mb-1 column">
+                        <b>Valor: </b>
+                        {{ transaction['value'] }}
+                    </div>
+                    <div class="mb-1 column pull-right">
+                        <div [ngClass]="'text-bold ' + (transaction['success'] ? 'text-green' : 'text-red')">
+                            <b>{{ transaction['success'] ? 'Aprovado' : 'Reprovado' }}</b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #noResults>
+    <div class="text-grey">
+        <h4>
+            <i class="fas fa-heart-broken"></i>
+            Parece que você não tem extratos recentes!
+        </h4>
+    </div>
+</ng-template>
