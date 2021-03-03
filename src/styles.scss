@@ -217,3 +217,9 @@ form label {
 .text-bold {
   font-weight: bold;
 }
+
+@media screen and (max-width: 1024px) {
+  .modal {
+      width: 100%;
+  }
+}

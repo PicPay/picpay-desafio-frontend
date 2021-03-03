@@ -19,3 +19,10 @@ content: "";
     font-size: 80%;
     float: right;
 }
+
+@media screen and (max-width: 1024px) {
+    .column {
+        width: 100%;
+        padding-top: 0.4rem;
+    }
+}

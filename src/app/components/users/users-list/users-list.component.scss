@@ -19,10 +19,16 @@
     overflow-y: scroll;
 }
 
-@media screen and (max-width: 600px) {
-    .column {
-        width: 100%;
+.simple-list {
+    display: none;
+}
+
+@media screen and (max-width: 1024px) {
+    .not-simple-list {
+        display: none;
+    }
+
+    .simple-list {
         display: block;
-        margin-bottom: 10px;
     }
 }

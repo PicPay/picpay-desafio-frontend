@@ -2,12 +2,21 @@
   <h3>E aí, <span class="text-green font-bigger">{{ currentUser.username }}</span>. Beleza?</h3>
 </div>
 <div id="parent">
-  <div class="users">
+  <div #collapsible class="users">
     <app-users-list
+      class="content"
       [isSimpleCard]="false">
     </app-users-list>
   </div>
   <div class="wide">
+    <div id="contatos" class="mb-1">
+      <div class="title-header">
+        <h3>Meus Contatos</h3>
+      </div>
+      <app-users-list
+        [isSimpleCard]="true">
+      </app-users-list>
+    </div>
     <div id="contatosFavoritos" class="mb-1">
       <div class="title-header">
         <h3>Meus Contatos Favoritos</h3>
@@ -23,3 +32,12 @@
   </div>
 </div>
 <loader></loader>
+<script>
+  var collapsible = document.getElementById('#collapsible');
+  
+  if (collapsible.style.display === "block") {
+    collapsible.style.display = "none";
+  } else {
+    collapsible.style.display = "block";
+  }
+</script>
