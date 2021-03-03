@@ -2,7 +2,7 @@
     <div class="modal">
         <div class="header">
             <div class="title">
-                Pagamento<span *ngIf="!success"> não</span> aprovado.
+                Pagamento<span *ngIf="!success" class="text-red text-bold"> não</span> aprovado.
                 <i class="fas fa-times" title="Cancelar" (click)="close()"></i>
             </div>
         </div>
@@ -27,7 +27,7 @@
                 <div class="mt-1">
                     <p>
                         <b>Cartão</b>
-                        <span class="float-right">Final {{ getLastFourDigits(transaction.card_number) }}</span>
+                        <span class="float-right">Final {{ transaction['payment_method'] }}</span>
                     </p>
                     <p>
                         <b>Data</b>

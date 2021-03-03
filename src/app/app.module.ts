@@ -16,6 +16,7 @@ import { CreditCardComponent } from './components/transaction/credit-card/credit
 import { LoaderComponent } from './shared/components/loader/loader.component';
 import { ngxLoadingAnimationTypes, NgxLoadingModule } from 'ngx-loading';
 import { LoaderInterceptor } from './shared/interceptors/loader.interceptor';
+import { StatementListComponent } from './components/transaction/statement-list/statement-list.component';
 
 export const customCurrencyMaskConfig = {
   align: "left",
@@ -48,7 +49,8 @@ export const loadingConfig = {
     TransactionCardComponent,
     ReceiptCardComponent,
     CreditCardComponent,
-    LoaderComponent
+    LoaderComponent,
+    StatementListComponent
   ],
   exports: [
     LoaderComponent
