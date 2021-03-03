@@ -23,7 +23,7 @@
 
                 <div class="cards">
                     <div class="pull-left">
-                        <select formControlName="cardNumber">
+                        <select formControlName="cardNumber" (change)="onCardChanged()">
                             <option disabled selected hidden>Selecione</option>
                             <option 
                                 *ngFor="let card of availableCards"

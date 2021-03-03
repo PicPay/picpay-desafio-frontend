@@ -65,6 +65,16 @@ export class TransactionCardComponent implements OnInit {
     });
   }
 
+  onCardChanged() {
+    const cardNumber = this.formGroup.controls['cardNumber'].value;
+
+    const card = this.availableCards.find((c) => c.card_number == cardNumber);
+
+    if (card) {
+      this.selectedCard = card;
+    }
+  }
+
   getLastFourDigits(cardNumber: string): string {
     return Utils.getLastFourDigits(cardNumber);
   }
@@ -79,8 +89,6 @@ export class TransactionCardComponent implements OnInit {
     }
 
     this.transactionService.payUser(recipientUserId, value).subscribe(() => {
-      let cardNumber = this.formGroup.controls['cardNumber'].value;
-
       let card = this.availableCards.find((c) => c.card_number == cardNumber);
 
       let transactionPayload: TransactionPayload = {
