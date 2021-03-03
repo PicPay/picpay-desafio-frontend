@@ -38,6 +38,8 @@ export class TransactionCardComponent implements OnInit {
 
   public currentUserName: string;
 
+  public currentUserId: number;
+
   public selectedCard: any;
 
   constructor(
@@ -48,6 +50,8 @@ export class TransactionCardComponent implements OnInit {
   ngOnInit() {
     this.userService.getCurrentUser().subscribe((val) => {
       let splitted = val.name.split(" ");
+
+      this.currentUserId = val.id;
 
       if (splitted.length > 2) {
         let lastNameIndex = splitted.length - 1;
@@ -87,19 +91,25 @@ export class TransactionCardComponent implements OnInit {
         expiry_date: card.expiry_date
       };
 
+      transactionPayload['date'] = new Date().toLocaleDateString();
+
       if (Math.floor(Math.random() * 2)) {
         this.toastr.success("Seu pagamento foi efetuado e aprovado com sucesso.");
 
         transactionPayload['success'] = true;
 
+        this.transactionService.updateStatement(transactionPayload, this.currentUserId);
+
         this.transaction.emit(transactionPayload); 
       }
       else {
-        this.toastr.warning("Erro proposital e aleatório.", "Atenção, recrutadores!");
+        this.toastr.warning("Erro proposital e aleatório.", "Atenção, recrutadores!", { timeOut: 5000 });
 
         this.toastr.error("Houve um problema com o pagamento efetuado. Tente novamente mais tarde.");
 
         transactionPayload['success'] = false;
+
+        this.transactionService.updateStatement(transactionPayload, this.currentUserId);
 
         this.transaction.emit(transactionPayload); 
       }
