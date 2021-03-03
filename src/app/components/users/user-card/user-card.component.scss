@@ -11,14 +11,19 @@
   transition: 0.3s;
 }
 
-.user:hover {
+.box-shadow {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
-.user > img {
+.box-shadow:hover {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+img {
   border-radius: 50%;
   height: 80px;
   width: 80px;
+  background-color: #af4c4c;
 }
 
 .user > .info-wrapper {
@@ -33,4 +38,27 @@
 
 .user .username {
   color: #848484;
+}
+
+.liked-user {
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+  color: #E3E3E3;
+  opacity: 0.6;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.liked-user:hover {
+  color: #af4c4c;
+  opacity: 1;
+}
+
+.text-silver {
+  color: #E3E3E3;
+}
+
+.user-card {
+  position: relative;
 }

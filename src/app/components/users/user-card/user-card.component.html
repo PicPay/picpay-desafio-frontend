@@ -1,16 +1,31 @@
-<div 
-    class="user rounded-border" 
-    (click)="openPayableCard()" 
-    *ngIf="user">
+<div *ngIf="user">
+    <div *ngIf="!isSimpleCard; else simpleCard">
+        <div class="user-card">
+            <div (click)="openPayableCard()" class="user box-shadow rounded-border">
+                <img src="{{ user.img }}" alt="{{ user.name }}">
+                <div class="info-wrapper">
+                    <div class="name">
+                        {{ user.name }}
+                    </div>
     
-    <img src="{{ user.img }}" alt="{{ user.name }}">
-    <div class="info-wrapper">
-        <div class="name">
-            {{ user.name }}
+                    <div class="username">{{ user.username}}</div>
+                </div>
+            </div>
+            <div class="liked-user" title="Adicionar aos Favoritos" (click)="addInFavorites()">
+                <a>
+                    <i [class]="'fas fa-heart ' + (isFavorite ? 'text-red' : 'text-silver')"></i>
+                </a>
+            </div>
         </div>
-
-        <div class="username">{{ user.username}}</div>
     </div>
+    <ng-template #simpleCard>
+        <img 
+            (click)="openPayableCard()" 
+            src="{{ user.img }}" 
+            alt="{{ user.name }}" 
+            title="{{ user.name }}" 
+            class="mr-1">
+    </ng-template>
 </div>
 
 <app-transaction-card

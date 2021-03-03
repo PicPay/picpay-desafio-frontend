@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { User } from 'src/app/shared/models/user.model';
+import { UserService } from 'src/app/shared/services/user.service';
 
 const placeholder: string = '/assets/img/user_placeholder.png';
 
@@ -16,6 +17,9 @@ export class UserCardComponent implements OnInit {
   @Input()
   isPayableCard: boolean = true;
 
+  @Input()
+  isSimpleCard: boolean = false;
+
   transaction: any;
 
   showPayableCard: boolean = false;
@@ -24,10 +28,17 @@ export class UserCardComponent implements OnInit {
 
   success: boolean = false;
 
-  constructor() { }
+  isFavorite: boolean = false;
+
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
     this.setPlaceholderIfImageIsInvalid();
+
+    const favorites = this.getFavorites();
+
+    if (this.user && this.user.id && favorites && favorites.some(f => f === this.user.id))
+      this.isFavorite = true;
   }
 
   private setPlaceholderIfImageIsInvalid(): void {
@@ -50,5 +61,21 @@ export class UserCardComponent implements OnInit {
     this.showPayableCard = false;
 
     this.showReceiptCard = true;
+  }
+
+  getFavorites() {
+    return this.userService.getFavoriteUsersIds();
+  }
+
+  addInFavorites() {
+    if (this.user && this.user.id) {
+      if (!this.isFavorite) {
+        this.userService.addFavoriteUser(this.user.id);
+      } else {
+        this.userService.removeFavoriteUser(this.user.id);
+      }
+    }
+
+    this.isFavorite = !this.isFavorite;
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/shared/models/user.model';
 import { UserService } from 'src/app/shared/services/user.service';
@@ -14,6 +14,9 @@ export class UsersListComponent implements OnInit {
     private userService: UserService) { }
 
   public users$: Observable<User[]>;
+
+  @Input()
+  public isSimpleCard: boolean = false;
 
   ngOnInit() {
     this.users$ = this.userService.getAllContacts();

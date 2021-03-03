@@ -17,6 +17,7 @@ import { LoaderComponent } from './shared/components/loader/loader.component';
 import { ngxLoadingAnimationTypes, NgxLoadingModule } from 'ngx-loading';
 import { LoaderInterceptor } from './shared/interceptors/loader.interceptor';
 import { StatementListComponent } from './components/transaction/statement-list/statement-list.component';
+import { FavoriteListComponent } from './components/users/favorite-list/favorite-list.component';
 
 export const customCurrencyMaskConfig = {
   align: "left",
@@ -36,9 +37,11 @@ export const customCurrencyMaskConfig = {
 export const loadingConfig = {
   fullScreenBackdrop: true,
   animationType: ngxLoadingAnimationTypes.threeBounce,
-  backdropBackgroundColour: 'rgba(0,0,0,0.1)', 
+  backdropBackgroundColour: 'rgba(0,0,0,0.3)', 
   backdropBorderRadius: '4px',
-  primaryColour: '#4CAF50'
+  primaryColour: '#4CAF50',
+  secondaryColour: '#4CAF50',
+  terciaryColour: '#4CAF50'
 }
 
 @NgModule({
@@ -50,7 +53,8 @@ export const loadingConfig = {
     ReceiptCardComponent,
     CreditCardComponent,
     LoaderComponent,
-    StatementListComponent
+    StatementListComponent,
+    FavoriteListComponent
   ],
   exports: [
     LoaderComponent

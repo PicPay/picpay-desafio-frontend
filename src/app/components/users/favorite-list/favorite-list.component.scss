@@ -1,0 +1,17 @@
+.column {
+    margin-top: 1rem;
+    float: left;
+    width: 6rem;
+    padding: 0 10px;
+}
+  
+.row {
+    margin: 0 -5px;
+    text-align: center;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}

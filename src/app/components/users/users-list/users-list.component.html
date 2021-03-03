@@ -2,6 +2,7 @@
   <div class="column">
     <div class="card" *ngFor="let user of users$ | async">
         <app-user-card 
+          [isSimpleCard]="isSimpleCard"
           [isPayableCard]="true"
           [user]="user">
         </app-user-card>

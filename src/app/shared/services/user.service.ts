@@ -14,6 +14,8 @@ export class UserService {
 
     private readonly API_URL: string = "https://www.mocky.io/v2/";
 
+    private readonly LOCAL_STORAGE_FIELD: string = "favorites";
+
     private currentUser: User;
 
     public getCurrentUser(): Observable<User> {
@@ -34,5 +36,48 @@ export class UserService {
             .pipe(
                 map(data => data.filter(user => user.id == userId), toArray())
             );
+    }
+
+    public getUsersByIds(usersIds: number[]): Observable<User[]> {
+        return this.getAllContacts()
+            .pipe(
+                map(data => data.filter(user => usersIds.some(user2 => user2 === user.id)), toArray())
+            );
+    }
+
+    public addFavoriteUser(userId: number) {
+        if (userId) {
+            let favorites: number[] = [ userId ];
+
+            const stringifiedFavorites = localStorage.getItem(this.LOCAL_STORAGE_FIELD);
+
+            if (stringifiedFavorites) {
+                favorites = favorites.concat(JSON.parse(stringifiedFavorites));
+            }
+
+            localStorage.setItem(this.LOCAL_STORAGE_FIELD, JSON.stringify(favorites));
+        }
+    }
+
+    public removeFavoriteUser(userId: number) {
+        if (userId) {
+            const stringifiedFavorites = localStorage.getItem(this.LOCAL_STORAGE_FIELD);
+
+            if (stringifiedFavorites) {
+                let favorites = JSON.parse(stringifiedFavorites);
+
+                let index = favorites.indexOf(userId);
+
+                if (index > -1) {
+                    favorites.splice(index, 1);
+
+                    localStorage.setItem(this.LOCAL_STORAGE_FIELD, JSON.stringify(favorites));
+                }
+            }
+        }
+    }
+
+    public getFavoriteUsersIds() {
+        return JSON.parse(localStorage.getItem(this.LOCAL_STORAGE_FIELD));
     }
 }

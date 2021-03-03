@@ -3,19 +3,16 @@
 </div>
 <div id="parent">
   <div class="users">
-    <app-users-list></app-users-list>
+    <app-users-list
+      [isSimpleCard]="false">
+    </app-users-list>
   </div>
   <div class="wide">
     <div id="contatosFavoritos" class="mb-1">
       <div class="title-header">
         <h3>Meus Contatos Favoritos</h3>
       </div>
-      <div class="text-grey">
-        <h4>
-          <i class="fas fa-heart-broken"></i>
-          Parece que você não tem contatos favoritos!
-        </h4>
-      </div>
+      <app-favorite-list></app-favorite-list>
     </div>
     <div id="extrato" class="mt-1">
       <div class="title-header mb-1">
