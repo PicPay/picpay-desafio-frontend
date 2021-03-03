@@ -198,3 +198,20 @@ form label {
 ::-webkit-scrollbar-thumb:hover {
   background: #4CAF50; 
 }
+
+.text-grey {
+  color: #afafaf;
+}
+
+.text-grey > h4 {
+  text-align: center;
+  font-weight: 500;
+}
+
+.text-red {
+  color: #af4c4c;
+}
+
+.text-bold {
+  font-weight: bold;
+}
