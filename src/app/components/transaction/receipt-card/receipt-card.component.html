@@ -16,27 +16,29 @@
                         [user]="recipientUser">
                     </app-user-card>
                 </div>
-                <div *ngIf="!success" class="mt-1">
-                    <label style="text-align: center;">
-                        Seu pagamento não foi aprovado por problemas internos. 
-                        Sentimos muito o incômodo, mas tente novamente mais tarde ou entre em contato conosco. 
-                    </label> 
-                </div>
+            </div>
+            <div *ngIf="!success" class="mt-1">
+                <label class="error-message">
+                    Seu pagamento não foi aprovado por problemas internos. 
+                    Sentimos muito o incômodo, mas tente novamente mais tarde ou entre em contato conosco. 
+                </label> 
+            </div>
+            <div class="pull-left">
                 <div class="mt-1">
                     <p>
-                        Cartão
+                        <b>Cartão</b>
                         <span class="float-right">Final {{ getLastFourDigits(transaction.card_number) }}</span>
                     </p>
                     <p>
-                        Data
+                        <b>Data</b>
                         <span class="float-right">{{ today }}</span>
                     </p>
                     <p>
-                        Bla-Blah
+                        <b>Bla-Blah</b>
                         <span class="float-right">Bla bla bla</span>
                     </p>
                     <p>
-                        Valor
+                        <b>Valor</b>
                         <span class="float-right">{{ formattedValue }}</span>
                     </p>
                 </div>
