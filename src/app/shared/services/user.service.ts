@@ -23,7 +23,10 @@ export class UserService {
     }
 
     public getAllContacts(): Observable<User[]> {
-        return this.http.get<User[]>(`${this.API_URL}5d531c4f2e0000620081ddce`);
+        return this.http.get<User[]>(`${this.API_URL}5d531c4f2e0000620081ddce`)
+            .pipe(
+                map(data => data.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0)))
+            );
     }
 
     public getUserById(userId: number): Observable<User[]> {

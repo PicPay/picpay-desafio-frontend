@@ -5,7 +5,7 @@ import { CARDS } from 'src/app/shared/mock/card.mock';
 import { User } from 'src/app/shared/models/user.model';
 import { TransactionService } from 'src/app/shared/services/transaction.service';
 import { UserService } from 'src/app/shared/services/user.service';
-import { StringUtils } from 'src/app/shared/utils/stringutils';
+import { Utils } from 'src/app/shared/utils/utils';
 
 @Component({
   selector: 'app-transaction-card',
@@ -62,7 +62,7 @@ export class TransactionCardComponent implements OnInit {
   }
 
   getLastFourDigits(cardNumber: string): string {
-    return StringUtils.getLastFourDigits(cardNumber);
+    return Utils.getLastFourDigits(cardNumber);
   }
 
   pay(recipientUserId: number) {

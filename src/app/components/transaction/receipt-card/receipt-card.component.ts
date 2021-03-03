@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { User } from 'src/app/shared/models/user.model';
 import { UserService } from 'src/app/shared/services/user.service';
-import { StringUtils } from 'src/app/shared/utils/stringutils';
+import { Utils } from 'src/app/shared/utils/utils';
 
 @Component({
   selector: 'app-receipt-card',
@@ -45,6 +45,6 @@ export class ReceiptCardComponent implements OnInit {
   }
 
   getLastFourDigits(cardNumber: string): string {
-    return StringUtils.getLastFourDigits(cardNumber);
+    return Utils.getLastFourDigits(cardNumber);
   }
 }
