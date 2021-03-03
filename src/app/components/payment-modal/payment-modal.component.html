@@ -1,8 +1,8 @@
-<div class="modal-backdrop" id="modal" #modal *ngIf="user">
+<div class="modal-backdrop" *ngIf="user">
 
   <app-payment-form [user]="user"></app-payment-form>
 
-  <div class="modal">
+  <div class="modal" hidden>
     <div class="title">
       Recibo de pagamento
     </div>

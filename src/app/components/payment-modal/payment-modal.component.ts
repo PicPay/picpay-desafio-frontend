@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
 import { User } from './../../models/user';
 
 @Component({
@@ -10,14 +12,9 @@ export class PaymentModalComponent implements OnInit {
 
   @Input() user: User;
 
-  constructor() { }
+  constructor(private modalService: NgbModal, public activeModal: NgbActiveModal) { }
 
   ngOnInit() {
-  }
-
-  closeModal() {
-    let modalHtml = document.getElementById('modal');
-    modalHtml.click();
   }
 
 }

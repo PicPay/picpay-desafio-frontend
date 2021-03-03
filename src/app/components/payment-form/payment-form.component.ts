@@ -14,8 +14,6 @@ export class PaymentFormComponent implements OnInit {
 
   @Input() user: User;
 
-  @Output() closeEvent = new EventEmitter();
-
   cards: creditCard[] = [
     // valid card
     {
@@ -34,10 +32,6 @@ export class PaymentFormComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-  }
-
-  closeModal(): void {
-    this.closeEvent.emit();
   }
 
 }
