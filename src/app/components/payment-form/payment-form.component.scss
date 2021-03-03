@@ -5,44 +5,94 @@
 }
 
 .modal > .title {
-  background: #474971;
-  color: #ffffff;
-  font-weight: 500;
-  font-size: 16px;
+  background: var(--gray);
+  color: var(--fonts2);
+  font-size: 18px;
   padding: 16px 24px;
 }
 
 .modal > .title > span {
-  color: #cddc39;
+  color: black;
+  font-weight: 600;
 }
 
 .modal > .content {
-  padding: 32px;
+  padding: 20px;
   text-align: center;
 }
 
-.modal > .content > input {
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 32px;
-  height: 48px;
-  padding: 0 8px;
+.user-info {
+  display: flex;
+  align-items: center;
 }
 
-.modal > .content > .cards > select {
+.user-img {
+  border: 1px solid var(--gray);
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+}
+
+.user-username {
+  color: black;
+  font-weight: 600;
+  margin-left: 16px;
+}
+
+form {
+  margin-top: 20px;
+}
+
+form > input,
+form > .cards > select {
   background: #fff;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 32px;
+  border: 0;
+  border-bottom: 1px solid #ccc;
+  color: var(--fonts2);
+  font-size: 26px;
   height: 48px;
+  padding: 0 8px;
+  width: 100%;
+}
+
+form > input::placeholder {
+  color: var(--fonts2);
+}
+
+form > .cards > select {
   margin-top: 12px;
 }
 
-.modal > .content > button {
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 32px;
-  height: 48px;
-  padding: 0 8px;
-  margin-top: 24px;
+form > .buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
+
+form > .buttons > button {
+  border: 0;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 26px;
+  margin-top: 24px;
+  padding: 10px 30px;
+}
+
+.cancel-button {
+  background-color: var(--gray);
+  color: var(--fonts2);
+
+  &:hover {
+    background-color: var(--fonts1);
+  }
+}
+
+.pay-button {
+  background-color: var(--primary);
+  color: white;
+
+  &:hover {
+    background-color: var(--secondary);
+  }
+}
+

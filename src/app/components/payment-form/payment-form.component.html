@@ -1,18 +1,32 @@
 <div class="modal" *ngIf="user">
+  <div (click)="closeModal()" class="close">X</div>
+
   <div class="title">Pagamento para <span>{{ user.name }}</span></div>
 
   <div class="content">
 
-    <form></form>
-    <input type="number" placeholder="R$ 0,00" />
-
-    <div class="cards">
-      <select class="form-control" id="card" required>
-        <option selected>Escolha o cartão</option>
-        <option *ngFor="let card of cards" [value]="card.card_number">{{ card.card_number }}</option>
-      </select>
+    <div class="user-info">
+      <img class="user-img" [src]="user.img" [alt]="user.name" />
+      <div class="user-username">{{ user.username }}</div>
     </div>
 
-    <button type="button" class="pay-button">Pagar</button>
+    <form>
+
+      <input type="number" placeholder="R$ 0,00" />
+
+      <div class="cards">
+        <select class="form-control" id="card" required>
+          <option selected>Escolha o cartão</option>
+          <option *ngFor="let card of cards" [value]="card.card_number">{{ card.card_number }}</option>
+        </select>
+      </div>
+
+      <div class="buttons">
+        <button type="button" class="cancel-button" routerLink="/">Cancelar</button>
+        <button type="button" class="pay-button">Pagar</button>
+      </div>
+
+    </form>
+    
   </div>
 </div>

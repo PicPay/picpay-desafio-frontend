@@ -1,8 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { User } from './../../models/user';
 import { TransactionPayload } from './../../models/transactionPayload';
 import { creditCard } from './../../models/creditCard';
+
 
 @Component({
   selector: 'app-payment-form',
@@ -12,6 +13,8 @@ import { creditCard } from './../../models/creditCard';
 export class PaymentFormComponent implements OnInit {
 
   @Input() user: User;
+
+  @Output() closeEvent = new EventEmitter();
 
   cards: creditCard[] = [
     // valid card
@@ -31,6 +34,10 @@ export class PaymentFormComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  closeModal(): void {
+    this.closeEvent.emit();
   }
 
 }

@@ -15,4 +15,9 @@ export class PaymentModalComponent implements OnInit {
   ngOnInit() {
   }
 
+  closeModal() {
+    let modalHtml = document.getElementById('modal');
+    modalHtml.click();
+  }
+
 }
