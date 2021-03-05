@@ -1,5 +1,5 @@
-<ul>
-    <li *ngFor="let user of users">
+
+    <div *ngFor="let user of users">
         <div class="user">
             <img [src]=user.img />
             <div class="info-wrapper">
@@ -11,15 +11,31 @@
                 ID: {{user.id}} - Username: {{user.username}}
               </div>
             </div>
-        
-            <button type="button" class="pay-button">
-              Pagar
-            </button>
+            <button class="pay-button" mat-raised-button (click)="pay()">Pagar</button>
           </div>
-    </li>
-</ul>
+    </div>
+
 
 <!--
+
+<div *ngFor="let user of users">
+    <mat-card class="card">
+    <div class="user">
+        <img [src]=user.img />
+        <div class="info-wrapper">
+          <div class="user-name">
+            {{user.name}}
+          </div>
+    
+          <div class="user-id-username">
+            ID: {{user.id}} - Username: {{user.username}}
+          </div>
+        </div>
+        <button mat-raised-button (click)="pay()">Pagar</button>
+      </div>
+    </mat-card>
+</div>
+
 <div class="users">
     <div class="user">
       <img src="https://randomuser.me/api/portraits/men/9.jpg" />
