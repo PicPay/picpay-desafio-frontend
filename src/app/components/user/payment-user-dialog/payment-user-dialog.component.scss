@@ -1,0 +1,28 @@
+.title {
+    background: #474971;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 16px 24px;
+    margin: -24px;
+    margin-bottom: 10px;
+  }
+
+  .title > span {
+    color: #cddc39;
+  }
+
+.example-form {
+    min-width: 150px;
+    max-width: 400px;
+    width: 100%;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.pay {
+    background: #474971;
+    color: #ffffff;
+}

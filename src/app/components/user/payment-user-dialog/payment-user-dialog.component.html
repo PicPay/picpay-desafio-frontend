@@ -1,6 +1,21 @@
-<h1 mat-dialog-title>Pagamento para Nome do Usuário</h1>
-
+<h1 mat-dialog-title class="title" >Pagamento para <span>Nome do Usuário</span></h1>
+<div mat-dialog-content>
+  <form class="example-form" [formGroup]="payForm">
+    <mat-form-field class="full-width">
+      <mat-label>R$ 0,00</mat-label>
+      <input matInput type="number">
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-label>Cartão</mat-label>
+      <mat-select>
+        <mat-option value="one">Cartão com final 1111</mat-option>
+        <mat-option value="two">Cartão com final 1234</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</div>
 
 <div mat-dialog-actions>
-  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Pagar</button>
+  <button mat-raised-button class="pay" (click)="payload()" >Pagar</button>
+  <button mat-button (click)="cancel()">Cancelar</button>
 </div>

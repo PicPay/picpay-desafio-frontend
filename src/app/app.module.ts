@@ -12,6 +12,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PaymentUserDialogComponent } from './components/user/payment-user-dialog/payment-user-dialog.component';
+import { MatInputModule, MatSelectModule } from '@angular/material';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { CurrencyPipe } from '@angular/common';
+
+
 
 
 @NgModule({
@@ -21,16 +27,22 @@ import { PaymentUserDialogComponent } from './components/user/payment-user-dialo
     PaymentUserDialogComponent,
 
   ],
+  
   imports: [
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
     MatCardModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    MatInputModule,
+    MatSelectModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
+
   entryComponents: [PaymentUserDialogComponent],
-  providers: [],
+  providers: [CurrencyPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

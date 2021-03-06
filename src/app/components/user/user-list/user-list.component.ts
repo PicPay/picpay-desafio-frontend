@@ -23,7 +23,7 @@ export class UserListComponent implements OnInit {
 
   pay(): void {
     const dialogRef = this.dialog.open(PaymentUserDialogComponent, {
-      width: '250px',
+      width: '420px',
     });
 
     dialogRef.afterClosed().subscribe(result => {
