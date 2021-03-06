@@ -15,9 +15,6 @@ import { PaymentUserDialogComponent } from './components/user/payment-user-dialo
 import { MatInputModule, MatSelectModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { CurrencyPipe } from '@angular/common';
-
-
 
 
 @NgModule({
@@ -38,11 +35,11 @@ import { CurrencyPipe } from '@angular/common';
     MatInputModule,
     MatSelectModule,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule  
   ],
 
   entryComponents: [PaymentUserDialogComponent],
-  providers: [CurrencyPipe],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
