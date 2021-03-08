@@ -1,5 +1,6 @@
+import { User } from './../user.model';
 import { MatDialogRef } from '@angular/material/dialog';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 @Component({
@@ -10,6 +11,7 @@ import { FormGroup } from '@angular/forms';
 
 export class PaymentUserDialogComponent implements OnInit {
 
+  @Input user: User
 
   public payForm: FormGroup
 
