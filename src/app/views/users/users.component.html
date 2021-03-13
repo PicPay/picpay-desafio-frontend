@@ -1,11 +1,15 @@
-<a mat-list-item>
-    <i class="material-icons v-middle">
-        people
-    </i>
-    Usuários
-</a>
+<div class="headerUsers">
+    <a mat-list-item>
+        <i class="material-icons v-middle">
+            people
+        </i>
+        Usuários
+    </a>
 
-<mat-card class="card mat-elevation-z4">
+    <button mat-raised-button (click)="navigateToUserCreate()">Novo Usuário</button>
+</div>
+
+<mat-card class="card mat-elevation-z4 ">
     <div class="user">
         <img src="https://randomuser.me/api/portraits/men/9.jpg" />
         <div class="info-wrapper">
@@ -18,7 +22,7 @@
             </div>
         </div>
 
-        <button type="button" class="pay-button">
+        <button mat-raised-button class="pay-button">
             Pagar
         </button>
     </div>

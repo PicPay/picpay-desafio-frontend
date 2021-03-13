@@ -8,6 +8,11 @@ import { HeaderComponent } from './components/template/header/header.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
+
+
 import { FooterComponent } from './components/template/footer/footer.component';
 import { NavComponent } from './components/template/nav/nav.component';
 
@@ -18,6 +23,7 @@ import { MatCardModule } from '@angular/material/card';
 
 import { UsersComponent } from './views/users/users.component';
 import { CardsComponent } from './views/cards/cards.component';
+import { UserCreateComponent } from './components/user/user-create/user-create.component';
 
 
 
@@ -29,6 +35,7 @@ import { CardsComponent } from './views/cards/cards.component';
     NavComponent,
     UsersComponent,
     CardsComponent,
+    UserCreateComponent,
   ],
   
   imports: [
@@ -38,7 +45,9 @@ import { CardsComponent } from './views/cards/cards.component';
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,
-    MatCardModule
+    MatCardModule,
+    MatButtonModule,
+    MatSnackBarModule
   
   ],
 
