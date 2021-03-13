@@ -16,5 +16,7 @@ export class UsersComponent implements OnInit {
   navigateToUserCreate(): void {
     this.router.navigate(['/users/create'])
   }
+  
+
 
 }

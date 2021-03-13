@@ -20,8 +20,11 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
+import {MatDialogModule} from '@angular/material/dialog';
 
-import { HttpClientModule } from '@angular/common/http'
+
+import { HttpClientModule } from '@angular/common/http';
+import { UserPaymentComponent } from './views/user-payment/user-payment.component'
 
 
 
@@ -35,8 +38,10 @@ import { HttpClientModule } from '@angular/common/http'
     CardsComponent,
     UserCreateComponent,
     UserReadComponent,
+    UserPaymentComponent,
   ],
-  
+  entryComponents: [UserPaymentComponent],
+
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -47,7 +52,8 @@ import { HttpClientModule } from '@angular/common/http'
     MatCardModule,
     MatButtonModule,
     MatSnackBarModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule
   
   ],
 
