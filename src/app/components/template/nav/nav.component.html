@@ -1,13 +1,13 @@
 <mat-sidenav-container class="container">
     <mat-sidenav class="sidenav" mode="side" opened fixedInViewport fixedTopGap="64">
         <mat-nav-list class="nav-list">
-            <a mat-list-item>
+            <a mat-list-item routerLink="">
                 <i class="material-icons">
                     people
                 </i>
                 Usuários
             </a>
-            <a mat-list-item>
+            <a mat-list-item routerLink="/cards">
                 <i class="material-icons">
                     credit_card
                 </i>
@@ -15,4 +15,7 @@
             </a>
         </mat-nav-list>
     </mat-sidenav>
+    <mat-sidenav-content class="content">
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
 </mat-sidenav-container>
