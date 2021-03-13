@@ -1,0 +1,29 @@
+.card {
+    /*background-color: #263224;*/
+    margin-top: 20px;
+}
+
+/* List of Users */
+
+.user {
+    color:  #263224;;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+}
+  
+.user > img {
+    border-radius: 50%;
+    height: 80px;
+    width: 80px;
+}
+  
+.user > .info-wrapper {
+    margin-left: 16px;
+    line-height: 1.5;
+}
+  
+.user > .pay-button {
+    margin-left: auto;
+}
+

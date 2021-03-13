@@ -1,0 +1,18 @@
+<mat-card class="card mat-elevation-z4" color="primary" *ngFor="let user of users">
+    <div class="user">
+        <img [src] = "user.img"/>
+        <div class="info-wrapper">
+            <div class="user-name">
+                {{user.name}}
+            </div>
+
+            <div class="user-id-username">
+                ID: {{user.id}} - Username: {{user.username}}
+            </div>
+        </div>
+
+        <button mat-raised-button class="pay-button">
+            Pagar
+        </button>
+    </div>
+</mat-card>
