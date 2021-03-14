@@ -10,17 +10,17 @@
   align-items: center;
 }
 
-.user > img {
+.user>img {
   border-radius: 50%;
   height: 80px;
   width: 80px;
 }
 
-.user > .info-wrapper {
+.user>.info-wrapper {
   margin-left: 16px;
 }
 
-.user > .pay-button {
+.user>.pay-button {
   margin-left: auto;
 }
 
@@ -62,7 +62,7 @@
   width: 420px;
 }
 
-.modal > .title {
+.modal>.title {
   background: #474971;
   color: #ffffff;
   font-weight: 500;
@@ -70,24 +70,25 @@
   padding: 16px 24px;
 }
 
-.modal > .title > span {
+.modal>.title>span {
   color: #cddc39;
 }
 
-.modal > .content {
+.modal>.content {
   padding: 32px;
   text-align: center;
 }
 
-.modal > .content > input {
+.modal>.content>input {
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 32px;
   height: 48px;
   padding: 0 8px;
+  width: 100%;
 }
 
-.modal > .content > .cards > select {
+.modal>.content>.cards>select {
   background: #fff;
   border: 1px solid #ccc;
   border-radius: 6px;
@@ -96,7 +97,7 @@
   margin-top: 12px;
 }
 
-.modal > .content > button {
+.modal>.content>button {
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 32px;
