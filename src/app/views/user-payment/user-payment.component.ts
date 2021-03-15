@@ -1,29 +1,31 @@
-import { User } from './../../components/user/user.model';
-import { UserService } from './../../components/user/user.service';
-import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { User } from '../../components/user/user.model';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-user-payment',
   templateUrl: './user-payment.component.html',
   styleUrls: ['./user-payment.component.scss']
 })
-
 export class UserPaymentComponent implements OnInit {
 
-  users: User[]
+  cards = [
+    // valid card
+    {
+      card_number: '1111111111111111',
+      cvv: 789,
+      expiry_date: '01/18',
+    },
+    // invalid card
+    {
+      card_number: '4111111111111234',
+      cvv: 123,
+      expiry_date: '01/20',
+    },
+  ];
 
-  constructor( public dialogRef: MatDialogRef<UserPaymentComponent>,
-    private userService: UserService,) { }
+  constructor() { }
 
   ngOnInit() {
-    this.userService.read().subscribe(users => {
-      this.users = users
-    })
-  }
-
-  cancel(): void {
-    this.dialogRef.close();
   }
 
 }

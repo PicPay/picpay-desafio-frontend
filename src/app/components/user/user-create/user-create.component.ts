@@ -16,10 +16,11 @@ export class UserCreateComponent implements OnInit {
 
   createNewUser(): void {
     this.userService.showMessage('Usuário cadastrado com sucesso!')
+    this.router.navigate([''])
   }
 
   cancel(): void {
-    this.router.navigate([''])
+    
   }
 
 }

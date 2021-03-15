@@ -1,0 +1,52 @@
+.header {
+    display: flex;
+    padding: 5px;
+    background-color:#2B513B;
+    margin: -24px;
+    z-index: 0;
+    height: 50PX;
+    margin-bottom: 50px;
+}
+
+.header h1 {
+    display: flex;
+    line-height: 0;
+    margin-top: 30px;
+}
+
+.header .name {
+    margin-left: 5px;
+    display: flex;
+    flex-direction: column;
+    line-height: 0.5;
+}
+
+.header h1 span {
+    display: flex;
+    color: #11C76F;
+}
+
+
+.content-header {
+    display: flex;
+    justify-content:space-between;
+   
+}
+
+
+img {
+    display: flex;
+    border-radius: 50%;
+    height: 80px;
+    width: 80px;
+    margin-left: 10px;
+}
+
+form {
+    width: 100%;
+}
+
+mat-form-field {
+    width: 100%;
+    margin-top: 20px;
+}

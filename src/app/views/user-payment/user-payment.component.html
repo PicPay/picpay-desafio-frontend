@@ -1,5 +1,37 @@
-<h1 mat-dialog-title>Hi {{user.name}}</h1>
+<div class="header">
+  <img src="https://randomuser.me/api/portraits/men/9.jpg" alt="avatar">
+  <div class="name">
+    <h1 mat-dialog-title>
+      <span>Eduardo Santos</span>
+    </h1>
+    <span>@eduardo.santos</span>
+  </div>
+
+</div>
+
+
+<mat-dialog-content>
+  <div class="content-header">
+
+  </div>
+  <form>
+    <mat-form-field>
+      <input matInput placeholder="Varlor R$">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Selecione o cartão</mat-label>
+      <mat-select [(ngModel)]="selectedValue" name="food">
+        <mat-option *ngFor="let card of cards" [value]="card.card_number">
+          {{card.card_number}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+
+</mat-dialog-content>
+
 
 <div mat-dialog-actions>
-  <button mat-button (click)="cancel()">No Thanks</button>
+  <button mat-button (click)="payUser()" color="primary">Pagar</button>
+  <button mat-button (click)="onNoClick()">Cancelar</button>
 </div>

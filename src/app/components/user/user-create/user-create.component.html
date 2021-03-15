@@ -1,2 +1,14 @@
-<button mat-raised-button (click)="createNewUser()" color="primary">Salvar</button>
-<button mat-raised-button (click)="cancel()">Cancelar</button>
+<mat-card>
+    <mat-card-title> Novo Usuário </mat-card-title>
+    <form>
+
+        <mat-form-field>
+            <input matInput placeholder="Nome">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="@username">
+        </mat-form-field>
+    </form>
+    <button mat-raised-button (click)="createNewUser()" color="primary">Salvar</button>
+    <button mat-raised-button (click)="cancel()">Cancelar</button>
+</mat-card>
