@@ -29,7 +29,10 @@ import {MatSelectModule} from '@angular/material/select';
 
 
 import { HttpClientModule } from '@angular/common/http';
-import { UserPaymentComponent } from './views/user-payment/user-payment.component'
+import { UserPaymentComponent } from './views/user-payment/user-payment.component';
+
+import { NgxMaskModule, IConfig } from 'ngx-mask';
+import { NgxCurrencyModule } from 'ngx-currency';
 
 
 
@@ -62,7 +65,9 @@ import { UserPaymentComponent } from './views/user-payment/user-payment.componen
     FormsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    NgxMaskModule.forRoot(),
+    NgxCurrencyModule
   
   ],
 

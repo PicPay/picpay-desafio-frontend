@@ -1,14 +1,12 @@
 <div class="header">
-  <img src="https://randomuser.me/api/portraits/men/9.jpg" alt="avatar">
+  <img [src]="data.img"  alt="avatar">
   <div class="name">
     <h1 mat-dialog-title>
-      <span>Eduardo Santos</span>
+      <span>{{data.name}}</span>
     </h1>
-    <span>@eduardo.santos</span>
+    <span>{{data.username}}</span>
   </div>
-
 </div>
-
 
 <mat-dialog-content>
   <div class="content-header">
@@ -16,7 +14,7 @@
   </div>
   <form>
     <mat-form-field>
-      <input matInput placeholder="Varlor R$">
+      <input matInput currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }">
     </mat-form-field>
     <mat-form-field>
       <mat-label>Selecione o cartão</mat-label>

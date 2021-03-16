@@ -1,5 +1,7 @@
-import { User } from '../../components/user/user.model';
-import { Component, Input, OnInit } from '@angular/core';
+import { User } from './../../components/user/user.model';
+import { HttpClient } from '@angular/common/http';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-user-payment',
@@ -7,6 +9,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./user-payment.component.scss']
 })
 export class UserPaymentComponent implements OnInit {
+
 
   cards = [
     // valid card
@@ -23,9 +26,20 @@ export class UserPaymentComponent implements OnInit {
     },
   ];
 
-  constructor() { }
+
+  constructor(
+    private hhtp: HttpClient,
+    public dialogRef: MatDialogRef<UserPaymentComponent>, 
+  @Inject(MAT_DIALOG_DATA) public data:  User  ) {}
 
   ngOnInit() {
   }
+
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+
 
 }

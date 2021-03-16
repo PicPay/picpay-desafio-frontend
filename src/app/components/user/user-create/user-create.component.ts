@@ -1,6 +1,7 @@
 import { UserService } from './../user.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'
+import { FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-user-create',
@@ -14,13 +15,14 @@ export class UserCreateComponent implements OnInit {
   ngOnInit() {
   }
 
+
   createNewUser(): void {
     this.userService.showMessage('Usuário cadastrado com sucesso!')
     this.router.navigate([''])
   }
 
   cancel(): void {
-    
+    this.router.navigate([''])
   }
 
 }
