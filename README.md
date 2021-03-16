@@ -1,6 +1,6 @@
 # Desafio Front-end PicPay
 
-Esse é meu primeiro contato com Angular e TypeScript, e estou adorando o desafio. Cada passo é extremamente gratificante. Ter a oportunidade de codar e aprender coisas novas me deixa completamente inebriado. Obrigado Picoay, pela oportunidade! 
+Esse é meu primeiro contato com Angular e TypeScript, e estou adorando o desafio. Cada passo é extremamente gratificante. Ter a oportunidade de codar e aprender coisas novas me deixa completamente inebriado. Obrigado Picpay, pela oportunidade! 
 
 ## Setup do projeto
 
