@@ -1,1 +1,13 @@
-<p>users-page works!</p>
+<div class="c-users-page" *ngFor="let user of users">
+  <img src="{{ user.img }}" alt="UserImg" class="c-users-page__user-img" />
+  <div class="c-users-page__user-info">
+    <div class="c-users-page__user-info--name">
+      {{ user.name }}
+    </div>
+    <div class="c-users-page__user-info--id-username">
+      ID: {{ user.id }} - Username: {{ user.username }}
+    </div>
+  </div>
+  <button type="button" class="c-users-page__button-pay">Pagar</button>
+  <div></div>
+</div>
