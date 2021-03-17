@@ -1,0 +1,57 @@
+.c-pay-dialog {
+  background: #fff;
+  width: 420px;
+  border-radius: 15px;
+
+  &__title {
+    background: #474971;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 10px;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 16px 24px;
+
+    &--user-name {
+      color: #cddc39;
+    }
+  }
+
+  &__content {
+    // display: contents;
+    padding: 32px;
+    text-align: center;
+
+    &--value-input {
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 32px;
+      height: 48px;
+      padding: 0 8px;
+    }
+    &--cards {
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 32px;
+      height: 48px;
+      margin-top: 12px;
+    }
+  }
+
+  &__actions {
+    padding: auto;
+    text-align: center; 
+
+    &--cancel-button,
+    &--pay-button {
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 32px;
+      height: 48px;
+      padding: 0 8px;   
+      margin:5px;
+      margin-top: 20px;
+    }
+  }
+}

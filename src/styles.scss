@@ -1,5 +1,5 @@
 * {
-  box-sizing: border-box;  
+  box-sizing: border-box;
 }
 
 html,
@@ -9,5 +9,18 @@ body {
   padding: 0;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.my-custom-dialog .mat-dialog-container {
+  padding: 0 0 10px 0;    
+  overflow: unset;
+  border-radius: 15px;
+}

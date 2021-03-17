@@ -7,6 +7,10 @@
 
   // display: flex;
   // align-items: center;
+  &__dialog .mat-dialog-container {
+    padding: 0;
+    background-color: aqua;
+  }
 
   &__user-list {
     list-style-type: none;
