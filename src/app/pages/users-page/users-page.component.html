@@ -11,7 +11,6 @@
   <button type="button" class="c-users-page__button-pay">Pagar</button>
 </div> -->
 
-
 <!-- Main Page - Users -->
 <div>
   <ul class="c-users-page__user-list">
@@ -25,7 +24,13 @@
           ID: {{ user.id }} - Username: {{ user.username }}
         </div>
       </div>
-      <button type="button" class="c-users-page__button-pay" (click)="onPayDialog()">Pagar</button>
+      <button
+        type="button"
+        class="c-users-page__button-pay"
+        (click)="onPayDialog( user.username )"
+      >
+        Pagar
+      </button>
     </li>
   </ul>
 </div>

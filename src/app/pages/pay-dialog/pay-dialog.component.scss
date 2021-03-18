@@ -41,16 +41,17 @@
 
   &__actions {
     padding: auto;
-    text-align: center; 
+    display: block;
+    text-align: center;
 
     &--cancel-button,
-    &--pay-button {
+    &--confirm-button {
       border: 1px solid #ccc;
       border-radius: 6px;
       font-size: 32px;
       height: 48px;
-      padding: 0 8px;   
-      margin:5px;
+      padding: 0 8px;
+      margin: 5px;
       margin-top: 20px;
     }
   }

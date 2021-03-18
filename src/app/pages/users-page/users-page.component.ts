@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { MatDialog } from "@angular/material";
 import { Observable } from "rxjs";
-import { User } from "src/app/data-access/users/users.interface";
+import { User } from "src/app/data-access/users/interfaces/users.interface";
 import { UsersService } from "src/app/data-access/users/users.service";
 import { PayDialogComponent } from "../pay-dialog/pay-dialog.component";
 
@@ -25,14 +25,17 @@ export class UsersPageComponent implements OnInit {
     });
   }
 
-  public onPayDialog(): void {
-    // let payDialogRef: Observable<PlaceHolder> 
+  public onPayDialog(selectedUsername: string): void {
+    // let payDialogRef: Observable<PlaceHolder>
+
     let payDialogRef = this.dialogModal.open(PayDialogComponent, {
       panelClass: "my-custom-dialog",
+      data: { username: selectedUsername },
     });
 
     payDialogRef.afterClosed().subscribe((response) => {
       console.log("preenchido: ", response);
     });
+    
   }
 }

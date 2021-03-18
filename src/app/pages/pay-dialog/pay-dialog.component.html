@@ -1,7 +1,9 @@
-<div class="c-pay-dialog">
+<!-- <div class="c-pay-dialog">
   <h2 mat-dialog-title class="c-pay-dialog__title">
     Pagamento para
-    <span class="c-pay-dialog__title--user-name">Nome do Usuário</span>
+    <span class="c-pay-dialog__title--user-name">{{
+      selectedUser.username
+    }}</span>
   </h2>
 
   <mat-dialog-content class="c-pay-dialog__content">
@@ -18,7 +20,7 @@
     </div>
   </mat-dialog-content>
 
-  <div class="c-pay-dialog__actions">
+  <mat-dialog-actions class="c-pay-dialog__actions">
     <button
       mat-button
       mat-dialog-close
@@ -35,5 +37,75 @@
     >
       Pagar
     </button>
-  </div>
+  </mat-dialog-actions>
+</div> -->
+
+<div class="c-pay-dialog" *ngIf="transaction === false">
+  <h2 mat-dialog-title class="c-pay-dialog__title">
+    Pagamento para
+    <span class="c-pay-dialog__title--user-name">{{
+      selectedUser.username
+    }}</span>
+  </h2>
+
+  <mat-dialog-content class="c-pay-dialog__content">
+    <input
+      type="number"
+      placeholder="R$ 0,00"
+      class="c-pay-dialog__content--value-input"
+    />
+
+    <div>
+      <select class="c-pay-dialog__content--cards">
+        <option selected>Cartão com final 0123</option>
+      </select>
+    </div>
+  </mat-dialog-content>
+
+  <mat-dialog-actions class="c-pay-dialog__actions">
+    <button
+      mat-button
+      mat-dialog-close="false"
+      type="button"
+      class="c-pay-dialog__actions--cancel-button"
+    >
+      Cancelar
+    </button>
+    <button
+      mat-raised-button
+      type="button"
+      class="c-pay-dialog__actions--confirm-button"
+      (click)="transaction = true"
+    >
+      Pagar
+    </button>
+  </mat-dialog-actions>
+</div>
+
+<div *ngIf="transaction === true">
+  <h2 mat-dialog-title class="c-pay-dialog__title">Recibo de pagamento</h2>
+
+  <mat-dialog-content class="c-pay-dialog__content">
+    <div>O pagamento foi concluido com sucesso</div>
+    <div>O pagamento não foi concluido com sucesso</div>
+  </mat-dialog-content>
+
+  <mat-dialog-actions class="c-pay-dialog__actions">
+    <button
+      mat-button
+      type="button"
+      class="c-pay-dialog__actions--cancel-button"      
+      (click)="transaction = false"
+    >
+      Retornar
+    </button>
+    <button
+      mat-raised-button
+      type="button"
+      class="c-pay-dialog__actions--confirm-button"
+      mat-dialog-close="false"
+    >
+      OK
+    </button>
+  </mat-dialog-actions>
 </div>
