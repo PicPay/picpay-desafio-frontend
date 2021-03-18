@@ -33,6 +33,8 @@ import { UserPaymentComponent } from './views/user-payment/user-payment.componen
 
 import { NgxMaskModule, IConfig } from 'ngx-mask';
 import { NgxCurrencyModule } from 'ngx-currency';
+import { CardCreateComponent } from './components/card/card-create/card-create.component';
+import { CardReadComponent } from './components/card/card-read/card-read.component';
 
 
 
@@ -47,6 +49,8 @@ import { NgxCurrencyModule } from 'ngx-currency';
     UserCreateComponent,
     UserReadComponent,
     UserPaymentComponent,
+    CardCreateComponent,
+    CardReadComponent,
   ],
   entryComponents: [UserPaymentComponent],
 
