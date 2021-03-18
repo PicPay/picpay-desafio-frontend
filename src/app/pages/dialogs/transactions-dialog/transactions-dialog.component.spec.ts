@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PayDialogComponent } from './pay-dialog.component';
+import { TransactionsDialogComponent } from './transactions-dialog.component';
 
 describe('PayDialogComponent', () => {
-  let component: PayDialogComponent;
-  let fixture: ComponentFixture<PayDialogComponent>;
+  let component: TransactionsDialogComponent;
+  let fixture: ComponentFixture<TransactionsDialogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PayDialogComponent ]
+      declarations: [ TransactionsDialogComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PayDialogComponent);
+    fixture = TestBed.createComponent(TransactionsDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
