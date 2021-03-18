@@ -8,7 +8,7 @@ import { User } from "src/app/data-access/users/interfaces/users.interface";
   styleUrls: ["./pay-dialog.component.scss"],
 })
 export class PayDialogComponent implements OnInit {
-  public transaction:boolean = false;
+  // public transaction:boolean = false;
 
   constructor(
     // public payDialogRef: MatDialogRef<PayDialogComponent>,

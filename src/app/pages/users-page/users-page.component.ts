@@ -3,7 +3,7 @@ import { MatDialog } from "@angular/material";
 import { Observable } from "rxjs";
 import { User } from "src/app/data-access/users/interfaces/users.interface";
 import { UsersService } from "src/app/data-access/users/users.service";
-import { PayDialogComponent } from "../pay-dialog/pay-dialog.component";
+import { PayDialogComponent } from "../dialogs/pay-dialog/pay-dialog.component";
 
 @Component({
   selector: "app-users-page",
@@ -34,8 +34,13 @@ export class UsersPageComponent implements OnInit {
     });
 
     payDialogRef.afterClosed().subscribe((response) => {
-      console.log("preenchido: ", response);
+      console.log(response);
+      if (response === "true") {
+        this.dialogModal.open(PayDialogComponent, {
+          panelClass: "my-custom-dialog",
+          data: { username: selectedUsername },
+        });
+      }
     });
-    
   }
 }
