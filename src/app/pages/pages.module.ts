@@ -13,7 +13,7 @@ import { MatButtonModule, MatDialogModule } from "@angular/material";
     TransactionsDialogComponent,
     TransactionsConfirmationDialogComponent,
   ],
-  entryComponents: [TransactionsDialogComponent],
+  entryComponents: [TransactionsDialogComponent, TransactionsConfirmationDialogComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,

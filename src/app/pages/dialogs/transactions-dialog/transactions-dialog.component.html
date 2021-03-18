@@ -1,31 +1,31 @@
-<div class="c-pay-dialog">
-  <h2 mat-dialog-title class="c-pay-dialog__title">
+<div class="c-transactions-dialog">
+  <h2 mat-dialog-title class="c-transactions-dialog__title">
     Pagamento para
-    <span class="c-pay-dialog__title--user-name">{{
+    <span class="c-transactions-dialog__title--user-name">{{
       selectedUser.username
     }}</span>
   </h2>
 
-  <mat-dialog-content class="c-pay-dialog__content">
+  <mat-dialog-content class="c-transactions-dialog__content">
     <input
       type="number"
       placeholder="R$ 0,00"
-      class="c-pay-dialog__content--value-input"
+      class="c-transactions-dialog__content--value-input"
     />
 
     <div>
-      <select class="c-pay-dialog__content--cards">
+      <select class="c-transactions-dialog__content--cards">
         <option selected>Cartão com final 0123</option>
       </select>
     </div>
   </mat-dialog-content>
 
-  <mat-dialog-actions class="c-pay-dialog__actions">
+  <mat-dialog-actions class="c-transactions-dialog__actions">
     <button
       mat-button
       mat-dialog-close="false"
       type="button"
-      class="c-pay-dialog__actions--cancel-button"
+      class="c-transactions-dialog__actions--cancel-button"
     >
       Cancelar
     </button>
@@ -33,7 +33,7 @@
       mat-raised-button
       mat-dialog-close="true"
       type="button"
-      class="c-pay-dialog__actions--confirm-button"
+      class="c-transactions-dialog__actions--confirm-button"
     >
       Pagar
     </button>

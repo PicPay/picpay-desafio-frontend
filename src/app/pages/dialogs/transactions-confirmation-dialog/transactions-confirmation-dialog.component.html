@@ -1,1 +1,29 @@
-<p>transaction-confirmation-dialog works!</p>
+<div class="c-transactions-confirmation-dialog">
+  <h2 mat-dialog-title class="c-transactions-confirmation-dialog__title">
+    Recibo de pagamento
+  </h2>
+
+  <mat-dialog-content class="c-transactions-confirmation-dialog__content">
+    <div>O pagamento foi concluido com sucesso</div>
+    <div>O pagamento não foi concluido com sucesso</div>
+  </mat-dialog-content>
+
+  <mat-dialog-actions class="c-transactions-confirmation-dialog__actions">
+    <button
+      mat-button
+      type="button"
+      class="c-transactions-confirmation-dialog__actions--cancel-button"
+      (click)="transaction = false"
+    >
+      Retornar
+    </button>
+    <button
+      mat-raised-button
+      type="button"
+      class="c-transactions-confirmation-dialog__actions--confirm-button"
+      mat-dialog-close="false"
+    >
+      OK
+    </button>
+  </mat-dialog-actions>
+</div>

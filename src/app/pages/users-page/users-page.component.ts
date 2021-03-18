@@ -3,6 +3,7 @@ import { MatDialog } from "@angular/material";
 import { Observable } from "rxjs";
 import { User } from "src/app/data-access/users/interfaces/users.interface";
 import { UsersService } from "src/app/data-access/users/users.service";
+import { TransactionsConfirmationDialogComponent } from "../dialogs/transactions-confirmation-dialog/transactions-confirmation-dialog.component";
 import { TransactionsDialogComponent } from "../dialogs/transactions-dialog/transactions-dialog.component";
 
 @Component({
@@ -36,7 +37,7 @@ export class UsersPageComponent implements OnInit {
     payDialogRef.afterClosed().subscribe((response) => {
       console.log(response);
       if (response === "true") {
-        this.dialogModal.open(TransactionsDialogComponent, {
+        this.dialogModal.open(TransactionsConfirmationDialogComponent, {
           panelClass: "my-custom-dialog",
           data: { username: selectedUsername },
         });
