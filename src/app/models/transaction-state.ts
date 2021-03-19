@@ -1,6 +1,13 @@
-export enum TransactionState {
+import { User } from "./user";
+
+export enum TransactionStage {
     noTransaction = 'noTransaction',
-    onTransaction = 'paying',
+    onTransaction = 'onTransaction',
     transactionSucceeded = 'transactionSucceeded',
     transactionFailed = 'transactionFailed'
+}
+
+export class TransactionState {
+    phase: TransactionStage;
+    user: User;
 }

@@ -1,9 +1,14 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { takeWhile } from 'rxjs/operators';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { takeWhile, tap } from 'rxjs/operators';
 
 import { TransactionService } from 'src/app/services/transaction-service/transaction.service';
 
-import { TransactionState } from 'src/app/models/transaction-state';
+import { TransactionStage } from 'src/app/models/transaction-state';
+import { User } from 'src/app/models/user';
+import { Card } from 'src/app/models/card';
+import { uReverse } from 'src/app/util/utilFunctions';
+import { TransactionPayload } from 'src/app/models/transaction-payload';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-transaction',
@@ -12,38 +17,100 @@ import { TransactionState } from 'src/app/models/transaction-state';
 })
 export class TransactionComponent implements OnInit, OnDestroy {
   componentIsActive: boolean;
-  transactionState: TransactionState;
 
-  constructor(private transactionService: TransactionService) { 
-    this.componentIsActive = true;
+  @Input() cards: Card[];
+  transactionStage: TransactionStage;
+  transactionUser: User; 
+
+  transactionForm: FormGroup;
+
+  constructor (
+    public transactionService: TransactionService,
+    private formBuilder: FormBuilder
+  ) { 
+      this.componentIsActive = true;
   }
 
   ngOnInit() {
     this.transactionService
-      .getTransactionState()
+      .getTransactionStage()
       .pipe(
         takeWhile( () => this.componentIsActive )
       )
       .subscribe({
-        next: transactionState => this.transactionState = transactionState
-      })
+        next: transactionState => this.transactionStage = transactionState
+      });
+
+    this.transactionService
+      .getTransactionUser()
+      .pipe(
+        takeWhile( () => this.componentIsActive )
+      )
+      .subscribe({
+        next: transactionUser => this.transactionUser = transactionUser
+      });
+    
+    const defaultCard = this.cards.find( card => this.endCharactersOf(card.card_number) === '1234'  )
+    this.transactionForm = this.formBuilder
+      .group({
+        value: [0, [Validators.required] ],
+        card: [defaultCard , [Validators.required] ]
+      });
   }
 
-  isTransactionProcessInCourse(): boolean {
-    return this.transactionState !== TransactionState.noTransaction 
-  }
   isOnTransaction(): boolean {
-    return this.transactionState === TransactionState.onTransaction
+    return this.transactionStage === TransactionStage.onTransaction
   }
   isTransactionSucceeded(): boolean {
-    return this.transactionState === TransactionState.transactionSucceeded
+    return this.transactionStage === TransactionStage.transactionSucceeded
   }
   isTransactionFailed(): boolean {
-    return this.transactionState === TransactionState.transactionFailed
+    return this.transactionStage === TransactionStage.transactionFailed
+  }
+
+  endCharactersOf(word: string) {
+    return uReverse(uReverse(word).substr(0, 4));
   }
 
   ngOnDestroy() {
     this.componentIsActive = false;
   }
+
+  pay() {
+    if(this.transactionForm.valid) {
+      console.log('[transaction.component.ts] transactionForm.value : ', this.transactionForm.value);
+
+      const { value: paymentValue, card } = JSON.parse(JSON.stringify(this.transactionForm.value)) as { value: number; card: Card };
+      const { id: userId } = this.transactionUser;
+
+      if(card.card_number !== '4111111111111234') {
+        const payload = {
+          ...card,
+          value: paymentValue,
+          destination_user_id: userId
+        } as TransactionPayload;
+
+        this.transactionService
+          .processTransaction(payload)
+          .pipe(
+            tap( res => console.log(res) )
+          )
+          .subscribe({
+            next: () => this.transactionService.competeTransactionSucceeded()
+          });
+      } else {
+        this.transactionService.completeTransactionFailed();
+        console.error('A transação falhou, visto que foi utilizado um cartão inválido.');
+      }
+    } else {
+      this.transactionForm.markAsTouched();
+      this.transactionForm.updateValueAndValidity();
+    }
+  }
+
+  // testChanges(event) {
+  //   console.log('[transaction.component] ', event);
+  //   console.log('[transaction.component] ', this.transactionForm.value);
+  // }
 
 }

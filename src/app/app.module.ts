@@ -3,18 +3,22 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { UsersPaymentComponent } from './components/users-payment/users-payment.component';
+import { UsersListComponent } from './components/users-list/users-list.component';
 import { TransactionComponent } from './components/transaction/transaction.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrlCurrencyMaskDirective } from './util/directives/brl-currency-mask.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UsersPaymentComponent,
-    TransactionComponent
+    UsersListComponent,
+    TransactionComponent,
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,3 +1,6 @@
-<app-users-payment></app-users-payment>
+<app-users-list></app-users-list>
 
-<app-transaction></app-transaction>
+<app-transaction
+    *ngIf="isTransactionInitiated()"
+    [cards]="cards"
+></app-transaction>

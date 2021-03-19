@@ -1,17 +1,60 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { takeWhile } from 'rxjs/operators';
+import { Card } from './models/card';
+import { TransactionStage } from './models/transaction-state';
 
-import { AppService } from './services/app-service/app.service';
 import { TransactionService } from './services/transaction-service/transaction.service';
-import { UsersPaymentService } from './services/users-payment-service/users-payment.service';
+import { UsersService } from './services/users-service/users.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  providers: [ AppService, UsersPaymentService, TransactionService ]
+  providers: [ UsersService, TransactionService ]
 })
-export class AppComponent {
-  title = 'Desafio Picpay Front-end';
+export class AppComponent implements OnInit, OnDestroy {
+  // TODO: Create a way of closing the modal (also applying it to clicking the backdrop)
+  isComponentActive: boolean;
 
-  
+  cards: Card[];
+  transactionStage: TransactionStage;
+
+  constructor(private transactionService: TransactionService) {
+
+    this.cards = [
+      // valid card
+      {
+        card_number: '1111111111111111',
+        cvv: 789,
+        expiry_date: '01/18',
+      },
+      // invalid card
+      {
+        card_number: '4111111111111234',
+        cvv: 123,
+        expiry_date: '01/20',
+      },
+    ];
+
+    this.isComponentActive = true;
+  }
+
+  ngOnInit() {
+    this.transactionService
+      .getTransactionStage()
+      .pipe( 
+        takeWhile( () => this.isComponentActive )
+      )
+      .subscribe({
+        next: transactionStage => this.transactionStage = transactionStage 
+      })
+  }
+
+  isTransactionInitiated() {
+    return this.transactionStage !== TransactionStage.noTransaction
+  }
+
+  ngOnDestroy() {
+    this.isComponentActive = false;
+  }
 }

@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  mockApi: 'https://www.mocky.io/v2'
+  mockApiV2: 'https://www.mocky.io/v2',
+  mockApiV3: 'https://www.mocky.io/v3'
 };
 
 /*

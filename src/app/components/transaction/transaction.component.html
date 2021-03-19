@@ -1,25 +1,55 @@
-<div *ngIf="isTransactionProcessInCourse()" class="modal-backdrop">
+<div class="modal-backdrop">
     <div *ngIf="isOnTransaction()" class="modal">
-        <div class="title">Pagamento para <span>Nome do Usuário</span></div>
+        <div class="title">
+            <span>Pagamento para <span class="user-name">{{transactionUser.name}}</span></span>
+            <span 
+             class="close"
+             (click)="transactionService.endTransaction()">
+               x
+           </span>
+        </div>
 
-        <div class="content">
-            <input type="number" placeholder="R$ 0,00" />
+        <form 
+         class="content"
+         [formGroup]="transactionForm">
+
+            <input 
+             required
+             type="number"
+             placeholder="R$ 0,00" 
+             formControlName="value"/>
 
             <div class="cards">
-                <select>
-                    <option selected>Cartão com final 0123</option>
+                <select
+                 required
+                 formControlName="card">
+                    <option
+                     *ngFor="let card of cards; let index = index;"
+                     [ngValue]="card">
+                        Cartão com final {{ endCharactersOf(card.card_number) }}
+                    </option>
                 </select>
             </div>
 
-            <button type="button" class="pay-button">
-                Pagar
-            </button>
-        </div>
+            <div class="footer">
+                <button 
+                 type="button"
+                 class="pay-button"
+                 (click)="pay()">
+                    Pagar
+                </button>
+            </div>
+        </form>
     </div>
 
     <div *ngIf="isTransactionSucceeded() || isTransactionFailed()" class="modal">
         <div class="title">
-            Recibo de pagamento
+            <span>Recibo de pagamento</span>
+            <span 
+             class="close"
+             (click)="transactionService.endTransaction()">
+                x
+            </span>
         </div>
 
         <div *ngIf="isTransactionSucceeded()" class="content">
