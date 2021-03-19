@@ -1,3 +1,5 @@
+$responsive-breakpoint: 768px;
+
 $primary-palette: (
   "main": #21c25e,
   "light": #66f68d,
@@ -19,3 +21,17 @@ $secondary-palette: (
     "dark": #ffffff,
   ),
 );
+
+@function color($palette, $variant: "main") {
+  @return map-get($palette, $variant);
+}
+
+@function text-color($palette, $variant: "main") {
+  @return map-get(map-get($palette, "contrast"), $variant);
+}
+
+@mixin desktop-up {
+  @media (min-width: $responsive-breakpoint) {
+    @content;
+  }
+}
