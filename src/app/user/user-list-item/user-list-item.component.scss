@@ -1,0 +1,50 @@
+@import "../../../variables";
+
+.user {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+
+  @include desktop-up {
+    padding: 20px 30px;
+  }
+}
+
+.user > img {
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+
+  @include desktop-up {
+    height: 80px;
+    width: 80px;
+  }
+}
+
+.user > .info-wrapper {
+  margin-left: 16px;
+}
+
+.user-name {
+  margin: 0;
+  font-size: 0.8em;
+  color: color($secondary-palette);
+
+  @include desktop-up {
+    font-size: large;
+  }
+}
+
+.user-username {
+  font-size: 0.7em;
+  color: color($secondary-palette, "light");
+
+  @include desktop-up {
+    font-size: 0.8em;
+  }
+}
+
+.user > .pay-button {
+  box-shadow: none;
+  margin-left: auto;
+}
