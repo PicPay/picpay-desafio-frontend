@@ -1,6 +1,8 @@
 <app-usuario-listagem 
+    (showModal)="onOpenModal($event)"
     [users]="users$ | async"></app-usuario-listagem>
 
 <app-usuario-pagamento 
     *ngIf="showModal"
+    (closeModal)="onCloseModal($event)"
     [cards]="cards"></app-usuario-pagamento>

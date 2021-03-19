@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, Output, EventEmitter } from "@angular/core";
 import { UsuarioResponse } from "../../models/usuario-response.model";
 
 @Component({
@@ -9,6 +9,11 @@ import { UsuarioResponse } from "../../models/usuario-response.model";
 export class UsuarioListagemComponent {
 
     @Input() users: Array<UsuarioResponse>;
+    @Output() showModal = new EventEmitter<void>();
 
     constructor() {}
+
+    onShowModal(): void {
+        this.showModal.emit();
+    }
 }

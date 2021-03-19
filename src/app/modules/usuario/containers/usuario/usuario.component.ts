@@ -15,7 +15,6 @@ export class UsuarioComponent implements OnInit {
     users$: Observable<Array<UsuarioResponse>>;
     cards: Array<any>;
 
-
     constructor(private usuarioService: UsuarioService) {}
     
     ngOnInit(): void {
@@ -26,13 +25,14 @@ export class UsuarioComponent implements OnInit {
 
     obterListaDeCartoes(): void {
         this.usuarioService.obterCartoesUsuario()
-            .subscribe(response => {
-                this.cards = response;
-            })
+            .subscribe(response => this.cards = response);
     }
 
-
-    openModal(): void {
+    onOpenModal(): void {
         this.showModal = true;
+    }
+
+    onCloseModal(): void {
+        this.showModal = false;
     }
 }

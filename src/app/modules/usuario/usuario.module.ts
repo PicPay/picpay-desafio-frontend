@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { UsuarioListagemComponent } from './components/usuario-listagem/usuario-listagem.component';
@@ -17,6 +18,7 @@ import { usuarioRoutes } from './usuario.routes';
   ],
   imports: [
     CommonModule,
+    FormsModule,
     RouterModule.forChild(usuarioRoutes)
   ],
   providers: [
