@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatDialog } from "@angular/material";
-import { Observable } from "rxjs";
+import { TransactionsService } from "src/app/data-access/transactions/transactions.service";
 import { User } from "src/app/data-access/users/interfaces/users.interface";
 import { UsersService } from "src/app/data-access/users/users.service";
 import { TransactionsConfirmationDialogComponent } from "../dialogs/transactions-confirmation-dialog/transactions-confirmation-dialog.component";
@@ -16,7 +17,9 @@ export class UsersPageComponent implements OnInit {
 
   constructor(
     private usersService: UsersService,
-    public dialogModal: MatDialog
+    private transacionsService: TransactionsService,
+    public dialogModal: MatDialog,
+    private formBuilder: FormBuilder
   ) {}
 
   ngOnInit(): void {
@@ -26,22 +29,38 @@ export class UsersPageComponent implements OnInit {
     });
   }
 
-  public onPayDialog(selectedUsername: string): void {
+  public onClickTransactionsDialog(
+    selectedUsername: string,
+    selectedID: number
+  ): void {
     // let payDialogRef: Observable<PlaceHolder>
 
-    let payDialogRef = this.dialogModal.open(TransactionsDialogComponent, {
-      panelClass: "my-custom-dialog",
-      data: { username: selectedUsername },
-    });
+    const transactionsDialogRef = this.dialogModal.open(
+      TransactionsDialogComponent,
+      {
+        panelClass: "my-custom-dialog",
+        data: { username: selectedUsername },
+      }
+    );
 
-    payDialogRef.afterClosed().subscribe((response) => {
+    transactionsDialogRef.afterClosed().subscribe((response) => {
       console.log(response);
       if (response === "true") {
-        this.dialogModal.open(TransactionsConfirmationDialogComponent, {
-          panelClass: "my-custom-dialog",
-          data: { username: selectedUsername },
-        });
+        this.onPayTransactionDialog();
       }
     });
+  }
+  public onPayTransactionDialog(): void {
+    this.transacionsService.postTransaction().subscribe((response) => {
+      console.log(response.success);
+
+      this.dialogModal.open(TransactionsConfirmationDialogComponent, {
+        panelClass: "my-custom-dialog",
+        data: { transactionApproval: response.success },
+      });
+      console.log(response);
+    });
+
+    console.log("show de bola");
   }
 }

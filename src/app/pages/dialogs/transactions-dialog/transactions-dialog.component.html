@@ -1,3 +1,4 @@
+<!-- Transaction Form Dialog -->
 <div class="c-transactions-dialog">
   <h2 mat-dialog-title class="c-transactions-dialog__title">
     Pagamento para
@@ -7,19 +8,33 @@
   </h2>
 
   <mat-dialog-content class="c-transactions-dialog__content">
-    <input
-      type="number"
-      placeholder="R$ 0,00"
-      class="c-transactions-dialog__content--value-input"
-    />
+    <form [formGroup]="myForm">
+      <mat-form-field>
+        <mat-label>Valor</mat-label>
+        <input
+          required
+          matInput
+          type="number"
+          min="0"
+          placeholder="R$ 0,00"
+          formControlName="amount"
+          class="c-transactions-dialog__content--value-input"
+        />
+      </mat-form-field>
 
-    <div>
-      <select class="c-transactions-dialog__content--cards">
-        <option selected>Cartão com final 0123</option>
-      </select>
-    </div>
+      <mat-form-field>
+        <mat-label>Cartão</mat-label>
+        <mat-select
+          required
+          formControlName="cards"
+          class="c-transactions-dialog__content--cards"
+        >
+          <mat-option value="cards">First option</mat-option>
+          <mat-option value="cards">Second option</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
   </mat-dialog-content>
-
   <mat-dialog-actions class="c-transactions-dialog__actions">
     <button
       mat-button
@@ -33,6 +48,7 @@
       mat-raised-button
       mat-dialog-close="true"
       type="button"
+      [disabled]="!myForm.valid"
       class="c-transactions-dialog__actions--confirm-button"
     >
       Pagar
