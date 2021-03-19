@@ -1,0 +1,6 @@
+<app-usuario-listagem 
+    [users]="users$ | async"></app-usuario-listagem>
+
+<app-usuario-pagamento 
+    *ngIf="showModal"
+    [cards]="cards"></app-usuario-pagamento>
