@@ -1,0 +1,5 @@
+<mat-spinner class="loading" diameter="64" *ngIf="loading"></mat-spinner>
+<ng-container *ngFor="let user of users">
+    <app-user-list-item [user]="user"></app-user-list-item>
+    <mat-divider></mat-divider>
+</ng-container>
