@@ -9,11 +9,14 @@ import { UsuarioResponse } from "../../models/usuario-response.model";
 export class UsuarioListagemComponent {
 
     @Input() users: Array<UsuarioResponse>;
+    
     @Output() showModal = new EventEmitter<void>();
+    @Output() pagarUsuario = new EventEmitter<number>();
 
     constructor() {}
 
-    onShowModal(): void {
+    onPagarUsuario(id: any): void {
+        this.pagarUsuario.emit(id);
         this.showModal.emit();
     }
 }

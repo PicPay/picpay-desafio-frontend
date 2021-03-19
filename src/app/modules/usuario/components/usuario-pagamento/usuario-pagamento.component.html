@@ -9,11 +9,14 @@
 
             <input 
                 type="number" 
-                placeholder="R$ 0,00" />
+                placeholder="R$ 0,00"
+                [(ngModel)]="payload.value" />
 
             <div class="cards">
-                <select>
-                    <option *ngFor="let card of cards"> Cartão com final {{ card.card_number }} </option>
+                <select 
+                    [ngModel]="payload.card_number" 
+                    (change)="onselecionarCartao($event.target.value)">
+                    <option *ngFor="let card of cards" [value]="card.card_number"> Cartão com final {{ card.card_number }} </option>
                 </select>
             </div>
 
@@ -24,7 +27,8 @@
 
             <button 
                 type="button" 
-                class="pay-button"> Pagar </button>
+                class="pay-button"
+                (click)="onefetuarPagamento($event)"> Pagar </button>
         </div>
     </div>
 
