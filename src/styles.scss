@@ -1,10 +1,53 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import "~@angular/material/theming";
+
+// Plus imports for other components in your app.
+@import "variables";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+$typography: mat-typography-config(
+  $font-family: '"Montserrat", sans-serif',
+);
+
+@include mat-core($typography);
+
+$picpay-desafio-frontend-primary: mat-palette(
+  $primary-palette,
+  "main",
+  "light",
+  "dark"
+);
+$picpay-desafio-frontend-accent: mat-palette(
+  $secondary-palette,
+  "main",
+  "light",
+  "dark"
+);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$picpay-desafio-frontend-theme: mat-light-theme(
+  $picpay-desafio-frontend-primary,
+  $picpay-desafio-frontend-accent
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($picpay-desafio-frontend-theme);
+
 * {
   box-sizing: border-box;
 }
 
 html,
 body {
-  font-family: sans-serif;
+  height: 100%;
   margin: 0;
   padding: 0;
+  background: #ececec;
+  font-family: 'Montserrat', sans-serif;
 }
