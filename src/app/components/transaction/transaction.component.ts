@@ -6,7 +6,7 @@ import { TransactionService } from 'src/app/services/transaction-service/transac
 import { TransactionStage } from 'src/app/models/transaction-state';
 import { User } from 'src/app/models/user';
 import { Card } from 'src/app/models/card';
-import { uReverse } from 'src/app/util/utilFunctions';
+import { uReverse } from 'src/app/util/functions/generalUtilities';
 import { TransactionPayload } from 'src/app/models/transaction-payload';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -56,6 +56,11 @@ export class TransactionComponent implements OnInit, OnDestroy {
         value: [0, [Validators.required] ],
         card: [defaultCard , [Validators.required] ]
       });
+
+    this.transactionForm.valueChanges.subscribe( e  => {
+      // console.log('valueChanges event: ', e);
+      console.log('this.transactionForm.value: ', this.transactionForm.value);
+    })
   }
 
   isOnTransaction(): boolean {
@@ -107,10 +112,5 @@ export class TransactionComponent implements OnInit, OnDestroy {
       this.transactionForm.updateValueAndValidity();
     }
   }
-
-  // testChanges(event) {
-  //   console.log('[transaction.component] ', event);
-  //   console.log('[transaction.component] ', this.transactionForm.value);
-  // }
 
 }

@@ -13,6 +13,7 @@ import { BrlCurrencyMaskDirective } from './util/directives/brl-currency-mask.di
     AppComponent,
     UsersListComponent,
     TransactionComponent,
+    BrlCurrencyMaskDirective
   ],
   imports: [
     BrowserModule,
