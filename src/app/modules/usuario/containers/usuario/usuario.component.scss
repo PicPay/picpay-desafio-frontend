@@ -1,0 +1,14 @@
+.usuario__conteudo {
+    width: 30rem;
+    position: relative;
+    top: -100px;
+    left: 50px;
+}
+
+@media(max-width: 720px) {
+    .usuario__conteudo {
+        width: 100%;
+        top: -10px;
+        left: 0;
+    }
+}

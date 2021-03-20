@@ -11,3 +11,61 @@ body {
   padding: 0;
   background: $cinza-fundo;
 }
+
+.modal__backdrop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  height: 100vh;
+  width: 100vw;
+
+  &.hidden {
+    display: none;
+  }
+
+  &:after {
+    content: "";
+  
+    background: rgba(0, 0, 0, 0.5);
+  
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+  }
+}
+
+input, select {
+  border: 1px solid $cinza-fundo;
+  border-radius: 20px;
+  
+  padding: 10px;
+  margin-bottom: 15px;
+
+  font-size: 22px;
+  
+  height: 48px;
+  width: 100%;
+}
+
+::-webkit-scrollbar-track {
+  background-color: $cinza-fundo;
+  width: 4px;
+}
+
+::-webkit-scrollbar {
+  border-radius: 20px;
+  width: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $verde-principal;
+}

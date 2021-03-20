@@ -1,18 +1,20 @@
-<app-usuario-listagem 
-    (abrirModal)="onAbrirModal($event)"
-    (pagarUsuario)="onPagarUsuario($event)"
-    [usuarios]="usuarios$ | async"></app-usuario-listagem>
+<section class="usuario__conteudo">
+    <app-usuario-listagem 
+        (abrirModal)="onAbrirModal($event)"
+        (pagarUsuario)="onPagarUsuario($event)"
+        [usuarios]="usuarios$ | async"></app-usuario-listagem>
 
-<app-usuario-pagamento 
-    *ngIf="abrirModal"
-    [nomeUsuario]="nomeUsuario"
-    [pagamento]="pagamento"
-    (efetuarPagamento)="onEfetuarPagamento($event)"
-    (fecharModal)="onFecharModal($event)"
-    (selecionarCartao)="onSelecionarCartao($event)"
-    [cartoes]="cartoes"></app-usuario-pagamento>
+    <app-usuario-pagamento 
+        *ngIf="abrirModal"
+        [nomeUsuario]="nomeUsuario"
+        [pagamento]="pagamento"
+        (efetuarPagamento)="onEfetuarPagamento($event)"
+        (fecharModal)="onFecharModal($event)"
+        (selecionarCartao)="onSelecionarCartao($event)"
+        [cartoes]="cartoes"></app-usuario-pagamento>
 
-<app-usuario-notificacao 
-    *ngIf="abrirNotificacao"
-    (fecharNotificacao)="onFecharNotificacao($event)"
-    [resultadoPagamentoResponse]="resultadoPagamentoResponse"></app-usuario-notificacao>
+    <app-usuario-notificacao 
+        *ngIf="abrirNotificacao"
+        (fecharNotificacao)="onFecharNotificacao($event)"
+        [resultadoPagamentoResponse]="resultadoPagamentoResponse"></app-usuario-notificacao>
+</section>

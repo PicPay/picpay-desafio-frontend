@@ -1,0 +1,33 @@
+@import '../assets/styles/_cores';
+
+.conteudo__princial {
+
+    header {
+        height: 140px;
+        background: url("../assets/logo_picpay.png") no-repeat $verde-principal;
+        background-position: right;
+        background-size: 300px;
+    }
+
+    main {
+
+        background: url("../assets/avatar-pague-tudo.png") no-repeat $cinza-fundo;
+        background-position: right;
+        background-size: 500px;
+        height: 85vh;
+    }
+}
+
+@media(max-width: 720px) {
+    .conteudo__princial {
+        
+        header {
+            background-position: center;
+        }
+
+        main {
+            background-image: none;
+            background: $cinza-fundo;
+        }
+    }
+}

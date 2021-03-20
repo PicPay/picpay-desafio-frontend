@@ -1,8 +1,14 @@
 @import '../../../../../assets/styles/_cores';
 
+
 .usuarios {
   width: 100%;
+  height: 85vh;
+  overflow: auto;
   background: $branco;
+  border-radius: 10px;
+  padding-top: 10px;
+  
 
   &__item {
     width: 100%;
@@ -12,6 +18,7 @@
     align-items: center;
     padding: 0 15px;
     margin-bottom: 1px;
+    background: $branco;
   }
 
   &__container {
