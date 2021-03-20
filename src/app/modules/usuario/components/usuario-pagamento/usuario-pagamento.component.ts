@@ -1,5 +1,6 @@
 import { Component, Input, EventEmitter, Output } from "@angular/core";
-import { TransactionPayload } from "../../models/transaction-payload.model";
+import { Cartao } from "../../models/cartao.model";
+import { Pagamento } from "../../models/pagamento.model";
 
 @Component({
     selector: 'app-usuario-pagamento',
@@ -9,24 +10,24 @@ import { TransactionPayload } from "../../models/transaction-payload.model";
 export class UsuarioPagamentoComponent {
 
     @Input() userName: string = 'Nome do Usuário';
-    @Input() cards: Array<any>;
-    @Input() payload: TransactionPayload;
+    @Input() cartoes: Array<Cartao>;
+    @Input() pagamento: Pagamento;
 
-    @Output() closeModal = new EventEmitter<void>();
+    @Output() fecharModal = new EventEmitter<void>();
     @Output() efetuarPagamento = new EventEmitter<void>();
     @Output() selecionarCartao = new EventEmitter<number>();
 
     constructor() {}
 
-    oncloseModal(): void {
-        this.closeModal.emit();
+    onFecharModal(): void {
+        this.fecharModal.emit();
     }
 
-    onefetuarPagamento() {
+    onEfetuarPagamento() {
         this.efetuarPagamento.emit();
     }
 
-    onselecionarCartao(cardNumber: number) {
+    onSelecionarCartao(cardNumber: number) {
         this.selecionarCartao.emit(cardNumber);
     }
 }

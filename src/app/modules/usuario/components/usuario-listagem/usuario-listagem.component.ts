@@ -1,5 +1,6 @@
-import { Component, Input, Output, EventEmitter } from "@angular/core";
-import { UsuarioResponse } from "../../models/usuario-response.model";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
+
+import { UsuarioResponse } from "../../models/response/usuario-response.model";
 
 @Component({
     selector: 'app-usuario-listagem',
@@ -8,15 +9,15 @@ import { UsuarioResponse } from "../../models/usuario-response.model";
 })
 export class UsuarioListagemComponent {
 
-    @Input() users: Array<UsuarioResponse>;
+    @Input() usuarios: Array<UsuarioResponse>;
     
-    @Output() showModal = new EventEmitter<void>();
+    @Output() abrirModal = new EventEmitter<void>();
     @Output() pagarUsuario = new EventEmitter<number>();
 
     constructor() {}
 
-    onPagarUsuario(id: any): void {
-        this.pagarUsuario.emit(id);
-        this.showModal.emit();
+    onPagarUsuario(usuarioId: number): void {
+        this.pagarUsuario.emit(usuarioId);
+        this.abrirModal.emit();
     }
 }

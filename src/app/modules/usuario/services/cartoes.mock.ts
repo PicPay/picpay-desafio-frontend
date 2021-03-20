@@ -1,5 +1,6 @@
+import { Cartao } from "../models/cartao.model";
 
-export const CARDS_MOCK: Array<any> = [
+export const CARTOES_MOCK: Array<Cartao> = [
     {
         card_number: '1111111111111111',
         cvv: 789,

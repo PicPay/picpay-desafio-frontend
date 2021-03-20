@@ -1,0 +1,12 @@
+<div class="modal-backdrop">
+    <div class="modal">
+        <div class="title">
+            Recibo de pagamento
+        </div>
+
+        <div class="content">
+            <span *ngIf="resultadoPagamentoResponse.status === 'Aprovada'">O pagamento foi concluido com sucesso.<br /></span>
+            <span *ngIf="resultadoPagamentoResponse.status !== 'Aprovada'">O pagamento <strong>não</strong> foi concluido com sucesso.</span>
+        </div>
+    </div>
+</div>

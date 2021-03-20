@@ -1,9 +1,11 @@
-import { Component, Input, OnInit } from "@angular/core";
-import { userInfo } from "os";
+import { Component, OnInit } from "@angular/core";
 import { Observable } from "rxjs";
-import { PayloadResponse } from "../../models/payload-response.model";
-import { TransactionPayload } from "../../models/transaction-payload.model";
-import { UsuarioResponse } from "../../models/usuario-response.model";
+import { finalize } from "rxjs/operators";
+
+import { Cartao } from "../../models/cartao.model";
+import { Pagamento } from "../../models/pagamento.model";
+import { ResultadoPagamentoResponse } from "../../models/response/resultado-pagamento-response.model";
+import { UsuarioResponse } from "../../models/response/usuario-response.model";
 import { UsuarioService } from "../../services/usuario.service";
 
 @Component({
@@ -13,56 +15,57 @@ import { UsuarioService } from "../../services/usuario.service";
 })
 export class UsuarioComponent implements OnInit {
 
-    showModal = false;
+    abrirModal = false;
     openNotificacao = false;
     
-    payload = new TransactionPayload();
+    pagamento = new Pagamento();
+    resultadoPagamentoResponse: ResultadoPagamentoResponse; 
 
-    payloadResponse: PayloadResponse; 
-
-    users$: Observable<Array<UsuarioResponse>>;
-    cards: Array<any>;
+    usuarios$: Observable<Array<UsuarioResponse>>;
+    cartoes: Array<any>;
 
     constructor(private usuarioService: UsuarioService) {}
     
     ngOnInit(): void {
-        this.users$ = this.usuarioService.obterUsuarios();
+        this.usuarios$ = this.usuarioService.obterUsuarios();
 
         this.obterListaDeCartoes();
     }
 
     obterListaDeCartoes(): void {
         this.usuarioService.obterCartoesUsuario()
-            .subscribe(response => this.cards = response);
+            .subscribe((cartoes: Array<Cartao>) => this.cartoes = cartoes);
     }
 
-    onPagarUsuario(userId: any) {
-        this.payload.destination_user_id = userId;
+    onPagarUsuario(usuarioId: number): void {
+        this.pagamento.destination_user_id = usuarioId;
     }
 
-    onSelecionarCartao(cardNumber: any): void {
-        const payload = this.payload;
-        this.payload = {
-            ...payload,
-            ...this.cards.find(x => x.card_number === cardNumber)
+    onSelecionarCartao(numeroCartao: string): void {
+        this.pagamento = {
+            ...this.pagamento,
+            ...this.obterCartaoPorNumero(numeroCartao)
         }
     }
 
     onEfetuarPagamento(): void {
-        this.usuarioService.pagarUsuario(this.payload)
-            .subscribe(response => {
-                debugger
-                this.payloadResponse = response;
-                this.onCloseModal();
+        this.usuarioService.pagarUsuario(this.pagamento)
+            .pipe(finalize(() => {
+                this.onFecharModal();
                 this.openNotificacao = true;
-            });
+            }))
+            .subscribe((resultadoPagamento: ResultadoPagamentoResponse) => this.resultadoPagamentoResponse = resultadoPagamento);
     }
 
-    onOpenModal(): void {
-        this.showModal = true;
+    onAbrirModal(): void {
+        this.abrirModal = true;
     }
 
-    onCloseModal(): void {
-        this.showModal = false;
+    onFecharModal(): void {
+        this.abrirModal = false;
+    }
+
+    private obterCartaoPorNumero(numeroCartao: string): Cartao {
+        return this.cartoes.find(x => x.card_number === numeroCartao);
     }
 }

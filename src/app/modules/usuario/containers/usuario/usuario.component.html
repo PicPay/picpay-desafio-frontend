@@ -1,16 +1,16 @@
 <app-usuario-listagem 
-    (showModal)="onOpenModal($event)"
+    (abrirModal)="onAbrirModal($event)"
     (pagarUsuario)="onPagarUsuario($event)"
-    [users]="users$ | async"></app-usuario-listagem>
+    [usuarios]="usuarios$ | async"></app-usuario-listagem>
 
 <app-usuario-pagamento 
-    *ngIf="showModal"
-    [payload]="payload"
+    *ngIf="abrirModal"
+    [pagamento]="pagamento"
     (efetuarPagamento)="onEfetuarPagamento($event)"
-    (closeModal)="onCloseModal($event)"
+    (closeModal)="onFecharModal($event)"
     (selecionarCartao)="onSelecionarCartao($event)"
-    [cards]="cards"></app-usuario-pagamento>
+    [cartoes]="cartoes"></app-usuario-pagamento>
 
-<app-notifica-usuario 
+<app-usuario-notificacao 
     *ngIf="openNotificacao"
-    [payloadResponse]="payloadResponse"></app-notifica-usuario>
+    [resultadoPagamentoResponse]="resultadoPagamentoResponse"></app-usuario-notificacao>

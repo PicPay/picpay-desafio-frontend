@@ -1,4 +1,5 @@
-export class TransactionPayload {
+export class Pagamento {
+    
     card_number: string;
     cvv: number;
     expiry_date: string;

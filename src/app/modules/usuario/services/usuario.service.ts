@@ -3,10 +3,10 @@ import { Injectable } from "@angular/core";
 import { Observable, of } from "rxjs";
 import { delay } from 'rxjs/operators';
 
-import { CARDS_MOCK } from './cards.mock';
-import { UsuarioResponse } from "../models/usuario-response.model";
-import { PayloadResponse } from '../models/payload-response.model';
-import { TransactionPayload } from '../models/transaction-payload.model';
+import { CARTOES_MOCK } from './cartoes.mock';
+import { UsuarioResponse } from "../models/response/usuario-response.model";
+import { ResultadoPagamentoResponse } from '../models/response/resultado-pagamento-response.model';
+import { Pagamento } from '../models/pagamento.model';
 
 @Injectable()
 export class UsuarioService {
@@ -18,11 +18,11 @@ export class UsuarioService {
     }
 
     obterCartoesUsuario(): Observable<any> {
-        return of(CARDS_MOCK).pipe(delay(500))
+        return of(CARTOES_MOCK).pipe(delay(500))
     }
 
-    pagarUsuario(transactionPayload: TransactionPayload): Observable<PayloadResponse> {
-        return this.http.post<PayloadResponse>('https://run.mocky.io/v3/533cd5d7-63d3-4488-bf8d-4bb8c751c989', transactionPayload);
+    pagarUsuario(pagamento: Pagamento): Observable<ResultadoPagamentoResponse> {
+        return this.http.post<ResultadoPagamentoResponse>('https://run.mocky.io/v3/533cd5d7-63d3-4488-bf8d-4bb8c751c989', pagamento);
     }
 
 }
