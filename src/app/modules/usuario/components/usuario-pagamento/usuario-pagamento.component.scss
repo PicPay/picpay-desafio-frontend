@@ -60,6 +60,10 @@
   }
 }
 
+.input-invalido {
+  border: 2px solid #DE5555;
+}
+
 @media(max-width: 720px) {
   .modal {
     width: 90%;

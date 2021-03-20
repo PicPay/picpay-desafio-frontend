@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import { Observable, of } from "rxjs";
 import { delay } from 'rxjs/operators';
 
-import { CARTOES_MOCK } from './cartoes.mock';
+import { CARTOES_MOCK } from './mocks/cartoes.mock';
 import { UsuarioResponse } from "../models/response/usuario-response.model";
 import { ResultadoPagamentoResponse } from '../models/response/resultado-pagamento-response.model';
 import { Pagamento } from '../models/pagamento.model';

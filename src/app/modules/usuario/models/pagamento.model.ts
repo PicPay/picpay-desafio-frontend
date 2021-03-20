@@ -11,6 +11,6 @@ export class Pagamento {
         this.cvv = 0; 
         this.expiry_date = '';
         this.destination_user_id = 0;
-        this.value = 0; 
+        this.value = null; 
     }
 }

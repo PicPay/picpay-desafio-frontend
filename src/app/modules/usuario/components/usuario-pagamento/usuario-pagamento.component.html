@@ -5,21 +5,29 @@
             Pagamento
         </div>
 
-        <div class="modal__conteudo">
+        <form class="modal__conteudo" [formGroup]="formulario">
             
             <span> {{ nomeUsuario }} </span>
 
             <input 
-                type="number" 
+                type="text" 
                 placeholder="R$ 0,00"
-                [(ngModel)]="pagamento.value" />
-
+                id="value"
+                name="value"
+                formControlName="value" 
+                [(ngModel)]="pagamento.value"
+                [ngClass]="{'input-invalido': displayMessage.value }"
+                currencyMask
+                [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" />
+           
             <select 
+                formControlName="card_number" 
                 [ngModel]="pagamento.card_number" 
-                (change)="onSelecionarCartao($event.target.value)">
+                (change)="onSelecionarCartao($event.target.value)"
+                [ngClass]="{'input-invalido': displayMessage.card_number }">
+                <option selected value=""> Selecione um cartão </option>
                 <option *ngFor="let cartao of cartoes" [value]="cartao.card_number"> Cartão com final {{ cartao.card_number }} </option>
             </select>
-
             
             <button 
                 type="button" 
@@ -30,6 +38,6 @@
                 type="button" 
                 class="modal__cancelar--button"
                 (click)="onFecharModal($event)"> Cancelar </button>
-        </div>
+        </form>
     </div>
 </div>

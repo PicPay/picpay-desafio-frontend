@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { NotificaUsuarioComponent } from './components/usuario-notificacao/usuario-notificacao.component';
@@ -10,6 +10,7 @@ import { UsuarioComponent } from './containers/usuario/usuario.component';
 
 import { UsuarioService } from './services/usuario.service';
 import { usuarioRoutes } from './usuario.routes';
+import { CurrencyMaskModule } from "ng2-currency-mask";
 
 @NgModule({
   declarations: [
@@ -21,6 +22,8 @@ import { usuarioRoutes } from './usuario.routes';
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
+    CurrencyMaskModule,
     RouterModule.forChild(usuarioRoutes)
   ],
   providers: [

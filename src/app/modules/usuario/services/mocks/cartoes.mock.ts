@@ -1,4 +1,4 @@
-import { Cartao } from "../models/cartao.model";
+import { Cartao } from "../../models/cartao.model";
 
 export const CARTOES_MOCK: Array<Cartao> = [
     {

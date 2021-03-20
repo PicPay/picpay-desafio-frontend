@@ -8,10 +8,14 @@
         *ngIf="abrirModal"
         [nomeUsuario]="nomeUsuario"
         [pagamento]="pagamento"
+        [cartoes]="cartoes"
+        [formulario]="formulario"
+        [displayMessage]="displayMessage"
         (efetuarPagamento)="onEfetuarPagamento($event)"
         (fecharModal)="onFecharModal($event)"
         (selecionarCartao)="onSelecionarCartao($event)"
-        [cartoes]="cartoes"></app-usuario-pagamento>
+        (carregarEventoValidacao)="carregarEventoValidacao($event)"
+        ></app-usuario-pagamento>
 
     <app-usuario-notificacao 
         *ngIf="abrirNotificacao"

@@ -1,12 +1,15 @@
-import { Component, OnInit } from "@angular/core";
-import { Observable } from "rxjs";
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChildren } from "@angular/core";
+import { FormBuilder, FormControlName, FormGroup, Validators } from "@angular/forms";
+import { fromEvent, merge, Observable } from "rxjs";
 import { finalize } from "rxjs/operators";
 
 import { Cartao } from "../../models/cartao.model";
+import { DisplayMessage, GenericValidator, ValidationMessages } from "../../models/generico/generic-form-validation";
 import { Pagamento } from "../../models/pagamento.model";
 import { ResultadoPagamentoResponse } from "../../models/response/resultado-pagamento-response.model";
 import { UsuarioResponse } from "../../models/response/usuario-response.model";
 import { UsuarioService } from "../../services/usuario.service";
+import mensagensValidacao from '../../services/validators/usuario-mensagens.validator';
 
 @Component({
     selector: 'app-usuario',
@@ -21,16 +24,30 @@ export class UsuarioComponent implements OnInit {
     
     pagamento = new Pagamento();
     resultadoPagamentoResponse: ResultadoPagamentoResponse; 
-
     usuarios$: Observable<Array<UsuarioResponse>>;
     cartoes: Array<any>;
-
-    constructor(private usuarioService: UsuarioService) {}
     
+    formulario: FormGroup;
+    validationMessages: ValidationMessages;
+    genericValidator: GenericValidator;
+    displayMessage: DisplayMessage = {};
+
+    constructor(private usuarioService: UsuarioService, private formBuilder: FormBuilder) {
+        this.validationMessages = mensagensValidacao
+        this.genericValidator = new GenericValidator(this.validationMessages);
+    }
+
     ngOnInit(): void {
         this.usuarios$ = this.usuarioService.obterUsuarios();
-
         this.obterListaDeCartoes();
+        this.iniciarValidacaoFormulario();
+    }
+
+    carregarEventoValidacao(formInputElements: any): void {
+        let controlBlurs: Observable<any>[] = formInputElements
+        .map((formControl: ElementRef) => fromEvent(formControl.nativeElement, 'blur'));
+    
+        merge(...controlBlurs).subscribe(() => this.displayMessage = this.genericValidator.processarMensagens(this.formulario));
     }
 
     obterListaDeCartoes(): void {
@@ -44,13 +61,17 @@ export class UsuarioComponent implements OnInit {
     }
 
     onSelecionarCartao(numeroCartao: string): void {
+        const pagamento = this.pagamento;
         this.pagamento = {
-            ...this.pagamento,
+            ...pagamento,
             ...this.obterCartaoPorNumero(numeroCartao)
         }
     }
 
     onEfetuarPagamento(): void {
+        if (!this.formulario.dirty || !this.formulario.valid)
+            return;
+
         this.usuarioService.pagarUsuario(this.pagamento)
             .pipe(finalize(() => {
                 this.onFecharModal();
@@ -65,7 +86,8 @@ export class UsuarioComponent implements OnInit {
     }
 
     onAbrirModal(): void {
-        this.pagamento = new Pagamento();
+        const userId = this.pagamento.destination_user_id;
+        this.pagamento = { destination_user_id: userId }  as Pagamento;
         this.abrirModal = true;
     }
 
@@ -83,5 +105,12 @@ export class UsuarioComponent implements OnInit {
 
     private verificaEmoji(status: string): string {
         return status === 'Aprovada' ? 'feliz' : 'triste';
+    }
+
+    private iniciarValidacaoFormulario(): void {
+        this.formulario = this.formBuilder.group({
+            value: ['', [ Validators.required ]],
+            card_number: ['', [ Validators.required ]],
+        });
     }
 }
