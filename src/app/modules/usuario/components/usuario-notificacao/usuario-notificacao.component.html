@@ -2,17 +2,19 @@
     <div class="modal">
         <div class="modal__title">
             <img 
-                src="../../../../../assets/emoji/carinha-{{ emoji }}.png" 
+                src="../../../../../assets/emoji/carinha-{{ resultadoPagamentoResponse.emoji }}.png" 
                 alt="emoji" />
         </div>
 
         <div class="modal__conteudo">
             <span>Recibo de pagamento</span>
-            <span>O pagamento <strong *ngIf="emoji === 'triste'">não</strong> foi concluido com <br/> sucesso.</span>
+            <span>O pagamento <strong *ngIf="resultadoPagamentoResponse.emoji === 'triste'">não</strong> foi concluido com <br/> sucesso.</span>
         </div>
 
         <div class="modal__rodape">
-            <button type="button"> OK </button>
+            <button 
+                type="button"
+                (click)="onFecharNotificacao($event)"> OK </button>
         </div>
     </div>
 </div>

@@ -16,7 +16,8 @@ import { UsuarioService } from "../../services/usuario.service";
 export class UsuarioComponent implements OnInit {
 
     abrirModal = false;
-    openNotificacao = false;
+    abrirNotificacao = false;
+    nomeUsuario: string;
     
     pagamento = new Pagamento();
     resultadoPagamentoResponse: ResultadoPagamentoResponse; 
@@ -37,8 +38,9 @@ export class UsuarioComponent implements OnInit {
             .subscribe((cartoes: Array<Cartao>) => this.cartoes = cartoes);
     }
 
-    onPagarUsuario(usuarioId: number): void {
-        this.pagamento.destination_user_id = usuarioId;
+    onPagarUsuario(usuario: UsuarioResponse): void {
+        this.pagamento.destination_user_id = usuario.id;
+        this.nomeUsuario = usuario.username;
     }
 
     onSelecionarCartao(numeroCartao: string): void {
@@ -52,12 +54,18 @@ export class UsuarioComponent implements OnInit {
         this.usuarioService.pagarUsuario(this.pagamento)
             .pipe(finalize(() => {
                 this.onFecharModal();
-                this.openNotificacao = true;
+                this.abrirNotificacao = true;
             }))
-            .subscribe((resultadoPagamento: ResultadoPagamentoResponse) => this.resultadoPagamentoResponse = resultadoPagamento);
+            .subscribe((resultadoPagamento: ResultadoPagamentoResponse) => {
+                this.resultadoPagamentoResponse = {
+                    ...resultadoPagamento,
+                    emoji: this.verificaEmoji(resultadoPagamento.status)
+                }
+            })
     }
 
     onAbrirModal(): void {
+        this.pagamento = new Pagamento();
         this.abrirModal = true;
     }
 
@@ -65,7 +73,15 @@ export class UsuarioComponent implements OnInit {
         this.abrirModal = false;
     }
 
+    onFecharNotificacao(): void {
+        this.abrirNotificacao = false;
+    }
+
     private obterCartaoPorNumero(numeroCartao: string): Cartao {
         return this.cartoes.find(x => x.card_number === numeroCartao);
+    }
+
+    private verificaEmoji(status: string): string {
+        return status === 'Aprovada' ? 'feliz' : 'triste';
     }
 }

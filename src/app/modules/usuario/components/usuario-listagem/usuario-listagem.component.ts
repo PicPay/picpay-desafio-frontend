@@ -12,12 +12,12 @@ export class UsuarioListagemComponent {
     @Input() usuarios: Array<UsuarioResponse>;
     
     @Output() abrirModal = new EventEmitter<void>();
-    @Output() pagarUsuario = new EventEmitter<number>();
+    @Output() pagarUsuario = new EventEmitter<UsuarioResponse>();
 
     constructor() {}
 
-    onPagarUsuario(usuarioId: number): void {
-        this.pagarUsuario.emit(usuarioId);
+    onPagarUsuario(usuario: UsuarioResponse): void {
+        this.pagarUsuario.emit(usuario);
         this.abrirModal.emit();
     }
 }

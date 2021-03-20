@@ -5,6 +5,7 @@
 
 <app-usuario-pagamento 
     *ngIf="abrirModal"
+    [nomeUsuario]="nomeUsuario"
     [pagamento]="pagamento"
     (efetuarPagamento)="onEfetuarPagamento($event)"
     (fecharModal)="onFecharModal($event)"
@@ -12,5 +13,6 @@
     [cartoes]="cartoes"></app-usuario-pagamento>
 
 <app-usuario-notificacao 
-    *ngIf="openNotificacao"
+    *ngIf="abrirNotificacao"
+    (fecharNotificacao)="onFecharNotificacao($event)"
     [resultadoPagamentoResponse]="resultadoPagamentoResponse"></app-usuario-notificacao>
