@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { ResultadoPagamentoResponse } from "../../models/response/resultado-pagamento-response.model";
 
 @Component({
@@ -6,7 +6,19 @@ import { ResultadoPagamentoResponse } from "../../models/response/resultado-paga
     templateUrl: './usuario-notificacao.component.html',
     styleUrls: ['./usuario-notificacao.component.scss']
 })
-export class NotificaUsuarioComponent {
+export class NotificaUsuarioComponent implements OnInit {
+
+    emoji = 'feliz';
 
     @Input() resultadoPagamentoResponse: ResultadoPagamentoResponse; 
+
+    ngOnInit(): void {
+
+        this.verificaEmoji();
+    }
+
+    private verificaEmoji(): void {
+        if (this.resultadoPagamentoResponse.status !== 'Aprovada')  
+            this.emoji = 'triste';
+    }
 }

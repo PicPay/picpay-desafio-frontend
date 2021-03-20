@@ -1,23 +1,23 @@
-/* Payment Modal */
-.modal-backdrop {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-  
-    position: fixed;
-    top: 0;
-    left: 0;
-  
-    height: 100vh;
-    width: 100vw;
-  }
-  
-  .modal-backdrop.hidden {
+@import '../../../../../assets/styles/_cores';
+
+.modal__backdrop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  height: 100vh;
+  width: 100vw;
+
+  &.hidden {
     display: none;
   }
-  
-  .modal-backdrop:after {
+
+  &:after {
     content: "";
   
     background: rgba(0, 0, 0, 0.5);
@@ -29,55 +29,68 @@
     width: 100%;
     z-index: -1;
   }
+}
   
-  .modal {
-    background: #fff;
-    margin: 32px 0;
-    width: 420px;
-  }
+.modal {
+  width: 400px;
   
-  .modal > .title {
-    background: #474971;
-    color: #ffffff;
-    font-weight: 500;
-    font-size: 16px;
-    padding: 16px 24px;
-  }
-  
-  .modal > .title > span {
-    color: #cddc39;
-  }
-  
-  .modal > .content {
-    padding: 32px;
-    text-align: center;
-  }
-  
-  .modal > .content > input {
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 32px;
-    height: 48px;
-    padding: 0 8px;
+  background: $branco;
+  border-radius: 5px;
+
+  &__title {
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 150px;
+      padding: 20px 15px;
+    }
   }
-  
-  .modal > .content > .cards > select {
-    background: #fff;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 32px;
-    height: 48px;
-    margin-top: 12px;
+
+  &__conteudo {
     width: 100%;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    span:first-child {
+      font-size: 20px;
+      font-weight: 500;
+      
+      padding: 15px;
+      color: $verde-principal;
+    }
+
+    span:last-child {
+      font-size: 18px;
+      text-align: center;
+    }
+
   }
-  
-  .modal > .content > button {
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 32px;
-    height: 48px;
-    padding: 0 8px;
-    margin-top: 24px;
+
+  &__rodape {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 15px;
+
+    button {
+      width: 100%;
+      height: 48px;
+      
+      border: none;
+      border-radius: 20px;
+      background: $verde-principal;
+      
+      font-weight: 600;
+      font-size: 20px;
+      color: $branco;
+      cursor: pointer;
+    }
   }
-  
+}

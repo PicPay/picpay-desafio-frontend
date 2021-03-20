@@ -1,12 +1,18 @@
-<div class="modal-backdrop">
+<div class="modal__backdrop">
     <div class="modal">
-        <div class="title">
-            Recibo de pagamento
+        <div class="modal__title">
+            <img 
+                src="../../../../../assets/emoji/carinha-{{ emoji }}.png" 
+                alt="emoji" />
         </div>
 
-        <div class="content">
-            <span *ngIf="resultadoPagamentoResponse.status === 'Aprovada'">O pagamento foi concluido com sucesso.<br /></span>
-            <span *ngIf="resultadoPagamentoResponse.status !== 'Aprovada'">O pagamento <strong>não</strong> foi concluido com sucesso.</span>
+        <div class="modal__conteudo">
+            <span>Recibo de pagamento</span>
+            <span>O pagamento <strong *ngIf="emoji === 'triste'">não</strong> foi concluido com <br/> sucesso.</span>
+        </div>
+
+        <div class="modal__rodape">
+            <button type="button"> OK </button>
         </div>
     </div>
 </div>
