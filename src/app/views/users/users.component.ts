@@ -17,6 +17,4 @@ export class UsersComponent implements OnInit {
     this.router.navigate(['/users/create'])
   }
   
-
-
 }

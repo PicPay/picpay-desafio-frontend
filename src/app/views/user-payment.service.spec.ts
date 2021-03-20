@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { UserPaymentService } from './user-payment/payload.service';
+import { UserPaymentService } from './payload/payload.service';
 
 describe('UserPaymentService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));

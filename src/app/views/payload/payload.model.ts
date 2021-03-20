@@ -8,5 +8,5 @@ export interface TransactionPayload {
     destination_user_id?: number;
   
     // Value of the Transaction
-    value?: number;
+    value: number;
   }

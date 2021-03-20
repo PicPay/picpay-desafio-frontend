@@ -1,1 +1,20 @@
-<p>card-create works!</p>
+<div class='card-wrapper'></div>
+
+<form>
+    <input type="text" name="number">
+    <input type="text" name="first-name" />
+    <input type="text" name="last-name" />
+    <input type="text" name="expiry" />
+    <input type="text" name="cvc" />
+</form>
+
+<script>
+    var card = new Card({
+        form: 'form',
+        container: '.card-wrapper',
+
+        formSelectors: {
+            nameInput: 'input[name="first-name"], input[name="last-name"]'
+        }
+    });
+</script>

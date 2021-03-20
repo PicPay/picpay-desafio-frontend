@@ -29,12 +29,13 @@ import {MatSelectModule} from '@angular/material/select';
 
 
 import { HttpClientModule } from '@angular/common/http';
-import { UserPaymentComponent } from './views/user-payment/user-payment.component';
+import { UserPaymentComponent } from './views/payload/user-payment/user-payment.component';
 
-import { NgxMaskModule, IConfig } from 'ngx-mask';
+import { NgxMaskModule} from 'ngx-mask';
 import { NgxCurrencyModule } from 'ngx-currency';
 import { CardCreateComponent } from './components/card/card-create/card-create.component';
 import { CardReadComponent } from './components/card/card-read/card-read.component';
+import { ReturnPaymentComponent } from './views/payload/return-payment/return-payment.component';
 
 
 
@@ -51,8 +52,9 @@ import { CardReadComponent } from './components/card/card-read/card-read.compone
     UserPaymentComponent,
     CardCreateComponent,
     CardReadComponent,
+    ReturnPaymentComponent,
   ],
-  entryComponents: [UserPaymentComponent],
+  entryComponents: [UserPaymentComponent, ReturnPaymentComponent],
 
   imports: [
     BrowserModule,

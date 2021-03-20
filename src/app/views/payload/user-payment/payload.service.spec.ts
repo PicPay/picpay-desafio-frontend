@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { PayloadService } from './payload.service';
+import { PayloadService } from '../payload.service';
 
 describe('PayloadService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));

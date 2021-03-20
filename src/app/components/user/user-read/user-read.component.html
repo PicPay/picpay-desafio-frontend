@@ -1,6 +1,6 @@
 <mat-card class="card mat-elevation-z4" color="primary" *ngFor="let user of users">
     <div class="user" >
-        <img [src]="user.img"/>
+        <img  mat-card-avatar [src]="user.img"/>
         <div class="info-wrapper">
             <div class="user-name">
                 {{user.name}}

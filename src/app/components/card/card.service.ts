@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
 })
 export class CardService {
 
-  baseCard = "https://run.mocky.io/v3/e42f0df3-891c-4a0a-83d7-3517288592cc"
+  baseCard = "https://run.mocky.io/v3/7062ba26-2d0c-427d-919e-c9a99a81c52d"
 
   constructor(private http: HttpClient) { }
 

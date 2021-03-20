@@ -1,4 +1,4 @@
-import { UserPaymentComponent } from '../../../views/user-payment/user-payment.component';
+import { UserPaymentComponent } from '../../../views/payload/user-payment/user-payment.component';
 import { User } from './../user.model';
 import { Component, OnInit, Input } from '@angular/core';
 import { UserService } from '../user.service';
@@ -25,14 +25,11 @@ export class UserReadComponent implements OnInit {
   payUser(user: User): void {
 
     const dialogRef = this.dialog.open(UserPaymentComponent, {
-      width: '350px', 
+      width: '260px', 
       data: user
 
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
   }
 
 }

@@ -36,7 +36,6 @@
 
 img {
     display: flex;
-    border-radius: 50%;
     height: 80px;
     width: 80px;
     margin-left: 10px;
@@ -49,4 +48,8 @@ form {
 mat-form-field {
     width: 100%;
     margin-top: 20px;
+}
+
+.card-credit {
+    align-items: center;
 }

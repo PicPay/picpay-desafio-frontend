@@ -16,7 +16,6 @@ export class CardReadComponent implements OnInit {
   ngOnInit() {  
     this.cardService.readCard().subscribe(cards => {
       this.cards = cards
-      console.log(cards)
     })
   }
 
