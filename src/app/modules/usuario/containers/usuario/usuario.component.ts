@@ -15,7 +15,7 @@ import { UsuarioService } from "../../services/usuario.service";
 })
 export class UsuarioComponent implements OnInit {
 
-    abrirModal = false;
+    abrirModal = true;
     openNotificacao = false;
     
     pagamento = new Pagamento();

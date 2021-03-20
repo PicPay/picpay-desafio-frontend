@@ -9,7 +9,7 @@ import { Pagamento } from "../../models/pagamento.model";
 })
 export class UsuarioPagamentoComponent {
 
-    @Input() userName: string = 'Nome do Usuário';
+    @Input() nomeUsuario: string = '@eduardo';
     @Input() cartoes: Array<Cartao>;
     @Input() pagamento: Pagamento;
 

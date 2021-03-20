@@ -1,26 +1,26 @@
-/* Payment Modal */
-.modal-backdrop {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-  
-    position: fixed;
-    top: 0;
-    left: 0;
-  
-    height: 100vh;
-    width: 100vw;
-  }
-  
-  .modal-backdrop.hidden {
+@import '../../../../../assets/styles/_cores';
+
+.modal__backdrop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  height: 100vh;
+  width: 100vw;
+
+  &.hidden {
     display: none;
   }
-  
-  .modal-backdrop:after {
+
+  &:after {
     content: "";
   
-    background: rgba(0, 0, 0, 0.5);
+    background: $cinza-fundo-modal;
   
     position: absolute;
     top: 0;
@@ -29,55 +29,77 @@
     width: 100%;
     z-index: -1;
   }
+}
   
-  .modal {
-    background: #fff;
-    margin: 32px 0;
-    width: 420px;
+.modal {
+  width: 420px;
+  
+  background: $branco;
+  border-radius: 5px;
+
+  &__titulo {
+    height: 4rem;
+    
+    display: flex;
+    align-items: center;
+    font-size: 22px;
+    padding: 10px;
+
+    background: $verde-principal;
+    color: $branco;
+
+    border-radius: 5px;
   }
-  
-  .modal > .title {
-    background: #474971;
-    color: #ffffff;
-    font-weight: 500;
-    font-size: 16px;
-    padding: 16px 24px;
-  }
-  
-  .modal > .title > span {
-    color: #cddc39;
-  }
-  
-  .modal > .content {
-    padding: 32px;
-    text-align: center;
-  }
-  
-  .modal > .content > input {
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 32px;
-    height: 48px;
-    padding: 0 8px;
+
+  &__conteudo {
     width: 100%;
+    
+    display: flex;
+    flex-direction: column;
+    
+    padding: 20px;
+
+    > span {
+      padding: 5px 0px 15px 5px;
+      font-weight: bold;
+      font-size: 18px;
+    }
   }
-  
-  .modal > .content > .cards > select {
-    background: #fff;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 32px;
-    height: 48px;
-    margin-top: 12px;
+
+  &__pagar--button {
     width: 100%;
+    height: 50px;
+    font-size: 22px;
+
+    border-radius: 25px;
+    border: none;
+
+    color: $branco;
+    background: $verde-principal;
+    cursor: pointer;
+    margin-bottom: 15px;
   }
-  
-  .modal > .content > button {
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 32px;
-    height: 48px;
-    padding: 0 8px;
-    margin-top: 24px;
+
+  &__cancelar--button {
+    border: none;
+    background: transparent;
+    
+    font-size: 18px;
+    color: $verde-principal;
+    font-weight: 400;
+    cursor: pointer;
   }
+}
+
+input, select {
+  border: 1px solid $cinza-fundo;
+  border-radius: 20px;
   
+  padding: 10px;
+  margin-bottom: 15px;
+
+  font-size: 22px;
+  
+  height: 48px;
+  width: 100%;
+}

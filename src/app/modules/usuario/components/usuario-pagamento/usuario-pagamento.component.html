@@ -1,36 +1,35 @@
-<div class="modal-backdrop">
+<div class="modal__backdrop">
     <div class="modal">
         
-        <div class="title">
-            Pagamento para <span> {{ userName }} </span>
+        <div class="modal__titulo">
+            Pagamento
         </div>
 
-        <div class="content">
+        <div class="modal__conteudo">
+            
+            <span> {{ nomeUsuario }} </span>
 
             <input 
                 type="number" 
                 placeholder="R$ 0,00"
                 [(ngModel)]="pagamento.value" />
 
-            <div class="cards">
-                <select 
-                    [ngModel]="pagamento.card_number" 
-                    (change)="onSelecionarCartao($event.target.value)">
-                    <option *ngFor="let cartao of cartoes" [value]="cartao.card_number"> Cartão com final {{ cartao.card_number }} </option>
-                </select>
-            </div>
+            <select 
+                [ngModel]="pagamento.card_number" 
+                (change)="onSelecionarCartao($event.target.value)">
+                <option *ngFor="let cartao of cartoes" [value]="cartao.card_number"> Cartão com final {{ cartao.card_number }} </option>
+            </select>
 
+            
             <button 
                 type="button" 
-                class="pay-button"
-                (click)="onFecharModal($event)"> Cancelar </button>
-
-            <button 
-                type="button" 
-                class="pay-button"
+                class="modal__pagar--button"
                 (click)="onEfetuarPagamento($event)"> Pagar </button>
+
+            <button 
+                type="button" 
+                class="modal__cancelar--button"
+                (click)="onFecharModal($event)"> Cancelar </button>
         </div>
     </div>
-
-    
 </div>
