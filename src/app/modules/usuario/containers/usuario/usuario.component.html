@@ -10,3 +10,7 @@
     (closeModal)="onCloseModal($event)"
     (selecionarCartao)="onSelecionarCartao($event)"
     [cards]="cards"></app-usuario-pagamento>
+
+<app-notifica-usuario 
+    *ngIf="openNotificacao"
+    [payloadResponse]="payloadResponse"></app-notifica-usuario>

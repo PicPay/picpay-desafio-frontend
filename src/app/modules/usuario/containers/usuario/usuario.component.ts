@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { userInfo } from "os";
 import { Observable } from "rxjs";
+import { PayloadResponse } from "../../models/payload-response.model";
 import { TransactionPayload } from "../../models/transaction-payload.model";
 import { UsuarioResponse } from "../../models/usuario-response.model";
 import { UsuarioService } from "../../services/usuario.service";
@@ -13,8 +14,11 @@ import { UsuarioService } from "../../services/usuario.service";
 export class UsuarioComponent implements OnInit {
 
     showModal = false;
+    openNotificacao = false;
     
     payload = new TransactionPayload();
+
+    payloadResponse: PayloadResponse; 
 
     users$: Observable<Array<UsuarioResponse>>;
     cards: Array<any>;
@@ -36,8 +40,7 @@ export class UsuarioComponent implements OnInit {
         this.payload.destination_user_id = userId;
     }
 
-    onSelecionarCartao(cardNumber): void {
-        debugger
+    onSelecionarCartao(cardNumber: any): void {
         const payload = this.payload;
         this.payload = {
             ...payload,
@@ -46,7 +49,13 @@ export class UsuarioComponent implements OnInit {
     }
 
     onEfetuarPagamento(): void {
-        console.log('efetuar pagamento', this.payload);
+        this.usuarioService.pagarUsuario(this.payload)
+            .subscribe(response => {
+                debugger
+                this.payloadResponse = response;
+                this.onCloseModal();
+                this.openNotificacao = true;
+            });
     }
 
     onOpenModal(): void {
