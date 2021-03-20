@@ -5,5 +5,5 @@ import { Card } from "./card.interface";
 export interface Transaction {
   selectedUser: User;
   transactionForm: FormGroup;
-  cards: Card[]
+  cards: Card[];
 }

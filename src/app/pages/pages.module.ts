@@ -33,7 +33,7 @@ import { ReactiveFormsModule } from "@angular/forms";
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
   ],
 })
 export class PagesModule {}

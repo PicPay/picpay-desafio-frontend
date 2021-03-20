@@ -13,10 +13,6 @@ export class TransactionsService {
 
   constructor(private http: HttpClient) {}
 
-  // public createTransaction(transactionPayload: TransactionPayload): void {
-  //   this.transaction = transactionPayload;
-  // }
-
   public postTransaction(
     transactionPayload: TransactionPayload
   ): Observable<TransactionApprovalPayload> {

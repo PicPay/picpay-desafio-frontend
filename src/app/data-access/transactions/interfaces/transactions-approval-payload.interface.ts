@@ -1,4 +1,4 @@
-export interface TransactionApprovalPayload{
-    success: boolean,
-    status: string
+export interface TransactionApprovalPayload {
+  success: boolean;
+  status: string;
 }

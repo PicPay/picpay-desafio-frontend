@@ -13,6 +13,5 @@ export class TransactionsConfirmationDialogComponent implements OnInit {
     public transactionApproval: TransactionApprovalPayload
   ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 }

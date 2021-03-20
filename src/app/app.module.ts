@@ -6,15 +6,9 @@ import { RouterModule } from "@angular/router";
 import { PagesModule } from "./pages/pages.module";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
-
 @NgModule({
   declarations: [AppComponent],
-  imports: [
-    BrowserModule,
-    PagesModule,
-    RouterModule,
-    BrowserAnimationsModule,
-  ],
+  imports: [BrowserModule, PagesModule, RouterModule, BrowserAnimationsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

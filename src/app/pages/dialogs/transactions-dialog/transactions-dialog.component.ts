@@ -9,8 +9,6 @@ import { Transaction } from "src/app/data-access/transactions/interfaces/transac
   styleUrls: ["./transactions-dialog.component.scss"],
 })
 export class TransactionsDialogComponent implements OnInit {
-  @Output()
-  public myForm: FormGroup;
   constructor(
     public transactionsDialogRef: MatDialogRef<TransactionsDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public selectedUser: Transaction
