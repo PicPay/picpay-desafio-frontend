@@ -8,7 +8,7 @@
   </h2>
 
   <mat-dialog-content class="c-transactions-dialog__content">
-    <form [formGroup]="myForm">
+    <form [formGroup]="selectedUser.form">
       <mat-form-field>
         <mat-label>Valor</mat-label>
         <input
@@ -29,12 +29,17 @@
           formControlName="cards"
           class="c-transactions-dialog__content--cards"
         >
-          <mat-option value="cards">First option</mat-option>
-          <mat-option value="cards">Second option</mat-option>
+          <mat-option value="{{ selectedUser.cards[0].card_number }}"
+            >Valid Card
+          </mat-option>
+          <mat-option value="{{ selectedUser.cards[1].card_number }}"
+            >Invalid Card
+          </mat-option>
         </mat-select>
       </mat-form-field>
     </form>
   </mat-dialog-content>
+
   <mat-dialog-actions class="c-transactions-dialog__actions">
     <button
       mat-button
@@ -46,82 +51,12 @@
     </button>
     <button
       mat-raised-button
-      mat-dialog-close="true"
       type="button"
-      [disabled]="!myForm.valid"
+      [disabled]="!selectedUser.form.valid"
       class="c-transactions-dialog__actions--confirm-button"
+      (click)="onCloseDialog()"
     >
       Pagar
     </button>
   </mat-dialog-actions>
 </div>
-
-<!-- <div class="c-pay-dialog" *ngIf="transaction === false">
-  <h2 mat-dialog-title class="c-pay-dialog__title">
-    Pagamento para
-    <span class="c-pay-dialog__title--user-name">{{
-      selectedUser.username
-    }}</span>
-  </h2>
-
-  <mat-dialog-content class="c-pay-dialog__content">
-    <input
-      type="number"
-      placeholder="R$ 0,00"
-      class="c-pay-dialog__content--value-input"
-    />
-
-    <div>
-      <select class="c-pay-dialog__content--cards">
-        <option selected>Cartão com final 0123</option>
-      </select>
-    </div>
-  </mat-dialog-content>
-
-  <mat-dialog-actions class="c-pay-dialog__actions">
-    <button
-      mat-button
-      mat-dialog-close="false"
-      type="button"
-      class="c-pay-dialog__actions--cancel-button"
-    >
-      Cancelar
-    </button>
-    <button
-      mat-raised-button
-      type="button"
-      class="c-pay-dialog__actions--confirm-button"
-      (click)="transaction = true"
-    >
-      Pagar
-    </button>
-  </mat-dialog-actions>
-</div>
-
-<div *ngIf="transaction === true">
-  <h2 mat-dialog-title class="c-pay-dialog__title">Recibo de pagamento</h2>
-
-  <mat-dialog-content class="c-pay-dialog__content">
-    <div>O pagamento foi concluido com sucesso</div>
-    <div>O pagamento não foi concluido com sucesso</div>
-  </mat-dialog-content>
-
-  <mat-dialog-actions class="c-pay-dialog__actions">
-    <button
-      mat-button
-      type="button"
-      class="c-pay-dialog__actions--cancel-button"      
-      (click)="transaction = false"
-    >
-      Retornar
-    </button>
-    <button
-      mat-raised-button
-      type="button"
-      class="c-pay-dialog__actions--confirm-button"
-      mat-dialog-close="false"
-    >
-      OK
-    </button>
-  </mat-dialog-actions>
-</div> -->

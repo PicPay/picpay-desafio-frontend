@@ -10,10 +10,9 @@ import { TransactionApprovalPayload } from "src/app/data-access/transactions/int
 export class TransactionsConfirmationDialogComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA)
-    public transaction: TransactionApprovalPayload[]
+    public transactionApproval: TransactionApprovalPayload
   ) {}
 
   ngOnInit(): void {
-    console.log(this.transaction);
   }
 }
