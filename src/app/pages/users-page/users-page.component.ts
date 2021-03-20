@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatDialog } from "@angular/material";
 import { Card } from "src/app/data-access/transactions/interfaces/card.interface";
+import { TransactionApprovalPayload } from "src/app/data-access/transactions/interfaces/transactions-approval-payload.interface";
 import { TransactionPayload } from "src/app/data-access/transactions/interfaces/transactions-payload.interface";
 import { TransactionsService } from "src/app/data-access/transactions/transactions.service";
 import { User } from "src/app/data-access/users/interfaces/users.interface";
@@ -16,6 +17,7 @@ import { TransactionsDialogComponent } from "../dialogs/transactions-dialog/tran
 })
 export class UsersPageComponent implements OnInit {
   public users: User[] = [];
+  public selectedUser: User;
   public cards: Card[] = [
     // valid card
     {
@@ -35,31 +37,29 @@ export class UsersPageComponent implements OnInit {
     private usersService: UsersService,
     private transacionsService: TransactionsService,
     private formBuilder: FormBuilder,
-    public dialogModal: MatDialog
+    public transactionDialog: MatDialog
   ) {}
 
   ngOnInit(): void {
     this.usersService.getUsers().subscribe((response) => {
       this.users = response;
-      console.log(response);
     });
   }
 
-  public onClickTransactionsDialog(
-    selectedUsername: string,
-    selectedID: number
-  ): void {
+  public onClickTransactionsDialog(user: User): void {
+    this.selectedUser = user;
     let transactionForm: FormGroup = this.formBuilder.group({
       amount: ["", Validators.required],
       cards: ["", Validators.required],
     });
 
-    let transactionsDialogRef = this.dialogModal.open(
+    let transactionsDialogRef = this.transactionDialog.open(
       TransactionsDialogComponent,
       {
         panelClass: "my-custom-dialog",
+        disableClose: true,
         data: {
-          username: selectedUsername,
+          username: this.selectedUser.username,
           form: transactionForm,
           cards: this.cards,
         },
@@ -67,11 +67,9 @@ export class UsersPageComponent implements OnInit {
     );
 
     transactionsDialogRef.afterClosed().subscribe((response) => {
-      console.log(response);
       if (response.form) {
         let form: FormGroup = response.form;
-        console.log("form", form);
-        this.createTransactionPayload(form, selectedID);
+        this.createTransactionPayload(form, this.selectedUser.id);
       }
     });
   }
@@ -81,9 +79,15 @@ export class UsersPageComponent implements OnInit {
     selectedID: number
   ): void {
     if (transactionForm.invalid) {
-      console.log("fdsad");
       return;
     }
+
+    // mock payload to bypass endpoint validation
+    //
+    // const cardDeniedPayload: TransactionApprovalPayload={
+    //   success:false,
+    //   status:"Não Aprovada"
+    // };
 
     let card_number: string;
     let cvv: number;
@@ -98,6 +102,16 @@ export class UsersPageComponent implements OnInit {
         card_number = "4111111111111234";
         cvv = 123;
         expiry_date = "01/20";
+
+        // calls for TransactionsConfirmationDialogComponent with mock payload
+        //
+        // this.transactionDialog.open(TransactionsConfirmationDialogComponent, {
+        //   panelClass: "my-custom-dialog",
+        //   disableClose: true,
+        //   data: cardDeniedPayload,
+        // });
+        // return;
+
         break;
     }
 
@@ -112,8 +126,6 @@ export class UsersPageComponent implements OnInit {
       value,
     };
 
-    console.log("hora da verdade", transactionPayload);
-
     this.onPaidTransactionDialog(transactionPayload);
   }
 
@@ -121,12 +133,11 @@ export class UsersPageComponent implements OnInit {
     this.transacionsService
       .postTransaction(transactionPayload)
       .subscribe((response) => {
-        this.dialogModal.open(TransactionsConfirmationDialogComponent, {
+        this.transactionDialog.open(TransactionsConfirmationDialogComponent, {
           panelClass: "my-custom-dialog",
+          disableClose: true,
           data: response,
         });
       });
-
-    console.log("show de bola");
   }
 }

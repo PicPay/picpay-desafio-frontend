@@ -1,5 +1,4 @@
 import { Component, Inject, OnInit, Output } from "@angular/core";
-import { FormGroup } from "@angular/forms";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 import { Transaction } from "src/app/data-access/transactions/interfaces/transaction.interface";
 
@@ -14,11 +13,8 @@ export class TransactionsDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public selectedUser: Transaction
   ) {}
 
-  ngOnInit(): void {
-    console.log(this.selectedUser);
-  }
+  ngOnInit(): void {}
   onCloseDialog() {
-    console.log(this.selectedUser.cards[0]);
     this.transactionsDialogRef.close(this.selectedUser);
   }
 }

@@ -4,38 +4,37 @@
   border-radius: 15px;
 
   &__title {
-    background: #474971;
+    background: rgb(58, 57, 57);
     border-top-left-radius: 5px;
     border-top-right-radius: 10px;
     color: #ffffff;
-    font-weight: 500;
-    font-size: 16px;
+    font-weight: 700;
+    font-size: large;
     padding: 16px 24px;
 
     &--user-name {
-      color: #cddc39;
+      color: rgb(233, 103, 43);
     }
   }
 
   &__content {
-    // display: contents;
     padding: 32px;
+    margin: auto;
     text-align: center;
 
-    &--value-input {
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 32px;
-      height: 48px;
-      padding: 0 8px;
+    &--label-input,
+    &--label-select {
+      top: 26px;
     }
-    &--cards {
-      background: #fff;
-      border: 1px solid #ccc;
+
+    &--value-input {
       border-radius: 6px;
-      font-size: 32px;
-      height: 48px;
-      margin-top: 12px;
+      font-size: 26px;
+    }
+
+    &--card-select {
+      background: #fff;
+      padding: 2px;
     }
   }
 
@@ -46,13 +45,18 @@
 
     &--cancel-button,
     &--confirm-button {
+      background: rgb(235, 235, 235);
       border: 1px solid #ccc;
       border-radius: 6px;
-      font-size: 32px;
+      font-size: medium;
       height: 48px;
       padding: 0 8px;
       margin: 5px;
       margin-top: 20px;
+    }
+
+    &--confirm-button {
+      background: rgb(214, 214, 214);
     }
   }
 }

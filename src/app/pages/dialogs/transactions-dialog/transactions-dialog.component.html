@@ -12,10 +12,10 @@
       <mat-form-field>
         <mat-label>Valor</mat-label>
         <input
-          required
           matInput
           type="number"
           min="0"
+          step="1,00"
           placeholder="R$ 0,00"
           formControlName="amount"
           class="c-transactions-dialog__content--value-input"
@@ -25,15 +25,14 @@
       <mat-form-field>
         <mat-label>Cartão</mat-label>
         <mat-select
-          required
           formControlName="cards"
-          class="c-transactions-dialog__content--cards"
+          class="c-transactions-dialog__content--card-select"
         >
           <mat-option value="{{ selectedUser.cards[0].card_number }}"
-            >Valid Card
+            >Cartão Valido
           </mat-option>
           <mat-option value="{{ selectedUser.cards[1].card_number }}"
-            >Invalid Card
+            >Cartão Invalido
           </mat-option>
         </mat-select>
       </mat-form-field>

@@ -1,17 +1,4 @@
 .c-users-page {
-  // background: linear-gradient(186.5deg, #3c3e64 0.83%, #1d1e2a 100%);
-  // background: linear-gradient(186.5deg, #31882a 0.83%, #3c643f 100%);
-  // box-shadow: 0 1px 0 #ffffff, 0px -1px 0px #ffffff;
-  // color: #fff;
-  // padding: 20px 40px;
-
-  // display: flex;
-  // align-items: center;
-  &__dialog .mat-dialog-container {
-    padding: 0;
-    background-color: aqua;
-  }
-
   &__user-list {
     list-style-type: none;
     padding: 0;
@@ -19,41 +6,41 @@
   }
 
   &__user {
-    background: linear-gradient(186.5deg, #3c3e64 0.83%, #1d1e2a 100%);
-    // background: linear-gradient(186.5deg, #31882a 0.83%, #3c643f 100%);
-    box-shadow: 0 1px 0 #ffffff, 0px -1px 0px #ffffff;
+    background: rgb(20, 20, 20);
+    box-shadow: 0 1px 0 #fff, 0px -1px 0px #fff;
     color: #fff;
-    padding: 20px 40px;
+    padding: 20px 50px;
 
     display: flex;
     align-items: center;
+    cursor: pointer;
+    transition: all 0.5s ease;
+
+    &:hover {
+      color: rgb(233, 103, 43);
+      background: rgb(58, 57, 57);
+      padding: 25px;
+    }
   }
 
   &__user-img {
     border-radius: 50%;
-    // box-shadow: 0 0 5px rgba(0, 0, 0, 4);
     height: 80px;
     width: 80px;
   }
 
   &__user-info {
-    font-weight: 700;
     margin-left: 16px;
-  }
 
-  &__button-pay {
-    // color: #fff;
-    // font-weight: 400;
-    // text-align: center;
-    // font-size: 1.25rem;
-    // line-height: 1.5;
-    // background-color: #4aaabb;
-    // border: 0;
-    // border-radius: 6px;
-    margin-left: auto;
-    cursor: pointer;
-    // &:hover {
-    //   background-color: #00b8d9;
-    // }
+    &--username {
+      font-weight: 700;
+    }
+
+    &--name {
+      margin-top: 5px;
+      margin-left: 16px;
+      font-size: small;
+      color: rgb(173, 169, 169);
+    }
   }
 }

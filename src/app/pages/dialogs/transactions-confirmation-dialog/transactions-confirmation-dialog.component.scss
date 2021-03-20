@@ -4,21 +4,16 @@
   border-radius: 15px;
 
   &__title {
-    background: #474971;
+    background: rgb(58, 57, 57);
     border-top-left-radius: 5px;
     border-top-right-radius: 10px;
-    color: #ffffff;
+    color: rgb(233, 103, 43);
     font-weight: 500;
     font-size: 16px;
     padding: 16px 24px;
-
-    &--user-name {
-      color: #cddc39;
-    }
   }
 
   &__content {
-    // display: contents;
     padding: 32px;
     text-align: center;
 
@@ -44,11 +39,11 @@
     display: block;
     text-align: center;
 
-    &--cancel-button,
     &--confirm-button {
+      background: rgb(214, 214, 214);
       border: 1px solid #ccc;
       border-radius: 6px;
-      font-size: 32px;
+      font-size: medium;
       height: 48px;
       padding: 0 8px;
       margin: 5px;
