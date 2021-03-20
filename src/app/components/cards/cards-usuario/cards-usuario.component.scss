@@ -1,0 +1,106 @@
+/* List of Users */
+
+.user {
+  background: linear-gradient(186.5deg, #3c3e64 0.83%, #1d1e2a 100%);
+  box-shadow: 0 1px 0 #ffffff, 0px -1px 0px #ffffff;
+  color: #fff;
+  padding: 20px 40px;
+
+  display: flex;
+  align-items: center;
+}
+
+.user > img {
+  border-radius: 50%;
+  height: 80px;
+  width: 80px;
+}
+
+.user > .info-wrapper {
+  margin-left: 16px;
+}
+
+.user > .pay-button {
+  margin-left: auto;
+}
+
+/* Payment Modal */
+.modal-backdrop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  height: 100vh;
+  width: 100vw;
+}
+
+.modal-backdrop.hidden {
+  display: none;
+}
+
+.modal-backdrop:after {
+  content: "";
+
+  background: rgba(0, 0, 0, 0.5);
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+}
+
+.modal {
+  background: #fff;
+  margin: 32px 0;
+  width: 420px;
+}
+
+.modal > .title {
+  background: #474971;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 16px 24px;
+}
+
+.modal > .title > span {
+  color: #cddc39;
+}
+
+.modal > .content {
+  padding: 32px;
+  text-align: center;
+}
+
+.modal > .content > input {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 32px;
+  height: 48px;
+  padding: 0 8px;
+}
+
+.modal > .content > .cards > select {
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 32px;
+  height: 48px;
+  margin-top: 12px;
+}
+
+.modal > .content > button {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 32px;
+  height: 48px;
+  padding: 0 8px;
+  margin-top: 24px;
+}

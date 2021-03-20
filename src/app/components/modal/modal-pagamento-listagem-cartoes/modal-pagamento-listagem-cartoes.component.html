@@ -1,0 +1,20 @@
+<div class="modal-backdrop">
+    <div class="modal">
+        <div class="title">Pagamento para <span>{{nomeUsuario}}</span></div>
+
+        <div class="content">
+            <input type="number" placeholder="R$ 0,00" />
+
+            <div class="cards">
+                <select>
+                    <option selected>Cartão com final 0123</option>
+                </select>
+            </div>
+
+            <app-botao [nomeBotao]="'Cancelar'" [typeButton]="'typeModal'" (click)="fechar()"></app-botao>
+
+            <app-botao [nomeBotao]="'Pagar'" [typeButton]="'typeModal'" (click)="pagarUsuario()"></app-botao>
+            
+        </div>
+    </div>
+</div>

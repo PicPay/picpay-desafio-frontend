@@ -1,0 +1,14 @@
+<div class="user">
+    <img src="https://randomuser.me/api/portraits/men/9.jpg" />
+    <div class="info-wrapper">
+        <div class="user-name">
+            {{nomeUsuario}}
+        </div>
+
+        <div class="user-id-username">
+            ID: {{idUsuario}} - Username: {{userName}}
+        </div>
+    </div>
+
+    <app-botao class="pay-button" [nomeBotao]="'Pagar'" (click)="pagarUsuario()"></app-botao> 
+</div>
