@@ -10,7 +10,11 @@ export class ModalReciboPagamentoComponent implements OnInit {
 
   constructor(
     public dialogModalReciboPagamento: MatDialogRef<ModalReciboPagamentoComponent>
-  ) { }
+  ) { 
+    setTimeout(() => {
+        this.dialogModalReciboPagamento.close();
+    }, 2000);
+  }
 
   ngOnInit() {
   }

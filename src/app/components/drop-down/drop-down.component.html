@@ -1,0 +1,7 @@
+<mat-form-field appearance="fill">
+    <mat-select>
+        <mat-option *ngFor="let item of arrayDrop" [value]="item.value">
+            {{item.viewValue}}
+        </mat-option>
+    </mat-select>
+</mat-form-field>

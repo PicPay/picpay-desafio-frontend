@@ -12,6 +12,7 @@ export class CardsUsuarioComponent implements OnInit {
   @Input() nomeUsuario: string;
   @Input() idUsuario: string;
   @Input() userName: string;
+  @Input() imagemUsuario: string;
   
   @Output() functionClick = new EventEmitter<string>();
 

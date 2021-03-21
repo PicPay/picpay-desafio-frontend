@@ -1,5 +1,7 @@
 <div class="users">
-  <app-cards-usuario [nomeUsuario]="'Nome'" [idUsuario]="'Id'" [userName]="'userName'"
-    (functionClick)="openModalPagamentoListagemCartoes($event)">
-  </app-cards-usuario>
+  <div *ngFor="let item of usuarios">
+    <app-cards-usuario [imagemUsuario]="item.img" [nomeUsuario]="item.name" [idUsuario]="item.id"
+      [userName]="item.username" (functionClick)="openModalPagamentoListagemCartoes($event)">
+    </app-cards-usuario>
+  </div>
 </div>
