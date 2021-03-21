@@ -1,7 +1,7 @@
 import { UserService } from './../user.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'
-import { FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-user-create',
@@ -10,11 +10,23 @@ import { FormGroup, Validators } from '@angular/forms';
 })
 export class UserCreateComponent implements OnInit {
 
-  constructor(private userService: UserService, private router: Router) { }
+  formulario: FormGroup
+
+  constructor(
+    private userService: UserService, 
+    private router: Router,
+    private formBuilder: FormBuilder) { }
 
   ngOnInit() {
+    this.configurarFormulario();
   }
 
+  configurarFormulario() {
+    this.formulario = this.formBuilder.group({
+      name: [null, Validators.required],
+      username: [null, Validators.required]
+    })
+  }
 
   createNewUser(): void {
     this.userService.showMessage('Usuário cadastrado com sucesso!')

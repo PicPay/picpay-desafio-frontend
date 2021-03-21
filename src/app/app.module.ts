@@ -21,7 +21,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import {MatDialogModule} from '@angular/material/dialog';
-import { FormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
@@ -73,7 +73,8 @@ import { ReturnPaymentComponent } from './views/payload/return-payment/return-pa
     MatInputModule,
     MatSelectModule,
     NgxMaskModule.forRoot(),
-    NgxCurrencyModule
+    NgxCurrencyModule,
+    ReactiveFormsModule
   
   ],
 

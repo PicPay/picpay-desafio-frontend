@@ -1,14 +1,13 @@
 <mat-card>
     <mat-card-title> Novo Usuário </mat-card-title>
-    <form>
-
+    <form [formGroup]="formulario">
         <mat-form-field>
-            <input matInput placeholder="Nome" required>
+            <input matInput placeholder="Nome" formControlName="name" id="name" name="name">
         </mat-form-field>
         <mat-form-field>
-            <input matInput placeholder="@username" required>
+            <input matInput placeholder="@username" formControlName="username">
         </mat-form-field>
     </form>
-    <button mat-raised-button (click)="createNewUser()" color="primary">Salvar</button>
+    <button mat-raised-button [disabled]="formulario.invalid" (click)="createNewUser()" color="primary">Salvar</button>
     <button mat-raised-button (click)="cancel()">Cancelar</button>
 </mat-card>
