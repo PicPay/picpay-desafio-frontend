@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { UserModel } from 'src/app/models/user-model';
+import { ModalService } from 'src/app/services/modal.service';
 
 @Component({
   selector: 'app-user',
@@ -9,9 +10,12 @@ import { UserModel } from 'src/app/models/user-model';
 export class UserComponent implements OnInit {
   @Input() user: UserModel;
 
-  constructor() { }
+  constructor(private _modalService: ModalService) { }
 
   ngOnInit() {
   }
-
+  
+  openPaymentModal() {
+    this._modalService.open();
+  }
 }
