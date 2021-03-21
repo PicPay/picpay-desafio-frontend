@@ -1,31 +1,28 @@
-import { TestBed, async } from '@angular/core/testing';
+import { Component } from '@angular/core';
+import { TestBed, async, ComponentFixture } from '@angular/core/testing';
+import { MatCardModule } from '@angular/material';
 import { AppComponent } from './app.component';
 
+@Component({ selector: 'app-user-list', template: '' })
+class UserListStubComponent {}
+
 describe('AppComponent', () => {
+  let fixture: ComponentFixture<AppComponent>;
+  let component: AppComponent;
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        AppComponent
-      ],
+      imports: [MatCardModule],
+      declarations: [AppComponent, UserListStubComponent],
     }).compileComponents();
   }));
 
+  beforeEach(() => {
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.debugElement.componentInstance;
+  });
+
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
-  });
-
-  it(`should have as title 'picpay-desafio-frontend'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('picpay-desafio-frontend');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('picpay-desafio-frontend app is running!');
+    expect(component).toBeTruthy();
   });
 });

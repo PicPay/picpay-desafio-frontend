@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { UserModule } from './user/user.module';
 import { HttpClientModule } from '@angular/common/http';
+import { MatCardModule } from '@angular/material';
 
 @NgModule({
   declarations: [AppComponent],
@@ -12,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    MatCardModule,
     UserModule,
   ],
   providers: [],
