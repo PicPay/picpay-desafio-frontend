@@ -53,6 +53,10 @@ describe('UserListComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it('should get users from service', () => {
+    expect(userServiceSpy.getUsers.calls.count()).toBe(1, 'one call');
+  });
+
   it('should display the correct ammount of User List Item Components', () => {
     const listItems = fixture.nativeElement.querySelectorAll(
       'app-user-list-item'

@@ -20,9 +20,10 @@ main.content {
 }
 
 .user-list-wrapper {
-  width: calc(100% - 32px);
+  width: 100%;
   min-height: 90px;
   padding: 0;
+  border-radius: 20px;
 }
 
 footer {
