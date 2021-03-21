@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { MatDialog } from "@angular/material";
 import { Card } from "src/app/data-access/transactions/interfaces/card.interface";
-import { TransactionApprovalPayload } from "src/app/data-access/transactions/interfaces/transactions-approval-payload.interface";
 import { TransactionsDialogData } from "src/app/data-access/transactions/interfaces/transactions-dialog-data.interface";
 import { TransactionPayload } from "src/app/data-access/transactions/interfaces/transactions-payload.interface";
 import { TransactionsService } from "src/app/data-access/transactions/transactions.service";

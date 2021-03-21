@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, Output } from "@angular/core";
+import { Component, Inject } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
@@ -51,15 +51,15 @@ export class TransactionsDialogComponent {
   }
 
   public onCloseDialog(): void {
-    if(this.transactionForm.invalid){
+    if (this.transactionForm.invalid) {
       return;
     }
-    
+
     const transactionPayload: TransactionPayload = this.createTransactionPayload();
     this.transactionsDialogRef.close(transactionPayload);
   }
 
-  public onCancel():void{
+  public onCancel(): void {
     this.transactionsDialogRef.close(null);
   }
 }
