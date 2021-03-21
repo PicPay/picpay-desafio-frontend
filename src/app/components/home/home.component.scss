@@ -1,0 +1,106 @@
+.full-page {
+  display: flex;
+  flex-direction: column;
+
+  .box--header {
+    position: fixed;
+    background: #fff;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 10px;
+
+    .header--logo {
+      width: 25%;
+      margin-top: 10px;
+      height: 135px;
+    }
+  }
+
+  .listUsers {
+    margin-top: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    .card--listUsers {
+      width: 80%;
+      height: 150px;
+      background: #353655;
+      margin-top: 2px;
+      display: flex;
+      flex-direction: row;
+
+      &:hover {
+        width: 80%;
+        height: 150px;
+        margin-top: 2px;
+        display: flex;
+        flex-direction: row;
+        background: #353655d7;
+
+        &:hover .img--circle {
+          width: 100px;
+          height: 100px;
+          background-color: #ffff;
+          border-radius: 100%;
+        }
+      }
+
+      .listUsers--img {
+        width: 20%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        align-content: center;
+
+        .img--circle {
+          width: 130px;
+          height: 130px;
+
+          border-radius: 100%;
+          background-color: #ffff;
+        }
+      }
+
+      .listUsers--info {
+        width: 60%;
+        margin-left: 20px;
+
+        .info--text {
+          margin-top: 40px;
+          color: #ffff;
+          font-size: 30px;
+        }
+      }
+
+      .listUsers--pay {
+        width: 20%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+
+        .pay--btn {
+          width: 35%;
+          height: 40px;
+          color: black;
+          font-size: 20px;
+          border-radius: 5px;
+
+          &:hover {
+            width: 35%;
+            height: 40px;
+            color: #ffff;
+            font-size: 20px;
+            background: #21c15e;
+            border-radius: 5px
+          }
+
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,7 @@
+<div class="modal-header box--header">
+  <p class="modal-title">Recibo de pagamento</p>
+</div>
+<div class="modal-body box--body">
+  <h5 *ngIf="sucessPayment; else elseBlock">O pagamento foi concluído com sucesso.</h5>
+  <ng-template #elseBlock>O pagamento <b>não</b> foi concluído com sucesso.</ng-template>
+</div>

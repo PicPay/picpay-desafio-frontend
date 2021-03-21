@@ -19,6 +19,10 @@
     "@angular/platform-browser": "~8.2.13",
     "@angular/platform-browser-dynamic": "~8.2.13",
     "@angular/router": "~8.2.13",
+    "@ng-bootstrap/ng-bootstrap": "^5.0.0",
+    "bootstrap": "^4.5.0",
+    "ng-mocks": "^11.9.1",
+    "ngx-mask": "^8.0.0",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"

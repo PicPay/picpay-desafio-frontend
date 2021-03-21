@@ -1,0 +1,17 @@
+<div class="modal-header box--header ">
+  <p class="modal-title">Pagamento para <span class="header--destac"> {{name}}</span></p>
+</div>
+<form class="modal-body box--body" [formGroup]="paymentForm">
+
+      <input type="text" formControlName="valueOfTransaction" class="body--input form-control"
+        (input)="valueOfTransaction = $event.target" placeholder="R$0,00" prefix="R$" mask="000000000" />
+      <validate-message *ngIf="paymentForm.get('valueOfTransaction')?.errors?.required && paymentForm.get('valueOfTransaction')?.touched" text="Value is required"></validate-message>
+
+      <select class="body--select form-control mt-3" (change)="selectCard($event.target)" formControlName="selectCards">
+        <option [value]="card.cardNumber" *ngFor="let card of cards" selected>{{card.cardNumber | formatCard }}</option>
+      </select>
+      <validate-message *ngIf="paymentForm.get('selectCards')?.errors?.required && paymentForm.get('selectCards')?.touched" text="Card is required"></validate-message>
+
+    <button class="body--btn" (click)="makePayment()" (click)="activeModal.close('Close click')" (Click)="openModal()"
+    [disabled]="paymentForm.get('valueOfTransaction')?.errors?.required || paymentForm.get('selectCards')?.errors?.required">Pagar</button>
+    </form>

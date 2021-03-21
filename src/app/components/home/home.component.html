@@ -1,0 +1,19 @@
+
+<div class="full-page">
+  <div class="box--header">
+    <img class="header--logo" src="../../../assets/img/logo.png" alt="">
+  </div>
+  <div class="listUsers">
+      <div class="card--listUsers" *ngFor="let item of users" >
+          <div class="listUsers--img">
+              <img class="img--circle" [src]="item.img">
+          </div>
+          <div class="listUsers--info">
+              <p class="info--text">Nome do usuário: {{item.name}} <br> Id: {{item.id}} - Username: {{item.username}}</p>
+          </div>
+          <div class="listUsers--pay">
+              <button [value]="item.name" (click)="getName($event.target)" (click)="open()" class="pay--btn">Pagar</button>
+          </div>
+      </div>
+  </div>
+</div>
