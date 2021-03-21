@@ -1,5 +1,5 @@
 <mat-form-field appearance="fill">
-    <mat-select>
+    <mat-select (selectionChange)="valorSelecionado($event)">
         <mat-option *ngFor="let item of arrayDrop" [value]="item.value">
             {{item.viewValue}}
         </mat-option>

@@ -14,6 +14,14 @@ interface UserResponse {
   username: string;
 }
 
+interface TransactionPayload {
+  card_number: string;
+  cvv: number;
+  expiry_date: string;
+  destination_user_id: number;
+  value: number;
+}
+
 @Injectable()
 export class GeneralService {
 
@@ -24,7 +32,7 @@ export class GeneralService {
         return this.http.get<UserResponse[]>(`${this.API}/v2/5d531c4f2e0000620081ddce`);
     }
 
-    fazerPagamento(): Observable<PagamentoResponse> {
-        return this.http.post<PagamentoResponse>(`${this.API}/v3/533cd5d7-63d3-4488-bf8d-4bb8c751c989`, null);
+    fazerPagamento(transacaoPagamento: TransactionPayload): Observable<PagamentoResponse> {
+        return this.http.post<PagamentoResponse>(`${this.API}/v3/533cd5d7-63d3-4488-bf8d-4bb8c751c989`, transacaoPagamento);
     }
 }

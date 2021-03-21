@@ -1,6 +1,9 @@
 import { EventEmitter, Component, Input, OnInit, Output } from '@angular/core';
-import { MatDialog } from '@angular/material';
-import { ModalPagamentoListagemCartoesComponent } from '../../modal/modal-pagamento-listagem-cartoes/modal-pagamento-listagem-cartoes.component';
+
+interface DadosUsuario{
+  nomeUsuario: string;
+  idUsuario: number;
+}
 
 @Component({
   selector: 'app-cards-usuario',
@@ -10,11 +13,11 @@ import { ModalPagamentoListagemCartoesComponent } from '../../modal/modal-pagame
 export class CardsUsuarioComponent implements OnInit {
 
   @Input() nomeUsuario: string;
-  @Input() idUsuario: string;
+  @Input() idUsuario: number;
   @Input() userName: string;
   @Input() imagemUsuario: string;
   
-  @Output() functionClick = new EventEmitter<string>();
+  @Output() functionClick = new EventEmitter<DadosUsuario>();
 
   constructor() { }
 
@@ -22,7 +25,7 @@ export class CardsUsuarioComponent implements OnInit {
   }
 
   pagarUsuario(){
-    this.functionClick.emit(this.nomeUsuario);
+    this.functionClick.emit({nomeUsuario: this.nomeUsuario, idUsuario: this.idUsuario});
   }
 
 }

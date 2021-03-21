@@ -51,7 +51,7 @@ export class AppComponent {
 
   openModalPagamentoListagemCartoes(event): void {
     this.dialog.open(ModalPagamentoListagemCartoesComponent, {
-      data: { name: event, cards: this.cards }
+      data: { usuario: event, cards: this.cards }
     });
   }
 }

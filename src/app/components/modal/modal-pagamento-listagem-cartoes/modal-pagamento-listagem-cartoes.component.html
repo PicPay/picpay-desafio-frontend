@@ -3,9 +3,10 @@
         <div class="title">Pagamento para <span>{{nomeUsuario}}</span></div>
 
         <div class="content">
-            <input type="text" placeholder="R$ 0,00" />
+            <input #valorPagamento type="text" placeholder="R$ 0,00" />
 
-            <app-drop-down class="cards" [arrayDrop]="cartoes"></app-drop-down>
+            <app-drop-down class="cards" (valorSelecionadoEmited)="valorSelecionado($event)" [arrayDrop]="cartoes">
+            </app-drop-down>
 
             <app-botao [nomeBotao]="'Cancelar'" [typeButton]="'typeModal'" (click)="fechar()"></app-botao>
 
