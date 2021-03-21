@@ -1,0 +1,12 @@
+@import "../../../variables";
+
+.loading {
+  margin: 13px auto !important;
+}
+
+// Desktop Version
+@include desktop-up {
+  .loading {
+    margin: 28px auto !important;
+  }
+}
