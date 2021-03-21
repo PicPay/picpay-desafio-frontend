@@ -3,6 +3,8 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { HttpClient } from '@angular/common/http';
 
 import { UserService } from './user.service';
+import { UserModel } from '../models/user-model';
+import { of } from 'rxjs';
 
 describe('UserService', () => {
   let httpClient: HttpClient;
@@ -25,12 +27,47 @@ describe('UserService', () => {
 
   describe('getUsers$', () => {
     it('should call HttpClient with the correct url', () => {
-      const fakeUrl = TestBed.get('USERS_URL')
-      spyOn(httpClient, 'get')
+      const fakeUrl = TestBed.get('USERS_URL');
+      spyOn(httpClient, 'get');
 
-      service.getUsers$()
+      service.getUsers$();
 
-      expect(httpClient.get).toHaveBeenCalledWith(fakeUrl)
+      expect(httpClient.get).toHaveBeenCalledWith(fakeUrl);
+    });
+
+    it('should return a list of users', () => {
+      const users: UserModel[] = [
+        {
+          id: 1,
+          name: 'User 1',
+          username: '@user_1',
+          img: 'https://randomuser.me/api/portraits/men/1.jpg',
+        },
+        {
+          id: 2,
+          name: 'User 2',
+          username: '@user_2',
+          img: 'https://randomuser.me/api/portraits/women/1.jpg',
+        },
+        {
+          id: 3,
+          name: 'User 3',
+          username: '@user_3',
+          img: 'https://randomuser.me/api/portraits/women/2.jpg',
+        },
+        {
+          id: 4,
+          name: 'User 4',
+          username: '@user_4',
+          img: 'https://randomuser.me/api/portraits/men/2.jpg',
+        }
+      ];
+      spyOn(httpClient, 'get').and.returnValue(of(users));
+
+      const spy = jasmine.createSpy('spy');
+      service.getUsers$().subscribe(spy);
+
+      expect(spy).toHaveBeenCalledWith(users);
     });
   });
 });
