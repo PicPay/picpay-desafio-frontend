@@ -15,6 +15,8 @@ export class UserListItemComponent implements OnInit {
   ngOnInit() {}
 
   public payUser() {
-    if (this.user) this.paymentService.startPayment(this.user);
+    if (this.user) {
+      this.paymentService.startPayment(this.user);
+    }
   }
 }

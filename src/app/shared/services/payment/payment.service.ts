@@ -9,7 +9,7 @@ export class PaymentService {
 
   /**
    * Start the payment process
-   * @param {User} receiver The user that will receive the payment
+   * @param receiver The user that will receive the payment
    */
   public startPayment(receiver: User) {
     // TODO: Implement method

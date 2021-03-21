@@ -14,8 +14,7 @@ export class UserService {
 
   /**
    * Get users from the API.
-   * @returns {Observable<User[]>} An observable that resolves to an array of users.
-   * The observable will resolve to an empty array if an error occurred.
+   * @returns An observable that resolves to an array of users or to an empty array if an error occurred.
    */
   public getUsers(): Observable<User[]> {
     return this.http.get<User[]>(UserService.URL).pipe(catchError(() => []));

@@ -16,7 +16,7 @@ describe('UserListComponent', () => {
   let component: UserListComponent;
   let fixture: ComponentFixture<UserListComponent>;
   let userServiceSpy: jasmine.SpyObj<UserService>;
-  let testUsers = [
+  const testUsers = [
     {
       id: 0,
       name: 'Test User 1',
@@ -54,7 +54,7 @@ describe('UserListComponent', () => {
   });
 
   it('should display the correct ammount of User List Item Components', () => {
-    let listItems = fixture.nativeElement.querySelectorAll(
+    const listItems = fixture.nativeElement.querySelectorAll(
       'app-user-list-item'
     );
 

@@ -9,7 +9,7 @@ describe('UserListItemComponent', () => {
   let component: UserListItemComponent;
   let fixture: ComponentFixture<UserListItemComponent>;
   let paymentServiceSpy: jasmine.SpyObj<PaymentService>;
-  let testUser: User = {
+  const testUser: User = {
     id: 0,
     name: 'Test User',
     username: '@test-user',
@@ -42,30 +42,30 @@ describe('UserListItemComponent', () => {
 
     fixture.detectChanges();
 
-    let nameElement: HTMLElement = fixture.nativeElement.querySelector(
+    const nameElement: HTMLElement = fixture.nativeElement.querySelector(
       '.user-name'
     );
     expect(nameElement.innerHTML.trim()).toBe(
       testUser.name.trim(),
-      "user's name"
+      'user\'s name'
     );
 
-    let usernameElement: HTMLElement = fixture.nativeElement.querySelector(
+    const usernameElement: HTMLElement = fixture.nativeElement.querySelector(
       '.user-username'
     );
     expect(usernameElement.innerHTML.trim()).toBe(
       testUser.username.trim(),
-      "user's username"
+      'user\'s username'
     );
 
-    let imgElement: HTMLImageElement = fixture.nativeElement.querySelector(
+    const imgElement: HTMLImageElement = fixture.nativeElement.querySelector(
       '.user-img'
     );
-    let imgFullUrl = Location.joinWithSlash(
+    const imgFullUrl = Location.joinWithSlash(
       window.location.origin,
       testUser.img.trim()
     );
-    expect(imgElement.src.trim()).toBe(imgFullUrl, "user's image");
+    expect(imgElement.src.trim()).toBe(imgFullUrl, 'user image url');
   });
 
   it('should call PaymentService#startPayment when the button is clicked', () => {
@@ -73,7 +73,7 @@ describe('UserListItemComponent', () => {
 
     fixture.detectChanges();
 
-    let button: HTMLButtonElement = fixture.nativeElement.querySelector(
+    const button: HTMLButtonElement = fixture.nativeElement.querySelector(
       'button.pay-button'
     );
 
@@ -83,7 +83,7 @@ describe('UserListItemComponent', () => {
   });
 
   it('should not call PaymentService#startPayment when the button is clicked if there is no user', () => {
-    let button: HTMLButtonElement = fixture.nativeElement.querySelector(
+    const button: HTMLButtonElement = fixture.nativeElement.querySelector(
       'button.pay-button'
     );
 
