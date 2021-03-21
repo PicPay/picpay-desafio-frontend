@@ -7,11 +7,11 @@
 
             <app-drop-down class="cards" (valorSelecionadoEmited)="valorSelecionado($event)" [arrayDrop]="cartoes">
             </app-drop-down>
+            <div>
+                <app-botao [nomeBotao]="'Cancelar'" [typeButton]="'typeModal'" (click)="fechar()"></app-botao>
 
-            <app-botao [nomeBotao]="'Cancelar'" [typeButton]="'typeModal'" (click)="fechar()"></app-botao>
-
-            <app-botao [nomeBotao]="'Pagar'" [typeButton]="'typeModal'" (click)="pagar()"></app-botao>
-
+                <app-botao [nomeBotao]="'Pagar'" [typeButton]="'typeModal'" (click)="pagar()"></app-botao>
+            </div>
         </div>
     </div>
 </div>
