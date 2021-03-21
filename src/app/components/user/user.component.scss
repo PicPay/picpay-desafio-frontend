@@ -1,0 +1,53 @@
+@import "../../../styles/colors.scss";
+
+.user {
+  height: 120px;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  overflow: hidden;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 4px #ddd;
+}
+
+.user-avatar {
+  width: 80px;
+  height: 80px;
+  margin-left: 25px;
+  border-radius: 50%;
+  border: solid 2px #ddd
+}
+
+.info-wrapper {
+  flex: 1;
+  margin: 0 15px;
+}
+
+.user-username {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.user-id-name {
+  font-size: 0.8rem;
+  color: #999;
+}
+
+.pay-button {
+  margin-right: 25px;
+  width: 100px;
+  height: 40px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: $primary;
+  cursor: pointer;
+  border: 0;
+  border-radius: 20px;
+  transition:all 0.3s ease;
+
+  &:hover {
+    background-color: darken($primary, 10);
+  }
+}

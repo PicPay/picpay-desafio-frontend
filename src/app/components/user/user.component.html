@@ -1,1 +1,16 @@
-<p>user works!</p>
+<div class="user" *ngIf="user">
+  <img class="user-avatar" [src]="user.img" />
+  <div class="info-wrapper">
+    <div class="user-username">
+      @{{ user.username }}
+    </div>
+
+    <div class="user-id-name">
+      {{ user.id }} - {{ user.name }}
+    </div>
+  </div>
+
+  <button type="button" class="pay-button">
+    Pagar
+  </button>
+</div>
