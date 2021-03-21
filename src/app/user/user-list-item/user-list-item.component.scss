@@ -1,4 +1,4 @@
-@import "../../../variables";
+@import '../../../variables';
 
 .user {
   padding: 20px;
@@ -10,7 +10,7 @@
   }
 }
 
-.user > img {
+.user-img {
   border-radius: 50%;
   height: 50px;
   width: 50px;
@@ -21,7 +21,7 @@
   }
 }
 
-.user > .info-wrapper {
+.info-wrapper {
   margin-left: 16px;
 }
 
@@ -37,14 +37,14 @@
 
 .user-username {
   font-size: 0.7em;
-  color: color($secondary-palette, "light");
+  color: color($secondary-palette, 'light');
 
   @include desktop-up {
     font-size: 0.8em;
   }
 }
 
-.user > .pay-button {
+.pay-button {
   box-shadow: none;
   margin-left: auto;
 }

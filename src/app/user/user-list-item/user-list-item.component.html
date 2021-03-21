@@ -1,16 +1,16 @@
 <div class="user">
-  <img [src]="user.img" />
+  <img [src]="user?.img" class="user-img" />
   <div class="info-wrapper">
     <h3 class="user-name">
-        {{user.name}}
+      {{ user?.name }}
     </h3>
 
     <div class="user-username">
-        {{user.username}}
+      {{ user?.username }}
     </div>
   </div>
 
-  <button mat-mini-fab color="primary" class="pay-button">
-      $
+  <button mat-mini-fab color="primary" class="pay-button" (click)="payUser()">
+    $
   </button>
 </div>
