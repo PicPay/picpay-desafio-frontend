@@ -51,6 +51,10 @@ export class TransactionsDialogComponent {
   }
 
   public onCloseDialog(): void {
+    if(this.transactionForm.invalid){
+      return;
+    }
+    
     const transactionPayload: TransactionPayload = this.createTransactionPayload();
     this.transactionsDialogRef.close(transactionPayload);
   }
