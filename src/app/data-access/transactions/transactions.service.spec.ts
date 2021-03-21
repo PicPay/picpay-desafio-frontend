@@ -16,7 +16,7 @@ describe("TransactionsService", () => {
   });
 
   it("should be created", () => {
-    expect(transactionsService).toBeDefined();
+    expect(transactionsService).toBeTruthy();
   });
 
   it("should have postTransaction() function"),

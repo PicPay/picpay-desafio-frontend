@@ -3,7 +3,7 @@ import { TestBed } from "@angular/core/testing";
 
 import { UsersService } from "./users.service";
 
-fdescribe("TransactionsService", () => {
+describe("TransactionsService", () => {
   let usersService: UsersService;
 
   beforeEach(() => {
@@ -15,7 +15,7 @@ fdescribe("TransactionsService", () => {
   });
 
   it("should be created", () => {
-    expect(usersService).toBeDefined();
+    expect(usersService).toBeTruthy();
   });
 
   it("should have getUsers() function"),

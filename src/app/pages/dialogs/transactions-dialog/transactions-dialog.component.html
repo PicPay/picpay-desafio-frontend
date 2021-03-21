@@ -3,12 +3,12 @@
   <h2 mat-dialog-title class="c-transactions-dialog__title">
     Pagamento para
     <span class="c-transactions-dialog__title--user-name">{{
-      selectedUser.username
+      transactionsDialogData.selectedUser.username
     }}</span>
   </h2>
 
   <mat-dialog-content class="c-transactions-dialog__content">
-    <form [formGroup]="selectedUser.form">
+    <form [formGroup]="transactionForm">
       <mat-form-field>
         <mat-label>Valor</mat-label>
         <input
@@ -28,11 +28,11 @@
           formControlName="cards"
           class="c-transactions-dialog__content--card-select"
         >
-          <mat-option value="{{ selectedUser.cards[0].card_number }}"
-            >Cartão Valido
-          </mat-option>
-          <mat-option value="{{ selectedUser.cards[1].card_number }}"
-            >Cartão Invalido
+          <mat-option
+            *ngFor="let card of transactionsDialogData.cards"
+            [value]="card.card_number"
+          >
+            {{ card.card_number }}
           </mat-option>
         </mat-select>
       </mat-form-field>
@@ -42,16 +42,16 @@
   <mat-dialog-actions class="c-transactions-dialog__actions">
     <button
       mat-button
-      mat-dialog-close="false"
       type="button"
       class="c-transactions-dialog__actions--cancel-button"
+      (click)="onCancel()"
     >
       Cancelar
     </button>
     <button
       mat-raised-button
       type="button"
-      [disabled]="!selectedUser.form.valid"
+      [disabled]="!transactionForm.valid"
       class="c-transactions-dialog__actions--confirm-button"
       (click)="onCloseDialog()"
     >
