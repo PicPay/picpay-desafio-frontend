@@ -1,0 +1,14 @@
+@import '../../../assets/scss/variables';
+
+.container {
+    @at-root #{&}__title {
+        color: $title;
+        font-size: 3rem;
+    }
+
+    @at-root #{&}__subtitle {
+        color: $text-lightgrey;
+        font-weight: 200;
+        line-height: 1.4rem;
+    }
+}

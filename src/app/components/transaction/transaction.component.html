@@ -1,62 +1,95 @@
 <div class="modal-backdrop">
-    <div *ngIf="isOnTransaction()" class="modal">
-        <div class="title">
-            <span>Pagamento para <span class="user-name">{{transactionUser.name}}</span></span>
-            <span 
-             class="close"
-             (click)="transactionService.endTransaction()">
-               x
-           </span>
+    <div class="container row justify-content-center modal-container">
+
+        <div *ngIf="isOnTransaction()" class="col-12 col-sm-11 col-md-9 col-lg-8 modal">
+            <div class="container px-5 modal__content">
+                <div class="row modal__content__header">
+
+                    <div class="col-11 title">
+                        <h1>Efetuar Pagamento</h1>
+                    </div>
+                    <!-- {{transactionUser.name}} -->
+                    <h1 
+                     class="col-1 px-2 d-flex justify-content-end align-items-start close"
+                     (click)="transactionService.endTransaction()">
+                        x
+                    </h1>
+                </div>            
+                
+
+                <form 
+                 class="row modal__content__form"
+                 [formGroup]="transactionForm">
+                    
+                    <h3 class="modal__content__form__description">
+                        Preencha o campo abaixo com o valor, e logo em seguida selecione o cartão desejado para então efetuar a transação.
+                    </h3>
+
+                    <label>- Informe o valor da transação:</label>
+                    <input
+                     class="modal__content__form__value"
+                     required
+                     type="text"
+                     appBrlCurrencyMask
+                     formControlName="value"/>
+                    
+                    <label>- Selecione o cartão de crédito: </label>
+
+                    <div class="modal__content__form__cards">
+
+                        <label class="radio-card-button" *ngFor="let card of cards; let index = index;">
+                            <input
+                             formControlName="card"
+                             type="radio"
+                             [value]="card"
+                             class="card-input-element d-none" >
+                            <span class="card card-body bg-light d-flex flex-row justify-content-between align-items-center">
+                             Organization 1
+                            </span>
+                        </label>
+
+                        <!-- <select
+                         required
+                         formControlName="card">
+                            <option
+                             *ngFor="let card of cards; let index = index;"
+                             [ngValue]="card">
+                                Cartão com final {{ endCharactersOf(card.card_number) }}
+                            </option>
+                        </select> -->
+                    </div>
+                
+                    <div class="footer">
+                        <button 
+                         type="button"
+                         class="pay-button"
+                         (click)="pay()">
+                            Pagar
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
 
-        <form 
-         class="content"
-         [formGroup]="transactionForm">
-
-            <input 
-             required
-             type="text"
-             appBrlCurrencyMask
-             formControlName="value"/>
-
-            <div class="cards">
-                <select
-                 required
-                 formControlName="card">
-                    <option
-                     *ngFor="let card of cards; let index = index;"
-                     [ngValue]="card">
-                        Cartão com final {{ endCharactersOf(card.card_number) }}
-                    </option>
-                </select>
+            <div *ngIf="isTransactionSucceeded() || isTransactionFailed()" class="modal">
+            <div class="title">
+                <span>Recibo de pagamento</span>
+                <span 
+                 class="close"
+                 (click)="transactionService.endTransaction()">
+                    x
+                </span>
             </div>
 
-            <div class="footer">
-                <button 
-                 type="button"
-                 class="pay-button"
-                 (click)="pay()">
-                    Pagar
-                </button>
+            <div *ngIf="isTransactionSucceeded()" class="content">
+                O pagamento foi concluido com sucesso.
             </div>
-        </form>
-    </div>
+            <div *ngIf="isTransactionFailed()" class="content">
+                O pagamento <strong>não</strong> foi concluido com sucesso.
+            </div>
 
-    <div *ngIf="isTransactionSucceeded() || isTransactionFailed()" class="modal">
-        <div class="title">
-            <span>Recibo de pagamento</span>
-            <span 
-             class="close"
-             (click)="transactionService.endTransaction()">
-                x
-            </span>
-        </div>
+            </div>
+        
 
-        <div *ngIf="isTransactionSucceeded()" class="content">
-            O pagamento foi concluido com sucesso.
-        </div>
-        <div *ngIf="isTransactionFailed()" class="content">
-            O pagamento <strong>não</strong> foi concluido com sucesso.
-        </div>
     </div>
 </div>

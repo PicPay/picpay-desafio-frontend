@@ -57,10 +57,10 @@ export class TransactionComponent implements OnInit, OnDestroy {
         card: [defaultCard , [Validators.required] ]
       });
 
-    this.transactionForm.valueChanges.subscribe( e  => {
-      // console.log('valueChanges event: ', e);
-      console.log('this.transactionForm.value: ', this.transactionForm.value);
-    })
+    // this.transactionForm.valueChanges.subscribe( e  => {
+    //   console.log('valueChanges event: ', e);
+    //   console.log('this.transactionForm.value: ', this.transactionForm.value);
+    // })
   }
 
   isOnTransaction(): boolean {

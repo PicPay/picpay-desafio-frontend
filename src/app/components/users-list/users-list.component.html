@@ -1,22 +1,41 @@
-<div class="users">
+<div class="container"> <!-- old class: users -->
 
-  <div *ngFor="let user of users" class="user">
-    <img [src]="user.img" />
-    <div class="info-wrapper">
-      <div class="user-name">
-        {{ user.name }}
-      </div>
-  
-      <div class="user-id-username">
-        ID: {{ user.id }} - Username: {{user.username}}
+  <div *ngFor="let user of users" class="row justify-content-center"> <!-- old class: user -->
+    <div class="col-md-9 card mt-4 p-4">
+      <div class="container">
+        <div class="row flex-column flex-md-row">
+           <div class="col-12 col-md-9 pl-4 pl-md-0 card__user">
+            <div class="row">
+              <div class="col mb-4 card__user__name">
+                {{ user.name }}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-3 col-md-4 col-lg-3 ">
+                <img class="card__user__img" [src]="user.img" />
+              </div>
+              <!-- d-flex d-md-block flex-column justify-content-center -->
+              <div class="col pr-0 pl-4">
+                <div class="card__user__username">
+                  <span class="d-none d-sm-inline d-md-none d-lg-inline">Username:</span> {{user.username}}
+                </div>
+                <div class="card__user__id">
+                  ID: {{ user.id }}
+                </div>
+              </div>
+            </div>
+           </div>
+           <div class="col-12 col-md-3 d-flex justify-content-center align-items-center">
+            <button
+             class="pay-button mt-4"
+             (click)="initTransaction(user)">
+              Pagar
+           </button>
+           </div> 
+        </div>
+
       </div>
     </div>
 
-    <button
-     class="pay-button"
-     (click)="initTransaction(user)">
-      Pagar
-    </button>
   </div>
-
 </div>  

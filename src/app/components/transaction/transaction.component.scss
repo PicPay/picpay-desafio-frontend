@@ -1,3 +1,5 @@
+@import '../../../assets/scss/variables.scss';
+
 /* Payment Modal */
 .modal-backdrop {
   display: flex;
@@ -30,82 +32,209 @@
   z-index: -1;
 }
 
+.modal-container {
+  margin:0;
+  padding:0;
+}
+
 .modal {
-  background: #fff;
-  margin: 32px 0;
-  width: 420px;
+  @media (max-width: 575.9px) {
+    height: 100vh;
+    border-radius: 0;
+  }
+
+  height: 90vh;
+  background: $background;
+  border-radius: 18px;
+
+  margin:0;
+  padding:0;
+
+  @at-root #{&}__content {
+    padding: 0;
+
+    @at-root #{&}__header {
+      color: $title;
+      font-weight: 500;
+      font-size: 16px;
+      padding: 16px 0px;
+    
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      margin: 0 0 3rem;
+      border-bottom: 1px solid $grey-line;
+    }
+
+    @at-root #{&}__form {
+      margin: 0;
+      flex-direction: column;
+
+      label {
+        font-size: 1.2rem;
+        font-weight: bold;
+      }
+
+      @at-root #{&}__description {
+        color: $text;
+        font-weight: 100;
+        margin-bottom: 3rem;
+      }
+
+      @at-root #{&}__value {
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        // font-size: 32px;
+        font-size: 20px;
+        height: 48px;
+        padding: 0 8px;
+        width: 100%;
+        margin: 2rem 0 4rem 0;
+      }
+
+      @at-root #{&}__cards {
+        margin-top: 2rem;
+        overflow-y: scroll;
+        max-height: 12rem;
+        box-shadow: 
+          15px 0px 25px -25px rgb(0 0 0 / 45%),
+          -15px 0px 25px -25px rgb(0 0 0 / 45%);
+        
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
 }
 
-.modal > .title {
-  background: #474971;
-  color: #ffffff;
-  font-weight: 500;
-  font-size: 16px;
-  padding: 16px 24px;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+label.radio-card-button {
+  width: 90%;
+  margin: 0 auto;
+  font-size: 1rem;
 }
 
-.modal > .title > span > .user-name {
-  color: #cddc39;
+/* "card" radio button styling */
+
+.card-input-element+.card {
+  height: calc(36px + 2*1rem);
+  color: $text;
+  border: 2px solid transparent;
+  border-radius: 4px;
+
+  margin-top: 2rem;
+  box-shadow: 
+    0 5px 10px rgb(154 160 185 / 5%),
+    0 15px 40px rgb(166 173 201 / 20%);
+    // -webkit-box-shadow: none;
+    // box-shadow: none;
 }
 
-.modal > .title > span.close {
+.card-input-element+.card:hover {
   cursor: pointer;
-  font-size: 1.2rem;
-  // padding: 3px;
-  transition: .2s;
 }
 
-.modal > .title > span.close:hover {
-  color: #c94848;
+.card-input-element:checked+.card {
+  border: 2px solid $pp-green;
+  -webkit-transition: border .3s;
+  -o-transition: border .3s;
+  transition: border .3s;
 }
 
-.modal > .content {
-  padding: 32px;
-  text-align: center;
+.card-input-element:checked+.card::after {
+  content: '\e5ca';
+  // color: #AFB8EA;
+  color: $pp-green;
+  font-family: 'Material Icons';
+  font-size: 24px;
+  -webkit-animation-name: fadeInCheckbox;
+  animation-name: fadeInCheckbox;
+  -webkit-animation-duration: .5s;
+  animation-duration: .5s;
+  -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.modal > .content > input {
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  // font-size: 32px;
-  font-size: 20px;
-  height: 48px;
-  padding: 0 8px;
-  width: 100%;
+@-webkit-keyframes fadeInCheckbox {
+  from {
+    opacity: 0;
+    -webkit-transform: rotateZ(-20deg);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: rotateZ(0deg);
+  }
 }
 
-.modal > .content > .cards > select {
-  background: #fff;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  // font-size: 32px;
-  font-size: 20px;
-  height: 48px;
-  margin-top: 12px;
-  width: 100%;
+@keyframes fadeInCheckbox {
+  from {
+    opacity: 0;
+    transform: rotateZ(-20deg);
+  }
+  to {
+    opacity: 1;
+    transform: rotateZ(0deg);
+  }
 }
 
-.modal > .content > .footer {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
+// .modal > .title > span > .user-name {
+//   color: #cddc39;
+// }
 
-.modal > .content > .footer > button {
-  // border-radius: 6px;
-  border-radius: 17px;
-  background-color: #ffff;
-  border: 1px solid #ccc;
-  // font-size: 32px;
-  font-size: 16px;
-  // height: 48px;
-  height: 35px;
-  padding: 0 8px;
-  margin-top: 24px;
-  width: 80px;
-  cursor: pointer;
-}
+// .modal > .title > span.close {
+//   cursor: pointer;
+//   font-size: 1.2rem;
+//   // padding: 3px;
+//   transition: .2s;
+// }
+
+// .modal > .title > span.close:hover {
+//   color: #c94848;
+// }
+
+// .modal > .content {
+//   padding: 32px;
+//   text-align: center;
+// }
+
+// .modal > .content > input {
+//   border: 1px solid #ccc;
+//   border-radius: 6px;
+//   // font-size: 32px;
+//   font-size: 20px;
+//   height: 48px;
+//   padding: 0 8px;
+//   width: 100%;
+// }
+
+// .modal > .content > .cards > select {
+//   background: #fff;
+//   border: 1px solid #ccc;
+//   border-radius: 6px;
+//   // font-size: 32px;
+//   font-size: 20px;
+//   height: 48px;
+//   margin-top: 12px;
+//   width: 100%;
+// }
+
+// .modal > .content > .footer {
+//   display: flex;
+//   justify-content: flex-end;
+//   align-items: center;
+// }
+
+// .modal > .content > .footer > button {
+//   // border-radius: 6px;
+//   border-radius: 17px;
+//   background-color: #ffff;
+//   border: 1px solid #ccc;
+//   // font-size: 32px;
+//   font-size: 16px;
+//   // height: 48px;
+//   height: 35px;
+//   padding: 0 8px;
+//   margin-top: 24px;
+//   width: 80px;
+//   cursor: pointer;
+// }

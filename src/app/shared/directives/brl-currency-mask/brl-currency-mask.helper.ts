@@ -1,4 +1,4 @@
-import { uRemoveAllSpaces, uReverse } from '../functions/generalUtilities';
+import { uRemoveAllSpaces, uReverse } from '../../../util/functions/generalUtilities';
 
 export interface InputOperationConfig {
     swapCommaDirection: 'forward' | 'backward'; 

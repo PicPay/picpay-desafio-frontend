@@ -1,39 +1,45 @@
-/* List of Users */
+@import '../../../assets/scss/variables';
 
-.user {
-  background: linear-gradient(186.5deg, #3c3e64 0.83%, #1d1e2a 100%);
-  box-shadow: 0 1px 0 #ffffff, 0px -1px 0px #ffffff;
-  color: #fff;
-  padding: 20px 40px;
+.card {
+  background: $white;
+  box-shadow: 0 5px 10px rgb(154 160 185 / 5%), 0 15px 40px rgb(166 173 201 / 20%);
+  border-radius: 30px;
 
-  display: flex;
-  align-items: center;
+  @at-root #{&}__user {
+
+    @at-root #{&}__name {
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: $title;
+    }
+    @at-root #{&}__img {
+      width: 5rem;
+      border-radius: 50%;
+    }
+    @at-root #{&}__username {
+      font-size: 1.3rem;
+      line-height: 2.3rem;
+      color: $text;
+    }
+    @at-root #{&}__id {
+      font-size: .9rem;
+    }
+  
+  }
 }
+// min-width: 316px;
+.pay-button {
+  background-color: rgba($pp-green, 1);
+  color: $white;
+  border: 1px solid transparent;
+  min-width: 8rem;
+  width: 95%;
+  height: 3rem;
+  border-radius: .7rem;
+  transition: 0.4s;
 
-.user > img {
-  border-radius: 50%;
-  height: 80px;
-  width: 80px;
-}
-
-.user > .info-wrapper {
-  margin-left: 16px;
-}
-
-.user > .pay-button {
-  margin-left: auto;
-  border: none;
-  width: 70px;
-  height: 30px;
-  border-radius: 2px;
-  cursor: pointer;
-
-  background-color: #fff;
-  color: #676874;
-  font-size: .9rem;
-}
-
-.user > .pay-button:hover {
-  background-color: #e2e1e1;
-  color: #9394a7;
+  &:hover {
+    transform: scale(1.1);
+    background-color: rgba($pp-green, .7);
+  }
 }

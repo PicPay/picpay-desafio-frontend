@@ -15,14 +15,14 @@ export class UsersListComponent implements OnInit, OnDestroy {
   users: User[];
 
   constructor ( 
-    private usersPaymentService: UsersService,
+    private usersService: UsersService,
     private transactionService: TransactionService ) {
       this.isComponentActive = true;
     }
 
   ngOnInit() { 
 
-    this.usersPaymentService
+    this.usersService
       .getUsers()
       .pipe(
         takeWhile( () => this.isComponentActive )

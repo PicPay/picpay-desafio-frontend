@@ -1,6 +1,6 @@
 import { Directive, ElementRef, HostListener, Input, OnInit } from '@angular/core';
 import { NgControl } from '@angular/forms';
-import { uIsNumber, uRemoveAllSpaces, uReverse } from '../functions/generalUtilities';
+import { uIsNumber, uRemoveAllSpaces, uReverse } from '../../../util/functions/generalUtilities';
 import { BrlCurrencyMaskHelper, InputOperationConfig } from './brl-currency-mask.helper';
 
 @Directive({

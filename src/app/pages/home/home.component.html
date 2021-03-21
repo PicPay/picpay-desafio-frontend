@@ -1,0 +1,20 @@
+<main class="container">
+    <section class="row my-5">
+        <div class="col">
+            <h1 class="container__title mb-2"> Bem vindo, usuário! </h1>
+            <h4 class="container__subtitle"> Para utilizar a aplicação, procure dentre a lista de pessoas conectadas a sua conta,
+                 para realizar transações utilizando seu cartão de crédito. 
+            </h4>
+        </div>
+    </section>
+    <section>
+        <app-users-list></app-users-list>
+    </section>
+
+</main>
+
+
+<app-transaction
+    *ngIf="isTransactionInitiated()"
+    [cards]="cards"
+></app-transaction>
