@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { UserModel } from '../models/user-model';
 
 @Injectable({
@@ -11,7 +12,7 @@ export class UserService {
     private _httpClient: HttpClient
   ) {}
 
-  getUsers$() {
+  getUsers$(): Observable<UserModel[]> {
     return this._httpClient.get<UserModel[]>(this._url)
   }
 }
