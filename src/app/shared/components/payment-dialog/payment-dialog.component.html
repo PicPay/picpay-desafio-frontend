@@ -1,0 +1,57 @@
+<div matDialogTitle>
+  <h3>Pagamento</h3>
+</div>
+<div matDialogContent>
+  <div class="user">
+    <img [src]="data?.receiver?.img" class="user-img" />
+    <div class="info-wrapper">
+      <h3 class="user-name">
+        {{ data?.receiver?.name }}
+      </h3>
+
+      <div class="user-username">
+        {{ data?.receiver?.username }}
+      </div>
+    </div>
+  </div>
+  <form [formGroup]="paymentForm">
+    <mat-form-field appearance="standard" class="field-ammount">
+      <input
+        matInput
+        mask-money
+        prefix="R$"
+        reqMin="0"
+        value="R$ 0,00"
+        class="input-ammount"
+        formControlName="ammount"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="standard" class="field-card">
+      <mat-label>Cartão de Crédito</mat-label>
+      <mat-select
+        formControlName="card"
+        placeholder="Escolha o cartão de crédito"
+      >
+        <mat-select-trigger>
+          Cartão com final {{ cardField.value?.card_number.slice(12) }}
+        </mat-select-trigger>
+
+        <mat-option *ngFor="let card of data.cards" [value]="card">
+          <mat-icon>credit_card</mat-icon> Cartão com final
+          {{ card.card_number.slice(12) }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</div>
+<div matDialogActions align="center">
+  <button
+    mat-flat-button
+    color="primary"
+    [disabled]="paymentForm.invalid"
+    class="submit-button"
+    (click)="onSubmit()"
+  >
+    Pagar
+  </button>
+</div>

@@ -1,0 +1,52 @@
+@import '../../../../variables';
+
+h3 {
+  margin: 0;
+  text-align: center;
+}
+
+.user {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.user-img {
+  border-radius: 50%;
+  height: 80px;
+  width: 80px;
+}
+
+.user-name {
+  color: color($secondary-palette);
+  font-size: 0.8em;
+  margin: 0;
+}
+
+.user-username {
+  font-size: 0.7em;
+  color: color($secondary-palette, 'light');
+}
+
+.info-wrapper {
+  margin-top: 16px;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.input-ammount {
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.submit-button {
+  width: 100%;
+  height: 50px;
+  margin-bottom: 16px;
+  padding: 0.5em;
+  font-weight: bold;
+  border-radius: 25px;
+}
