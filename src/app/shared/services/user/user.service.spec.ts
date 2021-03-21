@@ -23,17 +23,17 @@ describe('UserService', () => {
   });
 
   it('#getUsers should return an Observable of the Users from the response', () => {
-    const users: User[] = [
+    const testUsers: User[] = [
       { id: 1, name: 'User1', img: 'user1.png', username: 'user1' },
       { id: 2, name: 'User2', img: 'user2.png', username: 'user2' },
     ];
 
-    httpClientSpy.get.and.returnValue(of(users));
+    httpClientSpy.get.and.returnValue(of(testUsers));
 
     userService
       .getUsers()
       .subscribe(
-        (heroes) => expect(heroes).toEqual(users, 'expected users'),
+        (users) => expect(users).toEqual(testUsers, 'expected users'),
         fail
       );
 
