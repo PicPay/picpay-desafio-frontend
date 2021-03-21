@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, Output } from "@angular/core";
-
 import { UsuarioResponse } from "../../models/response/usuario-response.model";
 
 @Component({
@@ -13,8 +12,6 @@ export class UsuarioListagemComponent {
     
     @Output() abrirModal = new EventEmitter<void>();
     @Output() pagarUsuario = new EventEmitter<UsuarioResponse>();
-
-    constructor() {}
 
     onPagarUsuario(usuario: UsuarioResponse): void {
         this.pagarUsuario.emit(usuario);

@@ -1,5 +1,5 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChildren } from "@angular/core";
-import { FormBuilder, FormControlName, FormGroup, Validators } from "@angular/forms";
+import { Component, ElementRef, OnInit } from "@angular/core";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { fromEvent, merge, Observable } from "rxjs";
 import { finalize } from "rxjs/operators";
 
@@ -8,8 +8,9 @@ import { DisplayMessage, GenericValidator, ValidationMessages } from "../../mode
 import { Pagamento } from "../../models/pagamento.model";
 import { ResultadoPagamentoResponse } from "../../models/response/resultado-pagamento-response.model";
 import { UsuarioResponse } from "../../models/response/usuario-response.model";
+import { CartaoService } from "../../services/cartao.service";
+import { PagamentoService } from "../../services/pagamento.service";
 import { UsuarioService } from "../../services/usuario.service";
-import mensagensValidacao from '../../services/validators/usuario-mensagens.validator';
 
 @Component({
     selector: 'app-usuario',
@@ -32,8 +33,20 @@ export class UsuarioComponent implements OnInit {
     genericValidator: GenericValidator;
     displayMessage: DisplayMessage = {};
 
-    constructor(private usuarioService: UsuarioService, private formBuilder: FormBuilder) {
-        this.validationMessages = mensagensValidacao
+    constructor(
+        private usuarioService: UsuarioService, 
+        private cartaoService: CartaoService,
+        private pagamentoService: PagamentoService,
+        private formBuilder: FormBuilder) {
+        this.validationMessages = {
+            value: {
+              required: 'Informe um valor para pagamento'
+            },
+            card_number: {
+              required: 'Informe o um cartão'
+            }
+        }
+
         this.genericValidator = new GenericValidator(this.validationMessages);
     }
 
@@ -51,7 +64,7 @@ export class UsuarioComponent implements OnInit {
     }
 
     obterListaDeCartoes(): void {
-        this.usuarioService.obterCartoesUsuario()
+        this.cartaoService.obterCartoesUsuario()
             .subscribe((cartoes: Array<Cartao>) => this.cartoes = cartoes);
     }
 
@@ -72,7 +85,7 @@ export class UsuarioComponent implements OnInit {
         if (!this.formulario.dirty || !this.formulario.valid)
             return;
 
-        this.usuarioService.pagarUsuario(this.pagamento)
+        this.pagamentoService.pagarUsuario(this.pagamento)
             .pipe(finalize(() => {
                 this.onFecharModal();
                 this.abrirNotificacao = true;
@@ -86,13 +99,12 @@ export class UsuarioComponent implements OnInit {
     }
 
     onAbrirModal(): void {
-        const userId = this.pagamento.destination_user_id;
-        this.pagamento = { destination_user_id: userId }  as Pagamento;
         this.abrirModal = true;
     }
 
     onFecharModal(): void {
         this.abrirModal = false;
+        this.pagamento = new Pagamento();
     }
 
     onFecharNotificacao(): void {

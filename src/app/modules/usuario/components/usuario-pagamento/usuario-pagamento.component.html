@@ -21,6 +21,7 @@
                 [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" />
            
             <select 
+                id="card_number"
                 formControlName="card_number" 
                 [ngModel]="pagamento.card_number" 
                 (change)="onSelecionarCartao($event.target.value)"
@@ -30,11 +31,13 @@
             </select>
             
             <button 
+                id="btn-pagar"
                 type="button" 
                 class="modal__pagar--button"
                 (click)="onEfetuarPagamento($event)"> Pagar </button>
 
             <button 
+                id="btn-cancelar"
                 type="button" 
                 class="modal__cancelar--button"
                 (click)="onFecharModal($event)"> Cancelar </button>

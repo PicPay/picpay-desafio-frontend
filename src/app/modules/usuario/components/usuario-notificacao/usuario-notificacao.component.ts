@@ -6,7 +6,7 @@ import { ResultadoPagamentoResponse } from "../../models/response/resultado-paga
     templateUrl: './usuario-notificacao.component.html',
     styleUrls: ['./usuario-notificacao.component.scss']
 })
-export class NotificaUsuarioComponent {
+export class UsuarioNotificacaoComponent {
 
     @Input() resultadoPagamentoResponse: ResultadoPagamentoResponse; 
     @Output() fecharNotificacao = new EventEmitter<void>();
