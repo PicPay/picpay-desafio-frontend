@@ -45,17 +45,17 @@ describe('UserListItemComponent', () => {
     const nameElement: HTMLElement = fixture.nativeElement.querySelector(
       '.user-name'
     );
-    expect(nameElement.innerHTML.trim()).toBe(
+    expect(nameElement.textContent.trim()).toBe(
       testUser.name.trim(),
-      'user\'s name'
+      'name of the user'
     );
 
     const usernameElement: HTMLElement = fixture.nativeElement.querySelector(
       '.user-username'
     );
-    expect(usernameElement.innerHTML.trim()).toBe(
+    expect(usernameElement.textContent.trim()).toBe(
       testUser.username.trim(),
-      'user\'s username'
+      'username of the user'
     );
 
     const imgElement: HTMLImageElement = fixture.nativeElement.querySelector(

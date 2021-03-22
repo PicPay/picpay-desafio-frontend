@@ -53,7 +53,7 @@ describe('UserListComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should get users from service', () => {
+  it('should call UserService#getUsers', () => {
     expect(userServiceSpy.getUsers.calls.count()).toBe(1, 'one call');
   });
 
