@@ -19,5 +19,9 @@ export class UserService {
       horizontalPosition: 'right',
       verticalPosition: 'top'
     })
+  };
+
+  listar() {
+    return this.http.get<any[]>(`${this.baseUrl}`);
   }
 }
