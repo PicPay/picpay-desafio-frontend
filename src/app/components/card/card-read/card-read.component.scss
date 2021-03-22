@@ -6,3 +6,13 @@ div.cards {
     max-width: 300px;
     margin-right: 15px;
 }
+
+.cardNumner {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.details {
+    display: flex;
+    justify-content: space-between;
+}

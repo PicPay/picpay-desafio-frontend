@@ -52,7 +52,8 @@ import { ReturnPaymentComponent } from './views/payload/return-payment/return-pa
     UserPaymentComponent,
     CardCreateComponent,
     CardReadComponent,
-    ReturnPaymentComponent,
+    ReturnPaymentComponent
+    
   ],
   entryComponents: [UserPaymentComponent, ReturnPaymentComponent],
 

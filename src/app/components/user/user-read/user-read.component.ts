@@ -1,6 +1,6 @@
 import { UserPaymentComponent } from '../../../views/payload/user-payment/user-payment.component';
 import { User } from './../user.model';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { UserService } from '../user.service';
 import { MatDialog} from '@angular/material/dialog';
 
@@ -13,7 +13,9 @@ export class UserReadComponent implements OnInit {
 
   users: User[]
 
-  constructor(private userService: UserService, public dialog: MatDialog) { }
+  constructor(
+    private userService: UserService, 
+    public dialog: MatDialog) { }
 
   ngOnInit() {
     this.userService.read().subscribe(users => {
@@ -21,13 +23,11 @@ export class UserReadComponent implements OnInit {
     })
   }
 
-
   payUser(user: User): void {
 
     const dialogRef = this.dialog.open(UserPaymentComponent, {
       width: '260px', 
       data: user
-
     });
 
   }

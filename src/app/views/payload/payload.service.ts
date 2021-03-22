@@ -18,6 +18,5 @@ export class PayloadService {
   payLoad(transactionPayload: TransactionPayload): Observable<TransactionPayload> {
     return this.http.post<TransactionPayload>(this.baseUrl, transactionPayload);
   }
-  
 
 }

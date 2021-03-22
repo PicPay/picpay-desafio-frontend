@@ -1,6 +1,6 @@
 import { CardCreateComponent } from './components/card/card-create/card-create.component';
 import { UserCreateComponent } from './components/user/user-create/user-create.component';
-import { NgModule, Component } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { UsersComponent } from './views/users/users.component';
@@ -23,7 +23,7 @@ const routes: Routes = [
     {
         path: "cards/create",
         component: CardCreateComponent
-    }
+    },
 ];
 
 @NgModule({

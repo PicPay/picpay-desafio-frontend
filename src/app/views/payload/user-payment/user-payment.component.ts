@@ -1,3 +1,4 @@
+import { FormGroup } from '@angular/forms';
 import { TransactionPayload } from '../payload.model';
 import { PayloadService } from '../payload.service'
 import { ReturnPaymentComponent } from './../return-payment/return-payment.component';
@@ -29,6 +30,8 @@ export class UserPaymentComponent implements OnInit {
   }
 
   cards: Card[]
+
+  formulario: FormGroup
 
   constructor(
     public dialog: MatDialog,

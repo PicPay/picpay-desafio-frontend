@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
 export class UserService {
 
   baseUrl = "https://www.mocky.io/v2/5d531c4f2e0000620081ddce"
+  baseUrl2 = "http://localhost:4200/users"
 
   constructor(private snackBar: MatSnackBar, private http: HttpClient) { }
 
@@ -25,5 +26,10 @@ export class UserService {
   read(): Observable<User[]> {
     return this.http.get<User[]>(this.baseUrl)
   }
+
+  loadById(id) {
+    return this.http.get(`${this.baseUrl}/${id}`)
+  }
+
 
 }
