@@ -53,7 +53,7 @@ export class TransactionComponent implements OnInit, OnDestroy {
     const defaultCard = this.cards.find( card => this.endCharactersOf(card.card_number) === '1234'  )
     this.transactionForm = this.formBuilder
       .group({
-        value: [0, [Validators.required] ],
+        value: [0, [Validators.required, Validators.min(1)] ],
         card: [defaultCard , [Validators.required] ]
       });
 
@@ -61,6 +61,12 @@ export class TransactionComponent implements OnInit, OnDestroy {
     //   console.log('valueChanges event: ', e);
     //   console.log('this.transactionForm.value: ', this.transactionForm.value);
     // })
+    this.transactionForm.statusChanges.subscribe( e  => {
+      console.log('statusChanges event: ', e);
+      console.log('this.transactionForm: ', this.transactionForm);
+    })
+
+    
   }
 
   isOnTransaction(): boolean {
@@ -116,7 +122,7 @@ export class TransactionComponent implements OnInit, OnDestroy {
         console.error('A transação falhou, visto que foi utilizado um cartão inválido.');
       }
     } else {
-      this.transactionForm.markAsTouched();
+      this.transactionForm.markAllAsTouched();
       this.transactionForm.updateValueAndValidity();
     }
   }

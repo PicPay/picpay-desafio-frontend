@@ -41,6 +41,6 @@
 
   &:hover {
     transform: scale(1.1);
-    background-color: rgba($pp-green, .7);
+    filter: brightness(1.2);
   }
 }

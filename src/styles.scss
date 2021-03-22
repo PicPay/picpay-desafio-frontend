@@ -32,13 +32,23 @@ button {
   cursor: pointer;
 }
 
+// button[disabled],
+// input[type="submit"][disabled] {
+//   filter: none!important;
+//   background-color: $green-dark!important;
+
+// }
+// button[disabled]:hover,
+// input[type="submit"][disabled]:hover {
+//   transform: scale(1)!important;
+// }
+
 a {
   color: inherit;
   text-decoration: none;
 }
 
 /* Scroll Styling */
-
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -61,6 +71,7 @@ a {
 
 /* end of Scroll Styling */
 
+
 /* Modal fix */ 
 body.modal-open {
   height: 100vh;
@@ -69,3 +80,18 @@ body.modal-open {
 }
 
 /* End of Modal fix*/
+
+
+/* Form related styling */
+input.ng-touched.ng-invalid {
+  border: 1px solid $red;
+}
+
+input:focus {
+  border: 1px solid #6c757d;
+  box-shadow: unset;
+}
+
+/* End of Form related styling */
+
+

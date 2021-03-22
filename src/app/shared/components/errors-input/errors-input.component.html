@@ -1,0 +1,24 @@
+<div
+  *ngIf="
+    form && field && form.controls[field].touched && form.controls[field].errors
+  "
+  class="row mt-2"
+>
+
+  <div class="col-12">
+    <span class="text-red" *ngIf="form.controls[field].errors.max">
+      * {{ maxValueMsg }}
+    </span>
+  </div>
+  <div class="col-12">
+    <span class="text-red" *ngIf="form.controls[field].errors.min">
+      * {{ minValueMsg }}
+    </span>
+  </div>
+  <div class="col-12">
+    <span class="text-red" *ngIf="form.controls[field].errors.required">
+      * {{ requiredMsg }}
+    </span>
+  </div>
+
+</div>

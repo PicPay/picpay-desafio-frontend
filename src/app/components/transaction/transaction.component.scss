@@ -65,7 +65,8 @@
       justify-content: space-between;
       align-items: center;
 
-      margin: 0 0 3rem;
+      // margin: 0 0 3rem;
+      margin: 0 0 2rem;
       border-bottom: 1px solid $grey-line;
 
       h1.close {
@@ -82,6 +83,10 @@
       margin: 0;
       flex-direction: column;
 
+      label.select-desc {
+        margin-top: 3rem;
+      }
+
       label {
         font-size: 1.2rem;
         font-weight: bold;
@@ -90,7 +95,7 @@
       @at-root #{&}__description {
         color: $text;
         font-weight: 100;
-        margin-bottom: 3rem;
+        margin-bottom: 2.5rem;;
       }
 
       @at-root #{&}__value {
@@ -101,7 +106,8 @@
         height: 48px;
         padding: 0 8px;
         width: 100%;
-        margin: 2rem 0 4rem 0;
+        margin-top: 1.5rem;
+        // margin: 2rem 0 4rem 0;
       }
 
       @at-root #{&}__cards {
@@ -112,7 +118,8 @@
           box-shadow: none;
         }
 
-        margin-top: 2rem;
+        // margin-top: 2rem;
+        margin-top: 1.5rem;
         overflow-y: scroll;
         max-height: 12rem;
         box-shadow: 
@@ -148,14 +155,36 @@ label.radio-card-button {
 
 .footer {
   display: flex;
+  border-top: 1px solid $grey-line;
+  justify-content: flex-end;
 
   @at-root #{&}__pay-button {
     border: 1px solid transparent;
     padding: 1rem 3rem;
     background-color: $pp-green;
     color: $white;
-    margin-left: auto;
+    margin-left: 1rem;
     border-radius: 13px;
+
+    transition: .4s
+  }
+  @at-root #{&}__pay-button:hover {
+    transform: scale(1.07);
+    filter: brightness(1.2);
+    // background-color: rgba($pp-green, 0.7);
+  }
+
+  @at-root #{&}__cancel-button { 
+    border: 1px solid transparent;
+    padding: 1rem 3rem;
+    border-radius: 13px;
+    
+    transition: 0.4s;
+  }
+
+  @at-root #{&}__cancel-button:hover { 
+    background-color: $red;
+    color: $white;
   }
 }
 

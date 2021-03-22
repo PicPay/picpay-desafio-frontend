@@ -28,21 +28,30 @@
 
                     <label>- Informe o valor da transação:</label>
                     <input
-                     class="modal__content__form__value"
                      required
                      type="text"
                      appBrlCurrencyMask
-                     formControlName="value"/>
-                    
-                    <label>- Selecione o cartão de crédito: </label>
+                     formControlName="value"
+                     class="modal__content__form__value"
+                     />
+                     <div class="col-12">
+                        <app-errors-input
+                          [form]="transactionForm"
+                          [field]="'value'"
+                          [requiredMsg]="'É necessário informar um valor para a transação'"
+                          [minValueMsg]="'O valor mínimo da transação é de R$ 1,00'"
+                        ></app-errors-input>
+                      </div>
+                    <label class="select-desc">- Selecione o cartão de crédito: </label>
 
                     <div class="modal__content__form__cards">
 
                         <label class="radio-card-button" *ngFor="let card of cards; let index = index;">
                             <input
+                             required
+                             type="radio"
                              formControlName="card"
                              [id]="('card'+(index+1))"
-                             type="radio"
                              [value]="card"
                              class="card-input-element d-none" >
                             <span 
@@ -51,7 +60,7 @@
                                 <div class="modal__content__form__cards__card">
                                     <strong> {{ changeFirstCharsToStars(card.card_number) }} </strong>
                                     <span> <strong>CVV :</strong> {{ card.cvv }}</span>
-                                    <span> <strong>Exp. date :</strong> {{ card.expiry_date }}</span>  
+                                    <span> <strong>Dt. vencimento :</strong> {{ card.expiry_date }}</span>  
                                 </div>
                             </span>
                         </label>
@@ -67,19 +76,26 @@
                         </select> -->
                     </div>
                 
-                    <div class="footer pt-4">
+                    <div class="footer pt-4 mt-5">
+                        <button 
+                         type="button"
+                         class="footer__cancel-button"
+                         (click)="transactionService.endTransaction()">
+                            Cancelar
+                        </button>
                         <button 
                          type="button"
                          class="footer__pay-button"
+                         [disabled]="transactionForm.touched && transactionForm.invalid"
                          (click)="pay()">
-                            Pagar
+                            Finalizar Pagamento
                         </button>
                     </div>
                 </form>
             </div>
         </div>
 
-            <div *ngIf="isTransactionSucceeded() || isTransactionFailed()" class="modal">
+        <div *ngIf="isTransactionSucceeded() || isTransactionFailed()" class="modal">
             <div class="title">
                 <span>Recibo de pagamento</span>
                 <span 
@@ -88,16 +104,16 @@
                     x
                 </span>
             </div>
-
+        
             <div *ngIf="isTransactionSucceeded()" class="content">
                 O pagamento foi concluido com sucesso.
             </div>
             <div *ngIf="isTransactionFailed()" class="content">
                 O pagamento <strong>não</strong> foi concluido com sucesso.
             </div>
-
-            </div>
         
-
+        </div>
+        
+    
     </div>
 </div>
