@@ -1,11 +1,11 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { async, TestBed } from '@angular/core/testing';
-import { of, throwError } from 'rxjs';
-import { CreditCard } from '../../models/credit-card.model';
-import { TransactionPayload } from '../../models/transaction-payload.model';
-import { TransactionResponse } from '../../models/transaction-response.model';
+import {HttpClient} from '@angular/common/http';
+import {async, TestBed} from '@angular/core/testing';
+import {of} from 'rxjs';
+import {CreditCard} from '../../models/credit-card.model';
+import {TransactionPayload} from '../../models/transaction-payload.model';
+import {TransactionResponse} from '../../models/transaction-response.model';
 
-import { TransactionService } from './transaction.service';
+import {TransactionService} from './transaction.service';
 
 describe('TransactionService', () => {
   let httpClientSpy: jasmine.SpyObj<HttpClient>;
@@ -70,7 +70,7 @@ describe('TransactionService', () => {
       .subscribe((cards) => expect(cards).toEqual(testCards));
   }));
 
-  it('#doTransaction should return an Observable with the HttpClient#post aprroval response', () => {
+  it('#doTransaction should return an Observable with the HttpClient#post approval response', () => {
     const expectedResponseApproved: TransactionResponse = {
       success: true,
       status: 'Aprovada',

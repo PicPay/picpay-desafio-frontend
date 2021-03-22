@@ -1,9 +1,9 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { async, TestBed } from '@angular/core/testing';
-import { of, throwError } from 'rxjs';
-import { User } from '../../models/user.model';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {async, TestBed} from '@angular/core/testing';
+import {of, throwError} from 'rxjs';
+import {User} from '../../models/user.model';
 
-import { UserService } from './user.service';
+import {UserService} from './user.service';
 
 describe('UserService', () => {
   let httpClientSpy: jasmine.SpyObj<HttpClient>;

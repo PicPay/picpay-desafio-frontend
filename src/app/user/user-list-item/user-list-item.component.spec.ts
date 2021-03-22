@@ -1,9 +1,9 @@
-import { Location } from '@angular/common';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { User } from 'src/app/shared/models/user.model';
-import { PaymentService } from 'src/app/shared/services/payment/payment.service';
+import {Location} from '@angular/common';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {User} from 'src/app/shared/models/user.model';
+import {PaymentService} from 'src/app/shared/services/payment/payment.service';
 
-import { UserListItemComponent } from './user-list-item.component';
+import {UserListItemComponent} from './user-list-item.component';
 
 describe('UserListItemComponent', () => {
   let component: UserListItemComponent;
@@ -33,11 +33,11 @@ describe('UserListItemComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should be created', () => {
     expect(component).toBeTruthy();
   });
 
-  it('shoud display user info', () => {
+  it('should display user info', () => {
     component.user = testUser;
 
     fixture.detectChanges();

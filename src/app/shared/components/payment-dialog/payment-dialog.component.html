@@ -3,7 +3,7 @@
 </div>
 <div matDialogContent>
   <div class="user">
-    <img [src]="data?.receiver?.img" class="user-img" />
+    <img [src]="data?.receiver?.img" class="user-img" alt="Foto de {{data?.receiver?.name}}"/>
     <div class="info-wrapper">
       <h3 class="user-name">
         {{ data?.receiver?.name }}
@@ -15,15 +15,16 @@
     </div>
   </div>
   <form [formGroup]="paymentForm">
-    <mat-form-field appearance="standard" class="field-ammount">
+    <mat-form-field appearance="standard" class="field-amount">
+      <mat-label hidden>Valor</mat-label>
       <input
         matInput
         mask-money
         prefix="R$"
         reqMin="0"
         value="R$ 0,00"
-        class="input-ammount"
-        formControlName="ammount"
+        class="input-amount"
+        formControlName="amount"
       />
     </mat-form-field>
     <mat-form-field appearance="standard" class="field-card">

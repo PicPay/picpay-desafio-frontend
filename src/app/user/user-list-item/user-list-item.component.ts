@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { User } from 'src/app/shared/models/user.model';
-import { PaymentService } from 'src/app/shared/services/payment/payment.service';
+import {Component, Input, OnInit} from '@angular/core';
+import {User} from 'src/app/shared/models/user.model';
+import {PaymentService} from 'src/app/shared/services/payment/payment.service';
 
 @Component({
   selector: 'app-user-list-item',

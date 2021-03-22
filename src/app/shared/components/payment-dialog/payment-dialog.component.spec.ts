@@ -1,27 +1,13 @@
-import { Location } from '@angular/common';
-import { DebugElement } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import {
-  MatButton,
-  MatDialogRef,
-  MatFormFieldModule,
-  MatIconModule,
-  MatInput,
-  MatInputModule,
-  MatSelect,
-  MatSelectModule,
-  MAT_DIALOG_DATA,
-} from '@angular/material';
-import { By } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { userInfo } from 'os';
-import { CreditCard } from '../../models/credit-card.model';
-import { TransactionPayload } from '../../models/transaction-payload.model';
-import { TransactionResponse } from '../../models/transaction-response.model';
-import { User } from '../../models/user.model';
+import {Location} from '@angular/common';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {ReactiveFormsModule} from '@angular/forms';
+import {MAT_DIALOG_DATA, MatDialogRef, MatFormFieldModule, MatIconModule, MatInputModule, MatSelectModule} from '@angular/material';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {CreditCard} from '../../models/credit-card.model';
+import {TransactionPayload} from '../../models/transaction-payload.model';
+import {User} from '../../models/user.model';
 
-import { PaymentDialogComponent } from './payment-dialog.component';
+import {PaymentDialogComponent} from './payment-dialog.component';
 
 describe('PaymentDialogComponent', () => {
   let matDialogRefSpy: jasmine.SpyObj<
@@ -77,7 +63,7 @@ describe('PaymentDialogComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should be created', () => {
     expect(component).toBeTruthy();
   });
 
@@ -112,30 +98,30 @@ describe('PaymentDialogComponent', () => {
 
   it('should test form validation', () => {
     expect(component.paymentForm.valid).toBeFalsy();
-    expect(component.ammountField.valid).toBeFalsy();
+    expect(component.amountField.valid).toBeFalsy();
     expect(component.cardField.valid).toBeFalsy();
 
-    component.ammountField.setValue(0);
+    component.amountField.setValue(0);
 
     expect(component.paymentForm.valid).toBeFalsy();
-    expect(component.ammountField.valid).toBeFalsy();
+    expect(component.amountField.valid).toBeFalsy();
     expect(component.cardField.valid).toBeFalsy();
 
-    component.ammountField.setValue(10);
+    component.amountField.setValue(10);
 
     expect(component.paymentForm.valid).toBeFalsy();
-    expect(component.ammountField.valid).toBeTruthy();
+    expect(component.amountField.valid).toBeTruthy();
     expect(component.cardField.valid).toBeFalsy();
 
     component.cardField.patchValue(testCards[0]);
 
     expect(component.paymentForm.valid).toBeTruthy();
-    expect(component.ammountField.valid).toBeTruthy();
+    expect(component.amountField.valid).toBeTruthy();
     expect(component.cardField.valid).toBeTruthy();
   });
 
   it('pay button should be disabled when the form is invalid', () => {
-    component.ammountField.patchValue(undefined);
+    component.amountField.patchValue(undefined);
     component.paymentForm.updateValueAndValidity();
 
     fixture.detectChanges();
@@ -148,7 +134,7 @@ describe('PaymentDialogComponent', () => {
   });
 
   it('pay button should be enabled when the form is valid', () => {
-    component.ammountField.patchValue(10);
+    component.amountField.patchValue(10);
     component.cardField.patchValue(testCards[0]);
     component.paymentForm.updateValueAndValidity();
 
@@ -161,7 +147,7 @@ describe('PaymentDialogComponent', () => {
     expect(button.disabled).toBeFalsy('button enabled');
   });
 
-  it('should close emitting a TransactionPayload when the pay button is clicked', () => {
+  it('should close and emitting a TransactionPayload when the pay button is clicked', () => {
     const expectedPayload: TransactionPayload = {
       card_number: testCards[0].card_number,
       cvv: testCards[0].cvv,
@@ -170,7 +156,7 @@ describe('PaymentDialogComponent', () => {
       value: 10,
     };
 
-    component.ammountField.patchValue(expectedPayload.value);
+    component.amountField.patchValue(expectedPayload.value);
     component.cardField.patchValue(testCards[0]);
 
     expect(component.paymentForm.valid).toBeTruthy();

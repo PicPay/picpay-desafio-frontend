@@ -1,16 +1,15 @@
-import { HttpClient } from '@angular/common/http';
-import { TestBed } from '@angular/core/testing';
-import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material';
-import { of } from 'rxjs';
-import { PaymentDialogComponent } from '../../components/payment-dialog/payment-dialog.component';
-import { PaymentResultDialogComponent } from '../../components/payment-result-dialog/payment-result-dialog.component';
-import { CreditCard } from '../../models/credit-card.model';
-import { TransactionPayload } from '../../models/transaction-payload.model';
-import { TransactionResponse } from '../../models/transaction-response.model';
-import { User } from '../../models/user.model';
-import { TransactionService } from '../transaction/transaction.service';
+import {TestBed} from '@angular/core/testing';
+import {MatDialog, MatDialogRef} from '@angular/material';
+import {of} from 'rxjs';
+import {PaymentDialogComponent} from '../../components/payment-dialog/payment-dialog.component';
+import {PaymentResultDialogComponent} from '../../components/payment-result-dialog/payment-result-dialog.component';
+import {CreditCard} from '../../models/credit-card.model';
+import {TransactionPayload} from '../../models/transaction-payload.model';
+import {TransactionResponse} from '../../models/transaction-response.model';
+import {User} from '../../models/user.model';
+import {TransactionService} from '../transaction/transaction.service';
 
-import { PaymentService } from './payment.service';
+import {PaymentService} from './payment.service';
 
 describe('PaymentService', () => {
   let matDialogSpy: jasmine.SpyObj<MatDialog>;

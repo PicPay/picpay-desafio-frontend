@@ -1,24 +1,14 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { CreditCard } from '../../models/credit-card.model';
-import { TransactionPayload } from '../../models/transaction-payload.model';
-import { User } from '../../models/user.model';
+import {Component, Inject, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
+import {CreditCard} from '../../models/credit-card.model';
+import {TransactionPayload} from '../../models/transaction-payload.model';
+import {User} from '../../models/user.model';
 
 export interface PaymentDialogData {
   receiver: User;
   cards: CreditCard[];
 }
-
-export type PaymentDialogRef = MatDialogRef<
-  PaymentDialogComponent,
-  TransactionPayload
->;
 
 @Component({
   selector: 'app-payment-dialog',
@@ -33,8 +23,8 @@ export class PaymentDialogComponent implements OnInit {
     return this.paymentForm.get('card');
   }
 
-  get ammountField() {
-    return this.paymentForm.get('ammount');
+  get amountField() {
+    return this.paymentForm.get('amount');
   }
 
   constructor(
@@ -43,7 +33,7 @@ export class PaymentDialogComponent implements OnInit {
     private fb: FormBuilder
   ) {
     this.paymentForm = this.fb.group({
-      ammount: [0.0, [Validators.required, Validators.min(0.01)]],
+      amount: [0.0, [Validators.required, Validators.min(0.01)]],
       card: [undefined, Validators.required],
     });
   }
@@ -71,7 +61,7 @@ export class PaymentDialogComponent implements OnInit {
       cvv: +this.cardField.value.cvv,
       expiry_date: this.cardField.value.expiry_date,
       destination_user_id: this.data.receiver.id,
-      value: +this.ammountField.value,
+      value: +this.amountField.value,
     };
 
     this.dialogRef.close(transaction);

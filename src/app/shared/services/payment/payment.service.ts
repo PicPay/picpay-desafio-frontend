@@ -1,21 +1,16 @@
-import { Injectable } from '@angular/core';
-import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material';
-import { Observable, of } from 'rxjs';
-import { filter, switchMap, tap } from 'rxjs/operators';
+import {Injectable} from '@angular/core';
+import {MatDialog, MatDialogConfig} from '@angular/material';
+import {filter, switchMap} from 'rxjs/operators';
+import {PaymentDialogComponent, PaymentDialogData} from '../../components/payment-dialog/payment-dialog.component';
 import {
-  PaymentDialogComponent,
-  PaymentDialogData,
-  PaymentDialogRef,
-} from '../../components/payment-dialog/payment-dialog.component';
-import {
-  PaymentResultDialogComponent,
-  PaymentResultDialogData,
+    PaymentResultDialogComponent,
+    PaymentResultDialogData,
 } from '../../components/payment-result-dialog/payment-result-dialog.component';
-import { CreditCard } from '../../models/credit-card.model';
-import { TransactionPayload } from '../../models/transaction-payload.model';
-import { TransactionResponse } from '../../models/transaction-response.model';
-import { User } from '../../models/user.model';
-import { TransactionService } from '../transaction/transaction.service';
+import {CreditCard} from '../../models/credit-card.model';
+import {TransactionPayload} from '../../models/transaction-payload.model';
+import {TransactionResponse} from '../../models/transaction-response.model';
+import {User} from '../../models/user.model';
+import {TransactionService} from '../transaction/transaction.service';
 
 @Injectable({
   providedIn: 'root',

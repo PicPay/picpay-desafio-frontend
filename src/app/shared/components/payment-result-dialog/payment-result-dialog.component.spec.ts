@@ -1,7 +1,7 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 
-import { PaymentResultDialogComponent } from './payment-result-dialog.component';
+import {PaymentResultDialogComponent} from './payment-result-dialog.component';
 
 describe('PaymentResultDialogComponent', () => {
   let component: PaymentResultDialogComponent;
@@ -26,7 +26,7 @@ describe('PaymentResultDialogComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should be created', () => {
     expect(component).toBeTruthy();
   });
 

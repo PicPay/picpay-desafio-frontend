@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
-import { TestBed, async, ComponentFixture } from '@angular/core/testing';
-import { MatCardModule } from '@angular/material';
-import { AppComponent } from './app.component';
+import {Component} from '@angular/core';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {MatCardModule} from '@angular/material';
+import {AppComponent} from './app.component';
 
 @Component({ selector: 'app-user-list', template: '' })
 class UserListStubComponent {}
@@ -22,7 +22,7 @@ describe('AppComponent', () => {
     component = fixture.debugElement.componentInstance;
   });
 
-  it('should create the app', () => {
+  it('should be created', () => {
     expect(component).toBeTruthy();
   });
 });

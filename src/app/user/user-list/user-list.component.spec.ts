@@ -1,11 +1,11 @@
-import { Component, Input } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { MatDividerModule, MatProgressSpinnerModule } from '@angular/material';
-import { of } from 'rxjs';
-import { User } from 'src/app/shared/models/user.model';
-import { UserService } from 'src/app/shared/services/user/user.service';
+import {Component, Input} from '@angular/core';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {MatDividerModule, MatProgressSpinnerModule} from '@angular/material';
+import {of} from 'rxjs';
+import {User} from 'src/app/shared/models/user.model';
+import {UserService} from 'src/app/shared/services/user/user.service';
 
-import { UserListComponent } from './user-list.component';
+import {UserListComponent} from './user-list.component';
 
 @Component({ selector: 'app-user-list-item', template: '' })
 class UserListItemStubComponent {
@@ -49,7 +49,7 @@ describe('UserListComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should be created', () => {
     expect(component).toBeTruthy();
   });
 
@@ -57,7 +57,7 @@ describe('UserListComponent', () => {
     expect(userServiceSpy.getUsers.calls.count()).toBe(1, 'one call');
   });
 
-  it('should display the correct ammount of User List Item Components', () => {
+  it('should display the correct amount of User List Item Components', () => {
     const listItems = fixture.nativeElement.querySelectorAll(
       'app-user-list-item'
     );

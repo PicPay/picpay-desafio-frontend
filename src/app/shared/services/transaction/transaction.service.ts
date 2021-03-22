@@ -1,10 +1,10 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { CreditCard } from '../../models/credit-card.model';
-import { TransactionPayload } from '../../models/transaction-payload.model';
-import { TransactionResponse } from '../../models/transaction-response.model';
+import {HttpClient} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {Observable, of} from 'rxjs';
+import {map} from 'rxjs/operators';
+import {CreditCard} from '../../models/credit-card.model';
+import {TransactionPayload} from '../../models/transaction-payload.model';
+import {TransactionResponse} from '../../models/transaction-response.model';
 
 @Injectable({
   providedIn: 'root',
@@ -33,6 +33,16 @@ export class TransactionService {
 
   constructor(private httpClient: HttpClient) {}
 
+  private static isValidTransaction(payload: TransactionPayload) {
+    if (!payload) { return false; }
+    if (!payload.card_number) { return false; }
+    if (!payload.cvv) { return false; }
+    if (!payload.expiry_date) { return false; }
+    if (!payload.destination_user_id) { return false; }
+    if (!payload.value || payload.value <= 0) { return false; }
+    return true;
+  }
+
   /**
    * Get current user's Credit Cards
    */
@@ -41,7 +51,7 @@ export class TransactionService {
   }
 
   public doTransaction(payload: TransactionPayload): Observable<TransactionResponse> {
-    if (!this.isValidTransaction(payload)) {
+    if (!TransactionService.isValidTransaction(payload)) {
       return of({ success: false, status: 'Negada' });
     }
 
@@ -56,15 +66,5 @@ export class TransactionService {
               : 'Negada',
         }))
       );
-  }
-
-  private isValidTransaction(payload: TransactionPayload) {
-    if (!payload) return false;
-    if (!payload.card_number) return false;
-    if (!payload.cvv) return false;
-    if (!payload.expiry_date) return false;
-    if (!payload.destination_user_id) return false;
-    if (!payload.value || payload.value <= 0) return false;
-    return true;
   }
 }
