@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { PaymentComponent } from './components/modal/modal-payment/payment.component';
 import { ModalMessage } from './components/modal/modal-message/modal-message.component';
-import { Message } from './components/validate-message/validate-message.component';
+import { ValidateMessage } from './components/validate-message/validate-message.component';
 import { FormatCard } from './pipes/formatCard.pipe'
 import { CommonModule } from '@angular/common';
 
@@ -21,7 +21,7 @@ import { CommonModule } from '@angular/common';
     PaymentComponent,
     ModalMessage,
     FormatCard,
-    Message
+    ValidateMessage
   ],
   entryComponents: [
     PaymentComponent,

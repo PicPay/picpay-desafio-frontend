@@ -7,12 +7,12 @@ import { User } from '../../models/user'
 @Injectable({
   providedIn: 'root'
 })
-export class UsuariosService {
+export class UsersService {
 
-constructor(private http: HttpClient) { }
-private url = "https://www.mocky.io/v2/5d531c4f2e0000620081ddce";
+  constructor(private http: HttpClient) { }
+  private url = "https://www.mocky.io/v2/5d531c4f2e0000620081ddce";
 
-getUsers(): Observable<User[]> {
-  return this.http.get<User[]>(this.url);
-}
+  getUsers(): Observable<User[]> {
+    return this.http.get<User[]>(this.url);
+  }
 }

@@ -1,14 +1,10 @@
 import { Component, Input, OnInit } from "@angular/core";
-import {
-  FormGroup,
-  FormBuilder,
-  Validators
-} from "@angular/forms";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { NgbActiveModal, NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { card } from "src/app/models/card";
 import { User } from "src/app/models/user";
 import { TransacaoService } from "src/app/services/transaction/transaction.service";
-import { UsuariosService } from "src/app/services/user/users.service";
+import { UsersService } from "src/app/services/user/users.service";
 import { ModalMessage } from "../modal-message/modal-message.component";
 
 @Component({
@@ -21,9 +17,7 @@ export class PaymentComponent implements OnInit {
   msg: any;
   users: User[] = [];
   paymentForm: FormGroup;
-
   destinationUser: any;
-
   valueOfTransaction: any = 0;
   cardNumber: number;
   confirmCardValid: string;
@@ -43,12 +37,13 @@ export class PaymentComponent implements OnInit {
   constructor(
     public activeModal: NgbActiveModal,
     public transacaoService: TransacaoService,
-    public usuariosService: UsuariosService,
+    public usersService: UsersService,
     private modalService: NgbModal,
     private formBuilder: FormBuilder
   ) {}
 
   ngOnInit(): void {
+
     this.valueOfTransaction = Number(
       this.valueOfTransaction.toLocaleString("pt-br", {
         style: "currency",
@@ -67,7 +62,7 @@ export class PaymentComponent implements OnInit {
     this.cardNumber = crt;
     const bankCard = this.cards.find((c) => c.cardNumber == card.value);
 
-    this.usuariosService.getUsers().subscribe((x) => {
+    this.usersService.getUsers().subscribe((x) => {
       this.users = x.map((x) =>
         x.name == this.name
           ? {

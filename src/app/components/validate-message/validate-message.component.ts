@@ -5,7 +5,6 @@ import { Component, Input } from "@angular/core";
   templateUrl: './validate-message.component.html',
   styleUrls: ['./validate-message.component.scss']
 })
-export class Message {
+export class ValidateMessage {
   @Input() text = ''
-
 }
