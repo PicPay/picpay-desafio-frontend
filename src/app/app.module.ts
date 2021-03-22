@@ -18,7 +18,7 @@ import { ConfirmacaoComponent } from './confirmacao/confirmacao.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
