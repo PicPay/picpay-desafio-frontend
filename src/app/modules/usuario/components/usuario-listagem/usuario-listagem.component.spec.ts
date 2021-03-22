@@ -1,7 +1,15 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { UsuarioResponse } from '../../models/response/usuario-response.model';
 import { UsuarioListagemComponent } from './usuario-listagem.component';
 
-describe('Teste usuario listagem', () => {
+const usuarioMock = {
+    id: 1,
+    name: 'usuario teste',
+    username: '@usuarioteste'
+} as UsuarioResponse;
+
+describe('UsuarioListagemComponent', () => {
+    
     let component: UsuarioListagemComponent;
     let fixture: ComponentFixture<UsuarioListagemComponent>;
 
@@ -10,16 +18,22 @@ describe('Teste usuario listagem', () => {
             declarations: [
                 UsuarioListagemComponent
             ]
-        }).compileComponents();
-    }));
+        });
 
-    beforeEach(() => {
         fixture = TestBed.createComponent(UsuarioListagemComponent);
         component = fixture.componentInstance;
-        fixture.detectChanges();
-    });
+    }));
 
     it('Deve criar o componente', () => {
         expect(component).toBeTruthy();
+    });
+    
+    it('Deve emitir um evento com dados do usuario a ser pago', () => {
+        spyOn(component.pagarUsuario, 'emit');
+
+        component.onPagarUsuario(usuarioMock);
+        fixture.detectChanges();
+
+        expect(component.pagarUsuario.emit).toHaveBeenCalledWith(usuarioMock);
     });
 });

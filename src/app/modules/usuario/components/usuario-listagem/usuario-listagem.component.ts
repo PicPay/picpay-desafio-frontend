@@ -9,12 +9,9 @@ import { UsuarioResponse } from "../../models/response/usuario-response.model";
 export class UsuarioListagemComponent {
 
     @Input() usuarios: Array<UsuarioResponse>;
-    
-    @Output() abrirModal = new EventEmitter<void>();
     @Output() pagarUsuario = new EventEmitter<UsuarioResponse>();
 
     onPagarUsuario(usuario: UsuarioResponse): void {
         this.pagarUsuario.emit(usuario);
-        this.abrirModal.emit();
     }
 }

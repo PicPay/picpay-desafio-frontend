@@ -56,6 +56,11 @@ input, select {
   width: 100%;
 }
 
+select:focus, 
+  input:focus {
+  outline: none;
+}
+
 ::-webkit-scrollbar-track {
   background-color: $cinza-fundo;
   width: 4px;

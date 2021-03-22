@@ -19,7 +19,7 @@ const listaUsuarioMock: Array<UsuarioResponse> = [
     },
 ]
 
-function createResponse(body) {
+function createResponse(body: any): Observable<any> {
     return new Observable((observer: Observer<any>) => {
         observer.next(body)
     })
@@ -31,10 +31,9 @@ class MockHttp {
     }
 }
 
-describe('Teste Usuario Service', () => {
+describe('UsuarioService', () => {
 
-    let service: UsuarioService;
-    let http: HttpClient;
+    let usuarioService: UsuarioService;
 
     beforeEach(() => {
         const bed = TestBed.configureTestingModule({
@@ -47,13 +46,13 @@ describe('Teste Usuario Service', () => {
             ]
         });
 
-        http = bed.get(HttpClient);
-        service = bed.get(UsuarioService);
+        usuarioService = bed.get(UsuarioService);
     });
 
     it('Deve retornar uma lista de usuarios', () => {
-        service.obterUsuarios()
-            .subscribe((response) => {
+        usuarioService.obterUsuarios()
+            .subscribe((response: Array<UsuarioResponse>) => {
+                
                 expect(response.length).toBe(2);
                 expect(response).toEqual(listaUsuarioMock);
             });

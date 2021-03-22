@@ -1,5 +1,5 @@
-import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
-import { ResultadoPagamentoResponse } from "../../models/response/resultado-pagamento-response.model";
+import { Component, Input, Output, EventEmitter } from "@angular/core";
+import { PagamentoResponse } from "../../models/response/pagamento-response.model";
 
 @Component({
     selector: 'app-usuario-notificacao',
@@ -8,7 +8,7 @@ import { ResultadoPagamentoResponse } from "../../models/response/resultado-paga
 })
 export class UsuarioNotificacaoComponent {
 
-    @Input() resultadoPagamentoResponse: ResultadoPagamentoResponse; 
+    @Input() pagamentoResponse: PagamentoResponse; 
     @Output() fecharNotificacao = new EventEmitter<void>();
 
     onFecharNotificacao(): void {

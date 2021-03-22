@@ -6,7 +6,7 @@ import { finalize } from "rxjs/operators";
 import { Cartao } from "../../models/cartao.model";
 import { DisplayMessage, GenericValidator, ValidationMessages } from "../../models/generico/generic-form-validation";
 import { Pagamento } from "../../models/pagamento.model";
-import { ResultadoPagamentoResponse } from "../../models/response/resultado-pagamento-response.model";
+import { PagamentoResponse } from "../../models/response/pagamento-response.model";
 import { UsuarioResponse } from "../../models/response/usuario-response.model";
 import { CartaoService } from "../../services/cartao.service";
 import { PagamentoService } from "../../services/pagamento.service";
@@ -24,7 +24,7 @@ export class UsuarioComponent implements OnInit {
     nomeUsuario: string;
     
     pagamento = new Pagamento();
-    resultadoPagamentoResponse: ResultadoPagamentoResponse; 
+    pagamentoResponse: PagamentoResponse; 
     usuarios$: Observable<Array<UsuarioResponse>>;
     cartoes: Array<any>;
     
@@ -52,7 +52,6 @@ export class UsuarioComponent implements OnInit {
 
     ngOnInit(): void {
         this.usuarios$ = this.usuarioService.obterUsuarios();
-        this.obterListaDeCartoes();
         this.iniciarValidacaoFormulario();
     }
 
@@ -63,14 +62,10 @@ export class UsuarioComponent implements OnInit {
         merge(...controlBlurs).subscribe(() => this.displayMessage = this.genericValidator.processarMensagens(this.formulario));
     }
 
-    obterListaDeCartoes(): void {
-        this.cartaoService.obterCartoesUsuario()
-            .subscribe((cartoes: Array<Cartao>) => this.cartoes = cartoes);
-    }
-
     onPagarUsuario(usuario: UsuarioResponse): void {
         this.pagamento.destination_user_id = usuario.id;
         this.nomeUsuario = usuario.username;
+        this.onAbrirModal();
     }
 
     onSelecionarCartao(numeroCartao: string): void {
@@ -90,15 +85,17 @@ export class UsuarioComponent implements OnInit {
                 this.onFecharModal();
                 this.abrirNotificacao = true;
             }))
-            .subscribe((resultadoPagamento: ResultadoPagamentoResponse) => {
-                this.resultadoPagamentoResponse = {
-                    ...resultadoPagamento,
-                    emoji: this.verificaEmoji(resultadoPagamento.status)
+            .subscribe((pagamentoResponse: PagamentoResponse) => {
+                this.pagamentoResponse = {
+                    ...pagamentoResponse,
+                    emoji: this.verificaEmoji(pagamentoResponse.status)
                 }
             })
     }
 
     onAbrirModal(): void {
+        this.displayMessage = {} as DisplayMessage;
+        this.obterListaDeCartoes();
         this.abrirModal = true;
     }
 
@@ -109,6 +106,11 @@ export class UsuarioComponent implements OnInit {
 
     onFecharNotificacao(): void {
         this.abrirNotificacao = false;
+    }
+
+    obterListaDeCartoes(): void {
+        this.cartaoService.obterCartoesUsuario()
+            .subscribe((cartoes: Array<Cartao>) => this.cartoes = cartoes);
     }
 
     private obterCartaoPorNumero(numeroCartao: string): Cartao {

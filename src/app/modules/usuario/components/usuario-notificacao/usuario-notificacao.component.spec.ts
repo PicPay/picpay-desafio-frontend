@@ -1,8 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { ResultadoPagamentoResponse } from '../../models/response/resultado-pagamento-response.model';
 import { UsuarioNotificacaoComponent } from './usuario-notificacao.component';
 
-describe('Teste usuario notificacao', () => {
+describe('UsuarioNotificacaoComponent', () => {
+    
     let component: UsuarioNotificacaoComponent;
     let fixture: ComponentFixture<UsuarioNotificacaoComponent>;
 
@@ -11,23 +11,21 @@ describe('Teste usuario notificacao', () => {
             declarations: [
                 UsuarioNotificacaoComponent
             ]
-        }).compileComponents();
-    }));
+        });
 
-    beforeEach(() => {
         fixture = TestBed.createComponent(UsuarioNotificacaoComponent);
         component = fixture.componentInstance;
-        
-        component.resultadoPagamentoResponse = {
-            emoji: 'feliz',
-            status: 'Aprovada',
-            success: true
-        } as ResultadoPagamentoResponse;
-
-        fixture.detectChanges();
-    });
+    }));
 
     it('Deve criar o componente', () => {
         expect(component).toBeTruthy();
+    });
+
+        
+    it('Deve emitir um evento para fechar modal de notificacao', () => {
+        spyOn(component.fecharNotificacao, 'emit');
+        component.onFecharNotificacao();
+        
+        expect(component.fecharNotificacao.emit).toHaveBeenCalled();
     });
 });

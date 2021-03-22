@@ -2,10 +2,10 @@ import { HttpClient } from "@angular/common/http";
 import { TestBed } from "@angular/core/testing";
 import { Observable, Observer } from "rxjs";
 import { Pagamento } from "../models/pagamento.model";
-import { ResultadoPagamentoResponse } from "../models/response/resultado-pagamento-response.model";
+import { PagamentoResponse } from "../models/response/pagamento-response.model";
 import { PagamentoService } from "./pagamento.service";
 
-const ResultadoPagamentoMock: ResultadoPagamentoResponse =  {
+const pagamentoResponseMock: PagamentoResponse =  {
     success: true,
     status: "Aprovada",
     emoji: null
@@ -19,7 +19,7 @@ const pagamentoMock: Pagamento = {
     value: 15.00
 }
 
-function createResponse(body) {
+function createResponse(body: any): Observable<any> {
     return new Observable((observer: Observer<any>) => {
         observer.next(body)
     })
@@ -27,14 +27,13 @@ function createResponse(body) {
 
 class MockHttp {
     post() {
-        return createResponse(ResultadoPagamentoMock);
+        return createResponse(pagamentoResponseMock);
     }
 }
 
-describe('Teste Usuario Service', () => {
+describe('PagamentoService', () => {
 
-    let service: PagamentoService;
-    let http: HttpClient;
+    let pagamentoService: PagamentoService;
 
     beforeEach(() => {
         const bed = TestBed.configureTestingModule({
@@ -47,15 +46,15 @@ describe('Teste Usuario Service', () => {
             ]
         });
 
-        http = bed.get(HttpClient);
-        service = bed.get(PagamentoService);
+        pagamentoService = bed.get(PagamentoService);
     });
 
-    it('Deve efetuar o pagamento para um usuario', () => {
-        service.pagarUsuario(pagamentoMock)
+    it('Deve efetuar o pagamento para um usuario e retornar com status "Aprovada"', () => {
+        pagamentoService.pagarUsuario(pagamentoMock)
             .subscribe((response) => {
-                expect(response.status).toEqual(ResultadoPagamentoMock.status);
-                expect(response.success).toEqual(ResultadoPagamentoMock.success);
+
+                expect(response.status).toBe(pagamentoResponseMock.status);
+                expect(response.success).toBe(pagamentoResponseMock.success);
             });
     });
 });

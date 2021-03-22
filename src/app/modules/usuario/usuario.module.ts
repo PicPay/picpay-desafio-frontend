@@ -10,16 +10,19 @@ import { UsuarioPagamentoComponent } from './components/usuario-pagamento/usuari
 import { UsuarioComponent } from './containers/usuario/usuario.component';
 
 import { UsuarioService } from './services/usuario.service';
-import { usuarioRoutes } from './usuario.routes';
 import { CartaoService } from './services/cartao.service';
 import { PagamentoService } from './services/pagamento.service';
+
+import { AutofocusDirective } from 'src/app/shared/Directives/autofocus.directive';
+import { usuarioRoutes } from './usuario.routes';
 
 @NgModule({
   declarations: [
     UsuarioComponent,
     UsuarioPagamentoComponent,
     UsuarioListagemComponent,
-    UsuarioNotificacaoComponent
+    UsuarioNotificacaoComponent,
+    AutofocusDirective
   ],
   imports: [
     CommonModule,

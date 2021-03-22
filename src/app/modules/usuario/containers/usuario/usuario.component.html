@@ -1,6 +1,5 @@
 <section class="usuario__conteudo">
     <app-usuario-listagem 
-        (abrirModal)="onAbrirModal($event)"
         (pagarUsuario)="onPagarUsuario($event)"
         [usuarios]="usuarios$ | async"></app-usuario-listagem>
 
@@ -20,5 +19,5 @@
     <app-usuario-notificacao 
         *ngIf="abrirNotificacao"
         (fecharNotificacao)="onFecharNotificacao($event)"
-        [resultadoPagamentoResponse]="resultadoPagamentoResponse"></app-usuario-notificacao>
+        [pagamentoResponse]="pagamentoResponse"></app-usuario-notificacao>
 </section>

@@ -1,14 +1,13 @@
 import { CommonModule } from "@angular/common";
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from "@angular/core/testing";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { RouterTestingModule } from "@angular/router/testing";
+import { ReactiveFormsModule } from "@angular/forms";
 import { CurrencyMaskModule } from "ng2-currency-mask";
 import { UsuarioListagemComponent } from "../../components/usuario-listagem/usuario-listagem.component";
 import { UsuarioNotificacaoComponent } from "../../components/usuario-notificacao/usuario-notificacao.component";
 import { UsuarioPagamentoComponent } from "../../components/usuario-pagamento/usuario-pagamento.component";
 import { Cartao } from "../../models/cartao.model";
-import { ResultadoPagamentoResponse } from "../../models/response/resultado-pagamento-response.model";
+import { PagamentoResponse } from "../../models/response/pagamento-response.model";
 import { UsuarioResponse } from "../../models/response/usuario-response.model";
 import { CartaoService } from "../../services/cartao.service";
 import { PagamentoService } from "../../services/pagamento.service";
@@ -28,18 +27,18 @@ export const CARTOES_MOCK: Array<Cartao> = [
     },
 ];
 
-const resultadoEsperadoMock = { 
+const pagamentoResponseMock = { 
     emoji: 'feliz',  
     status: 'Aprovada',
     success: true
-} as ResultadoPagamentoResponse;
+} as PagamentoResponse;
 
 let usuarioSelecionadoMock = {
     id: 1,
     username: 'Usuario teste'
 } as UsuarioResponse;
 
-describe('Teste Usuario Component', () => {
+describe('UsuarioComponent', () => {
 
     let component: UsuarioComponent;
     let fixture: ComponentFixture<UsuarioComponent>;
@@ -54,42 +53,47 @@ describe('Teste Usuario Component', () => {
             ],
             imports: [
                 CommonModule,
-                FormsModule,
                 ReactiveFormsModule,
                 CurrencyMaskModule,
-                RouterTestingModule,
                 HttpClientTestingModule
             ],
-              providers: [
+            providers: [
                 UsuarioService,
                 CartaoService,
                 PagamentoService
             ]
-        }).compileComponents();
-    });
+        });
 
-    beforeEach(() => {
         fixture = TestBed.createComponent(UsuarioComponent);
         component = fixture.componentInstance;
 
         component.cartoes = CARTOES_MOCK;
-        component.resultadoPagamentoResponse = resultadoEsperadoMock;
-
-        fixture.detectChanges();
-      });
+        component.pagamentoResponse = pagamentoResponseMock;
+    });
 
     it('Deve criar o componente', () => {
         expect(component).toBeTruthy();
     });
 
     it('Deve fechar modal notificacao', () => {
+        component.abrirNotificacao = true;
         component.onFecharNotificacao();
+        
         expect(component.abrirNotificacao).toBe(false);
     });
 
     it('Deve abrir modal pagamento', () => {
+        component.abrirModal = false;
         component.onAbrirModal();
+
         expect(component.abrirModal).toBe(true);
+    });
+
+    it('Deve fechar modal pagamento', () => {
+        component.abrirModal = true;
+        component.onFecharModal();
+
+        expect(component.abrirModal).toBe(false);
     });
 
     it('Deve adicionar usuario selecionado para pagamento', () => {
@@ -100,7 +104,9 @@ describe('Teste Usuario Component', () => {
     });
 
     it('Deve adicionar cartao selecionado para pagamento', () => {
+
         const cartaoSelecionado = CARTOES_MOCK[0];
+
         component.onSelecionarCartao(cartaoSelecionado.card_number);
 
         expect(component.pagamento.card_number).toEqual(cartaoSelecionado.card_number);
@@ -110,19 +116,22 @@ describe('Teste Usuario Component', () => {
 
     it('Deve obter lista de cartoes', () => {
         component.obterListaDeCartoes();
+
         expect(component.cartoes.length).toBe(2);
+        expect(component.cartoes).toEqual(CARTOES_MOCK);
     });
 
     it('Deve efetuar pagamento', () => {
-
         const cartaoSelecionado = component.cartoes[0];
 
         component.onPagarUsuario(usuarioSelecionadoMock);
         component.onSelecionarCartao(cartaoSelecionado.card_number);
         component.pagamento.value = 1500.00;
 
+        fixture.detectChanges();
         component.onEfetuarPagamento();
 
-        expect(component.resultadoPagamentoResponse).toEqual(resultadoEsperadoMock);
+        expect(component.pagamento.destination_user_id).toBe(usuarioSelecionadoMock.id);
+        expect(component.pagamentoResponse).toEqual(pagamentoResponseMock);
     });
 })

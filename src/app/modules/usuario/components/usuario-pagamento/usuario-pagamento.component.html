@@ -14,6 +14,7 @@
                 placeholder="R$ 0,00"
                 id="value"
                 name="value"
+                autofocus
                 formControlName="value" 
                 [(ngModel)]="pagamento.value"
                 [ngClass]="{'input-invalido': displayMessage.value }"
@@ -27,7 +28,9 @@
                 (change)="onSelecionarCartao($event.target.value)"
                 [ngClass]="{'input-invalido': displayMessage.card_number }">
                 <option selected value=""> Selecione um cartão </option>
-                <option *ngFor="let cartao of cartoes" [value]="cartao.card_number"> Cartão com final {{ cartao.card_number }} </option>
+                <option *ngFor="let cartao of cartoes" [value]="cartao.card_number"> 
+                    Cartão com final {{ cartao.card_number.substr(cartao.card_number.length -4, 4) }} 
+                </option>
             </select>
             
             <button 

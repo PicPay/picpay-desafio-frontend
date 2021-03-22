@@ -1,11 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { UsuarioModule } from './modules/usuario/usuario.module';
-import { RouterModule } from '@angular/router';
 import { appRoutes } from './app.routes';
-import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [

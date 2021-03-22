@@ -1,4 +1,3 @@
-import { AppBasePage } from "e2e/src/app.base.po";
 import { browser, by, element } from "protractor";
 
 export class AppUsuarioPage {

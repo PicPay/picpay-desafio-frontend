@@ -1,7 +1,7 @@
 import { browser, logging } from "protractor";
 import { AppUsuarioPage } from "./app.usuario.po";
 
-describe('Teste pagamento de usuario', () => {
+describe('AppUsuarioPage', () => {
 
     let page: AppUsuarioPage;
 
@@ -11,23 +11,22 @@ describe('Teste pagamento de usuario', () => {
 
     it('Deve carregar pagina inicial', () => {
         page.navegarParaPaginaInicial();
-        
-        page.esperar(3000);
-
         const textBotaoPagar = page.obterBotaoPagar().getText();
+
         expect(textBotaoPagar).toEqual('Pagar');
     });
 
     it('Deve abrir modal de pagamento', () => {
         page.btnPagar.click();
         const tituloModalPagamento = page.obterTituloModalPagamento().getText();
+        
         expect(tituloModalPagamento).toEqual('Pagamento');
     });
     
     it('Deve preencher formulario com sucesso', () => {
         page.value.sendKeys(150000);
         page.selecionarCartao();
-        
+
         page.btnEfetuarPagamento.click();
         page.esperar(2000);
 
@@ -35,9 +34,10 @@ describe('Teste pagamento de usuario', () => {
         expect(tituloRecibo).toEqual('Recibo de pagamento');
     });
 
-    it('Deve fechar modal de notificacao e exibir lista de ususarios novamente', () => {
+    it('Deve fechar modal de notificacao e exibir lista de usuarios novamente', () => {
         page.btnFecharNotificacao.click();
         const textBotaoPagar = page.obterBotaoPagar().getText();
+        
         expect(textBotaoPagar).toEqual('Pagar');
     });
     

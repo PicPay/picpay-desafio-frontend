@@ -37,7 +37,7 @@ export class UsuarioPagamentoComponent implements AfterViewInit {
         this.efetuarPagamento.emit();
     }
 
-    onSelecionarCartao(cardNumber: number) {
-        this.selecionarCartao.emit(cardNumber);
+    onSelecionarCartao(numeroCartao: number) {
+        this.selecionarCartao.emit(numeroCartao);
     }
 }
