@@ -1,5 +1,5 @@
-import { Component, ComponentFactoryResolver, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
-import { UserListComponent } from '../user-list/user-list.component';
+import { Component, OnInit } from '@angular/core';
+import { ModalService } from 'src/app/services/modal.service';
 
 @Component({
   selector: 'app-modal-container',
@@ -8,8 +8,11 @@ import { UserListComponent } from '../user-list/user-list.component';
 })
 export class ModalContainerComponent implements OnInit {
   
-  constructor() { }
+  constructor(
+    private _modalService: ModalService
+  ) { }
 
   ngOnInit() {
+    this._modalService.getActiveModal$()
   }
 }

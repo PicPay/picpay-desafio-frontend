@@ -8,4 +8,6 @@ export class ModalService {
   constructor() { }
 
   open() {}
+
+  getActiveModal$() {}
 }
