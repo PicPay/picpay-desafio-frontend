@@ -1,4 +1,4 @@
-export function uReverse(value: string): string {
+export function uReverse(value: string|string[]): string {
     return [...value].reverse().join('');
 }
 

@@ -40,10 +40,12 @@
 .modal {
   @media (max-width: 575.9px) {
     height: 100vh;
+    overflow-y: scroll;
     border-radius: 0;
   }
 
-  height: 90vh;
+  min-height: 90vh;
+  max-width: 540px;
   background: $background;
   border-radius: 18px;
 
@@ -65,6 +67,15 @@
 
       margin: 0 0 3rem;
       border-bottom: 1px solid $grey-line;
+
+      h1.close {
+        cursor: pointer;
+        transition: .2s;
+      }
+
+      // h1.close:hover {
+      //   color: #c94848;
+      // }
     }
 
     @at-root #{&}__form {
@@ -94,6 +105,13 @@
       }
 
       @at-root #{&}__cards {
+
+        @media (max-width: 575.9px) { 
+          max-height: 20rem;
+          overflow-y: unset;
+          box-shadow: none;
+        }
+
         margin-top: 2rem;
         overflow-y: scroll;
         max-height: 12rem;
@@ -103,6 +121,20 @@
         
         display: flex;
         flex-direction: column;
+
+        @at-root #{&}__card {
+          display: flex;
+          flex-direction: column;
+
+          font-size: .9rem;
+          font-weight: 100;
+
+          margin: 1.25rem 0;
+
+          strong {
+            margin-bottom: 1rem;
+          } 
+        }
       }
     }
   }
@@ -114,10 +146,23 @@ label.radio-card-button {
   font-size: 1rem;
 }
 
+.footer {
+  display: flex;
+
+  @at-root #{&}__pay-button {
+    border: 1px solid transparent;
+    padding: 1rem 3rem;
+    background-color: $pp-green;
+    color: $white;
+    margin-left: auto;
+    border-radius: 13px;
+  }
+}
+
 /* "card" radio button styling */
 
 .card-input-element+.card {
-  height: calc(36px + 2*1rem);
+  // height: calc(36px + 2*1rem);
   color: $text;
   border: 2px solid transparent;
   border-radius: 4px;
@@ -181,16 +226,7 @@ label.radio-card-button {
 //   color: #cddc39;
 // }
 
-// .modal > .title > span.close {
-//   cursor: pointer;
-//   font-size: 1.2rem;
-//   // padding: 3px;
-//   transition: .2s;
-// }
 
-// .modal > .title > span.close:hover {
-//   color: #c94848;
-// }
 
 // .modal > .content {
 //   padding: 32px;

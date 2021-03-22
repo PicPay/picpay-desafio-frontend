@@ -76,6 +76,14 @@ export class TransactionComponent implements OnInit, OnDestroy {
   endCharactersOf(word: string) {
     return uReverse(uReverse(word).substr(0, 4));
   }
+  changeFirstCharsToStars( cardNumber: string): string {
+    const [firstSlice, secondSlice] = cardNumber.match(/.{1,12}/gm);
+    const maskedFirstSlice = firstSlice.replace(/./gm, '*');
+    const cardNumberWithStars = [ maskedFirstSlice, secondSlice].join('');
+    const cardNumberWithStarsFormatted = cardNumberWithStars.match(/.{4}/gm).join(' ');
+
+    return cardNumberWithStarsFormatted;
+  }
 
   ngOnDestroy() {
     this.componentIsActive = false;

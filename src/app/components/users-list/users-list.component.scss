@@ -4,6 +4,7 @@
   background: $white;
   box-shadow: 0 5px 10px rgb(154 160 185 / 5%), 0 15px 40px rgb(166 173 201 / 20%);
   border-radius: 30px;
+  border: 1px solid transparent;
 
   @at-root #{&}__user {
 

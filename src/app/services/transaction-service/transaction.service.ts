@@ -42,12 +42,21 @@ export class TransactionService {
                 map( state => state.user)
             );
     }
-
+    
+    private fixModalOverlay( modalIs : 'opened'|'closed'): void {
+        const body = document.querySelector('body');
+        if( modalIs === 'opened') {
+            body.classList.add('modal-open');
+        } else {
+            body.classList.remove('modal-open');
+        }
+    }
     initTransaction(user: User): void {
         this.setTransactionState({
             phase: TransactionStage.onTransaction,
             user
         });
+        this.fixModalOverlay('opened');
     }
 
     competeTransactionSucceeded(): void {
@@ -68,6 +77,7 @@ export class TransactionService {
             phase: TransactionStage.noTransaction,
             user: null
         });
+        this.fixModalOverlay('closed');
     }
 
     processTransaction(payload: TransactionPayload): Observable<any> {
