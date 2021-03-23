@@ -1,19 +1,21 @@
 import { Injectable, OnInit, Type } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ModalService implements OnInit {
+export class ModalService {
+  activeModalSubject$: Subject<Type<any>>;
   activeModal$: Observable<Type<any>>;
 
-  constructor() { }
-
-  ngOnInit() {
-    console.log(1)
+  constructor() {
+    this.activeModalSubject$ = new Subject<Type<any>>();
+    this.activeModal$ = this.activeModalSubject$.asObservable();
   }
 
-  open() {}
+  open(type: Type<any>) {
+    this.activeModalSubject$.next(type);
+  }
 
   getActiveModal$(): Observable<Type<any>> { return this.activeModal$ }
 }
