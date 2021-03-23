@@ -1,6 +1,6 @@
+import { CommonModule } from '@angular/common';
 import { Component, NgModule } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 import { spyOnClass } from 'jasmine-es6-spies';
 import { of } from 'rxjs';
 import { ModalService } from 'src/app/services/modal.service';
@@ -39,22 +39,37 @@ describe('ModalContainerComponent', () => {
     fixture = TestBed.createComponent(ModalContainerComponent);
     modalService = TestBed.get(ModalService);
     component = fixture.componentInstance;
-
-    modalService.getActiveModal$.and.returnValue(of(FakeComponent))
-
-    fixture.detectChanges();
+    
+    modalService.getActiveModal$.and.returnValue(of(FakeComponent));
   });
 
   it('should create', () => {
+    fixture.detectChanges();
     expect(component).toBeTruthy();
   });
 
   it('should call ModalService.getActiveModal$ when component starts', () => {
+    fixture.detectChanges();
     expect(modalService.getActiveModal$).toHaveBeenCalled();
   });
-
+  
   it('should render modal Component', () => {
+    fixture.detectChanges();
     const renderedModal = fixture.nativeElement.querySelector('app-fake');
     expect(renderedModal).toBeTruthy();
+    expect(window.getComputedStyle(fixture.nativeElement.querySelector('.modal-backdrop')).visibility)
+      .toContain('visible');
+    expect(window.getComputedStyle(fixture.nativeElement.querySelector('.modal-wrapper')).visibility)
+      .toContain('visible');
+  });
+
+  it('should hide when modal is not provided', () => {
+    modalService.getActiveModal$.and.returnValue(of(null));
+    fixture.detectChanges();
+
+    expect(window.getComputedStyle(fixture.nativeElement.querySelector('.modal-backdrop')).visibility)
+      .toContain('hidden');
+    expect(window.getComputedStyle(fixture.nativeElement.querySelector('.modal-wrapper')).visibility)
+      .toContain('hidden');
   });
 });
