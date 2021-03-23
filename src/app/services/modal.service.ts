@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Type } from '@angular/core';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,5 +10,5 @@ export class ModalService {
 
   open() {}
 
-  getActiveModal$() {}
+  getActiveModal$(): Observable<Type<any>> { return of(null) }
 }
