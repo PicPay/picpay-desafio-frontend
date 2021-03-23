@@ -1,0 +1,27 @@
+app-modal {
+  display: none;
+  .modal {
+    &__wrapper {
+      position: fixed;
+      overflow: auto;
+      z-index: 1000;
+    }
+    &__background {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: #000;
+      opacity: 0.75;
+      z-index: 900;
+    }
+  }
+}
+
+body {
+  &.modal__open {
+    margin-right: 17px;
+    overflow: hidden;
+  }
+}
