@@ -1,3 +1,4 @@
+// model de cartão
 export class Cartao {
     card_number: string;
     cvv: number;

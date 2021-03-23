@@ -25,14 +25,17 @@ interface TransactionPayload {
 @Injectable()
 export class GeneralService {
 
-    private readonly API = "https://run.mocky.io";
-    constructor(private http: HttpClient) {}
+  private readonly API = "https://run.mocky.io";
+  constructor(private http: HttpClient) { }
 
-    buscarUsuarios(): Observable<Array<UserResponse>>{
-        return this.http.get<UserResponse[]>(`${this.API}/v2/5d531c4f2e0000620081ddce`);
-    }
+  // Busca usuários com método GET, enviando o Endpoint.
+  buscarUsuarios(): Observable<Array<UserResponse>> {
+    return this.http.get<UserResponse[]>(`${this.API}/v2/5d531c4f2e0000620081ddce`);
+  }
 
-    fazerPagamento(transacaoPagamento: TransactionPayload): Observable<PagamentoResponse> {
-        return this.http.post<PagamentoResponse>(`${this.API}/v3/533cd5d7-63d3-4488-bf8d-4bb8c751c989`, transacaoPagamento);
-    }
+  // Faz o pagamento para o usuário com o metodo POST, enviando o Endpoint e a transação, com os dados
+  // dos usuário, dados do cartão e o valor.
+  fazerPagamento(transacaoPagamento: TransactionPayload): Observable<PagamentoResponse> {
+    return this.http.post<PagamentoResponse>(`${this.API}/v3/533cd5d7-63d3-4488-bf8d-4bb8c751c989`, transacaoPagamento);
+  }
 }

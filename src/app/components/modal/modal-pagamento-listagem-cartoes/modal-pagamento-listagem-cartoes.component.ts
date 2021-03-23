@@ -1,4 +1,3 @@
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { GeneralService } from 'src/app/services/general-service.service';
@@ -37,8 +36,12 @@ export class ModalPagamentoListagemCartoesComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) data,
     private _generalService: GeneralService
   ) {
+    // Recebe do cads usuário o nome e o id do usuário, para mostrar na modal de pagamento e listagem o 
+    // nome do usuário e o id para passar pra transação de pagamento.
     this.nomeUsuario = data.usuario.nomeUsuario;
     this.idUsuario = data.usuario.idUsuario;
+    // Recebe do cards usuário os dados cartões, para mostrar no dropDown da modal de pagamento e 
+    // listagem de cartões. 
     this.cartoes = data.cards.map(element => ({
       value: element,
       viewValue: element.card_number
@@ -49,15 +52,20 @@ export class ModalPagamentoListagemCartoesComponent implements OnInit {
   }
 
   fechar(): void {
+    // Fecha a modal de pagamento e listagem de cartões.
     this.dialogModalPagamentoListagemCartoes.close();
   }
 
   valorSelecionado(event) {
+    // Pega os dados do cartão selecionado.
     this.cartaoSelecionado = event.value;
   }
 
-  pagar(event) {
-    if(this.cartaoSelecionado && this.valorPagamento.nativeElement.value != ""){
+  pagar() {
+    // Se tiver um cartão selecionado e um valor informando para pagar ao usuário, então realiza o 
+    // pagamento.
+    if (this.cartaoSelecionado && this.valorPagamento.nativeElement.value != "") {
+      // Preenche os dados de transação de pagamento, passada no serviço de fazerPagamento.
       this.transacaoPagamento = new TransacaoPagamento(
         this.cartaoSelecionado.card_number,
         this.cartaoSelecionado.cvv,
@@ -65,9 +73,13 @@ export class ModalPagamentoListagemCartoesComponent implements OnInit {
         this.idUsuario,
         this.valorPagamento.nativeElement.value
       );
-      this._generalService.fazerPagamento(this.transacaoPagamento).subscribe(el => {
-        this.respostaPagamento = el;
+      // Realiza o pagamento pro usuário.
+      this._generalService.fazerPagamento(this.transacaoPagamento).subscribe(element => {
+        this.respostaPagamento = element;
         this.dialog.open(ModalReciboPagamentoComponent, {
+          // De acordo com o cartão selecionado, restorna true ou false para apresentar a modal de recibo
+          // correta. Se passou o cartão que é inválido, já retorna falso, se passou o cartão válido, usa
+          // o retorno do servico de fazerPagamento.
           data: { tipoTransacao: this.validarCartao(this.cartaoSelecionado.card_number) ? false : this.respostaPagamento.success }
         });
       })

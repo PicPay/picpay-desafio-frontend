@@ -22,6 +22,7 @@ export class DropDownComponent implements OnInit {
   ngOnInit() {
   }
 
+  // Recupera qual cartão foi selecionado no dropDown.
   valorSelecionado(event) {
     this.valorSelecionadoEmited.emit(event);
   }

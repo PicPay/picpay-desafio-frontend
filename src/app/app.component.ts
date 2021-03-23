@@ -44,11 +44,14 @@ export class AppComponent {
   }
 
   ngOnInit() {
-    this._generalService.buscarUsuarios().subscribe(el => {
-      this.usuarios = el;
+    // Chama serviço de buscar usuários.
+    this._generalService.buscarUsuarios().subscribe(element => {
+      this.usuarios = element;
     })
   }
 
+  // Para cada card de usuário, ao clicar no botão pagar, assionará um fuctionClick que vai chamar a 
+  // modal de pagamento e listagem de cartões, passando os dados do usuário (nome e id) e os cartões.
   openModalPagamentoListagemCartoes(event): void {
     this.dialog.open(ModalPagamentoListagemCartoesComponent, {
       data: { usuario: event, cards: this.cards }

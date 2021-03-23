@@ -1,3 +1,4 @@
+// model da transação que será enviada no serviço de fazerPagamento
 export class TransacaoPagamento {
     card_number: string;
     cvv: number;
