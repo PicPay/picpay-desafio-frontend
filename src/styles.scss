@@ -1,10 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 * {
   box-sizing: border-box;
 }
 
 html,
 body {
-  font-family: sans-serif;
   margin: 0;
   padding: 0;
+  background-color: #f0f2f6;
+  font-family: 'Montserrat', sans-serif;
 }
+
+.button {
+  margin-left: auto;
+  color: #fff;
+  background-color: #11c76f;
+  border-radius: 4px;
+  border: none;
+  box-shadow: none;
+  text-align: center;
+  font-weight: 700;
+  cursor: pointer;
+
+  &:focus {
+    outline-style: none;
+  }
+
+  &--small {
+    padding: 10px 20px;
+    font-size: 15px;
+  }
+
+  &--medium {
+    padding: 10px 40px;
+    font-size: 32px;
+  }
+
+  &--close {
+    font-size: 32px;
+    font-weight: 500;
+  }
+}
+
+.disabled {
+  opacity: 0.5;
+  text-decoration: none;
+  pointer-events: none;
+  cursor: default;
+}
+
+.loading {
+
+  &__wrapper {
+    height: 74px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__spinning {
+    margin: 16px;
+
+    &::before {
+      width: 32px;
+      height: 32px;
+      position: absolute;
+      margin-left: -16px;
+      box-sizing: border-box;
+      border-radius: 50%;
+      border: 3px solid #11c76f;
+      border-top-color: #fff;
+      animation: spin 0.6s linear infinite;
+      content: '';
+    }
+  }
+}
+
