@@ -2,6 +2,8 @@ import { TestBed } from '@angular/core/testing';
 
 import { ModalService } from './modal.service';
 
+class FakeComponent {}
+
 describe('ModalService', () => {
   let service: ModalService;
   beforeEach(() => {
@@ -16,6 +18,16 @@ describe('ModalService', () => {
   describe('getActiveModal$', () => {
     it('should return activeModal$', () => {
       expect(service.getActiveModal$()).toBe(service.activeModal$)
-    })
-  })
+    });
+  });
+
+  describe('open', () => {
+    it('should call activeModalSubject$.next passing argument Type', () => {
+      spyOn(service.activeModalSubject$, 'next');
+
+      service.open(FakeComponent);
+
+      expect(service.activeModalSubject$.next).toHaveBeenCalledWith(FakeComponent)
+    });
+  });
 });
