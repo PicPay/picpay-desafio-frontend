@@ -36,7 +36,7 @@ export class ModalContainerComponent implements OnInit {
   }
 
   hideFactory() {
-    return () => {}
+    return () => this.clear();
   }
 
   clear() {
