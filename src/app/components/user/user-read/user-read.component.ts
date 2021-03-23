@@ -1,4 +1,4 @@
-import { UserPaymentComponent } from '../../../views/payload/user-payment/user-payment.component';
+import { UserPaymentComponent } from '../../../pages/payload/user-payment/user-payment.component';
 import { User } from './../user.model';
 import { Component, OnInit} from '@angular/core';
 import { UserService } from '../user.service';

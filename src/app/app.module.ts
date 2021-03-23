@@ -11,8 +11,8 @@ import { NavComponent } from './components/template/nav/nav.component';
 import { FooterComponent } from './components/template/footer/footer.component';
 import { UserCreateComponent } from './components/user/user-create/user-create.component';
 import { UserReadComponent } from './components/user/user-read/user-read.component';
-import { UsersComponent } from './views/users/users.component';
-import { CardsComponent } from './views/cards/cards.component';
+import { UsersComponent } from './pages/users/users.component';
+import { CardsComponent } from './pages/cards/cards.component';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -29,13 +29,13 @@ import {MatSelectModule} from '@angular/material/select';
 
 
 import { HttpClientModule } from '@angular/common/http';
-import { UserPaymentComponent } from './views/payload/user-payment/user-payment.component';
+import { UserPaymentComponent } from './pages/payload/user-payment/user-payment.component';
 
 import { NgxMaskModule} from 'ngx-mask';
 import { NgxCurrencyModule } from 'ngx-currency';
 import { CardCreateComponent } from './components/card/card-create/card-create.component';
 import { CardReadComponent } from './components/card/card-read/card-read.component';
-import { ReturnPaymentComponent } from './views/payload/return-payment/return-payment.component';
+import { ReturnPaymentComponent } from './pages/payload/return-payment/return-payment.component';
 
 
 

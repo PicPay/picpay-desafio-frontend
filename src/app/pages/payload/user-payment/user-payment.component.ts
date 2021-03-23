@@ -1,9 +1,9 @@
 import { FormGroup } from '@angular/forms';
 import { TransactionPayload } from '../payload.model';
-import { PayloadService } from '../payload.service'
-import { ReturnPaymentComponent } from './../return-payment/return-payment.component';
-import { Card } from '../../../components/card/card.model';
-import { CardService } from '../../../components/card/card.service';
+import { PayloadService } from '../../../services/payload.service'
+import { ReturnPaymentComponent } from '../return-payment/return-payment.component';
+import { Card } from '../../../interfaces/card.model';
+import { CardService } from '../../../services/card.service';
 
 import { User } from '../../../components/user/user.model';
 import { Component, Inject, OnInit } from '@angular/core';
@@ -55,12 +55,10 @@ export class UserPaymentComponent implements OnInit {
 
   newPayment(): void {
     this.payloadService.payLoad(this.payload).subscribe(() => {
-      if (this.newPayment) {
         this.dialogRef.close();
         const dialogRef = this.dialog.open(ReturnPaymentComponent, {
           width: '250px',
         })
-      }
     })
   }
 

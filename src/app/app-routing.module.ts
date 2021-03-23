@@ -3,8 +3,8 @@ import { UserCreateComponent } from './components/user/user-create/user-create.c
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { UsersComponent } from './views/users/users.component';
-import { CardsComponent } from './views/cards/cards.component';
+import { UsersComponent } from './pages/users/users.component';
+import { CardsComponent } from './pages/cards/cards.component';
 
 
 const routes: Routes = [
