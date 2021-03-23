@@ -1,0 +1,28 @@
+<div class="user">
+  <div class="user__wrapper">
+    <div class="user__item" *ngFor="let user of users">
+      <img [src]="user.img" />
+      <div class="user__info">
+        <div class="user__name">
+          {{ user.name }}
+        </div>
+        <div class="user__id">
+          {{ user.username }}
+        </div>
+      </div>
+      <button
+        type="button"
+        class="button button--small"
+        (click)="payUser(user)"
+      >
+        Pagar
+      </button>
+    </div>
+  </div>
+</div>
+
+<app-modal id="modal-payment">
+  <app-card [titleField]="title" (callClose)="onCallClose($event)">
+    <app-payment [selectedUser]="selectedUser"></app-payment>
+  </app-card>
+</app-modal>
