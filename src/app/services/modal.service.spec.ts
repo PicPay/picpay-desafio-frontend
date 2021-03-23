@@ -3,10 +3,19 @@ import { TestBed } from '@angular/core/testing';
 import { ModalService } from './modal.service';
 
 describe('ModalService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+  let service: ModalService;
+  beforeEach(() => {
+    TestBed.configureTestingModule({});
+    service = TestBed.get(ModalService);
+  });
 
   it('should be created', () => {
-    const service: ModalService = TestBed.get(ModalService);
     expect(service).toBeTruthy();
   });
+
+  describe('getActiveModal$', () => {
+    it('should return activeModal$', () => {
+      expect(service.getActiveModal$()).toBe(service.activeModal$)
+    })
+  })
 });
