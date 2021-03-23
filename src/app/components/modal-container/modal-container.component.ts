@@ -1,4 +1,5 @@
-import { Component, ComponentFactoryResolver, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, ComponentFactoryResolver, ComponentRef, Injector, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { ModalRef } from 'src/app/models/modal-ref';
 import { ModalService } from 'src/app/services/modal.service';
 
 @Component({
@@ -9,13 +10,17 @@ import { ModalService } from 'src/app/services/modal.service';
 export class ModalContainerComponent implements OnInit {
   @ViewChild('containerRef', { read: ViewContainerRef, static: true }) container: ViewContainerRef;
   isActive: boolean;
+  componentRef: ComponentRef<any>;
 
   constructor(
     private _modalService: ModalService,
-    private _componentFactoryResolver:ComponentFactoryResolver
+    private _componentFactoryResolver: ComponentFactoryResolver
   ) { }
 
   ngOnInit() {
+    let injector = Injector.create({providers: [
+      { provide: ModalRef, useValue: { hide: this.hide() }}
+    ]})
     this._modalService.getActiveModal$().subscribe(
       modal => {
         if (!modal) {
@@ -25,8 +30,14 @@ export class ModalContainerComponent implements OnInit {
         }
         this.isActive = true;
         let resolver = this._componentFactoryResolver.resolveComponentFactory(modal);
-        this.container.createComponent(resolver);
+        this.componentRef = this.container.createComponent(resolver, null, injector);
       }
     )
+  }
+
+  hide() {
+    return () => {
+      console.log(this.isActive)
+    }
   }
 }
