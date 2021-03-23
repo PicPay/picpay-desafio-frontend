@@ -21,9 +21,17 @@
       font-size: 1.3rem;
       line-height: 2.3rem;
       color: $text;
+
+      @media(max-width: 370px) {
+        font-size: 1.1rem;
+        padding-left: .8rem;
+      }
     }
     @at-root #{&}__id {
       font-size: .9rem;
+      @media(max-width: 370px) {
+        padding-left: .8rem;
+      }
     }
   
   }

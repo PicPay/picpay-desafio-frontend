@@ -9,7 +9,6 @@ export interface InputOperationConfig {
 
 export class BrlCurrencyMaskHelper {
     
-    //unmask operations
     removePrefix(value: string): string {
         return value.replace('R$','');
     }
@@ -22,7 +21,6 @@ export class BrlCurrencyMaskHelper {
     }
 
 
-    //mask operations
     mask(value: string): string { 
         const valueAgroupped = this.groupThousands(value);
         return `R$ ${valueAgroupped}`;
@@ -34,7 +32,6 @@ export class BrlCurrencyMaskHelper {
     }
 
 
-    //general operations
     swapComma(value: string, direction: 'forward'|'backward') {
         const valueReverseArray = [...uReverse(value)];
 
@@ -47,26 +44,21 @@ export class BrlCurrencyMaskHelper {
             elementToSwapindex = commaIndex + 1;
         }
 
-        // Swap operation
+
         const comma = valueReverseArray[commaIndex];
         valueReverseArray[commaIndex] = valueReverseArray[elementToSwapindex];
         valueReverseArray[elementToSwapindex] = comma;
 
-        // turn swap to string again
         const valueFormatted = valueReverseArray.reverse().join('');
 
         return valueFormatted
     }
     adjustZerosLeft(value: string): string {
 
-        // console.log("'value', prestes a ser separado: ", value);
-
         const [leftSide, rightSide] = value.split(',');
-        // console.log("'value - leftSide': ", leftSide);
-        // console.log("'value - rightSide': ", rightSide);
 
         const adjustedLeftSide = leftSide.length === 0 ? '0' : Number(leftSide);
-        // const reducedRightNumber = Number(rightSide) === 0 ? `${Number(rightSide)}0` : String(Number(rightSide)) ;
+
         const newValue = [ adjustedLeftSide, rightSide ].join(',');
         return newValue;
     }
@@ -78,7 +70,6 @@ export class BrlCurrencyMaskHelper {
 
         const adjustedLeftSide = uReverse(leftSideReverseArr.join('.'));
 
-        // const reducedRightNumber = Number(rightSide) === 0 ? `${Number(rightSide)}0` : String(Number(rightSide)) ;
         const newValue = [ adjustedLeftSide, rightSide ].join(',');
         return newValue;
     }
@@ -86,7 +77,6 @@ export class BrlCurrencyMaskHelper {
         return value['replaceAll']('.', '');
     }
 
-    // key operations
     addKeyPressed(value:string, key: string): string {
         return `${value}${key}`;
     }
@@ -97,20 +87,15 @@ export class BrlCurrencyMaskHelper {
     }
 
 
-    //input handler (combine previous operations)
     handleInput(config: InputOperationConfig) {
         if(!!config) {
             const { swapCommaDirection, keyOperationFn, viewValue, keyPressed } = config;
 
             const currentValueFormatted = this.swapComma(viewValue, swapCommaDirection);
-            // console.log('currentValueFormatted: ', currentValueFormatted);
 
-            // key(most important/differential) operation
             const nextValueFormatted = this[keyOperationFn](currentValueFormatted, keyPressed);
-            // console.log('nextValueFormatted: ', nextValueFormatted);
 
             const nextValueFormattedAdjusted = this.adjustZerosLeft(nextValueFormatted);
-            // console.log('nextValueFormattedAdjusted: ', nextValueFormattedAdjusted);
 
             return nextValueFormattedAdjusted;
         } else {

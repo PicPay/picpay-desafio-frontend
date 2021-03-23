@@ -38,7 +38,6 @@ export class BrlCurrencyMaskDirective implements OnInit {
       return false;
     }
 
-    // const viewValueUnmasked = uRemoveAllSpaces( this.brlCurrencyHelper.removePrefix(currentViewValue) );
     const viewValueUnmasked = this.brlCurrencyHelper.unmask(currentViewValue);
 
     let config: InputOperationConfig;
@@ -67,7 +66,6 @@ export class BrlCurrencyMaskDirective implements OnInit {
 
     const viewValueFormattedMasked = this.brlCurrencyHelper.mask(viewValueFormatted);
     this.ngControl.valueAccessor.writeValue(viewValueFormattedMasked);
-    console.log('viewValueFormattedMasked: ', viewValueFormattedMasked);
   }
 
 }

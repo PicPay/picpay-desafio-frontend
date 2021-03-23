@@ -1,0 +1,86 @@
+@import '../../../assets/scss/variables';
+
+.modal {
+    @media (max-width: 575.9px) {
+      height: 100vh;
+      overflow-y: scroll;
+      border-radius: 0;
+    }
+    
+    // min-height: 90vh;
+    // max-width: 540px;
+    background: $background;
+    border-radius: 18px;
+    overflow: hidden;
+
+    margin: 0 auto;
+    padding: 0;
+  
+    @at-root #{&}__content {
+      padding: 0;
+      text-align: center;
+
+      @at-root #{&}__header {
+        flex-direction: column;
+        align-items: center;
+
+        color: $title;
+        font-weight: 500;
+  
+        padding: 0;
+        margin: 0 0 2rem 0;
+    
+        // @at-root #{&}__image-container {
+        //   background: url("../../../assets/svg/background_sucesso.svg");
+          img {
+            //   margin-top: -220px!important;
+              max-width: 100%;
+              margin: 0;
+            //   margin: 0 0 2rem 0;
+          }
+        // }
+      }
+  
+      @at-root #{&}__message {
+          margin-bottom: 4rem;
+      }
+
+      @at-root #{&}__footer {
+        display: flex;
+        justify-content: center;
+
+        @at-root #{&}__btn-keep-navigation {
+          border: 1px solid transparent;
+          padding: 1rem 3rem;
+
+          background-color: $pp-green;
+          color: $white;
+
+          border-radius: 13px;
+      
+          transition: .4s
+        }
+        @at-root #{&}__btn-keep-navigation:hover {
+          transform: scale(1.07);
+          filter: brightness(1.2);
+        }
+      
+        @at-root #{&}__btn-understood { 
+          border: 1px solid transparent;
+          padding: 1rem 3rem;
+          border-radius: 13px;
+
+          background-color: $salmon-red;
+          color: $white;
+
+          transition: 0.4s;
+        }
+      
+        @at-root #{&}__btn-understood:hover { 
+            transform: scale(1.07);
+            filter: brightness(1.2);
+        }
+      }
+
+    }
+  }

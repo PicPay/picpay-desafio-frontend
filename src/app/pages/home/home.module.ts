@@ -7,13 +7,15 @@ import { TransactionComponent } from 'src/app/components/transaction/transaction
 import { SharedModule } from 'src/app/shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TransactionResultComponent } from 'src/app/components/transaction-result/transaction-result.component';
 
 
 @NgModule({
   declarations: [
     HomeComponent,
     UsersListComponent,
-    TransactionComponent
+    TransactionComponent,
+    TransactionResultComponent
   ],
   imports: [
     CommonModule,

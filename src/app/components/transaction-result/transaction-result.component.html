@@ -1,0 +1,51 @@
+<div *ngIf="result" class="col-12 col-sm-10 col-md-8 modal">
+    <div class="container pb-4 pb-lg-3 modal__content">
+        <div class="row col-12 modal__content__header">
+
+            <div 
+             class="col-12 px-0">
+             <img 
+                *ngIf="result === 'success' " 
+                 src="../../../assets/svg/background_confirmed_merged_05.svg" 
+                />
+
+                <img 
+                 *ngIf="result === 'fail' "
+                 src="../../../assets/svg/background_failed_merged_05.svg" 
+                />
+            </div>
+            <div class="col-12 mt-lg-4">
+                <h1 *ngIf="result === 'success' " > Sucesso! </h1>
+                <h1 *ngIf="result === 'fail' "> Oops... </h1>
+            </div>
+        </div>
+
+        <div class="row modal__content__message">
+            <div
+             *ngIf="result === 'success' " 
+             class="col-12">
+                <p>Sua transação foi finalizada.</p>
+            </div>
+            <div 
+            *ngIf="result === 'fail' "
+             class="col-12">
+                <p>Sua transação não pode ser executada.</p>
+                <p>O cartão utilizado é inválido.</p>
+            </div>
+        </div>
+        <div class="row modal__content__footer">
+            <div 
+             *ngIf="result === 'success' " >
+                <button
+                 (click)="transactionService.endTransaction()"
+                 class="col-12 modal__content__footer__btn-keep-navigation" >Perfeito!</button>
+            </div>
+            <div 
+             *ngIf="result === 'fail' ">
+                <button 
+                 (click)="transactionService.endTransaction()"
+                 class="col-12 modal__content__footer__btn-understood">Entendi...</button>
+            </div>
+        </div>
+    </div>
+</div>

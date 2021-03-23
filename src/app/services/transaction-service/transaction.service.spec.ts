@@ -1,18 +1,19 @@
 import { HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
+import { UsersService } from '../users-service/users.service';
+import { TransactionService } from './transaction.service';
 
-import { UsersService } from './users.service';
 
-describe('UsersService', () => {
+describe('TransactionService', () => {
   beforeEach(() => TestBed.configureTestingModule({
     imports: [ HttpClientModule ],
     providers: [
-      UsersService
+      TransactionService
     ]
   }));
 
   it('should be created', () => {
-    const service: UsersService = TestBed.get(UsersService);
+    const service: TransactionService = TestBed.get(TransactionService);
     expect(service).toBeTruthy();
   });
 });

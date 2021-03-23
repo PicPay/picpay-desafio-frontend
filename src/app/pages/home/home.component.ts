@@ -13,23 +13,20 @@ import { UsersService } from '../../services/users-service/users.service';
   providers: [ UsersService, TransactionService ]
 })
 export class HomeComponent implements OnInit, OnDestroy {
-
-  // TODO: Create a way of closing the modal (also applying it to clicking the backdrop)
   isComponentActive: boolean;
 
   cards: Card[];
   transactionStage: TransactionStage;
 
   constructor(private transactionService: TransactionService) {
+    this.isComponentActive = true;
 
     this.cards = [
-      // valid card
       {
         card_number: '1111111111111111',
         cvv: 789,
         expiry_date: '01/18',
       },
-      // invalid card
       {
         card_number: '4111111111111234',
         cvv: 123,
@@ -37,7 +34,6 @@ export class HomeComponent implements OnInit, OnDestroy {
       },
     ];
 
-    this.isComponentActive = true;
   }
 
   ngOnInit() {

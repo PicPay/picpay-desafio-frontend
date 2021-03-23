@@ -1,4 +1,6 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {trigger, style, animate, transition} from '@angular/animations';
 import { takeWhile, tap } from 'rxjs/operators';
 
 import { TransactionService } from 'src/app/services/transaction-service/transaction.service';
@@ -8,15 +10,23 @@ import { User } from 'src/app/models/user';
 import { Card } from 'src/app/models/card';
 import { uReverse } from 'src/app/util/functions/generalUtilities';
 import { TransactionPayload } from 'src/app/models/transaction-payload';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-transaction',
   templateUrl: './transaction.component.html',
-  styleUrls: ['./transaction.component.scss']
+  styleUrls: ['./transaction.component.scss'],
+  animations: [
+    trigger('FadeIn', [
+      transition(':enter', [
+        style({ opacity: '0' }),
+        animate('1s ease-out', style({ opacity: '1' })),
+      ]),
+    ]),
+  ],
 })
 export class TransactionComponent implements OnInit, OnDestroy {
   componentIsActive: boolean;
+  screenWidth = window.innerWidth;
 
   @Input() cards: Card[];
   transactionStage: TransactionStage;
@@ -38,7 +48,7 @@ export class TransactionComponent implements OnInit, OnDestroy {
         takeWhile( () => this.componentIsActive )
       )
       .subscribe({
-        next: transactionState => this.transactionStage = transactionState
+        next: transactionStage => this.transactionStage = transactionStage
       });
 
     this.transactionService
@@ -57,20 +67,14 @@ export class TransactionComponent implements OnInit, OnDestroy {
         card: [defaultCard , [Validators.required] ]
       });
 
-    // this.transactionForm.valueChanges.subscribe( e  => {
-    //   console.log('valueChanges event: ', e);
-    //   console.log('this.transactionForm.value: ', this.transactionForm.value);
-    // })
-    this.transactionForm.statusChanges.subscribe( e  => {
-      console.log('statusChanges event: ', e);
-      console.log('this.transactionForm: ', this.transactionForm);
-    })
-
-    
   }
 
   isOnTransaction(): boolean {
     return this.transactionStage === TransactionStage.onTransaction
+      || this.transactionStage === TransactionStage.processingTransaction
+  }
+  isProcessingTransaction(): boolean {
+    return this.transactionStage === TransactionStage.processingTransaction
   }
   isTransactionSucceeded(): boolean {
     return this.transactionStage === TransactionStage.transactionSucceeded
@@ -97,12 +101,14 @@ export class TransactionComponent implements OnInit, OnDestroy {
 
   pay() {
     if(this.transactionForm.valid) {
-      console.log('[transaction.component.ts] transactionForm.value : ', this.transactionForm.value);
+
+      this.transactionService.startLoadingProcessTransaction();
 
       const { value: paymentValue, card } = JSON.parse(JSON.stringify(this.transactionForm.value)) as { value: number; card: Card };
       const { id: userId } = this.transactionUser;
 
       if(card.card_number !== '4111111111111234') {
+
         const payload = {
           ...card,
           value: paymentValue,
@@ -111,15 +117,11 @@ export class TransactionComponent implements OnInit, OnDestroy {
 
         this.transactionService
           .processTransaction(payload)
-          .pipe(
-            tap( res => console.log(res) )
-          )
           .subscribe({
             next: () => this.transactionService.competeTransactionSucceeded()
           });
       } else {
         this.transactionService.completeTransactionFailed();
-        console.error('A transação falhou, visto que foi utilizado um cartão inválido.');
       }
     } else {
       this.transactionForm.markAllAsTouched();
