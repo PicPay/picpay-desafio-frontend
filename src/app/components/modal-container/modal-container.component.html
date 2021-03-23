@@ -1,5 +1,5 @@
-<div class="modal-backdrop">
-  <div class="modal-wrapper">
+<div [ngClass]="{ hide: !isActive }" class="modal-backdrop">
+  <div [ngClass]="{ hide: !isActive }" class="modal-wrapper">
     <ng-container #containerRef></ng-container>
   </div>
 </div>
