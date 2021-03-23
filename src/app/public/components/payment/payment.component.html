@@ -1,0 +1,43 @@
+<div *ngIf="!loading">
+  <input
+    class="payment__value"
+    [ngClass]="{ error: paymentValue == undefined }"
+    currencyMask
+    [(ngModel)]="paymentValue"
+    [options]="{
+      prefix: 'R$ ',
+      thousands: '.',
+      decimal: ',',
+      allowNegative: false,
+      align: 'left'
+    }"
+  />
+  <div class="payment__cards">
+    <select [(ngModel)]="model">
+      <option *ngFor="let card of cards" [ngValue]="card">
+        Cartão com final {{ card.card_number % 10000 }}
+      </option>
+    </select>
+  </div>
+  <div class="payment__button">
+    <button
+      type="button"
+      class="button button--medium"
+      [ngClass]="{ disabled: paymentValue == 0 || paymentValue == undefined }"
+      (click)="processPayment()"
+    >
+      Pagar
+    </button>
+  </div>
+</div>
+
+<div *ngIf="loading" class="loading__wrapper">
+  <span>Processando pagamento...</span>
+  <span class="loading__spinning"></span>
+</div>
+
+<app-modal id="modal-notification">
+  <app-card [titleField]="title" (callClose)="onCallClose($event)">
+    <div class="content" id="notification-message"></div>
+  </app-card>
+</app-modal>
