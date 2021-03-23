@@ -80,4 +80,18 @@ describe('ModalContainerComponent', () => {
     fixture.detectChanges();
     expect(component.componentRef.instance.modalRef).toBeTruthy();
   })
+
+  fit('should hide when backdrop div is clicked', () => {
+    const backdrop = fixture.nativeElement.querySelector('.modal-backdrop');
+    fixture.detectChanges();
+    backdrop.click();
+    fixture.detectChanges();
+
+    const renderedModal = fixture.nativeElement.querySelector('app-fake');
+    expect(renderedModal).toBeFalsy();
+    expect(window.getComputedStyle(fixture.nativeElement.querySelector('.modal-backdrop')).visibility)
+      .toContain('hidden');
+    expect(window.getComputedStyle(fixture.nativeElement.querySelector('.modal-wrapper')).visibility)
+      .toContain('hidden');
+  })
 });
