@@ -23,9 +23,9 @@ export class ModalContainerComponent implements OnInit {
     ]})
     this._modalService.getActiveModal$().subscribe(
       modal => {
+        this.container.clear();
         if (!modal) {
           this.isActive = false;
-          this.container.clear();
           return;
         }
         this.isActive = true;
@@ -37,5 +37,10 @@ export class ModalContainerComponent implements OnInit {
 
   hideFactory() {
     return () => {}
+  }
+
+  clear() {
+    this.isActive = false;
+    this.container.clear();
   }
 }
