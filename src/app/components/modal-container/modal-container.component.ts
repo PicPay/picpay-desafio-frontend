@@ -19,7 +19,7 @@ export class ModalContainerComponent implements OnInit {
 
   ngOnInit() {
     let injector = Injector.create({providers: [
-      { provide: ModalRef, useValue: { hide: this.hide() }}
+      { provide: ModalRef, useValue: { hide: this.hideFactory() }}
     ]})
     this._modalService.getActiveModal$().subscribe(
       modal => {
@@ -35,9 +35,7 @@ export class ModalContainerComponent implements OnInit {
     )
   }
 
-  hide() {
-    return () => {
-      console.log(this.isActive)
-    }
+  hideFactory() {
+    return () => {}
   }
 }
