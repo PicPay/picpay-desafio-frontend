@@ -9,6 +9,7 @@ import { ModalContainerComponent } from './components/modal-container/modal-cont
 import { PaymentModalComponent } from './components/payment-modal/payment-modal.component';
 import { NgxCurrencyModule } from 'ngx-currency';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ReceiptModalComponent } from './components/receipt-modal/receipt-modal.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     UserComponent,
     UserListComponent,
     ModalContainerComponent,
-    PaymentModalComponent
+    PaymentModalComponent,
+    ReceiptModalComponent
   ],
   imports: [
     BrowserModule,
