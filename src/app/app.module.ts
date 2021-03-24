@@ -21,7 +21,10 @@ import { PaymentModalComponent } from './components/payment-modal/payment-modal.
     HttpClientModule
   ],
   providers: [],
-  entryComponents: [ PaymentModalComponent ],
+  entryComponents: [ 
+    PaymentModalComponent,
+    ModalContainerComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
