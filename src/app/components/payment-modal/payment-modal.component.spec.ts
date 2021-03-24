@@ -75,7 +75,7 @@ describe('PaymentModalComponent', () => {
   it('should render value with mask', () => {
     const fakeValue = 123;
     
-    component.paymentForm.setValue({ 'value': fakeValue, 'card': null })
+    component.paymentForm.setValue({ 'value': fakeValue, 'card': null });
     fixture.detectChanges();
     
     const value = fixture.nativeElement.querySelector('.value');
@@ -87,5 +87,14 @@ describe('PaymentModalComponent', () => {
     const button = fixture.nativeElement.querySelector('.pay-button');
     
     expect(button.disabled).toBeTruthy();
+  });
+
+  it('should enable "Pagar" button when form is valid', () => {  
+    component.paymentForm.setValue({ 'value': 123, 'card': { card: 1 } });
+    fixture.detectChanges();  
+
+    const button = fixture.nativeElement.querySelector('.pay-button');
+    
+    expect(button.disabled).toBeFalsy();
   });
 });
