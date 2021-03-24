@@ -6,6 +6,7 @@ import { of } from 'rxjs';
 import { CardModel } from 'src/app/models/card-model';
 import { UserModel } from 'src/app/models/user-model';
 import { CardService } from 'src/app/services/card.service';
+import { PaymentService } from 'src/app/services/payment.service';
 
 import { PaymentModalComponent } from './payment-modal.component';
 
@@ -13,6 +14,7 @@ describe('PaymentModalComponent', () => {
   let component: PaymentModalComponent;
   let fixture: ComponentFixture<PaymentModalComponent>;
   let cardService: jasmine.SpyObj<CardService>;
+  let paymentService: jasmine.SpyObj<PaymentService>;
   let cards: CardModel[];
   let user: UserModel = {
     id: 1,
@@ -30,6 +32,7 @@ describe('PaymentModalComponent', () => {
       ],
       providers: [
         { provide: CardService, useFactory: () => spyOnClass(CardService) },
+        { provide: PaymentService, useFactory: () => spyOnClass(PaymentService) },
         { provide: 'MODAL_DATA', useValue: user }
       ]
     })
@@ -38,7 +41,8 @@ describe('PaymentModalComponent', () => {
 
   beforeEach(() => {
     fixture = TestBed.createComponent(PaymentModalComponent);
-    cardService = TestBed.get(CardService)
+    cardService = TestBed.get(CardService);
+    paymentService = TestBed.get(PaymentService);
     component = fixture.componentInstance;
 
     cards = [
@@ -106,16 +110,10 @@ describe('PaymentModalComponent', () => {
     expect(button.disabled).toBeFalsy();
   });
 
-  it('should call "pay" when "Pagar" button is clicked', () => {  
+  it('should call "pay" when "Pagar" button is clicked', () => {
     component.paymentForm.setValue({ 
         'value': 123,
-        'card': {
-          card: {
-            cardNumber: '1111111111111111',
-            cvv: 789,
-            expiryDate: '01/18'
-          }
-        }
+        'card': cards[0]
       });
     fixture.detectChanges();
     spyOn(component, 'pay');
@@ -126,5 +124,27 @@ describe('PaymentModalComponent', () => {
 
     
     expect(component.pay).toHaveBeenCalled();
+  });
+
+  describe('pay', () => {
+    it('should call PaymentService.pay$ with correct values', () => {
+      const card = cards[0];
+      const value = 123;
+      component.paymentForm.setValue({ 
+          'value': value,
+          'card': card
+        });
+      fixture.detectChanges();
+  
+      component.pay();
+
+      expect(paymentService.pay$).toHaveBeenCalledWith({
+        cardNumber: card.cardNumber,
+        cvv: card.cvv,
+        expiryDate: card.expiryDate,
+        destinationUserId: component.user.id,
+        value
+      })
+    });
   });
 });
