@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CardModel } from 'src/app/models/card-model';
 import { CardService } from 'src/app/services/card.service';
 
 @Component({
@@ -7,11 +8,16 @@ import { CardService } from 'src/app/services/card.service';
   styleUrls: ['./payment-modal.component.scss']
 })
 export class PaymentModalComponent implements OnInit {
+  cards: CardModel[] = [];
 
   constructor(private _cardService: CardService) { }
 
   ngOnInit() {
-    this._cardService.getCards$();
+    this._cardService.getCards$().subscribe(
+      result => {
+        this.cards = result;
+      }
+    );
   }
 
 }
