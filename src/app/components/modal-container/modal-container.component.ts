@@ -18,18 +18,19 @@ export class ModalContainerComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    let injector = Injector.create({providers: [
-      { provide: ModalRef, useValue: { hide: this.hideFactory() }}
-    ]})
     this._modalService.getActiveModal$().subscribe(
-      modal => {
+      (modal) => {
         this.container.clear();
         if (!modal) {
           this.isActive = false;
           return;
         }
+        let injector = Injector.create({providers: [
+          { provide: ModalRef, useValue: { hide: this.hideFactory() }},
+          { provide: 'MODAL_DATA', useValue: modal.data}
+        ]})
         this.isActive = true;
-        let resolver = this._componentFactoryResolver.resolveComponentFactory(modal);
+        let resolver = this._componentFactoryResolver.resolveComponentFactory(modal.type);
         this.componentRef = this.container.createComponent(resolver, null, injector);
       }
     )

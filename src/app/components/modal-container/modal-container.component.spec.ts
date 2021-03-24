@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, NgModule } from '@angular/core';
+import { Component, Inject, NgModule } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { spyOnClass } from 'jasmine-es6-spies';
 import { of } from 'rxjs';
@@ -13,7 +13,10 @@ import { ModalContainerComponent } from './modal-container.component';
   template: `<h1>Fake Component</h1>`
 })
 class FakeComponent {
-  constructor(public modalRef: ModalRef) {}
+  constructor(
+    public modalRef: ModalRef,
+    @Inject('MODAL_DATA') public data: any
+  ) {}
 }
 
 @NgModule({
@@ -43,7 +46,7 @@ describe('ModalContainerComponent', () => {
     modalService = TestBed.get(ModalService);
     component = fixture.componentInstance;
     
-    modalService.getActiveModal$.and.returnValue(of(FakeComponent));
+    modalService.getActiveModal$.and.returnValue(of({ type: FakeComponent, data: {test: 'ok'} }));
   });
 
   it('should create', () => {
@@ -79,6 +82,11 @@ describe('ModalContainerComponent', () => {
   it('should inject a ModalRef into the component', () => {
     fixture.detectChanges();
     expect(component.componentRef.instance.modalRef).toBeTruthy();
+  });
+
+  it('should inject data into the component', () => {
+    fixture.detectChanges();
+    expect(component.componentRef.instance.data).toEqual({test: 'ok'});
   });
 
   it('should hide when backdrop div is clicked', () => {

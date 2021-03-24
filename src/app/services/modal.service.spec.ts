@@ -25,9 +25,9 @@ describe('ModalService', () => {
     it('should call activeModalSubject$.next passing argument Type', () => {
       spyOn(service.activeModalSubject$, 'next');
 
-      service.open(FakeComponent);
+      service.open(FakeComponent, {});
 
-      expect(service.activeModalSubject$.next).toHaveBeenCalledWith(FakeComponent)
+      expect(service.activeModalSubject$.next).toHaveBeenCalledWith({ type: FakeComponent, data: {} })
     });
   });
 });

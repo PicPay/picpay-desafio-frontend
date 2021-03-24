@@ -5,17 +5,17 @@ import { Observable, of, Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class ModalService {
-  activeModalSubject$: Subject<Type<any>>;
-  activeModal$: Observable<Type<any>>;
+  activeModalSubject$: Subject<{type: Type<any>, data: any}>;
+  activeModal$: Observable<{type: Type<any>, data: any}>;
 
   constructor() {
-    this.activeModalSubject$ = new Subject<Type<any>>();
+    this.activeModalSubject$ = new Subject<{type: Type<any>, data: any}>();
     this.activeModal$ = this.activeModalSubject$.asObservable();
   }
 
-  open(type: Type<any>) {
-    this.activeModalSubject$.next(type);
+  open(type: Type<any>, data: any = {}) {
+    this.activeModalSubject$.next({ type, data});
   }
 
-  getActiveModal$(): Observable<Type<any>> { return this.activeModal$ }
+  getActiveModal$(): Observable<{type: Type<any>, data: any}> { return this.activeModal$ }
 }
