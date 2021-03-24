@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
+import { of } from 'rxjs';
 import { PaymentModel } from '../models/payment-model';
 
 import { PaymentService } from './payment.service';
@@ -41,6 +42,19 @@ describe('PaymentService', () => {
       service.pay$(payment);
 
       expect(httpClient.post).toHaveBeenCalledWith(fakeUrl, payment);
+    });
+    
+    it('should return status and success info', () => {
+      const result = {
+        success: true,
+        status: 'Aprovado'
+      };
+      spyOn(httpClient, 'post').and.returnValue(of(result));
+      
+      const spy = jasmine.createSpy('spy');
+      service.pay$(payment).subscribe(spy);
+
+      expect(spy).toHaveBeenCalledWith(result);
     });
   });
 });
