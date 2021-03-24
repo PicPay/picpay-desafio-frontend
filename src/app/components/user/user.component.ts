@@ -17,6 +17,6 @@ export class UserComponent implements OnInit {
   }
   
   openPaymentModal() {
-    this._modalService.open(PaymentModalComponent);
+    this._modalService.open(PaymentModalComponent, this.user);
   }
 }
