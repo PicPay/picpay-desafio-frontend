@@ -13,7 +13,7 @@ export class PaymentModalComponent implements OnInit {
   paymentForm: FormGroup = new FormGroup({
     value: new FormControl(null, [
       Validators.required,
-      Validators.min(0)
+      this.greaterThanZero()
     ]),
     card: new FormControl(null, [
       Validators.required
@@ -24,7 +24,8 @@ export class PaymentModalComponent implements OnInit {
     decimal: ',',
     thousands: '.',
     prefix: 'R$ ',
-    align: 'left'
+    align: 'left',
+    nullable: true
   }
 
   constructor(
@@ -38,5 +39,12 @@ export class PaymentModalComponent implements OnInit {
         this.cards = result;
       }
     );
+  }
+
+  greaterThanZero(): ValidatorFn {
+    return (control: AbstractControl): {[key: string]: any} | null => {
+      console.log(control.value, control.value >= 0 ? null : {invalidNumber: {value: control.value}})
+      return control.value > 0 ? null : {invalidNumber: {value: control.value}};
+    };
   }
 }
