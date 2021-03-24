@@ -8,6 +8,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
+import { AppRoutingModule } from './app-routing.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,9 +23,9 @@ import { CurrencyMaskModule } from 'ng2-currency-mask';
     FormsModule,
     HttpClientModule,
     CurrencyMaskModule,
-
+    AppRoutingModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [UsersService, PaymentService, ModalService],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
