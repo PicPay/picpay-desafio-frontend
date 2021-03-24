@@ -4,6 +4,7 @@ import { spyOnClass } from 'jasmine-es6-spies';
 import { NgxCurrencyModule } from 'ngx-currency';
 import { of } from 'rxjs';
 import { CardModel } from 'src/app/models/card-model';
+import { ModalRef } from 'src/app/models/modal-ref';
 import { UserModel } from 'src/app/models/user-model';
 import { CardService } from 'src/app/services/card.service';
 import { PaymentService } from 'src/app/services/payment.service';
@@ -16,6 +17,8 @@ describe('PaymentModalComponent', () => {
   let cardService: jasmine.SpyObj<CardService>;
   let paymentService: jasmine.SpyObj<PaymentService>;
   let cards: CardModel[];
+  let card: CardModel;
+  let value: number = 123;
   let user: UserModel = {
     id: 1,
     name: 'Flavio Lopes Duarte',
@@ -33,6 +36,7 @@ describe('PaymentModalComponent', () => {
       providers: [
         { provide: CardService, useFactory: () => spyOnClass(CardService) },
         { provide: PaymentService, useFactory: () => spyOnClass(PaymentService) },
+        { provide: ModalRef, useValue: { hide: () => {} } },
         { provide: 'MODAL_DATA', useValue: user }
       ]
     })
@@ -57,7 +61,14 @@ describe('PaymentModalComponent', () => {
         expiryDate: '01/20'
       }
     ];
+
+    card = cards[0];
+    component.paymentForm.setValue({ 
+        'value': value,
+        'card': card
+    });
     cardService.getCards$.and.returnValue(of(cards));
+    paymentService.pay$.and.returnValue(of({success: true, status: 'Aprovada'}))
 
     fixture.detectChanges();
   });
@@ -85,37 +96,29 @@ describe('PaymentModalComponent', () => {
   });
 
   it('should render value with mask', () => {
-    const fakeValue = 123;
-    
-    component.paymentForm.setValue({ 'value': fakeValue, 'card': null });
-    fixture.detectChanges();
-    
     const value = fixture.nativeElement.querySelector('.value');
     
     expect(value.value).toContain('R$ 123,00');
   });
 
-  it('should disable "Pagar" button when form is invalid', () => {    
+  it('should disable "Pagar" button when form is invalid', () => {
+    component.paymentForm.setValue({ 
+        'value': null,
+        'card': null
+    });
+    fixture.detectChanges();
     const button = fixture.nativeElement.querySelector('.pay-button');
     
     expect(button.disabled).toBeTruthy();
   });
 
-  it('should enable "Pagar" button when form is valid', () => {  
-    component.paymentForm.setValue({ 'value': 123, 'card': { card: 1 } });
-    fixture.detectChanges();  
-
+  it('should enable "Pagar" button when form is valid', () => {
     const button = fixture.nativeElement.querySelector('.pay-button');
     
     expect(button.disabled).toBeFalsy();
   });
 
   it('should call "pay" when "Pagar" button is clicked', () => {
-    component.paymentForm.setValue({ 
-        'value': 123,
-        'card': cards[0]
-      });
-    fixture.detectChanges();
     spyOn(component, 'pay');
 
     const button = fixture.nativeElement.querySelector('.pay-button');
@@ -128,14 +131,6 @@ describe('PaymentModalComponent', () => {
 
   describe('pay', () => {
     it('should call PaymentService.pay$ with correct values', () => {
-      const card = cards[0];
-      const value = 123;
-      component.paymentForm.setValue({ 
-          'value': value,
-          'card': card
-        });
-      fixture.detectChanges();
-  
       component.pay();
 
       expect(paymentService.pay$).toHaveBeenCalledWith({
@@ -144,7 +139,15 @@ describe('PaymentModalComponent', () => {
         expiryDate: card.expiryDate,
         destinationUserId: component.user.id,
         value
-      })
+      });
+    });
+
+    it('should call ModalRef.hide after payment result', () => {
+      const spy = spyOn(component.modalRef, 'hide');
+      
+      component.pay();
+
+      expect(spy).toHaveBeenCalled();
     });
   });
 });
