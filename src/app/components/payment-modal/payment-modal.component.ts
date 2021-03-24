@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CardService } from 'src/app/services/card.service';
 
 @Component({
   selector: 'app-payment-modal',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaymentModalComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _cardService: CardService) { }
 
   ngOnInit() {
+    this._cardService.getCards$();
   }
 
 }
