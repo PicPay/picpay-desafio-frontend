@@ -3,11 +3,11 @@
 <div class="content">
   <input type="number" placeholder="R$ 0,00" />
   
-  <div class="cards">
-    <select>
-      <option selected>Cartão com final 0123</option>
-    </select>
-  </div>
+  <select class="cards">
+    <option *ngFor="let card of cards" [value]="card.cardNumber">
+      Cartão com final {{ card.cardNumber.slice(-4) }}
+    </option>
+  </select>
   
   <button type="button" class="pay-button">
     Pagar
