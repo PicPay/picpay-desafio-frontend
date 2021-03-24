@@ -3,5 +3,6 @@
 </div>
 
 <div class="content">
-  O pagamento foi concluido com sucesso.
+  <span *ngIf="success">O pagamento foi concluido com sucesso.</span>
+  <span *ngIf="!success">O pagamento <strong>não</strong> foi concluido com sucesso.</span>
 </div>
