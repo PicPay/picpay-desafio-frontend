@@ -2,6 +2,14 @@
   visibility: hidden;
 }
 
+.show {
+  animation: show .5s;
+
+  & .modal-wrapper {
+    animation: slide .25s;
+  }
+}
+
 .modal-backdrop {
   display: flex;
   align-items: center;
@@ -18,4 +26,27 @@
   background-color: #fff;
   border-radius: 5px;
   overflow: hidden;
+}
+
+@keyframes show {
+  from {
+    opacity:0;
+  }
+  to {
+    opacity:1;
+  }
+}
+
+@keyframes slide {
+  0% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+  65% {
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
