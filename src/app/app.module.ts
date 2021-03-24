@@ -28,8 +28,9 @@ import { ReceiptModalComponent } from './components/receipt-modal/receipt-modal.
   ],
   providers: [],
   entryComponents: [ 
+    ModalContainerComponent,
     PaymentModalComponent,
-    ModalContainerComponent
+    ReceiptModalComponent
   ],
   bootstrap: [AppComponent]
 })

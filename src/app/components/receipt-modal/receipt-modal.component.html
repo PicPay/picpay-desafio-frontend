@@ -1,8 +1,13 @@
-<div class="title">
-  Recibo de pagamento
-</div>
-
-<div class="content">
-  <span *ngIf="success">O pagamento foi concluido com sucesso.</span>
-  <span *ngIf="!success">O pagamento <strong>não</strong> foi concluido com sucesso.</span>
+<div class="wrapper">
+  <div 
+    [ngClass]="{'success': success, 'fail': !success}"
+    class="title"
+  >
+    Recibo de pagamento
+  </div>
+  
+  <div class="content">
+    <span *ngIf="success">O pagamento foi concluido com sucesso.</span>
+    <span *ngIf="!success">O pagamento <strong>não</strong> foi concluido com sucesso.</span>
+  </div>
 </div>
