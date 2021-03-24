@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { UserModel } from 'src/app/models/user-model';
 import { ModalService } from 'src/app/services/modal.service';
-import { ModalContainerComponent } from '../modal-container/modal-container.component';
+import { PaymentModalComponent } from '../payment-modal/payment-modal.component';
 
 @Component({
   selector: 'app-user',
@@ -17,6 +17,6 @@ export class UserComponent implements OnInit {
   }
   
   openPaymentModal() {
-    this._modalService.open(ModalContainerComponent);
+    this._modalService.open(PaymentModalComponent);
   }
 }
