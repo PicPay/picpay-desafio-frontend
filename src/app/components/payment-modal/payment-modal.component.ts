@@ -47,4 +47,6 @@ export class PaymentModalComponent implements OnInit {
       return control.value > 0 ? null : {invalidNumber: {value: control.value}};
     };
   }
+
+  pay() {}
 }

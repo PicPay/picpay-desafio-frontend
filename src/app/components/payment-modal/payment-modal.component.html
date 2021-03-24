@@ -2,7 +2,7 @@
   <div class="title">Pagamento para <span>{{ user.name }}</span></div>
   
   <div class="content">
-    <form [formGroup]="paymentForm">
+    <form [formGroup]="paymentForm" (ngSubmit)="pay()">
       <input 
         formControlName="value"
         currencyMask 
