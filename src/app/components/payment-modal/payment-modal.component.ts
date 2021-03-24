@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { CardModel } from 'src/app/models/card-model';
 import { CardService } from 'src/app/services/card.service';
+import { PaymentService } from 'src/app/services/payment.service';
 
 @Component({
   selector: 'app-payment-modal',
@@ -30,6 +31,7 @@ export class PaymentModalComponent implements OnInit {
 
   constructor(
     private _cardService: CardService,
+    private _paymentService: PaymentService,
     @Inject('MODAL_DATA') public user: any
   ) { }
 
@@ -48,5 +50,19 @@ export class PaymentModalComponent implements OnInit {
     };
   }
 
-  pay() {}
+  pay() {
+    const {
+      cardNumber,
+      cvv,
+      expiryDate
+    } = this.paymentForm.get('card').value;
+    
+    this._paymentService.pay$({
+      cardNumber,
+      cvv,
+      expiryDate,
+      destinationUserId: this.user.id,
+      value: this.paymentForm.get('value').value
+    })
+  }
 }
