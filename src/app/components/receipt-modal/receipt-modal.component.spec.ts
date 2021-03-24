@@ -8,7 +8,10 @@ describe('ReceiptModalComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ReceiptModalComponent ]
+      declarations: [ ReceiptModalComponent ],
+      providers: [
+        { provide: 'MODAL_DATA', useValue: true }
+      ]
     })
     .compileComponents();
   }));
@@ -26,5 +29,13 @@ describe('ReceiptModalComponent', () => {
   it('should render a success message on success', () => {
     const content = fixture.nativeElement.querySelector('.content')
     expect(content.textContent.trim()).toBe('O pagamento foi concluido com sucesso.');
+  });
+
+  it('should render a fail message when fails', () => {
+    component.success = false;
+    fixture.detectChanges();
+
+    const content = fixture.nativeElement.querySelector('.content')
+    expect(content.textContent.trim()).toBe('O pagamento não foi concluido com sucesso.');
   });
 });
