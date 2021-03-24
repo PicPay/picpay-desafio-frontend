@@ -1,5 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
 import { spyOnClass } from 'jasmine-es6-spies';
+import { NgxCurrencyModule } from 'ngx-currency';
 import { of } from 'rxjs';
 import { CardModel } from 'src/app/models/card-model';
 import { CardService } from 'src/app/services/card.service';
@@ -15,6 +17,10 @@ describe('PaymentModalComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ PaymentModalComponent ],
+      imports: [
+        NgxCurrencyModule,
+        ReactiveFormsModule
+      ],
       providers: [
         { provide: CardService, useFactory: () => spyOnClass(CardService) }
       ]
@@ -64,5 +70,16 @@ describe('PaymentModalComponent', () => {
     const options = fixture.nativeElement.querySelectorAll('.cards option');
 
     expect(options.length).toBe(cards.length);
+  });
+
+  it('should render value with mask', () => {
+    const fakeValue = 123;
+    
+    component.paymentForm.setValue({ 'value': fakeValue, 'card': null })
+    fixture.detectChanges();
+    
+    const value = fixture.nativeElement.querySelector('.value');
+    
+    expect(value.value).toContain('R$ 123,00');
   });
 });
