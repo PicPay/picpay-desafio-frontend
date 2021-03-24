@@ -4,6 +4,7 @@ import { spyOnClass } from 'jasmine-es6-spies';
 import { NgxCurrencyModule } from 'ngx-currency';
 import { of } from 'rxjs';
 import { CardModel } from 'src/app/models/card-model';
+import { UserModel } from 'src/app/models/user-model';
 import { CardService } from 'src/app/services/card.service';
 
 import { PaymentModalComponent } from './payment-modal.component';
@@ -13,6 +14,12 @@ describe('PaymentModalComponent', () => {
   let fixture: ComponentFixture<PaymentModalComponent>;
   let cardService: jasmine.SpyObj<CardService>;
   let cards: CardModel[];
+  let user: UserModel = {
+    id: 1,
+    name: 'Flavio Lopes Duarte',
+    username: 'duarte.flavio',
+    img: 'https://randomuser.me/api/portraits/men/9.jpg'
+  }
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -22,7 +29,8 @@ describe('PaymentModalComponent', () => {
         ReactiveFormsModule
       ],
       providers: [
-        { provide: CardService, useFactory: () => spyOnClass(CardService) }
+        { provide: CardService, useFactory: () => spyOnClass(CardService) },
+        { provide: 'MODAL_DATA', useValue: user }
       ]
     })
     .compileComponents();

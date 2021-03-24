@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { CardModel } from 'src/app/models/card-model';
 import { CardService } from 'src/app/services/card.service';
@@ -23,10 +23,14 @@ export class PaymentModalComponent implements OnInit {
     allowNegative: false,
     decimal: ',',
     thousands: '.',
-    prefix: 'R$ '
+    prefix: 'R$ ',
+    align: 'left'
   }
 
-  constructor(private _cardService: CardService) { }
+  constructor(
+    private _cardService: CardService,
+    @Inject('MODAL_DATA') public user: any
+  ) { }
 
   ngOnInit() {
     this._cardService.getCards$().subscribe(
