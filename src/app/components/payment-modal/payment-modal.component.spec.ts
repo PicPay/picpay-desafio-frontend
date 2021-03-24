@@ -59,4 +59,10 @@ describe('PaymentModalComponent', () => {
     
     expect(spy).toHaveBeenCalledWith(component.cards);
   });
+
+  it('should render cards as options', () => {
+    const options = fixture.nativeElement.querySelectorAll('.cards option');
+
+    expect(options.length).toBe(cards.length);
+  });
 });
