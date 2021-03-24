@@ -1,12 +1,46 @@
+import { HttpClient } from '@angular/common/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
+import { PaymentModel } from '../models/payment-model';
 
 import { PaymentService } from './payment.service';
 
 describe('PaymentService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+  let service: PaymentService;
+  let httpClient: HttpClient;
+  let payment: PaymentModel;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [ HttpClientTestingModule ],
+      providers: [
+        { provide: 'PAYMENT_URL', useValue: 'www.fake.com'}
+      ]
+    });
+    
+    service = TestBed.get(PaymentService);
+    httpClient = TestBed.get(HttpClient);
+    payment = {
+      cardNumber: '1111111111111111',
+      cvv: 789,
+      expiryDate: '01/18',
+      destinationUserId: 1005,
+      value: 123
+    }
+  });
 
   it('should be created', () => {
-    const service: PaymentService = TestBed.get(PaymentService);
     expect(service).toBeTruthy();
+  });
+
+  describe('pay$', () => {
+    it('should call HttpClient with the correct url and data', () => {
+      const fakeUrl = TestBed.get('PAYMENT_URL');
+      spyOn(httpClient, 'post');
+      
+      service.pay$(payment);
+
+      expect(httpClient.post).toHaveBeenCalledWith(fakeUrl, payment);
+    });
   });
 });
