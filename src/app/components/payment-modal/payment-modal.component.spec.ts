@@ -27,7 +27,18 @@ describe('PaymentModalComponent', () => {
     cardService = TestBed.get(CardService)
     component = fixture.componentInstance;
 
-    cards = [];
+    cards = [
+      {
+        cardNumber: '1111111111111111',
+        cvv: 789,
+        expiryDate: '01/18'
+      },
+      {
+        cardNumber: '4111111111111234',
+        cvv: 123,
+        expiryDate: '01/20'
+      }
+    ];
     cardService.getCards$.and.returnValue(of(cards));
 
     fixture.detectChanges();
@@ -39,5 +50,13 @@ describe('PaymentModalComponent', () => {
 
   it('should call CardService.getCards$ when component starts', () => {
     expect(cardService.getCards$).toHaveBeenCalled();
+  });
+
+  it('should populate cards with CardService.getCards$ result', () => {
+    const spy = jasmine.createSpy('spy');
+
+    cardService.getCards$().subscribe(spy);
+    
+    expect(spy).toHaveBeenCalledWith(component.cards);
   });
 });
