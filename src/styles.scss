@@ -4,7 +4,28 @@
 
 html,
 body {
+  background-color: #F7F7F7;
   font-family: sans-serif;
   margin: 0;
   padding: 0;
+  height: 100%;
+}
+
+// SCROLL
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
 }
