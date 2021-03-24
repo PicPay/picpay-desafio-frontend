@@ -82,4 +82,10 @@ describe('PaymentModalComponent', () => {
     
     expect(value.value).toContain('R$ 123,00');
   });
+
+  it('should disable "Pagar" button when form is invalid', () => {    
+    const button = fixture.nativeElement.querySelector('.pay-button');
+    
+    expect(button.disabled).toBeTruthy();
+  });
 });
