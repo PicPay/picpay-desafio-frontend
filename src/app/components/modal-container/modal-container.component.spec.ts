@@ -79,7 +79,7 @@ describe('ModalContainerComponent', () => {
   it('should inject a ModalRef into the component', () => {
     fixture.detectChanges();
     expect(component.componentRef.instance.modalRef).toBeTruthy();
-  })
+  });
 
   it('should hide when backdrop div is clicked', () => {
     const backdrop = fixture.nativeElement.querySelector('.modal-backdrop');
@@ -93,7 +93,21 @@ describe('ModalContainerComponent', () => {
       .toContain('hidden');
     expect(window.getComputedStyle(fixture.nativeElement.querySelector('.modal-wrapper')).visibility)
       .toContain('hidden');
-  })
+  });
+
+  it('should not hide when wrapper div is clicked', () => {
+    const wrapper = fixture.nativeElement.querySelector('.modal-wrapper');
+    fixture.detectChanges();
+    wrapper.click();
+    fixture.detectChanges();
+
+    const renderedModal = fixture.nativeElement.querySelector('app-fake');
+    expect(renderedModal).toBeTruthy();
+    expect(window.getComputedStyle(fixture.nativeElement.querySelector('.modal-backdrop')).visibility)
+      .toContain('visible');
+    expect(window.getComputedStyle(fixture.nativeElement.querySelector('.modal-wrapper')).visibility)
+      .toContain('visible');
+  });
 
   it('should hide when component calls ModalRef.hide', () => {
     fixture.detectChanges();
@@ -106,5 +120,5 @@ describe('ModalContainerComponent', () => {
       .toContain('hidden');
     expect(window.getComputedStyle(fixture.nativeElement.querySelector('.modal-wrapper')).visibility)
       .toContain('hidden');
-  })
+  });
 });
