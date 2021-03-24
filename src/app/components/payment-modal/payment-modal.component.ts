@@ -45,7 +45,6 @@ export class PaymentModalComponent implements OnInit {
 
   greaterThanZero(): ValidatorFn {
     return (control: AbstractControl): {[key: string]: any} | null => {
-      console.log(control.value, control.value >= 0 ? null : {invalidNumber: {value: control.value}})
       return control.value > 0 ? null : {invalidNumber: {value: control.value}};
     };
   }
