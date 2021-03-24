@@ -105,4 +105,26 @@ describe('PaymentModalComponent', () => {
     
     expect(button.disabled).toBeFalsy();
   });
+
+  it('should call "pay" when "Pagar" button is clicked', () => {  
+    component.paymentForm.setValue({ 
+        'value': 123,
+        'card': {
+          card: {
+            cardNumber: '1111111111111111',
+            cvv: 789,
+            expiryDate: '01/18'
+          }
+        }
+      });
+    fixture.detectChanges();
+    spyOn(component, 'pay');
+
+    const button = fixture.nativeElement.querySelector('.pay-button');
+
+    button.click();
+
+    
+    expect(component.pay).toHaveBeenCalled();
+  });
 });
