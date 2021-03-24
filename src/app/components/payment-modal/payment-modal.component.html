@@ -20,7 +20,10 @@
       </option>
     </select>
     
-    <button class="pay-button">
+    <button
+      [disabled]="paymentForm.invalid"
+      class="pay-button"
+    >
       Pagar
     </button>
   </form>
