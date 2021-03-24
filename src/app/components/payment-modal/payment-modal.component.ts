@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { CardModel } from 'src/app/models/card-model';
+import { ModalRef } from 'src/app/models/modal-ref';
 import { CardService } from 'src/app/services/card.service';
 import { PaymentService } from 'src/app/services/payment.service';
 
@@ -32,6 +33,7 @@ export class PaymentModalComponent implements OnInit {
   constructor(
     private _cardService: CardService,
     private _paymentService: PaymentService,
+    public modalRef: ModalRef,
     @Inject('MODAL_DATA') public user: any
   ) { }
 
@@ -62,6 +64,10 @@ export class PaymentModalComponent implements OnInit {
       expiryDate,
       destinationUserId: this.user.id,
       value: this.paymentForm.get('value').value
-    })
+    }).subscribe(
+      result => {
+        this.modalRef.hide();
+      }
+    )
   }
 }
