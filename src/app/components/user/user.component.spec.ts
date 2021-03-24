@@ -3,6 +3,7 @@ import { ModalService } from 'src/app/services/modal.service';
 import { spyOnClass } from 'jasmine-es6-spies';
 
 import { UserComponent } from './user.component';
+import { PaymentModalComponent } from '../payment-modal/payment-modal.component';
 
 describe('UserComponent', () => {
   let component: UserComponent;
@@ -38,11 +39,11 @@ describe('UserComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should call ModalService.open when "Pagar" button is clicked', () => {
+  it('should call ModalService.open with correct values when "Pagar" button is clicked', () => {
     const button = fixture.nativeElement.querySelector('.pay-button');
 
     button.click();
 
-    expect(modalService.open).toHaveBeenCalled();
+    expect(modalService.open).toHaveBeenCalledWith(PaymentModalComponent, component.user);
   });
 });
