@@ -1,15 +1,27 @@
 <div class="title">Pagamento para <span>Nome do Usuário</span></div>
     
 <div class="content">
-  <input type="number" placeholder="R$ 0,00" />
-  
-  <select class="cards">
-    <option *ngFor="let card of cards" [value]="card.cardNumber">
-      Cartão com final {{ card.cardNumber.slice(-4) }}
-    </option>
-  </select>
-  
-  <button type="button" class="pay-button">
-    Pagar
-  </button>
+  <form [formGroup]="paymentForm">
+    <input 
+      formControlName="value"
+      currencyMask 
+      type="text" 
+      class="value"
+      [options]="maskOptions"
+      placeholder="R$ 0,00"
+    />
+    
+    <select
+      formControlName="card"
+      class="cards"
+    >
+      <option *ngFor="let card of cards" [value]="card">
+        Cartão com final {{ card.cardNumber.slice(-4) }}
+      </option>
+    </select>
+    
+    <button class="pay-button">
+      Pagar
+    </button>
+  </form>
 </div>

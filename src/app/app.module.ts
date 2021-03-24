@@ -7,6 +7,8 @@ import { UserListComponent } from './components/user-list/user-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ModalContainerComponent } from './components/modal-container/modal-container.component';
 import { PaymentModalComponent } from './components/payment-modal/payment-modal.component';
+import { NgxCurrencyModule } from 'ngx-currency';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { PaymentModalComponent } from './components/payment-modal/payment-modal.
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxCurrencyModule,
+    ReactiveFormsModule
   ],
   providers: [],
   entryComponents: [ 
