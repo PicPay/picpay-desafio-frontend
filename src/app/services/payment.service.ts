@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Inject, Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { PaymentModel } from '../models/payment-model';
 
@@ -7,9 +8,12 @@ import { PaymentModel } from '../models/payment-model';
 })
 export class PaymentService {
 
-  constructor() { }
+  constructor(
+    @Inject('PAYMENT_URL') private _url: string,
+    private _httpClient: HttpClient
+  ) { }
 
   pay$(payment: PaymentModel): Observable<{success: boolean, status: string}> { 
-    return of(null);
+    return this._httpClient.post<{success: boolean, status: string}>(this._url, payment);
   }
 }
