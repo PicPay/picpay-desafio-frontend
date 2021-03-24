@@ -10,6 +10,15 @@
     "e2e": "ng e2e"
   },
   "private": true,
+  "husky": {
+    "hooks": {
+      "pre-commit": "ng lint && lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,html}": "prettier --write"
+  },
   "dependencies": {
     "@angular/animations": "~8.2.13",
     "@angular/common": "~8.2.13",
@@ -28,10 +37,13 @@
     "@angular/cli": "~8.3.18",
     "@angular/compiler-cli": "~8.2.13",
     "@angular/language-service": "~8.2.13",
-    "@types/node": "~8.9.4",
+    "@commitlint/cli": "^12.0.1",
+    "@commitlint/config-angular": "^12.0.1",
     "@types/jasmine": "~3.3.8",
     "@types/jasminewd2": "~2.0.3",
+    "@types/node": "~8.9.4",
     "codelyzer": "^5.0.0",
+    "husky": "~4.3.8",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~4.1.0",
@@ -39,9 +51,12 @@
     "karma-coverage-istanbul-reporter": "~2.0.1",
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.0",
+    "lint-staged": "^10.5.4",
+    "prettier": "^2.2.1",
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
+    "tslint-config-prettier": "^1.18.0",
     "typescript": "~3.5.3"
   }
 }
