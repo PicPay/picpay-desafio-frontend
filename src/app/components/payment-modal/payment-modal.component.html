@@ -22,11 +22,13 @@
       </select>
     
       <button
-      [disabled]="paymentForm.invalid"
-      class="pay-button"
+        [disabled]="paymentForm.invalid"
+        *ngIf="!isLoading"
+        class="pay-button"
       >
-        Pagar
+        <span>Pagar</span>
       </button>
+      <div *ngIf="isLoading" class="loading lds-ring"><div></div><div></div><div></div><div></div></div>
     </form>
   </div>
 </div>

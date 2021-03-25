@@ -14,6 +14,7 @@ import { ReceiptModalComponent } from '../receipt-modal/receipt-modal.component'
 })
 export class PaymentModalComponent implements OnInit {
   cards: CardModel[] = [];
+  isLoading: boolean = false;
   paymentForm: FormGroup = new FormGroup({
     value: new FormControl(null, [
       Validators.required,
@@ -61,6 +62,7 @@ export class PaymentModalComponent implements OnInit {
       expiryDate
     } = this.cards.find(item => item.cardNumber === this.paymentForm.get('card').value);
     
+    this.isLoading = true;
     this._paymentService.pay$({
       cardNumber,
       cvv,
@@ -69,6 +71,7 @@ export class PaymentModalComponent implements OnInit {
       value: this.paymentForm.get('value').value
     }).subscribe(
       result => {
+        this.isLoading = false;
         this.modalRef.hide();
         this._modalService.open(ReceiptModalComponent, result.success)
       }
