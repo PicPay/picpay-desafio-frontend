@@ -67,15 +67,15 @@ O cartão válido vai aprovar a transação no backend;
 let cards = [
   // valid card
   {
-    card_number: '1111111111111111',
+    card_number: "1111111111111111",
     cvv: 789,
-    expiry_date: '01/18',
+    expiry_date: "01/18",
   },
   // invalid card
   {
-    card_number: '4111111111111234',
+    card_number: "4111111111111234",
     cvv: 123,
-    expiry_date: '01/20',
+    expiry_date: "01/20",
   },
 ];
 ```
@@ -91,7 +91,7 @@ let cards = [
 ```typescript
 // Payload:
 
-interface TransactionPayload {
+interface TransactionResponse {
   // Card Info
   card_number: string;
   cvv: number;

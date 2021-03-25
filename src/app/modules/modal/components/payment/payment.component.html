@@ -1,0 +1,28 @@
+<div class="modal-backdrop" *ngIf="isVisible">
+  <div class="modal">
+    <div class="header">
+      <div class="title">Pagamento para <span>ME</span></div>
+      <button class="close" (click)="closeModal()" aria-label="Close">X</button>
+    </div>
+    <div class="body">
+      <input
+        type="number"
+        placeholder="R$ 0,00"
+        id="value"
+        formControlName="value"
+      />
+
+      <div class="cards">
+        <select id="card">
+          <option [disabled]>Selecione o cartão com final</option>
+          <option *ngFor="let card of cards">{{ card.card_number }}</option>
+        </select>
+      </div>
+    </div>
+    <div class="footer">
+      <button type="button" class="pay-button" (click)="getTransaction()">
+        Pagar
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<article class="users">
+  <div class="user" *ngFor="let user of users">
+    <img src="{{ user.img }}" />
+    <div class="info-wrapper">
+      <div class="user-name">
+        {{ user.name }}
+      </div>
+
+      <div class="user-id-username">
+        ID: {{ user.id }} - Username: {{ user.username }}
+      </div>
+    </div>
+
+    <button type="button" class="pay-button" (click)="paymentAction(user)">
+      Pagar
+    </button>
+  </div>
+</article>
+
+<article>
+  <app-modal
+    [(isVisible)]="showPaymentModal && !showReceiptModal"
+    [(user)]="selectedUser"
+    (visibility)="visibilityChanged($event)"
+    (transactionResponse)="paymentResponse($event)"
+  ></app-modal>
+  <app-receipt
+    [(isVisible)]="showReceiptModal"
+    [response]="transactionResponse"
+    (visibility)="visibilityChanged($event)"
+  ></app-receipt>
+</article>
