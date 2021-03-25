@@ -1,6 +1,6 @@
 .users {
   background-color: #eee;
-  height: 100vh;
+  height: calc(100vh - 60px);
   padding: 10px;
   overflow-y: auto;
 }
