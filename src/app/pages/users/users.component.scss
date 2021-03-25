@@ -1,0 +1,29 @@
+@import '~src/sass/variables';
+
+.title {
+    padding: 20px;
+    background-color: $base-color;
+}
+
+.users {
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+
+    &__user {
+        width: 100%;
+    }
+    
+    @media (min-width: 768px) { 
+        &__user {
+            width: 50%;
+        }
+    }
+    
+    @media (min-width: 992px) { 
+        &__user {
+            width: 33.3%;
+        }
+    }
+}
+

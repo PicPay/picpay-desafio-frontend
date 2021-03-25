@@ -1,0 +1,35 @@
+@import '~src/sass/variables';
+
+.navbar {
+	padding: 15px;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	background-color: $light;
+
+	&__invisible {
+		height: 90px;
+		visibility: hidden;
+	}
+
+	&__content {
+		display: flex;
+		max-width: 600px;
+		margin: auto;
+		justify-content: space-between;
+	}
+
+	&__link {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	&__menu {
+		font-size: 26px;
+	}
+
+	&__label {
+		font-size: 12px;
+	}
+}

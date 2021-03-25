@@ -1,18 +1,22 @@
 @import 'sass/variables';
 @import 'sass/button';
+@import 'sass/link';
+
+$mdi-font-path: '~@mdi/font/fonts/';
+@import '~@mdi/font/scss/materialdesignicons';
 
 * {
   box-sizing: border-box;
+  outline: none;
 }
 
 html,
 body {
-  background-color: $light;
+  background-color: $base-color;
   font-family: sans-serif;
   color: $secondary;
   margin: 0;
   padding: 0;
-  height: 100%;
 }
 
 // SCROLL
@@ -26,10 +30,10 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba($secondary, .5);
+  background: rgba($secondary, .3);
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba($secondary, .7);
+  background: rgba($secondary, .5);
 }

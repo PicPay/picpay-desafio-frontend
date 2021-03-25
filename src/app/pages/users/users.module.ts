@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UsersComponent } from './users.component';
-import { CardUserModule } from '../card-user/card-user.module';
+import { UsersRoutingModule } from './users-routing.module';
+import { CardUserModule } from '@shared/components/card-user/card-user.module';
 
 @NgModule({
   declarations: [UsersComponent],
-  exports: [UsersComponent],
-  imports: [CommonModule, CardUserModule],
+  imports: [CommonModule, UsersRoutingModule, CardUserModule],
 })
 export class UsersModule {}

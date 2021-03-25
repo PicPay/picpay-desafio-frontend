@@ -1,0 +1,21 @@
+@import 'sass/variables';
+
+@mixin link($color) {
+  color: $color;
+
+  &:hover {
+    color: darken($color, 5%);
+  }
+  &:active, &:focus {
+    color: darken($color, 10%);
+  }
+}
+
+.link {
+  text-decoration: none;
+  color: $secondary;
+
+  &-primary {
+    @include link($primary);
+  }
+}

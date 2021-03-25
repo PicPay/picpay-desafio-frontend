@@ -1,15 +1,7 @@
-<div class="content">
-  <div class="page">
-    <ngx-header></ngx-header>
-    <div class="page-content">
-      <router-outlet></router-outlet>
-    </div>
-  </div>
-  <div class="payments">
-    <router-outlet name="payment" #outlet="outlet"></router-outlet>
+<ngx-header></ngx-header>
 
-    <div *ngIf="!outlet.isActivated">
-      <ngx-users></ngx-users>
-    </div>
-  </div>
+<div class="container">
+  <router-outlet></router-outlet>
 </div>
+
+<ngx-navbar></ngx-navbar>

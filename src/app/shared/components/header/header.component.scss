@@ -1,14 +1,20 @@
+@import '~src/sass/variables';
+
 header {
-	height: 80px;
+	height: 60px;
     display: flex;
     align-items: center;
+	justify-content: center;
     padding: 0 40px;
 	position: sticky;
     top: 0;
-    background: #eff0e8;
+    background: $light;
+	-webkit-box-shadow: 0 0 10px 0 rgb(0 0 0 / 30%);;
+    -moz-box-shadow: 0 0 10px 0 rgb(0 0 0 / 30%);;
+    box-shadow: 0 0 10px 0 rgb(0 0 0 / 30%);
 
 	& .logo {
-		fill: #21c25e;
+		fill: $primary;
 		width: 120px;
 		height: auto;
 	}

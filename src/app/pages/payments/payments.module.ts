@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { PaymentsComponent } from './payments.component';
 import { PaymentsRoutingModule } from './payments-routing.module';
 import { CardPaidModule } from '@shared/components/card-paid/card-paid.module';
+import { NavbarModule } from '@shared/components/navbar/navbar.module';
 
 @NgModule({
   declarations: [PaymentsComponent],
