@@ -1,0 +1,46 @@
+<h1 mat-dialog-title>
+  Pagamento para <span>{{ data.destinationUser.name }}</span>
+</h1>
+
+<div mat-dialog-content>
+  <form *ngIf="!processingTransaction && !processingFailed && !transactionResponse"
+        [formGroup]="paymentInfoFormGroup"
+        fxLayout="column">
+    <mat-form-field appearance="outline">
+      <mat-label>Valor (R$)</mat-label>
+      <input [(ngModel)]="paymentInfo.value" matInput type="number" formControlName="value" placeholder="R$ 0,00">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Forma de pagamento</mat-label>
+      <mat-select [(ngModel)]="paymentInfo.creditCard" formControlName="creditCard">
+        <mat-option *ngFor="let card of cards" [value]="card">
+          Cartão com final {{ card.cardNumber.substr(-4) }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+
+  <ng-container *ngIf="processingTransaction">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  </ng-container>
+
+  <ng-container *ngIf="transactionResponse && transactionResponse.success">
+    <span class="transaction-status success">Pagamento aprovado!</span>
+  </ng-container>
+
+  <ng-container *ngIf="processingFailed || (transactionResponse && !transactionResponse.success)">
+    <span class="transaction-status failed">Falha ao processar pagamento</span>
+  </ng-container>
+</div>
+
+<div mat-dialog-actions>
+  <ng-container *ngIf="!processingTransaction && !processingFailed && !transactionResponse">
+    <button mat-stroked-button cdkFocusInitial (click)="close()">Cancelar</button>
+    <button mat-stroked-button color="primary" (click)="submitPayment()">Pagar</button>
+  </ng-container>
+
+  <ng-container *ngIf="transactionResponse || processingFailed">
+    <button mat-stroked-button cdkFocusInitial (click)="close()">Fechar</button>
+  </ng-container>
+</div>

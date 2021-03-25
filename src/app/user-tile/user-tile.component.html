@@ -1,0 +1,24 @@
+<div class="user-tile" fxLayout="row" fxLayoutGap="16px" fxLayout.lt-sm="column">
+  <div fxLayout.lt-sm="row" fxLayoutAlign="center">
+    <img class="user-profile-picture" [ngClass.lt-sm]="'large'" [src]="user.img"/>
+  </div>
+
+  <div fxFlex="grow" fxLayout="column" fxFlexAlign="center" fxLayoutGap="8px">
+    <h3 class="user-name">
+      {{ user.name }}
+    </h3>
+
+    <mat-chip-list aria-label="Fish selection">
+      <mat-chip fxLayout="row" fxLayoutGap="6px" [matTooltip]="'ID'">
+        <mat-icon>assignment_ind</mat-icon>
+        <span>{{ user.id }}</span>
+      </mat-chip>
+
+      <mat-chip color="accent" selected [matTooltip]="'Username'">{{ user.username }}</mat-chip>
+    </mat-chip-list>
+  </div>
+
+  <div fxFlexAlign="center">
+    <button mat-flat-button color="primary" (click)="openPaymentDialog()">Pagar</button>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+.user-tile {
+  padding: 12px 0;
+
+  img.user-profile-picture {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+
+    &.large {
+      width: 160px;
+      height: 160px;
+    }
+  }
+
+  h3.user-name {
+    margin: 0;
+    font-weight: bold;
+  }
+}

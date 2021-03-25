@@ -1,0 +1,13 @@
+span.transaction-status {
+  padding: 12px 0;
+  font-size: 1.2rem;
+  display: block;
+
+  &.success {
+    color: #009944;
+  }
+
+  &.failed {
+    color: #CF000F;
+  }
+}
