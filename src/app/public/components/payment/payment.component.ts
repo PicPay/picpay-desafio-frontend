@@ -20,7 +20,7 @@ export class PaymentComponent implements OnChanges {
 
   loading: boolean = false;
 
-  TransactionPayload = {
+  transactionPayload = {
     card_number: 0,
     cvv: 0,
     expiry_date: '',
@@ -58,16 +58,16 @@ export class PaymentComponent implements OnChanges {
   }
 
   processPayment() {
-    this.TransactionPayload = this.model;
-    this.TransactionPayload.destination_user_id = this.selectedUser;
-    this.TransactionPayload.value = this.paymentValue;
+    this.transactionPayload = this.model;
+    this.transactionPayload.destination_user_id = this.selectedUser;
+    this.transactionPayload.value = this.paymentValue;
 
     this.sendPayment();
   }
 
   sendPayment(): void {
     this.title = 'Recibo de pagamento';
-    this.paymentService.sendPayment(this.TransactionPayload);
+    this.paymentService.sendPayment(this.transactionPayload);
     this.loading = true;
     this.clean();
   }

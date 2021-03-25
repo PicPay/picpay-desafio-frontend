@@ -30,21 +30,13 @@ export class UsersComponent implements OnInit {
     this.usersService.getUsers().subscribe((users) => (this.users = users));
   }
 
-  openModal(id: string) {
-    this.modalService.open(id);
-  }
-
-  closeModal(id: string) {
-    this.modalService.close(id);
-  }
-
   onCallClose(){
-    this.closeModal('modal-payment')
+    this.modalService.close('modal-payment')
   }
 
   payUser(user) {
     this.selectedUser = user.id
     this.title = "Pagamento para " + user.name
-    this.openModal('modal-payment')
+    this.modalService.open('modal-payment')
   }
 }

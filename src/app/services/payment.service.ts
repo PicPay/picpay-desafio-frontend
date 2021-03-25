@@ -5,6 +5,7 @@ import { ModalService } from './modal.service';
 @Injectable({
   providedIn: 'root',
 })
+export class PaymentService {
   @Input('class')
   klass: string;
   message: string;
