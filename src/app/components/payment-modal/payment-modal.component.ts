@@ -3,7 +3,9 @@ import { AbstractControl, FormControl, FormGroup, ValidatorFn, Validators } from
 import { CardModel } from 'src/app/models/card-model';
 import { ModalRef } from 'src/app/models/modal-ref';
 import { CardService } from 'src/app/services/card.service';
+import { ModalService } from 'src/app/services/modal.service';
 import { PaymentService } from 'src/app/services/payment.service';
+import { ReceiptModalComponent } from '../receipt-modal/receipt-modal.component';
 
 @Component({
   selector: 'app-payment-modal',
@@ -34,6 +36,7 @@ export class PaymentModalComponent implements OnInit {
     private _cardService: CardService,
     private _paymentService: PaymentService,
     public modalRef: ModalRef,
+    private _modalService: ModalService,
     @Inject('MODAL_DATA') public user: any
   ) { }
 
@@ -67,6 +70,7 @@ export class PaymentModalComponent implements OnInit {
     }).subscribe(
       result => {
         this.modalRef.hide();
+        this._modalService.open(ReceiptModalComponent, result.success)
       }
     )
   }
