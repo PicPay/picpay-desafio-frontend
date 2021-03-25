@@ -1,12 +1,16 @@
 import { TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { PaymentService } from './payment.service';
 
-import { PaymentBoxService } from './payment.service';
-
-describe('PaymentBoxService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+describe('PaymentService', () => {
+  beforeEach(() =>
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+    })
+  );
 
   it('should be created', () => {
-    const service: PaymentBoxService = TestBed.get(PaymentBoxService);
+    const service: PaymentService = TestBed.get(PaymentService);
     expect(service).toBeTruthy();
   });
 });
