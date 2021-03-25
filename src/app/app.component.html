@@ -6,6 +6,10 @@
     </div>
   </div>
   <div class="payments">
-    <ngx-payments></ngx-payments>
+    <router-outlet name="payment" #outlet="outlet"></router-outlet>
+
+    <div *ngIf="!outlet.isActivated">
+      <ngx-users></ngx-users>
+    </div>
   </div>
 </div>

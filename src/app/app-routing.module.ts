@@ -2,10 +2,15 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: '/payments', pathMatch: 'full' },
   {
-    path: 'home',
-    loadChildren: () => import('./pages/home/home.module').then((m) => m.HomeModule),
+    path: ':id',
+    outlet: 'payment',
+    loadChildren: () => import('./pages/payment/payment.module').then((m) => m.PaymentModule),
+  },
+  {
+    path: 'payments',
+    loadChildren: () => import('./pages/payments/payments.module').then((m) => m.PaymentsModule),
   },
   {
     path: '**',

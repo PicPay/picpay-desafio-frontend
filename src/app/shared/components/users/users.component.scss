@@ -1,0 +1,13 @@
+@import '~src/sass/variables';
+
+.title {
+    top: 0;
+    margin: 0;
+    padding: 20px;
+    position: sticky;
+    background-color: $light;
+}
+
+.users {
+    padding: 10px;
+}

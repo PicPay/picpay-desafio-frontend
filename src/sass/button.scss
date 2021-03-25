@@ -1,0 +1,37 @@
+@import 'sass/variables';
+
+@mixin button-bg($bg, $color: #fff, $border: none) {
+  background: $bg;
+  color: $color;
+  border: $border;
+
+  &:hover {
+    background: darken($bg, 8%);
+    transition: all 0.3s ease;
+  }
+  &:active {
+    background: darken($bg, 25%);
+  } 
+}
+
+.btn {
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  font-size: 1em;
+  outline: 0;
+  cursor: pointer;
+
+  &::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+  }
+
+  &-primary {
+    @include button-bg($primary);
+  }
+  
+  &-secondary {
+    @include button-bg($secondary);
+  }
+}
