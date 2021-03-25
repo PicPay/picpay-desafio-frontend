@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NotFoundRoutingModule } from './not-found-routing.module';
+import { NotFoundComponent } from './not-found.component';
 
-describe('NotFoundRoutingModule', () => {
-  let component: NotFoundRoutingModule;
-  let fixture: ComponentFixture<NotFoundRoutingModule>;
+describe('NotFoundComponent', () => {
+  let component: NotFoundComponent;
+  let fixture: ComponentFixture<NotFoundComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [NotFoundRoutingModule],
+      declarations: [NotFoundComponent],
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NotFoundRoutingModule);
+    fixture = TestBed.createComponent(NotFoundComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
