@@ -1,0 +1,11 @@
+.not-found-page {
+	margin: auto;
+	margin-top: 50px;
+	max-width: 500px;
+
+	&__image {
+		width: 100%;
+		height: auto;
+		padding: 20px;
+	}
+}
