@@ -7,7 +7,9 @@ import { CardModel } from 'src/app/models/card-model';
 import { ModalRef } from 'src/app/models/modal-ref';
 import { UserModel } from 'src/app/models/user-model';
 import { CardService } from 'src/app/services/card.service';
+import { ModalService } from 'src/app/services/modal.service';
 import { PaymentService } from 'src/app/services/payment.service';
+import { ReceiptModalComponent } from '../receipt-modal/receipt-modal.component';
 
 import { PaymentModalComponent } from './payment-modal.component';
 
@@ -16,6 +18,7 @@ describe('PaymentModalComponent', () => {
   let fixture: ComponentFixture<PaymentModalComponent>;
   let cardService: jasmine.SpyObj<CardService>;
   let paymentService: jasmine.SpyObj<PaymentService>;
+  let modalService: jasmine.SpyObj<ModalService>;
   let cards: CardModel[];
   let card: CardModel;
   let value: number = 123;
@@ -37,6 +40,7 @@ describe('PaymentModalComponent', () => {
         { provide: CardService, useFactory: () => spyOnClass(CardService) },
         { provide: PaymentService, useFactory: () => spyOnClass(PaymentService) },
         { provide: ModalRef, useValue: { hide: () => {} } },
+        { provide: ModalService, useFactory: () => spyOnClass(ModalService) },
         { provide: 'MODAL_DATA', useValue: user }
       ]
     })
@@ -47,6 +51,7 @@ describe('PaymentModalComponent', () => {
     fixture = TestBed.createComponent(PaymentModalComponent);
     cardService = TestBed.get(CardService);
     paymentService = TestBed.get(PaymentService);
+    modalService = TestBed.get(ModalService)
     component = fixture.componentInstance;
 
     cards = [
@@ -148,6 +153,12 @@ describe('PaymentModalComponent', () => {
       component.pay();
 
       expect(spy).toHaveBeenCalled();
+    });
+
+    it('should call ModalService.open after payment result', () => {  
+      component.pay();
+
+      expect(modalService.open).toHaveBeenCalledWith(ReceiptModalComponent, true);
     });
   });
 });
