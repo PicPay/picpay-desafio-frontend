@@ -56,7 +56,7 @@ export class PaymentModalComponent implements OnInit {
       cardNumber,
       cvv,
       expiryDate
-    } = this.paymentForm.get('card').value;
+    } = this.cards.find(item => item.cardNumber === this.paymentForm.get('card').value);
     
     this._paymentService.pay$({
       cardNumber,

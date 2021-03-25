@@ -16,7 +16,7 @@
         formControlName="card"
         class="cards input"
       >
-        <option *ngFor="let card of cards" [value]="card">
+        <option *ngFor="let card of cards" [value]="card.cardNumber">
           Cartão com final {{ card.cardNumber.slice(-4) }}
         </option>
       </select>

@@ -65,7 +65,7 @@ describe('PaymentModalComponent', () => {
     card = cards[0];
     component.paymentForm.setValue({ 
         'value': value,
-        'card': card
+        'card': card.cardNumber
     });
     cardService.getCards$.and.returnValue(of(cards));
     paymentService.pay$.and.returnValue(of({success: true, status: 'Aprovada'}))
@@ -126,7 +126,7 @@ describe('PaymentModalComponent', () => {
     button.click();
 
     
-    expect(component.pay).toHaveBeenCalled();
+    expect(component.pay).toHaveBeenCalledWith();
   });
 
   describe('pay', () => {
