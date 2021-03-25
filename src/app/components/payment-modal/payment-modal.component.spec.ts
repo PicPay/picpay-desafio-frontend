@@ -106,6 +106,25 @@ describe('PaymentModalComponent', () => {
     expect(value.value).toContain('R$ 123,00');
   });
 
+  it('should render "Pagar" button and hide loading when isLoading', () => {
+    const button = fixture.nativeElement.querySelector('.pay-button');
+    const loading = fixture.nativeElement.querySelector('.loading');
+    
+    expect(button).toBeTruthy();
+    expect(loading).toBeFalsy();
+  });
+
+  it('should render loading and hide "Pagar" button when isLoading', () => {
+    component.isLoading = true;
+    fixture.detectChanges();
+
+    const button = fixture.nativeElement.querySelector('.pay-button');
+    const loading = fixture.nativeElement.querySelector('.loading');
+    
+    expect(button).toBeFalsy();
+    expect(loading).toBeTruthy();
+  });
+
   it('should disable "Pagar" button when form is invalid', () => {
     component.paymentForm.setValue({ 
         'value': null,
