@@ -5,7 +5,6 @@ import { ModalService } from './modal.service';
 @Injectable({
   providedIn: 'root',
 })
-export class PaymentBoxService {
   @Input('class')
   klass: string;
   message: string;
@@ -31,7 +30,7 @@ export class PaymentBoxService {
       .then((response: any) => {
         this.message = response.success
           ? 'O pagamento foi concluído com sucesso'
-          : 'O pagamento não foi concluido com sucesso';
+          : 'O pagamento não foi concluído com sucesso';
 
         this.closeModal('modal-payment');
         this.openModal('modal-notification');

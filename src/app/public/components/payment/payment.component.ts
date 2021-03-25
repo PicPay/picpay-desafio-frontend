@@ -1,7 +1,7 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { CardCredit } from 'src/app/models/card-credit.model';
 import { ModalService } from 'src/app/services/modal.service';
-import { PaymentBoxService } from 'src/app/services/payment.service';
+import { PaymentService } from 'src/app/services/payment.service';
 
 
 @Component({
@@ -10,7 +10,7 @@ import { PaymentBoxService } from 'src/app/services/payment.service';
   styleUrls: ['./payment.component.scss'],
 })
 
-export class PaymentBoxComponent implements OnChanges {
+export class PaymentComponent implements OnChanges {
   @Input() model;
   @Input() paymentValue: number = 0;
   @Input() selectedUser: number;
@@ -34,7 +34,7 @@ export class PaymentBoxComponent implements OnChanges {
   }
 
   constructor(
-    private paymentService: PaymentBoxService,
+    private paymentService: PaymentService,
     private modalService: ModalService
   ) {
     this.cards = [
