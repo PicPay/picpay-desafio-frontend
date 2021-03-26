@@ -1,2 +1,8 @@
-<app-user-container class="contact-list"></app-user-container>
-<app-user-dialog></app-user-dialog>
+<div class="contact-list">
+    <app-user-container 
+        *ngFor="let contact of contacts$ | async"
+        [contact]="contact"
+        >
+    </app-user-container>
+</div>
+<!--app-user-dialog></app-user-dialog-->
