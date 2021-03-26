@@ -1,3 +1,4 @@
+import { UsersService } from './../users.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { User } from 'src/app/data/types';
 
@@ -10,9 +11,14 @@ export class UserContainerComponent implements OnInit {
 
   @Input() contact: User;
 
-  constructor() { }
+  constructor( private service: UsersService ) { }
 
   ngOnInit() {
+  }
+
+  onPayBtn() {
+    this.service.changeModalVisibility(true)
+    this.service.changeDestinationUser(this.contact)
   }
 
 }

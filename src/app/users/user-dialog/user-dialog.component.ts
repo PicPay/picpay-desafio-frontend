@@ -1,3 +1,4 @@
+import { UsersService } from './../users.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserDialogComponent implements OnInit {
 
-  constructor() { }
+  modalVisible: boolean;
+
+  constructor( private service: UsersService ) { }
 
   ngOnInit() {
+    this.service.currentModalVisibility
+      .subscribe(bool => this.modalVisible = bool)
   }
 
 }

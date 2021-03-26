@@ -1,7 +1,7 @@
 <div class="modal">
   <div class="modal__header">
-    <div class="modal__title">Pagamento para: <span>Nome do Usuário</span></div>
-    <div class="modal__close-btn">&#x2715;</div>
+    <div class="modal__title">Pagamento para: <span>{{ destinationUser.name }}</span></div>
+    <div class="modal__close-btn" (click)="onCloseBtn()">&#x2715;</div>
   </div>
 
   <div class="modal__content">

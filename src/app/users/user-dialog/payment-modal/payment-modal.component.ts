@@ -1,3 +1,5 @@
+import { User } from './../../../data/types';
+import { UsersService } from './../../users.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaymentModalComponent implements OnInit {
 
-  constructor() { }
+  destinationUser: User
+
+  constructor( private service: UsersService ) { }
 
   ngOnInit() {
+    this.service.currentDestinationUSer
+    .subscribe(user => this.destinationUser = user)
   }
 
+  onCloseBtn() {
+    this.service.changeModalVisibility(false)
+  }
 }

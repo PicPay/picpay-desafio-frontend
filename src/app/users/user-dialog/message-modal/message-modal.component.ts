@@ -1,3 +1,4 @@
+import { UsersService } from './../../users.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MessageModalComponent implements OnInit {
 
-  constructor() { }
+  constructor( private service: UsersService ) { }
 
   ngOnInit() {
+  }
+
+  onCloseBtn() {
+    this.service.changeModalVisibility(false)
   }
 
 }
