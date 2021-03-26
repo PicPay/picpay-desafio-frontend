@@ -29,7 +29,9 @@ export class Helper {
   }
 
   convertToDate(date) {
-    const parts = date.split("/");
-    return new Date(this.checkYear(parts[1]), parts[0], 1);
+    if (date) {
+      const parts = date.split("/");
+      return new Date(this.checkYear(parts[1]), parts[0], 1);
+    } else return new Date();
   }
 }

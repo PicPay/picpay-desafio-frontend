@@ -1,16 +1,17 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from "@angular/common/http/testing";
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { ModalComponent } from './modal.component';
+import { ModalComponent } from "./modal.component";
 
-describe('ModalComponent', () => {
+describe("ModalComponent", () => {
   let component: ModalComponent;
   let fixture: ComponentFixture<ModalComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ModalComponent ]
-    })
-    .compileComponents();
+      imports: [HttpClientTestingModule],
+      declarations: [ModalComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +20,13 @@ describe('ModalComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
+  });
+  it("Verifica se o modal muda sua visibilidade ao emitir o evento - close", async () => {
+    spyOn(component.visibility, "emit");
+    fixture.detectChanges();
+    await component.closeModal();
+    expect(component.visibility.emit).toHaveBeenCalled();
   });
 });

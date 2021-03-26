@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { TransactionResponse } from "src/app/modules/modal/models/transactionResponse";
 import { User } from "../../models/user";
 import { UserService } from "../../services/user.service";
 

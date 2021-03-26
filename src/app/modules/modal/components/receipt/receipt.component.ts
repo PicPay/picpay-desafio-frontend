@@ -1,5 +1,6 @@
 import { animate, style, transition, trigger } from "@angular/animations";
 import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
+import { TransactionResponse } from "../../models/transactionResponse";
 
 @Component({
   selector: "app-receipt",

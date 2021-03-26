@@ -1,4 +1,4 @@
-interface Transatcion {
+export interface Transatcion {
   transcation_id?: string;
   card_number: string;
   cvv: number;

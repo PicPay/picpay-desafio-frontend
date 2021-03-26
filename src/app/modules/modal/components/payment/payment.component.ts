@@ -2,6 +2,7 @@ import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { Card } from "../../models/card";
 import { User } from "src/app/modules/user/models/user";
+import { TransactionResponse } from "../../models/transactionResponse";
 import { TransactionService } from "../../services/transaction.service";
 import { PaymentService } from "../../services/payment.service";
 import { Helper } from "../../../../utils/helpers";
@@ -12,6 +13,7 @@ import {
   animate,
   transition,
 } from "@angular/animations";
+import { Transatcion } from "../../models/transaction";
 @Component({
   selector: "app-payment",
   templateUrl: "./payment.component.html",

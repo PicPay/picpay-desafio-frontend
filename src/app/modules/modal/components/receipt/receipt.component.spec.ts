@@ -1,16 +1,18 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from "@angular/core";
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { ModalComponent } from "../../modal.component";
 
-import { ReceiptComponent } from './receipt.component';
+import { ReceiptComponent } from "./receipt.component";
 
-describe('ReceiptComponent', () => {
+describe("ReceiptComponent", () => {
   let component: ReceiptComponent;
   let fixture: ComponentFixture<ReceiptComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ReceiptComponent ]
-    })
-    .compileComponents();
+      declarations: [ReceiptComponent, ModalComponent],
+      schemas: [NO_ERRORS_SCHEMA],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +21,7 @@ describe('ReceiptComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });
