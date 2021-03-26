@@ -1,15 +1,15 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { User } from '@shared/interfaces/user';
 import { PicPayStore } from '@shared/stores/picpay.store';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'ngx-payment',
-  templateUrl: './payment.component.html',
-  styleUrls: ['./payment.component.scss'],
+  selector: 'ngx-user',
+  templateUrl: 'user.component.html',
+  styleUrls: ['user.component.scss'],
 })
-export class PaymentComponent implements OnInit, OnDestroy {
+export class UserComponent implements OnInit, OnDestroy {
   subs = new Subscription();
   user: User | null = null;
 
@@ -33,6 +33,10 @@ export class PaymentComponent implements OnInit, OnDestroy {
         });
       })
     );
+  }
+
+  onPay(): void {
+    this.router.navigate(['/payments', this.user.id]);
   }
 
   ngOnDestroy(): void {

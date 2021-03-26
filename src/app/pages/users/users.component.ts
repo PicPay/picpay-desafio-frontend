@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { User } from '@shared/interfaces/user';
 import { PicPayService } from '@shared/services/picpay.service';
+import { PicPayStore } from '@shared/stores/picpay.store';
 
 @Component({
   selector: 'ngx-users',
@@ -10,9 +11,9 @@ import { PicPayService } from '@shared/services/picpay.service';
 export class UsersComponent implements OnInit {
   @Input() users: User[] | null = null;
 
-  constructor(private picPayService: PicPayService) {}
+  constructor(private picPayStore: PicPayStore) {}
 
   ngOnInit(): void {
-    this.picPayService.users().subscribe((users: User[]) => (this.users = users));
+    this.picPayStore.loadUsers().subscribe((users: User[]) => (this.users = users));
   }
 }

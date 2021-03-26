@@ -6,17 +6,26 @@
 	bottom: 0;
 	width: 100%;
 	background-color: $light;
+	-webkit-box-shadow: 0 0 10px 0 rgb(0 0 0 / 10%);
+    -moz-box-shadow: 0 0 10px 0 rgb(0 0 0 / 10%);
+    box-shadow: 0 0 10px 0 rgb(0 0 0 / 10%);
 
 	&__invisible {
-		height: 90px;
+		height: 80px;
 		visibility: hidden;
 	}
 
 	&__content {
 		display: flex;
-		max-width: 600px;
+		max-width: 200px;
 		margin: auto;
 		justify-content: space-between;
+	}
+
+	&__pay {
+		background-color: $primary;
+		color: $light;
+		border-radius: 100%;
 	}
 
 	&__link {

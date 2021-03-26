@@ -1,0 +1,23 @@
+@import '~src/sass/variables';
+
+.pay {
+	background-color: $primary;
+	color: $light;
+	border-radius: 20px;
+	width: 140px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 18px;
+	padding: 4px;
+	cursor: pointer;
+
+	&:hover {
+		background-color: darken($primary, 8%);
+		transition: all 0.3s ease;
+	}
+
+	&__icon {
+		font-size: 24px;
+	}
+}

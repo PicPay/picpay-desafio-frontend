@@ -1,11 +1,20 @@
 <nav class="navbar">
   <div class="navbar__content">
-    <a class="navbar__link link" [routerLink]="['/home']" [routerLinkActive]="['link-primary']">
+    <a
+      class="navbar__link link"
+      [routerLink]="['/users']"
+      [routerLinkActive]="['link-primary']"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
       <span class="navbar__menu mdi mdi-account-group"></span>
-      <small class="navbar__label">Amigos</small>
+      <small class="navbar__label">Pessoas</small>
     </a>
-    <div>Pagar</div>
-    <a class="navbar__link link" [routerLink]="['/payments']" [routerLinkActive]="['link-primary']">
+    <a
+      class="navbar__link link"
+      [routerLink]="['/payments']"
+      [routerLinkActive]="['link-primary']"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
       <span class="navbar__menu mdi mdi-history"></span>
       <small class="navbar__label">Pagamentos</small>
     </a>

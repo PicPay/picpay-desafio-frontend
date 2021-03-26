@@ -1,1 +1,5 @@
-PAYMENT
+<div *ngIf="!user">loading...</div>
+
+<div class="user" *ngIf="user">
+  {{ user | json }}
+</div>
