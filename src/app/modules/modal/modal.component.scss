@@ -27,22 +27,24 @@
     background: #fff;
     border-radius: 25px;
     width: 300px;
-    height: 350px;
+    height: 450px;
     .header {
-      display: flex;
-      height: 3rem;
-      line-height: 3rem;
-
-      justify-content: space-between;
-      background: #1fc45e;
+      display: grid;
+      grid-template-columns: 6fr 1fr;
       border-radius: 25px 25px 0 0;
-
+      color: #5c5c5c;
       .close-button {
+        border-radius: 50%;
+        width: 24px;
+        height: 24px;
+        background-color: #21c25e;
+        margin: 1rem;
         img {
+          position: relative;
+          width: 16px;
+          height: 16px;
+          margin: 4px;
           filter: brightness(0) invert(1);
-          width: 20px;
-          height: 20px;
-          margin: 1rem;
         }
       }
     }
@@ -59,6 +61,30 @@
       display: flex;
       justify-content: center;
       padding-bottom: 2rem;
+      .payment_button {
+        padding: 15px 20px;
+        width: 200px;
+        max-width: 200px;
+        border-radius: 25px;
+        color: #fff;
+        border: 1px solid transparent;
+        background: #21c25e;
+        transition: all 0.3s ease-in-out;
+        outline: none;
+        &:disabled {
+          cursor: not-allowed;
+          color: #e5e5e5;
+          border: 1px solid #eee;
+          transition: 0.3s border-color;
+          background: rgba(255, 255, 255, 0.1);
+          pointer-events: none;
+        }
+        &:hover {
+          cursor: pointer;
+          box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16),
+            0 3px 6px rgba(0, 0, 0, 0.23);
+        }
+      }
     }
   }
 
@@ -75,6 +101,16 @@
     .modal {
       width: 25rem;
       height: 30rem;
+    }
+  }
+
+  @media screen and (min-width: 769px) {
+    .payment_button {
+      width: 300px;
+      max-width: 300px;
+      padding: 15px 20px;
+      width: 22rem;
+      max-width: 22rem;
     }
   }
 }

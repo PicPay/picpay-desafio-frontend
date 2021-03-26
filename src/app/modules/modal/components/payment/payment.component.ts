@@ -35,9 +35,12 @@ export class PaymentComponent implements OnInit {
   cards: Card[] = [];
   currentTransaction: Transatcion;
   loading: boolean = false;
+  showItems: boolean = false;
+  selectedCard: Card;
   paymentForm: FormGroup = new FormGroup({
     value: new FormControl("", Validators.required),
     card: new FormControl("", Validators.required),
+    label: new FormControl("Selecione um cartão"),
   });
 
   constructor(
@@ -48,10 +51,13 @@ export class PaymentComponent implements OnInit {
 
   ngOnInit() {
     this.paymentService.getCards().subscribe((cards) => {
-      this.cards = cards.map((card) => {
+      this.cards = cards.map((card, index) => {
         return {
           ...card,
-          masked_number: card.card_number.replace(/\d(?=\d{4})/g, "*"),
+          masked_number: card.card_number
+            .replace(/\d(?=\d{4})/g, "* ")
+            .slice(-12),
+          type: index % 2 === 0 ? "Visa" : "Master",
         };
       });
     });
@@ -77,11 +83,9 @@ export class PaymentComponent implements OnInit {
             this.transactionResponse.emit({ status, success });
             this.loading = false;
           });
-      }, 2000);
+      }, 2500);
     else {
-      setTimeout(() => {
-        this.loading = false;
-      }, 2000);
+      this.loading = false;
       this.transactionResponse.emit({
         status: "Este não é um cartão válido!",
         success: false,
@@ -90,17 +94,24 @@ export class PaymentComponent implements OnInit {
     this.clearForm();
   }
 
+  selectValue(card) {
+    const { type, masked_number, expiry_date } = card;
+    this.paymentForm.controls["card"].setValue(card);
+    this.paymentForm.controls["label"].setValue(
+      `${type} - ${masked_number}  -  ${expiry_date}`
+    );
+    this.showItems = !this.showItems;
+  }
   getFormValue(value) {
     return this.paymentForm.controls[value].value;
   }
 
   clearForm() {
     this.paymentForm.reset();
-    this.paymentForm.controls["card"].setValue("");
   }
 
   closeModal() {
-    this.visibility.emit(false);
     this.clearForm();
+    this.visibility.emit(false);
   }
 }

@@ -8,10 +8,9 @@
     flex-direction: column;
     overflow-y: scroll;
     width: 100vw;
-    height: calc(100vh - 120px);
-    box-shadow: 0 6px 1px #ebedf3;
-    top: -25px;
+    height: calc(100vh - 80px);
     position: relative;
+    box-shadow: 0 1px 3px #6868689c;
 
     &::-webkit-scrollbar {
       display: none;
@@ -21,10 +20,8 @@
       word-wrap: break-word;
       background-color: #fff;
       background-clip: border-box;
-      border: 1px solid #ebedf3;
       border-radius: 0.75rem;
       box-shadow: 0 0 30px 0 rgba(82, 63, 105, 0.05);
-      border: 0;
       width: 100%;
     }
   }

@@ -6,12 +6,14 @@
   background: #fff;
   .header {
     background-color: #21c25e;
-    height: 100%;
+    height: 80px;
     width: 100%;
     text-align: center;
     &__logo {
       width: 200px;
       height: 100px;
+      position: relative;
+      top: -5px;
       object-fit: cover;
     }
   }

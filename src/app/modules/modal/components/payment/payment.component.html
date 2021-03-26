@@ -1,10 +1,13 @@
 <app-modal
   *ngIf="isVisible"
   (visibility)="closeModal($event)"
+  (action)="getTransaction()"
+  [loading]="loading"
+  [form]="!paymentForm.valid"
   [@onVisibilityChange]
 >
   <header-slot>
-    <span class="title"> Pagamento </span>
+    <span class="title"> {{ loading ? "Processando" : "Pagamento" }} </span>
   </header-slot>
   <body-slot *ngIf="!loading">
     <div class="user">
@@ -37,38 +40,44 @@
       </div>
       <div class="body__item">
         Cartão:
-        <select
-          id="card"
-          name="card"
-          class="card__select"
-          formControlName="card"
-        >
-          <option [disabled] [value]="''">Selecione o cartão com final</option>
-          <option
-            *ngFor="let card of cards"
-            [ngValue]="card"
-            class="card__option"
-          >
-            {{ card.masked_number }} - {{ card.expiry_date }}
-          </option>
-        </select>
+        <div class="card__group">
+          <div class="card__input">
+            <input
+              id="card"
+              name="label"
+              formControlName="label"
+              class="card__select"
+              [ngClass]="{ open: showItems }"
+              (click)="showItems = !showItems"
+            />
+            <div class="icon" [ngClass]="{ open: showItems }"></div>
+          </div>
+          <div class="card__list" *ngIf="showItems">
+            <div
+              *ngFor="let card of cards"
+              class="card__list--item"
+              (click)="selectValue(card)"
+            >
+              <label class="type">
+                {{ card.type }} - {{ card.masked_number }}
+              </label>
+              <label class="expiration"> {{ card.expiry_date }}</label>
+            </div>
+          </div>
+        </div>
       </div>
 
       <hr class="divisor" />
     </div>
   </body-slot>
   <body-slot *ngIf="loading" [@onVisibilityChange]>
-    <div class="loader"></div>
+    <div class="processing">
+      <span> Processando seu pagamento </span>
+      <div class="loader"></div>
+    </div>
   </body-slot>
 
   <footer-slot>
-    <button
-      type="button"
-      class="payment_button"
-      (click)="getTransaction()"
-      [disabled]="!paymentForm.valid || loading"
-    >
-      {{ loading ? "Aguarde" : "Pagar" }}
-    </button>
+    {{ loading ? "Aguarde" : "Pagar" }}
   </footer-slot>
 </app-modal>

@@ -2,7 +2,7 @@
   <div class="modal">
     <div class="header">
       <ng-content select="header-slot"></ng-content>
-      <a class="close-button" (click)="closeModal()" href="#"
+      <a class="close-button" *ngIf="!loading" (click)="closeModal()" href="#"
         ><img
           src="https://icon-library.net/images/cancel-icon/cancel-icon-19.jpg"
       /></a>
@@ -12,7 +12,14 @@
     </div>
 
     <div class="footer">
-      <ng-content select="footer-slot"></ng-content>
+      <button
+        type="button"
+        class="payment_button"
+        [disabled]="loading || form"
+        (click)="buttonAction()"
+      >
+        <ng-content select="footer-slot"></ng-content>
+      </button>
     </div>
   </div>
 </div>

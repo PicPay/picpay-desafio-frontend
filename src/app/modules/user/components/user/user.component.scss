@@ -1,15 +1,18 @@
+$border-bottom: 1px solid rgba(214, 214, 214, 0.7);
 .card {
   &__body {
     display: grid;
     grid-template-columns: 60px 200px 100px;
     align-items: center;
     height: 100px;
+    border-bottom: $border-bottom;
     background: linear-gradient(to right, #21c25e 50%, #fff 50%);
     background-size: 200% 100%;
     background-position: right bottom;
     transition: all 0.75s ease;
 
-    &:hover {
+    &:hover,
+    &:focus {
       background-position: left bottom;
       .card {
         &__button {
@@ -37,7 +40,7 @@
   &__img {
     background-color: #21c25e;
     height: 100px;
-    padding: 2rem 2.25rem;
+    padding: 2rem;
     transition: all 150ms ease-in-out;
     &--photo {
       position: relative;

@@ -1,6 +1,10 @@
-<app-modal *ngIf="isVisible" (visibility)="closeModal($event)">
+<app-modal
+  *ngIf="isVisible"
+  (action)="closeModal()"
+  (visibility)="closeModal($event)"
+>
   <header-slot>
-    <span class="title">Recibo de pagamento</span>
+    <span class="title">Recibo</span>
   </header-slot>
   <body-slot>
     <div class="body" [@onVisibilityChange]>
@@ -23,8 +27,6 @@
     </div>
   </body-slot>
   <footer-slot>
-    <button type="button" class="payment_button" (click)="closeModal()">
-      {{ response.success ? "Fechar" : "Tentar novamente" }}
-    </button>
+    {{ response.success ? "Fechar" : "Tentar novamente" }}
   </footer-slot>
 </app-modal>

@@ -1,11 +1,12 @@
 .body {
-  // align-items: center;
   width: 100%;
   &__response {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 1rem;
+    color: #5c5c5c;
   }
   &__icon {
     width: 100px;
@@ -14,46 +15,18 @@
   }
 }
 .title {
-  color: #ffffff;
-  font-weight: 500;
-  font-size: 16px;
-  padding: 16px 24px;
-}
-
-.payment_button {
-  padding: 15px 20px;
-  width: 200px;
-  max-width: 200px;
-  border-radius: 25px;
-  color: #fff;
-  border: 1px solid transparent;
-  transition: 0.3s border-color;
-  background: #21c25e;
-  transition: all 0.3s ease-in-out;
-  &:disabled {
-    color: #e5e5e5;
-    border: 1px solid #eee;
-    transition: 0.3s border-color;
-    background: rgba(255, 255, 255, 0.1);
-    pointer-events: none;
-  }
-  &:hover {
-    cursor: pointer;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  }
+  color: #5c5c5c;
+  display: flex;
+  justify-content: center;
+  line-height: 3.25rem;
+  font-size: 1.5rem;
+  margin-left: 4rem;
+  padding: 5px 0;
 }
 
 .divisor {
   border: 0;
-  height: 0;
   width: 80%;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-@media screen and (min-width: 769px) {
-  .payment_button {
-    width: 300px;
-    max-width: 300px;
-  }
 }
