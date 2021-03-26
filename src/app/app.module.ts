@@ -23,6 +23,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
 import { getPortuguesePaginatorIntl } from './portuguese-paginator-intl';
+import { NgxCurrencyModule } from 'ngx-currency';
 
 @NgModule({
     declarations: [
@@ -51,6 +52,7 @@ import { getPortuguesePaginatorIntl } from './portuguese-paginator-intl';
         FormsModule,
         MatProgressBarModule,
         MatPaginatorModule,
+        NgxCurrencyModule,
     ],
     providers: [
         HttpClient,

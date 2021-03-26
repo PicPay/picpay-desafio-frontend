@@ -8,7 +8,9 @@
         fxLayout="column">
     <mat-form-field appearance="outline">
       <mat-label>Valor (R$)</mat-label>
-      <input [(ngModel)]="paymentInfo.value" matInput type="number" formControlName="value" placeholder="R$ 0,00">
+      <input [(ngModel)]="paymentInfo.value" matInput formControlName="value" placeholder="R$ 0,00"
+             currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align: 'left' }">
+      <mat-error>Insira o valor do pagamento</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
@@ -18,6 +20,7 @@
           Cartão com final {{ card.cardNumber.substr(-4) }}
         </mat-option>
       </mat-select>
+      <mat-error>Escolha um método de pagamento</mat-error>
     </mat-form-field>
   </form>
 
@@ -26,11 +29,11 @@
   </ng-container>
 
   <ng-container *ngIf="transactionResponse && transactionResponse.success">
-    <span class="transaction-status success">Pagamento aprovado!</span>
+    <span class="transaction-status success">O pagamento foi concluido com sucesso!</span>
   </ng-container>
 
   <ng-container *ngIf="processingFailed || (transactionResponse && !transactionResponse.success)">
-    <span class="transaction-status failed">Falha ao processar pagamento</span>
+    <span class="transaction-status failed">O pagamento <strong>não</strong> foi concluido com sucesso.</span>
   </ng-container>
 </div>
 
