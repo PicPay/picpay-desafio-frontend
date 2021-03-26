@@ -1,11 +1,5 @@
-<section>
-  <header class="header">
-    <img
-      class="header__logo"
-      src="https://logodownload.org/wp-content/uploads/2018/05/picpay-logo-1.png"
-    />
-  </header>
-  <article class="user">
+<section class="wrapper">
+  <article class="users__list">
     <div class="card" *ngFor="let user of users">
       <app-user [user]="user" (onPayment)="paymentAction($event)"></app-user>
     </div>

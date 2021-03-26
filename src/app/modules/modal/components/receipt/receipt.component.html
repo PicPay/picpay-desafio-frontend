@@ -4,13 +4,21 @@
   </header-slot>
   <body-slot>
     <div class="body" [@onVisibilityChange]>
-      <span *ngIf="response.success"
-        >O pagamento foi concluído com sucesso.</span
+      <span *ngIf="response.success" class="body__response">
+        <img
+          class="body__icon"
+          src="https://icon-library.com/images/success-icon/success-icon-24.jpg"
+        />
+        O pagamento foi concluído com sucesso.</span
       >
-      <span *ngIf="!response.success"
-        >O pagamento <strong>não</strong> foi concluido com sucesso.
+      <span *ngIf="!response.success" class="body__response">
+        <img
+          class="body__icon"
+          src="https://icon-library.com/images/failed-icon/failed-icon-7.jpg"
+        />
+        <span>O pagamento <strong>não</strong> foi concluido com sucesso.</span>
         <hr class="divisor" />
-        {{ response.status }}
+        <span>{{ response.status }}</span>
       </span>
     </div>
   </body-slot>

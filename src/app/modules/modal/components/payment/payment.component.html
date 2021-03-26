@@ -9,6 +9,15 @@
     >
   </header-slot>
   <body-slot *ngIf="!loading">
+    <div class="user">
+      <div class="user__img">
+        <img class="user__img--photo" src="{{ user.img }}" />
+      </div>
+      <div class="user__name">
+        <span>{{ user.name }}</span>
+        <span class="username">{{ user.username }}</span>
+      </div>
+    </div>
     <div class="body" [formGroup]="paymentForm">
       <div class="body__item">
         Valor:

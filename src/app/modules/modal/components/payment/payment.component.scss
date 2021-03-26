@@ -9,6 +9,30 @@
   }
 }
 
+.user {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1rem;
+  gap: 0.5rem;
+  &__img {
+    &--photo {
+      border-radius: 50%;
+      height: 75px;
+      width: 75px;
+      box-shadow: 0 0 1px 6px #21c25e;
+    }
+  }
+  &__name {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    .username {
+      color: #5c5c5b;
+      font-size: 12px;
+    }
+  }
+}
+
 .body {
   text-align: center;
   display: flex;
@@ -37,7 +61,6 @@
     }
   }
   .divisor {
-    margin-top: 1rem;
     border: 0;
     height: 0;
     width: 80%;
@@ -54,7 +77,6 @@
   height: 60px;
   -webkit-animation: spin 2s linear infinite;
   animation: spin 2s linear infinite;
-  margin-left: 90px;
 }
 .payment_button {
   padding: 15px 20px;
@@ -79,13 +101,12 @@
   }
 }
 
-@media screen and (min-width: 482px) {
+@media screen and (min-width: 769px) {
   .title {
     font-size: 16px;
     padding: 16px 24px;
   }
   .body {
-    padding: 1rem 2rem 0.5rem;
     &__item {
       .value,
       .card__select {
@@ -98,9 +119,7 @@
   }
   .payment_button {
     padding: 15px 20px;
-    width: 300px;
-  }
-  .loader {
-    margin-left: 190px;
+    width: 22rem;
+    max-width: 22rem;
   }
 }

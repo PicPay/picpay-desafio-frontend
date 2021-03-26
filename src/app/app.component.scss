@@ -3,6 +3,18 @@
   font-family: "Montserrat", sans-serif;
   height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  background: linear-gradient(186.5deg, #395f35 0.83%, #4d9446 100%);
+  background: #fff;
+  .header {
+    background-color: #21c25e;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    &__logo {
+      width: 200px;
+      height: 100px;
+      object-fit: cover;
+    }
+  }
 }

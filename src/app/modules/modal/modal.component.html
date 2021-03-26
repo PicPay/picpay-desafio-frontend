@@ -1,0 +1,15 @@
+<div class="modal-backdrop">
+  <div class="modal">
+    <div class="header">
+      <ng-content select="header-slot"></ng-content>
+      <a class="close-button" (click)="closeModal()" href="#">X</a>
+    </div>
+    <div class="body">
+      <ng-content select="body-slot"></ng-content>
+    </div>
+
+    <div class="footer">
+      <ng-content select="footer-slot"></ng-content>
+    </div>
+  </div>
+</div>

@@ -1,8 +1,7 @@
 .card {
   &__body {
     display: grid;
-    border-radius: 6px 0 0 6px;
-    grid-template-columns: 60px 150px 70px;
+    grid-template-columns: 60px 200px 100px;
     align-items: center;
     height: 100px;
     background: linear-gradient(to right, #21c25e 50%, #fff 50%);
@@ -37,10 +36,7 @@
   }
   &__img {
     background-color: #21c25e;
-    border-radius: 6px 0 0 6px;
-    border-right-color: #5c5c5b;
     height: 100px;
-
     padding: 2rem 2.25rem;
     transition: all 150ms ease-in-out;
     &--photo {
@@ -57,7 +53,6 @@
     flex-direction: column;
     padding-left: 2.7rem;
     font-size: 10px;
-
     color: black;
     transition: all 250ms ease-in-out;
     gap: 0.5rem;
@@ -76,7 +71,6 @@
 
   &__button {
     font-family: "Montserrat", sans-serif;
-    margin-left: auto;
 
     border: 1px solid #1fc45e;
     color: #fff;
@@ -90,17 +84,18 @@
 
   @media screen and (min-width: 482px) {
     &__body {
-      grid-template-columns: 1fr 2fr 1fr;
+      grid-template-columns: 0.5fr 4fr 1fr;
       height: 100%;
     }
     &__info {
       padding: 2rem 2.25rem;
       font-size: 1rem;
-      margin-left: 16px;
+      margin-left: 2.5rem;
     }
     &__img {
       height: 110px;
       padding: 1.5rem 1rem;
+
       &--photo {
         position: relative;
         left: 74%;
@@ -112,13 +107,13 @@
       }
     }
     &__button {
+      margin-left: auto;
       height: 40px;
       width: 10rem;
       margin-right: 3rem;
       background: linear-gradient(to right, #fff 50%, #21c25e 50%);
       background-size: 200% 100%;
       background-position: right bottom;
-      // transition: all 1s ease;
       transition: all 250ms ease-in-out;
       &:hover {
         box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
