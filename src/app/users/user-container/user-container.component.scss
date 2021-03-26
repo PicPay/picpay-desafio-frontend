@@ -1,23 +1,51 @@
+$picpay-green: #34d582;
+
+@mixin tablet {
+  @media screen and (min-width: 768px) { @content; }
+}
+
 .user {
-    background: linear-gradient(186.5deg, #3c3e64 0.83%, #1d1e2a 100%);
+    background: $picpay-green;
     box-shadow: 0 1px 0 #ffffff, 0px -1px 0px #ffffff;
     color: #fff;
-    padding: 20px 40px;
-  
+    padding: 20px 30px;
+    width: calc(100vw - 1rem);
+    border-radius: .7rem;  
     display: flex;
     align-items: center;
+    margin: 5px;
+
+    @include tablet {
+      width: 48rem;
+    }
+
+    &__img {
+      border-radius: 50%;
+      height: 80px;
+      width: 80px;
+    }
+    
+    &__info-container {
+      margin-left: 16px;
+    }
+    
+    &__pay-button {
+      background-color: white;
+      font-size: 1rem;
+      font-weight: bold;
+      color: $picpay-green;
+      border: none;
+      outline: none;
+      width: 7rem;
+      height: 2.5rem;
+      border-radius: 2rem;;
+      margin-left: auto;
+      cursor: pointer;
+      transition: .1s;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
   }
   
-  .user > img {
-    border-radius: 50%;
-    height: 80px;
-    width: 80px;
-  }
-  
-  .user > .info-wrapper {
-    margin-left: 16px;
-  }
-  
-  .user > .pay-button {
-    margin-left: auto;
-  }

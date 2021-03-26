@@ -1,48 +1,74 @@
+$picpay-green: #34d582;
+$picpay-green-hover: #38dd88;
+$grey-text: rgb(110, 110, 110);
+
 .modal {
     background: #fff;
     margin: 32px 0;
     width: 420px;
-  }
-  
-  .modal > .title {
-    background: #474971;
-    color: #ffffff;
-    font-weight: 500;
-    font-size: 16px;
-    padding: 16px 24px;
-  }
-  
-  .modal > .title > span {
-    color: #cddc39;
-  }
-  
-  .modal > .content {
-    padding: 32px;
-    text-align: center;
-  }
-  
-  .modal > .content > input {
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 32px;
-    height: 48px;
-    padding: 0 8px;
-  }
-  
-  .modal > .content > .cards > select {
-    background: #fff;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 32px;
-    height: 48px;
-    margin-top: 12px;
-  }
-  
-  .modal > .content > button {
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 32px;
-    height: 48px;
-    padding: 0 8px;
-    margin-top: 24px;
+
+    &__header {
+      background: $picpay-green;
+      position: relative
+    }
+
+    &__title {
+      //background: #474971;
+      color: #ffffff;
+      font-weight: 500;
+      font-size: 16px;
+      padding: 16px 24px;
+
+      & > span {
+        font-size: 1.2rem;;
+        font-weight: bold;
+      }
+    }
+    
+    &__close-btn {
+      color: white;
+      cursor: pointer;
+      margin-left: auto;
+      font-size: 1.8rem;
+      position: absolute;
+      right: 15px;
+      top: 5px;
+    }
+
+    &__content {
+      padding: 32px;
+      text-align: center;
+    }
+    
+    &__input, &__select  {
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1.5rem;
+      width: 20rem;
+      height: 60px;
+      padding: 0 18px;
+      color: $grey-text;
+      margin-bottom: 2rem;
+    }
+    
+    &__pay-btn {
+      background-color: $picpay-green;
+      color: white;
+      border: none;
+      width: 15rem;
+      height: 4rem;
+      border-radius: 3rem;
+      font-size: 1.6rem;
+      outline: none;      
+
+      &:hover {
+        background-color: $picpay-green-hover;
+        color: white;
+        cursor: pointer;
+      }
+
+      &:active {
+        background-color: $picpay-green;
+      }
+    }
   }
