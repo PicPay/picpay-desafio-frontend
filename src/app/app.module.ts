@@ -12,7 +12,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { PaymentDialogComponent } from './payment-dialog/payment-dialog.component';
+import { TransactionDialogComponent } from './transaction-dialog/transaction-dialog.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -29,7 +29,7 @@ import { NgxCurrencyModule } from 'ngx-currency';
     declarations: [
         AppComponent,
         UserTileComponent,
-        PaymentDialogComponent
+        TransactionDialogComponent
     ],
     imports: [
         BrowserModule,
@@ -59,7 +59,7 @@ import { NgxCurrencyModule } from 'ngx-currency';
         { provide: MatPaginatorIntl, useValue: getPortuguesePaginatorIntl() },
     ],
     bootstrap: [AppComponent],
-    entryComponents: [PaymentDialogComponent]
+    entryComponents: [TransactionDialogComponent]
 })
 export class AppModule {
 }

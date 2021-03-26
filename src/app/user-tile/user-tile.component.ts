@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { User } from '../shared/user.model';
 import { MatDialog } from '@angular/material/dialog';
-import { PaymentDialogComponent } from '../payment-dialog/payment-dialog.component';
+import { TransactionDialogComponent } from '../transaction-dialog/transaction-dialog.component';
 
 @Component({
     selector: 'app-user-tile',
@@ -16,8 +16,8 @@ export class UserTileComponent {
     constructor(public dialog: MatDialog) {
     }
 
-    openPaymentDialog(): void {
-        this.dialog.open(PaymentDialogComponent, {
+    openTransactionDialog(): void {
+        this.dialog.open(TransactionDialogComponent, {
             width: '400px',
             data: this.user
         });

@@ -1,6 +1,6 @@
 import { CreditCard } from './credit-card.model';
 
-export class PaymentInfo {
+export class TransactionPayload {
 
     destinationUserId: number;
     value: number;
@@ -10,13 +10,13 @@ export class PaymentInfo {
         this.destinationUserId = destinationUserId;
     }
 
-    public static asRequestBody(info: PaymentInfo): any {
+    public static asRequestBody(payload: TransactionPayload): any {
         const requestBody = {
-            destination_user_id: info.destinationUserId,
-            value: info.value
+            destination_user_id: payload.destinationUserId,
+            value: payload.value
         };
 
-        Object.assign(requestBody, {...CreditCard.asRequestBody(info.creditCard)});
+        Object.assign(requestBody, {...CreditCard.asRequestBody(payload.creditCard)});
 
         return requestBody;
     }

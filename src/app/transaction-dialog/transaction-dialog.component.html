@@ -4,18 +4,18 @@
 
 <div mat-dialog-content>
   <form *ngIf="!processingTransaction && !processingFailed && !transactionResponse"
-        [formGroup]="paymentInfoFormGroup"
+        [formGroup]="transactionDetailsFormGroup"
         fxLayout="column">
     <mat-form-field appearance="outline">
       <mat-label>Valor (R$)</mat-label>
-      <input [(ngModel)]="paymentInfo.value" matInput formControlName="value" placeholder="R$ 0,00"
+      <input [(ngModel)]="transactionPayload.value" matInput formControlName="value" placeholder="R$ 0,00"
              currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align: 'left' }">
       <mat-error>Insira o valor do pagamento</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>Forma de pagamento</mat-label>
-      <mat-select [(ngModel)]="paymentInfo.creditCard" formControlName="creditCard">
+      <mat-select [(ngModel)]="transactionPayload.creditCard" formControlName="creditCard">
         <mat-option *ngFor="let card of cards" [value]="card">
           Cartão com final {{ card.cardNumber.substr(-4) }}
         </mat-option>
@@ -40,7 +40,7 @@
 <div mat-dialog-actions>
   <ng-container *ngIf="!processingTransaction && !processingFailed && !transactionResponse">
     <button mat-stroked-button cdkFocusInitial (click)="close()">Cancelar</button>
-    <button mat-stroked-button color="primary" (click)="submitPayment()">Pagar</button>
+    <button mat-stroked-button color="primary" (click)="submitTransaction()">Pagar</button>
   </ng-container>
 
   <ng-container *ngIf="transactionResponse || processingFailed">

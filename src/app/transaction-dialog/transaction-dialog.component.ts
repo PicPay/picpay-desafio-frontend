@@ -4,34 +4,35 @@ import { CreditCard } from '../shared/credit-card.model';
 import { CreditCardService } from '../shared/credit-card.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TransactionService } from '../shared/transaction.service';
-import { PaymentInfo } from '../shared/payment-info.model';
+import { TransactionPayload } from '../shared/transaction-payload.model';
 import { TransactionResponse } from '../shared/transaction-response.model';
 import { User } from '../shared/user.model';
 
 @Component({
-    selector: 'app-payment-dialog',
-    templateUrl: './payment-dialog.component.html',
-    styleUrls: ['./payment-dialog.component.scss']
+    selector: 'app-transaction-dialog',
+    templateUrl: './transaction-dialog.component.html',
+    styleUrls: ['./transaction-dialog.component.scss']
 })
-export class PaymentDialogComponent {
+export class TransactionDialogComponent {
+
     cards: CreditCard[];
-    paymentInfoFormGroup: FormGroup;
-    paymentInfo: PaymentInfo;
+    transactionDetailsFormGroup: FormGroup;
+    transactionPayload: TransactionPayload;
     transactionResponse: TransactionResponse;
     processingTransaction: boolean;
     processingFailed: boolean;
 
-    constructor(public dialogRef: MatDialogRef<PaymentDialogComponent>,
+    constructor(public dialogRef: MatDialogRef<TransactionDialogComponent>,
                 @Inject(MAT_DIALOG_DATA) public destinationUser: User,
                 private creditCardService: CreditCardService,
                 private transactionService: TransactionService,
                 private formBuilder: FormBuilder) {
 
-        this.paymentInfoFormGroup = this.formBuilder.group({
+        this.transactionDetailsFormGroup = this.formBuilder.group({
             value: [undefined, Validators.required],
             creditCard: [undefined, Validators.required]
         });
-        this.paymentInfo = new PaymentInfo(this.destinationUser.id);
+        this.transactionPayload = new TransactionPayload(this.destinationUser.id);
 
         creditCardService.getAllCreditCards().subscribe((cards: CreditCard[]) => {
             this.cards = cards;
@@ -42,15 +43,15 @@ export class PaymentDialogComponent {
         this.dialogRef.close();
     }
 
-    submitPayment() {
-        this.paymentInfoFormGroup.markAllAsTouched();
+    submitTransaction() {
+        this.transactionDetailsFormGroup.markAllAsTouched();
 
-        if (this.paymentInfoFormGroup.status !== 'VALID') {
+        if (this.transactionDetailsFormGroup.status !== 'VALID') {
             return;
         }
 
         this.processingTransaction = true;
-        this.transactionService.sendPayment(this.paymentInfo).subscribe((response: TransactionResponse) => {
+        this.transactionService.submitTransaction(this.transactionPayload).subscribe((response: TransactionResponse) => {
             this.processingTransaction = false;
             this.transactionResponse = response;
         }, error => {

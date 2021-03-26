@@ -11,7 +11,7 @@ export class CreditCardService {
     }
 
     getAllCreditCards(): Observable<CreditCard[]> {
-        const cards = [
+        const cards: CreditCard[] = [
             // valid card
             {
                 cardNumber: '1111111111111111',
