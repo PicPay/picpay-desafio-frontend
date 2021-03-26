@@ -2,7 +2,10 @@
   <div class="modal">
     <div class="header">
       <ng-content select="header-slot"></ng-content>
-      <a class="close-button" (click)="closeModal()" href="#">X</a>
+      <a class="close-button" (click)="closeModal()" href="#"
+        ><img
+          src="https://icon-library.net/images/cancel-icon/cancel-icon-19.jpg"
+      /></a>
     </div>
     <div class="body">
       <ng-content select="body-slot"></ng-content>

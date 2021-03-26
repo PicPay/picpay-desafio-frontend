@@ -2,12 +2,16 @@
   display: flex;
   justify-content: center;
   .users__list {
+    user-select: none;
     display: flex;
     align-items: center;
     flex-direction: column;
     overflow-y: scroll;
     width: 100vw;
     height: calc(100vh - 120px);
+    box-shadow: 0 6px 1px #ebedf3;
+    top: -25px;
+    position: relative;
 
     &::-webkit-scrollbar {
       display: none;

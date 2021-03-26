@@ -13,7 +13,7 @@
       background-position: left bottom;
       .card {
         &__button {
-          box-shadow: 0 1px 3px #000;
+          box-shadow: 0 1px 3px #808080;
           background-position: left bottom;
           color: #5c5c5b;
         }
@@ -45,7 +45,7 @@
       top: -0.5rem;
       height: 56px;
       width: 56px;
-      box-shadow: 0 8px 6px -6px black;
+      box-shadow: 0 8px 6px -6px #808080;
     }
   }
   &__info {
@@ -103,7 +103,7 @@
         border-radius: 50%;
         height: 80px;
         width: 80px;
-        box-shadow: 0 8px 6px -6px black;
+        box-shadow: 0 8px 6px -6px #808080;
       }
     }
     &__button {

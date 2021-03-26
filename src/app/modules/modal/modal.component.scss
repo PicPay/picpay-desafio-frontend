@@ -38,10 +38,12 @@
       border-radius: 25px 25px 0 0;
 
       .close-button {
-        text-decoration: none;
-        color: #5c5c5b;
-        font-size: 18px;
-        padding: 0 1rem;
+        img {
+          filter: brightness(0) invert(1);
+          width: 20px;
+          height: 20px;
+          margin: 1rem;
+        }
       }
     }
 
