@@ -1,20 +1,33 @@
-<div class="modal">
+<form class="modal" [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
   <div class="modal__header">
-    <div class="modal__title">Pagamento para: <span>{{ destinationUser.name }}</span></div>
+    <div class="modal__title">Pagamento para <span>{{ destinationUser.name }}</span></div>
     <div class="modal__close-btn" (click)="onCloseBtn()">&#x2715;</div>
   </div>
 
   <div class="modal__content">
-    <input type="number" placeholder="R$ 0,00" class="modal__input" />
+    <input 
+      type="number" 
+      placeholder="R$ 0,00" 
+      class="modal__input" 
+      formControlName="value"
+      />
 
     <div class="modal__cards">
-      <select class="modal__select">
-        <option selected class="modal__select-opt">Cartão com final 0123</option>
+      <select 
+        class="modal__select"
+        formControlName="card"
+        >
+        <option 
+          *ngFor="let card of cards.cards"
+          [ngValue]="card.card_number"
+          >
+          {{ card.card_number }}
+        </option>
       </select>
     </div>
 
-    <button type="button" class="modal__pay-btn">
+    <button type="submit" class="modal__pay-btn">
       Pagar
     </button>
   </div>
-</div>
+</form>

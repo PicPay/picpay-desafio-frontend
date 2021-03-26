@@ -17,6 +17,14 @@ export class UsersService {
   private destinationUser = new BehaviorSubject<User>(null);
   currentDestinationUSer = this.destinationUser.asObservable();
 
+  private transactionInfo = new BehaviorSubject({
+    name: null,
+    value: null,
+    status: true
+  })
+  currentTransactionInfo = this.transactionInfo.asObservable();
+
+
   constructor( private http: HttpClient ) { }
 
   listContacts() {
@@ -29,6 +37,10 @@ export class UsersService {
 
   changeDestinationUser(user: User) {
     this.destinationUser.next(user)
+  }
+
+  changeTransactionInfo(obj) {
+    this.transactionInfo.next(obj)
   }
 }
 

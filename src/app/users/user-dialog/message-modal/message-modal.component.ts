@@ -8,13 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MessageModalComponent implements OnInit {
 
+  transactionInfo;
+
   constructor( private service: UsersService ) { }
 
   ngOnInit() {
+    this.service.currentTransactionInfo
+      .subscribe(obj => this.transactionInfo = obj);
   }
 
   onCloseBtn() {
     this.service.changeModalVisibility(false)
+    this.service.changeTransactionInfo({
+        name: null,
+        value: null,
+        status: true      
+    })
   }
 
 }

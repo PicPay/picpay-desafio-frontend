@@ -8,6 +8,7 @@ import { UserDialogComponent } from './users/user-dialog/user-dialog.component';
 import { PaymentModalComponent } from './users/user-dialog/payment-modal/payment-modal.component';
 import { MessageModalComponent } from './users/user-dialog/message-modal/message-modal.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,11 +17,12 @@ import { HttpClientModule } from '@angular/common/http';
     UserContainerComponent,
     UserDialogComponent,
     PaymentModalComponent,
-    MessageModalComponent,
+    MessageModalComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -9,12 +9,15 @@ import { Component, OnInit } from '@angular/core';
 export class UserDialogComponent implements OnInit {
 
   modalVisible: boolean;
+  transactionInfo;
 
   constructor( private service: UsersService ) { }
 
   ngOnInit() {
     this.service.currentModalVisibility
-      .subscribe(bool => this.modalVisible = bool)
+      .subscribe(bool => this.modalVisible = bool);
+    this.service.currentTransactionInfo
+      .subscribe(obj => this.transactionInfo = obj);
   }
 
 }

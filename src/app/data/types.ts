@@ -22,3 +22,9 @@ export interface User {
     img: string;
     username: string;
 }
+
+export interface Cards {
+    card_number: string,
+    cvv: number,
+    expiry_date: string
+}
