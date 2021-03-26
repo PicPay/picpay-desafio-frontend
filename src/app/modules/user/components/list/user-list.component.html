@@ -1,32 +1,27 @@
-<article class="users">
-  <div class="user" *ngFor="let user of users">
-    <img src="{{ user.img }}" />
-    <div class="info-wrapper">
-      <div class="user-name">
-        {{ user.name }}
-      </div>
-
-      <div class="user-id-username">
-        ID: {{ user.id }} - Username: {{ user.username }}
-      </div>
+<section>
+  <header class="header">
+    <img
+      class="header__logo"
+      src="https://logodownload.org/wp-content/uploads/2018/05/picpay-logo-1.png"
+    />
+  </header>
+  <article class="user">
+    <div class="card" *ngFor="let user of users">
+      <app-user [user]="user" (onPayment)="paymentAction($event)"></app-user>
     </div>
+  </article>
 
-    <button type="button" class="pay-button" (click)="paymentAction(user)">
-      Pagar
-    </button>
-  </div>
-</article>
-
-<article>
-  <app-modal
-    [(isVisible)]="showPaymentModal && !showReceiptModal"
-    [(user)]="selectedUser"
-    (visibility)="visibilityChanged($event)"
-    (transactionResponse)="paymentResponse($event)"
-  ></app-modal>
-  <app-receipt
-    [(isVisible)]="showReceiptModal"
-    [response]="transactionResponse"
-    (visibility)="visibilityChanged($event)"
-  ></app-receipt>
-</article>
+  <article>
+    <app-payment
+      [(isVisible)]="showPaymentModal && !showReceiptModal"
+      [(user)]="selectedUser"
+      (visibility)="visibilityChanged($event)"
+      (transactionResponse)="paymentResponse($event)"
+    ></app-payment>
+    <app-receipt
+      [(isVisible)]="showReceiptModal"
+      (visibility)="visibilityChanged($event)"
+      [response]="transactionResponse"
+    ></app-receipt>
+  </article>
+</section>

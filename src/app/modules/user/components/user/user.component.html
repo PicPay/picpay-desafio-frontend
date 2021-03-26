@@ -1,0 +1,16 @@
+<div class="card__body">
+  <div class="card__img">
+    <img class="card__img--photo" src="{{ user.img }}" />
+  </div>
+  <div class="card__info">
+    <div class="user__name">{{ user.name }}</div>
+
+    <div class="user__username">
+      <span class="user__username--bold">{{ user.username }}</span>
+    </div>
+  </div>
+
+  <button type="button" class="card__button" (click)="paymentAction(user)">
+    Pagar
+  </button>
+</div>

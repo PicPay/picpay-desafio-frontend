@@ -1,28 +1,67 @@
-<div class="modal-backdrop" *ngIf="isVisible">
-  <div class="modal">
-    <div class="header">
-      <div class="title">Pagamento para <span>ME</span></div>
-      <button class="close" (click)="closeModal()" aria-label="Close">X</button>
-    </div>
-    <div class="body">
-      <input
-        type="number"
-        placeholder="R$ 0,00"
-        id="value"
-        formControlName="value"
-      />
-
-      <div class="cards">
-        <select id="card">
-          <option [disabled]>Selecione o cartão com final</option>
-          <option *ngFor="let card of cards">{{ card.card_number }}</option>
+<app-modal
+  *ngIf="isVisible"
+  (visibility)="closeModal($event)"
+  [@onVisibilityChange]
+>
+  <header-slot>
+    <span class="title">
+      Pagar a <span class="username">{{ user.username }}</span></span
+    >
+  </header-slot>
+  <body-slot *ngIf="!loading">
+    <div class="body" [formGroup]="paymentForm">
+      <div class="body__item">
+        Valor:
+        <input
+          id="value"
+          type="text"
+          class="value"
+          placeholder="R$ 0,00"
+          currencyMask
+          [options]="{
+            prefix: 'R$ ',
+            thousands: '.',
+            decimal: ',',
+            allowNegative: false,
+            align: 'left'
+          }"
+          formControlName="value"
+        />
+      </div>
+      <div class="body__item">
+        Cartão:
+        <select
+          id="card"
+          name="card"
+          class="card__select"
+          formControlName="card"
+        >
+          <option [disabled] [value]="''">Selecione o cartão com final</option>
+          <option
+            *ngFor="let card of cards"
+            [ngValue]="card"
+            class="card__option"
+          >
+            {{ card.masked_number }} - {{ card.expiry_date }}
+          </option>
         </select>
       </div>
+
+      <hr class="divisor" />
     </div>
-    <div class="footer">
-      <button type="button" class="pay-button" (click)="getTransaction()">
-        Pagar
-      </button>
-    </div>
-  </div>
-</div>
+  </body-slot>
+  <body-slot *ngIf="loading" [@onVisibilityChange]>
+    <div class="loader"></div>
+  </body-slot>
+
+  <footer-slot>
+    <button
+      type="button"
+      class="payment_button"
+      (click)="getTransaction()"
+      [disabled]="!paymentForm.valid || loading"
+    >
+      {{ loading ? "Aguarde" : "Pagar" }}
+    </button>
+  </footer-slot>
+</app-modal>

@@ -13,9 +13,11 @@ export class UserListComponent implements OnInit {
   showReceiptModal: boolean = false;
   transactionResponse: TransactionResponse;
   selectedUser: User;
+  headerMessage: string;
   constructor(private userService: UserService) {}
 
   ngOnInit() {
+    this.headerMessage = "Pague agora com taxa zero";
     this.userService.getUsers().subscribe((users) => {
       this.users = users;
     });

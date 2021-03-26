@@ -1,0 +1,129 @@
+.card {
+  &__body {
+    display: grid;
+    border-radius: 6px 0 0 6px;
+    grid-template-columns: 60px 150px 70px;
+    align-items: center;
+    height: 100px;
+    background: linear-gradient(to right, #21c25e 50%, #fff 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
+    transition: all 0.75s ease;
+
+    &:hover {
+      background-position: left bottom;
+      .card {
+        &__button {
+          box-shadow: 0 1px 3px #000;
+          background-position: left bottom;
+          color: #5c5c5b;
+        }
+        &__info {
+          will-change: color 0.5s ease-in;
+          color: #fff;
+          .user {
+            &__username {
+              &--bold {
+                color: #fff;
+              }
+            }
+          }
+        }
+        &__img--photo {
+          box-shadow: 0 0 1px 6px #fff;
+        }
+      }
+    }
+  }
+  &__img {
+    background-color: #21c25e;
+    border-radius: 6px 0 0 6px;
+    border-right-color: #5c5c5b;
+    height: 100px;
+
+    padding: 2rem 2.25rem;
+    transition: all 150ms ease-in-out;
+    &--photo {
+      position: relative;
+      border-radius: 50%;
+      top: -0.5rem;
+      height: 56px;
+      width: 56px;
+      box-shadow: 0 8px 6px -6px black;
+    }
+  }
+  &__info {
+    display: flex;
+    flex-direction: column;
+    padding-left: 2.7rem;
+    font-size: 10px;
+
+    color: black;
+    transition: all 250ms ease-in-out;
+    gap: 0.5rem;
+    .user {
+      &__user {
+        font-weight: bold;
+      }
+      &__username {
+        &--bold {
+          color: #5c5c5b;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  &__button {
+    font-family: "Montserrat", sans-serif;
+    margin-left: auto;
+
+    border: 1px solid #1fc45e;
+    color: #fff;
+    border-radius: 25px;
+    background: #21c25e;
+
+    width: 18vw;
+    height: 30px;
+    cursor: pointer;
+  }
+
+  @media screen and (min-width: 482px) {
+    &__body {
+      grid-template-columns: 1fr 2fr 1fr;
+      height: 100%;
+    }
+    &__info {
+      padding: 2rem 2.25rem;
+      font-size: 1rem;
+      margin-left: 16px;
+    }
+    &__img {
+      height: 110px;
+      padding: 1.5rem 1rem;
+      &--photo {
+        position: relative;
+        left: 74%;
+        margin-bottom: 0.5rem;
+        border-radius: 50%;
+        height: 80px;
+        width: 80px;
+        box-shadow: 0 8px 6px -6px black;
+      }
+    }
+    &__button {
+      height: 40px;
+      width: 10rem;
+      margin-right: 3rem;
+      background: linear-gradient(to right, #fff 50%, #21c25e 50%);
+      background-size: 200% 100%;
+      background-position: right bottom;
+      // transition: all 1s ease;
+      transition: all 250ms ease-in-out;
+      &:hover {
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+        transition: box-shadow 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+      }
+    }
+  }
+}

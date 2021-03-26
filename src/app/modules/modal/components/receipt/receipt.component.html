@@ -1,22 +1,22 @@
-<div class="modal-backdrop" *ngIf="isVisible">
-  <div class="modal">
-    <div class="header">
-      <div class="title">
-        <div class="title">Recibo de pagamento</div>
-        <button class="close" (click)="closeModal()" aria-label="Close">
-          X
-        </button>
-      </div>
-      <div class="body">
-        <span *ngIf="response.success"
-          >O pagamento foi concluído com sucesso.</span
-        >
-        <span *ngIf="!response.success"
-          >O pagamento <strong>não</strong> foi concluido com sucesso.
-          <br />
-          Motivo: {{ response.status }}
-        </span>
-      </div>
+<app-modal *ngIf="isVisible" (visibility)="closeModal($event)">
+  <header-slot>
+    <span class="title">Recibo de pagamento</span>
+  </header-slot>
+  <body-slot>
+    <div class="body" [@onVisibilityChange]>
+      <span *ngIf="response.success"
+        >O pagamento foi concluído com sucesso.</span
+      >
+      <span *ngIf="!response.success"
+        >O pagamento <strong>não</strong> foi concluido com sucesso.
+        <hr class="divisor" />
+        {{ response.status }}
+      </span>
     </div>
-  </div>
-</div>
+  </body-slot>
+  <footer-slot>
+    <button type="button" class="payment_button" (click)="closeModal()">
+      {{ response.success ? "Fechar" : "Tentar novamente" }}
+    </button>
+  </footer-slot>
+</app-modal>
