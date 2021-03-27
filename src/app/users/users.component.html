@@ -1,8 +1,16 @@
 <div class="contact-list">
-    <app-user-container 
-        *ngFor="let contact of contacts$ | async"
-        [contact]="contact"
-        >
-    </app-user-container>
+
+    <div *ngIf="contacts$ | async as contacts; else loading">
+        <app-user-container 
+            *ngFor="let contact of contacts"
+            [contact]="contact">
+        </app-user-container>
+    </div>
+
+    <ng-template #loading>       
+        <app-spinner></app-spinner>      
+    </ng-template>
 </div>
+
+
 <app-user-dialog></app-user-dialog>

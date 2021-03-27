@@ -9,6 +9,7 @@ import { PaymentModalComponent } from './users/user-dialog/payment-modal/payment
 import { MessageModalComponent } from './users/user-dialog/message-modal/message-modal.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SpinnerComponent } from './shared/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     UserContainerComponent,
     UserDialogComponent,
     PaymentModalComponent,
-    MessageModalComponent
+    MessageModalComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,

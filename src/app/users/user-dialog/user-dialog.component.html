@@ -1,4 +1,5 @@
 <div class="modal-backdrop" *ngIf="modalVisible" >
     <app-payment-modal *ngIf="paymentModalVisibility"></app-payment-modal>
     <app-message-modal *ngIf="msgModalVisibility"></app-message-modal>
+    <app-spinner *ngIf="modalVisible && !paymentModalVisibility && !msgModalVisibility"></app-spinner>
 </div>
