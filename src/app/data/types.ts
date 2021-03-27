@@ -28,3 +28,8 @@ export interface Cards {
     cvv: number,
     expiry_date: string
 }
+
+export interface TransactionInfo {
+    status: boolean,
+    value: number
+}

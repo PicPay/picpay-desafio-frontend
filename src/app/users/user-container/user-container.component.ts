@@ -18,6 +18,7 @@ export class UserContainerComponent implements OnInit {
 
   onPayBtn() {
     this.service.changeModalVisibility(true)
+    this.service.changePaymentVisibility(true)
     this.service.changeDestinationUser(this.contact)
   }
 

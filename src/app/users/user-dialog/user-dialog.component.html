@@ -1,4 +1,4 @@
 <div class="modal-backdrop" *ngIf="modalVisible" >
-    <app-payment-modal *ngIf="transactionInfo.status"></app-payment-modal>
-    <app-message-modal *ngIf="!transactionInfo.status"></app-message-modal>
+    <app-payment-modal *ngIf="paymentModalVisibility"></app-payment-modal>
+    <app-message-modal *ngIf="msgModalVisibility"></app-message-modal>
 </div>

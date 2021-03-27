@@ -9,15 +9,16 @@ import { Component, OnInit } from '@angular/core';
 export class UserDialogComponent implements OnInit {
 
   modalVisible: boolean;
-  transactionInfo;
+  paymentModalVisibility: boolean;
+  msgModalVisibility: boolean
 
   constructor( private service: UsersService ) { }
 
   ngOnInit() {
-    this.service.currentModalVisibility
-      .subscribe(bool => this.modalVisible = bool);
-    this.service.currentTransactionInfo
-      .subscribe(obj => this.transactionInfo = obj);
+    this.service.currentModalVisibility.subscribe(bool => this.modalVisible = bool);
+    this.service.currentpaymentVisibility.subscribe(bool => this.paymentModalVisibility = bool);
+    this.service.currentMsgVisibility.subscribe(bool => this.msgModalVisibility = bool);
+
   }
 
 }

@@ -4,9 +4,12 @@
     <div class="modal__close-btn" (click)="onCloseBtn()">&#x2715;</div>
   </div>
 
-  <div class="modal__content">
+  <div class="modal__content" *ngIf="transactionInfo.status" >
     <p>{{ transactionInfo.value }}</p>
-    O pagamento foi concluido com sucesso.<br />
+    O pagamento foi concluido com sucesso.
+  </div>
+
+  <div class="modal__content" *ngIf="!transactionInfo.status" >
     O pagamento <strong>não</strong> foi concluido com sucesso.
   </div>
 </div>

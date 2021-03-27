@@ -19,11 +19,7 @@ export class MessageModalComponent implements OnInit {
 
   onCloseBtn() {
     this.service.changeModalVisibility(false)
-    this.service.changeTransactionInfo({
-        name: null,
-        value: null,
-        status: true      
-    })
+    this.service.changeMsgVisibility(false)
   }
 
 }

@@ -1,4 +1,4 @@
-import { User, Cards } from './../../../data/types';
+import { User, Cards, TransactionPayload } from './../../../data/types';
 import { UsersService } from './../../users.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -25,7 +25,7 @@ export class PaymentModalComponent implements OnInit {
     .subscribe(user => this.destinationUser = user);
 
     this.paymentForm = this.formBuilder.group({
-      card: [this.cards.cards[0].card_number],
+      card: [this.cards.cards[0]],
       id: [this.destinationUser.id],
       value: [null, Validators.required]
     })
@@ -33,18 +33,21 @@ export class PaymentModalComponent implements OnInit {
 
   onCloseBtn() {
     this.service.changeModalVisibility(false);
+    this.service.changePaymentVisibility(false);
   }
 
   onSubmit() {
     if(this.paymentForm.valid) {
-      const transactionInfo = {
-        name: this.destinationUser.name,
-        value: this.paymentForm.value.value,
-        status: false
-      }
-      this.service.changeTransactionInfo(transactionInfo)
-      console.log(this.paymentForm)
-      console.log(this.paymentForm.value)
+      const form = this.paymentForm.value
+      const transactionPayload: TransactionPayload = {
+        card_number: form.card.card_number,
+        cvv: form.card.cvv,
+        expiry_date: form.card.expiry_date,   
+        destination_user_id: form.id,
+        value: form.value
+      };
+      this.service.transactionPost(transactionPayload);
+      this.service.changePaymentVisibility(false);
     }
   }
 }
