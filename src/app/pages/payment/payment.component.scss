@@ -1,9 +1,5 @@
 @import '~src/sass/variables';
-
-@mixin default-width($max-width: 400px) {
-    width: 100%;
-    max-width: $max-width;
-}
+@import '~src/sass/utils';
 
 .payment {
     background: $light;
@@ -13,6 +9,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    min-height: 200px;
 }
 
 .payment-amount {

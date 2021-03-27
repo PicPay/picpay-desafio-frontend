@@ -1,1 +1,21 @@
-PAYMENTS
+<div *ngIf="!payments">loading...</div>
+
+<div class="payments" *ngIf="payments" [class.full-page]="isFullPage">
+  <div class="payments-not-found" *ngIf="!payments.length">
+    <h4>Sem pagamentos por aqui</h4>
+    <img
+      class="payments-not-found__image"
+      src="/assets/payments_not_found.svg"
+      alt="Payments not found"
+    />
+  </div>
+
+  <div *ngIf="payments.length" class="payments__payment">
+    <ngx-card-payment
+      *ngFor="let payment of payments"
+      [payment]="payment"
+      [isFullPage]="isFullPage"
+    >
+    </ngx-card-payment>
+  </div>
+</div>

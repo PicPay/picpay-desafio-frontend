@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '@shared/interfaces/user';
-import { PicPayService } from '@shared/services/picpay.service';
+import { Router } from '@angular/router';
+import { PaymentStorage } from '@shared/interfaces/payment-storage';
+import { PaymentStorageFilter } from '@shared/interfaces/payment-storage-filter';
+import { LocalStorageService } from '@shared/services/local-storage.service';
+import { PicPayStore } from '@shared/stores/picpay.store';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'ngx-payments',
@@ -8,11 +12,33 @@ import { PicPayService } from '@shared/services/picpay.service';
   styleUrls: ['./payments.component.scss'],
 })
 export class PaymentsComponent implements OnInit {
-  users: User[] | null = null;
+  subs = new Subscription();
+  isFullPage = false;
+  payments: PaymentStorage[] | null = null;
 
-  constructor(private picPayService: PicPayService) {}
+  constructor(
+    private router: Router,
+    private picPayStore: PicPayStore,
+    private localStorageService: LocalStorageService
+  ) {}
 
   ngOnInit(): void {
-    this.picPayService.users().subscribe((users: User[]) => (this.users = users));
+    this.subs.add(
+      this.router.routerState.root.firstChild.params.subscribe((params) => {
+        const filter: PaymentStorageFilter = {};
+
+        if (params && params.id) {
+          filter.destination_user_id = Number(params.id);
+        } else {
+          this.isFullPage = true;
+        }
+
+        this.picPayStore.loadUsers().subscribe(() => {
+          this.localStorageService
+            .loadPayments(filter)
+            .subscribe((payments: PaymentStorage[]) => (this.payments = payments));
+        });
+      })
+    );
   }
 }

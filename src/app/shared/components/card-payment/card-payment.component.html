@@ -1,0 +1,19 @@
+<div class="card" [class.card--hover]="isFullPage" [routerLink]="['/users', user.id]">
+  <div *ngIf="!isFullPage" class="card__icon card__icon--withou-image">
+    <span class="mdi mdi-currency-usd"></span>
+  </div>
+  <img *ngIf="isFullPage" class="card__icon" [src]="user.img" alt="User image" />
+  <div class="card__info">
+    <div>
+      <strong>Você</strong>
+      <span> pagou </span>
+      <strong>{{ user.name }}</strong>
+    </div>
+    <div class="card__date">
+      <span>{{ payment.date | amTimeAgo }}</span>
+    </div>
+  </div>
+  <div class="card__amount">
+    <span>{{ payment.value | currency: 'BRL':true }}</span>
+  </div>
+</div>

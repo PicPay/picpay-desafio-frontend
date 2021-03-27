@@ -1,0 +1,31 @@
+@import '~src/sass/variables';
+@import '~src/sass/utils';
+
+.full-page {
+    background: $light;
+    border-radius: 20px;
+    min-height: calc(100vh - 200px);
+}
+
+.payments {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+    padding: 30px 0;
+
+    &__payment {
+        @include default-width();
+    }
+}
+
+.payments-not-found {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    
+    &__image {
+        max-width: 200px;
+    }
+}

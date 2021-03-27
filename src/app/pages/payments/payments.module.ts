@@ -2,11 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PaymentsComponent } from './payments.component';
 import { PaymentsRoutingModule } from './payments-routing.module';
-import { CardPaidModule } from '@shared/components/card-paid/card-paid.module';
-import { NavbarModule } from '@shared/components/navbar/navbar.module';
+import { CardPaymentModule } from '@shared/components/card-payment/card-payment.module';
 
 @NgModule({
   declarations: [PaymentsComponent],
-  imports: [CommonModule, PaymentsRoutingModule, CardPaidModule],
+  imports: [CommonModule, PaymentsRoutingModule, CardPaymentModule],
 })
 export class PaymentsModule {}

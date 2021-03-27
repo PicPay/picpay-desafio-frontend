@@ -1,9 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Card } from '@shared/interfaces/card';
 import { Payment } from '@shared/interfaces/payment';
 import { User } from '@shared/interfaces/user';
+import { LocalStorageService } from '@shared/services/local-storage.service';
 import { PicPayService } from '@shared/services/picpay.service';
 import { PicPayStore } from '@shared/stores/picpay.store';
 import { Subscription } from 'rxjs';
@@ -25,7 +26,8 @@ export class PaymentComponent implements OnInit, OnDestroy {
     private router: Router,
     private formBuilder: FormBuilder,
     private picPayStore: PicPayStore,
-    private picPayService: PicPayService
+    private picPayService: PicPayService,
+    private localStorageService: LocalStorageService
   ) {}
 
   get amount(): AbstractControl {
@@ -85,8 +87,10 @@ export class PaymentComponent implements OnInit, OnDestroy {
       comment: this.payment.value.comment,
     };
 
-    this.picPayService.payment(payment).subscribe((data) => {
-      console.log(data);
+    this.picPayService.payment(payment).subscribe((paymentResponse: Payment) => {
+      this.localStorageService.savePayment(paymentResponse).subscribe(() => {
+        // TODO: fechar tela com pagamento concluído
+      });
     });
   }
 

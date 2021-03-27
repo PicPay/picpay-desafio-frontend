@@ -8,14 +8,12 @@
       <span>{{ user.username }}</span>
       <div
         class="user__pay"
-        [routerLink]="['payment']"
+        [routerLink]="['/users', user.id, 'payment']"
         [routerLinkActive]="['user__pay--invisible']"
       >
         <ngx-button-pay></ngx-button-pay>
       </div>
     </div>
   </div>
-  <div>
-    <router-outlet></router-outlet>
-  </div>
+  <router-outlet></router-outlet>
 </div>
