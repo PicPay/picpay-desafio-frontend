@@ -1,4 +1,5 @@
 @import '~src/sass/variables';
+@import '~src/sass/utils';
 
 header {
 	height: 60px;
@@ -8,13 +9,11 @@ header {
     padding: 0 40px;
 	position: sticky;
     top: 0;
+	z-index: 2;
     background: $light;
-	-webkit-box-shadow: 0 0 10px 0 rgb(0 0 0 / 30%);
-    -moz-box-shadow: 0 0 10px 0 rgb(0 0 0 / 30%);
-    box-shadow: 0 0 10px 0 rgb(0 0 0 / 30%);
+	@include box-shadow(30%);
 
 	& .logo {
-		fill: $primary;
 		width: 120px;
 		height: auto;
 	}

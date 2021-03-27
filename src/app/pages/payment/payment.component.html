@@ -1,5 +1,45 @@
 <div *ngIf="!user">loading...</div>
 
-<div class="user" *ngIf="user">
-  {{ user | json }}
+<div class="payment" *ngIf="user">
+  <form [formGroup]="payment">
+    <div class="payment-amount">
+      <div class="payment-amount__content">
+        <input
+          class="payment-amount__value"
+          formControlName="amount"
+          currencyMask
+          placeholder="R$ 0,00"
+          [class.payment-amount--invalid]="
+            amount.invalid && (amount.dirty || amount.touched || submitted)
+          "
+        />
+      </div>
+    </div>
+
+    <div class="credit-card">
+      <ngx-credit-cards [cards]="cards" [selectedCard]="card" (changeCard)="onChangeCard($event)">
+      </ngx-credit-cards>
+    </div>
+
+    <div class="comment">
+      <textarea
+        class="comment__value"
+        formControlName="comment"
+        maxlength="150"
+        rows="4"
+        placeholder="Escreva um comentário"
+      ></textarea>
+    </div>
+  </form>
+
+  <div class="payment-errors" *ngIf="submitted && (amount.invalid || comment.invalid)">
+    <p *ngIf="amount.errors?.min">* Um valor deve ser informado</p>
+    <p *ngIf="amount.errors?.max">* O valor não deve ultrapassar R$ 99.999,99</p>
+    <p *ngIf="comment.errors?.maxlength">* O comentário não deve ultrapassar 150 caracteres</p>
+  </div>
+
+  <div class="actions">
+    <a [routerLink]="['/users', user.id]" class="link link-danger"> Cancelar </a>
+    <ngx-button-pay (pay)="onPay()"></ngx-button-pay>
+  </div>
 </div>

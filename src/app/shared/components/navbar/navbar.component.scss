@@ -1,4 +1,5 @@
 @import '~src/sass/variables';
+@import '~src/sass/utils';
 
 .navbar {
 	padding: 15px;
@@ -6,12 +7,10 @@
 	bottom: 0;
 	width: 100%;
 	background-color: $light;
-	-webkit-box-shadow: 0 0 10px 0 rgb(0 0 0 / 10%);
-    -moz-box-shadow: 0 0 10px 0 rgb(0 0 0 / 10%);
-    box-shadow: 0 0 10px 0 rgb(0 0 0 / 10%);
+	@include box-shadow();
 
 	&__invisible {
-		height: 80px;
+		height: 94px;
 		visibility: hidden;
 	}
 

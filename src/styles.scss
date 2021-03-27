@@ -2,6 +2,8 @@
 @import 'sass/button';
 @import 'sass/link';
 
+@import "~@fontsource/roboto/index.css";
+
 $mdi-font-path: '~@mdi/font/fonts/';
 @import '~@mdi/font/scss/materialdesignicons';
 
@@ -13,8 +15,8 @@ $mdi-font-path: '~@mdi/font/fonts/';
 html,
 body {
   background-color: $base-color;
-  font-family: sans-serif;
-  color: $secondary;
+  font-family: Roboto;
+  color: $dark;
   margin: 0;
   padding: 0;
 }
@@ -30,10 +32,10 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba($secondary, .3);
+  background: rgba($dark, .3);
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba($secondary, .5);
+  background: rgba($dark, .5);
 }

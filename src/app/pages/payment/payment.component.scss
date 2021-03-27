@@ -1,0 +1,80 @@
+@import '~src/sass/variables';
+
+@mixin default-width($max-width: 400px) {
+    width: 100%;
+    max-width: $max-width;
+}
+
+.payment {
+    background: $light;
+    margin-top: 30px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.payment-amount {
+    @include default-width();
+    margin-bottom: 20px;
+
+	&__content {
+		height: 110px;
+		display: flex;
+		align-items: center;
+	}
+
+    &__value {
+        text-align: center;
+        border: none;
+        font-size: 50px;
+        width: 100%;
+        color: $dark;
+
+        @media (max-width: 768px) {
+            font-size: 40px;
+        }
+
+        @media (max-width: 370px) {
+            font-size: 30px;
+        }
+	}
+
+    &--invalid {
+        color: $danger;
+    }
+}
+
+.credit-card {
+    margin-bottom: 50px;
+}
+
+.comment {
+    margin-bottom: 30px;
+    @include default-width();
+
+    &__value {
+        width: 100%;
+        border: 1px solid #e4e4e4;
+        border-radius: 4px;
+        resize: none;
+        font-size: 20px;
+        color: $dark;
+        height: auto;
+        padding: 6px;
+    }
+}
+
+.payment-errors {
+    @include default-width();
+    margin-bottom: 30px;
+    color: $danger;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @include default-width(300px);
+}

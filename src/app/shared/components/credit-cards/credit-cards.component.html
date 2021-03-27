@@ -1,0 +1,31 @@
+<div class="cards">
+  <div class="cards__header">
+    <h3 class="cards__title">Cartão</h3>
+    <small>{{ currentIndex + 1 }}/{{ cards.length }}</small>
+  </div>
+  <div class="cards__content">
+    <div class="cards__nav cards__left" (click)="onChange()">
+      <span class="mdi mdi-chevron-left"></span>
+    </div>
+    <ng-container *ngFor="let card of cards; let i = index">
+      <div
+        class="card"
+        *ngIf="card === selectedCard"
+        [class.cards__card--activated]="card.id === selectedCard.id"
+      >
+        <div class="card__image">
+          <ngx-picpay-logo> </ngx-picpay-logo>
+        </div>
+        <div class="card__info">
+          <strong>{{ card.card_number | creditCardTruncate }}</strong>
+          <div>
+            <small>Val: {{ card.expiry_date }}</small>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <div class="cards__nav cards__right" (click)="onChange()">
+      <span class="mdi mdi-chevron-right"></span>
+    </div>
+  </div>
+</div>

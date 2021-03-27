@@ -30,8 +30,4 @@
   &-primary {
     @include button-bg($primary);
   }
-  
-  &-secondary {
-    @include button-bg($secondary);
-  }
 }

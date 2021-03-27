@@ -24,11 +24,11 @@ export class PicPayStore {
   }
 
   loadUser(userId: number): Observable<User> {
-    const users = this.users.getValue();
+    const hasUsers = this.users.getValue();
 
-    if (users) {
+    if (hasUsers) {
       return of(
-        users.find((user: User) => {
+        hasUsers.find((user: User) => {
           return user.id === userId;
         })
       );

@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { User } from '@shared/interfaces/user';
 import { Payment } from '@shared/interfaces/payment';
+import { Card } from '@shared/interfaces/card';
 
 @Injectable({
   providedIn: 'root',
@@ -20,6 +21,25 @@ export class PicPayService {
         return users;
       })
     );
+  }
+
+  cards(): Observable<Card[]> {
+    const cards: Card[] = [
+      {
+        id: 1,
+        card_number: '1111111111111111',
+        cvv: 789,
+        expiry_date: '01/18',
+      },
+      {
+        id: 2,
+        card_number: '4111111111111234',
+        cvv: 123,
+        expiry_date: '01/20',
+      },
+    ];
+
+    return of(cards);
   }
 
   payment(payment: Payment): Observable<Payment> {

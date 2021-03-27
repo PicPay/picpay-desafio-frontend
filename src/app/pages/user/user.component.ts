@@ -22,7 +22,6 @@ export class UserComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.subs.add(
       this.route.params.subscribe((params) => {
-        // TODO: validar o que chega nesse id
         this.picPayStore.loadUser(Number(params.id)).subscribe((user: User) => {
           if (!user) {
             this.router.navigate(['/not-found']);
@@ -36,7 +35,7 @@ export class UserComponent implements OnInit, OnDestroy {
   }
 
   onPay(): void {
-    this.router.navigate(['/payments', this.user.id]);
+    this.router.navigate(['/users', this.user.id, 'payment']);
   }
 
   ngOnDestroy(): void {

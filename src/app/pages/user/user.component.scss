@@ -2,12 +2,15 @@
 
 .user {
     background: $light;
-    margin-top: 30px;
+    margin-top: 20px;
     border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     padding: 30px;
+
+    &__detail {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
     &__image {
         margin-right: 40px;
@@ -22,10 +25,16 @@
 
     &__pay {
         margin-top: 20px;
+
+        &--invisible {
+            display: none;
+        }
     }
 
     @media (max-width: 768px) {
-        flex-direction: column;
+        &__detail {
+            flex-direction: column;
+        }
 
         &__image {
             margin-right: 0;

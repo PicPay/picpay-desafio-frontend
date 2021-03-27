@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CreditCardTruncatePipe } from './credit-card-truncate.pipe';
 
 @NgModule({
-  declarations: [],
+  declarations: [CreditCardTruncatePipe],
   imports: [CommonModule],
-  exports: [],
+  exports: [CreditCardTruncatePipe],
 })
 export class PipesModule {}

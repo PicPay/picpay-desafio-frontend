@@ -29,7 +29,9 @@
     "@angular/platform-browser": "~8.2.13",
     "@angular/platform-browser-dynamic": "~8.2.13",
     "@angular/router": "~8.2.13",
+    "@fontsource/roboto": "^4.2.2",
     "@mdi/font": "^5.9.55",
+    "ngx-currency": "^2.5.2",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"

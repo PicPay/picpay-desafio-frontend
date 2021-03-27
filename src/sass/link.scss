@@ -4,8 +4,9 @@
   color: $color;
 
   &:hover {
-    color: darken($color, 5%);
+    color: darken($color, 8%);
   }
+
   &:active, &:focus {
     color: darken($color, 10%);
   }
@@ -13,9 +14,14 @@
 
 .link {
   text-decoration: none;
-  color: $secondary;
+  cursor: pointer;
+  @include link($dark);
 
   &-primary {
     @include link($primary);
+  }
+
+  &-danger {
+    @include link($danger);
   }
 }

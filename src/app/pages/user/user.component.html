@@ -1,12 +1,21 @@
 <div *ngIf="!user">loading...</div>
 
 <div class="user" *ngIf="user">
-  <img class="user__image" [src]="user.img" alt="User image" />
-  <div class="user__info">
-    <h1 class="user__name">{{ user.name }}</h1>
-    <span>{{ user.username }}</span>
-    <div class="user__pay">
-      <ngx-button-pay (pay)="onPay()"></ngx-button-pay>
+  <div class="user__detail">
+    <img class="user__image" [src]="user.img" alt="User image" />
+    <div class="user__info">
+      <h1 class="user__name">{{ user.name }}</h1>
+      <span>{{ user.username }}</span>
+      <div
+        class="user__pay"
+        [routerLink]="['payment']"
+        [routerLinkActive]="['user__pay--invisible']"
+      >
+        <ngx-button-pay></ngx-button-pay>
+      </div>
     </div>
+  </div>
+  <div>
+    <router-outlet></router-outlet>
   </div>
 </div>
