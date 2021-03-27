@@ -12,9 +12,16 @@
       <input 
         id="qtd"
         class="modal__input" 
-        type="number" 
+        type="text" 
         placeholder="R$ 0,00" 
         formControlName="value"
+        currencyMask
+        [options]="{
+          prefix: 'R$ ', 
+          thousands: '.', 
+          decimal: ',', 
+          align: 'left',
+          allowNegative: false }"
         />
         <div class="error-msg" *ngIf="!paymentForm.get('value').valid && paymentForm.get('value').touched" >
           Por favor, informe um valor.
@@ -33,7 +40,7 @@
           *ngFor="let card of cards.cards"
           [ngValue]="card"
           >
-          {{ card.card_number }}
+          Cartão com final {{ card.card_number | slice:12 }}
         </option>
       </select>
     </div>

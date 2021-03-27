@@ -6,7 +6,8 @@
 
   <div class="modal__content" *ngIf="transactionInfo.status" >
     <img src="../../../../assets/img/checked.svg" class="modal__success-icon">
-    <p class="modal__value">{{ transactionInfo.value | currency: 'BRL' : 'symbol' : '.2-2' }}</p>
+    <p class="modal__value"
+    >{{ transactionInfo.value | currency: 'BRL' : 'symbol' : '.2-2' }}</p>
     <p class="modal__msg">O pagamento foi concluido com sucesso.</p>
   </div>
 

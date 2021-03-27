@@ -18,8 +18,7 @@ export class MessageModalComponent implements OnInit {
   }
 
   onCloseBtn() {
-    this.service.changeModalVisibility(false)
-    this.service.changeMsgVisibility(false)
+    this.service.changeModalVisibility(false);
+    this.service.changeMsgVisibility(false);
   }
-
 }

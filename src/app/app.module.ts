@@ -10,6 +10,7 @@ import { MessageModalComponent } from './users/user-dialog/message-modal/message
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
+import { NgxCurrencyModule } from 'ngx-currency';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { SpinnerComponent } from './shared/spinner/spinner.component';
   imports: [
     BrowserModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxCurrencyModule
   ],
   providers: [],
   bootstrap: [AppComponent]
