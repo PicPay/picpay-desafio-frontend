@@ -10,23 +10,23 @@
   
     height: 100vh;
     width: 100vw;
-  }
-  
-  .modal-backdrop.hidden {
-    display: none;
-  }
-  
-  .modal-backdrop:after {
-    content: "";
-  
-    background: rgba(0, 0, 0, 0.7);
-  
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    z-index: -1;
+
+    &.hidden {
+      display: none;
+    }
+    
+    &:after {
+      content: "";
+    
+      background: rgba(0, 0, 0, 0.7);
+    
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      z-index: -1;
+    }
   }
   
   

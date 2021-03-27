@@ -4,20 +4,27 @@
     <div class="modal__close-btn" (click)="onCloseBtn()">&#x2715;</div>
   </div>
 
-  <div class="modal__content">
-    <div class="modal__user-info">
+  <div class="modal__content">  
     <img class="modal__img" src="{{ destinationUser.img }}" alt="foto de {{ destinationUser.name }}">
-    </div>   
 
-    <input 
-      type="number" 
-      placeholder="R$ 0,00" 
-      class="modal__input" 
-      formControlName="value"
-      />
+    <div class="modal__value">
+      <label for="qnt" class="modal__label">Valor:</label>
+      <input 
+        id="qtd"
+        class="modal__input" 
+        type="number" 
+        placeholder="R$ 0,00" 
+        formControlName="value"
+        />
+        <div class="error-msg" *ngIf="!paymentForm.get('value').valid && paymentForm.get('value').touched" >
+          Por favor, informe um valor.
+        </div>
+    </div>
 
     <div class="modal__cards">
+      <label for="cards" class="modal__label">Cartão:</label>
       <select 
+        id="cards"
         class="modal__select"
         formControlName="card"
         >

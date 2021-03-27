@@ -25,9 +25,9 @@ export class PaymentModalComponent implements OnInit {
     .subscribe(user => this.destinationUser = user);
 
     this.paymentForm = this.formBuilder.group({
-      card: [this.cards.cards[0]],
-      id: [this.destinationUser.id],
-      value: [null, Validators.required]
+      card: [this.cards.cards[0], Validators.required],
+      id: [this.destinationUser.id, Validators.required],
+      value: [null, [Validators.required, Validators.min(0.01)]]
     })
   }
 
@@ -48,6 +48,12 @@ export class PaymentModalComponent implements OnInit {
       };
       this.service.transactionPost(transactionPayload);
       this.service.changePaymentVisibility(false);
+    } else {
+      this.checkError();      
     }
+  }
+
+  checkError() {
+    this.paymentForm.get('value').markAsTouched();
   }
 }

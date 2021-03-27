@@ -1,6 +1,7 @@
 $picpay-green: #34d582;
 $picpay-green-hover: #38dd88;
 $grey-text: rgb(110, 110, 110);
+$red-error: rgb(221, 163, 140);
 
 @mixin tablet {
   @media screen and (min-width: 768px) { @content; }
@@ -8,37 +9,35 @@ $grey-text: rgb(110, 110, 110);
 
 .modal {
     position: fixed;
-    background: #f4f4f4;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    z-index: 2;
     top: 0;
     left: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+
+    background: #f4f4f4;    
 
     @include tablet {
       position: inherit;
-      margin: 32px 0;
-      height: 650px;
+      height: 670px;
       width: 420px;
+      margin: 32px 0;
+
       border-radius: .8rem;
       box-shadow:  9px 9px 26px #3e3e3e;
     }
 
     &__header {
-      //background: $picpay-green;
       position: relative;
-      //border-top-left-radius: 1rem;
-      //border-top-right-radius: 1rem;
     }
 
     &__title {
-      //background: #474971;
-      color: #31b973;
+      padding: 16px 24px;
       font-weight: 500;
       font-size: 16px;
-      padding: 16px 24px;
+      color: $grey-text;
 
       & > span {
         font-size: 1.4rem;;
@@ -47,13 +46,13 @@ $grey-text: rgb(110, 110, 110);
     }
     
     &__close-btn {
-      color: #31b973;
-      cursor: pointer;
-      margin-left: auto;
-      font-size: 1.8rem;
       position: absolute;
       right: 15px;
       top: 5px;
+      margin-left: auto;
+      font-size: 1.8rem;
+      color: $grey-text;
+      cursor: pointer;
     }
 
     &__content {
@@ -67,27 +66,27 @@ $grey-text: rgb(110, 110, 110);
     }
 
     &__img {
-      border-radius: 50%;
+      margin-bottom: 3rem;;
       width: 160px;
       height: 160px;
+      border-radius: 50%;
       border: 4px solid #f2f2f2;
       box-shadow:  8px 8px 16px #c1c1c1,
-             -8px -8px 16px #ffffff;
-      margin-bottom: 3rem;;
+                  -8px -8px 16px #ffffff;
     }
     
     &__input, &__select  {
-      border: 1px solid #ccc;
+      margin-bottom: 2rem;
       background-color: #f4f4f4;
-      border-radius: 6px;
       font-size: 1.5rem;
+      color: $grey-text;
       width: 19rem;
       height: 60px;
       padding: 0 18px;
-      color: $grey-text;
-      margin-bottom: 2rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
       box-shadow: inset 5px 5px 10px #e3e3e3,
-      inset -5px -5px 10px #ffffff;
+                  inset -5px -5px 10px #ffffff;
 
       &:focus {
         outline: none;
@@ -95,32 +94,61 @@ $grey-text: rgb(110, 110, 110);
       }
     }
 
+    &__value {
+      position: relative;
+      margin-bottom: 1.5rem;;
+    }
+    
+    &__cards {
+      position: relative;
+    }
+
+    &__label {
+      position: absolute;
+      top: -18px;
+      left: 5px;
+      padding: 0 7px;
+      color: #31b973;
+      //background: #f4f4f4;
+      font-size: .9rem;
+    } 
+
     &__pay-btn {
       position: absolute;
-      bottom: 4rem;
-      background-color: $picpay-green;
-      color: white;
-      //border: none;
       width: 19rem;
       height: 4rem;
-      border-radius: 3rem;
+      bottom: 4rem;
+      color: #31b973;   
       font-size: 1.6rem;
+      background-color: $picpay-green;
+      border-radius: 3rem;
+      border: 1px solid #90e6b9;
       outline: none;  
       box-shadow:  5px 5px 8px #cbcbcb,
-      -5px -5px 8px #ffffff;
+                  -5px -5px 8px #ffffff;
       background-color: #f4f4f4;
-      border: 1px solid #90e6b9;
-      color: #31b973;   
       transition: .1s; 
 
       &:hover {
-        //background-color: $picpay-green-hover;
         cursor: pointer;
         transform: scale(1.05);
       }
 
       &:active {
-        background-color: $picpay-green;
+        background-color: #def1e7;
       }
     }
+  }
+
+  .error-msg {
+    position: absolute;
+    font-size: .9rem;
+    color: $red-error;
+    bottom: 12px;
+    left: 8px;
+  }
+
+  .ng-invalid.ng-touched:not(form) {
+    border: 2px solid $red-error;
+    color: $red-error;
   }
