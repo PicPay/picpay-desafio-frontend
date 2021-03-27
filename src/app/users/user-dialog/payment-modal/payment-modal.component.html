@@ -5,6 +5,10 @@
   </div>
 
   <div class="modal__content">
+    <div class="modal__user-info">
+    <img class="modal__img" src="{{ destinationUser.img }}" alt="foto de {{ destinationUser.name }}">
+    </div>   
+
     <input 
       type="number" 
       placeholder="R$ 0,00" 
@@ -18,6 +22,7 @@
         formControlName="card"
         >
         <option 
+          class="modal__cards-opt"
           *ngFor="let card of cards.cards"
           [ngValue]="card"
           >

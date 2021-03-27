@@ -1,40 +1,57 @@
-$picpay-green: #34d582;
+//$picpay-green: #34d582;
 
 @mixin tablet {
   @media screen and (min-width: 768px) { @content; }
 }
 
 .user {
-    background: $picpay-green;
-    box-shadow: 0 1px 0 #ffffff, 0px -1px 0px #ffffff;
-    color: #fff;
-    padding: 20px 30px;
+    background: #f4f4f4;
+    box-shadow:  6px 6px 12px #d0d0d0, -6px -6px 12px #ffffff;
+    color: #31b973;
+    padding: 20px 25px;
     width: calc(100vw - 1rem);
     border-radius: .7rem;  
     display: flex;
     align-items: center;
-    margin-top: 5px;
+    margin-top: 1rem;
+    transition: .08s;
+    border: 1px solid #90e6b9;
+
+    &:hover{
+      transform: scale(1.004);
+    }
 
     @include tablet {
       width: 48rem;
+      margin-top: 1.3rem;
     }
 
     &__img {
       border-radius: 50%;
       height: 80px;
       width: 80px;
+      //border: 1px solid #90e6b9;
+      border: 2px solid #f2f2f2;
+      box-shadow:  2px 2px 5px #cfcfcf,
+             -2px -2px 5px #ffffff;
     }
     
     &__info-container {
       margin-left: 16px;
     }
+
+    &__name {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 5px;;
+    }
     
     &__pay-button {
-      background-color: white;
+      background-color: #f4f4f4;
+      border: 1px solid #90e6b9;
       font-size: 1rem;
       font-weight: bold;
-      color: $picpay-green;
-      border: none;
+      color: #31b973;
       outline: none;
       width: 7rem;
       height: 2.5rem;
@@ -42,9 +59,16 @@ $picpay-green: #34d582;
       margin-left: auto;
       cursor: pointer;
       transition: .1s;
+      box-shadow:  5px 5px 8px #cbcbcb,
+      -5px -5px 8px #ffffff;
 
       &:hover {
         transform: scale(1.1);
+      }
+
+      @include tablet {
+        width: 7.5rem;
+        height: 2.8rem;
       }
     }
   }

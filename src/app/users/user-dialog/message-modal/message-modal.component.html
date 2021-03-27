@@ -5,11 +5,13 @@
   </div>
 
   <div class="modal__content" *ngIf="transactionInfo.status" >
-    <p>{{ transactionInfo.value }}</p>
-    O pagamento foi concluido com sucesso.
+    <img src="../../../../assets/img/checked.svg" class="modal__success-icon">
+    <p class="modal__value">{{ transactionInfo.value | currency: 'BRL' : 'symbol' : '.2-2' }}</p>
+    <p class="modal__msg">O pagamento foi concluido com sucesso.</p>
   </div>
 
   <div class="modal__content" *ngIf="!transactionInfo.status" >
-    O pagamento <strong>não</strong> foi concluido com sucesso.
+    <img src="../../../../assets/img/cancel.svg" class="modal__success-icon">
+    <p class="modal__msg">O pagamento <strong>não</strong> foi concluido com sucesso.</p>
   </div>
 </div>

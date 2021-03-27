@@ -2,31 +2,52 @@ $picpay-green: #34d582;
 $picpay-green-hover: #38dd88;
 $grey-text: rgb(110, 110, 110);
 
+@mixin tablet {
+  @media screen and (min-width: 768px) { @content; }
+}
+
 .modal {
-    background: #fff;
+  position: fixed;
+  background: #f4f4f4;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+  top: 0;
+  left: 0;
+
+  @include tablet {
+    position: inherit;
     margin: 32px 0;
+    height: 650px;
     width: 420px;
+    border-radius: .8rem;
+    box-shadow:  9px 9px 26px #3e3e3e;
+  }
 
     &__header {
-      background: $picpay-green;
-      position: relative
+      //background: $picpay-green;
+      position: relative;
+      //border-top-left-radius: 1rem;
+      //border-top-right-radius: 1rem;
     }
 
     &__title {
       //background: #474971;
-      color: #ffffff;
+      color: #31b973;
       font-weight: 500;
       font-size: 16px;
       padding: 16px 24px;
 
       & > span {
-        font-size: 1.2rem;;
+        font-size: 1.4rem;;
         font-weight: bold;
       }
     }
     
     &__close-btn {
-      color: white;
+      color: #31b973;
       cursor: pointer;
       margin-left: auto;
       font-size: 1.8rem;
@@ -36,39 +57,33 @@ $grey-text: rgb(110, 110, 110);
     }
 
     &__content {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       padding: 32px;
       text-align: center;
+      height: 100%
+    }
+
+    &__value {
+      color: $picpay-green;
+      font-size: 3.5rem;
+      margin-bottom: 25px;
+    }
+
+    &__success-icon, &__fail-icon {
+      color: $picpay-green;
+      font-size: 7rem;
+      width:10rem;
+      height:10rem;
+      margin-bottom: 3rem;
+      margin-top: 3rem;
     }
     
-    &__input, &__select  {
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 1.5rem;
-      width: 20rem;
-      height: 60px;
-      padding: 0 18px;
-      color: $grey-text;
-      margin-bottom: 2rem;
-    }
-    
-    &__pay-btn {
-      background-color: $picpay-green;
-      color: white;
-      border: none;
-      width: 15rem;
-      height: 4rem;
-      border-radius: 3rem;
-      font-size: 1.6rem;
-      outline: none;      
-
-      &:hover {
-        background-color: $picpay-green-hover;
-        color: white;
-        cursor: pointer;
-      }
-
-      &:active {
-        background-color: $picpay-green;
-      }
+    &__msg {
+      color: grey;
+      font-size: 1.2rem;
+      margin-bottom: 4rem;
     }
   }
