@@ -7,40 +7,37 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  queryField: string ='';
+  queryField = '';
 
   constructor() { }
 
   ngOnInit() {
-
-    let lastScrollTop = 0;
-    const header = document.getElementById('header');
-    window.addEventListener('scroll', function(){
-      var scrollTop = window.pageYOffset || document.documentElement.scrollTop
-      if (scrollTop > lastScrollTop) {
-        header.style.top="-5rem"
-      } else {
-        header.style.top="0"
-      }
-      lastScrollTop = scrollTop
-    });
-}
-
-  onSearch() {
-
-    const users = document.querySelectorAll('.user');
-
-    users.forEach(user => {
-
-      const userName = user.querySelector('.user__name').textContent
-      if (userName.toUpperCase().indexOf(this.queryField.toUpperCase()) > -1) {
-          user.classList.remove('display-none')
-
-      } else {
-          user.classList.add('display-none')
-      }
-      
-    })
+    this.hideHeaderOnScroll();
   }
 
+  onSearch() {
+    const users = document.querySelectorAll('.user');
+    users.forEach(user => {
+      const userName = user.querySelector('.user__name').textContent;
+      if (userName.toUpperCase().indexOf(this.queryField.toUpperCase()) > -1) {
+          user.classList.remove('display-none');
+      } else {
+          user.classList.add('display-none');
+      }
+    });
+  }
+
+  hideHeaderOnScroll() {
+    let lastScrollTop = 0;
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      if (scrollTop > lastScrollTop) {
+        header.style.top = '-5rem';
+      } else {
+        header.style.top = '0';
+      }
+      lastScrollTop = scrollTop;
+    });
+  }
 }

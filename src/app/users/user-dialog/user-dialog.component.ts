@@ -10,7 +10,7 @@ export class UserDialogComponent implements OnInit {
 
   modalVisible: boolean;
   paymentModalVisibility: boolean;
-  msgModalVisibility: boolean
+  msgModalVisibility: boolean;
 
   constructor( private service: UsersService ) { }
 
@@ -18,7 +18,6 @@ export class UserDialogComponent implements OnInit {
     this.service.currentModalVisibility.subscribe(bool => this.modalVisible = bool);
     this.service.currentpaymentVisibility.subscribe(bool => this.paymentModalVisibility = bool);
     this.service.currentMsgVisibility.subscribe(bool => this.msgModalVisibility = bool);
-
   }
 
 }
