@@ -15,7 +15,7 @@ export class UsersComponent implements OnInit {
   constructor( private service: UsersService ) { }
 
   ngOnInit() {
-      this.contacts$ = this.service.listContacts()
+      this.contacts$ = this.service.listContacts();
   }
 
 }

@@ -1,5 +1,9 @@
 $background-grey: #f4f4f4;
 
+@mixin tablet {
+    @media screen and (min-width: 768px) { @content; }
+}
+
 .contact-list {
     display: flex;
     flex-direction: column;
@@ -8,4 +12,9 @@ $background-grey: #f4f4f4;
     min-height: 100vh;    
     align-items: center;
     width: 100%;
+    padding-top: 4rem;
+
+    @include tablet {
+        padding: 4rem 1.5rem 1.5rem 2rem;
+    }
 }

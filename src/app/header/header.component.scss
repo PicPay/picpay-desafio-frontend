@@ -1,0 +1,71 @@
+$picpay-green: #34d582;
+$header-height: 4.5rem;
+
+@mixin tablet {
+    @media screen and (min-width: 768px) { @content; }
+}
+
+.header {
+    background-color: $picpay-green;
+    color: white;
+    height: $header-height;
+    width: 100%;    
+    position: fixed;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    transition: .2s;
+    box-shadow: 3px 2px 5px 2px #8888885b;
+    border-bottom: 3px solid #31ca7baf;
+    z-index: 1;
+
+    &__container {
+        display:flex;
+        flex-grow: 1;
+        align-items: center;
+        padding: 1rem;
+
+        & > img{
+            width: 11rem;
+        }
+
+        @include tablet {
+            max-width: 48rem;
+        }
+    }
+
+    &__titulo {
+        font-size: 1.6rem;;
+        margin-left: 1rem;
+    }
+
+    &__input {
+        margin-left: 1rem;
+        font-size: 1rem;
+        height: 2.8rem;
+        width: 100%;
+        border: none;
+        border-radius: 2rem;
+        background-color: $picpay-green;
+        padding-left: 1.8rem;
+        padding-top: .5rem;
+        outline: none;
+        border: 1px solid rgba(255, 255, 255, 0.212);
+        color: white;
+        box-shadow: inset 5px 5px 10px #2fc075,
+            inset -5px -5px 10px #39ea8f;
+
+        &::placeholder{
+            color: rgba(255, 255, 255, 0.836);
+        }
+        
+        &:active {
+            border: none;
+        }
+    }
+
+    &__up {
+        top: -5rem
+    }
+}
+

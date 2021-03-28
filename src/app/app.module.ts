@@ -8,9 +8,10 @@ import { UserDialogComponent } from './users/user-dialog/user-dialog.component';
 import { PaymentModalComponent } from './users/user-dialog/payment-modal/payment-modal.component';
 import { MessageModalComponent } from './users/user-dialog/message-modal/message-modal.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { NgxCurrencyModule } from 'ngx-currency';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -20,13 +21,15 @@ import { NgxCurrencyModule } from 'ngx-currency';
     UserDialogComponent,
     PaymentModalComponent,
     MessageModalComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
-    NgxCurrencyModule
+    NgxCurrencyModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -27,7 +27,7 @@ export class UsersService {
   private destinationUser = new BehaviorSubject<User>(null);
   currentDestinationUSer = this.destinationUser.asObservable();
 
-  private transactionInfo = new BehaviorSubject<TransactionInfo>(null)
+  private transactionInfo = new BehaviorSubject<TransactionInfo>(null);
   currentTransactionInfo = this.transactionInfo.asObservable();
 
   constructor( private http: HttpClient ) { }
@@ -40,13 +40,19 @@ export class UsersService {
     this.http.post(this.API_POST, transactionPayload)
       .subscribe((data: TransactionReturn) => {
         if(transactionPayload.card_number === this.cards.cards[0].card_number) {
-          const obj: TransactionInfo = { status: data.success, value: transactionPayload.value}
-          this.transactionInfo.next(obj)
+          const transInfo: TransactionInfo = { 
+            status: data.success, 
+            value: transactionPayload.value
+          }
+          this.transactionInfo.next(transInfo);
         } else {
-          const obj: TransactionInfo = { status: false, value: null}
-          this.transactionInfo.next(obj)
+          const transInfo: TransactionInfo = { 
+            status: false, 
+            value: null
+          }
+          this.transactionInfo.next(transInfo);
         }
-        this.changeMsgVisibility(true)
+        this.changeMsgVisibility(true);
       })
   }
 

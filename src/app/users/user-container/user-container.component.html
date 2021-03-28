@@ -1,22 +1,19 @@
-<div class="users">
-    <div class="user">
-        <img src="{{ contact.img }}" class="user__img"/>
-        <div class="user__info-container">
-            <div class="user__name">
-                {{ contact.name }}
-            </div>
-
-            <div class="user__username">
-                {{ contact.username }}
-            </div>
+<div class="user">
+    <img src="{{ contact.img }}" class="user__img" />
+    <div class="user__info-container">
+        <div class="user__name">
+            {{ contact.name }}
         </div>
 
-        <button 
-            type="button" 
-            class="user__pay-button"
-            (click)="onPayBtn()"
-            >
-            Pagar
-        </button>
+        <div class="user__username">
+            {{ contact.username }}
+        </div>
     </div>
+
+    <button 
+        type="button" 
+        class="user__pay-button" 
+        (click)="onPayBtn()">
+        Pagar
+    </button>
 </div>

@@ -22,7 +22,7 @@ export class PaymentModalComponent implements OnInit {
 
   ngOnInit() {
      this.service.currentDestinationUSer
-    .subscribe(user => this.destinationUser = user);
+      .subscribe(user => this.destinationUser = user);
 
     this.paymentForm = this.formBuilder.group({
       card: [this.cards.cards[0], Validators.required],

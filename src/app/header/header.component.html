@@ -1,0 +1,11 @@
+<div class="header" id="header">
+    <div class="header__container">
+        <img src="../../assets/img/picpay-logo.svg" alt="logo picpay">
+        <input 
+            type="text" 
+            class="header__input" 
+            placeholder="Pesquisar"
+            (input)="onSearch()"
+            [(ngModel)]="queryField" >
+    </div>
+</div>

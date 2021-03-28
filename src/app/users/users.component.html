@@ -1,5 +1,4 @@
 <div class="contact-list">
-
     <div *ngIf="contacts$ | async as contacts; else loading">
         <app-user-container 
             *ngFor="let contact of contacts"
@@ -13,4 +12,4 @@
 </div>
 
 
-<app-user-dialog></app-user-dialog>
+
