@@ -1,8 +1,10 @@
-import { User, Cards, TransactionPayload } from './../../../data/types';
-import { UsersService } from './../../users.service';
+import { DialogService } from './../dialog.service';
+import { HttpService } from './../../../core/http/http.service';
+import { Card } from '../../../core/types';
+import { User, TransactionPayload } from '../../../core/types';
+import { UsersService } from '../../users/users.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import cards from '../../../data/cards.js';
 
 @Component({
   selector: 'app-payment-modal',
@@ -13,27 +15,30 @@ export class PaymentModalComponent implements OnInit {
 
   destinationUser: User;
   paymentForm: FormGroup;
-  cards = cards;
+  cards: Card[];
 
   constructor(
-    private service: UsersService,
+    private userService: UsersService,
+    private modalService: DialogService,
+    private httpService: HttpService,
     private formBuilder: FormBuilder
     ) { }
 
   ngOnInit() {
-     this.service.currentDestinationUSer
+    this.cards = this.httpService.getCards();
+    this.userService.currentDestinationUser
       .subscribe(user => this.destinationUser = user);
 
     this.paymentForm = this.formBuilder.group({
-      card: [this.cards.cards[0], Validators.required],
+      card: [this.cards[0], Validators.required],
       id: [this.destinationUser.id, Validators.required],
       value: [null, [Validators.required, Validators.min(0.01)]]
     });
   }
 
   onCloseBtn() {
-    this.service.changeModalVisibility(false);
-    this.service.changePaymentVisibility(false);
+    this.modalService.changeModalVisibility(false);
+    this.modalService.changePaymentVisibility(false);
   }
 
   onSubmit() {
@@ -46,8 +51,8 @@ export class PaymentModalComponent implements OnInit {
         destination_user_id: form.id,
         value: form.value
       };
-      this.service.transactionPost(transactionPayload);
-      this.service.changePaymentVisibility(false);
+      this.httpService.transactionPost(transactionPayload);
+      this.modalService.changePaymentVisibility(false);
     } else {
       this.checkError();
     }

@@ -37,7 +37,7 @@
         >
         <option 
           class="modal__cards-opt"
-          *ngFor="let card of cards.cards"
+          *ngFor="let card of cards"
           [ngValue]="card"
           >
           Cartão com final {{ card.card_number | slice:12 }}

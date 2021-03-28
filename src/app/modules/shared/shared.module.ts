@@ -1,4 +1,4 @@
-import { SpinnerComponent } from './modules/spinner/spinner.component';
+import { SpinnerComponent } from './../shared/spinner/spinner.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 

@@ -1,4 +1,5 @@
-import { UsersService } from './../../users.service';
+import { DialogService } from './../dialog.service';
+import { HttpService } from './../../../core/http/http.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -10,15 +11,18 @@ export class MessageModalComponent implements OnInit {
 
   transactionInfo;
 
-  constructor( private service: UsersService ) { }
+  constructor(
+    private httpService: HttpService,
+    private modalService: DialogService
+  ) { }
 
   ngOnInit() {
-    this.service.currentTransactionInfo
+    this.httpService.currentTransactionInfo
       .subscribe(obj => this.transactionInfo = obj);
   }
 
   onCloseBtn() {
-    this.service.changeModalVisibility(false);
-    this.service.changeMsgVisibility(false);
+    this.modalService.changeModalVisibility(false);
+    this.modalService.changeMsgVisibility(false);
   }
 }

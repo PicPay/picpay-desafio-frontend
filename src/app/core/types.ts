@@ -12,8 +12,8 @@ export interface TransactionPayload {
 }
 
 export interface TransactionReturn {
-    success: boolean,
-    status: string
+    success: boolean;
+    status: string;
 }
 
 export interface User {
@@ -23,13 +23,13 @@ export interface User {
     username: string;
 }
 
-export interface Cards {
-    card_number: string,
-    cvv: number,
-    expiry_date: string
+export interface Card {
+    card_number: string;
+    cvv: number;
+    expiry_date: string;
 }
 
 export interface TransactionInfo {
-    status: boolean,
-    value: number
+    status: boolean;
+    value: number;
 }
