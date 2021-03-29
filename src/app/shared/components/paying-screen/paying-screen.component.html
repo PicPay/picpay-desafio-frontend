@@ -1,0 +1,12 @@
+<div class="paying-screen">
+  <div class="container">
+    <div class="container__loading" [class.container__loading--done]="isDone">
+      <span class="mdi" [class.mdi-check-bold]="isDone" [class.mdi-currency-usd]="!isDone"></span>
+    </div>
+    <h3 *ngIf="!isDone">Processando seu pagamento</h3>
+    <h3 *ngIf="isDone">Pagamento concluído!</h3>
+    <button *ngIf="isDone" (click)="onDone()" class="btn btn-primary container__button">
+      Fechar
+    </button>
+  </div>
+</div>
