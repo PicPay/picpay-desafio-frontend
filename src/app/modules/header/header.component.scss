@@ -18,6 +18,7 @@ $header-height: 4.5rem;
     box-shadow: 3px 2px 5px 2px #8888885b;
     border-bottom: 3px solid #31ca7baf;
     z-index: 1;
+    transition: top 200ms ease-in-out;
 
     &__container {
         display:flex;
@@ -62,10 +63,6 @@ $header-height: 4.5rem;
         &:active {
             border: none;
         }
-    }
-
-    &__up {
-        top: -5rem
     }
 }
 

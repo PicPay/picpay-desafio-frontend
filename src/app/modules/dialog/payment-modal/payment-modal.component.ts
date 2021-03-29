@@ -9,7 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-payment-modal',
   templateUrl: './payment-modal.component.html',
-  styleUrls: ['./payment-modal.component.scss']
+  styleUrls: ['./payment-modal.component.scss', '../common-modal-style.scss']
 })
 export class PaymentModalComponent implements OnInit {
 
