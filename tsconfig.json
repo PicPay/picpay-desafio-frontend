@@ -23,6 +23,7 @@
       "@pages/*": ["src/app/pages/*"],
       "@services/*": ["src/app/services/*"],
       "@stores/*": ["src/app/stores/*"],
+      "@mocks/*": ["src/mocks/*"],
       "@environment/*": ["src/environments/*"]
     }
   },

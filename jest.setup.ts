@@ -26,5 +26,7 @@ Object.defineProperty(document.body.style, 'transform', {
   },
 });
 
+console.warn = () => {};
+
 /* output shorter and more meaningful Zone error stack traces */
 // Error.stackTraceLimit = 2;

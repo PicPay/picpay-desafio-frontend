@@ -37,7 +37,9 @@
   </div>
 
   <div class="actions">
-    <a [routerLink]="['/users', user.id]" class="link link-danger"> Cancelar </a>
+    <div [routerLink]="['/users', user.id]">
+      <a class="link link-danger"> Cancelar </a>
+    </div>
     <ngx-button-pay (pay)="onPay()"></ngx-button-pay>
   </div>
 </div>

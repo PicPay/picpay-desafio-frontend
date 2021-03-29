@@ -3,7 +3,7 @@ const { compilerOptions } = require('./tsconfig');
 
 module.exports = {
   preset: 'jest-preset-angular',
-  roots: ['<rootDir>/src/'],
+  roots: ['<rootDir>/src/app/'],
   testMatch: ['**/+(*.)+(spec).+(ts)'],
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths || {}, {
@@ -13,6 +13,7 @@ module.exports = {
   collectCoverageFrom: [
     'src/app/**/*.ts',
     '!src/app/**/*module.ts',
+    '!src/mocks/*'
   ],
   coverageThreshold: {
     global: {

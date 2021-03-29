@@ -1,5 +1,9 @@
 import { TestBed, ComponentFixture, async } from '@angular/core/testing';
+import { Router } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
+import { of } from 'rxjs';
 import { PayingScreenComponent } from './paying-screen.component';
+import { PayingScreenService } from './paying-screen.service';
 
 describe('PayingScreenComponent', () => {
   let component: PayingScreenComponent;
@@ -8,6 +12,22 @@ describe('PayingScreenComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [PayingScreenComponent],
+      imports: [RouterTestingModule],
+      providers: [
+        PayingScreenService,
+        {
+          provide: Router,
+          useValue: {
+            routerState: {
+              root: {
+                firstChild: {
+                  params: of({ id: 1 }),
+                },
+              },
+            },
+          },
+        },
+      ],
     }).compileComponents();
   }));
 

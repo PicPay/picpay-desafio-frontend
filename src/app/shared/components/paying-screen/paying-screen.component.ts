@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
@@ -7,7 +7,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './paying-screen.component.html',
   styleUrls: ['./paying-screen.component.scss'],
 })
-export class PayingScreenComponent implements OnInit {
+export class PayingScreenComponent implements OnInit, OnDestroy {
   subs = new Subscription();
   userId: number;
   isDone = false;
@@ -28,5 +28,9 @@ export class PayingScreenComponent implements OnInit {
   onDone(): void {
     this.router.navigate(['/users', this.userId]);
     this.done.emit(true);
+  }
+
+  ngOnDestroy(): void {
+    this.subs.unsubscribe();
   }
 }

@@ -1,14 +1,15 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { HeaderModule } from '@shared/components/header/header.module';
-import { PaymentsModule } from '@shared/components/card-paid/payments.module';
+import { NavbarModule } from '@shared/components/navbar/navbar.module';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [AppComponent],
-      imports: [RouterTestingModule, HeaderModule, PaymentsModule],
+      imports: [RouterTestingModule, HttpClientTestingModule, HeaderModule, NavbarModule],
     }).compileComponents();
   }));
 

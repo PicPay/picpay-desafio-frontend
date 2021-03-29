@@ -3,9 +3,10 @@ import { CommonModule } from '@angular/common';
 
 import { PayingScreenComponent } from './paying-screen.component';
 import { PayingScreenService } from './paying-screen.service';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   declarations: [PayingScreenComponent],
   exports: [PayingScreenComponent],
   entryComponents: [PayingScreenComponent],
