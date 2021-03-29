@@ -1,7 +1,33 @@
-<div class="card" [routerLink]="['/users', user.id]">
+<div *ngIf="user" class="card" [routerLink]="['/users', user.id]">
   <img class="card__image" [src]="user.img" alt="User image" />
   <div class="card__info">
     <span class="card__name card__info--truncated">{{ user.name }}</span>
     <small class="card__info--truncated">{{ user.username }}</small>
+  </div>
+</div>
+
+<div *ngIf="!user" class="card">
+  <ngx-skeleton-loader
+    [theme]="{
+      width: '70px',
+      height: '70px',
+      margin: '0',
+      'margin-right': '10px',
+      'border-radius': '10px'
+    }"
+  ></ngx-skeleton-loader>
+  <div class="card__info">
+    <ngx-skeleton-loader
+      [theme]="{
+        width: '150px',
+        margin: '0'
+      }"
+    ></ngx-skeleton-loader>
+    <ngx-skeleton-loader
+      [theme]="{
+        width: '80px',
+        margin: '0'
+      }"
+    ></ngx-skeleton-loader>
   </div>
 </div>

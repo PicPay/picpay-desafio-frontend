@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { User } from '@shared/interfaces/user';
-import { PicPayService } from '@shared/services/picpay.service';
-import { PicPayStore } from '@shared/stores/picpay.store';
+import { PicPayStore } from '@stores/picpay.store';
 
 @Component({
   selector: 'ngx-users',

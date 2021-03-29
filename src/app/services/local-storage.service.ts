@@ -40,17 +40,19 @@ export class LocalStorageService {
       return of([]);
     }
 
-    const paymentsToArray = JSON.parse(payments).reverse();
+    const paymentsFiltered = JSON.parse(payments).filter((payment: PaymentStorage) => {
+      let isValid = true;
+
+      if (filter.destination_user_id) {
+        isValid = filter.destination_user_id === payment.destination_user_id;
+      }
+
+      return isValid;
+    });
 
     return of(
-      paymentsToArray.filter((payment: PaymentStorage) => {
-        let isValid = true;
-
-        if (filter.destination_user_id) {
-          isValid = filter.destination_user_id === payment.destination_user_id;
-        }
-
-        return isValid;
+      paymentsFiltered.sort((paymentA: PaymentStorage, paymentB: PaymentStorage) => {
+        return new Date(paymentB.date).getTime() - new Date(paymentA.date).getTime();
       })
     );
   }

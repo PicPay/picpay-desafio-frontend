@@ -25,5 +25,25 @@
             width: 33.3%;
         }
     }
+
+    &__loading {
+        padding: 20px;
+        background-color: $light;
+        border-radius: 20px;
+        margin: 10px;
+    }
 }
 
+.users-not-found {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 40px;
+    
+    &__image {
+        max-width: 450px;
+        margin-top: 20px;
+    }
+}

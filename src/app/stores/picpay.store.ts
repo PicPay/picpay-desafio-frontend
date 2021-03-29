@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, of, Observable } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
 import { User } from '@shared/interfaces/user';
-import { PicPayService } from '@shared/services/picpay.service';
+import { PicPayService } from '@services/picpay.service';
 
 @Injectable({
   providedIn: 'root',

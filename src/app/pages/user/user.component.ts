@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { User } from '@shared/interfaces/user';
-import { PicPayStore } from '@shared/stores/picpay.store';
+import { PicPayStore } from '@stores/picpay.store';
 import { Subscription } from 'rxjs';
 
 @Component({

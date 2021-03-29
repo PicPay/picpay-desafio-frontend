@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PaymentStorage } from '@shared/interfaces/payment-storage';
 import { PaymentStorageFilter } from '@shared/interfaces/payment-storage-filter';
-import { LocalStorageService } from '@shared/services/local-storage.service';
-import { PicPayStore } from '@shared/stores/picpay.store';
 import { Subscription } from 'rxjs';
+import { LocalStorageService } from '@services/local-storage.service';
+import { PicPayStore } from '@stores/picpay.store';
 
 @Component({
   selector: 'ngx-payments',

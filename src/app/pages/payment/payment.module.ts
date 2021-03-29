@@ -6,6 +6,7 @@ import { PaymentRoutingModule } from './payment-routing.module';
 import { CreditCardsModule } from '@shared/components/credit-cards/credit-cards.module';
 import { ButtonPayModule } from '@shared/components/button-pay/button-pay.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PayingScreenModule } from '@shared/components/paying-screen/paying-screen.module';
 
 export const customCurrencyMaskConfig = {
   align: '',
@@ -31,6 +32,7 @@ export const customCurrencyMaskConfig = {
     ReactiveFormsModule,
     CreditCardsModule,
     ButtonPayModule,
+    PayingScreenModule.forRoot(),
     NgxCurrencyModule.forRoot(customCurrencyMaskConfig),
   ],
 })

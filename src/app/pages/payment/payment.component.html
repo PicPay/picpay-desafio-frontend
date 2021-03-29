@@ -1,5 +1,3 @@
-<div *ngIf="!user">loading...</div>
-
 <div class="payment" *ngIf="user">
   <form [formGroup]="payment">
     <div class="payment-amount">
@@ -25,8 +23,8 @@
       <textarea
         class="comment__value"
         formControlName="comment"
-        maxlength="150"
-        rows="4"
+        maxlength="50"
+        rows="3"
         placeholder="Escreva um comentário"
       ></textarea>
     </div>

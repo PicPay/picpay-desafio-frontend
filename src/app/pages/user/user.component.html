@@ -1,19 +1,52 @@
-<div *ngIf="!user">loading...</div>
-
-<div class="user" *ngIf="user">
+<div class="user">
   <div class="user__detail">
-    <img class="user__image" [src]="user.img" alt="User image" />
-    <div class="user__info">
-      <h1 class="user__name">{{ user.name }}</h1>
-      <span>{{ user.username }}</span>
-      <div
-        class="user__pay"
-        [routerLink]="['/users', user.id, 'payment']"
-        [routerLinkActive]="['user__pay--invisible']"
-      >
-        <ngx-button-pay></ngx-button-pay>
+    <ng-container *ngIf="user; else loadingTemplate">
+      <img class="user__image" [src]="user.img" alt="User image" />
+      <div class="user__info">
+        <h1 class="user__name">{{ user.name }}</h1>
+        <span>{{ user.username }}</span>
+        <div
+          class="user__pay"
+          [routerLink]="['/users', user.id, 'payment']"
+          [routerLinkActive]="['user__pay--invisible']"
+        >
+          <ngx-button-pay></ngx-button-pay>
+        </div>
       </div>
-    </div>
+    </ng-container>
   </div>
   <router-outlet></router-outlet>
 </div>
+
+<ng-template #loadingTemplate>
+  <div>
+    <ngx-skeleton-loader
+      class="user__image"
+      [theme]="{
+        width: '120px',
+        height: '120px',
+        margin: 0,
+        'border-radius': '20px'
+      }"
+    ></ngx-skeleton-loader>
+  </div>
+  <div class="user__info">
+    <div>
+      <ngx-skeleton-loader
+        [theme]="{
+          width: '150px',
+          height: '25px',
+          margin: 0
+        }"
+      ></ngx-skeleton-loader>
+    </div>
+    <div>
+      <ngx-skeleton-loader
+        [theme]="{
+          width: '80px',
+          margin: 0
+        }"
+      ></ngx-skeleton-loader>
+    </div>
+  </div>
+</ng-template>

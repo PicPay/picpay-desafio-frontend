@@ -4,7 +4,7 @@
 .full-page {
     background: $light;
     border-radius: 20px;
-    min-height: calc(100vh - 200px);
+    min-height: calc(100vh - 180px);
 }
 
 .payments {
@@ -24,8 +24,9 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    
+
     &__image {
-        max-width: 200px;
+        max-width: 300px;
+        margin-top: 20px;
     }
 }

@@ -4,10 +4,11 @@ import { Router } from '@angular/router';
 import { Card } from '@shared/interfaces/card';
 import { Payment } from '@shared/interfaces/payment';
 import { User } from '@shared/interfaces/user';
-import { LocalStorageService } from '@shared/services/local-storage.service';
-import { PicPayService } from '@shared/services/picpay.service';
-import { PicPayStore } from '@shared/stores/picpay.store';
 import { Subscription } from 'rxjs';
+import { PicPayService } from '@services/picpay.service';
+import { LocalStorageService } from '@services/local-storage.service';
+import { PicPayStore } from '@stores/picpay.store';
+import { PayingScreenService } from '@shared/components/paying-screen/paying-screen.service';
 
 @Component({
   selector: 'ngx-payment',
@@ -27,7 +28,8 @@ export class PaymentComponent implements OnInit, OnDestroy {
     private formBuilder: FormBuilder,
     private picPayStore: PicPayStore,
     private picPayService: PicPayService,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    private payingScreenService: PayingScreenService
   ) {}
 
   get amount(): AbstractControl {
@@ -41,7 +43,7 @@ export class PaymentComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.payment = this.formBuilder.group({
       amount: new FormControl(0, [Validators.min(0.01), Validators.max(99999.99)]),
-      comment: new FormControl('', Validators.maxLength(150)),
+      comment: new FormControl('', Validators.maxLength(50)),
     });
 
     this.subs.add(
@@ -87,9 +89,11 @@ export class PaymentComponent implements OnInit, OnDestroy {
       comment: this.payment.value.comment,
     };
 
+    this.payingScreenService.open();
+
     this.picPayService.payment(payment).subscribe((paymentResponse: Payment) => {
       this.localStorageService.savePayment(paymentResponse).subscribe(() => {
-        // TODO: fechar tela com pagamento concluído
+        this.payingScreenService.close();
       });
     });
   }

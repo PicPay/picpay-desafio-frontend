@@ -1,7 +1,18 @@
-<div *ngIf="!users">loading...</div>
-
-<div class="users" *ngIf="users">
-  <div class="users__user" *ngFor="let user of users">
-    <ngx-card-user [user]="user"></ngx-card-user>
+<div class="users">
+  <div class="users-not-found" *ngIf="users && !users.length">
+    <h3>Sem amigos por aqui</h3>
+    <img class="users-not-found__image" src="/assets/users_not_found.svg" alt="Users not found" />
   </div>
+
+  <ng-container *ngIf="users; else loadingTemplate">
+    <div class="users__user" *ngFor="let user of users">
+      <ngx-card-user [user]="user"></ngx-card-user>
+    </div>
+  </ng-container>
 </div>
+
+<ng-template #loadingTemplate>
+  <div class="users__user" *ngFor="let i of [1, 2, 3, 4, 5, 6]">
+    <ngx-card-user></ngx-card-user>
+  </div>
+</ng-template>

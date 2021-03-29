@@ -17,7 +17,6 @@ export class PicPayService {
   users(): Observable<User[]> {
     return this.http.get(`${this.api}/v2/5d531c4f2e0000620081ddce`).pipe(
       map((users: User[]) => {
-        // TODO: add filter
         return users;
       })
     );

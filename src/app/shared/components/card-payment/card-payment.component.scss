@@ -44,20 +44,27 @@
         flex: 1;
         display: flex;
         flex-direction: column;
-        white-space: nowrap;
-        overflow: hidden;
+    }
 
-        &--truncated {
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
+    &__comment {
+        font-size: 14px;
+        padding: 4px 0;
+        @include force-break();
     }
 
     &__date {
         color: lighten($dark, 20%);
+        margin-top: 2px;
+    }
+
+    &__detail {
+        display: flex;
+        align-items: flex-end;
+        flex-direction: column;
     }
 
     &__amount {
         color: $primary;
+        margin-top: 10px;
     }
 }
