@@ -7,13 +7,12 @@ import { CardPaymentModule } from '@shared/components/card-payment/card-payment.
 import { of } from 'rxjs';
 
 import { PaymentsComponent } from './payments.component';
-import { PaymentsModule } from './payments.module';
 
 describe('PaymentsComponent', () => {
   let component: PaymentsComponent;
   let fixture: ComponentFixture<PaymentsComponent>;
 
-  beforeEach(async(() => {
+  const configureModule = (routerParams = {}) => {
     TestBed.configureTestingModule({
       declarations: [PaymentsComponent],
       imports: [RouterTestingModule, CardPaymentModule],
@@ -28,7 +27,7 @@ describe('PaymentsComponent', () => {
             routerState: {
               root: {
                 firstChild: {
-                  params: of({ id: 1 }),
+                  params: of(routerParams),
                 },
               },
             },
@@ -36,15 +35,47 @@ describe('PaymentsComponent', () => {
         },
       ],
     }).compileComponents();
-  }));
+  };
 
-  beforeEach(() => {
+  const createComponent = () => {
     fixture = TestBed.createComponent(PaymentsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+  };
+
+  describe('PaymentsComponent without user param', () => {
+    beforeEach(() => {
+      configureModule();
+    });
+
+    beforeEach(() => {
+      createComponent();
+    });
+
+    it('should create', () => {
+      expect(component).toBeTruthy();
+    });
+
+    it('test if it is not full page', () => {
+      expect(component.isFullPage).toBeTruthy();
+    });
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  describe('PaymentsComponent with user param', () => {
+    beforeEach(() => {
+      configureModule({ id: 1 });
+    });
+
+    beforeEach(() => {
+      createComponent();
+    });
+
+    it('should create', () => {
+      expect(component).toBeTruthy();
+    });
+
+    it('test if it is full page', () => {
+      expect(component.isFullPage).toBeFalsy();
+    });
   });
 });

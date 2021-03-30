@@ -8,6 +8,4 @@ import { User } from '@shared/interfaces/user';
 })
 export class CardUserComponent {
   @Input() user: User;
-
-  constructor() {}
 }

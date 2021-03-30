@@ -21,4 +21,13 @@ describe('ButtonPayComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('test pay emit event', () => {
+    jest.spyOn(component.pay, 'emit');
+
+    const event = new MouseEvent('click');
+    component.onPay(event);
+
+    expect(component.pay.emit).toHaveBeenCalledWith(event);
+  });
 });

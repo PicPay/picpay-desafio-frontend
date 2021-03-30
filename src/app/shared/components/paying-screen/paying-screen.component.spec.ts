@@ -6,6 +6,7 @@ import { PayingScreenComponent } from './paying-screen.component';
 import { PayingScreenService } from './paying-screen.service';
 
 describe('PayingScreenComponent', () => {
+  let router: Router;
   let component: PayingScreenComponent;
   let fixture: ComponentFixture<PayingScreenComponent>;
 
@@ -25,6 +26,7 @@ describe('PayingScreenComponent', () => {
                 },
               },
             },
+            navigate: () => {},
           },
         },
       ],
@@ -33,11 +35,26 @@ describe('PayingScreenComponent', () => {
 
   beforeEach(() => {
     fixture = TestBed.createComponent(PayingScreenComponent);
+    router = TestBed.get(Router);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('test on get user id', () => {
+    expect(component.userId).toEqual(1);
+  });
+
+  it('test on done', () => {
+    jest.spyOn(router, 'navigate');
+    jest.spyOn(component.done, 'emit');
+
+    component.onDone();
+
+    expect(router.navigate).toHaveBeenCalledWith(['/users', component.userId]);
+    expect(component.done.emit).toHaveBeenCalledWith(true);
   });
 });

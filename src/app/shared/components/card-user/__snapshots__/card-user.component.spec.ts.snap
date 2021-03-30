@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardUserComponent should create snapshot with user: with_user 1`] = `
+<ngx-card-user
+  user={[Function Object]}
+>
+  <div
+    class="card"
+    tabindex="0"
+  >
+    <img
+      alt="User image"
+      class="card__image"
+      src="http://test1.png"
+    />
+    <div
+      class="card__info"
+    >
+      <span
+        class="card__name card__info--truncated"
+      >
+        Test 1
+      </span>
+      <small
+        class="card__info--truncated"
+      >
+        @test1
+      </small>
+    </div>
+  </div>
+</ngx-card-user>
+`;
+
+exports[`CardUserComponent should create snapshot without user: without_user 1`] = `
+<ngx-card-user
+  user="null"
+>
+  <div
+    class="card"
+  >
+    <ngx-skeleton-loader>
+      
+      <span
+        aria-busy="true"
+        aria-valuemax="100"
+        aria-valuemin="0"
+        aria-valuetext="Loading..."
+        class="loader progress"
+        role="progressbar"
+        style="width: 70px; height: 70px; margin: 0px 10px 0px 0px; border-radius: 10px;"
+        tabindex="0"
+      />
+    </ngx-skeleton-loader>
+    <div
+      class="card__info"
+    >
+      <ngx-skeleton-loader>
+        
+        <span
+          aria-busy="true"
+          aria-valuemax="100"
+          aria-valuemin="0"
+          aria-valuetext="Loading..."
+          class="loader progress"
+          role="progressbar"
+          style="width: 150px; margin: 0px;"
+          tabindex="0"
+        />
+      </ngx-skeleton-loader>
+      <ngx-skeleton-loader>
+        
+        <span
+          aria-busy="true"
+          aria-valuemax="100"
+          aria-valuemin="0"
+          aria-valuetext="Loading..."
+          class="loader progress"
+          role="progressbar"
+          style="width: 80px; margin: 0px;"
+          tabindex="0"
+        />
+      </ngx-skeleton-loader>
+    </div>
+  </div>
+</ngx-card-user>
+`;

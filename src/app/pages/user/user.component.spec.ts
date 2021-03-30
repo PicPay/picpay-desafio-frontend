@@ -1,5 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { ActivatedRoute } from '@angular/router';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MockPicPayService } from '@mocks/MockPicPayService';
 import { PicPayService } from '@services/picpay.service';
@@ -11,13 +12,20 @@ import { of } from 'rxjs';
 import { UserComponent } from './user.component';
 
 describe('UserComponent', () => {
+  let router: Router;
   let component: UserComponent;
   let fixture: ComponentFixture<UserComponent>;
 
-  beforeEach(async(() => {
+  const configureModule = (params) => {
     TestBed.configureTestingModule({
       declarations: [UserComponent],
-      imports: [RouterTestingModule, CardUserModule, ButtonPayModule, NgxSkeletonLoaderModule],
+      imports: [
+        HttpClientTestingModule,
+        RouterTestingModule,
+        CardUserModule,
+        ButtonPayModule,
+        NgxSkeletonLoaderModule,
+      ],
       providers: [
         {
           provide: PicPayService,
@@ -26,20 +34,61 @@ describe('UserComponent', () => {
         {
           provide: ActivatedRoute,
           useValue: {
-            params: of({ id: 1 }),
+            params,
           },
         },
       ],
     }).compileComponents();
-  }));
+  };
 
-  beforeEach(() => {
+  const createComponent = () => {
     fixture = TestBed.createComponent(UserComponent);
+    router = TestBed.get(Router);
     component = fixture.componentInstance;
     fixture.detectChanges();
+  };
+
+  describe('UserComponent with invalid user id', () => {
+    beforeEach(() => {
+      configureModule(of({ id: 100 }));
+    });
+
+    beforeEach(() => {
+      createComponent();
+    });
+
+    it('should create', () => {
+      expect(component).toBeTruthy();
+    });
+
+    it('test navigate to not found page', () => {
+      jest.spyOn(router, 'navigate').mockReturnValue(null);
+
+      component.ngOnInit();
+
+      expect(router.navigate).toHaveBeenCalledWith(['/not-found']);
+    });
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  describe('UserComponent with user param', () => {
+    beforeEach(() => {
+      configureModule(of({ id: 1 }));
+    });
+
+    beforeEach(() => {
+      createComponent();
+    });
+
+    it('should create', () => {
+      expect(component).toBeTruthy();
+    });
+
+    it('test that should not navigate to the page not found', () => {
+      jest.spyOn(router, 'navigate').mockReturnValue(null);
+
+      component.ngOnInit();
+
+      expect(router.navigate).toHaveBeenCalledTimes(0);
+    });
   });
 });

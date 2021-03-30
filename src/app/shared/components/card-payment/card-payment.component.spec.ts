@@ -38,4 +38,23 @@ describe('CardPaymentComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should create snapshot with payment', () => {
+    expect(fixture).toMatchSnapshot('with_payment');
+  });
+
+  it('should create snapshot without payment', () => {
+    component.payment = null;
+
+    component.ngOnInit();
+    fixture.detectChanges();
+
+    expect(fixture).toMatchSnapshot('without_payment');
+  });
+
+  it('test load user on init', () => {
+    expect(component.user.id).toEqual(1);
+    expect(component.user.name).toEqual('Test 1');
+    expect(component.user.username).toEqual('@test1');
+  });
 });

@@ -5,8 +5,4 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
-  title = 'Desafio Picpay Front-end';
-
-  constructor() {}
-}
+export class AppComponent {}

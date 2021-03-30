@@ -7,4 +7,8 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class ButtonPayComponent {
   @Output() pay = new EventEmitter();
+
+  onPay(event: Event): void {
+    this.pay.emit(event);
+  }
 }

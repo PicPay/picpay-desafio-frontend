@@ -13,6 +13,7 @@ module.exports = {
   collectCoverageFrom: [
     'src/app/**/*.ts',
     '!src/app/**/*module.ts',
+    '!src/app/services/picpay.service.ts',
     '!src/mocks/*'
   ],
   coverageThreshold: {

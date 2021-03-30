@@ -24,6 +24,7 @@ export class PayingScreenService {
   ) {}
 
   open(): void {
+    /* istanbul ignore else */
     if (!this.isOpen) {
       this.isOpen = true;
 

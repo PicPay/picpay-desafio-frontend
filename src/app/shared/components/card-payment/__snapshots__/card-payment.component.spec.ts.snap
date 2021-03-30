@@ -1,0 +1,158 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardPaymentComponent should create snapshot with payment: with_payment 1`] = `
+<ngx-card-payment
+  payment={[Function Object]}
+  picPayStore={[Function PicPayStore]}
+  user={[Function Object]}
+>
+  <div
+    class="card"
+    tabindex="0"
+  >
+    
+    <div
+      class="card__icon card__icon--withou-image"
+    >
+      <span
+        class="mdi mdi-currency-usd"
+      />
+    </div>
+    
+    <div
+      class="card__info"
+    >
+      <div>
+        <strong>
+          Test 1
+        </strong>
+      </div>
+      
+      <div
+        class="card__comment"
+      >
+        <span>
+          Test comment
+        </span>
+      </div>
+      <div
+        class="card__date"
+      >
+        <span>
+          a few seconds ago
+        </span>
+      </div>
+    </div>
+    <div
+      class="card__detail"
+    >
+      <span>
+        **** 1234
+      </span>
+      <span
+        class="card__amount"
+      >
+        R$100.00
+      </span>
+    </div>
+  </div>
+</ngx-card-payment>
+`;
+
+exports[`CardPaymentComponent should create snapshot without payment: without_payment 1`] = `
+<ngx-card-payment
+  payment="null"
+  picPayStore={[Function PicPayStore]}
+  user={[Function Object]}
+>
+  <div
+    class="card"
+  >
+    <div
+      class="card__icon"
+    >
+      <ngx-skeleton-loader>
+        
+        <span
+          aria-busy="true"
+          aria-valuemax="100"
+          aria-valuemin="0"
+          aria-valuetext="Loading..."
+          class="loader progress"
+          role="progressbar"
+          style="width: 50px; height: 50px; margin: 0px 10px 0px 0px; border-radius: 100%;"
+          tabindex="0"
+        />
+      </ngx-skeleton-loader>
+    </div>
+    <div
+      class="card__info"
+    >
+      <div>
+        <ngx-skeleton-loader>
+          
+          <span
+            aria-busy="true"
+            aria-valuemax="100"
+            aria-valuemin="0"
+            aria-valuetext="Loading..."
+            class="loader progress"
+            role="progressbar"
+            style="width: 120px; margin: 0px;"
+            tabindex="0"
+          />
+        </ngx-skeleton-loader>
+      </div>
+      <div>
+        <ngx-skeleton-loader>
+          
+          <span
+            aria-busy="true"
+            aria-valuemax="100"
+            aria-valuemin="0"
+            aria-valuetext="Loading..."
+            class="loader progress"
+            role="progressbar"
+            style="width: 100px; height: 15px; margin: 0px;"
+            tabindex="0"
+          />
+        </ngx-skeleton-loader>
+      </div>
+    </div>
+    <div
+      class="card__detail"
+    >
+      <div>
+        <ngx-skeleton-loader>
+          
+          <span
+            aria-busy="true"
+            aria-valuemax="100"
+            aria-valuemin="0"
+            aria-valuetext="Loading..."
+            class="loader progress"
+            role="progressbar"
+            style="width: 70px; height: 15px;"
+            tabindex="0"
+          />
+        </ngx-skeleton-loader>
+      </div>
+      <div>
+        <ngx-skeleton-loader>
+          
+          <span
+            aria-busy="true"
+            aria-valuemax="100"
+            aria-valuemin="0"
+            aria-valuetext="Loading..."
+            class="loader progress"
+            role="progressbar"
+            style="width: 60px; height: 15px; margin: 0px;"
+            tabindex="0"
+          />
+        </ngx-skeleton-loader>
+      </div>
+    </div>
+  </div>
+</ngx-card-payment>
+`;
