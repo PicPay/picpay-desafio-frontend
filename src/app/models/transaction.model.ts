@@ -1,4 +1,3 @@
-
 interface TransactionPayload {
     card_number: string;
     cvv: number;
