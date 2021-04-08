@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import 'rxjs/add/operator/finally';
+
 import { UsersService } from './users.service';
 
 @Component({
@@ -12,6 +13,10 @@ export class UsersComponent implements OnInit {
   loading = { users: true, img: 'https://cdn.dribbble.com/users/1199240/screenshots/6452874/cards2.gif' };
 
   userList: Array<object>;
+  userPayment: Array<object>;
+  viewModal: boolean;
+
+  //TODO: setar um tipo da variavel
   alert: any;
 
   constructor(private usersService: UsersService) { }
@@ -24,6 +29,8 @@ export class UsersComponent implements OnInit {
       text: '',
       view: false
     };
+
+    this.viewModal = false;
   }
 
   getUsers() {
@@ -40,4 +47,8 @@ export class UsersComponent implements OnInit {
     )
   }
 
+  setUser(user){
+    this.userPayment = user;
+    this.viewModal = true;
+  }
 }

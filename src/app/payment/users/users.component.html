@@ -1,3 +1,6 @@
+
+<app-modal [userPayment]="userPayment" [viewModal]="viewModal"></app-modal>
+
 <!-- TODO: criar um componente reutilizável -->
 <section class="alert" *ngIf="alert.view">
     <p [innerText]="alert.text"></p>
@@ -25,7 +28,7 @@
             </div>
         </div>
 
-        <button type="button" class="pay-button">
+        <button type="button" class="pay-button" (click)="setUser(user)">
             Pagar
         </button>
     </div>

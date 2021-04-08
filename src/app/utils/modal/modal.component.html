@@ -1,5 +1,5 @@
 <!-- TODO: implementar serviço -->
-<div class="modal-backdrop">
+<div class="modal-backdrop" *ngIf="viewModal">
     <div class="modal">
         <div class="title">Pagamento para <span>Nome do Usuário</span></div>
 
@@ -18,7 +18,7 @@
         </div>
     </div>
 
-    <div class="modal">
+    <!-- <div class="modal">
         <div class="title">
             Recibo de pagamento
         </div>
@@ -27,5 +27,5 @@
             O pagamento foi concluido com sucesso.<br />
             O pagamento <strong>não</strong> foi concluido com sucesso.
         </div>
-    </div>
+    </div> -->
 </div>
