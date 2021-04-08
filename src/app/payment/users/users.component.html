@@ -1,52 +1,32 @@
-<div class="users">
-    <div class="user">
-        <img src="https://randomuser.me/api/portraits/men/9.jpg" />
-        <div class="info-wrapper">
-            <div class="user-name">
-                Nome do Usuário X
-            </div>
+<!-- TODO: criar um componente reutilizável -->
+<section class="alert" *ngIf="alert.view">
+    <p [innerText]="alert.text"></p>
+</section>
 
-            <div class="user-id-username">
-                ID: X - Username: @usuarioX
-            </div>
-        </div>
-
-        <button type="button" class="pay-button">
-            Pagar
-        </button>
-    </div>
-
-    <div class="user">
-        <img src="https://randomuser.me/api/portraits/men/12.jpg" />
-        <div class="info-wrapper">
-            <div class="user-name">
-                Nome do Usuário X
-            </div>
-
-            <div class="user-id-username">
-                ID: X - Username: @usuarioX
-            </div>
-        </div>
-
-        <button type="button" class="pay-button">
-            Pagar
-        </button>
-    </div>
-
-    <div class="user">
-        <img src="https://randomuser.me/api/portraits/men/13.jpg" />
-        <div class="info-wrapper">
-            <div class="user-name">
-                Nome do Usuário X
-            </div>
-
-            <div class="user-id-username">
-                ID: X - Username: @usuarioX
-            </div>
-        </div>
-
-        <button type="button" class="pay-button">
-            Pagar
-        </button>
-    </div>
+<!-- TODO: criar um componente reutilizável -->
+<div *ngIf="loading.users" [ngClass]="loading.users? 'loading':''">
+    <img [src]="loading.img">
 </div>
+
+<section class="users">
+    <div class="user" *ngFor="let user of userList">
+        <img [src]="user.img" [alt]="user.name" [title]="user.name" />
+        <div class="info-wrapper">
+            <div class="user-name">
+                <span [innerText]="user.name"></span>
+            </div>
+
+            <div class="user-id-username">
+                <!-- TODO: tirar CSS de linha -->
+                <div style="display: flex;">
+                    <p>ID: <span [innerText]="user.id"></span></p>
+                    <p>Username: <span [innerText]="'- ' + user.username"></span></p>
+                </div>
+            </div>
+        </div>
+
+        <button type="button" class="pay-button">
+            Pagar
+        </button>
+    </div>
+</section>
