@@ -1,4 +1,3 @@
-
 <app-modal [userPayment]="userPayment" [viewModal]="viewModal"></app-modal>
 
 <!-- TODO: criar um componente reutilizável -->
@@ -11,25 +10,18 @@
     <img [src]="loading.img">
 </div>
 
-<section class="users">
-    <div class="user" *ngFor="let user of userList">
-        <img [src]="user.img" [alt]="user.name" [title]="user.name" />
-        <div class="info-wrapper">
-            <div class="user-name">
-                <span [innerText]="user.name"></span>
-            </div>
-
+<section class="content">
+    <h4>Contatos</h4>
+    <div class="user d-flex pointer" *ngFor="let user of userList" 
+        (click)="setUser(user)">
+        <img [src]="user.img" [alt]="user.name" [title]="user.name" height="50px" />
+        <div>
             <div class="user-id-username">
-                <!-- TODO: tirar CSS de linha -->
-                <div style="display: flex;">
-                    <p>ID: <span [innerText]="user.id"></span></p>
-                    <p>Username: <span [innerText]="'- ' + user.username"></span></p>
-                </div>
+                <span [innerText]="user.username"></span>
+            </div>
+            <div class="user-name">
+                <small [innerText]="user.name"></small>
             </div>
         </div>
-
-        <button type="button" class="pay-button" (click)="setUser(user)">
-            Pagar
-        </button>
     </div>
 </section>

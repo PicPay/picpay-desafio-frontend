@@ -1,81 +1,87 @@
-// FIXME: ajustar o SASS
+@import "../../app.component.scss";
+@import "../../payment/users/users.component.scss";
+
 .modal-backdrop {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-  
-    position: fixed;
-    top: 0;
-    left: 0;
-  
-    height: 100vh;
-    width: 100vw;
-  }
-  
-  .modal-backdrop.hidden {
-    display: none;
-  }
-  
-  .modal-backdrop:after {
-    content: "";
-  
-    background: rgba(0, 0, 0, 0.5);
-  
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    z-index: -1;
-  }
-  
-  .modal {
-    background: #fff;
-    margin: 32px 0;
-    width: 500px;
-  }
-  
-  .modal > .title {
-    background: #474971;
-    color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  height: 100vh;
+  width: 100vw;
+}
+
+.modal-backdrop.hidden {
+  display: none;
+}
+
+.modal-backdrop:after {
+  content: "";
+
+  background: rgba(0, 0, 0, 0.5);
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+}
+
+.modal {
+  background: $white;
+  width: 500px;
+  border-radius: 5px;
+
+  .title {
+    background: $gray;
+    color: $black;
     font-weight: 500;
     font-size: 16px;
     padding: 16px 24px;
+    border-radius: 5px 5px 0px 0px;
+    font-weight: 600;
   }
-  
-  .modal > .title > span {
-    color: #cddc39;
+
+  .content {
+    input {
+      text-align: left !important;
+      border: none;
+      font-size: 20px;
+    }
+
+    select {
+      color: $gray-dark;
+      margin-top: 5px;
+      padding: 5px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      background: $white;
+      font-weight: 600;
+      font-size: 11px;
+    }
+
+    input:focus,
+    select:focus {
+      outline: none;
+    }
+
+    button {
+      background: $green;
+      border-radius: 40px;
+      color: $white;
+      width: 35%;
+      height: 35px;
+      font-size: 16px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: 0.25s ease-in;
+      max-width: 154px;
+      text-align: center;
+    }
   }
-  
-  .modal > .content {
-    padding: 32px;
-    text-align: center;
-  }
-  
-  .modal > .content > input {
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 32px;
-    height: 48px;
-    padding: 0 8px;
-  }
-  
-  .modal > .content > .cards > select {
-    background: #fff;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 32px;
-    height: 48px;
-    margin-top: 12px;
-  }
-  
-  .modal > .content > button {
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 32px;
-    height: 48px;
-    padding: 0 8px;
-    margin-top: 24px;
-  }
-  
+}

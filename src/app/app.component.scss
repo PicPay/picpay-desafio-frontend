@@ -1,0 +1,30 @@
+// CORES
+
+$white: #ffffff;
+$black: #000000;
+$green: #11c76f;
+$gray: #d9dce380;
+$gray-dark: #00000080;
+
+@mixin display-flex {
+    display: flex;
+}
+
+.d-flex {
+    @include display-flex();
+
+    &-collapse {
+        @include display-flex();
+
+        justify-content: space-between;
+    }
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.content {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}

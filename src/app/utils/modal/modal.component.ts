@@ -107,4 +107,8 @@ export class ModalComponent implements OnInit, OnChanges {
         );
     }
   }
+
+  closeModal(){
+    this.viewModal = !this.viewModal;
+  }
 }

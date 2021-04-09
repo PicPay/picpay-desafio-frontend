@@ -3,44 +3,59 @@
     <img [src]="loading.img">
 </div>
 
-<div class="modal-backdrop" *ngIf="viewModal">
+<section class="modal-backdrop" *ngIf="viewModal">
+    <span (click)="closeModal()">fechar</span>
+
     <!-- Modal - Payment -->
     <div class="modal" id="payment" *ngIf="modal.viewPayment">
-        <div class="title">Pagamento para <span>Nome do Usuário</span></div>
+        <header class="title">Nova transação</header>
 
-        <div class="content">
-            <form [formGroup]="transaction" (ngSubmit)="setPayment()">
-                <input type="text" currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"
-                    placeholder="R$ 0,00" formControlName="value" maxlength="10" />
+        <article class="content">
+            <div class="user d-flex pointer">
+                <div class="header d-flex">
+                    <img [src]="userPayment.img" [alt]="userPayment.name" [title]="userPayment.name" height="60px" />
+                    <div>
+                        <div class="user-id-username">
+                            <span [innerText]="userPayment.username"></span>
+                        </div>
+                        <div class="user-name">
+                            <small [innerText]="userPayment.name"></small>
+                        </div>
+                        <div class="content">
+                            <form [formGroup]="transaction" (ngSubmit)="setPayment()">
+                                <input type="text" currencyMask
+                                    [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" placeholder="R$ 0,00"
+                                    formControlName="value" maxlength="10" />
 
+                                <form [formGroup]="card" (change)="setCard()">
+                                    <div class="cards">
+                                        <select formControlName="card_number">
+                                            <option disabled selected value="null">Escolha um cartão</option>
+                                            <option *ngFor="let card of cards" [value]="card.card_number">
+                                                Cartão com final
+                                                <span [innerText]="card.card_number.substring(13,16)"></span>
+                                            </option>
+                                        </select>
+                                    </div>
+                                </form>
 
-                <form [formGroup]="card" (change)="setCard()">
-                    <div class="cards">
-                        <select formControlName="card_number">
-                            <option disabled selected value="null">Escolha um cartão</option>
-                            <option *ngFor="let card of cards" [value]="card.card_number">
-                                Cartão com final
-                                <span [innerText]="card.card_number.substring(13,16)"></span>
-                            </option>
-                        </select>
+                                <button type="submit" class="pay-button" [disabled]="transaction.invalid">
+                                    Pagar
+                                </button>
+                            </form>
+                        </div>
                     </div>
-                </form>
-
-                <button type="submit" class="pay-button" [disabled]="transaction.invalid">
-                    Pagar
-                </button>
-            </form>
-        </div>
+                </div>
+            </div>
+        </article>
     </div>
 
     <!-- Modal - Receipt -->
     <div class="modal" id="receipt" *ngIf="modal.viewReceipt">
-        <div class="title">
-            Recibo de pagamento
-        </div>
+        <header class="title">Recibo de pagamento</header>
 
         <div class="content">
-            <div [innerHtml]="modal.text"></div>
+            <div [innerHtml]="modal.text" style="margin-left: 15px;"></div>
         </div>
     </div>
-</div>
+</section>

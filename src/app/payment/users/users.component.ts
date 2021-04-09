@@ -57,6 +57,6 @@ export class UsersComponent implements OnInit {
 
   setUser(user){
     this.userPayment = user;
-    this.viewModal = true;
+    this.viewModal = !this.viewModal;
   }
 }
