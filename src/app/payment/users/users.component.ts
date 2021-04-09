@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+
+import { Observable } from 'rxjs';
 import 'rxjs/add/operator/finally';
 
 import { UsersService } from './users.service';
+import { User } from './users.interface';
 
 @Component({
   selector: 'app-users',
@@ -12,7 +15,8 @@ import { UsersService } from './users.service';
 export class UsersComponent implements OnInit {
   loading = { users: true, img: 'https://cdn.dribbble.com/users/1199240/screenshots/6452874/cards2.gif' };
 
-  userList: Array<object>;
+  userList: Observable<User[]>;
+  
   userPayment: Array<object>;
   viewModal: boolean;
 
@@ -23,14 +27,14 @@ export class UsersComponent implements OnInit {
 
   ngOnInit() {
     this.getUsers();
+    this.inicialValues();
 
     // TODO: criar um componente reutilizável
     this.alert = {
       text: '',
       view: false
     };
-
-    this.viewModal = false;
+    
   }
 
   getUsers() {
@@ -45,6 +49,10 @@ export class UsersComponent implements OnInit {
         error.status == 500 && (this.alert.text = "Infelizmente, tivemos um problema");
       }
     )
+  }
+
+  private inicialValues(){
+    this.viewModal = false;
   }
 
   setUser(user){
