@@ -1,31 +1,46 @@
-<!-- TODO: implementar serviço -->
+<!-- TODO: criar um componente reutilizável -->
+<div *ngIf="loading.users" [ngClass]="loading.modal? 'loading':''">
+    <img [src]="loading.img">
+</div>
+
 <div class="modal-backdrop" *ngIf="viewModal">
-    <div class="modal">
+    <!-- Modal - Payment -->
+    <div class="modal" id="payment" *ngIf="modal.viewPayment">
         <div class="title">Pagamento para <span>Nome do Usuário</span></div>
 
         <div class="content">
-            <input type="number" placeholder="R$ 0,00" />
+            <form [formGroup]="transaction" (ngSubmit)="setPayment()">
+                <input type="text" currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"
+                    placeholder="R$ 0,00" formControlName="value" maxlength="10" />
 
-            <div class="cards">
-                <select>
-                    <option selected>Cartão com final 0123</option>
-                </select>
-            </div>
 
-            <button type="button" class="pay-button">
-                Pagar
-            </button>
+                <form [formGroup]="card" (change)="setCard()">
+                    <div class="cards">
+                        <select formControlName="card_number">
+                            <option disabled selected value="null">Escolha um cartão</option>
+                            <option *ngFor="let card of cards" [value]="card.card_number">
+                                Cartão com final
+                                <span [innerText]="card.card_number.substring(13,16)"></span>
+                            </option>
+                        </select>
+                    </div>
+                </form>
+
+                <button type="submit" class="pay-button" [disabled]="transaction.invalid">
+                    Pagar
+                </button>
+            </form>
         </div>
     </div>
 
-    <!-- <div class="modal">
+    <!-- Modal - Receipt -->
+    <div class="modal" id="receipt" *ngIf="modal.viewReceipt">
         <div class="title">
             Recibo de pagamento
         </div>
 
         <div class="content">
-            O pagamento foi concluido com sucesso.<br />
-            O pagamento <strong>não</strong> foi concluido com sucesso.
+            <div [innerHtml]="modal.text"></div>
         </div>
-    </div> -->
+    </div>
 </div>

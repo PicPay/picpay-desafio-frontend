@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
+import { ReactiveFormsModule } from '@angular/forms';
+
+import { CurrencyMaskModule } from "ng2-currency-mask";
 
 import { AppComponent } from './app.component';
 import { ModalComponent } from './utils/modal/modal.component';
@@ -14,7 +17,9 @@ import { UsersComponent } from './payment/users/users.component';
   ],
   imports: [
     BrowserModule,
-    HttpModule
+    HttpModule,
+    CurrencyMaskModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
