@@ -7,6 +7,9 @@ import { UserDetailComponent } from "./components/user-detail/user-detail.compon
 import { ButtonComponent } from "./button/button.component";
 import { ModalPaymentComponent } from "./components/modals/modal-payment/modal-payment.component";
 import { ListUsersComponent } from "./components/list-users/list-users.component";
+import { RouterModule } from '@angular/router';
+import { AppRoutingModule } from './app-routing.module';
+
 
 @NgModule({
   declarations: [
@@ -17,7 +20,7 @@ import { ListUsersComponent } from "./components/list-users/list-users.component
     ModalPaymentComponent,
     ListUsersComponent,
   ],
-  imports: [BrowserModule, HttpClientModule],
+  imports: [BrowserModule, HttpClientModule, RouterModule.forRoot([]), AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
 })
