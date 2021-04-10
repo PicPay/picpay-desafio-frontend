@@ -9,8 +9,11 @@ import { environment } from "../../../environments/environment.prod";
 })
 export class UsersService {
   constructor(private httpClient: HttpClient) {}
+ 
 
-  getAllUser(): Observable<User[]> {
+
+  getAllUsers(): Observable<User[]> {
     return this.httpClient.get<User[]>(environment.apiUser);
+   
   }
 }

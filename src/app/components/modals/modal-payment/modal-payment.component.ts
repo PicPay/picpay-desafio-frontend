@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-modal-payment',
   templateUrl: './modal-payment.component.html',
@@ -11,5 +12,6 @@ export class ModalPaymentComponent implements OnInit {
 
   ngOnInit() {
   }
+
 
 }
