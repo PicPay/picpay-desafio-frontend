@@ -4,6 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from "../../../environments/environment.prod"
 import { TransactionResponse } from "src/app/models/transactionResponse.model";
+import { TransactionPayload } from "src/app/models/transaction.model";
 
 @Injectable({
   providedIn: "root",
@@ -13,7 +14,7 @@ export class PaymentService {
 
 
   SendPayment(payload: TransactionPayload): Observable<TransactionResponse> {
-    console.log(payload);
+    
     return this.httpClient.post<TransactionResponse>(environment.apiTransaction, payload).pipe(catchError(this.handleError));
   }
 

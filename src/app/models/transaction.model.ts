@@ -1,4 +1,4 @@
-interface TransactionPayload {
+export interface TransactionPayload {
     card_number: string;
     cvv: number;
     expiry_date: string;

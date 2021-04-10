@@ -6,6 +6,6 @@
       <div class="user-name">{{user.name}}</div>
       <div class="user-id-username">ID: {{user.id}} - Username: {{user.username}}</div>
     </div>
-    <app-button class="pay-button" [buttonName]="'Pagar'" ></app-button>
+    <app-button class="pay-button" [buttonName]="'Pagar'" (click)="openModalPayment()"></app-button>
   </div>
  

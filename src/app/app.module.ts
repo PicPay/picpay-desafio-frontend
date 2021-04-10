@@ -9,6 +9,9 @@ import { ModalPaymentComponent } from "./components/modals/modal-payment/modal-p
 import { ListUsersComponent } from "./components/list-users/list-users.component";
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
+
 
 
 @NgModule({
@@ -19,9 +22,11 @@ import { AppRoutingModule } from './app-routing.module';
     ButtonComponent,
     ModalPaymentComponent,
     ListUsersComponent,
+   
   ],
-  imports: [BrowserModule, HttpClientModule, RouterModule.forRoot([]), AppRoutingModule],
+  imports: [BrowserModule, HttpClientModule, RouterModule.forRoot([]), AppRoutingModule, BrowserAnimationsModule, MatDialogModule],
   providers: [],
   bootstrap: [AppComponent],
+  entryComponents: [ModalPaymentComponent],
 })
 export class AppModule {}

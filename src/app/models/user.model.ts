@@ -3,4 +3,7 @@ export interface User {
   name: string;
   img: string;
   username: string;
+
+  
 }
+
