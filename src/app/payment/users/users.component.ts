@@ -13,12 +13,11 @@ import { User } from './users.interface';
   providers: [UsersService]
 })
 export class UsersComponent implements OnInit {
-  loading = { users: true, img: 'https://cdn.dribbble.com/users/1199240/screenshots/6452874/cards2.gif' };
-
   userList: Observable<User[]>;
   
   userPayment: Array<object>;
   viewModal: boolean;
+  viewLoading: boolean;
 
   //TODO: setar um tipo da variavel
   alert: any;
@@ -39,7 +38,7 @@ export class UsersComponent implements OnInit {
 
   getUsers() {
     this.usersService.getUsers()
-    .finally(() => {this.loading.users = false})
+    .finally(() => {this.viewLoading = false})
     .subscribe(
       success => {
         this.userList = success;
@@ -53,6 +52,7 @@ export class UsersComponent implements OnInit {
 
   private inicialValues(){
     this.viewModal = false;
+    this.viewLoading = true;
   }
 
   setUser(user){

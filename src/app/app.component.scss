@@ -5,6 +5,7 @@ $black: #000000;
 $green: #11c76f;
 $gray: #d9dce380;
 $gray-dark: #00000080;
+$red: #ff0000;
 
 @mixin display-flex {
     display: flex;
@@ -27,4 +28,9 @@ $gray-dark: #00000080;
 .content {
     margin-top: 15px;
     margin-bottom: 15px;
+}
+
+.disabled{
+    cursor: not-allowed;
+    
 }

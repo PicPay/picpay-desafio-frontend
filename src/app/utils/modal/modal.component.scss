@@ -58,7 +58,6 @@
       color: $gray-dark;
       margin-top: 5px;
       padding: 5px;
-      margin-bottom: 15px;
       border-radius: 5px;
       background: $white;
       font-weight: 600;
@@ -66,7 +65,8 @@
     }
 
     input:focus,
-    select:focus {
+    select:focus,
+    button:focus {
       outline: none;
     }
 
@@ -82,6 +82,19 @@
       transition: 0.25s ease-in;
       max-width: 154px;
       text-align: center;
+      margin-top: 15px;
     }
   }
+}
+
+#closeModal {
+  color: $white;
+  width: 500px;
+  display: flex;
+  justify-content: flex-end;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.hasError {
+  color: $red;
 }

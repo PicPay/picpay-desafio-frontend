@@ -8,12 +8,14 @@ import { CurrencyMaskModule } from "ng2-currency-mask";
 import { AppComponent } from './app.component';
 import { ModalComponent } from './utils/modal/modal.component';
 import { UsersComponent } from './payment/users/users.component';
+import { LoadingComponent } from './utils/loading/loading.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ModalComponent,
-    UsersComponent
+    UsersComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,

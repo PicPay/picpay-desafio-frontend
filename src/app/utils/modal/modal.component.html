@@ -1,10 +1,7 @@
-<!-- TODO: criar um componente reutilizável -->
-<div *ngIf="loading.users" [ngClass]="loading.modal? 'loading':''">
-    <img [src]="loading.img">
-</div>
+<app-loading *ngIf="viewLoading"></app-loading>
 
 <section class="modal-backdrop" *ngIf="viewModal">
-    <span (click)="closeModal()">fechar</span>
+    <span id="closeModal" class="pointer" (click)="closeModal()">X</span>
 
     <!-- Modal - Payment -->
     <div class="modal" id="payment" *ngIf="modal.viewPayment">
@@ -26,6 +23,8 @@
                                 <input type="text" currencyMask
                                     [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" placeholder="R$ 0,00"
                                     formControlName="value" maxlength="10" />
+                                <br>
+                                <small class="hasError" *ngIf="transaction.get('value').hasError('required') && transaction.get('value').touched">Informe um valor a ser transferido</small>
 
                                 <form [formGroup]="card" (change)="setCard()">
                                     <div class="cards">
@@ -36,10 +35,11 @@
                                                 <span [innerText]="card.card_number.substring(13,16)"></span>
                                             </option>
                                         </select>
+                                        <br>
+                                        <small class="hasError" *ngIf="card.get('card_number').hasError('required') && card.get('card_number').touched">Informe um cartão</small>
                                     </div>
                                 </form>
-
-                                <button type="submit" class="pay-button" [disabled]="transaction.invalid">
+                                <button type="submit" [disabled]="transaction.invalid" [class.disabled]="transaction.invalid" class="pointer">
                                     Pagar
                                 </button>
                             </form>

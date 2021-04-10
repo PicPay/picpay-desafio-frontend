@@ -1,14 +1,11 @@
 <app-modal [userPayment]="userPayment" [viewModal]="viewModal"></app-modal>
+<app-loading  *ngIf="viewLoading"></app-loading>
 
-<!-- TODO: criar um componente reutilizável -->
+<!-- FIXME: criar um componente reutilizável -->
 <section class="alert" *ngIf="alert.view">
     <p [innerText]="alert.text"></p>
 </section>
 
-<!-- TODO: criar um componente reutilizável -->
-<div *ngIf="loading.users" [ngClass]="loading.users? 'loading':''">
-    <img [src]="loading.img">
-</div>
 
 <section class="content">
     <h4>Contatos</h4>

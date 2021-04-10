@@ -15,15 +15,15 @@ import { Payload } from './payload.interface';
   providers: [PayloadService]
 })
 export class ModalComponent implements OnInit, OnChanges {
-  loading = { modal: true, img: 'https://cdn.dribbble.com/users/1199240/screenshots/6452874/cards2.gif' };
 
   @Input() userPayment;
   @Input() viewModal;
-
+  
   transactionPayload: Observable<Payload[]>;
-
+  
   cards: Array<any>;
   modal: any;
+  viewLoading: boolean;
 
   transaction: FormGroup;
   card: FormGroup;
@@ -96,10 +96,14 @@ export class ModalComponent implements OnInit, OnChanges {
       const endpoint = "https://run.mocky.io/v3/533cd5d7-63d3-4488-bf8d-4bb8c751c989";
 
       this.payloadService.setPayment(endpoint, JSON.stringify(this.transaction.value))
-        .finally(() => { this.modal.viewPayment = false, this.modal.viewReceipt = true, this.loading.modal = false})
+        .finally(() => { this.modal.viewPayment = false, this.modal.viewReceipt = true, this.viewLoading = false})
         .subscribe(
           sucess => {
             this.modal.text = "O pagamento foi concluido com sucesso."
+
+            setTimeout(() => {
+              window.location.reload();
+            }, 2000);
           }, error => {
             error.status == 404 && (this.modal.text = "Dados não encontrados.");
             error.status == 500 && (this.modal.text = "O pagamento <strong>não</strong> foi concluido com sucesso");
