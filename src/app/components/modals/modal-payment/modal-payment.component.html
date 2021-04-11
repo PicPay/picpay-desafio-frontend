@@ -1,6 +1,6 @@
 <div class="modal-backdrop">
   <div class="modal">
-    <div class="title">Pagamento para <span>Nome do Usuário</span></div>
+    <div class="title">Pagamento para <span>{{name}}</span></div>
 
     <form class="content" [formGroup]="transactionForm">
       <input
@@ -8,6 +8,7 @@
         placeholder="R$ 0,00"
         formControlName="valuePayment"
       />
+  
       <div class="cards">
         <select formControlName="card">
           <option

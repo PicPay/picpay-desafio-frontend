@@ -29,10 +29,10 @@ export class ListUsersComponent implements OnInit {
   }
 
  
-  public openModalPayment(): void {
+  public openModalPayment(userId: number, name: string): void {
     this.paymentModal.open(ModalPaymentComponent, {
-      data: this.users,
-      
+      data: {id: userId, name: name}
     });
+    
   }
 }

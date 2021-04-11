@@ -3,9 +3,11 @@ import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 import { PaymentService } from "../../../services/payment/payment.service";
 import { TransactionResponse } from "src/app/models/transactionResponse.model";
 import { TransactionPayload } from "../../../models/transaction.model";
-import { User } from "../../../models/user.model";
+
 import { Card } from "../../../models/card.model";
 import { CardService } from "../../../services/card/card.service";
+import { MatDialog } from "@angular/material/dialog";
+import { ModalStatusPaymentComponent } from "../modal-status-payment/modal-status-payment.component";
 import {
   FormGroup,
   Validators,
@@ -21,6 +23,8 @@ import {
 export class ModalPaymentComponent implements OnInit {
   private cards: Card[];
   private card: [];
+  private userId: number;
+  public name: string;
   private transactionPayload: TransactionPayload;
   transactionForm: FormGroup;
 
@@ -31,55 +35,60 @@ export class ModalPaymentComponent implements OnInit {
     private paymentService: PaymentService,
     private cardService: CardService,
     private formBuilder: FormBuilder,
-    @Inject(MAT_DIALOG_DATA) data
+    public paymentModal: MatDialog,
+    @Inject(MAT_DIALOG_DATA) data: any
   ) {
+    this.userId = data.id;
+    this.name = data.name;
     this.transactionForm = this.formBuilder.group({
-      valuePayment: [
-        "",
-        Validators.compose([
-          Validators.required,
-          Validators.min(0.01),
-          Validators.max(1000.0),
-        ]),
-      ],
+      valuePayment: ["", [Validators.required, Validators.min(0.01)]],
       card: ["", Validators.required],
     });
   }
 
   ngOnInit() {
     this.cards = this.cardService.getCards();
-    console.log(this.cards)
   }
 
   public sendPayment() {
     const card_number: string = this.transactionForm.get("card").value;
     const value: number = this.transactionForm.get("valuePayment").value;
-    console.log(card_number, value);
+    const dataCard = this.cards.filter(
+      (card) => card.card_number == card_number
+    )[0];
 
-    // if (this.transactionForm.get("card").value === 1111111111111111) {
-    //   const transactionPayload: TransactionPayload = {
-    //     card_number,
-    //     value,
-    //     cvv: returnData[1].cvv,
-    //     expiry_date: returnData[1].expiry_date,
-    //   };
-    // } else {
-    //   const transactionPayload: TransactionPayload = {
-    //     card_number,
-    //     value,
-    //     cvv: returnData[1].cvv,
-    //     expiry_date: returnData[1].expiry_date,
-    //   };
-    // }
+    const transactionPayload: TransactionPayload = {
+      card_number,
+      value,
+      cvv: dataCard.cvv,
+      expiry_date: dataCard.expiry_date,
+      destination_user_id: this.userId,
+    };
+    if (this.validCardNumber(card_number) && this.transactionForm.valid) {
+      this.paymentService
+        .SendPayment(transactionPayload)
+        .subscribe((response: TransactionResponse) => {
+          this.transactionResponse = response;
+          console.log(this.transactionResponse);
 
-    this.paymentService
-      .SendPayment(this.transactionPayload)
-      .subscribe((response: TransactionResponse) => {
-        this.transactionResponse = response;
-        console.log(this.transactionResponse);
+          this.paymentModal.open(ModalStatusPaymentComponent, {
+            data: {
+              type: true,  message:"O pagamento foi concluido com sucesso."
+            },
+          });
+        });
+    } else {
+      this.paymentModal.open(ModalStatusPaymentComponent, {
+        data: { type: false, message:"O pagamento não foi concluido com sucesso." },
       });
+    }
   }
   close(): void {
     this.dialogRef.close();
   }
+  validCardNumber(cardNumber: string): boolean {
+    return cardNumber == "1111111111111111";
+  }
+
+  
 }

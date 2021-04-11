@@ -28,6 +28,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   imports: [BrowserModule, HttpClientModule, RouterModule.forRoot([]), AppRoutingModule, BrowserAnimationsModule, MatDialogModule, FormsModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [ModalPaymentComponent],
+  entryComponents: [ModalPaymentComponent, ModalStatusPaymentComponent],
 })
 export class AppModule {}
