@@ -11,6 +11,7 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -24,7 +25,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     ListUsersComponent,
    
   ],
-  imports: [BrowserModule, HttpClientModule, RouterModule.forRoot([]), AppRoutingModule, BrowserAnimationsModule, MatDialogModule],
+  imports: [BrowserModule, HttpClientModule, RouterModule.forRoot([]), AppRoutingModule, BrowserAnimationsModule, MatDialogModule, FormsModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
   entryComponents: [ModalPaymentComponent],
