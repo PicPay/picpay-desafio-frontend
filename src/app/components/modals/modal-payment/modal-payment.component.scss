@@ -1,4 +1,4 @@
-.modal-backdrop {
+.modal {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -8,51 +8,54 @@
   left: 0;
   height: 100vh;
   width: 100vw;
-}
 
-.modal {
-  background: #fff;
-  margin: 32px 0;
-  width: 500px;
-  height: 280px;
-}
+  &__content {
+    background: #fff;
+    margin: 32px 0;
+    width: 500px;
+    height: 290px;
 
-.modal > .title {
-  background: #474971;
-  color: #ffffff;
-  font-weight: 500;
-  font-size: 16px;
-  padding: 16px 24px;
-  display: flex;
-  justify-content: center;
-}
+    &__title {
+      background: #474971;
+      color: #ffffff;
+      font-weight: 500;
+      font-size: 16px;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: center;
 
-.modal > .title > span {
-  color: #cddc39;
-}
+      span {
+        color: #cddc39;
+      }
+    }
+    &__form {
+      margin-top: 2rem;
+      text-align: center;
+      border-radius: 6px;
 
-.modal > .content {
-  padding: 32px;
-  text-align: center;
-  border-radius: 6px;
-}
-
-.modal > .content > input {
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 16px;
-  width: 300px;
-  height: 48px;
-  padding: 0 3px;
-}
-
-.modal > .content > .cards > select {
-  background: #fff;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 16px;
-  height: 48px;
-  margin-top: 12px;
-  margin-bottom: 24px;
-  width: 300px;
+      input {
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 16px;
+        width: 300px;
+        height: 48px;
+        padding: 0 3px;
+      }
+      select {
+        background: #fff;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 16px;
+        height: 48px;
+        width: 300px;
+        margin-top: 1rem;
+      }
+    }
+    &__button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-top: 2rem;
+    }
+  }
 }

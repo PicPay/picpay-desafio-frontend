@@ -1,4 +1,4 @@
-.modal-backdrop {
+.modal {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -8,33 +8,28 @@
   left: 0;
   height: 100vh;
   width: 100vw;
-}
 
-.modal {
-  background: #fff;
-  width: 500px;
-  height: 280px;
-}
+  &__content {
+    background: #fff;
+    width: 500px;
+    height: 200px;
 
-.modal > .title {
-  color: #fff;
-  font-weight: 500;
-  font-size: 16px;
-  padding: 16px 24px;
-  background-color: #474971;
-  justify-content: center;
-  display: flex;
-}
-
-.modal > .title > span {
-  color: #cddc39;
-}
-
-.modal > .content {
-  height: 230px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: black;
+    &__title {
+      color: #fff;
+      font-weight: 500;
+      font-size: 16px;
+      padding: 16px 24px;
+      background-color: #474971;
+      justify-content: center;
+      display: flex;
+    }
+    &__message {
+      height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: black;
+    }
+  }
 }

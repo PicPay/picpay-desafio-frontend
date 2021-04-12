@@ -1,12 +1,19 @@
-<div class="content"><div class="users" *ngFor="let user of users">
-  <div class="user">
-    <img src={{user.img}} />
-    <div class="info-wrapper">
-      <div class="user-name">{{user.name}}</div>
-      <div class="user-id-username">{{user.username}}</div>
-      <div class="user-id-username">Id: {{user.id}}</div>
-      
+<section class="container">
+  <div class="content" *ngFor="let user of users">
+    <div class="content__users">
+      <img src="{{ user.img }}" />
+      <div class="content__users__info-wrapper">
+        <div class="content__users__info-wrapper--user">{{ user.name }}</div>
+        <div class="content__users__info-wrapper--username">
+          {{ user.username }}
+        </div>
+        <div class="content__users__info-wrapper--id">Id:{{ user.id }}</div>
+      </div>
+      <app-button
+        class="content__users__button"
+        [buttonName]="'Pagar'"
+        (click)="openModalPayment(user.id, user.name)"
+      ></app-button>
     </div>
-    <app-button class="pay-button" [buttonName]="'Pagar'" (click)="openModalPayment(user.id, user.name)"></app-button>
-  </div></div>
- 
+  </div>
+</section>
