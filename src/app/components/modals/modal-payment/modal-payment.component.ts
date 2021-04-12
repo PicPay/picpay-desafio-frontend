@@ -3,7 +3,6 @@ import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 import { PaymentService } from "../../../services/payment/payment.service";
 import { TransactionResponse } from "src/app/models/transactionResponse.model";
 import { TransactionPayload } from "../../../models/transaction.model";
-
 import { Card } from "../../../models/card.model";
 import { CardService } from "../../../services/card/card.service";
 import { MatDialog } from "@angular/material/dialog";
@@ -12,7 +11,6 @@ import {
   FormGroup,
   Validators,
   FormBuilder,
-  FormControl,
 } from "@angular/forms";
 
 @Component({
@@ -88,7 +86,7 @@ export class ModalPaymentComponent implements OnInit {
       }
     }
     else{
-      alert("Something went wrong... Please, insert or select a value!")
+      alert("Something went wrong... Please, insert a value!")
     }
   }
 
