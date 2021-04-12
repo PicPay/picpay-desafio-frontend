@@ -1,3 +1,9 @@
+$white-color: #ffff;
+$green-color: #cddc39;
+$gray-color: #ccc;
+$title-color: #474971;
+
+
 .modal {
   display: flex;
   align-items: center;
@@ -10,14 +16,14 @@
   width: 100vw;
 
   &__content {
-    background: #fff;
+    background: $white-color;
     margin: 32px 0;
     width: 500px;
     height: 290px;
 
     &__title {
-      background: #474971;
-      color: #ffffff;
+      background: $title-color;
+      color: $white-color;
       font-weight: 500;
       font-size: 16px;
       padding: 16px 24px;
@@ -25,7 +31,7 @@
       justify-content: center;
 
       span {
-        color: #cddc39;
+        color: $green-color;
       }
     }
     &__form {
@@ -34,7 +40,7 @@
       border-radius: 6px;
 
       input {
-        border: 1px solid #ccc;
+        border: 1px solid $gray-color;
         border-radius: 6px;
         font-size: 16px;
         width: 300px;
@@ -42,8 +48,8 @@
         padding: 0 3px;
       }
       select {
-        background: #fff;
-        border: 1px solid #ccc;
+        background: $white-color;
+        border: 1px solid $gray-color;
         border-radius: 6px;
         font-size: 16px;
         height: 48px;

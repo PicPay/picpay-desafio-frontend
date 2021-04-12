@@ -1,3 +1,5 @@
+@import "./scss/variables.scss";
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -9,7 +11,7 @@
 html,
 body {
   font-family: sans-serif;
-  background-color: #888bcf;
+  background-color: $background-color;
   margin: 0;
   outline: 0;
   box-sizing: border-box;
@@ -22,6 +24,7 @@ body {
 button {
   cursor: pointer;
   outline: none;
+  background-color: $button-color;
 }
 input {
   outline: none;
@@ -34,3 +37,4 @@ ul {
   font-style: normal;
   src: url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
 }
+

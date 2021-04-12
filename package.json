@@ -23,6 +23,7 @@
     "@angular/router": "~8.2.13",
     "ng2-currency-mask": "^11.0.0",
     "ngx-currency": "^2.5.2",
+    "node-sass": "^5.0.0",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"

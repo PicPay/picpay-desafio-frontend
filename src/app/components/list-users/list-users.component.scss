@@ -1,16 +1,19 @@
+$card-color: linear-gradient(186.5deg, #3c3e64 0.83%, #1d1e2a 100%);
+$card-color-hover: linear-gradient(186.5deg, #383a5c 0.83%, #0b0b11 100%);
+$white-color: #ffff;
+
 .container {
   display: flex;
   flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
-  background-color: #888bcf;
 }
 .content {
   &__users {
     margin: 10px;
     border-radius: 6px;
-    background: linear-gradient(186.5deg, #3c3e64 0.83%, #1d1e2a 100%);
-    color: #ffff;
+    background: $card-color;
+    color: $white-color;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -19,7 +22,7 @@
     justify-content: center;
     font-weight: 300;
     &:hover {
-      background: linear-gradient(186.5deg, #383a5c 0.83%, #0b0b11 100%);
+      background: $card-color-hover;
     }
     img {
       border-radius: 50%;
@@ -36,4 +39,3 @@
     }
   }
 }
-

@@ -7,11 +7,7 @@ import { Card } from "../../../models/card.model";
 import { CardService } from "../../../services/card/card.service";
 import { MatDialog } from "@angular/material/dialog";
 import { ModalStatusPaymentComponent } from "../modal-status-payment/modal-status-payment.component";
-import {
-  FormGroup,
-  Validators,
-  FormBuilder,
-} from "@angular/forms";
+import { FormGroup, Validators, FormBuilder } from "@angular/forms";
 
 @Component({
   selector: "app-modal-payment",
@@ -84,9 +80,8 @@ export class ModalPaymentComponent implements OnInit {
         });
         this.dialogRef.close();
       }
-    }
-    else{
-      alert("Something went wrong... Please, insert a value!")
+    } else {
+      alert("Something went wrong... Please, insert a value!");
     }
   }
 

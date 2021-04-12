@@ -1,3 +1,8 @@
+$white-color: #ffff;
+$black-color: #000;
+$gray-color: #ccc;
+
+
 .modal {
   display: flex;
   align-items: center;
@@ -10,16 +15,16 @@
   width: 100vw;
 
   &__content {
-    background: #fff;
+    background: $white-color;
     width: 500px;
     height: 200px;
 
     &__title {
-      color: #fff;
+      color: $white-color;
       font-weight: 500;
       font-size: 16px;
       padding: 16px 24px;
-      background-color: #474971;
+      background-color: $title-color;
       justify-content: center;
       display: flex;
     }
@@ -29,7 +34,7 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      color: black;
+      color: $black-color;
     }
   }
 }
