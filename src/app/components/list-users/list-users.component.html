@@ -1,11 +1,10 @@
-<div class="users">
-  <div class="user"
-  *ngFor="let user of users">
+<div class="content"><div class="users" *ngFor="let user of users">
+  <div class="user">
     <img src={{user.img}} />
     <div class="info-wrapper">
       <div class="user-name">{{user.name}}</div>
       <div class="user-id-username">ID: {{user.id}} - Username: {{user.username}}</div>
     </div>
     <app-button class="pay-button" [buttonName]="'Pagar'" (click)="openModalPayment(user.id, user.name)"></app-button>
-  </div>
+  </div></div>
  

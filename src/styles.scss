@@ -1,13 +1,36 @@
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  padding: 0;
+  font-family: "Montserrat", sans-serif !important;
 }
 
 html,
 body {
   font-family: sans-serif;
+  background-color: #888bcf;
   margin: 0;
-  padding: 0;
+  outline: 0;
+  box-sizing: border-box;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+button {
+  cursor: pointer;
+  outline: none;
+}
+input {
+  outline: none;
+}
+ul {
+  list-style: none;
+}
+@font-face {
+  font-family: "Montserrat", sans-serif !important;
+  font-style: normal;
+  src: url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
+}

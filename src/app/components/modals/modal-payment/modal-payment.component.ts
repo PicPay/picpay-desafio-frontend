@@ -22,12 +22,9 @@ import {
 })
 export class ModalPaymentComponent implements OnInit {
   private cards: Card[];
-  private card: [];
   private userId: number;
   public name: string;
-  private transactionPayload: TransactionPayload;
   transactionForm: FormGroup;
-
   transactionResponse: TransactionResponse;
 
   constructor(
@@ -64,31 +61,38 @@ export class ModalPaymentComponent implements OnInit {
       expiry_date: dataCard.expiry_date,
       destination_user_id: this.userId,
     };
-    if (this.validCardNumber(card_number) && this.transactionForm.valid) {
-      this.paymentService
-        .SendPayment(transactionPayload)
-        .subscribe((response: TransactionResponse) => {
-          this.transactionResponse = response;
-          console.log(this.transactionResponse);
+    if (this.transactionForm.valid) {
+      if (this.validCardNumber(card_number)) {
+        this.paymentService
+          .SendPayment(transactionPayload)
+          .subscribe((response: TransactionResponse) => {
+            this.transactionResponse = response;
+            console.log(this.transactionResponse);
 
-          this.paymentModal.open(ModalStatusPaymentComponent, {
-            data: {
-              type: true,  message:"O pagamento foi concluido com sucesso."
-            },
+            this.paymentModal.open(ModalStatusPaymentComponent, {
+              data: {
+                type: true,
+                message: "O pagamento foi concluido com sucesso.",
+              },
+            });
           });
+        this.dialogRef.close();
+      } else {
+        this.paymentModal.open(ModalStatusPaymentComponent, {
+          data: {
+            type: false,
+            message: "O pagamento não foi concluido com sucesso.",
+          },
         });
-    } else {
-      this.paymentModal.open(ModalStatusPaymentComponent, {
-        data: { type: false, message:"O pagamento não foi concluido com sucesso." },
-      });
+        this.dialogRef.close();
+      }
+    }
+    else{
+      alert("Something went wrong... Please, insert or select a value!")
     }
   }
-  close(): void {
-    this.dialogRef.close();
-  }
+
   validCardNumber(cardNumber: string): boolean {
     return cardNumber == "1111111111111111";
   }
-
-  
 }

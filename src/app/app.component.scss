@@ -104,3 +104,8 @@
 //   padding: 0 8px;
 //   margin-top: 24px;
 // }
+::ng-deep.mat-dialog-container {
+  background: none;
+  box-shadow: none;
+}
+

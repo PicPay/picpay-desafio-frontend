@@ -1,25 +1,40 @@
-
+.content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  background-color: #888bcf;
+}
+.users {
+  justify-content: center;
+  margin: 10px;
+}
 .user {
-    background: linear-gradient(186.5deg, #3c3e64 0.83%, #1d1e2a 100%);
-    box-shadow: 0 1px 0 #ffffff, 0px -1px 0px #ffffff;
-    color: #fff;
-    padding: 20px 40px;
-  
-    display: flex;
-    align-items: center;
+  border-radius: 6px;
+  background: linear-gradient(186.5deg, #3c3e64 0.83%, #1d1e2a 100%);
+  color: #ffff;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 400px;
+  height: 350px;
+  justify-content: center;
+  font-weight: 300;
+  &:hover {
+    background: linear-gradient(186.5deg, #383a5c 0.83%, #0b0b11 100%);
   }
-  
-  .user > img {
-    border-radius: 50%;
-    height: 80px;
-    width: 80px;
-  }
-  
-  .user > .info-wrapper {
-    margin-left: 16px;
-  }
-  
-  .user > .pay-button {
-    margin-left: auto;
-  }
-  
+}
+
+.user > img {
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+}
+
+.user > .info-wrapper {
+  margin-top: 2rem;
+}
+
+.user > .pay-button {
+  margin-top: 4rem;
+}

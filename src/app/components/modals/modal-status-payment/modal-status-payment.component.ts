@@ -6,12 +6,18 @@ import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
   templateUrl: "./modal-status-payment.component.html",
   styleUrls: ["./modal-status-payment.component.scss"],
 })
-
 export class ModalStatusPaymentComponent implements OnInit {
-  private state: Boolean;
-  constructor(@Inject(MAT_DIALOG_DATA) data: any) {
-    this.state = data.type;
+  private state: object;
+  constructor(
+    @Inject(MAT_DIALOG_DATA) data: any,
+    public ModalStatusPaymentComponent: MatDialogRef<ModalStatusPaymentComponent>
+  ) {
+    this.state = data;
+    
+    setTimeout(() => {
+      this.ModalStatusPaymentComponent.close();
+    }, 2000);
   }
-
+  
   ngOnInit() {}
 }

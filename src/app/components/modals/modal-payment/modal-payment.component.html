@@ -11,18 +11,17 @@
   
       <div class="cards">
         <select formControlName="card">
+          <option value="" disabled selected>Selecione um cartão</option>
           <option
             selected
-            [value]="card.card_number"
+            [value]="card.card_number" 
             *ngFor="let card of cards"
           >
             Cartão com final {{ card.card_number.substr(-4) }}
           </option>
         </select>
       </div>
-      <button type="button" class="pay-button" (click)="sendPayment()">
-        Pagar
-      </button>
+      <app-button class="pay-button" [buttonName]="'Pagar'"[buttonColor]="'#fffff'" (click)="sendPayment()"></app-button>
     </form>
   </div>
 </div>
