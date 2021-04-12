@@ -4,7 +4,6 @@ import { User } from "../../models/user.model";
 import { MatDialog } from "@angular/material/dialog";
 import { ModalPaymentComponent } from "../../components/modals/modal-payment/modal-payment.component";
 
-
 @Component({
   selector: "app-list-users",
   templateUrl: "./list-users.component.html",
@@ -13,6 +12,7 @@ import { ModalPaymentComponent } from "../../components/modals/modal-payment/mod
 export class ListUsersComponent implements OnInit {
   @Input()
   users: User[];
+  page: number = 1;
 
   constructor(
     @Inject(UsersService) private usersService: UsersService,

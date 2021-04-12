@@ -5,11 +5,7 @@
     </div>
 
     <form class="modal__content__form" [formGroup]="transactionForm">
-      <input
-        type="number"
-        placeholder="R$ 0,00"
-        formControlName="valuePayment"
-      />
+      <input type="text" placeholder="R$ 0,00" formControlName="valuePayment" />
 
       <select formControlName="card">
         <option value="" disabled selected>Selecione um cartão</option>

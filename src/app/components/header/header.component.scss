@@ -1,0 +1,17 @@
+
+.navbar {
+  width: 100%;
+  height: 200px;
+  background-color: #474971;
+  margin-bottom: 2rem;
+  &__content {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+      height: 100px;
+      width: 300px;
+    }
+  }
+}

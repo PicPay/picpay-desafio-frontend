@@ -7,6 +7,18 @@ $white-color: #ffff;
   flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
+
+  &__pagination {
+    padding-top: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    color: white;
+
+    .ngx-pagination a{
+      color: $white-color
+    }
+  }
 }
 .content {
   &__users {
@@ -39,3 +51,4 @@ $white-color: #ffff;
     }
   }
 }
+

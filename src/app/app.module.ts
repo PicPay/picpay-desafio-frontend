@@ -11,6 +11,9 @@ import { AppRoutingModule } from "./app-routing.module";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatDialogModule } from "@angular/material/dialog";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { HeaderComponent } from './components/header/header.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+
 
 @NgModule({
   declarations: [
@@ -19,6 +22,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     ButtonComponent,
     ModalPaymentComponent,
     ListUsersComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,6 +33,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     MatDialogModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxPaginationModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
