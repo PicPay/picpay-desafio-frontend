@@ -1,0 +1,52 @@
+<form [formGroup]="formGroup" (ngSubmit)="createTransaction()">
+    <div class="modal-backdrop">
+        <div class="modal">
+            <div class="title-container">
+                <div class="title">
+                    <p>Pagamento para:</p>
+                    <span>{{ user.name }}</span>
+                </div>
+
+                <div class="close-button" type="text" (click)="toCloseModal()">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+                </div>
+            </div>
+            <div class="content">
+                <div>
+                    <input prefix="R$ " type="text" mask="separator.2" [decimalMarker]="','" thousandSeparator="." [dropSpecialCharacters]="true" placeholder="R$ 0,00" formControlName="value" />
+                    <div class="error" *ngIf="f.value.errors && submitted">
+                        <div *ngIf="f.value.errors.min">Valor deve ser maior que 0.</div>
+                        <div *ngIf="f.value.errors.required">
+                            Digite o valor do pagamento.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cards">
+                    <select formControlName="card_selected">
+            <option value="null" disabled selected>
+              Selecione um cartão
+            </option>
+            <option *ngFor="let card of cards" [value]="card.card_number">
+              Cartão com final {{ card.card_number.substr(-4) }}
+            </option>
+          </select>
+                    <div class="error" *ngIf="f.card_selected.errors && submitted">
+                        <div *ngIf="f.card_selected.errors.required">
+                            É necessario escolher um cartão.
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="pay-button">Pagar</button>
+            </div>
+        </div>
+    </div>
+</form>

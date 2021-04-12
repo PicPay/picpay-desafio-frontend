@@ -1,0 +1,38 @@
+<div class="modal-backdrop">
+    <div class="modal">
+        <div class="title-container">
+            <div class="title">Recibo de pagamento</div>
+        </div>
+        <div class="content">
+            <div class="aproved">
+                <svg *ngIf="aprovedTransaction" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+          />
+        </svg>
+            </div>
+
+            <div class="denied">
+                <svg *ngIf="!aprovedTransaction" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"
+          />
+        </svg>
+            </div>
+
+            <p *ngIf="aprovedTransaction">O pagamento foi concluido com sucesso.</p>
+            <p *ngIf="!aprovedTransaction">
+                O pagamento <strong>não</strong> pode ser concluído.
+            </p>
+            <button class="pay-button" type="text" (click)="toCloseModal()">
+        Ok
+      </button>
+        </div>
+    </div>
+</div>

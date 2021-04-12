@@ -1,0 +1,28 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  border: none;
+}
+
+html,
+body,
+button {
+  font-family: "Montserrat", sans-serif;
+  background-color: #ececec;
+}
+
+input:focus,
+button:focus,
+select:focus {
+  outline: thin dotted;
+  outline: 0px auto -webkit-focus-ring-color;
+  outline-offset: 0px;
+}
+
+button {
+  cursor: pointer;
+}
+/*# sourceMappingURL=styles.css.map */

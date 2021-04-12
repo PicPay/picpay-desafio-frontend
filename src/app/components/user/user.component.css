@@ -1,0 +1,90 @@
+/* List of Users */
+.user {
+  background-color: #f8f8f8;
+  width: 50rem;
+  border-radius: 1rem;
+  padding: 20px 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 5px 0;
+}
+
+.user:hover {
+  -webkit-box-shadow: 1px 1px 5px rgba(156, 156, 156, 0.87);
+          box-shadow: 1px 1px 5px rgba(156, 156, 156, 0.87);
+}
+
+.user .img-container {
+  border: 2px solid rgba(110, 209, 110, 0.623);
+  width: 7rem;
+  height: 7rem;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.user img {
+  border-radius: 50%;
+  height: 6rem;
+  width: 6rem;
+}
+
+.user .user-data {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.user .user-username {
+  font-size: 1.2rem;
+}
+
+.user .user-name {
+  font-size: 0.9rem;
+  color: #333333;
+}
+
+.user .user-id-username {
+  font-size: 0.8rem;
+  color: gray;
+}
+
+.user .info-wrapper {
+  margin-left: 1rem;
+}
+
+.user .info-wrapper div {
+  margin: 2px 0;
+}
+
+.user .pay-button {
+  border-radius: 3rem;
+  width: 7rem;
+  height: 2rem;
+  border: 1px solid green;
+  color: green;
+  background-color: white;
+}
+
+.user .pay-button:hover {
+  background-color: green;
+  color: white;
+}
+/*# sourceMappingURL=user.component.css.map */

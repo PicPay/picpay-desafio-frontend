@@ -1,0 +1,128 @@
+/* Payment Modal */
+.modal-backdrop {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+}
+
+.modal-backdrop:after {
+  content: "";
+  background: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+}
+
+.modal {
+  background: #fff;
+  width: 25rem;
+  height: 22rem;
+  border-radius: 1rem;
+}
+
+.content {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.content input,
+.content select {
+  border: 1px solid #ccc;
+  background: #fff;
+  height: 3rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  width: 15rem;
+  padding: 0 1rem;
+}
+
+.content select {
+  margin-top: 12px;
+}
+
+.content input {
+  margin-top: 2.8rem;
+}
+
+.pay-button {
+  color: white;
+  background-color: green;
+  border-radius: 5rem;
+  width: 10rem;
+  height: 2.5rem;
+  font-size: 1rem;
+  margin-top: 1.2rem;
+}
+
+.pay-button:hover {
+  background-color: #08aa08;
+}
+
+.close-button svg {
+  width: 1.5rem;
+  color: #313131;
+}
+
+.close-button svg:hover {
+  color: purple;
+}
+
+.title-container {
+  background-color: whitesmoke;
+  height: 5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 1rem 2rem;
+  border-radius: 0.9rem 0.9rem 0 0;
+  color: #030303;
+  font-size: 0.9rem;
+}
+
+.title-container span {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+  color: #488f54;
+}
+
+.error {
+  color: #d33b3b;
+  font-size: 0.9rem;
+}
+/*# sourceMappingURL=payment-modal.component.css.map */

@@ -1,0 +1,15 @@
+<div class="user">
+    <div class="user-data">
+        <div class="img-container">
+            <img src="{{ user.img }}" />
+        </div>
+        <div class="info-wrapper">
+            <div class="user-username">{{ user.username }}</div>
+            <div class="user-name">{{ user.name }}</div>
+            <div class="user-id-username">ID: {{ user.id }}</div>
+        </div>
+    </div>
+    <button type="button" class="pay-button" (click)="showModalPayment()">
+    Pagar
+  </button>
+</div>

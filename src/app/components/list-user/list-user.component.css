@@ -1,0 +1,97 @@
+.users {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.users-container {
+  padding-top: 6rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+nav {
+  background-color: #5fc870;
+  width: 100%;
+  height: 5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0 4rem;
+  position: fixed;
+}
+
+nav img {
+  width: 8rem;
+}
+
+nav input {
+  height: 2rem;
+  width: 15rem;
+  border-radius: 3rem;
+  padding: 0 1rem 0 2.5rem;
+  font-size: 1rem;
+}
+
+nav input::-webkit-input-placeholder {
+  color: #9b9b9b;
+}
+
+nav input:-ms-input-placeholder {
+  color: #9b9b9b;
+}
+
+nav input::-ms-input-placeholder {
+  color: #9b9b9b;
+}
+
+nav input::placeholder {
+  color: #9b9b9b;
+}
+
+nav .search-icon {
+  width: 2.5rem;
+  color: #474747;
+  position: absolute;
+  padding: 0.5rem;
+  padding-top: 0.8rem;
+}
+
+nav .search-user {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.pagination {
+  margin-top: 2rem;
+}
+
+.pagination ::ng-deep .ngx-pagination .current {
+  background: #355ad6;
+  border-radius: 50%;
+}
+/*# sourceMappingURL=list-user.component.css.map */
