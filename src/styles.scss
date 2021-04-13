@@ -2,12 +2,35 @@
   box-sizing: border-box;
 }
 
+@mixin flex($dir, $jus, $ali) {
+  display: flex;
+  flex-direction: $dir;
+  justify-content: $jus;
+  align-items: $ali;
+}
+
+$white: #FFFFFF;
+$black: #000000;
+$primary: #21C25E;
+$warn: #F44336;
+$neutral-gray-one: #F5F5F5;
+$neutral-gray-two: #D6D8E7;
+
 html,
 body {
   font-family: sans-serif;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  outline: 0;
+  height: 100%;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+button {
+  cursor: pointer;
+}
