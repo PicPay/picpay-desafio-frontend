@@ -4,6 +4,7 @@ import { MainComponent } from './main.component';
 import { MatCardModule } from '@angular/material/card';
 import { UsersComponent } from '../../users/users.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { MatDialogModule } from '@angular/material/dialog';
 
 describe('MainComponent', () => {
   let component: MainComponent;
@@ -14,7 +15,8 @@ describe('MainComponent', () => {
       declarations: [ MainComponent, UsersComponent ],
       imports: [
         MatCardModule,
-        HttpClientTestingModule
+        HttpClientTestingModule,
+        MatDialogModule
       ]
     })
     .compileComponents();
