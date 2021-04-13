@@ -22,6 +22,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
 import { NgxCurrencyModule } from "ngx-currency";
+import { ModalResponsePaymentComponent } from './components/modal-response-payment/modal-response-payment.component';
 
 
 @NgModule({
@@ -31,9 +32,10 @@ import { NgxCurrencyModule } from "ngx-currency";
     FooterComponent,
     MainComponent,
     UsersComponent,
-    ModalPaymentComponent
+    ModalPaymentComponent,
+    ModalResponsePaymentComponent
   ],
-  entryComponents: [ModalPaymentComponent],
+  entryComponents: [ModalPaymentComponent, ModalResponsePaymentComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

@@ -4,6 +4,7 @@ import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { cards } from 'src/app/shared/mocks/cards.mock';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { TransactionService } from 'src/app/services/transaction.service';
+import { ModalResponsePaymentComponent } from '../modal-response-payment/modal-response-payment.component';
 
 @Component({
   selector: 'app-modal-payment',
@@ -14,6 +15,7 @@ export class ModalPaymentComponent implements OnInit {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data,
+    private transactionsService: TransactionService,
     public dialog: MatDialog,
     private fb: FormBuilder
   ) {
@@ -54,7 +56,19 @@ export class ModalPaymentComponent implements OnInit {
       value: this.valuePay,
     }
 
-    console.log(payload);
+    this.transactionsService.payment(payload).subscribe(() => {
+      this.dialog.closeAll();
+
+      if(payload.card_number === "1111111111111111") {
+        this.dialog.open(ModalResponsePaymentComponent, {
+          data: {success: true}
+        });
+      } else {
+        this.dialog.open(ModalResponsePaymentComponent, {
+          data: {success: false}
+        });
+      }
+    })
   }
 
 }

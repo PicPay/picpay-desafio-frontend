@@ -1,0 +1,15 @@
+<div class="container-response-payment">
+    <h1 mat-dialog-title>{{ data.success ? "Recibo de Pagamento" : "Erro na Transação" }}</h1>
+    <p>O pagamento {{ data.success ? "" : "não" }} foi concluído com sucesso.</p>
+    <ng-container *ngIf="data.success">
+        <img src="../../../assets/check.png" alt="check" />
+   </ng-container>
+
+   <ng-container *ngIf="data.success">
+        <button mat-button mat-dialog-close class="close">Fechar</button>
+    </ng-container>
+
+    <ng-container *ngIf="!data.success">
+        <button mat-button mat-dialog-close class="retry">Tentar novamente</button>
+    </ng-container> 
+</div>

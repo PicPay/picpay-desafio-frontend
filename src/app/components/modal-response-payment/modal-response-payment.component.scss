@@ -1,0 +1,26 @@
+@import "../../../styles.scss";
+
+.container-response-payment {
+  @include flex(column, center, center);
+
+  > h1 {
+    margin: 0;
+  }
+  
+  > p {
+    margin: 8px 0 16px;
+  }
+
+  .close {
+    background: $white;
+    color: $black;
+    border: 1px solid $black;
+    margin-top: 16px;
+  }
+  
+  .retry {
+    background: $warn;
+    color: $white;
+    margin-top: 16px;
+  }
+}
