@@ -24,6 +24,7 @@
     "ng2-currency-mask": "^11.0.0",
     "ngx-currency": "^2.5.2",
     "ngx-pagination": "^5.0.0",
+    "ngx-spinner": "^11.0.1",
     "node-sass": "^5.0.0",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",

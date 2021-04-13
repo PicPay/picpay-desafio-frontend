@@ -41,9 +41,29 @@ export class ModalPaymentComponent implements OnInit {
     this.cards = this.cardService.getCards();
   }
 
+  redirectModal(type, message) {
+    return this.paymentModal.open(ModalStatusPaymentComponent, {
+      data: {
+        type: type,
+        message: message,
+      },
+    });
+  }
+
+  generatePayload(cardNumber, value, cvv, expiry_date, destination_user_id) {
+    return {
+      card_number: cardNumber,
+      value: value,
+      cvv: cvv,
+      expiry_date: expiry_date,
+      destination_user_id: destination_user_id,
+    };
+  }
+
   closeModal() {
     this.dialogRef.close();
   }
+
   public sendPayment() {
     const card_number: string = this.transactionForm.get("card").value;
     const value: number = this.transactionForm.get("valuePayment").value;
@@ -51,41 +71,24 @@ export class ModalPaymentComponent implements OnInit {
       (card) => card.card_number == card_number
     )[0];
 
-    const transactionPayload: TransactionPayload = {
-      card_number,
-      value,
-      cvv: dataCard.cvv,
-      expiry_date: dataCard.expiry_date,
-      destination_user_id: this.userId,
-    };
+    const transactionPayload: TransactionPayload = this.generatePayload(card_number, value, dataCard.cvv, dataCard.expiry_date, this.userId);
+
     if (this.transactionForm.valid) {
       if (this.validCardNumber(card_number)) {
         this.paymentService
           .SendPayment(transactionPayload)
           .subscribe((response: TransactionResponse) => {
             this.transactionResponse = response;
-            console.log(this.transactionResponse);
-
-            this.paymentModal.open(ModalStatusPaymentComponent, {
-              data: {
-                type: true,
-                message: "O pagamento foi concluido com sucesso.",
-              },
-            });
+            this.redirectModal(true, "O pagamento foi concluido com sucesso.");
           });
         this.dialogRef.close();
-      } else {
-        this.paymentModal.open(ModalStatusPaymentComponent, {
-          data: {
-            type: false,
-            message: "O pagamento não foi concluido com sucesso.",
-          },
-        });
-        this.dialogRef.close();
-      }
-    } else {
-      alert("Something went wrong... Please, insert a value!");
+        return
+      } 
+      this.redirectModal(false, "O pagamento não foi concluido com sucesso.");
+      this.dialogRef.close();
+      return;
     }
+    alert("Something went wrong... Please, insert a value!");
   }
 
   validCardNumber(cardNumber: string): boolean {

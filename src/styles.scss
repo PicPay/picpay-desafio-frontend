@@ -56,3 +56,6 @@ select {
   background: $button-color !important;
   border-radius: 6px;
 }
+.mat-progress-spinner circle, .mat-spinner circle {
+  stroke: $title-color;
+}

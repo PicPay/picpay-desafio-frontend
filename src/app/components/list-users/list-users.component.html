@@ -1,4 +1,7 @@
 <section class="container">
+  <div class="container__loading" *ngIf="loading">
+    <mat-spinner></mat-spinner>
+  </div>
   <div
     class="content"
     *ngFor="

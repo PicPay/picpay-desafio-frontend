@@ -3,6 +3,7 @@ import { UsersService } from "../../services/users/users.service";
 import { User } from "../../models/user.model";
 import { MatDialog } from "@angular/material/dialog";
 import { ModalPaymentComponent } from "../../components/modals/modal-payment/modal-payment.component";
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: "app-list-users",
@@ -13,6 +14,7 @@ export class ListUsersComponent implements OnInit {
   @Input()
   users: User[];
   page: number = 1;
+  loading: boolean = true;
 
   constructor(
     @Inject(UsersService) private usersService: UsersService,
@@ -21,6 +23,7 @@ export class ListUsersComponent implements OnInit {
   ngOnInit() {
     this.usersService.getAllUsers().subscribe((response) => {
       this.users = response;
+      this.loading = false;
     });
   }
   public openModalPayment(userId: number, name: string): void {

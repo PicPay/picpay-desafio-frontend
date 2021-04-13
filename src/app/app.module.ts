@@ -18,6 +18,8 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HeaderComponent } from "./components/header/header.component";
 import { NgxPaginationModule } from "ngx-pagination";
 
+import { MatProgressSpinnerModule } from "@angular/material";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +39,8 @@ import { NgxPaginationModule } from "ngx-pagination";
     FormsModule,
     ReactiveFormsModule,
     NgxPaginationModule,
+
+    MatProgressSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

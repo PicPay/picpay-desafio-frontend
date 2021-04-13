@@ -1,13 +1,18 @@
 $card-color: linear-gradient(186.5deg, #3c3e64 0.83%, #1d1e2a 100%);
 $card-color-hover: linear-gradient(186.5deg, #383a5c 0.83%, #0b0b11 100%);
 $white-color: #ffff;
-$pagination-color:  #474971;
+$pagination-color: #474971;
 
 .container {
   display: flex;
   flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
+
+  &__loading {
+    height: 100rem;
+    margin-top: 25vh;
+  }
 
   &__pagination {
     margin-top: 3rem;
@@ -18,41 +23,40 @@ $pagination-color:  #474971;
     justify-content: center;
     color: white;
     background-color: $pagination-color;
-    
-}
-.content {
-  &__users {
-    margin: 10px;
-    border-radius: 6px;
-    background: $card-color;
-    color: $white-color;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    width: 400px;
-    height: 350px;
-    justify-content: center;
-    font-weight: 300;
-    &:hover {
-      background: $card-color-hover;
-    }
-    @media screen and (max-width: 600px) {
-      width: 300px;
-    }
+  }
+  .content {
+    &__users {
+      margin: 10px;
+      border-radius: 6px;
+      background: $card-color;
+      color: $white-color;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      width: 400px;
+      height: 350px;
+      justify-content: center;
+      font-weight: 300;
+      &:hover {
+        background: $card-color-hover;
+      }
+      @media screen and (max-width: 600px) {
+        width: 300px;
+      }
 
-    img {
-      border-radius: 50%;
-      height: 100px;
-      width: 100px;
-    }
-    &__info-wrapper {
-      text-align: center;
-      margin-top: 2rem;
-    }
+      img {
+        border-radius: 50%;
+        height: 100px;
+        width: 100px;
+      }
+      &__info-wrapper {
+        text-align: center;
+        margin-top: 2rem;
+      }
 
-    &__button {
-      margin-top: 4rem;
+      &__button {
+        margin-top: 4rem;
+      }
     }
   }
-}
 }
