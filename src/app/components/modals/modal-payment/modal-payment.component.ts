@@ -41,6 +41,9 @@ export class ModalPaymentComponent implements OnInit {
     this.cards = this.cardService.getCards();
   }
 
+  closeModal() {
+    this.dialogRef.close();
+  }
   public sendPayment() {
     const card_number: string = this.transactionForm.get("card").value;
     const value: number = this.transactionForm.get("valuePayment").value;

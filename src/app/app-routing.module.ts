@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { NgModule  } from '@angular/core';
+
 import { RouterModule, Routes } from '@angular/router';
 import { ListUsersComponent } from './components/list-users/list-users.component';
 
@@ -13,6 +13,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [],
   exports: [ RouterModule ],
-  imports: [ RouterModule.forRoot(routes)]
+  imports: [ RouterModule.forRoot(routes)],
+
 })
 export class AppRoutingModule { }

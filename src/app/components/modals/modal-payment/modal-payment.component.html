@@ -2,6 +2,7 @@
   <div class="modal__content">
     <div class="modal__content__title">
       Pagamento para: <span> &nbsp;{{ name }}</span>
+      <app-button (click)="closeModal()" class="modal__content__title--close" [buttonName]="'x'"></app-button>
     </div>
 
     <form class="modal__content__form" [formGroup]="transactionForm">

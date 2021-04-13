@@ -1,7 +1,8 @@
 <section class="container">
   <div
     class="content"
-    *ngFor="let user of users | paginate: { itemsPerPage: 12, currentPage: page }"
+    *ngFor="
+      let user of users | paginate: { itemsPerPage: 12, currentPage: page }"
   >
     <div class="content__users">
       <img src="{{ user.img }}" />
@@ -20,6 +21,9 @@
     </div>
   </div>
   <div class="container__pagination">
-    <pagination-controls class ="a"(pageChange)="page = $event"></pagination-controls>
+    <pagination-controls
+      class="a"
+      (pageChange)="page = $event"
+    ></pagination-controls>
   </div>
 </section>

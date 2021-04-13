@@ -1,6 +1,7 @@
 $card-color: linear-gradient(186.5deg, #3c3e64 0.83%, #1d1e2a 100%);
 $card-color-hover: linear-gradient(186.5deg, #383a5c 0.83%, #0b0b11 100%);
 $white-color: #ffff;
+$pagination-color:  #474971;
 
 .container {
   display: flex;
@@ -9,16 +10,15 @@ $white-color: #ffff;
   flex-wrap: wrap;
 
   &__pagination {
+    margin-top: 3rem;
     padding-top: 1rem;
     width: 100%;
+    height: 50px;
     display: flex;
     justify-content: center;
     color: white;
-
-    .ngx-pagination a{
-      color: $white-color
-    }
-  }
+    background-color: $pagination-color;
+    
 }
 .content {
   &__users {
@@ -36,6 +36,10 @@ $white-color: #ffff;
     &:hover {
       background: $card-color-hover;
     }
+    @media screen and (max-width: 600px) {
+      width: 300px;
+    }
+
     img {
       border-radius: 50%;
       height: 100px;
@@ -51,4 +55,4 @@ $white-color: #ffff;
     }
   }
 }
-
+}

@@ -3,7 +3,6 @@ $green-color: #cddc39;
 $gray-color: #ccc;
 $title-color: #474971;
 
-
 .modal {
   display: flex;
   align-items: center;
@@ -20,6 +19,9 @@ $title-color: #474971;
     margin: 32px 0;
     width: 500px;
     height: 290px;
+    @media screen and (max-width: 600px) {
+      width: 100vw;
+    }
 
     &__title {
       background: $title-color;
@@ -29,7 +31,13 @@ $title-color: #474971;
       padding: 16px 24px;
       display: flex;
       justify-content: center;
+      position: relative;
 
+      &--close {
+        position: absolute;
+        right: 0;
+        padding-right: 10px;
+      }
       span {
         color: $green-color;
       }

@@ -1,5 +1,9 @@
 import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
+import {
+  NgModule,
+  NO_ERRORS_SCHEMA,
+  CUSTOM_ELEMENTS_SCHEMA,
+} from "@angular/core";
 import { AppComponent } from "./app.component";
 import { HttpClientModule } from "@angular/common/http";
 import { ModalStatusPaymentComponent } from "./components/modals/modal-status-payment/modal-status-payment.component";
@@ -11,9 +15,8 @@ import { AppRoutingModule } from "./app-routing.module";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatDialogModule } from "@angular/material/dialog";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { HeaderComponent } from './components/header/header.component';
-import { NgxPaginationModule } from 'ngx-pagination';
-
+import { HeaderComponent } from "./components/header/header.component";
+import { NgxPaginationModule } from "ngx-pagination";
 
 @NgModule({
   declarations: [
@@ -37,6 +40,11 @@ import { NgxPaginationModule } from 'ngx-pagination';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [ModalPaymentComponent, ModalStatusPaymentComponent],
+  entryComponents: [
+    ModalPaymentComponent,
+    ModalStatusPaymentComponent,
+    HeaderComponent,
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 })
 export class AppModule {}
