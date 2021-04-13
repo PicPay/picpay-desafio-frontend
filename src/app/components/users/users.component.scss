@@ -6,7 +6,7 @@
 
 .card-user {
   background: $white;
-  margin: 12px 16px;
+  margin-bottom: 22px;
   box-shadow: 0px -1px 10px 0px rgba($black, 0.2);
   @include flex(row, space-between, center);
 

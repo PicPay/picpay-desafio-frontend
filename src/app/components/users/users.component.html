@@ -1,11 +1,11 @@
 <div class="container">
-  <mat-card class="card-user">
+  <mat-card *ngFor="let user of users" class="card-user">
     <div class="card-user-content">
-      <img src="" alt="avatar">
+      <img src="{{ user.img }}" alt="avatar">
 
       <div class="card-user-info">
-        <p>Camilla Correia</p>
-        <p><strong>ID:</strong> 01 - <strong>Username:</strong> @srtacorreia</p>
+        <p>{{ user.name }}</p>
+        <p><strong>ID:</strong> {{ user.id }} - <strong>Username:</strong> {{ user.username }}</p>
       </div>
     </div>
 
