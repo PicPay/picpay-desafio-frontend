@@ -1,0 +1,15 @@
+@import "../../../../styles.scss";
+
+.footer {
+  box-shadow: 0px -1px 10px 0px rgba($black, 0.2);
+  @include flex(row, flex-end, center);
+}
+
+.footer > span {
+  font-size: 1.1rem;
+  font-weight: 300;
+}
+
+.footer .green {
+  color: $primary; 
+}
