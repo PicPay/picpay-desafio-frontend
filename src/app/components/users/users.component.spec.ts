@@ -5,6 +5,7 @@ import { UsersComponent } from './users.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { UsersService } from 'src/app/services/users.service';
 import { of } from 'rxjs';
+import { MatDialogModule } from '@angular/material/dialog';
 
 describe('UsersComponent', () => {
   let component: UsersComponent;
@@ -15,7 +16,8 @@ describe('UsersComponent', () => {
       declarations: [ UsersComponent ],
       imports: [
         MatCardModule,
-        HttpClientTestingModule
+        HttpClientTestingModule,
+        MatDialogModule
       ],
       providers: [UsersService]
     })
