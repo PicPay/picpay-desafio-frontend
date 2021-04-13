@@ -1,9 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 
 @Component({
-  selector: "app-user",
-  templateUrl: "./user.component.html",
-  styleUrls: ["./user.component.scss"],
+  selector: "user-card",
+  templateUrl: "./user-card.component.html",
+  styleUrls: ["./user-card.component.scss"],
 })
 export class UserComponent implements OnInit {
   @Input() user: User;

@@ -1,0 +1,156 @@
+/*---------------- Users list --------------------*/
+.users-container {
+  padding-top: 6rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media (max-width: 480px) {
+  .users-container {
+    padding-top: 8rem;
+  }
+}
+
+.users {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+/*---------------- Nav bar --------------------*/
+nav {
+  background-color: #5fc870;
+  width: 100%;
+  height: 5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0 4rem;
+  position: fixed;
+}
+
+@media (max-width: 480px) {
+  nav {
+    padding: 0 0.5rem;
+    height: 7rem;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
+nav img {
+  width: 8rem;
+}
+
+nav input {
+  height: 2rem;
+  width: 15rem;
+  border-radius: 3rem;
+  padding: 0 1rem 0 2.5rem;
+  font-size: 1rem;
+}
+
+nav input::-webkit-input-placeholder {
+  color: #9b9b9b;
+}
+
+nav input:-ms-input-placeholder {
+  color: #9b9b9b;
+}
+
+nav input::-ms-input-placeholder {
+  color: #9b9b9b;
+}
+
+nav input::placeholder {
+  color: #9b9b9b;
+}
+
+nav .search-user {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+nav .search-icon {
+  width: 2.5rem;
+  color: #474747;
+  position: absolute;
+  padding: 0.5rem;
+  padding-top: 0.8rem;
+}
+
+@media (max-width: 480px) {
+  nav .search-icon {
+    width: 2.1rem;
+    padding: 0.3rem;
+    padding-top: 0.5rem;
+  }
+}
+
+/*---------------- Pagination --------------------*/
+.pagination {
+  margin-top: 2rem;
+}
+
+@media (max-width: 280px) {
+  .pagination {
+    font-size: 0.8rem;
+  }
+}
+
+.pagination ::ng-deep .ngx-pagination .current {
+  background: #355ad6;
+  border-radius: 50%;
+}
+
+/*------------ loading --------------*/
+.loading {
+  width: 100%;
+  height: 100vh;
+  background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media (max-width: 480px) {
+  .loading img {
+    width: 50%;
+  }
+}
+/*# sourceMappingURL=users-payment.component.css.map */

@@ -1,81 +1,57 @@
-/* Payment Modal */
+@import "../../../vars.scss";
 
-.modal-backdrop {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 100vw;
-    &:after {
-        content: "";
-        background: rgba(0, 0, 0, 0.5);
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-        z-index: -1;
-    }
-}
+/* ----------------- Status Modal -------------- */
+
+
+/* ---------- Modal ----------- */
 
 .modal {
-    background: #fff;
+    background: $white;
     width: 25rem;
     height: 18rem;
     border-radius: 1rem;
-}
-
-.pay-button {
-    color: white;
-    background-color: green;
-    border-radius: 5rem;
-    width: 10rem;
-    height: 2.5rem;
-    font-size: 1rem;
-    margin-top: 2rem;
-    &:hover {
-        background-color: rgb(8, 170, 8);
+    @media (max-width: 480px) {
+        width: 90%;
     }
-}
-
-.title-container {
-    background-color: rgb(245, 245, 245);
-    height: 5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    border-radius: 0.9rem 0.9rem 0 0;
-    color: rgb(3, 3, 3);
-    font-size: 0.9rem;
-}
-
-.title-container .title {
-    font-size: 1.5rem;
-    margin-top: 1rem;
-    color: #488f54;
-}
-
-.content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    p {
-        margin-top: 0.5rem;
+    .title-container {
+        background-color: $background-light;
+        height: 5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+        border-radius: 0.9rem 0.9rem 0 0;
+        color: $black;
+        font-size: 0.9rem;
+        div {
+            font-size: 1.5rem;
+            margin-top: 1rem;
+            color: $green;
+            @media (max-width: 480px) {
+                font-size: 1.2rem;
+            }
+        }
     }
-    svg {
-        width: 2rem;
-        margin-top: 2rem;
-    }
-    .aproved svg {
-        color: rgb(8, 170, 8);
-    }
-    .denied svg {
-        color: rgb(211, 59, 59);
+    .content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        p {
+            margin-top: 0.5rem;
+            @media (max-width: 480px) {
+                text-align: center;
+            }
+        }
+        svg {
+            width: 2rem;
+            margin-top: 2rem;
+        }
+        .aproved svg {
+            color: $green-light;
+        }
+        .denied svg {
+            color: $red-error;
+        }
     }
 }

@@ -1,103 +1,80 @@
-/* Payment Modal */
+@import "../../../vars.scss";
 
-.modal-backdrop {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 100vw;
-    &:after {
-        content: "";
-        background: rgba(0, 0, 0, 0.5);
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-        z-index: -1;
-    }
-}
+/* ------------ Payment Modal -------------- */
+
+
+/* ---------- Modal ----------- */
 
 .modal {
-    background: #fff;
+    background: $white;
     width: 25rem;
     height: 22rem;
     border-radius: 1rem;
-}
-
-.content {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.content input,
-.content select {
-    border: 1px solid #ccc;
-    background: #fff;
-    height: 3rem;
-    border-radius: 0.5rem;
-    font-size: 1rem;
-    width: 15rem;
-    padding: 0 1rem;
-}
-
-.content select {
-    margin-top: 12px;
-}
-
-.content input {
-    margin-top: 2.8rem;
-}
-
-.pay-button {
-    color: white;
-    background-color: green;
-    border-radius: 5rem;
-    width: 10rem;
-    height: 2.5rem;
-    font-size: 1rem;
-    margin-top: 1.2rem;
-    &:hover {
-        background-color: rgb(8, 170, 8);
+    @media (max-width: 480px) {
+        width: 90%;
+    }
+    .content {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .content input,
+    .content select {
+        border: 1px solid $gray-placeholder;
+        background: $white;
+        height: 3rem;
+        border-radius: 0.5rem;
+        font-size: 1rem;
+        width: 15rem;
+        padding: 0 1rem;
+    }
+    .content input {
+        margin-top: 2.7rem;
+    }
+    .content select {
+        margin-top: 0.7rem;
     }
 }
 
-.close-button {
-    svg {
-        width: 1.5rem;
-        color: rgb(49, 49, 49);
-        &:hover {
-            color: purple;
-        }
-    }
-}
+
+/*----------Modal title ---------------*/
 
 .title-container {
-    background-color: rgb(245, 245, 245);
+    background-color: $background-light;
     height: 5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
     border-radius: 0.9rem 0.9rem 0 0;
-    color: rgb(3, 3, 3);
+    color: $black;
     font-size: 0.9rem;
+    span {
+        font-size: 1.5rem;
+        margin-top: 1rem;
+        color: $green;
+    }
 }
 
-.title-container span {
-    font-size: 1.5rem;
-    margin-top: 1rem;
-    color: #488f54;
+
+/* ------- Modal buttons ------- */
+
+.close-button {
+    svg {
+        width: 1.5rem;
+        color: rgb(49, 49, 49);
+        &:hover {
+            color: $purple-picpay;
+        }
+    }
 }
+
+
+/*---------- Message error ----------*/
 
 .error {
-    color: rgb(211, 59, 59);
+    color: $red-error;
     font-size: 0.9rem;
 }

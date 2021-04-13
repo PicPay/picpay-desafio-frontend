@@ -1,9 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 
 @Component({
-  selector: "app-list-user",
-  templateUrl: "./list-user.component.html",
-  styleUrls: ["./list-user.component.scss"],
+  selector: "users-payment",
+  templateUrl: "./users-payment.component.html",
+  styleUrls: ["./users-payment.component.scss"],
 })
 export class ListUserComponent implements OnInit {
   @Input() users: User[];

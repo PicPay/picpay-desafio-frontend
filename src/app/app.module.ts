@@ -8,8 +8,8 @@ import { NgxPaginationModule } from "ngx-pagination";
 import { NgxMaskModule, IConfig } from "ngx-mask";
 
 import { AppComponent } from "./app.component";
-import { UserComponent } from "./components/user/user.component";
-import { ListUserComponent } from "./components/list-user/list-user.component";
+import { UserComponent } from "./components/user-card/user-card.component";
+import { ListUserComponent } from "./components/users-payment/users-payment.component";
 import { PaymentModalComponent } from "./components/payment-modal/payment-modal.component";
 import { StatusPaymentModalComponent } from "./components/status-payment-modal/status-payment-modal.component";
 

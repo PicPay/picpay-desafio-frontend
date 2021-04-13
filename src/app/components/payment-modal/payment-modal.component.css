@@ -1,44 +1,19 @@
-/* Payment Modal */
-.modal-backdrop {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 100vw;
-}
-
-.modal-backdrop:after {
-  content: "";
-  background: rgba(0, 0, 0, 0.5);
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  z-index: -1;
-}
-
+/* ------------ Payment Modal -------------- */
+/* ---------- Modal ----------- */
 .modal {
-  background: #fff;
+  background: #f8f8f8;
   width: 25rem;
   height: 22rem;
   border-radius: 1rem;
 }
 
-.content {
+@media (max-width: 480px) {
+  .modal {
+    width: 90%;
+  }
+}
+
+.modal .content {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -55,10 +30,10 @@
           align-items: center;
 }
 
-.content input,
-.content select {
-  border: 1px solid #ccc;
-  background: #fff;
+.modal .content input,
+.modal .content select {
+  border: 1px solid #9b9b9b;
+  background: #f8f8f8;
   height: 3rem;
   border-radius: 0.5rem;
   font-size: 1rem;
@@ -66,39 +41,17 @@
   padding: 0 1rem;
 }
 
-.content select {
-  margin-top: 12px;
+.modal .content input {
+  margin-top: 2.7rem;
 }
 
-.content input {
-  margin-top: 2.8rem;
+.modal .content select {
+  margin-top: 0.7rem;
 }
 
-.pay-button {
-  color: white;
-  background-color: green;
-  border-radius: 5rem;
-  width: 10rem;
-  height: 2.5rem;
-  font-size: 1rem;
-  margin-top: 1.2rem;
-}
-
-.pay-button:hover {
-  background-color: #08aa08;
-}
-
-.close-button svg {
-  width: 1.5rem;
-  color: #313131;
-}
-
-.close-button svg:hover {
-  color: purple;
-}
-
+/*----------Modal title ---------------*/
 .title-container {
-  background-color: whitesmoke;
+  background-color: #ececec;
   height: 5rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -118,9 +71,20 @@
 .title-container span {
   font-size: 1.5rem;
   margin-top: 1rem;
-  color: #488f54;
+  color: #018601;
 }
 
+/* ------- Modal buttons ------- */
+.close-button svg {
+  width: 1.5rem;
+  color: #313131;
+}
+
+.close-button svg:hover {
+  color: #355ad6;
+}
+
+/*---------- Message error ----------*/
 .error {
   color: #d33b3b;
   font-size: 0.9rem;

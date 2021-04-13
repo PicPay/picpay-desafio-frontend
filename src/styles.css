@@ -25,4 +25,52 @@ select:focus {
 button {
   cursor: pointer;
 }
+
+/* ------ Modal backdrop ------- */
+.modal-backdrop {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+}
+
+.modal-backdrop:after {
+  content: "";
+  background: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+}
+
+/* ------- Modal button ------- */
+.pay-button {
+  color: #f8f8f8;
+  background-color: #018601;
+  border-radius: 5rem;
+  width: 10rem;
+  height: 2.5rem;
+  font-size: 1rem;
+  margin-top: 2rem;
+}
+
+.pay-button:hover {
+  background-color: #08aa08;
+}
 /*# sourceMappingURL=styles.css.map */

@@ -1,0 +1,100 @@
+@import "../../../vars.scss";
+
+/*---------------- Users list --------------------*/
+
+.users-container {
+    padding-top: 6rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    @media (max-width: 480px) {
+        padding-top: 8rem;
+    }
+}
+
+.users {
+    display: flex;
+    justify-content: center;
+}
+
+
+/*---------------- Nav bar --------------------*/
+
+nav {
+    background-color: $green-picpay;
+    width: 100%;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 4rem;
+    position: fixed;
+    @media (max-width: 480px) {
+        padding: 0 0.5rem;
+        height: 7rem;
+        flex-direction: column;
+        justify-content: center;
+    }
+    img {
+        width: 8rem;
+    }
+    input {
+        height: 2rem;
+        width: 15rem;
+        border-radius: 3rem;
+        padding: 0 1rem 0 2.5rem;
+        font-size: 1rem;
+        &::placeholder {
+            color: $gray-placeholder;
+        }
+    }
+    .search-user {
+        display: flex;
+        align-items: center;
+    }
+    .search-icon {
+        width: 2.5rem;
+        color: $gray-icon;
+        position: absolute;
+        padding: 0.5rem;
+        padding-top: 0.8rem;
+        @media (max-width: 480px) {
+            width: 2.1rem;
+            padding: 0.3rem;
+            padding-top: 0.5rem;
+        }
+    }
+}
+
+
+/*---------------- Pagination --------------------*/
+
+.pagination {
+    margin-top: 2rem;
+    @media (max-width: 280px) {
+        font-size: 0.8rem;
+    }
+}
+
+.pagination ::ng-deep .ngx-pagination .current {
+    background: $purple-picpay;
+    border-radius: 50%;
+}
+
+
+/*------------ loading --------------*/
+
+.loading {
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @media (max-width: 480px) {
+        img {
+            width: 50%;
+        }
+    }
+}

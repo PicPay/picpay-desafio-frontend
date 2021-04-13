@@ -1,0 +1,101 @@
+@import "../../../vars.scss";
+
+/* ----------------- User card -------------- */
+
+.user {
+    background-color: $white;
+    width: 50rem;
+    border-radius: 1rem;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px 0;
+    @media (min-width: 768px) and (max-width: 979px) {
+        width: 70vw;
+    }
+    @media only screen and (max-width: 767px) {
+        width: 95vw;
+        padding: 20px;
+    }
+    @media (max-width: 480px) {
+        flex-direction: column;
+    }
+    @media (max-width: 280px) {
+        padding: 20px 5px;
+    }
+    &:hover {
+        box-shadow: 1px 1px 5px rgba(156, 156, 156, 0.87);
+    }
+    .img-container {
+        border: 2px solid $green-picpay;
+        width: 7rem;
+        height: 7rem;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @media (max-width: 480px) {
+            height: 5.5rem;
+            width: 5.5rem;
+        }
+        @media (max-width: 280px) {
+            height: 4rem;
+            width: 4rem;
+        }
+    }
+    img {
+        border-radius: 50%;
+        height: 6rem;
+        width: 6rem;
+        @media (max-width: 480px) {
+            height: 4.5rem;
+            width: 4.5rem;
+        }
+        @media (max-width: 280px) {
+            height: 3rem;
+            width: 3rem;
+        }
+    }
+    .user-data {
+        display: flex;
+        align-items: center;
+        @media (max-width: 480px) {
+            width: 100%;
+        }
+    }
+    .user-username {
+        font-size: 1.2rem;
+        @media (max-width: 280px) {
+            font-size: 1rem;
+        }
+    }
+    .user-name {
+        font-size: 0.9rem;
+        color: $gray-dark;
+    }
+    .user-id-username {
+        font-size: 0.8rem;
+        color: $gray;
+    }
+    .info-wrapper {
+        margin-left: 1rem;
+    }
+    .info-wrapper div {
+        margin: 2px 0;
+    }
+    .pay-button {
+        width: 7rem;
+        height: 2rem;
+        border: 1px solid $green;
+        color: $green;
+        background-color: $white;
+        &:hover {
+            background-color: $green;
+            color: $white;
+        }
+        @media (max-width: 480px) {
+            align-self: flex-end;
+        }
+    }
+}

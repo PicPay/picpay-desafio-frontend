@@ -1,3 +1,4 @@
+@import "vars.scss";
 * {
     box-sizing: border-box;
     margin: 0;
@@ -10,7 +11,7 @@ html,
 body,
 button {
     font-family: "Montserrat", sans-serif;
-    background-color: rgb(236, 236, 236);
+    background-color: $background-light;
 }
 
 input:focus,
@@ -23,4 +24,45 @@ select:focus {
 
 button {
     cursor: pointer;
+}
+
+
+/* ------ Modal backdrop ------- */
+
+.modal-backdrop {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    &:after {
+        content: "";
+        background: $modal-background;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        z-index: -1;
+    }
+}
+
+
+/* ------- Modal button ------- */
+
+.pay-button {
+    color: $white;
+    background-color: $green;
+    border-radius: 5rem;
+    width: 10rem;
+    height: 2.5rem;
+    font-size: 1rem;
+    margin-top: 2rem;
+    &:hover {
+        background-color: $green-light;
+    }
 }

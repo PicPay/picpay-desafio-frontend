@@ -1,6 +1,6 @@
 <nav>
     <div>
-        <img src="../assets/img/logo-picpay-branca-512.png" alt="logo picpay branca" />
+        <img src="../assets/img/logo-picpay-branca.png" alt="logo picpay branca" />
     </div>
     <div class="search-user">
         <div class="search-icon">
@@ -17,13 +17,17 @@
     </div>
 </nav>
 
-<div class="users-container">
+<div *ngIf="!users" class="loading">
+    <img src="../../../assets/img/spinner.gif" alt="loading" />
+</div>
+
+<div *ngIf="users" class="users-container">
     <div class="users" *ngFor="
       let user of users
         | filter: term
         | paginate: { itemsPerPage: 5, currentPage: p }
     ">
-        <app-user [user]="user" (modalPayment)="modalPayment($event)"></app-user>
+        <user-card [user]="user" (modalPayment)="modalPayment($event)"></user-card>
     </div>
     <div class="pagination">
         <pagination-controls (pageChange)="p = $event" previousLabel="" nextLabel=""></pagination-controls>

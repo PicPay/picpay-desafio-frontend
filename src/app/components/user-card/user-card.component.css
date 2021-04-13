@@ -1,4 +1,4 @@
-/* List of Users */
+/* ----------------- User card -------------- */
 .user {
   background-color: #f8f8f8;
   width: 50rem;
@@ -16,13 +16,41 @@
   margin: 5px 0;
 }
 
+@media (min-width: 768px) and (max-width: 979px) {
+  .user {
+    width: 70vw;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .user {
+    width: 95vw;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .user {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+@media (max-width: 280px) {
+  .user {
+    padding: 20px 5px;
+  }
+}
+
 .user:hover {
   -webkit-box-shadow: 1px 1px 5px rgba(156, 156, 156, 0.87);
           box-shadow: 1px 1px 5px rgba(156, 156, 156, 0.87);
 }
 
 .user .img-container {
-  border: 2px solid rgba(110, 209, 110, 0.623);
+  border: 2px solid #5fc870;
   width: 7rem;
   height: 7rem;
   border-radius: 50%;
@@ -37,10 +65,38 @@
           align-items: center;
 }
 
+@media (max-width: 480px) {
+  .user .img-container {
+    height: 5.5rem;
+    width: 5.5rem;
+  }
+}
+
+@media (max-width: 280px) {
+  .user .img-container {
+    height: 4rem;
+    width: 4rem;
+  }
+}
+
 .user img {
   border-radius: 50%;
   height: 6rem;
   width: 6rem;
+}
+
+@media (max-width: 480px) {
+  .user img {
+    height: 4.5rem;
+    width: 4.5rem;
+  }
+}
+
+@media (max-width: 280px) {
+  .user img {
+    height: 3rem;
+    width: 3rem;
+  }
 }
 
 .user .user-data {
@@ -52,8 +108,20 @@
           align-items: center;
 }
 
+@media (max-width: 480px) {
+  .user .user-data {
+    width: 100%;
+  }
+}
+
 .user .user-username {
   font-size: 1.2rem;
+}
+
+@media (max-width: 280px) {
+  .user .user-username {
+    font-size: 1rem;
+  }
 }
 
 .user .user-name {
@@ -63,7 +131,7 @@
 
 .user .user-id-username {
   font-size: 0.8rem;
-  color: gray;
+  color: #858585;
 }
 
 .user .info-wrapper {
@@ -75,16 +143,22 @@
 }
 
 .user .pay-button {
-  border-radius: 3rem;
   width: 7rem;
   height: 2rem;
-  border: 1px solid green;
-  color: green;
-  background-color: white;
+  border: 1px solid #018601;
+  color: #018601;
+  background-color: #f8f8f8;
 }
 
 .user .pay-button:hover {
-  background-color: green;
-  color: white;
+  background-color: #018601;
+  color: #f8f8f8;
+}
+
+@media (max-width: 480px) {
+  .user .pay-button {
+    -ms-flex-item-align: end;
+        align-self: flex-end;
+  }
 }
 /*# sourceMappingURL=user.component.css.map */
