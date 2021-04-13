@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ModalResponsePaymentComponent } from './modal-response-payment.component';
+import { MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 describe('ModalResponsePaymentComponent', () => {
   let component: ModalResponsePaymentComponent;
@@ -8,7 +9,13 @@ describe('ModalResponsePaymentComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ModalResponsePaymentComponent ]
+      declarations: [ ModalResponsePaymentComponent ],
+      imports: [ MatDialogModule ],
+      providers: [
+        { provide: MAT_DIALOG_DATA, useValue: { user: {
+            name: "",
+        }}}
+      ]
     })
     .compileComponents();
   }));
@@ -19,7 +26,7 @@ describe('ModalResponsePaymentComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('deve ser criado', () => {
     expect(component).toBeTruthy();
   });
 });
