@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { UserService } from "../../service/user.service";
+import { UserService } from "../../service/user-payment.service";
 
 @Component({
   selector: "app-payment-modal",

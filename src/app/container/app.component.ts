@@ -1,11 +1,12 @@
 import { Component } from "@angular/core";
-import { UserService } from "./service/user.service";
+import { UserService } from "../service/user-payment.service";
 import { Observable } from "rxjs";
 
 @Component({
   selector: "app-root",
-  templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.scss"],
+  template: ` <div class="users-container">
+    <users-payment [users]="users$ | async"> </users-payment>
+  </div>`,
 })
 export class AppComponent {
   users$: Observable<User[]>;

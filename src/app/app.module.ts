@@ -7,7 +7,7 @@ import { FormsModule } from "@angular/forms";
 import { NgxPaginationModule } from "ngx-pagination";
 import { NgxMaskModule, IConfig } from "ngx-mask";
 
-import { AppComponent } from "./app.component";
+import { AppComponent } from "./container/app.component";
 import { UserComponent } from "./components/user-card/user-card.component";
 import { ListUserComponent } from "./components/users-payment/users-payment.component";
 import { PaymentModalComponent } from "./components/payment-modal/payment-modal.component";

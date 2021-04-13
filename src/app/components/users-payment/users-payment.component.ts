@@ -5,7 +5,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
   templateUrl: "./users-payment.component.html",
   styleUrls: ["./users-payment.component.scss"],
 })
-export class ListUserComponent implements OnInit {
+export class ListUserComponent {
   @Input() users: User[];
   userSelected: User;
   aprovedTransaction: boolean;
@@ -44,6 +44,4 @@ export class ListUserComponent implements OnInit {
     this.showModalPayment = false;
     this.showModalStatus = false;
   }
-
-  ngOnInit() {}
 }
