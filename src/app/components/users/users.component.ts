@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from 'src/app/services/users.service';
 import { User } from 'src/app/shared/models/user.model';
+import { ModalPaymentComponent } from '../modal-payment/modal-payment.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-users',
@@ -10,7 +12,7 @@ import { User } from 'src/app/shared/models/user.model';
 export class UsersComponent implements OnInit {
   users: User[];
 
-  constructor(private usersService: UsersService) { }
+  constructor(private usersService: UsersService, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.usersService.getUsers().subscribe(users => {
@@ -18,4 +20,9 @@ export class UsersComponent implements OnInit {
     })
   }
 
+  pay(user: User): void {
+    this.dialog.open(ModalPaymentComponent, {
+      data: {user: user}
+    });
+  }
 }

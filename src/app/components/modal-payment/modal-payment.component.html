@@ -1,0 +1,38 @@
+<div>
+    <h1 mat-dialog-title class="form-title">Pagamento para {{ data.user.name }}</h1>
+  
+    <form [formGroup]="formPayment" class="form-payment">
+      <mat-form-field class="form-input-value">
+        <input
+          matInput
+          type="text"
+          name="valuePay"
+          [(ngModel)]="valuePay"
+          formControlName="valuePay"
+          class="number"
+          currencyMask
+          [options]="{
+            prefix: 'R$ ',
+            thousands: '.',
+            decimal: ',',
+            allowNegative: false,
+            align: 'left'
+          }"
+        >
+      </mat-form-field>
+      
+      <mat-form-field appearance="fill" class="form-input-card">
+        <mat-label>Selecione um cartão</mat-label>
+        <mat-select [(ngModel)]="selectedCard" name="card" formControlName="selectedCard">
+          <mat-option *ngFor="let card of cards" [value]="card">
+            cartão com final {{card.endValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+  
+    <div class="form-buttons">
+      <button mat-button (click)="transaction()" [disabled]="!formPayment.valid" class="pay">Pagar</button>
+      <button mat-button mat-dialog-close class="close">Fechar</button>
+    </div>
+  </div>

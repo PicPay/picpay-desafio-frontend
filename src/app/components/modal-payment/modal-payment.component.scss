@@ -1,0 +1,33 @@
+@import "../../../styles.scss";
+
+.form-payment {
+  @include flex(column, center, center);
+}
+
+.form-input-value, .form-input-card {
+    width: 85%;
+}
+
+.form-title {
+  color: $primary;
+}
+
+.form-buttons {
+  @include flex(row, space-between, center);
+
+  .close {
+    background: $warn;
+    color: $white;
+  }
+
+  .pay {
+    background: $primary;
+    color: $white;
+
+    &:disabled {
+      background: $white;
+      color: $neutral-gray-two;
+      border: 2px solid $neutral-gray-two;
+    }
+  }
+}
