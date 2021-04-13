@@ -12,6 +12,7 @@ import { MatButtonModule } from  '@angular/material/button';
 import { FooterComponent } from './components/template/footer/footer.component';
 import { MainComponent } from './components/template/main/main.component';
 import { UsersComponent } from './components/users/users.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { UsersComponent } from './components/users/users.component';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MatToolbarModule,
     MatCardModule,
     MatButtonModule
