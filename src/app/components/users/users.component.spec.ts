@@ -1,3 +1,4 @@
+import { MatCardModule } from '@angular/material/card';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UsersComponent } from './users.component';
@@ -8,7 +9,10 @@ describe('UsersComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UsersComponent ]
+      declarations: [ UsersComponent ],
+      imports: [
+        MatCardModule,
+      ]
     })
     .compileComponents();
   }));
@@ -19,7 +23,7 @@ describe('UsersComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('deve ser criado', () => {
     expect(component).toBeTruthy();
   });
 });
