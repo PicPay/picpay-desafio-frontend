@@ -36,7 +36,7 @@ export class UsersComponent implements OnInit {
     
   }
 
-  getUsers() {
+  getUsers(): void {
     this.usersService.getUsers()
     .finally(() => {this.viewLoading = false})
     .subscribe(

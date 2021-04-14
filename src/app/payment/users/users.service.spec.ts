@@ -5,8 +5,6 @@ import { HttpModule } from '@angular/http';
 import { UsersService } from './users.service';
 
 describe('UsersService', () => {
-  let usersService = UsersService;
-
   beforeEach(() => TestBed.configureTestingModule({
     imports: [HttpClientModule, HttpModule],
     providers: [UsersService]
@@ -17,9 +15,8 @@ describe('UsersService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should be listed users', inject([UsersService], async (usersService) => {
+  it('should render observable users', inject([UsersService], async (usersService) => {
     const result = await usersService.getUsers()
     expect(result).not.toBeNull()
-  })
-  )
+  }));
 });
