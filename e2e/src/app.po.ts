@@ -26,7 +26,7 @@ export class AppPage {
   }
 
   pegarTituloDoModal(title: string){
-    const titleElement = element(by.css(".mat-dialog-title"));
+    const titleElement = element(by.css("h1.mat-dialog-title"));
     expect(titleElement.getText()).toEqual(title);
   }
 }
