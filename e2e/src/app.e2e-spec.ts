@@ -1,23 +1,39 @@
 import { AppPage } from './app.po';
-import { browser, logging } from 'protractor';
 
-describe('workspace-project App', () => {
-  let page: AppPage;
+describe('Testando Desafio Front-end PicPay', () => {
+  let appPage: AppPage;
 
   beforeEach(() => {
-    page = new AppPage();
+    appPage = new AppPage();
   });
 
-  it('should display welcome message', () => {
-    page.navigateTo();
-    expect(page.getTitleText()).toEqual('picpay-desafio-frontend app is running!');
+  it('Deve navegar para listagem de usuários', ()=> {
+    appPage.acessarListagem();
+  })
+
+  it('Deve abrir e fechar o modal', ()=>{
+    expect(appPage.pegarBotao("Pagar").click());
+    expect(appPage.pegarBotao("Fechar").click());
+  })
+
+  it('Deve abrir o modal e enviar transação com sucesso', () => {
+    expect(appPage.pegarBotao("Pagar").click());
+    expect(appPage.pegarInput('number', '10000'));
+    expect(appPage.abrirOption());
+    expect(appPage.selecionarOption("first-child"));
+    expect(appPage.pegarBotaoPagarNoModal());
+    expect(appPage.pegarTituloDoModal("Recibo de Pagamento"));
+    expect(appPage.pegarBotao("Fechar").click());
   });
 
-  afterEach(async () => {
-    // Assert that there are no errors emitted from the browser
-    const logs = await browser.manage().logs().get(logging.Type.BROWSER);
-    expect(logs).not.toContain(jasmine.objectContaining({
-      level: logging.Level.SEVERE,
-    } as logging.Entry));
+  it('Deve abrir o modal e dá erro na transação', () => {
+    expect(appPage.pegarBotao("Pagar").click());
+    expect(appPage.pegarInput('number', '10000'));
+    expect(appPage.abrirOption());
+    expect(appPage.selecionarOption("last-child"));
+    expect(appPage.pegarBotaoPagarNoModal());
+    expect(appPage.pegarTituloDoModal("Erro na Transação"));
+    expect(appPage.pegarBotao("Tentar novamente").click());
   });
+
 });
