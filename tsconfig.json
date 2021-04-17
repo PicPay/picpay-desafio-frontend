@@ -1,6 +1,24 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "paths": {
+      "@picpay-lib/ngx-api": [
+        "dist/picpay-lib/ngx-api/picpay-lib-ngx-api",
+        "dist/picpay-lib/ngx-api"
+      ],
+      "@picpay-lib/ngx-component": [
+        "dist/picpay-lib/ngx-component/picpay-lib-ngx-component",
+        "dist/picpay-lib/ngx-component"
+      ],
+      "@picpay-lib/ngx-domain": [
+        "dist/picpay-lib/ngx-domain/picpay-lib-ngx-domain",
+        "dist/picpay-lib/ngx-domain"
+      ],
+      "@picpay-lib/ngx-service": [
+        "dist/picpay-lib/ngx-service/picpay-lib-ngx-service",
+        "dist/picpay-lib/ngx-service"
+      ]
+    },
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,

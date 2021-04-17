@@ -125,6 +125,166 @@
           }
         }
       }
+    },
+    "@picpay-lib/ngx-domain": {
+      "projectType": "library",
+      "root": "projects/picpay-lib/ngx-domain",
+      "sourceRoot": "projects/picpay-lib/ngx-domain/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/picpay-lib/ngx-domain/tsconfig.lib.json",
+            "project": "projects/picpay-lib/ngx-domain/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/picpay-lib/ngx-domain/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/picpay-lib/ngx-domain/src/test.ts",
+            "tsConfig": "projects/picpay-lib/ngx-domain/tsconfig.spec.json",
+            "karmaConfig": "projects/picpay-lib/ngx-domain/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/picpay-lib/ngx-domain/tsconfig.lib.json",
+              "projects/picpay-lib/ngx-domain/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "@picpay-lib/ngx-api": {
+      "projectType": "library",
+      "root": "projects/picpay-lib/ngx-api",
+      "sourceRoot": "projects/picpay-lib/ngx-api/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/picpay-lib/ngx-api/tsconfig.lib.json",
+            "project": "projects/picpay-lib/ngx-api/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/picpay-lib/ngx-api/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/picpay-lib/ngx-api/src/test.ts",
+            "tsConfig": "projects/picpay-lib/ngx-api/tsconfig.spec.json",
+            "karmaConfig": "projects/picpay-lib/ngx-api/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/picpay-lib/ngx-api/tsconfig.lib.json",
+              "projects/picpay-lib/ngx-api/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "@picpay-lib/ngx-service": {
+      "projectType": "library",
+      "root": "projects/picpay-lib/ngx-service",
+      "sourceRoot": "projects/picpay-lib/ngx-service/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/picpay-lib/ngx-service/tsconfig.lib.json",
+            "project": "projects/picpay-lib/ngx-service/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/picpay-lib/ngx-service/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/picpay-lib/ngx-service/src/test.ts",
+            "tsConfig": "projects/picpay-lib/ngx-service/tsconfig.spec.json",
+            "karmaConfig": "projects/picpay-lib/ngx-service/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/picpay-lib/ngx-service/tsconfig.lib.json",
+              "projects/picpay-lib/ngx-service/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "@picpay-lib/ngx-component": {
+      "projectType": "library",
+      "root": "projects/picpay-lib/ngx-component",
+      "sourceRoot": "projects/picpay-lib/ngx-component/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/picpay-lib/ngx-component/tsconfig.lib.json",
+            "project": "projects/picpay-lib/ngx-component/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/picpay-lib/ngx-component/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/picpay-lib/ngx-component/src/test.ts",
+            "tsConfig": "projects/picpay-lib/ngx-component/tsconfig.spec.json",
+            "karmaConfig": "projects/picpay-lib/ngx-component/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/picpay-lib/ngx-component/tsconfig.lib.json",
+              "projects/picpay-lib/ngx-component/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "app-picpay"
