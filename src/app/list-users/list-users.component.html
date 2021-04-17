@@ -1,0 +1,32 @@
+
+<div class="container">
+  <div class="user" *ngFor="let Users of users$ |async" >
+    <img src="{{Users.img}}" alt="{{Users.name}}">
+    
+     <div info-wrapper>
+       <div class="user-name">
+          Nome: {{Users.name}}
+       </div>
+
+       <div class="user-id-name">
+        ID : {{Users.id}}  
+       </div>
+       <div class="userName">
+       Username: {{Users.username}}
+       </div>
+     </div>
+
+
+     <button (click)="openModal()" type="button" class="pay-button ">
+      Pagar
+    </button>
+     </div>
+    
+
+     
+  </div>
+  
+ 
+
+
+

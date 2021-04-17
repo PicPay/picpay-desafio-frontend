@@ -1,0 +1,33 @@
+.user {
+  background: #11c770;
+  box-shadow: 0 1px 0 #ffffff, 0px -1px 0px #ffffff;
+  color: #fff;
+  padding: 1.5%;
+
+  display: flex;
+  align-items: center;
+}
+
+.user > img {
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  margin-right: 0.5rem;
+}
+.user > .info-wrapper > span {
+  font-weight: bold;
+}
+.user > .info-wrapper {
+  margin-left: 16px;
+  font-weight: bold;
+}
+
+.user > .pay-button {
+  margin-left: auto;
+  background-color: #d9eddf;
+  border: 0;
+  padding: 3px;
+  height: 12%;
+  width: 7%;
+  cursor: pointer;
+}
