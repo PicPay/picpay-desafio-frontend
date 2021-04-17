@@ -1,3 +1,8 @@
+# Luana Mozer
+
+Gostaria de agradecer imensamente a oportunidade que me deram permitindo que eu participasse do desafio,
+Nunca tinha escrito ou visto uma linha de código com Angular e Typescript, e na busca de informações sobre as tecnolgias consegui aprender bastante coisa em poucos dias. Entreguei o melhor dentro das possibilidades do conhecimento que consegui absorver nos 7 dias. :green_heart:
+
 # Desafio Front-end PicPay
 
 Primeiramente, obrigado pelo seu interesse em trabalhar na melhor plataforma de pagamentos do mundo!
@@ -67,15 +72,15 @@ O cartão válido vai aprovar a transação no backend;
 let cards = [
   // valid card
   {
-    card_number: '1111111111111111',
+    card_number: "1111111111111111",
     cvv: 789,
-    expiry_date: '01/18',
+    expiry_date: "01/18",
   },
   // invalid card
   {
-    card_number: '4111111111111234',
+    card_number: "4111111111111234",
     cvv: 123,
-    expiry_date: '01/20',
+    expiry_date: "01/20",
   },
 ];
 ```
