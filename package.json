@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "npm run start:app-picpay",
+    "start:app-picpay": "ng serve app-picpay --proxy-config proxy.config.js",
     "initial-build": "npm i && npm run build:project",
     "build:project": "npm run build:libs && npm run build:apps",
     "build:libs": "npm run build:lib-ngx-domain && npm run build:lib-ngx-api && npm run build:lib-ngx-service && npm run build:lib-ngx-component",
