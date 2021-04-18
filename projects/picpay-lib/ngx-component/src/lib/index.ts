@@ -1,1 +1,1 @@
-export * from './user-card/index';
+export * from './ngx-user-card/index';
