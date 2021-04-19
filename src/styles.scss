@@ -9,4 +9,12 @@ body {
   font-family: 'Rubik', sans-serif;
   margin: 0;
   padding: 0;
+  background-color: #11c76f;
+  font-size: 14px;
+  color:#3d4451;
+}
+
+.no-padding-dialog .mat-dialog-container {
+  padding: 0;
+  background-color:#f0f6f8;
 }

@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { PayComponent } from '../../../modal'
 import UserType from '../../../../types/user/user.type';
+import listCard from '../../../../mock/list-cards/list-cards.mock';
 
 @Component({
   selector: 'app-user',
@@ -12,14 +13,15 @@ export class UserComponent implements OnInit {
   @Input() user: UserType;
   constructor(public matDialog: MatDialog) { }
 
-  openModal() {
+  openModal({id, name, username}) {
     const dialogConfig = new MatDialogConfig();
-    // The user can't close the dialog by clicking outside its body
     dialogConfig.disableClose = true;
     dialogConfig.id = "modal-component";
-    dialogConfig.height = "350px";
-    dialogConfig.width = "600px";
-    // https://material.angular.io/components/dialog/overview
+    dialogConfig.width = "450px";
+    dialogConfig.height = "330px";
+    dialogConfig.maxWidth = "97vw"
+    dialogConfig.panelClass = 'no-padding-dialog';
+    dialogConfig.data = {id, name, username, cards: listCard}
     const modalDialog = this.matDialog.open(PayComponent, dialogConfig);
   }
   

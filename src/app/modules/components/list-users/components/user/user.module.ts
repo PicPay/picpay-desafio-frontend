@@ -2,7 +2,20 @@ import { NgModule } from '@angular/core';
 import { UserComponent } from './user.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { MatDialogModule } from '@angular/material/dialog';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CurrencyMaskConfig, CurrencyMaskModule, CURRENCY_MASK_CONFIG } from "ng2-currency-mask";
 import { PayComponent } from '../.././../modal';
+import { LoaderModule } from '../../../loader';
+
+export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
+  align: "left",
+  allowNegative: false,
+  decimal: ",",
+  precision: 2,
+  prefix: "R$ ",
+  suffix: "",
+  thousands: "."
+};
 
 @NgModule({
   declarations: [
@@ -14,9 +27,15 @@ import { PayComponent } from '../.././../modal';
   ],
   imports: [
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
+    LoaderModule,
+    FormsModule, 
+    ReactiveFormsModule,
+    CurrencyMaskModule
   ],
-  providers: [],
+  providers: [
+    { provide: CURRENCY_MASK_CONFIG, useValue: CustomCurrencyMaskConfig }
+  ],
   entryComponents: [PayComponent],
 
 })

@@ -20,7 +20,6 @@ export class UsersService {
         catchError(this.handleError))
   }
 
-  // Error handle
   handleError(error: HttpErrorResponse) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {

@@ -5,12 +5,16 @@
         {{user.name}}
       </div>
 
-      <div class="user-id-username">
-        ID: {{user.id}} - Username: {{user.username}}
+      <div class="user-id">
+        ID: {{user.id}}
+      </div>
+
+      <div class="user-username">
+        Username: <span>{{user.username}}</span>
       </div>
     </div>
 
-    <button type="button" (click)="openModal()" class="pay-button">
-      Pagar
+    <button type="button" (click)="openModal(user)" class="pay-button">
+      Enviar
     </button>
 </div>

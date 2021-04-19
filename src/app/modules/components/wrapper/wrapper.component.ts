@@ -2,8 +2,11 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-wrapper',
-  templateUrl: './wrapper.component.html',
-  styleUrls: ['./wrapper.component.scss']
+  template: `
+    <div>
+      <app-list-users></app-list-users>
+    </div>
+  `
 })
 export class WrapperComponent {
 

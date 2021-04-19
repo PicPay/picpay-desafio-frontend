@@ -1,20 +1,75 @@
-.user {
-    background: linear-gradient(186.5deg, #3c3e64 0.83%, #1d1e2a 100%);
-    box-shadow: 0 1px 0 #ffffff, 0px -1px 0px #ffffff;
-    color: #fff;
-    padding: 20px 40px;
-  
+.user{
+    background-color: #f0f6f8;
+    margin: 6px;
+    border-radius: 8px;
+    padding: 8px;
     display: flex;
-    align-items: center;
-    &>img{
-        border-radius: 50%;
-        height: 80px;
-        width: 80px;
+    flex-wrap: wrap;
+    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.25);
+    
+    img{
+        border-radius: 12px;
+        width: 100px; 
+        box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.25);
     }
-    &>.info-wrapper{
-        margin-left: 16px;
+    .info-wrapper{
+        display: block;
+        height: 100%;
+        min-height: fit-content;
+        margin-left: 10px;
+        
+        *{
+            margin-bottom: 10px;
+        }
+        .user-name{
+            font-size: 1.7rem;
+            line-height: 2rem;
+        }
+
+        .user-id, .user-username{
+            font-size: 1rem;
+            font-weight: 300;
+            color:#6b7280
+        }
+        
+        .user-username{
+            span{
+                font-size: 1.1rem;
+                color:#3d4451
+            }
+        }
+  
     }
-    &>.pay-button {
+
+    & .pay-button {
         margin-left: auto;
+        background-color: #11c76f; /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 1rem;
+        border-radius: 12px;
+        box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.25);
+        @media (max-width: 500px) {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+    }
+
+    @media (max-width: 380px) {
+      display: block;
+    
+      img{
+        display: block;
+        margin: 0 auto 10px;
+
+      }
+      .info-wrapper{
+          text-align: center;
+      }
     }
 }

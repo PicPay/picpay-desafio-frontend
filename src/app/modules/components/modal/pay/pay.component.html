@@ -1,1 +1,62 @@
-<p>pay works!</p>
+<div id="modal-content-wrapper" class="modal" *ngIf="!process">
+    <header class="modal-header">
+        <h1>Enviar dinheiro para <span>{{data.name}}</span> </h1>
+    </header>
+    <section>
+        <form [formGroup]="form" class="modal-form"  >
+
+            <div class="modal-form-radio">
+                <span>Selecione o cartão:</span> 
+
+                <div class="modal-form-radio-item" *ngFor="let card of data.cards">
+                    <input type="radio" [id]="card.id" name="card" formControlName="card" [value]="card.id">
+                    <label [for]="card.id">{{transformCard(card.card_number)}}</label><br>
+                </div>
+            </div>
+
+            <div class="modal-form-input">
+                <label for="value">Digite o valor: </label>
+                <input id="value" 
+                    currencyMask 
+                    formControlName="value" 
+                    placeholder="R$ 0,00"
+                    min="0.01"
+                />
+            </div>
+
+        </form>
+    </section>
+
+    <footer>
+        <button class="modal-button-close" (click)="close()">
+            Fechar
+        </button>
+
+        <button class="modal-button-pay" [attr.disabled]="isFormValid() ? null : '' "  (click)="pay()">
+            Enviar
+        </button>
+    </footer>
+</div>
+
+<app-loader green="true" *ngIf="loading" ></app-loader>
+
+<div id="modal-content-wrapper" class="modal" *ngIf="process && !loading">
+    <header class="modal-header">
+        <h1>Recibo de pagamento</h1>
+    </header>
+    <section class="modal-session-feedback">
+        <p>
+            {{  
+                success 
+                ? "O pagamento foi concluido com sucesso."
+                : "O pagamento não foi concluido com sucesso." 
+            }}
+        </p>
+    </section>
+
+    <footer>
+        <button class="modal-button-close" (click)="close()">
+            fechar
+        </button>
+    </footer>
+</div>

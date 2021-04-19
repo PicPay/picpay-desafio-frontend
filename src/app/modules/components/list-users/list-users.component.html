@@ -1,8 +1,23 @@
-<div class="users">
+<div class="users" *ngIf="!loading">
+    <div class="users-title">
+        <h1> Envie dinheiro fácil!</h1>
+    </div>
+    <div class="users-search">
+        <label for="search">Buscar usuário: </label>
+        <input id="search" type="text" [(ngModel)]="searchText" placeholder="Nome, Username ou ID" (ngModelChange)="search($event)" />
+    </div>
     <app-user
-        *ngFor="let user of users"
+        *ngFor="let user of showUsers"
         [user]=user
     >
     </app-user>
 
+    <div class="users-notfound">
+        <h1>Nenhum usuário encontrado</h1>
+    </div>
+   
+</div>
+
+<div class="user-loader" *ngIf="loading">
+    <app-loader></app-loader>
 </div>

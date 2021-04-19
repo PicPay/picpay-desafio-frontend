@@ -1,0 +1,98 @@
+.modal{
+    width: 100%;
+    max-width: 500px;
+    height: 330px;
+    padding: 5px;
+    color:#3d4451;
+    background-color:#f0f6f8;
+    .modal-header {
+        text-align: center;
+        border-bottom: 1px solid #11c76f;
+        margin-bottom: 15px;
+        h1{
+            font-weight: 400;
+            font-size: 1.5rem;
+            span{
+                color:#11c76f;
+            }
+        }
+    }
+    .modal-session-feedback{
+        font-size: 1.4rem;
+        height: 170px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        p{
+            width: 100%;
+        }
+    }
+    section{
+        border-bottom: 1px solid #11c76f;
+        .modal-form{
+            font-size: 1.2rem;
+            width: fit-content;
+            display: block;
+            margin: 0 auto;
+            
+            .modal-form-input{
+                margin-bottom: 10px;
+                input {
+                    padding: 0px 8px;
+                    width: 150px;
+                    margin: 0px 0;
+                    box-sizing: border-box;
+                    font-size: 1.2rem;
+                  }
+            }
+            .modal-form-radio{
+                margin-bottom: 10px;
+    
+                .modal-form-radio-item{
+                    padding: 5px 10px;
+                    span{
+                        font: 500;
+                    }
+                    label{
+                        font-size: 1.3rem;
+                    }
+                }
+                
+            }
+            .modal-form-radio, .modal-form-input{
+                padding: 5px 10px;
+            }
+        }
+    }
+  
+
+    footer{
+        display: flex;
+        justify-content: space-around;
+        padding:12px;
+        & .modal-button-pay,.modal-button-close {
+            border: none;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 1rem;
+            border-radius: 12px;
+            box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.25);
+        }
+        & .modal-button-pay{
+            background-color: #11c76f; 
+            color:#fff;
+
+            &:disabled{
+                opacity: 0.65; 
+                cursor: not-allowed;
+            }
+        }
+        & .modal-button-close{
+            background-color: #f6f9ff;
+            color: #3d4451;
+            border: 1px solid #11c76f;
+        }
+    }
+}

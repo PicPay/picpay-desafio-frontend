@@ -4,6 +4,7 @@ import { WrapperComponent } from './wrapper.component';
 
 import { ListUsersModule } from '../list-users';
 
+
 @NgModule({
   declarations: [
     WrapperComponent,
@@ -12,7 +13,7 @@ import { ListUsersModule } from '../list-users';
     WrapperComponent
   ],
   imports: [
-    ListUsersModule,
+    ListUsersModule
   ],
   providers: [],
 })
