@@ -1,5 +1,7 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { User } from '@picpay-lib/ngx-domain';
+import { Component, Input } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { IPaymentTransactionResult, User } from '@picpay-lib/ngx-domain';
+import { NgxPaymentResultComponent, NgxPayToUserComponent } from '../dialog';
 
 @Component({
   selector: 'ngx-user-card',
@@ -8,11 +10,30 @@ import { User } from '@picpay-lib/ngx-domain';
 })
 export class NgxUserCardComponent {
   @Input() user!: User;
-  @Output() payToUser = new EventEmitter<User>();
 
-  constructor() {}
+  constructor(private dialog: MatDialog) {}
 
   pay(): void {
-    this.payToUser.emit(this.user);
+    const dialogRef = this.openPayToUserDialog();
+
+    dialogRef.afterClosed().subscribe((result: IPaymentTransactionResult | undefined) => {
+      if (result) {
+        this.openPaymentFeedback(result);
+      }
+    });
+  }
+
+  openPayToUserDialog(): MatDialogRef<NgxPayToUserComponent> {
+    return this.dialog.open(NgxPayToUserComponent, {
+      id: 'pay-to-user',
+      data: this.user,
+    });
+  }
+
+  private openPaymentFeedback(paymentTransactionResult: IPaymentTransactionResult): void {
+    this.dialog.open(NgxPaymentResultComponent, {
+      id: 'payment-result',
+      data: paymentTransactionResult,
+    });
   }
 }
