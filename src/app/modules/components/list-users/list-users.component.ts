@@ -20,22 +20,18 @@ export class ListUsersComponent implements OnInit {
   }
   
   search(text: string){
-    console.log(text)
     if(text === '' || text === undefined){
       this.showUsers = this.users;
       return 
     };
     
-    console.log(this.users.length, this.showUsers.length);
     this.showUsers = this.users.filter(user => {
-
       return (
         user.name.toLocaleLowerCase().includes(text.trim().toLocaleLowerCase()) || 
         user.username.toLocaleLowerCase().includes(text.trim().toLocaleLowerCase()) ||
         user.id.toString().toLocaleLowerCase().includes(text.trim().toLocaleLowerCase())
       )
     });
-    // console.log(this.showUsers
   }
 
   getUsers(){
