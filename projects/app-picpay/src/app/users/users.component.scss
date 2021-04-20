@@ -1,0 +1,34 @@
+.user-list {
+  display: flex;
+  flex-flow: row wrap;
+  padding: 24px;
+
+  &__card {
+    flex: 20%;
+    padding: 8px;
+  }
+
+  @media (max-width: 1600px) {
+    &__card {
+      flex: 25%;
+    }
+  }
+
+  @media (max-width: 1300px) {
+    &__card {
+      flex: 30%;
+    }
+  }
+
+  @media (max-width: 966px) {
+    &__card {
+      flex: 50%;
+    }
+  }
+
+  @media (max-width: 682px) {
+    &__card {
+      flex: 100%;
+    }
+  }
+}
