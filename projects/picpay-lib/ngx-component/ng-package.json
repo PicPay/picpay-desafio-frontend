@@ -6,7 +6,9 @@
     "umdModuleIds": {
       "@picpay-lib/ngx-domain": "@picpay-lib/ngx-domain",
       "@picpay-lib/ngx-api": "@picpay-lib/ngx-api",
-      "@picpay-lib/ngx-service": "@picpay-lib/ngx-service"
+      "@picpay-lib/ngx-service": "@picpay-lib/ngx-service",
+      "ng2-currency-mask": "ng2-currency-mask",
+      "ngx-skeleton-loader": "ngx-skeleton-loader"
     }
   },
   "deleteDestPath": false

@@ -12,6 +12,7 @@ import { CreditCardService, UserPaymentService } from '@picpay-lib/ngx-service';
 export class NgxPayToUserComponent implements OnInit {
   cardList!: CreditCard[];
   isPaymentInProcess = false;
+  readonly inputMinValue = 0.01;
 
   form = this.fb.group({
     amount: [null, [Validators.required]],
