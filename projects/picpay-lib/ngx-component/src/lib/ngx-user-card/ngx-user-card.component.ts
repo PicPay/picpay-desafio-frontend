@@ -6,7 +6,6 @@ import { NgxPaymentResultComponent, NgxPayToUserComponent } from '../dialog';
 @Component({
   selector: 'ngx-user-card',
   templateUrl: './ngx-user-card.component.html',
-  styleUrls: ['./ngx-user-card.component.scss'],
 })
 export class NgxUserCardComponent {
   @Input() user!: User;

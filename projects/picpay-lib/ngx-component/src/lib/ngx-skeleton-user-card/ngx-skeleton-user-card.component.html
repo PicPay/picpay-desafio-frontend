@@ -1,29 +1,20 @@
-<div class="user">
-  <ngx-skeleton-loader animation="progress" appearance="circle" [theme]="{ width: '80px', height: '80px' }">
-  </ngx-skeleton-loader>
-  <div class="info-wrapper">
-    <div class="user-name">
+<mat-card>
+  <mat-card-header>
+    <ngx-skeleton-loader animation="progress" appearance="circle" mat-card-avatar></ngx-skeleton-loader>
+    <mat-card-title>
       <ngx-skeleton-loader
         animation="progress"
         [theme]="{
           width: '200px',
-          'border-radius': '0',
-          height: '15px',
-          'margin-bottom': '10px'
+          height: '20px'
         }"
       ></ngx-skeleton-loader>
-    </div>
-
-    <div class="user-id-username">
-      <ngx-skeleton-loader animation="progress" [theme]="{ width: '170px', 'border-radius': '0', height: '15px' }">
-      </ngx-skeleton-loader>
-    </div>
-  </div>
-
-  <ngx-skeleton-loader
-    animation="progress"
-    class="pay-button"
-    [theme]="{ width: '70px', 'border-radius': '0', height: '15px' }"
-  >
-  </ngx-skeleton-loader>
-</div>
+    </mat-card-title>
+    <mat-card-subtitle>
+      <ngx-skeleton-loader animation="progress" [theme]="{ width: '170px', height: '14px' }"> </ngx-skeleton-loader>
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-actions>
+    <ngx-skeleton-loader animation="progress"></ngx-skeleton-loader>
+  </mat-card-actions>
+</mat-card>

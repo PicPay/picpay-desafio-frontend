@@ -9,6 +9,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxPayToUserModule } from '@picpay-lib/ngx-component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { of } from 'rxjs';
+import { MatCardModule } from '@angular/material/card';
 
 describe('UserCardComponent', () => {
   let component: NgxUserCardComponent;
@@ -19,7 +20,7 @@ describe('UserCardComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [NgxUserCardComponent],
-      imports: [NgxPayToUserModule, MatDialogModule, NoopAnimationsModule, HttpClientTestingModule],
+      imports: [NgxPayToUserModule, MatDialogModule, MatCardModule, NoopAnimationsModule, HttpClientTestingModule],
     }).compileComponents();
   });
 
