@@ -1,0 +1,13 @@
+<div class="user-list">
+  <ng-container *ngIf="userList$ | async as userList; else loading">
+    <ng-container *ngFor="let user of userList">
+      <ngx-user-card class="user-list__card" [user]="user"></ngx-user-card>
+    </ng-container>
+  </ng-container>
+</div>
+
+<ng-template #loading>
+  <ng-container *ngFor="let i of repeater(30)">
+    <ngx-skeleton-user-card class="user-list__card"></ngx-skeleton-user-card>
+  </ng-container>
+</ng-template>

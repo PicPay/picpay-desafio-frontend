@@ -6,5 +6,6 @@
     "umdModuleIds": {
       "@picpay-lib/ngx-domain": "@picpay-lib/ngx-domain"
     }
-  }
+  },
+  "deleteDestPath": false
 }

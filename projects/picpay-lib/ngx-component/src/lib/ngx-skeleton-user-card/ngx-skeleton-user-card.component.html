@@ -1,0 +1,20 @@
+<mat-card>
+  <mat-card-header>
+    <ngx-skeleton-loader animation="progress" appearance="circle" mat-card-avatar></ngx-skeleton-loader>
+    <mat-card-title>
+      <ngx-skeleton-loader
+        animation="progress"
+        [theme]="{
+          width: '200px',
+          height: '20px'
+        }"
+      ></ngx-skeleton-loader>
+    </mat-card-title>
+    <mat-card-subtitle>
+      <ngx-skeleton-loader animation="progress" [theme]="{ width: '170px', height: '14px' }"> </ngx-skeleton-loader>
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-actions>
+    <ngx-skeleton-loader animation="progress"></ngx-skeleton-loader>
+  </mat-card-actions>
+</mat-card>

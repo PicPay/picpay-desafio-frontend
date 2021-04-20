@@ -1,0 +1,31 @@
+<h2 mat-dialog-title>Pagamento para {{ user.name }}</h2>
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="form">
+    <mat-form-field class="form-field" floatLabel="never" appearance="standard">
+      <input
+        matInput
+        formControlName="amount"
+        placeholder="R$ 0,00"
+        currencyMask
+        [min]="inputMinValue"
+        [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', allowNegative: false, align: 'left' }"
+        required
+      />
+      <mat-error *ngIf="form.controls.amount.hasError('required')"> Valor é <strong>obrigatório</strong> </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form-field" floatLabel="never" appearance="standard">
+      <mat-select formControlName="cardNumber">
+        <mat-option *ngFor="let card of cardList" [value]="card.cardNumber">
+          Cartão com final {{ card.cardNumber.slice(-4) }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+  <button mat-button [disabled]="!form.valid || isPaymentInProcess" *ngIf="!isPaymentInProcess" (click)="pay()">
+    Pagar
+  </button>
+  <mat-spinner *ngIf="isPaymentInProcess" diameter="20"></mat-spinner>
+</mat-dialog-actions>

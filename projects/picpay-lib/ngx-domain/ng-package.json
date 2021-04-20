@@ -3,5 +3,6 @@
   "dest": "../../../dist/picpay-lib/ngx-domain",
   "lib": {
     "entryFile": "src/public-api.ts"
-  }
+  },
+  "deleteDestPath": false
 }

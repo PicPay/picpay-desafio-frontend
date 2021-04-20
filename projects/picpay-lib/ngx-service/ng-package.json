@@ -7,5 +7,6 @@
       "@picpay-lib/ngx-domain": "@picpay-lib/ngx-domain",
       "@picpay-lib/ngx-api": "@picpay-lib/ngx-api"
     }
-  }
+  },
+  "deleteDestPath": false
 }
