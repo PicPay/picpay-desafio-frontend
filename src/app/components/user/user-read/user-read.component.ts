@@ -1,7 +1,7 @@
 import { UserPaymentComponent } from '../../../pages/payload/user-payment/user-payment.component';
-import { User } from './../user.model';
+import { User } from '../../../interfaces/user.model';
 import { Component, OnInit} from '@angular/core';
-import { UserService } from '../user.service';
+import { UserService } from '../../../services/user.service';
 import { MatDialog} from '@angular/material/dialog';
 
 @Component({

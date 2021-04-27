@@ -1,8 +1,8 @@
-import { TransactionPayload } from '../pages/payload/payload.model';
+import { TransactionPayload } from '../interfaces/payload.model';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { TransactionResponsePayload } from '../pages/payload/transaction-response-payload.model'
+import { TransactionResponsePayload } from '../interfaces/transaction-response-payload.model'
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,7 @@ export class PayloadService {
     ) { }
 
 
-  payLoad(transactionPayload: TransactionPayload): Observable<TransactionResponsePayload> {
+  transactionResponse(transactionPayload: TransactionPayload): Observable<TransactionResponsePayload> {
     return this.http.post<TransactionResponsePayload>(this.baseUrl, transactionPayload);
   }
 

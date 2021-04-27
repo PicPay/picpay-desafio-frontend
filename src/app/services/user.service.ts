@@ -1,4 +1,4 @@
-import { User } from './user.model';
+import { User } from '../interfaces/user.model';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar'
 import { HttpClient } from '@angular/common/http';
@@ -25,10 +25,6 @@ export class UserService {
 
   read(): Observable<User[]> {
     return this.http.get<User[]>(this.baseUrl)
-  }
-
-  loadById(id) {
-    return this.http.get(`${this.baseUrl}/${id}`)
   }
 
 

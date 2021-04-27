@@ -1,4 +1,4 @@
-import { CardCreateComponent } from './components/card/card-create/card-create.component';
+
 import { UserCreateComponent } from './components/user/user-create/user-create.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -19,10 +19,6 @@ const routes: Routes = [
     {
         path: "cards",
         component: CardsComponent
-    },
-    {
-        path: "cards/create",
-        component: CardCreateComponent
     },
 ];
 
