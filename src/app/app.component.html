@@ -1,5 +1,10 @@
-<div class="app">
-  <main class="main">
+<main class="main">
 
-  </main>
-</div>
+  <section class="main__content">
+    <div class="main__title">
+      <h2>Amigos</h2>
+      <p class="main--text-info">Escolha um amigo para realizar um pagamento.</p>
+    </div>
+    <app-user *ngFor="let user of users" [user]=user></app-user>
+  </section>
+</main>

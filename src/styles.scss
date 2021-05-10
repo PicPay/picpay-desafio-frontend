@@ -1,8 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap");
-@import '~bootstrap/dist/css/bootstrap.min.css';
-@import "./styles//mixins";
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "./styles/colors";
+
 * {
   box-sizing: border-box;
+}
+
+:root {
+  @each $name, $color in $colors {
+    --color-#{$name}: #{$color};
+  }
 }
 
 html,
@@ -10,5 +17,17 @@ body {
   font-family: Montserrat, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f9f9f9;
+  background-color: var(--color-white);
+}
+
+@media (max-width: 1080px) {
+  html {
+    font-size: 93.75%;
+  }
+}
+
+@media (max-width: 720px) {
+  html {
+    font-size: 87.5%;
+  }
 }

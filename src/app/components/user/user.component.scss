@@ -1,0 +1,36 @@
+@import '../../../styles/mixins';
+.user {
+    display: flex;
+    flex-direction: row;
+    background-color: var(--color-white);
+    border-radius: 1em;
+    padding: 1em;
+    box-shadow: 0 0 1em 0.1em rgba(0,0,0,0.05);
+    transition: background-color 0.2s;
+    margin-bottom: 1em;
+
+    &__img {
+        height: 5em;
+        justify-self: center;
+        border-radius: 1em;
+        margin-right: 1em;
+    }
+
+    &__info {
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: column;
+    }
+
+    &__name {
+        font-size: 1.5em;
+    }
+
+    &__username {
+        color: var(--color-text)
+    }
+
+    &:hover {
+        background-color: #eee;
+    }
+}
