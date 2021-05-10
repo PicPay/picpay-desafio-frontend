@@ -1,10 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap");
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import "./styles//mixins";
 * {
   box-sizing: border-box;
 }
 
 html,
 body {
-  font-family: sans-serif;
+  font-family: Montserrat, sans-serif;
   margin: 0;
   padding: 0;
+  background-color: #f9f9f9;
 }
