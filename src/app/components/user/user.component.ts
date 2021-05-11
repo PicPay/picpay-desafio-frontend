@@ -1,8 +1,6 @@
-import { Input } from '@angular/core';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { User } from 'src/app/models/user';
-import { TransactionResultComponent } from '../transaction-result/transaction-result.component';
 import { UserPaymentComponent } from '../user-payment/user-payment.component';
 
 @Component({
