@@ -1,0 +1,67 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    margin: 0 auto;
+    justify-content: space-evenly;
+    &__group {
+        margin: 1em;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+
+    &__input {
+        border: 1px solid var(--color-lightgreen);
+        border-radius: 0.5em;
+        padding: 0.5em;
+    }
+}
+
+.credit-card {
+    box-shadow: 0 0 1em 0.1em rgba(0, 0, 0, 0.05);
+    border-radius: 0.5em;
+    padding: 0.5em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 4em;
+    margin-bottom: 0.5em;
+    transition: background-color 0.2s;
+    &__details {
+        display: flex;
+        flex-direction: column;
+        justify-self: flex-start;
+    }
+    &__info {
+        font-size: 0.75em;
+    }
+    &__brand {
+        width: 3em;
+        height: 3em;
+    }
+
+    &__radio {
+        position: fixed;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    &:hover {
+        background-color: var(--color-light-gray);
+    }
+
+    &--selected {
+        background-color: var(--color-medium-gray);
+    }
+
+    &--selected:hover {
+        background-color: var(--color-medium-gray);
+    }
+}
+
+
+.loader {
+    height: 35vh;
+}

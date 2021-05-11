@@ -9,7 +9,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class ListUsersComponent implements OnInit {
   public users: User[];
-
+  public loading = true;
   constructor(private userService: UserService) { }
   ngOnInit() {
     this.getUsers();
@@ -17,8 +17,8 @@ export class ListUsersComponent implements OnInit {
 
   private getUsers() {
     this.userService.listUsers().subscribe(result => {
-      this.users = result as User[]
+      this.users = result as User[];
+      this.loading = false;
     });
   }
-
 }

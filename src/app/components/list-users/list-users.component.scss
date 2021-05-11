@@ -1,5 +1,16 @@
+@import "../../../styles/mixins";
+
 .list-users {
-    display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1em;
+    width: 100%;
+    align-self: flex-start;
+    @include mq("tablet-wide") {
+        display: grid;
+    }
+}
+
+.pagination {
+    grid-column: 1 / span 2;
+    justify-self: center;
 }

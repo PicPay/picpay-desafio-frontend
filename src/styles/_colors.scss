@@ -1,6 +1,13 @@
 $colors: (
   "background": #fafafa,
-  "highlight": #88c63c,
+  "lightgreen": #88c63c,
+  "green": darken(#88c63c, 3),
+  "dark-green": darken(#88c63c, 6),
+  "lightred":#F06A47,
+  "red": darken(#F06A47, 10),
+  "dark-red": darken(#F06A47, 20),
   "text": #999,
   "white": #fff,
+  "light-gray": #eee,
+  "medium-gray": #ccc,
 );

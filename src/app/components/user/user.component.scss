@@ -8,6 +8,10 @@
     box-shadow: 0 0 1em 0.1em rgba(0,0,0,0.05);
     transition: background-color 0.2s;
 
+    @include mq('tablet-wide', 'max') {
+        margin-bottom: 1em;
+    }
+
     &__img {
         height: 5em;
         justify-self: center;
@@ -30,6 +34,6 @@
     }
 
     &:hover {
-        background-color: #eee;
+        background-color: var(--color-light-gray);
     }
 }

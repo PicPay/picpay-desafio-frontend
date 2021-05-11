@@ -31,3 +31,42 @@ body {
     font-size: 87.5%;
   }
 }
+
+
+.button {
+  border: 0;
+  border-radius: 1em;
+  padding: 1em;
+  margin: 1em;
+  color: white;
+  font-weight: 400;
+  transition: background-color 0.2s;
+
+  &--ok {
+    background-color: var(--color-lightgreen);
+  }
+
+  &--ok:hover {
+    background-color: var(--color-green);
+  }
+
+  &--ok:active {
+    background-color: var(--color-dark-green);
+  }
+
+  &--fail {
+    background-color: var(--color-lightred);
+  }
+
+  &--fail:hover {
+    background-color: var(--color-red);
+  }
+
+  &--fail:active {
+    background-color: var(--color-dark-red);
+  }
+}
+
+.modal-content {
+  border: 0;
+}

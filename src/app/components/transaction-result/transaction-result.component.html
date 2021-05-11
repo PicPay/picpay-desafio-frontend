@@ -1,0 +1,11 @@
+<app-modal-base [title]='' [subtitle]="">
+    <div class="transaction-result">
+        <img src={{getIconLocation()}} class="transaction-result__img">
+        <p>{{message}}</p>
+
+        <input type="button" (click)="close()" class="button transaction-result__button"
+            [ngClass]="{'button--ok': success, 'button--fail': !success}" value={{getButtonValue()}}>
+
+
+    </div>
+</app-modal-base>

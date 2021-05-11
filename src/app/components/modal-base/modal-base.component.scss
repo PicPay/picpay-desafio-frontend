@@ -1,0 +1,26 @@
+.modal-base {
+    background-color: var(--color-background);
+    border: none;
+    box-shadow: 0 0 1em 0.1em rgba(0,0,0,0.05);
+    border-radius: 1em;
+    &__header {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        padding: 1rem 1rem;
+        border-bottom: 1px solid #dee2e6;
+        border-top-left-radius: .3rem;
+        border-top-right-radius: .3rem
+    }
+
+    &__titles {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    &__subtitle {
+        font-size: 0.8em;
+        color: var(--color-text)
+    }
+}
