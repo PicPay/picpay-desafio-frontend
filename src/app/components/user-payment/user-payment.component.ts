@@ -32,11 +32,12 @@ export class UserPaymentComponent implements OnInit {
     brand: 'mastercard',
     checked: false
   }];
+
   public paymentForm: FormGroup;
   ngOnInit() {
     this.paymentForm = this.fb.group({
-      paymentValue: [null, Validators.min(0)],
-      card: [null, Validators.nullValidator]
+      paymentValue: [null, [Validators.min(0), Validators.max(10000), Validators.required]],
+      card: [null, [Validators.required]]
     });
   }
 
@@ -70,13 +71,7 @@ export class UserPaymentComponent implements OnInit {
         return;
       }
 
-      const transaction: Transaction = {
-        card_number: currentCard.card_number,
-        cvv: currentCard.cvv,
-        destination_user_id: this.user.id,
-        expiry_date: currentCard.expiry_date,
-        value: currentValue
-      };
+      const transaction: Transaction = this.createTransactionObject(currentCard, currentValue);
 
       if (await this.payAsync(transaction)) {
         validationResult.message = 'Pagamento efetuado com sucesso!';
@@ -90,8 +85,18 @@ export class UserPaymentComponent implements OnInit {
 
       this.loading = false;
       this.activeModal.close();
-    }, 500);
+    }, 1500);
 
+  }
+
+  createTransactionObject(currentCard: CreditCard, currentValue: number): Transaction {
+    return {
+      card_number: currentCard.card_number,
+      cvv: currentCard.cvv,
+      destination_user_id: this.user.id,
+      expiry_date: currentCard.expiry_date,
+      value: currentValue
+    };
   }
 
   async payAsync(transaction: Transaction): Promise<boolean> {
@@ -101,11 +106,9 @@ export class UserPaymentComponent implements OnInit {
     } catch {
       return false;
     }
-
-
   }
 
-  showResultModal(validationResult: ValidationResult) {
+  private showResultModal(validationResult: ValidationResult) {
     const modalRef = this.modalService.open(TransactionResultComponent, { size: 'sm', centered: true });
     const modalInstance: TransactionResultComponent = modalRef.componentInstance;
     modalInstance.message = validationResult.message;
@@ -115,27 +118,32 @@ export class UserPaymentComponent implements OnInit {
   validate(card: CreditCard, paymentValue?: number): ValidationResult {
     const invalidCardNumber = '4111111111111234';
 
-    if (!card) { return {
-      message: 'Selecione um cartão.',
-      valid: false
-    };
+    if (!paymentValue || paymentValue <= 0) {
+      return {
+        message: 'Valor p/ pagamento inválido.',
+        valid: false
+      };
     }
 
-    if (card.card_number === invalidCardNumber) { return {
-      message: 'O cartão selecionado é inválido, o pagamento não foi efetuado.',
-      valid: false
-    };
+    if (!card) {
+      return {
+        message: 'Selecione um cartão.',
+        valid: false
+      };
     }
 
-    if (!paymentValue || paymentValue <= 0) { return {
-      message: 'Valor p/ pagamento inválido.',
-      valid: false
-    };
-    } else { return {
+    // Validação falsa pois a requisição sempre retorna Sucesso.
+    if (card.card_number === invalidCardNumber) {
+      return {
+        message: 'O cartão selecionado é inválido, o pagamento não foi efetuado.',
+        valid: false
+      };
+    }
+
+    return {
       message: '',
       valid: true
     };
-    }
   }
 
 }

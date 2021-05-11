@@ -3,14 +3,14 @@
         <form class="form" [formGroup]="paymentForm" (ngSubmit)="createPayment()">
             <div class="form__group">
                 <label>Valor</label>
-                <input formControlName="paymentValue" max=10000.00 class="form__input" type="text" placeholder="R$ 0,00"
-                    currencyMask [options]="{
+                <input formControlName="paymentValue" class="form__input has-error" type="text" placeholder="R$ 0,00" currencyMask
+                    [options]="{
                 allowNegative: false,
                 decimal: ',',
                 precision: 2,
                 prefix: 'R$ ',
                 thousands: '.'
-            }" maxlength=12>
+            }" maxlength=12 max=10000.00 min=0 required>
             </div>
 
             <div class="form__group">
@@ -19,7 +19,7 @@
                     <div class="credit-card" (click)="setSelectedCard(card)"
                         [ngClass]="{'credit-card--selected': card.checked}" *ngFor="let card of cards">
                         <input class="credit-card__radio" formControlName="card" [checked]=card.checked name="card"
-                            type="radio">
+                            type="radio" required>
                         <div class="credit-card__details">
                             <span class="credit-card__info">Últimos digitos: {{getLastDigits(card)}}</span>
                             <span class="credit-card__info">Cvv: {{card.cvv}}</span>
@@ -33,7 +33,7 @@
             <input type="submit" value="Pagar!" class="button button--ok">
         </form>
     </div>
-    <div class="loader" *ngIf="loading"> 
+    <div class="loader" *ngIf="loading">
         <app-loader></app-loader>
     </div>
 </app-modal-base>
