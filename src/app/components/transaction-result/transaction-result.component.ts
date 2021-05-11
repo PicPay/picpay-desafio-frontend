@@ -15,7 +15,7 @@ export class TransactionResultComponent implements OnInit {
   }
 
   getIconLocation() {
-    return this.success ? "assets/icons/success.svg" : "assets/icons/fail.svg"
+    return this.success ? 'assets/icons/success.svg' : 'assets/icons/fail.svg';
   }
 
   close() {
@@ -23,6 +23,6 @@ export class TransactionResultComponent implements OnInit {
   }
 
   getButtonValue() {
-    return this.success ? "Fechar" : "Voltar"
+    return this.success ? 'Fechar' : 'Voltar';
   }
 }

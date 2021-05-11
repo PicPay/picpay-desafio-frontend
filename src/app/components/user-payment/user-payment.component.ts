@@ -16,7 +16,7 @@ export class UserPaymentComponent implements OnInit {
   @Input() user: User;
   public loading = false;
   constructor(private fb: FormBuilder, private modalService: NgbModal,
-    private activeModal: NgbActiveModal, private transactionService: TransactionService) {
+              private activeModal: NgbActiveModal, private transactionService: TransactionService) {
   }
   public cards: CreditCard[] = [{
     card_number: '1111111111111111',
@@ -59,38 +59,38 @@ export class UserPaymentComponent implements OnInit {
   }
 
   createPayment() {
-    let currentCard: CreditCard = this.paymentForm.get('card').value;
-    let currentValue: number = this.paymentForm.get('paymentValue').value
+    const currentCard: CreditCard = this.paymentForm.get('card').value;
+    const currentValue: number = this.paymentForm.get('paymentValue').value;
     this.loading = true;
     setTimeout(async () => {
-      let validationResult = this.validate(currentCard, currentValue);
+      const validationResult = this.validate(currentCard, currentValue);
       if (!validationResult.valid) {
         this.showResultModal(validationResult);
         this.loading = false;
         return;
       }
 
-      let transaction: Transaction = {
+      const transaction: Transaction = {
         card_number: currentCard.card_number,
         cvv: currentCard.cvv,
         destination_user_id: this.user.id,
         expiry_date: currentCard.expiry_date,
         value: currentValue
-      }
+      };
 
       if (await this.payAsync(transaction)) {
-        validationResult.message = "Pagamento efetuado com sucesso!";
+        validationResult.message = 'Pagamento efetuado com sucesso!';
         validationResult.valid = true;
-        this.showResultModal(validationResult)
+        this.showResultModal(validationResult);
       } else {
-        validationResult.message = "Houve um erro de conexão, tente novamente mais tarde";
+        validationResult.message = 'Houve um erro de conexão, tente novamente mais tarde';
         validationResult.valid = false;
-        this.showResultModal(validationResult)
+        this.showResultModal(validationResult);
       }
 
       this.loading = false;
       this.activeModal.close();
-    }, 500)
+    }, 500);
 
   }
 
@@ -98,8 +98,7 @@ export class UserPaymentComponent implements OnInit {
     try {
       await this.transactionService.createTransaction(transaction).toPromise();
       return true;
-    }
-    catch {
+    } catch {
       return false;
     }
 
@@ -107,33 +106,35 @@ export class UserPaymentComponent implements OnInit {
   }
 
   showResultModal(validationResult: ValidationResult) {
-    let modalRef = this.modalService.open(TransactionResultComponent, { size: 'sm', centered: true });
-    let modalInstance: TransactionResultComponent = modalRef.componentInstance;
+    const modalRef = this.modalService.open(TransactionResultComponent, { size: 'sm', centered: true });
+    const modalInstance: TransactionResultComponent = modalRef.componentInstance;
     modalInstance.message = validationResult.message;
     modalInstance.success = validationResult.valid;
   }
 
   validate(card: CreditCard, paymentValue?: number): ValidationResult {
-    const invalidCardNumber = "4111111111111234";
+    const invalidCardNumber = '4111111111111234';
 
-    if (!card) return {
-      message: "Selecione um cartão.",
+    if (!card) { return {
+      message: 'Selecione um cartão.',
       valid: false
+    };
     }
 
-    if (card.card_number === invalidCardNumber) return {
-      message: "O cartão selecionado é inválido, o pagamento não foi efetuado.",
+    if (card.card_number === invalidCardNumber) { return {
+      message: 'O cartão selecionado é inválido, o pagamento não foi efetuado.',
       valid: false
+    };
     }
 
-    if (!paymentValue || paymentValue <= 0) return {
-      message: "Valor p/ pagamento inválido.",
+    if (!paymentValue || paymentValue <= 0) { return {
+      message: 'Valor p/ pagamento inválido.',
       valid: false
-    }
-
-    else return {
+    };
+    } else { return {
       message: '',
       valid: true
+    };
     }
   }
 

@@ -4,9 +4,9 @@ import { User } from 'src/app/models/user';
 import { UserComponent } from './user.component';
 const user: User = {
   id: 1001,
-  img: "https://randomuser.me/api/portraits/men/9.jpg",
-  name: "Eduardo Santos",
-  username: "@eduardo.santos"
+  img: 'https://randomuser.me/api/portraits/men/9.jpg',
+  name: 'Eduardo Santos',
+  username: '@eduardo.santos'
 };
 
 describe('UserComponent', () => {

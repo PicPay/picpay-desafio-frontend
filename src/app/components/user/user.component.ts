@@ -20,7 +20,7 @@ export class UserComponent implements OnInit {
 
   openModal(user: User) {
     this.modalRef = this.modalService.open(UserPaymentComponent, { size: 'sm', centered: true });
-    let component: UserPaymentComponent = this.modalRef.componentInstance;
+    const component: UserPaymentComponent = this.modalRef.componentInstance;
     component.user = user;
   }
 
