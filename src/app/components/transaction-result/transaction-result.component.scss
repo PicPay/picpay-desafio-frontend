@@ -1,19 +1,24 @@
 .transaction-result {
-    height: 60vh;
+    height: 50vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
     text-align: center;
     padding: 2em;
-    margin: 0 auto;
     
     &__img { 
         height: 8em;
         width: 8em;
-        margin-bottom: 2em;
+        flex-grow: 2;
     }
+
+    &__message {
+        flex-grow: 1;
+        margin-bottom: auto;
+    }
+
     &__button {
         width: 100%;
     }
+
 }
