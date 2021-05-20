@@ -25,11 +25,10 @@ export class UserItemComponent implements OnInit {
     this.getUsers();
     this.feedbackModal = false;
   }
-  
-  onDataChange(feedbackModal){
-    this.feedbackModal = feedbackModal;
-}
 
+  onDataChange(feedbackModal) {
+    this.feedbackModal = feedbackModal;
+  }
 
   getUsers() {
     this.userService.getUsers().subscribe((users: User[]) => {
@@ -39,12 +38,12 @@ export class UserItemComponent implements OnInit {
 
   openModal(id: string) {
     this.feedbackModal = false;
-    const parseId = "modal-" + id;
+    const parseId = 'modal-' + id;
     this.modalService.open(parseId);
   }
 
   closeModal(id: string) {
-    const parseId = "modal-" + id;
+    const parseId = 'modal-' + id;
     this.modalService.close(parseId);
   }
 

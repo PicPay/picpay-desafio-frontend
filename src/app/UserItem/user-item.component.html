@@ -15,7 +15,7 @@
     </button>
 </div>
 
-<jw-modal *ngFor="let user of users" id="modal-{{user.id}}">
+<app-jw-modal *ngFor="let user of users" id="modal-{{user.id}}">
   <div class="modal-message" *ngIf="feedbackModal; else showThis">
     <h1>Recibo de pagamento</h1>
     <p>O pagamento foi <span class="user-name">concluído com sucesso</span>.</p>
@@ -30,4 +30,4 @@
       Cancelar
     </button>
   </ng-template>
-</jw-modal>
+</app-jw-modal>

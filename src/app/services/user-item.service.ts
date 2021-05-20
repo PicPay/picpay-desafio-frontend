@@ -15,13 +15,13 @@ export class UserService {
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  }
+  };
 
   getUsers(): Observable<User[]> {
     return this.httpClient.get<User[]>(this.url)
       .pipe(
         retry(2),
-        catchError(this.handleError))
+        catchError(this.handleError));
   }
 
   handleError(error: HttpErrorResponse) {
@@ -33,6 +33,6 @@ export class UserService {
     }
     console.error(errorMessage);
     return throwError(errorMessage);
-  };
+  }
 
 }

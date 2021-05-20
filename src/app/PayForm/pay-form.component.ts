@@ -18,14 +18,6 @@ export class PayFormComponent implements OnInit {
     payment: TransactionPayload;
     transactionSucess: boolean;
 
-    constructor(private payformService: PayFormService) { }
-    @Output() changeEvent = new EventEmitter<boolean>();
-
-    ngOnInit() {
-        this.changeEvent.emit(false);
-        this.transactionSucess = true;
-    }
-
     cards = [
         {
             card_number: '1111111111111111',
@@ -39,16 +31,25 @@ export class PayFormComponent implements OnInit {
         },
     ];
 
-    cartoes = ["Cartão com final " + this.cards[0].card_number.slice(-4), "Cartão com  final " + this.cards[1].card_number.slice(-4)];
+    cartoes = ['Cartão com final ' + this.cards[0].card_number.slice(-4), 'Cartão com  final ' + this.cards[1].card_number.slice(-4)];
 
     submitted = false;
+
+    constructor(private payformService: PayFormService) { }
+    @Output() changeEvent = new EventEmitter<boolean>();
+
+    ngOnInit() {
+        this.changeEvent.emit(false);
+        this.transactionSucess = true;
+    }
+
 
     onSubmit() {
         this.submitted = true;
         this.changeEvent.emit(true);
         this.payformService.doPayment(this.payment).subscribe((
-            (response) => console.log(response)  //Nós sabemos que a API retorna sempre sucess, mas mesmo assim achei melhor deixar o output em vista :)
-        ))
+            (response) => console.log(response)  /* Nós sabemos que a API retorna sempre sucess,
+            mas mesmo assim achei melhor deixar o output em vista :) */
+        ));
     }
-
 }
