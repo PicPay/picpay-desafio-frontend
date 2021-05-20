@@ -31,7 +31,7 @@ export class UserService {
     } else {
       errorMessage = `Erro: ${error.status}, ` + `menssagem: ${error.message}`;
     }
-    console.log(errorMessage);
+    console.error(errorMessage);
     return throwError(errorMessage);
   };
 

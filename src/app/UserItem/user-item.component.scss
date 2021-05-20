@@ -33,7 +33,6 @@
   margin-left: 16px;
 
   .user-name {
-    font-size: 16px;
     font-weight: 600;
     color: #70bd5b;
     margin-bottom: 8px;
@@ -69,4 +68,35 @@
   &:focus {
     box-shadow: 0px 0 8px 2px #70bd5b52;
   }
+}
+
+.cancel-btn {
+  width: 100%;
+  margin-left: auto;
+  margin-top: 8px;
+  cursor: pointer;
+  color: #acacac;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 16px 24px;
+  font-weight: 600;
+  outline: none;
+  border: 1px solid #acacac80;
+  font-size: 16px;
+  transition: all 0.5s ease;
+
+  &:hover,
+  &:active {
+    border: 1px solid #acacac;
+  }
+
+  &:focus {
+    box-shadow: 0px 0 8px 2px #acacac52;
+    border: 1px solid #acacac;
+    color: #acacac;
+  }
+}
+
+.modal-message{
+  padding: 24px;
 }

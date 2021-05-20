@@ -10,7 +10,24 @@
       </div>
     </div>
 
-    <button type="button" class="pay-button">
+    <button type="button" class="pay-button" (click)="openModal(user.id)">
       Pagar
     </button>
 </div>
+
+<jw-modal *ngFor="let user of users" id="modal-{{user.id}}">
+  <div class="modal-message" *ngIf="feedbackModal; else showThis">
+    <h1>Recibo de pagamento</h1>
+    <p>O pagamento foi <span class="user-name">concluído com sucesso</span>.</p>
+    <button class="cancel-btn" (click)="closeModal(user.id);">
+      Ok
+    </button>
+  </div>
+  <ng-template #showThis>
+    <h1>Pagamento para <span class="user-name">{{user.name}}</span></h1>
+    <app-pay-form id="modal-{{user.id}}" (changeEvent)="onDataChange($event)"></app-pay-form>
+    <button class="cancel-btn" (click)="closeModal(user.id);">
+      Cancelar
+    </button>
+  </ng-template>
+</jw-modal>

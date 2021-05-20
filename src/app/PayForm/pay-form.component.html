@@ -1,0 +1,11 @@
+<div class="pay-form">
+    <label for="valor">Valor:</label>
+    <input name="valor" type="text" placeholder="R$10,00" prefix="R$" mask="separator.2" thousandSeparator="."  separatorLimit="1000" required/>
+    <label for="cartão">Cartão:</label>
+    <select class="form-control" id="power" required>
+        <option *ngFor="let cartao of cartoes" [value]="cartao">{{cartao}}</option>
+    </select>
+    <button class="pay-btn" (click)="onSubmit()">
+        Pagar
+    </button>
+</div>

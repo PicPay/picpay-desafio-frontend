@@ -1,0 +1,55 @@
+.pay-form {
+  display: flex;
+  flex-direction: column;
+
+  label {
+    padding: 8px 0;
+  }
+
+  input,
+  select {
+    padding: 8px;
+    margin: 0 0 16px 0;
+    border-radius: 4px;
+    outline: none;
+    border: 1px solid #cecece;
+    transition: all 0.5s ease;
+    background-color: #fff;
+    font-size: 16px;
+
+    &:hover {
+      background: #f0f0f0;
+    }
+
+    &:focus,
+    &:active {
+      border: 1px solid #70bd5b;
+      box-shadow: 0px 0 8px 2px #70bd5b52;
+    }
+  }
+  .pay-btn {
+    width: 100%;
+    margin-left: auto;
+    margin-top: 16px;
+    cursor: pointer;
+    color: white;
+    background-color: #70bd5b;
+    border: 1px solid #70bd5b;
+    border-radius: 8px;
+    padding: 16px 24px;
+    font-weight: 600;
+    outline: none;
+    font-size: 16px;
+    transition: all 0.5s ease;
+
+    &:hover,
+    &:active {
+      background-color: #3f7032;
+    }
+
+    &:focus {
+      background-color: #3f7032;
+      box-shadow: 0px 0 8px 2px #70bd5b52;
+    }
+  }
+}
