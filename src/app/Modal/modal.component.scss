@@ -1,0 +1,42 @@
+jw-modal {
+  display: none;
+
+  .jw-modal {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+
+    .jw-modal-body {
+      background-color: #f9f9f9;
+      margin: 16% auto;
+      padding: 16px 24px;
+      border: 1px solid #70bd5b;
+      box-shadow: 0px 0 8px 2px #00000032;
+      width: 80%;
+      border-radius: 24px;
+
+      h1 {
+        font-size: 24px;
+      }
+
+      .user-name {
+        font-weight: 600;
+        color: #70bd5b;
+        margin-bottom: 8px;
+
+        .username {
+          color: #acacac;
+        }
+      }
+    }
+  }
+}
+
+body.jw-modal-open {
+  overflow: hidden;
+}
