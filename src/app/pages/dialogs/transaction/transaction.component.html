@@ -1,20 +1,39 @@
 <div class="modal-backdrop">
-    <div class="modal">
-      <div class="title">Pagamento para <span>Nome do Usuário</span></div>
+    <form class="modal" [formGroup]="paymentForm">
+      <div class="title">
+        Pagamento para 
+        <span class="transaction-user-name">{{data.user.name}}</span>
+        <span class="transaction-user-username">{{data.user.username}}</span>
+      </div>
   
       <div class="content">
-        <input type="number" placeholder="R$ 0,00" />
-  
+        <input 
+        type="text" 
+        placeholder="R$ 0,00" 
+        min="0" 
+        step="1,00" 
+        currencyMask 
+        [options]="{
+          allowNegative: false,
+          decimal: ',',
+          precision: 2,
+          prefix: 'R$ ',
+          thousands: ''
+        }" 
+        formControlName="amount"
+        />
         <div class="cards">
-          <select>
-            <option selected>Cartão com final 0123</option>
+          <label>Selecione um cartão:</label>
+          <select formControlName="cardSelected">
+            <option *ngFor="let card of data.cards" [value]="card.card_number">
+              Cartão com final {{card.last_dig}}
+            </option>
           </select>
         </div>
   
-        <button type="button" class="pay-button">
+        <button type="button" class="pay-button" (click)="pay()">
           Pagar
         </button>
       </div>
-    </div>
+    </form>
 </div>
-  
