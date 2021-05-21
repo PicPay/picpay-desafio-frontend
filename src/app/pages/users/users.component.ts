@@ -46,7 +46,7 @@ export class UsersComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.autoFocus = true;
-    dialogConfig.width = '50%';
+    dialogConfig.width = '60%';
     dialogConfig.minWidth = '350px';
     dialogConfig.minHeight = '300px';
     dialogConfig.panelClass = 'custom-dialog-container';
@@ -61,20 +61,23 @@ export class UsersComponent implements OnInit {
     transactionDialogRef.afterClosed().subscribe(
       data => {
         dialogConfig.width = '300px';
-        dialogConfig.height = '200px';
+        dialogConfig.minHeight = '0px';
         dialogConfig.disableClose = false;
 
-        if(data.success){
-          dialogConfig.data = {
-              sucess: true
-          };
-          this.dialog.open(ConfirmComponent, dialogConfig);
-        }else{
-          dialogConfig.data = {
-            sucess: false
-        };
-          this.dialog.open(ConfirmComponent, dialogConfig);
+        if(data){
+          if(data.success){
+            dialogConfig.data = {
+                sucess: true
+            };
+            this.dialog.open(ConfirmComponent, dialogConfig);
+          }else{
+            dialogConfig.data = {
+              sucess: false
+            };
+            this.dialog.open(ConfirmComponent, dialogConfig);
+          }
         }
+
       }
     ); 
 }

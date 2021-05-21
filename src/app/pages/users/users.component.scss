@@ -1,27 +1,50 @@
+.users {
+  max-width: 900px;
+  width: 90%;
+  margin: auto;
+  padding: 40px 0px;
+}
 .user {
-    background: linear-gradient(186.5deg, #3c3e64 0.83%, #1d1e2a 100%);
+    border-radius: 10px;
+    background: #EEE;
     box-shadow: 0 1px 0 #ffffff, 0px -1px 0px #ffffff;
     color: #fff;
-    padding: 20px 40px;
-  
+    padding: 20px 20px;
+    margin-top: 5px;
     display: flex;
     align-items: center;
-  }
-  
-  .user > img {
-    border-radius: 50%;
-    height: 80px;
-    width: 80px;
-  }
-  
-  .user > .info-wrapper {
-    margin-left: 16px;
-  }
-  
-  .user > .pay-button {
-    margin-left: auto;
+    overflow: hidden;
+    
+    img {
+      border-radius: 50%;
+      height: 65px;
+      width: 65px;
+    }
+    
+    .info-wrapper {
+      margin-left: 16px;
+      color: #666;
+      
+      .user-username{
+        font-size: 14px;
+        margin-top: 5px;
+        color: #59ca93;
+      }
+    }
+    
+    .pay-button {
+      margin-left: auto;
+      background: #11C76F;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      color: #FFF;
+      font-weight: bold;
+      cursor: pointer;
+      &:hover{
+        background: #38e692;
+      }
+    }
+
   }
 
-  .custom-dialog-container{
-    background: #FFF;
-  }

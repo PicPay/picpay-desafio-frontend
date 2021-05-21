@@ -1,19 +1,17 @@
-<div class="modal-backdrop">
-    <div class="modal">
-        <div class="title">
+<div class="modal">
+    <div class="title">
         Recibo de pagamento
-        </div>
-
-        <div class="content">
-            <span *ngIf="dataparent?.sucess">
-                O pagamento foi concluido com sucesso.
-            </span>
-            <span *ngIf="!dataparent?.sucess">
-                O pagamento <strong>não</strong> foi concluido com sucesso.
-            </span>
-
-            <button (click)="close()">OK</button>
-        </div>
     </div>
+
+    <div class="content">
+        <span *ngIf="dataparent?.sucess">
+            O pagamento foi concluido com sucesso.
+        </span>
+        <span *ngIf="!dataparent?.sucess">
+            O pagamento <strong>não</strong> foi concluido com sucesso.
+        </span>
+    </div>
+    
+    <button (click)="close()">OK</button>
 </div>
   
