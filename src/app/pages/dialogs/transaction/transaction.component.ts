@@ -31,8 +31,8 @@ export class TransactionComponent implements OnInit {
   ngOnInit() { }
 
 
-  private close(sucess?:any) {
-    this.dialogRef.close(sucess);
+  private close(success?:any) {
+    this.dialogRef.close(success);
   }
 
   pay() {

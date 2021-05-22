@@ -67,12 +67,12 @@ export class UsersComponent implements OnInit {
         if(data){
           if(data.success){
             dialogConfig.data = {
-                sucess: true
+              success: true
             };
             this.dialog.open(ConfirmComponent, dialogConfig);
           }else{
             dialogConfig.data = {
-              sucess: false
+              success: false
             };
             this.dialog.open(ConfirmComponent, dialogConfig);
           }

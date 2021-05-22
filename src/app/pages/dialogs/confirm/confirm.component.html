@@ -1,14 +1,19 @@
 <div class="modal">
-    <div class="title">
-        Recibo de pagamento
+    <div class="title" [ngClass]="{'success': dataparent.success, 'error': !dataparent?.success}">
+        <span *ngIf="dataparent?.success">
+            Recibo de pagamento
+        </span> 
+        <span *ngIf="!dataparent?.success">
+            Falha no pagamento
+        </span> 
     </div>
 
     <div class="content">
-        <span *ngIf="dataparent?.sucess">
-            O pagamento foi concluido com sucesso.
+        <span *ngIf="dataparent?.success">
+            O pagamento foi concluído com sucesso.
         </span>
-        <span *ngIf="!dataparent?.sucess">
-            O pagamento <strong>não</strong> foi concluido com sucesso.
+        <span *ngIf="!dataparent?.success">
+            O pagamento <strong>não</strong> pode ser concluído.
         </span>
     </div>
     

@@ -4,11 +4,17 @@
     width: 100%;
 
     .title {
-      background: #11C76F;
+      // background: #11C76F;
       color: #ffffff;
       font-size: 15px;
       padding: 16px 24px;
       border-radius: 10px;      
+    }
+    .title.success {
+      background: #11C76F;     
+    }
+    .title.error {
+      background: #d85139;    
     }
 
     .content {
