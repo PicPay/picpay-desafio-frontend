@@ -1,23 +1,31 @@
+import { element, by } from 'protractor';
 import { AppPage } from './app.po';
-import { browser, logging } from 'protractor';
 
-describe('workspace-project App', () => {
-  let page: AppPage;
+describe('Home App', () => {
 
-  beforeEach(() => {
-    page = new AppPage();
+  let appPage: AppPage;
+
+  beforeEach(async () => {
+    appPage = new AppPage();
+    await appPage.navigateTo();
+  })
+
+  it('should navigation from home app', async () => {
+    const titlePage = await appPage.getTitleText();
+    expect(titlePage).toEqual("Picpay Desafio Frontend");
   });
 
-  it('should display welcome message', () => {
-    page.navigateTo();
-    expect(page.getTitleText()).toEqual('picpay-desafio-frontend app is running!');
+  it('should display list of contacts', async () => {
+    const listContactsCount = await element.all(by.className("list-contacts")).count()
+    expect(listContactsCount).toEqual(1);
   });
 
-  afterEach(async () => {
-    // Assert that there are no errors emitted from the browser
-    const logs = await browser.manage().logs().get(logging.Type.BROWSER);
-    expect(logs).not.toContain(jasmine.objectContaining({
-      level: logging.Level.SEVERE,
-    } as logging.Entry));
+  it('should display modal of payment when click button payment contact', async () => {
+    const btnOpenModalPayment = element.all(by.className("button-payment-user-network")).first()
+    const modal = element.all(by.className("modal show")).first();
+    await btnOpenModalPayment.click();
+    const isOpenModal = await modal.isPresent()
+    expect(isOpenModal).toBe(true)
   });
+
 });

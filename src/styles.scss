@@ -1,10 +1,217 @@
+@import "./mixins.scss";
+
+:root {
+  --green: #11c76f;
+  --green-gradient: linear-gradient(90deg, rgba(22, 200, 115, 1) 0%, rgba(17, 199, 111, 1) 89%);
+  --grey: #6c6c6c;
+  --card-mastercard: #c79c117d;
+  --card-visa: #657ad942;
+  --red: rgb(211, 78, 78);
+}
+
 * {
+  margin: 0;
+  padding: 0;
+  outline: 0;
   box-sizing: border-box;
+
+  button {
+    cursor: pointer;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  ul {
+    list-style: none;
+  }
+}
+
+html {
+  @media only screen and (min-width: 992px) {
+    font-size: 87.5%;
+  }
+  @media only screen and (min-width: 1382px) {
+    font-size: 93.75%;
+  }
 }
 
 html,
 body {
+  height: 100vh;
+  width: 100vw;
   font-family: sans-serif;
   margin: 0;
   padding: 0;
+}
+
+body {
+  background: #f8f8f8;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+}
+
+.hide {
+  display: none !important;
+}
+
+.show {
+  display: flex !important;
+}
+
+.modal {
+  display: flex;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  min-height: 100%;
+  overflow: hidden;
+  background-color: rgba(51, 51, 51, 0.8);
+
+  .modal-content {
+    animation: fadeIn 1s;
+    position: relative;
+    top: 3rem;
+    height: 100%;
+    background-color: #fefefe;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 0 1rem;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 0.6rem;
+    max-height: 680px;
+
+    @media (min-width: 450px) {
+      margin: 0 auto;
+    }
+
+    .modal-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      padding: 2.5rem 0 1rem 0;
+
+      .info {
+        h3 {
+          font-size: 1.5rem;
+        }
+
+        h3,
+        p {
+          text-align: center;
+        }
+
+        p {
+          padding: 0.5rem 1rem;
+        }
+      }
+
+      .close-modal {
+        position: absolute;
+        right: 0;
+        top: -25px;
+
+        button {
+          border: none;
+          background: transparent;
+          color: #fff;
+          font-size: 0.7rem;
+          width: 3rem;
+        }
+      }
+
+      .icon {
+        border-radius: 25%;
+        border: 4px solid #fff;
+        width: 3.5rem;
+        position: absolute;
+        top: -1.5rem;
+
+        &.green {
+          background: var(--green);
+        }
+
+        &.red {
+          background: var(--red);
+        }
+      }
+
+      .contact-recipient {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin: 0.3rem 0;
+
+        img {
+          border-radius: 4rem;
+          width: 8rem;
+          height: 8rem;
+          margin-bottom: 0.5rem;
+          border: 2px solid var(--green);
+        }
+
+        h3 {
+          font-size: 1rem;
+        }
+
+        p {
+          font-size: 0.8rem;
+        }
+      }
+    }
+
+    .modal-container {
+      width: 100%;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(3rem);
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.text-center {
+  text-align: center;
+}
+
+.btn-success {
+  width: 100%;
+  border: none;
+  height: 2.5rem;
+  background: var(--green);
+  color: #fff;
+  font-size: 1rem;
+  border-radius: 0.3rem;
+  font-weight: bold;
+  font-weight: 500;
+}
+
+.alert-danger {
+  span {
+    font-size: 0.7rem;
+    color: var(--red);
+  }
+}
+
+input.danger {
+  border: 1px solid var(--red) !important;
+}
+
+.card-selected {
+  border: 1px solid var(--green);
 }

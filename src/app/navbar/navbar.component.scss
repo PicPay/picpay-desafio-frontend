@@ -1,0 +1,32 @@
+header {
+    padding: 0.5rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: var(--green);
+
+    ul {
+        display: flex;
+        width: 185px;
+        max-width: 200px;
+        justify-content: space-between;
+        width: 9rem;
+        max-width: 10rem;
+
+        li {
+            a {
+                color: #fff;
+                font-style: normal;
+                &:hover {
+                    color: rgb(216, 216, 216);
+                }
+                transition: 0.5s;
+            }
+        }
+    }
+
+    .logo-picpay {
+        width: 100px;
+    }
+}

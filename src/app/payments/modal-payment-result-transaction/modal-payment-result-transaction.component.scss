@@ -1,0 +1,108 @@
+#icon-success, #icon-failed {
+    font-size: 2.5rem;
+    width: 100%;
+    color: #fff;
+    margin-left: 0.25rem;
+}
+
+.info {
+    p {
+        font-size: 0.8rem;
+    }
+}
+
+.contact-recipient {
+    h2 {
+        margin-bottom: 1rem;
+    }
+}
+
+.invoice {
+    padding: 1rem;
+
+    .info-day-transaction,
+    .info-recipient-transaction {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.8rem;
+
+        .date-transaction,
+        .hour-transaction,
+        .identifier-contact,
+        .value-transaction,
+        .card-payment {
+            h3 {
+                font-size: 1rem;
+                font-weight: 500;
+            }
+
+            h5 {
+                margin-bottom: 0.3rem;
+                font-size: 0.7rem;
+                color: #919191;
+                text-transform: uppercase;
+
+                #icon-clock {
+                    margin-right: 0.2rem;
+                }
+            }
+        }
+    }
+    .card-payment {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 2rem 0 1rem 0;
+
+        h5 {
+            margin-bottom: .5rem;
+            font-size: 0.7rem;
+            color: #919191;
+            text-transform: uppercase;
+        }
+
+        .card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 0.2rem;
+            height: 4rem;
+            padding: 1rem;
+            width: 80%;
+            margin-bottom: 0.5rem;
+
+            input[type="radio"] {
+                width: 7%;
+                height: 2rem;
+            }
+
+            &.mastercard {
+                background: var(--card-mastercard);
+            }
+
+            &.visa {
+                background: var(--card-visa);
+            }
+
+            .flag-card {
+                img {
+                    width: 2rem;
+                }
+            }
+            .card-content {
+                padding: 0 0.7rem;
+
+                h4,
+                p {
+                    font-size: 0.7rem;
+                }
+            }
+        }
+    }
+}
+
+#icon-back-payment-success {
+    margin-right: 0.2rem;
+    position: relative;
+    top: 1px;
+}

@@ -1,0 +1,94 @@
+<section class="modal" [ngClass]="openModal ? 'show' : 'hide'">
+    <div class="modal-content">
+        <div class="modal-header">
+            <div class="close-modal">
+                <button type="button" (click)="handleCloseModal($event)">fechar x</button>
+            </div>
+            <div class="icon" [ngClass]="paymentData?.isSuccess ? 'green' : 'red'">
+                <ng-template [ngIf]="paymentData?.isSuccess">
+                    <fa-icon id="icon-success" [icon]="faCheckCircle"></fa-icon>
+                </ng-template>
+                <ng-template [ngIf]="!paymentData?.isSuccess">
+                    <fa-icon id="icon-failed" [icon]="faTimesCircle"></fa-icon>
+                </ng-template>
+            </div>
+            <div class="info">
+                <ng-template [ngIf]="paymentData?.isSuccess">
+                    <h3>Pagamento realizado! 💸</h3>
+                    <p>Seu pagamento no valor de <b>{{ formartCurrency(paymentData?.value) }}</b> foi confirmado
+                        e
+                        será debitado da sua próxima fatura :)
+                    </p>
+                </ng-template>
+                <ng-template [ngIf]="!paymentData?.isSuccess">
+                    <h3>Oops, não conseguimos reaizar seu pagamento! 😥</h3>
+                    <p>Seu pagamento no valor de <b>{{ formartCurrency(paymentData?.value) }}</b> não foi
+                        realizado.
+                        Entre em contato com a administrado do seu cartão e tente novamente!
+                    </p>
+                </ng-template>
+
+            </div>
+            <div class="contact-recipient">
+                <ng-template [ngIf]="paymentData?.isSuccess">
+                    <h2>Você pagou a</h2>
+                    <img src="{{paymentData?.contact?.img}}" alt="Foto usuário">
+                    <h3>{{paymentData?.contact?.name}}</h3>
+                    <p>{{paymentData?.contact?.username}}</p>
+                </ng-template>
+                <ng-template [ngIf]="!paymentData?.isSuccess">
+                    <img src="{{paymentData?.contact?.img}}" alt="Foto usuário">
+                    <h3>{{paymentData?.contact?.name}}</h3>
+                    <p>{{paymentData?.contact?.username}}</p>
+                </ng-template>
+            </div>
+        </div>
+        <div class="modal-container">
+            <div class="invoice">
+                <div class="info-day-transaction text-center">
+                    <div class="date-transaction">
+                        <h5>Data <fa-icon [icon]="faCalendar"></fa-icon>
+                        </h5>
+                        <h3>{{ formatDate() }}</h3>
+                    </div>
+                    <div class="hour-transaction">
+                        <h5>
+                            Hora <fa-icon id="icon-clock" [icon]="faClock"></fa-icon>
+                        </h5>
+                        <h3>{{ formatHour() }}</h3>
+                    </div>
+                    <div class="info-recipient-transaction">
+                        <div class="value-transaction">
+                            <h5>Valor <fa-icon id="icon-clock" [icon]="faMoneyCheck"></fa-icon>
+                            </h5>
+                            <h3>{{ formartCurrency(paymentData?.value) }}</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-payment">
+                    <h5>Forma de pagamento <fa-icon id="icon-clock" [icon]="faCreditCard"></fa-icon>
+                    </h5>
+                    <div class="card {{paymentData?.card.flag_card}}">
+                        <div class="flag-card">
+                            <img src="{{ paymentData?.card.flag_card === 'mastercard' ? '../../assets/mastercard.svg' : '../../assets/visa.png' }}"
+                                alt="Bandeira do Cartão">
+                        </div>
+                        <div class="card-content">
+                            <h4>
+                                Cartão final *** {{ paymentData?.card?.card_number.slice(12, 16) }}
+                            </h4>
+                            <p>
+                                Mateus Roberto Queiroz
+                            </p>
+                        </div>
+                        <input type="radio" checked>
+                    </div>
+                </div>
+                <button class="btn-success btn-close" (click)="handleCloseModal()">
+                    <fa-icon id="icon-back-payment-success" [icon]="faArrowLeft"></fa-icon>
+                    voltar
+                </button>
+            </div>
+        </div>
+    </div>
+</section>

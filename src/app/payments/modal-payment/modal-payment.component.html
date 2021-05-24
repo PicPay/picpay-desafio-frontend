@@ -1,0 +1,80 @@
+<section class="modal" [ngClass]="openModal ? 'show' : 'hide'">
+    <div class="modal-content">
+        <div class="modal-header">
+            <div class="close-modal">
+                <button type="button" (click)="handleCloseModal()">fechar x</button>
+            </div>
+            <div class="icon green">
+                <fa-icon id="icon-dolar" [icon]="faHandHoldingUsd"></fa-icon>
+            </div>
+            <div class="info">
+                <h3>Enviar dinheiro</h3>
+                <p>Preencha abaixo as informações e confira se tudo está correto antes de enviar :)</p>
+            </div>
+            <div class="contact-recipient">
+                <img src="{{contactReceiving?.img}}" alt="Foto usuário">
+                <h3>{{contactReceiving?.name}}</h3>
+                <p>{{contactReceiving?.username}}</p>
+            </div>
+        </div>
+        <div class="modal-container">
+            <form id="form-payment-contact" (submit)="handleSubmitPayment($event)" [formGroup]="paymentForm">
+
+                <div *ngIf="paymentForm.valid == false" class="info-fields-required alert-danger" >
+                    <span>
+                        Preencha corretamente os campos abaixo *
+                    </span>
+                </div>
+
+                <div class="form-input">
+                    <label for="value-payment">Qual o valor? *</label>
+                    <input currencyMask [(ngModel)]="value" name="value" id="value-payment" autocomplete="off"
+                        formControlName="value"
+                        [ngClass]="paymentForm.get('value')?.errors && paymentForm.get('value')?.touched ? 'danger' : ''" />
+                    <div *ngIf="paymentForm.get('value')?.errors && paymentForm.get('value')?.touched"
+                        class="alert-danger">
+                        <span *ngIf="paymentForm.get('value')?.errors?.min">
+                            O valor minino para pagamento é de {{ formartCurrency(5) }}
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-input">
+                    <label *ngIf="!cardSelectedPay">Selecione um cartão para o pagamento</label>
+                    <div class="cards">
+                        <div *ngFor="let card of cards" class="card {{card.flag_card}}"
+                            [class.card-selected]="cardSelectedPay?.card_number == card.card_number">
+                            <div class="flag-card">
+                                <img src="{{ card.flag_card === 'mastercard' ? '../../assets/mastercard.svg' : '../../assets/visa.png' }}"
+                                    alt="Bandeira do Cartão">
+                            </div>
+                            <div class="card-content">
+                                <h4>
+                                    Cartão final *** {{ card?.card_number.slice(12, 16) }}
+                                </h4>
+                                <p>
+                                    Mateus Roberto Queiroz
+                                </p>
+                            </div>
+                            <input type="radio" [value]="card.card_number" name="card" formControlName="card"
+                                (change)="handleCardPayment(card)"
+                                [checked]="cardSelectedPay?.card_number == card.card_number">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-input">
+                    <button class="btn-success" type="submit">
+                            <div *ngIf="!loading">
+                                Pagar agora 
+                                <fa-icon id="button-payment-now" [icon]="faMoneyCheck"></fa-icon>
+                            </div>
+                            <div class="loading" *ngIf="loading">
+                                <fa-icon [spin]="true" [icon]="faSpinner"></fa-icon>
+                            </div>
+                        </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

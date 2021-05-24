@@ -1,0 +1,23 @@
+@mixin sm-devices() {
+    @media (min-width: 481px) and (max-width: 600px) {
+        @content;
+    }
+}
+
+@mixin md-devices() {
+    @media (min-width: 601px) and (max-width: 981px) {
+        @content;
+    }
+}
+
+@mixin lg-devices() {
+    @media (min-width: 982px) and (max-width: 1281px) {
+        @content;
+    }
+}
+
+@mixin xl-devices() {
+    @media (min-width: 1282px) {
+        @content;
+    }
+}

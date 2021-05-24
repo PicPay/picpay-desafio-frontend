@@ -1,0 +1,96 @@
+#icon-dolar {
+  font-size: 2.5rem;
+  width: 100%;
+  color: #fff;
+}
+
+.info {
+  p {
+    font-size: 0.8rem;
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  padding: 0 2rem;
+
+  .info-fields-required {
+    margin-bottom: 1rem;
+  }
+
+  .form-input {
+    label {
+      font-size: 0.8rem;
+      display: block;
+      width: 100%;
+    }
+
+    input#value-payment {
+      margin-top: 0.4rem;
+      width: 100%;
+      height: 2rem;
+      border: 0.1rem solid #ccc;
+      border-radius: 0.2rem;
+      padding: 0.5rem;
+      font-size: 1rem;
+      transition: 0.5s;
+
+      &:hover {
+        border: 0.15rem solid var(--green);
+      }
+    }
+
+    margin-bottom: 1rem;
+
+    .cards {
+      margin-top: 0.5rem;
+      display: flex;
+      flex-direction: column;
+
+      .card {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 0.2rem;
+        height: 4rem;
+        padding: 1rem;
+        width: 100%;
+        margin-bottom: 0.5rem;
+
+        input[type="radio"] {
+          width: 7%;
+          height: 2rem;
+        }
+
+        &.mastercard {
+          background: var(--card-mastercard);
+        }
+
+        &.visa {
+          background: var(--card-visa);
+        }
+
+        .flag-card {
+          img {
+            width: 2rem;
+          }
+        }
+        .card-content {
+          padding: 0 0.7rem;
+
+          h4,
+          p {
+            font-size: 0.7rem;
+          }
+        }
+      }
+    }
+  }
+
+  #button-payment-now {
+    margin-left: 0.2rem;
+    position: relative;
+    top: 1px;
+  }
+}

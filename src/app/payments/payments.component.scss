@@ -1,0 +1,118 @@
+@import "../../mixins.scss";
+
+main {
+    margin: 1rem;
+
+    h2 {
+        color: var(--grey);
+        font-weight: 500;
+        margin: 2rem 0 0.5rem 0;
+    }
+
+    .contacts-favorites-wrapper {
+        .contacts-favorites-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding-bottom: 1rem;
+
+            .contact-favorite {
+                flex: none;
+                width: 4rem;
+                height: 5rem;
+                border-radius: 25%;
+                margin: 0 1rem 0.2rem 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                img {
+                    width: 100%;
+                    height: 80%;
+                    border-radius: 50%;
+                    object-fit: cover;
+                    border: 2px solid var(--green);
+                }
+
+                p {
+                    font-size: 0.6rem;
+                    word-break: break-all;
+                }
+            }
+        }
+    }
+
+    .list-contacts {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 0.8rem;
+
+        @include md-devices {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        @include lg-devices {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        @include xl-devices {
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        }
+
+        .container-list-my-network {
+            display: flex;
+            background: var(--green-gradient);
+            border-radius: 0.3rem;
+            height: 4rem;
+            justify-content: space-between;
+            align-items: center;
+
+            &:hover {
+                transition: transform 0.5s;
+                transform: translateX(0.3rem);
+                border: 1px solid #313131;
+            }
+
+            .content-list-user-network {
+                color: #1f1f1f;
+                display: flex;
+                align-items: center;
+                padding: 0.5rem;
+                img {
+                    height: 2.5rem;
+                    width: 2.5rem;
+                    border-radius: 2rem;
+                    border: solid 2px #fff;
+                }
+
+                .info-user {
+                    color: #fff;
+                    h4,
+                    p {
+                        margin-left: 0.5rem;
+                    }
+                }
+            }
+
+            .button-payment-user-network {
+                margin-right: 1rem;
+                border: none;
+                border-radius: 1rem;
+                background: #fff;
+                width: 2rem;
+                height: 2rem;
+                transition: 0.5s;
+
+                &:hover {
+                    background: rgb(183, 246, 153);
+                }
+
+                p {
+                    font-size: 1.2rem;
+                }
+            }
+        }
+    }
+}

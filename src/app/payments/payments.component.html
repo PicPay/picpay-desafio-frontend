@@ -1,0 +1,35 @@
+<main>
+    <div class="title-contacts">
+        <h2>Atividades Recentes</h2>
+    </div>
+    <div class="contacts-favorites-wrapper">
+        <div class="contacts-favorites-container">
+            <div class="contact-favorite" *ngFor="let contact of contacts">
+                <img src="{{contact.img}}" alt="Avatar Usúario">
+                <p>{{contact.username}}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="title-contacts">
+        <h2>Contatos</h2>
+    </div>
+    <ul class="list-contacts">
+        <li *ngFor="let contact of contacts">
+            <div class="container-list-my-network">
+                <div class="content-list-user-network">
+                    <img src="{{contact.img}}" alt="Avatar Usúario">
+                    <div class="info-user">
+                        <h4>{{contact.name}}</h4>
+                        <p>{{contact.username}}</p>
+                    </div>
+                </div>
+                <button class="button-payment-user-network" title="Pagar a {{contact.username}}" (click)="handleOpenModalPayment(contact)">
+                    <p>$</p>
+                </button>
+            </div>
+        </li>
+    </ul>
+    <modal-payment (paymentData)="handlePaymentStatus($event)" (closeModal)="handleCloseModalPayment($event)" [openModal]="openModalPayment" [contactReceiving]="contactReceiving"></modal-payment>
+    <modal-payment-result-transaction (closeModal)="handleCloseModalPaymentSuccess($event)" [paymentData]="paymentData" [openModal]="openModalSuccessPayment"></modal-payment-result-transaction>
+</main>
