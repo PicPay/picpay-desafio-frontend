@@ -1,0 +1,11 @@
+<div class="message">
+  <i
+    class="message__icon"
+    [ngClass]="
+		!status
+        ? 'fas fa-exclamation-circle message__icon--error'
+        : 'far fa-check-circle message__icon--success'
+    "
+  ></i>
+  <p class="message__text">{{ status ? success : error}}</p>
+</div>

@@ -1,0 +1,30 @@
+@import "colors.scss";
+@import "mixins.scss";
+
+.message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+
+  &__icon {
+    @include fontSize(80px);
+    padding: 20px;
+
+    &--success {
+      color: $green;
+    }
+
+    &--error {
+      color: $green-moss;
+    }
+  }
+
+  &__text {
+    @include fontSize(24px);
+    padding: 20px;
+    @include for-phone-only {
+      text-align: center;
+    }
+  }
+}
