@@ -1,0 +1,25 @@
+@function convertToRem($size) {
+  @return $size / 16px * 1rem;
+}
+
+@mixin fontSize($size) {
+  font-size: convertToRem($size);
+}
+
+@mixin for-phone-only {
+  @media (max-width: 767.98px) {
+    @content;
+  }
+}
+
+@mixin for-tablet-only {
+  @media (min-width: 767px) and (max-width: 1199.98px) {
+    @content;
+  }
+}
+
+@mixin for-desktop-only {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
