@@ -1,0 +1,40 @@
+<section class="home">
+  <header class="home__banner banner">
+    <div class="banner__content container">
+      <h2 class="banner__title">Para quem você quer efetuar o pagamento?</h2>
+      <p class="banner__text">Escolha um contato na sua lista.</p>
+    </div>
+  </header>
+
+  <main class="home__content container">
+    <app-user-list
+      [users]="users"
+      (selectedUser)="openTransaction($event)"
+    ></app-user-list>
+  </main>
+</section>
+
+<app-modal id="trasanction" title="Qual é o valor e o cartão?">
+  <app-transaction
+    [user]="selectedUser"
+    [cards]="cards$ | async"
+    (transitionStatus)="processStatusMessage($event)"
+  ></app-transaction>
+</app-modal>
+
+<app-modal id="message" title="Recibo de pagamento">
+  <app-message
+    [status]="transitionStatus"
+    success="O pagamento foi concluido com sucesso"
+    error="O pagamento não foi concluido com sucesso"
+  ></app-message>
+</app-modal>
+
+<ngx-spinner
+  bdColor="rgba(240,241,233,0.51)"
+  size="medium"
+  color="#11c76f"
+  type="square-loader"
+  [fullScreen]="true"
+  ><p style="color: #11c76f">Processando...</p></ngx-spinner
+>

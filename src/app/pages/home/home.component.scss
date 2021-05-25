@@ -1,0 +1,33 @@
+@import "colors.scss";
+@import "mixins.scss";
+
+.home {
+  .banner {
+    background-color: $green-moss;
+    height: 265px;
+
+    @include for-phone-only {
+      height: 350px;
+    }
+
+    &__content {
+      padding-top: 74px;
+    }
+
+    &__title {
+      color: $white-4;
+      margin-bottom: 64px;
+      @include fontSize(30px);
+    }
+
+    &__text {
+      color: $white-4;
+      margin-bottom: 24px;
+      opacity: 0.7;
+    }
+  }
+
+  &__content {
+    margin-top: -65px;
+  }
+}
