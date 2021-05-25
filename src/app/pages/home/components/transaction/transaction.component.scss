@@ -1,0 +1,66 @@
+@import "colors.scss";
+@import "mixins.scss";
+
+.transation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 30px;
+
+  &__form-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+  }
+
+  &__input {
+    margin-top: 24px;
+    border: 2px solid $green;
+    border-radius: 6px;
+    @include fontSize(24px);
+    height: 48px;
+    padding: 20px 8px;
+    color: lighten(#223324, 40%);
+
+    &::placeholder {
+      color: lighten(#223324, 40%);
+    }
+
+    &--error {
+      border: 2px solid red;
+    }
+  }
+
+  .error {
+    position: absolute;
+    margin: 8px 8px 0 8px;
+    @include fontSize(12px);
+    color: red;
+    bottom: -20px;
+  }
+
+  &__select {
+    appearance: none;
+    border: 2px solid $green;
+    padding-left: 8px;
+    border-radius: 6px;
+    @include fontSize(24px);
+    height: 48px;
+    margin-top: 24px;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+    background-repeat: no-repeat;
+    background-position-x: 100%;
+    background-position-y: 10px;
+    color: lighten(#223324, 40%);
+
+    &--error {
+      border: 2px solid red;
+    }
+  }
+
+  &__wrapper-btn {
+    width: 100%;
+    margin-top: 24px;
+  }
+}

@@ -1,0 +1,43 @@
+<form
+  novalidate
+  (ngSubmit)="sendTransaction()"
+  [formGroup]="transitionForm"
+  class="transation"
+>
+  <app-user-info [user]="user"></app-user-info>
+
+  <div class="transation__form-group">
+    <input
+      currencyMask
+      [options]="currencyMask"
+      formControlName="value"
+      class="transation__input"
+      [ngClass]="{ 'transation__input--error': displayMessage.value }"
+      type="text"
+      placeholder="R$ 0,00"
+    />
+    <span class="transation__error error" *ngIf="displayMessage.value">
+      <p class="error__message" [innerHTML]="displayMessage.value"></p>
+    </span>
+  </div>
+
+  <div class="transation__form-group">
+    <select
+      formControlName="creditCard"
+      class="transation__select"
+      [ngClass]="{ 'transation__select--error': displayMessage.creditCard }"
+    >
+      <option value="" selected>Selecione um cartão</option>
+      <option *ngFor="let card of cards" [value]="card.card_number">
+        Cartão com final {{ card.card_number | creditCard }}
+      </option>
+    </select>
+    <span class="transation__error error" *ngIf="displayMessage.creditCard">
+      <p class="error__message" [innerHTML]="displayMessage.creditCard"></p>
+    </span>
+  </div>
+
+  <div class="transation__wrapper-btn">
+    <app-button type="submit" [disabled]="transitionForm.invalid">Pagar</app-button>
+  </div>
+</form>
