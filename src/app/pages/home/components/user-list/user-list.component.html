@@ -1,0 +1,8 @@
+<ul @listCard>
+	<li  *ngFor="let user of users">
+		<app-card >
+			<app-user-info [user]="user" content></app-user-info>
+			<app-button (click)="onClick(user)" actions>Pagar</app-button>
+		</app-card>
+	</li>
+</ul>
