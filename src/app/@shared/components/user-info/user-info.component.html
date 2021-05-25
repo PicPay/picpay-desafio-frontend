@@ -1,0 +1,7 @@
+<div *ngIf="!!user" class="user">
+  <img class="user__img" [src]="user?.img" [alt]="user?.name"/>
+  <div class="user__info info">
+    <p class="info__text">{{user?.name}}</p>
+    <span class="info__id">{{user?.username}}</span>
+  </div>
+</div>

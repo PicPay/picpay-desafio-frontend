@@ -1,0 +1,37 @@
+@import "colors.scss";
+@import "mixins.scss";
+
+.user {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  @include for-phone-only {
+    margin-bottom: 24px;
+  }
+
+  &__img {
+    border-radius: 50%;
+    height: 80px;
+    width: 80px;
+  }
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    color: $green-light;
+    margin-left: 14px;
+
+    &__text {
+      font-family: "Robot", sans-serif;
+      font-weight: 700;
+      margin-bottom: 4px;
+      @include fontSize(18px);
+    }
+
+    &__id {
+      font-family: "Robot", sans-serif;
+      @include fontSize(14px);
+      color: lighten(#50d67b, 15%);
+    }
+  }
+}
