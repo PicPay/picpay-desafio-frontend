@@ -1,9 +1,9 @@
-import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
-import { CreditCardData } from "src/app/@core/data/credit-card.data";
-import { ModalService } from "src/app/@shared/components/modal/services/modal.service";
-import { CreditCard } from "src/app/@shared/models/credit-card.model";
-import { User } from "src/app/@shared/models/user.model";
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { CreditCardData } from '@core/data/credit-card.data';
+import { ModalService } from '@shared/components/modal/services/modal.service';
+import { CreditCard } from '@shared/models/credit-card.model';
+import { User } from '@shared/models/user.model';
 import { Observable, of } from 'rxjs';
 
 @Component({

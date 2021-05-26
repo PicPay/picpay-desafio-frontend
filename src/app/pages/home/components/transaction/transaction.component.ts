@@ -1,12 +1,12 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChildren } from '@angular/core';
 import { FormBuilder, FormControlName, FormGroup, Validators } from '@angular/forms';
-import { fromEvent, merge, Observable } from 'rxjs';
-import { TransactionService } from 'src/app/@core/services/http/transaction.service';
-import { CreditCard } from 'src/app/@shared/models/credit-card.model';
-import { User } from 'src/app/@shared/models/user.model';
-import { DisplayMessage, FormValidator, ValidationMessages } from 'src/app/@shared/utils/form-validation';
+import { TransactionService } from '@core/services/http/transaction.service';
+import { CreditCard } from '@shared/models/credit-card.model';
+import { TransactionPayload } from '@shared/models/transaction-payload.model';
+import { User } from '@shared/models/user.model';
+import { DisplayMessage, FormValidator, ValidationMessages } from '@shared/utils/form-validation';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { TransactionPayload } from 'src/app/@shared/models/transaction-payload.model';
+import { fromEvent, merge, Observable } from 'rxjs';
 
 interface transitionForm  {
 	value: number;

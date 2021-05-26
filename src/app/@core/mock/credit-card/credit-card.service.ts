@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { CreditCard } from 'src/app/@shared/models/credit-card.model';
+import { CreditCard } from '@shared/models/credit-card.model';
 import { CreditCardData } from '../../data/credit-card.data';
 
 @Injectable({

@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
-import { CreditCard } from './../../../@shared/models/credit-card.model';
+import { CreditCard } from '@shared/models/credit-card.model';
 import { CreditCardService } from './credit-card.service';
 
 const cards: CreditCard[] = [
