@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ModalService } from './services/modal.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { ModalService } from './services/modal.service';
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.scss']
 })
-export class ModalComponent implements OnInit {
+export class ModalComponent implements OnInit, OnDestroy {
 
 	@Input() id = '';
 
@@ -22,5 +22,9 @@ export class ModalComponent implements OnInit {
 	
 	openModal(state: boolean): void {
 		this.open = state;
+	}
+
+	ngOnDestroy(): void {
+		this.modalService.remove(this.id);
 	}
 }

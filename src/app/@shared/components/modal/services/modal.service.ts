@@ -21,9 +21,7 @@ export class ModalService {
 		this.openCloseModal(id, false);
 	} 
 
-	private openCloseModal(id: string,  state: boolean) {
-		console.log();
-		
+	private openCloseModal(id: string,  state: boolean) {	
 		const modal = this.modals.find(modal => modal.id === id);
 		if(!modal)  return;
 		modal.openModal(state);
