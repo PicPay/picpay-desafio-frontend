@@ -3,21 +3,24 @@
 .user {
   background-color: white;
   box-shadow: 3px 2px 6px $light-medium-gray, 0px -1px 0px $light-medium-gray;
-  padding: 20px 40px;
+  padding: 2vh 4vw;
   border-radius: 10px;
   display: flex;
   align-items: center;
 
   img {
     border-radius: 50%;
-    height: 80px;
-    width: 80px;
+    height: 9vh;
     border: 3px solid $primary-green;
   }
 
   .info-wrapper {
     margin-left: 16px;
     font-weight: 300;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
     .user-info {
       display: flex;
       flex-direction: row;
@@ -30,6 +33,7 @@
 
   .pay-button {
     display: flex;
+
     margin-left: auto;
     width: 120px;
     height: 40px;
