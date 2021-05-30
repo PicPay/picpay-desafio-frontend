@@ -1,10 +1,26 @@
+$dark-green: #064727;
+$medium-green: #0c9450;
+$light-green: #4fd190;
+$primary-green: #0fc66a;
+
+$primary-gray: #3a3c39;
+$light-gray: #fafafa;
+$light-medium-gray: #f0f0f075;
+$dark-gray: #232523;
+$text: #5f5f5f;
+
 * {
   box-sizing: border-box;
 }
 
 html,
 body {
-  font-family: sans-serif;
+  font-family: 'Roboto';
   margin: 0;
   padding: 0;
+  background-color: $light-gray;
+  color: $text;
+  padding: 5px;
+  height: 100%;
 }
+

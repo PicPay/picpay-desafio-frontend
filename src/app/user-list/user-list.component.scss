@@ -1,0 +1,48 @@
+@import "src/styles.scss";
+
+.user {
+  background-color: white;
+  box-shadow: 3px 2px 6px $light-medium-gray, 0px -1px 0px $light-medium-gray;
+  padding: 20px 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+
+  img {
+    border-radius: 50%;
+    height: 80px;
+    width: 80px;
+    border: 3px solid $primary-green;
+  }
+
+  .info-wrapper {
+    margin-left: 16px;
+    font-weight: 300;
+    .user-info {
+      display: flex;
+      flex-direction: row;
+
+      .user-id {
+        margin-right: 10px;
+      }
+    }
+  }
+
+  .pay-button {
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+    width: 120px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    font-size: 22px;
+    background-color: $primary-green;
+    color: white;
+    font-weight: 300;
+    .fa {
+      margin-right: 10px;
+    }
+  }
+}
