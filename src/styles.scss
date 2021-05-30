@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300;1,400;1,500&display=swap');
+
 $dark-green: #064727;
 $medium-green: #0c9450;
 $light-green: #4fd190;
@@ -20,7 +22,6 @@ body {
   padding: 0;
   background-color: $light-gray;
   color: $text;
-  padding: 5px;
   height: 100%;
 }
 

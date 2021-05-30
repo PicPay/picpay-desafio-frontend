@@ -1,7 +1,10 @@
 @import "src/styles.scss";
 
-body{
-  background-color: $light-gray
+.app {
+  background-color: $light-gray;
+  .main {
+    padding: 0 3%;
+  }
 }
 /* Payment Modal */
 .modal-backdrop {
