@@ -15,6 +15,7 @@ import {
 
 import localePt from "@angular/common/locales/pt";
 import { registerLocaleData } from "@angular/common";
+import { ListCardModalComponent } from './list-card-modal/list-card-modal.component';
 
 registerLocaleData(localePt, "pt");
 
@@ -24,6 +25,7 @@ registerLocaleData(localePt, "pt");
     UserListComponent,
     HeaderComponent,
     PaymentModalComponent,
+    ListCardModalComponent,
   ],
   imports: [
     BrowserModule,
