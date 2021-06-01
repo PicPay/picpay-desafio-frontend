@@ -1,0 +1,66 @@
+@import "src/styles.scss";
+
+.payment-card {
+  margin: 0px 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  img {
+    border-radius: 50%;
+    height: 9vh;
+    border: 3px solid $primary-green;
+    margin-right: 10px;
+  }
+
+  .info-wrapper {
+    font-weight: 300;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: flex;
+    flex-direction: column;
+
+    .info-payment {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      input#valor {
+        border-width: 0px;
+        color: $primary-green;
+        font-weight: bold;
+        font-size: 22px;
+        width: 100px;
+      }
+
+      .method-pay-button {
+        display: flex;
+        align-items: center;
+        border: 0.5px solid $text;
+        height: 21px;
+        width: 65px;
+        padding: 5px;
+        border-radius: 16px;
+        color: $text;
+      }
+    }
+  }
+}
+
+.pay-button {
+  display: flex;
+  margin: 5% auto 0px auto;
+  width: 120px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  font-size: 18px;
+  background-color: $primary-green;
+  color: white;
+  font-weight: 300;
+  .fa {
+    margin-right: 10px;
+  }
+}

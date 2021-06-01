@@ -1,4 +1,32 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300;1,400;1,500&display=swap');
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$picpay-desafio-frontend-primary: mat-palette($mat-indigo);
+$picpay-desafio-frontend-accent: mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$picpay-desafio-frontend-warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$picpay-desafio-frontend-theme: mat-light-theme($picpay-desafio-frontend-primary, $picpay-desafio-frontend-accent, $picpay-desafio-frontend-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($picpay-desafio-frontend-theme);
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300;1,400;1,500&display=swap");
 
 $dark-green: #064727;
 $medium-green: #0c9450;
@@ -11,17 +39,16 @@ $light-medium-gray: #f0f0f075;
 $dark-gray: #232523;
 $text: #5f5f5f;
 
-* {
-  box-sizing: border-box;
-}
-
 html,
 body {
-  font-family: 'Roboto';
+  height: 100%;
+  background-color: $light-gray;
+}
+body {
   margin: 0;
   padding: 0;
-  background-color: $light-gray;
-  color: $text;
-  height: 100%;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

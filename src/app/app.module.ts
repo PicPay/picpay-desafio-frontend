@@ -1,22 +1,45 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserModule } from "@angular/platform-browser";
+import { LOCALE_ID, NgModule } from "@angular/core";
 
-import { AppComponent } from './app.component';
-import { UserListComponent } from './user-list/user-list.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HeaderComponent } from './header/header.component';
+import { AppComponent } from "./app.component";
+import { UserListComponent } from "./user-list/user-list.component";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { HeaderComponent } from "./header/header.component";
+import { PaymentModalComponent } from "./payment-modal/payment-modal.component";
+import { FormsModule } from "@angular/forms";
+import {
+  MatIconModule,
+  MatCardModule,
+  MatButtonModule,
+} from "@angular/material";
+
+import localePt from "@angular/common/locales/pt";
+import { registerLocaleData } from "@angular/common";
+
+registerLocaleData(localePt, "pt");
 
 @NgModule({
   declarations: [
     AppComponent,
     UserListComponent,
-    HeaderComponent
+    HeaderComponent,
+    PaymentModalComponent,
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule,
+    MatIconModule,
+    MatCardModule,
+    MatButtonModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    { provide: LOCALE_ID, useValue: "pt" },
+    {
+      provide: LOCALE_ID,
+      useValue: "BRL",
+    },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

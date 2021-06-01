@@ -1,0 +1,33 @@
+<app-header></app-header>
+<mat-card class="payment-card">
+  <div class="avatar">
+    <img src="https://randomuser.me/api/portraits/men/9.jpg" />
+  </div>
+  <div class="info-wrapper">
+    <div class="user-name">Nome do Usuário</div>
+    <div class="user-username">Username</div>
+
+    <div class="info-payment">
+      <form class="input-value">
+        <input
+          id="valor"
+          type="number"
+          [(ngModel)]="valor"
+          name="valor"
+          class="input-value"
+        />
+      </form>
+
+      <div class="method-pay-button">
+        <mat-icon aria-hidden="false" aria-label="Example home icon"
+          >home</mat-icon
+        >
+        <h6>Cartões</h6>
+      </div>
+    </div>
+  </div>
+</mat-card>
+
+<div class="pay-button">
+  <h6>Pagar</h6>
+</div>
