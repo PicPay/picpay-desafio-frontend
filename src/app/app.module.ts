@@ -4,7 +4,7 @@ import { LOCALE_ID, NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
 import { UserListComponent } from "./user-list/user-list.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { HeaderComponent } from "./header/header.component";
+
 import { PaymentModalComponent } from "./payment-modal/payment-modal.component";
 import { FormsModule } from "@angular/forms";
 import {
@@ -16,6 +16,7 @@ import {
 import localePt from "@angular/common/locales/pt";
 import { registerLocaleData } from "@angular/common";
 import { ListCardModalComponent } from './list-card-modal/list-card-modal.component';
+import { HeaderComponent } from "./components/header/header.component";
 
 registerLocaleData(localePt, "pt");
 

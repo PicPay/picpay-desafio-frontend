@@ -1,10 +1,12 @@
+@import "src/styles.scss";
+
 .header {
   display: flex;
   flex-direction: row;
   align-items: center;
   padding-left: 5%;
-  font-size: 24px;
-
+  font-size: 22px;
+  color: $text;
   .fa {
     margin-right: 10px;
   }
