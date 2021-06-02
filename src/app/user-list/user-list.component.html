@@ -1,9 +1,8 @@
-<app-header [title]="'Lista de usuários'" ></app-header>
+<app-header [title]="'Lista de usuários'"></app-header>
 <div class="users">
-
   <div class="user">
-    <img src="https://randomuser.me/api/portraits/men/9.jpg" />
-
+    <app-avatar [url_image]="'https://randomuser.me/api/portraits/men/9.jpg'">
+    </app-avatar>
     <div class="info-wrapper">
       <div class="user-name">Nome do Usuário</div>
 
@@ -13,9 +12,8 @@
       </div>
     </div>
 
-    <div class="pay-button" >
+    <div class="pay-button">
       <h6>Pagar</h6>
     </div>
   </div>
-  
 </div>

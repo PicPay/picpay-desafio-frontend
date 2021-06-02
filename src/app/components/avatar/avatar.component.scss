@@ -1,0 +1,17 @@
+@import "src/styles.scss";
+.icon-empty {
+  border-radius: 50%;
+  height: 5vh;
+  width: 9vw;
+  border: 3px solid $primary-green;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  color: $text;
+}
+
+img {
+  border-radius: 50%;
+  height: 9vh;
+  border: 3px solid $primary-green;
+}
