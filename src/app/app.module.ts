@@ -18,6 +18,7 @@ import { registerLocaleData } from "@angular/common";
 import { ListCardModalComponent } from './list-card-modal/list-card-modal.component';
 import { HeaderComponent } from "./components/header/header.component";
 import { AvatarComponent } from './components/avatar/avatar.component';
+import { PrimaryGreenButtonComponent } from './components/primary-green-button/primary-green-button.component';
 
 registerLocaleData(localePt, "pt");
 
@@ -29,6 +30,7 @@ registerLocaleData(localePt, "pt");
     PaymentModalComponent,
     ListCardModalComponent,
     AvatarComponent,
+    PrimaryGreenButtonComponent,
   ],
   imports: [
     BrowserModule,

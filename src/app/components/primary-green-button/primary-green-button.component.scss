@@ -1,0 +1,14 @@
+@import "src/styles.scss";
+
+.green-button {
+  display: flex;
+  margin-left: auto;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  font-size: 22px;
+  background-color: $primary-green;
+  color: white;
+  font-weight: 300;
+}

@@ -10,8 +10,6 @@
     display: flex;
     align-items: center;
 
-    
-
     .info-wrapper {
       margin-left: 16px;
       font-weight: 300;
@@ -30,21 +28,7 @@
     }
 
     .pay-button {
-      display: flex;
-
-      margin-left: auto;
-      width: 120px;
-      height: 40px;
-      align-items: center;
-      justify-content: center;
-      border-radius: 20px;
-      font-size: 22px;
-      background-color: $primary-green;
-      color: white;
-      font-weight: 300;
-      .fa {
-        margin-right: 10px;
-      }
+      width: 100px;
     }
   }
 }
