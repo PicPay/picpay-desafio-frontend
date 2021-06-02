@@ -1,7 +1,7 @@
 <app-header [title]="'Lista de usuários'"></app-header>
 
 <div class="list-users" *ngFor="let user of listUsers">
-  <div class="user" (click)="paymentUser(user)">
+  <div class="user" routerLink="/payment" [queryParams]="user">
     <app-avatar [url_image]=user.img>
     </app-avatar>
     <div class="info-wrapper">

@@ -1,20 +1,17 @@
 <app-header></app-header>
 <mat-card class="payment-card">
-  <div class="avatar">
-    <img src="https://randomuser.me/api/portraits/men/9.jpg" />
-  </div>
+  <app-avatar [url_image]="user.img"> </app-avatar>
   <div class="info-wrapper">
-    <div class="user-name">Nome do Usuário</div>
-    <div class="user-username">Username</div>
+    <div class="user-name">{{ user.name }}</div>
+    <div class="user-username">{{ user.username }}</div>
 
     <div class="info-payment">
       <form class="input-value">
         <input
-          id="valor"
-          type="number"
-          [(ngModel)]="valor"
-          name="valor"
           class="input-value"
+          currencyMask
+          [formControl]="valor"
+          [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"
         />
       </form>
 

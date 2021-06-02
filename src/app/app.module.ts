@@ -3,13 +3,13 @@ import { LOCALE_ID, NgModule } from "@angular/core";
 
 import { AppComponent } from "./app.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { ReactiveFormsModule } from '@angular/forms';
 
-import { PaymentModalComponent } from "./payment-modal/payment-modal.component";
 import { FormsModule } from "@angular/forms";
 import {
   MatIconModule,
   MatCardModule,
-  MatButtonModule
+  MatButtonModule,
 } from "@angular/material";
 
 import localePt from "@angular/common/locales/pt";
@@ -21,6 +21,8 @@ import { PrimaryGreenButtonComponent } from "./components/primary-green-button/p
 import { HttpClientModule } from "@angular/common/http";
 import { UserListComponent } from "./pages/user-list/user-list.component";
 import { AppRoutingModule } from "./app-routing.module";
+import { PaymentComponent } from "./pages/payment/payment.component";
+import { NgxCurrencyModule } from "ngx-currency";
 
 registerLocaleData(localePt, "pt");
 
@@ -29,10 +31,10 @@ registerLocaleData(localePt, "pt");
     AppComponent,
     UserListComponent,
     HeaderComponent,
-    PaymentModalComponent,
     ListCardModalComponent,
     AvatarComponent,
     PrimaryGreenButtonComponent,
+    PaymentComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,7 +44,9 @@ registerLocaleData(localePt, "pt");
     MatCardModule,
     MatButtonModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgxCurrencyModule,
+    ReactiveFormsModule,
   ],
   providers: [
     { provide: LOCALE_ID, useValue: "pt" },

@@ -6,10 +6,7 @@
   flex-direction: row;
   align-items: center;
 
-  img {
-    border-radius: 50%;
-    height: 9vh;
-    border: 3px solid $primary-green;
+  app-avatar {
     margin-right: 10px;
   }
 
@@ -26,12 +23,13 @@
       flex-direction: row;
       align-items: center;
 
-      input#valor {
+      input {
         border-width: 0px;
         color: $primary-green;
         font-weight: bold;
-        font-size: 22px;
+        font-size: 18px;
         width: 100px;
+        margin-right: 10px;
       }
 
       .method-pay-button {
