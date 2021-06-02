@@ -10,15 +10,16 @@ import { FormsModule } from "@angular/forms";
 import {
   MatIconModule,
   MatCardModule,
-  MatButtonModule,
+  MatButtonModule
 } from "@angular/material";
 
 import localePt from "@angular/common/locales/pt";
 import { registerLocaleData } from "@angular/common";
-import { ListCardModalComponent } from './list-card-modal/list-card-modal.component';
+import { ListCardModalComponent } from "./list-card-modal/list-card-modal.component";
 import { HeaderComponent } from "./components/header/header.component";
-import { AvatarComponent } from './components/avatar/avatar.component';
-import { PrimaryGreenButtonComponent } from './components/primary-green-button/primary-green-button.component';
+import { AvatarComponent } from "./components/avatar/avatar.component";
+import { PrimaryGreenButtonComponent } from "./components/primary-green-button/primary-green-button.component";
+import { HttpClientModule } from "@angular/common/http";
 
 registerLocaleData(localePt, "pt");
 
@@ -39,6 +40,7 @@ registerLocaleData(localePt, "pt");
     MatIconModule,
     MatCardModule,
     MatButtonModule,
+    HttpClientModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: "pt" },

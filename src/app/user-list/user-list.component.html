@@ -1,17 +1,18 @@
 <app-header [title]="'Lista de usuários'"></app-header>
-<div class="users">
-  <div class="user">
-    <app-avatar [url_image]="'https://randomuser.me/api/portraits/men/9.jpg'">
+
+<div class="list-users" *ngFor="let user of listUsers">
+  <div class="user" (click)="paymentUser(user)">
+    <app-avatar [url_image]=user.img>
     </app-avatar>
     <div class="info-wrapper">
-      <div class="user-name">Nome do Usuário</div>
+      <div class="user-name">{{user.name}}</div>
 
+      <div class="user-username">{{user.username}}</div>
       <div class="user-info">
-        <div class="user-id">ID</div>
-        <div class="user-username">Username</div>
       </div>
     </div>
 
     <app-primary-green-button class="pay-button" [label]="'Pagar'"> </app-primary-green-button>
   </div>
-</div>
+</div> 
+
