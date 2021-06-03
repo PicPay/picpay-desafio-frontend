@@ -1,0 +1,15 @@
+@import "src/styles.scss";
+
+.success {
+  color: $primary-green;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.error {
+  color: $error;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

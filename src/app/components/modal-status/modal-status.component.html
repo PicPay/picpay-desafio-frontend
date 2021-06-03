@@ -1,0 +1,11 @@
+<div class="success" *ngIf="status === true">
+  <mat-icon aria-hidden="true" aria-label="Icone de sucesso">
+    check_circle
+  </mat-icon>
+  <p>Transação realizada com sucesso</p>
+</div>
+
+<div class="error" *ngIf="!status">
+  <mat-icon aria-hidden="true" aria-label="Icone de erro"> error </mat-icon>
+  <p>Alguma coisa deu errado</p>
+</div>

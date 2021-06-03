@@ -10,19 +10,14 @@ export class TransactionService {
   transaction: Transaction = new Transaction();
   constructor(private http: HttpClient) {}
 
-  formatData(user, valor, card): void {
+  sendPayment(user, valor, card) {
     this.transaction.card_number = card.card_number;
     this.transaction.cvv = card.cvv;
     this.transaction.expiry_date = card.expiry_date;
     this.transaction.destination_user_id = user.id;
     this.transaction.value = valor.value;
 
-    this.sendTransaction(this.transaction);
-  }
-
-  private sendTransaction(transaction) {
-    this.http.post(this.url, transaction).subscribe((res) => {
-      console.log(res);
-    });
+    const body = JSON.stringify(this.transaction);
+    return this.http.post(this.url, body);
   }
 }

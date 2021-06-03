@@ -24,6 +24,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { PaymentComponent } from "./pages/payment/payment.component";
 import { NgxCurrencyModule } from "ngx-currency";
 import { ListCardModalComponent } from "./components/list-card-modal/list-card-modal.component";
+import { ModalStatusComponent } from "./components/modal-status/modal-status.component";
 
 registerLocaleData(localePt, "pt");
 
@@ -36,8 +37,9 @@ registerLocaleData(localePt, "pt");
     AvatarComponent,
     PrimaryGreenButtonComponent,
     PaymentComponent,
+    ModalStatusComponent,
   ],
-  entryComponents: [ListCardModalComponent],
+  entryComponents: [ListCardModalComponent, ModalStatusComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
