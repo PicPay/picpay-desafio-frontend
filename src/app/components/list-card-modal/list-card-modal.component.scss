@@ -1,0 +1,15 @@
+@import "src/styles.scss";
+
+.list-card {
+  .card-items {
+    display: flex;
+    align-items: center;
+    color: $text;
+    justify-content: space-between;
+
+    p {
+      font-size: 12px;
+      margin: 0px 4px;
+    }
+  }
+}
