@@ -33,6 +33,14 @@
 
     .pay-button {
       width: 100px;
+      &:hover {
+       text-decoration: underline;
+       color: white;
+      }
+    }
+
+    &:hover {
+      border: 1px solid $primary-green;
     }
   }
 }

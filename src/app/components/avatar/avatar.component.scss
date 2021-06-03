@@ -8,10 +8,20 @@
   display: flex;
   justify-content: center;
   color: $text;
+
+  &:hover {
+    border: 3px solid $dark-green;
+    opacity: 0.5;
+  }
 }
 
 img {
   border-radius: 50%;
   height: 9vh;
   border: 3px solid $primary-green;
+
+  &:hover {
+    border: 3px solid $dark-green;
+    opacity: 0.5;
+  }
 }

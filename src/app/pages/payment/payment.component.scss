@@ -30,6 +30,10 @@
         font-size: 18px;
         width: 100px;
         margin-right: 10px;
+
+        &:focus {
+          outline: none;
+        }
       }
 
       .method-pay-button {
@@ -41,12 +45,15 @@
         padding: 5px;
         border-radius: 16px;
         color: $text;
-
         h6 {
           white-space: nowrap;
           width: 12em;
           overflow: hidden;
           text-overflow: ellipsis;
+        }
+        &:hover {
+          background-color: $text;
+          color: white;
         }
       }
     }
@@ -58,11 +65,5 @@
   margin: 5% auto 0px auto;
   width: 120px;
   height: 40px;
-  align-items: center;
-  justify-content: center;
   border-radius: 20px;
-  font-size: 18px;
-  background-color: $primary-green;
-  color: white;
-  font-weight: 300;
 }

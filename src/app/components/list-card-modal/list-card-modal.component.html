@@ -1,10 +1,10 @@
 <div class="list-card" *ngFor="let card of cardList">
   <mat-card class="card-items" (click)="selectCard(card)">
-    <mat-icon aria-hidden="false" aria-label="Icone de pagamento">
+    <mat-icon aria-hidden="true" aria-label="Icone de pagamento">
       payment
     </mat-icon>
     <p>{{card.card_number}}</p>
-    <mat-icon aria-hidden="false" aria-label="Icone para adicionar">
+    <mat-icon aria-hidden="true" aria-label="Icone para adicionar">
       add
     </mat-icon>
   </mat-card>

@@ -15,8 +15,10 @@ import { ModalStatusComponent } from "src/app/components/modal-status/modal-stat
 export class PaymentComponent implements OnInit {
   listUser;
   user: User;
-  valor = new FormControl("");
+  valuePayment = new FormControl("");
   card;
+  available: boolean = false;
+
   constructor(
     private route: ActivatedRoute,
     public dialog: MatDialog,
@@ -28,6 +30,15 @@ export class PaymentComponent implements OnInit {
       this.listUser = { ...params.keys, ...params };
       this.user = this.listUser.params;
     });
+    
+    this.valuePayment.valueChanges.subscribe((value) => {
+      if (!value || value <= 0 || !this.card) {
+        this.available = false;
+      } else {
+        this.available = true;
+        console.log(value);
+      }
+    });
   }
 
   openListCardModal() {
@@ -35,15 +46,22 @@ export class PaymentComponent implements OnInit {
 
     cardModal.afterClosed().subscribe((card) => {
       this.card = card;
+      if(!this.card) {
+        this.available = false
+      }else {
+        this.available = true;
+      }
     });
   }
 
   sendPayment() {
-    this.transaction
-      .sendPayment(this.user, this.valor, this.card)
-      .subscribe((response) => {
-        this.openStatusModal(Object.values(response)[0]);
-      });
+    if (this.available === true) {
+      this.transaction
+        .sendPayment(this.user, this.valuePayment, this.card)
+        .subscribe((response) => {
+          this.openStatusModal(Object.values(response)[0]);
+        });
+    }
   }
 
   private openStatusModal(status) {
@@ -56,5 +74,9 @@ export class PaymentComponent implements OnInit {
         modalStatus.close();
       }, 1000);
     });
+  }
+
+  onChange($event) {
+    console.log($event)
   }
 }

@@ -10,7 +10,7 @@
         <input
           class="input-value"
           currencyMask
-          [formControl]="valor"
+          [formControl]="valuePayment"
           [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"
         />
       </form>
@@ -20,7 +20,7 @@
           >payment</mat-icon
         >
         <h6 *ngIf="card">{{ card.card_number }}</h6>
-        <h6 *ngIf="!card">cartões</h6>
+        <h6 *ngIf="!card">Cartões</h6>
       </div>
     </div>
   </div>
@@ -30,5 +30,6 @@
   class="pay-button"
   [label]="'Pagar'"
   (click)="sendPayment()"
+  [available]="available"
 >
 </app-primary-green-button>

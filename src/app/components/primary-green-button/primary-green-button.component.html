@@ -1,3 +1,10 @@
-<div class="green-button">
+<!--<div class="green-button" disabled>
   <h6>{{ label }}</h6>
-</div>
+</div>-->
+<button mat-raised-button class="green-button" *ngIf="!available" disabled>
+  Pagar
+</button>
+
+<button mat-raised-button class="green-button" *ngIf="available">
+  Pagar
+</button>

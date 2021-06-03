@@ -9,5 +9,9 @@
   font-size: 22px;
   background-color: $primary-green;
   color: white;
-  font-weight: 300;
+  font-weight: 400;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }

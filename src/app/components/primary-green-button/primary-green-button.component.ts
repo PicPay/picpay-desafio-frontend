@@ -7,6 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class PrimaryGreenButtonComponent implements OnInit {
   @Input() label: string = "";
+  @Input() available: boolean = true;
   constructor() { }
 
   ngOnInit() {
