@@ -1,9 +1,9 @@
-<div class="list-card">
-  <mat-card class="card-items" mat-dialog-close="final XXX">
+<div class="list-card" *ngFor="let card of cardList">
+  <mat-card class="card-items" (click)="selectCard(card)">
     <mat-icon aria-hidden="false" aria-label="Example home icon">
       payment
     </mat-icon>
-    <p>final XXX</p>
+    <p>{{card.card_number}}</p>
     <mat-icon aria-hidden="false" aria-label="Example home icon">
       add
     </mat-icon>

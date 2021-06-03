@@ -1,4 +1,7 @@
+import { Card } from './../../models/card';
+import { CardsService } from './../../services/cards/cards.service';
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'app-list-card-modal',
@@ -7,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListCardModalComponent implements OnInit {
 
-  constructor() { }
+  cardList: Card[];
+  constructor(private card: CardsService, private matDialog: MatDialogRef<ListCardModalComponent>) { }
 
   ngOnInit() {
+    this.cardList = this.card.requestAvailabelCards();
+  }
+
+  selectCard(card) {
+    this.matDialog.close(card)
   }
 
 }
