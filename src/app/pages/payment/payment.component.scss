@@ -41,6 +41,13 @@
         padding: 5px;
         border-radius: 16px;
         color: $text;
+
+        h6 {
+          white-space: nowrap;
+          width: 12em;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
       }
     }
   }
@@ -58,7 +65,4 @@
   background-color: $primary-green;
   color: white;
   font-weight: 300;
-  .fa {
-    margin-right: 10px;
-  }
 }

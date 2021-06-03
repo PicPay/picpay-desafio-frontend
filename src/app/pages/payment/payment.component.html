@@ -26,6 +26,9 @@
   </div>
 </mat-card>
 
-<div class="pay-button" (click)="sendPayment()">
-  <h6>Pagar</h6>
-</div>
+<app-primary-green-button
+  class="pay-button"
+  [label]="'Pagar'"
+  (click)="sendPayment()"
+>
+</app-primary-green-button>
