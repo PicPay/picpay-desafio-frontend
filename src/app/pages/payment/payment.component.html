@@ -19,13 +19,13 @@
         <mat-icon aria-hidden="false" aria-label="Example home icon"
           >payment</mat-icon
         >
-        <h6 *ngIf="card">{{ card }}</h6>
+        <h6 *ngIf="card">{{ card.card_number }}</h6>
         <h6 *ngIf="!card">cartões</h6>
       </div>
     </div>
   </div>
 </mat-card>
 
-<div class="pay-button">
+<div class="pay-button" (click)="sendPayment()">
   <h6>Pagar</h6>
 </div>
