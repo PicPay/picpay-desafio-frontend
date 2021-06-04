@@ -36,11 +36,13 @@
       &:hover {
        text-decoration: underline;
        color: white;
+       cursor: pointer;
       }
     }
 
     &:hover {
       border: 1px solid $primary-green;
+      cursor: pointer;
     }
   }
 }

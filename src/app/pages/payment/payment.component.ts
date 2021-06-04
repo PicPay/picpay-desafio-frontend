@@ -1,11 +1,12 @@
 import { TransactionService } from "./../../services/transaction/transaction.service";
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { User } from "src/app/models/user";
 import { FormControl } from "@angular/forms";
 import { MatDialog } from "@angular/material/dialog";
 import { ListCardModalComponent } from "src/app/components/list-card-modal/list-card-modal.component";
 import { ModalStatusComponent } from "src/app/components/modal-status/modal-status.component";
+import { UsersService } from "src/app/services/users/users.service";
 
 @Component({
   selector: "app-payment",
@@ -13,24 +14,26 @@ import { ModalStatusComponent } from "src/app/components/modal-status/modal-stat
   styleUrls: ["./payment.component.scss"],
 })
 export class PaymentComponent implements OnInit {
-  listUser;
   user: User;
   valuePayment = new FormControl("");
   card;
   available: boolean = false;
 
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
     public dialog: MatDialog,
-    private transaction: TransactionService
+    private transaction: TransactionService,
+    private usersService: UsersService
   ) {}
 
   ngOnInit() {
-    this.route.queryParamMap.subscribe((params) => {
-      this.listUser = { ...params.keys, ...params };
-      this.user = this.listUser.params;
+    this.route.queryParamMap.subscribe((urlQuery) => {
+      return this.usersService.get(urlQuery.get('id')).subscribe((user) => {
+        this.user = user
+      });
     });
-    
+
     this.valuePayment.valueChanges.subscribe((value) => {
       if (!value || value <= 0 || !this.card) {
         this.available = false;
@@ -47,7 +50,7 @@ export class PaymentComponent implements OnInit {
     cardModal.afterClosed().subscribe((card) => {
       this.card = card;
       if(!this.card) {
-        this.available = false
+        this.available = false;
       }else {
         this.available = true;
       }
@@ -72,7 +75,9 @@ export class PaymentComponent implements OnInit {
     modalStatus.afterOpened().subscribe((_) => {
       setTimeout(() => {
         modalStatus.close();
-      }, 1000);
+        this.available = false;
+        this.router.navigate(["/"]);
+      }, 3000);
     });
   }
 

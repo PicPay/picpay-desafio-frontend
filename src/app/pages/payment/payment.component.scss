@@ -45,6 +45,7 @@
         padding: 5px;
         border-radius: 16px;
         color: $text;
+        cursor: pointer;
         h6 {
           white-space: nowrap;
           width: 12em;
@@ -54,6 +55,7 @@
         &:hover {
           background-color: $text;
           color: white;
+          cursor: pointer;
         }
       }
     }

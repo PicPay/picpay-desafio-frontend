@@ -13,21 +13,14 @@ export class UserListComponent implements OnInit {
   items;
 
   constructor(private usersService: UsersService, private router: Router) {
-    this.usersService.requestUsers().subscribe((user) => {
-      console.log(user);
-      this.listUsers = user;
+    this.usersService.list().subscribe((users) => {
+      this.listUsers = users;
     });
-    this.items = Array.from({ length: 100000 }).map((_, i) => `Item #${i}`);
   }
 
   ngOnInit() {
-    this.usersService.requestUsers().subscribe((user) => {
-      console.log(user);
-      this.listUsers = user;
+    this.usersService.list().subscribe((users) => {
+      this.listUsers = users;
     });
-  }
-
-  paymentUser(user) {
-    this.router.navigate(["/payment"], { queryParams: { data: user } });
   }
 }
