@@ -1,0 +1,45 @@
+<div class="modal-header">
+    <h5 class="modal-title">Novo pagamento</h5>
+    <button type="button" class="btn-close" (click)="close()"></button>
+</div>
+<div class="modal-body">
+    <div class="content">
+        <form class="form" [formGroup]="form" (submit)="payment()">
+            <div class="user">
+                <img src="{{user.img}}" alt="Avatar do usúario" />
+                <div class="info-wrapper">
+                    <div>
+                        {{user.username}}
+                    </div>
+                    <div class="user-name">
+                        <small>{{user.name}}</small>
+                    </div>
+                    <div class="d-flex flex-column">
+                        <input formControlName="value" class="money-input" type="text" currencyMask id="value-input"
+                            [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" max="100000" min="0" required>
+                        <small *ngIf="valueError" style="color: red;">Digite o valor que deseja pagar</small>
+                    </div>
+                </div>
+            </div>
+            <div class="form__group">
+                <label class="m-2">Selecione um Cartão</label>
+                <div>
+                    <div *ngFor="let card of cards; trackBy: trackByFn" class="card" (click)="selectCard(card)">
+                        <div class="card-content">
+                            <img src="{{ card.flag}}" alt="Bandeira do Cartão" class="card__flag">
+                            <span class="m-2">Cartão com final {{getLastDigits(card)}}</span>
+                        </div>
+                        <div>
+                            <input type="radio" [value]="card" id="card-select-btn" formControlName="card" style="cursor: pointer;"
+                                [checked]="cardSelected?.card_number == card.card_number">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: right;">
+                <input type="submit" value="Pagar" class="pay-button" id="pay-btn">
+            </div>
+        </form>
+    </div>
+</div>
+<ngx-loading [show]="paymentLoading"></ngx-loading>

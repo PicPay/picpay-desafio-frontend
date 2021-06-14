@@ -1,0 +1,67 @@
+/* Payment Modal */
+.money-input{
+    border: hidden;
+    overflow: hidden;
+    padding: 0;
+    color: #11c76f;
+    text-align: left !important;
+    font-size: large;
+
+    &:focus{
+        outline: none;
+    }
+}
+
+.card {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    margin: 0.5rem;
+
+    &__flag{
+        height: 1.5rem;
+        width: 3rem;
+    }
+
+    &:hover{
+        cursor: pointer;
+        background-color: lightgrey;
+    }
+}
+
+.pay-button {
+    background: #11c76f;
+    border-radius: 40px;
+    color: #fff;
+    width: 100%;
+    display: inline-block;
+    line-height: 1.5rem;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.25s ease-in;
+    max-width: 5rem;
+    border: 0;
+}
+
+.user {
+    box-shadow: 0 1px 0 #ffffff, 0px -1px 0px #ffffff;
+    display: flex;
+    align-items: center;
+}
+
+.user-name {
+    opacity: 0.7;
+}
+
+.user > img {
+    border-radius: 50%;
+    height: 4rem;
+    width: 4rem;
+    border: 1px solid lightgrey;
+}
+
+.user > .info-wrapper {
+    margin-left: 1rem;
+}

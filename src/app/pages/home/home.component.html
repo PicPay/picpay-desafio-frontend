@@ -18,7 +18,7 @@
         <span>Contatos:</span>
         <div class="d-flex flex-wrap">
             <div *ngFor="let user of usersFilter; trackBy: trackByFn" class="col-12 col-lg-4 col-md-6 col-sm-12">
-                <app-card-user [user]="user"></app-card-user>
+                <app-card-user [user]="user" (onPaymentUser)="openModalPayment($event)"></app-card-user>
             </div>
             <ngx-loading [show]="loadingUsers"></ngx-loading>
         </div>

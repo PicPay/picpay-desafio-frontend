@@ -1,0 +1,24 @@
+<div class="modal-header">
+    <h5 class="modal-title"> Recibo de pagamento</h5>
+    <button type="button" class="btn-close" (click)="close()"></button>
+</div>
+<div class="modal-body">
+    <div class="content">
+        <div *ngIf="successPayment()" class="text-center">
+            <h5>O pagamento foi concluído com sucesso!</h5>
+            <span>Você pagou a:</span>
+            <div class="user">
+                <img src="{{user.img}}" alt="Avatar do usúario"/>
+                <div class="info-wrapper">
+                    <div>
+                        {{user.username}}
+                    </div>
+                    <div class="user-name">
+                        <small>{{user.name}}</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h5 *ngIf="!successPayment()">O pagamento <strong>não</strong> foi concluído com sucesso!</h5>
+    </div>
+</div>
