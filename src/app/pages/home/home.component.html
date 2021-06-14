@@ -1,0 +1,26 @@
+<nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-12 col-lg-2 col-md-4 col-sm-12">
+                    <span class="navbar-brand">Pagar Pessoas</span>
+                </div>
+                <form class="col-12 col-lg-5 col-md-6 col-sm-12">
+                    <input class="form-control" type="text" placeholder=" &#xF002; Pesquisar nome ou usuario do PicPay" style="font-family:Arial, FontAwesome"
+                    aria-label="Search people" id="input-search" (keyup)="search($event.target.value)" (submit)="search($event.target.value)">
+                </form>
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="container">
+        <span>Contatos:</span>
+        <div class="d-flex flex-wrap">
+            <div *ngFor="let user of usersFilter; trackBy: trackByFn" class="col-12 col-lg-4 col-md-6 col-sm-12">
+                <app-card-user [user]="user"></app-card-user>
+            </div>
+            <ngx-loading [show]="loadingUsers"></ngx-loading>
+        </div>
+    </div>
+</div>

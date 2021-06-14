@@ -7,6 +7,7 @@ import { NgxLoadingModule } from 'ngx-loading';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BsModalRef, ModalModule } from 'ngx-bootstrap/modal';
 import { CurrencyMaskModule } from 'ngx-currency-mask';
+import { HomeModule } from './pages/home/home.module';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { CurrencyMaskModule } from 'ngx-currency-mask';
   ],
   imports: [
     BrowserModule,
+    HomeModule,
     AppRoutingModule,
     NgxLoadingModule.forRoot({}),
     FormsModule,
