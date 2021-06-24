@@ -1,4 +1,4 @@
-Estruturar a aplicação (Separar componentes, organizar em pastas e criar models).
+Estruturar a aplicação (Separar componentes, organizar em pastas, criar models e rotas).
 Tela listagem de usuário - Integração com backend.
 Abrir modal de pagamento ao clicar no botão pagar - Filtrar os dados do destinatário da transação.
 Formulário e máscaras - Criar os formControls, mascarar os campos (R$ 0,00 e últimos digitos do cartão), validar campos para ativar o botão pagar.
