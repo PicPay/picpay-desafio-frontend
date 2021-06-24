@@ -1,0 +1,9 @@
+<div class="msg-vazio" *ngIf="!loading && !usuarios?.length">
+  Nenhum usuário encontrado!
+</div>
+
+<div class="users">
+  <div class="user-content" *ngFor="let usuario of usuarios">
+    <app-item-usuario [usuario]="usuario"></app-item-usuario>
+  </div>  
+</div>

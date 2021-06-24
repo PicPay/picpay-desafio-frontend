@@ -1,0 +1,33 @@
+.user {
+  background: #333a34;
+  box-shadow: 0 1px 0 #ffffff, 0px -1px 0px #ffffff;
+  color: #fff;
+  padding: 20px 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  transition: transform 0.2s ease;
+}
+
+.user:hover {
+  transform: translateY(-1px);
+  opacity: 0.95;
+}
+
+.user > img {
+  border-radius: 50%;
+  height: 80px;
+  width: 80px;
+}
+
+.user > .info-wrapper {
+  margin-left: 16px;
+}
+
+.user > .pay-button {
+  margin-left: auto;
+  background-color: #fff;
+  color: #114c10;
+  padding: 10px 20px;
+  border: 1px solid #114c10;
+}
