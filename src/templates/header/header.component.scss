@@ -1,0 +1,18 @@
+.header {
+  width: 100%;
+  padding: 20px;
+  box-shadow: 0px 0px 5px 2px #d3d3d3;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  > .logo {
+    width: 100px;
+    max-height: 100%;
+  }
+
+  > .msg-bemvindo {
+    color: #d3d3d3;
+  }
+  
+}
