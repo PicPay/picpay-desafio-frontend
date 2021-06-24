@@ -1,0 +1,7 @@
+Estruturar a aplicação (Separar componentes, organizar em pastas e criar models).
+Tela listagem de usuário - Integração com backend.
+Abrir modal de pagamento ao clicar no botão pagar - Filtrar os dados do destinatário da transação.
+Formulário e máscaras - Criar os formControls, mascarar os campos (R$ 0,00 e últimos digitos do cartão), validar campos para ativar o botão pagar.
+Efetuar transação ao clicar em pagar - Integrar com o backend.
+Melhoria no estilo da aplicação.
+Teste unitário / E2E - Pesquisar
