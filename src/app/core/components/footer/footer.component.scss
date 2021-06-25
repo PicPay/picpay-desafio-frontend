@@ -1,0 +1,17 @@
+@import '../../../../styles.scss';
+
+.footer {
+  height: 100px;
+  @include flex(row, center, center);
+}
+
+.footer > span {
+  font-size: 1rem;
+  color: $white;
+}
+
+.logo {
+  width: 35px;
+  margin-left: 10px;
+  border-radius: 10px;
+}

@@ -1,0 +1,70 @@
+@import '../../../../../styles.scss';
+
+.box {
+  min-width: 250px;
+}
+
+.form-payment {
+  @include flex(column, center, center);
+}
+
+.form-input-value,
+.form-input-card {
+  width: 100%;
+}
+
+.form-title {
+  color: $black;
+  text-align: center;
+}
+
+.card-user {
+  background: $dark-one;
+  margin-bottom: 22px;
+}
+
+.card-user-content {
+  text-align: center;
+
+  > img {
+    width: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+
+  p:first-child {
+    font-size: 17px;
+    font-weight: 300;
+    color: black;
+  }
+
+  p {
+    font-size: 14px;
+    font-weight: 600;
+    color: black;
+    line-height: 5px;
+  }
+}
+
+.form-buttons {
+  @include flex(row, space-between, center);
+
+  .close {
+    background: $warn;
+    color: $white;
+    text-transform: uppercase;
+    width: 95px;
+  }
+
+  .pay {
+    background: $primary;
+    color: $white;
+    text-transform: uppercase;
+    width: 95px;
+
+    &:disabled {
+      background: #d6d8e7;
+      color: #fff;
+    }
+  }
+}

@@ -1,20 +1,41 @@
-<div class="modal-backdrop">
-  <div class="modal">
-    <div class="title">Pagamento para <span>Nome do Usuário</span></div>
+<div class="box">
+    <h1 mat-dialog-title class="form-title">Novo pagamento</h1>
+    <div class="card-user-content">
+      <img src="{{ data.user.img }}" alt="avatar">
 
-    <div class="content">
-      <input type="number" placeholder="R$ 0,00" />
-
-      <div class="cards">
-        <select>
-          <option selected>Cartão com final 0123</option>
-        </select>
+      <div class="card-user-info">
+        <p>{{ data.user.name }}</p>
+        <p>{{ data.user.username }}</p>
       </div>
-
-      <button type="button" class="pay-button">
-        Pagar
-      </button>
-      <button (click)="closeDialog()">Fechar</button>
+    </div>
+  
+    <form [formGroup]="formPayment" class="form-payment">
+      <mat-form-field class="form-input-value">
+        <input
+          matInput placeholder="Valor" type="text" name="valuePay"
+          [(ngModel)]="valuePay" formControlName="valuePay" class="number" currencyMask
+          [options]="{
+            prefix: 'R$ ',
+            thousands: '.',
+            decimal: ',',
+            allowNegative: false,
+            align: 'left'
+          }"
+        />
+      </mat-form-field>
+      
+      <mat-form-field class="form-input-card">
+        <mat-label>Selecione um cartão</mat-label>
+        <mat-select [(ngModel)]="selectedCard" name="card" formControlName="selectedCard">
+          <mat-option *ngFor="let card of cards" [value]="card">
+            cartão com final {{card.lastDigits}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+  
+    <div class="form-buttons">
+      <button mat-button mat-dialog-close class="close">Fechar</button>
+      <button mat-button (click)="transaction()" [disabled]="!formPayment.valid" class="pay">Pagar</button>
     </div>
   </div>
-</div>

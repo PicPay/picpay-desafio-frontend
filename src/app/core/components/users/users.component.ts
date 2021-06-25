@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { UsersService } from 'src/app/core/services/users/users.service';
 import { User } from 'src/app/shared/models/user.model';
-import { UsersService } from '../../services/users/users.service';
-import { MatDialog } from '@angular/material/dialog';
 import { ModalPaymentComponent } from '../modals/modal-payment/modal-payment.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-users',
@@ -21,9 +21,8 @@ export class UsersComponent implements OnInit {
   }
 
   payUser(user: User): void {
-    let dialogRef = this.dialog.open(ModalPaymentComponent, {
-      data: user
+    this.dialog.open(ModalPaymentComponent, {
+      data: {user: user}
     });
   }
-
 }

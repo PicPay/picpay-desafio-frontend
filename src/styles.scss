@@ -2,9 +2,36 @@
   box-sizing: border-box;
 }
 
+@mixin flex($dir, $jus, $ali) {
+  display: flex;
+  flex-direction: $dir;
+  justify-content: $jus;
+  align-items: $ali;
+}
+
+$white: #ffffff;
+$black: #000000;
+$primary: #21c25e;
+$warn: #f44336;
+$grey-one: #8d8d8d;
+$dark-one: #1d222b;
+
 html,
 body {
   font-family: sans-serif;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  outline: 0;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  background: $black;
+}
+
+button {
+  cursor: pointer;
 }

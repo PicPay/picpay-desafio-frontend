@@ -1,15 +1,14 @@
 <div class="container">
-  <div *ngFor="let user of users">
-    <div>
-      <div>
-        <img src="{{ user.img }}" alt="">
-      </div>
-      <div>
+  <mat-card *ngFor="let user of users" class="card-user">
+    <div class="card-user-content">
+      <img src="{{ user.img }}" alt="avatar">
+
+      <div class="card-user-info">
         <p>{{ user.username }}</p>
         <p>{{ user.name }}</p>
-        <p>{{ user.id }} </p>
       </div>
     </div>
-    <button type="button" (click)="payUser(user)">Pagar</button>
-  </div>
+
+    <button mat-button (click)="payUser(user)" class="card-button">Pagar</button>
+  </mat-card>
 </div>
