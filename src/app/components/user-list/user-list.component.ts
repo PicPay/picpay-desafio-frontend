@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Card } from 'src/app/models/card';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -12,24 +11,32 @@ export class UserListComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   userList: User[] = new Array<User>();
-  cardsList: Card[] = new Array<Card>();
-  showModal: boolean = false;
   selectedUser: User;
+  success: boolean;
+  showModal: boolean = false;
+  showRecipt: boolean = false;
 
   ngOnInit() {
     this.userService.GetUsers().subscribe(users => {
       this.userList = users;
     });
-
-    this.userService.GetCards().subscribe(cards => {
-      this.cardsList = cards;
-    });
   }
 
   selectToPay(id: number){
     this.selectedUser = this.userList.filter(user => user.id == id)[0];
-
+    this.showModal = true;
     console.log(this.selectedUser);
+  }
+
+  receiveCloseTransactionModal(response){
+    console.log(response.status);
+    this.showModal = response.modal;
+    this.showRecipt = response.recipt;
+    this.success = response.success;
+  }
+
+  receiveCloseReciptModal(response){
+    this.showRecipt = response.recipt;
   }
 
 }

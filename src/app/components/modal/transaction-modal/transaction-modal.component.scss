@@ -1,79 +1,112 @@
-.modal-backdrop {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-  
-    position: fixed;
-    top: 0;
-    left: 0;
-  
-    height: 100vh;
-    width: 100vw;
-}
-  
-.modal-backdrop.hidden {
-    display: none;
-}
-  
-.modal-backdrop:after {
-    content: "";
-  
-    background: rgba(0, 0, 0, 0.5);
-  
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    z-index: -1;
-}
-  
 .modal {
-    background: #fff;
+    background: var(--white);
+    border-radius: 6px;
     margin: 32px 0;
     width: 420px;
-}
-  
-.modal > .title {
-    background: #474971;
-    color: #ffffff;
-    font-weight: 500;
-    font-size: 16px;
-    padding: 16px 24px;
-}
-  
-.modal > .title > span {
-    color: #cddc39;
-}
-  
-.modal > .content {
-    padding: 32px;
-    text-align: center;
-}
-  
-.modal > .content > input {
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 32px;
-    height: 48px;
-    padding: 0 8px;
-}
-  
-.modal > .content > .cards > select {
-    background: #fff;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 32px;
-    height: 48px;
-    margin-top: 12px;
-}
-  
-.modal > .content > button {
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 32px;
-    height: 48px;
-    padding: 0 8px;
-    margin-top: 24px;
+
+    .title {
+        background: var(--green);
+        color: var(--black);
+        font-weight: bold;
+        font-size: 16px;
+        padding: 16px 24px;
+
+        span {
+            color: var(--white);
+        }
+
+        .close{
+            float: right;
+            cursor: pointer;
+        }
+    }
+
+    .content {
+        padding: 32px;
+        text-align: center;
+
+        .receiver-info{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+            img{
+                border-radius: 50%;
+                border: 3px solid var(--green);
+            }
+
+            span{
+                margin-top: 15px;
+                margin-bottom: 15px;
+            }
+        }
+
+        input {
+            background: var(--white);
+            border: 2px solid var(--green);
+            width: 100%;
+            border-radius: 6px;
+            font-size: 32px;
+            height: 48px;
+            padding: 0 8px;
+
+            &:target{
+                border: red;
+            }
+        }
+
+        .cards{
+            select {
+                background: var(--white);
+                border: 2px solid var(--green);
+                width: 100%;
+                border-radius: 6px;
+                font-size: 32px;
+                height: 48px;
+                margin-top: 15px;
+                cursor: pointer;
+
+                option{
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .add-section{
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+            margin-top: 15px;
+
+            .add-button{
+                background: var(--green);
+                border: none;
+                color: var(--white);
+                border-radius: 6px;
+                font-size: 32px;
+                height: 48px;
+                width: 100px;
+                cursor: pointer;
+            }
+        }  
+
+        .pay-button {
+            background: var(--green);
+            border: none;
+            color: var(--white);
+            border-radius: 6px;
+            font-size: 32px;
+            height: 48px;
+            width: 100%;
+            padding: 0 8px;
+            margin-top: 24px;
+            cursor: pointer;
+
+            &:disabled{
+                background: var(--disabled-green);
+                color: var(--black);
+            }
+        }
+    }
 }

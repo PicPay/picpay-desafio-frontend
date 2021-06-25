@@ -7,6 +7,8 @@ import { TransactionModalComponent } from './components/modal/transaction-modal/
 import { ReciptModalComponent } from './components/modal/recipt-modal/recipt-modal.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CurrencyMaskModule } from 'ng2-currency-mask';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,10 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
+    CurrencyMaskModule
   ],
   providers: [],
   bootstrap: [AppComponent]

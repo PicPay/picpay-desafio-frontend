@@ -1,17 +1,30 @@
 <div class="modal">
-    <div class="title">Pagamento para <span>Nome do Usuário</span></div>
-
+    <div class="title">Pagamento para <span>{{receiver.name}}</span> <span class="close" (click)="emitClose()">x</span></div>
     <div class="content">
-      <input type="number" placeholder="R$ 0,00" />
+      <form [formGroup]="transactionFormGroup" (ngSubmit)="pay()">
+        <div class="receiver-info">
+          <img [src]="receiver.img">
+          <span>{{receiver.username}}</span>
+        </div>
+        
+        <input formControlName="value" placeholder="R$ 0,00" currencyMask type="string" [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align: 'left' }" [autofocus] required/>
 
-      <div class="cards">
-        <select>
-          <option selected>Cartão com final 0123</option>
-        </select>
-      </div>
+        <div class="add-section">
+          <a class="add-button" (click)="add(10)">+10</a>
+          <a class="add-button" (click)="add(50)">+50</a>
+          <a class="add-button" (click)="add(100)">+100</a>
+        </div>
 
-      <button type="button" class="pay-button">
-        Pagar
-      </button>
+        <div class="cards">
+          <select formControlName="selectedCard" placeholder="Selecione um cartão">
+            <option value="" [disabled]="true">Selecione um cartão</option>
+            <option *ngFor="let card of cardsList" [value]="card.card_number" required>Cartão com final {{card.card_number | slice:12:16}}</option>
+          </select>
+        </div>
+
+        <button type="submit" class="pay-button" [disabled]="!transactionFormGroup.valid">
+          Pagar
+        </button>
+      </form>
     </div>
 </div>

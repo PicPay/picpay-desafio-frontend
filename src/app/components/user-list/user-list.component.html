@@ -17,6 +17,10 @@
     </div>
 </div>
 
-<div class="modal-wrapper" *ngIf="showModal">
-  <app-transaction-modal></app-transaction-modal> 
+<div class="modal-backdrop" *ngIf="showModal">
+  <app-transaction-modal [receiver]='selectedUser' (close)="receiveCloseTransactionModal($event)"></app-transaction-modal> 
+</div>
+
+<div class="modal-backdrop" *ngIf="showRecipt">
+  <app-recipt-modal [success]='success' (close)="receiveCloseReciptModal($event)"></app-recipt-modal>
 </div>

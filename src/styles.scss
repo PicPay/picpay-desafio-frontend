@@ -1,5 +1,14 @@
+:root{
+  --green: #11c76f;
+  --disabled-green: #11c76f75;
+  --dark-green:#263224;
+  --white: #eff0e8;
+  --black: #223324;
+}
+
 * {
   box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
 }
 
 html,
@@ -7,4 +16,22 @@ body {
   font-family: sans-serif;
   margin: 0;
   padding: 0;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--white); 
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--dark-green); 
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
 }
