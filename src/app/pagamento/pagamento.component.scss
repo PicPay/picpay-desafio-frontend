@@ -1,0 +1,22 @@
+@mixin formControl {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #fff;
+  font-size: 32px;
+  height: 48px;
+  width: 100%;
+}
+
+input.valor-input {
+  @include formControl();
+  padding: 0 8px;
+}
+
+.cards > select {
+  @include formControl();
+  margin-top: 12px;
+}
+
+button.pay-button {
+  margin-top: 24px;
+}

@@ -2,24 +2,12 @@
   <div class="modal-backdrop" (click)="close()"></div>
   <div class="modal">
     <div class="title">
-      <span [innerHtml]="titulo"></span>
+      <div [innerHtml]="titulo"></div>
       <button type="button" class="close-button" (click)="close()"> X </button>
     </div>
   
     <div class="content">
       <ng-content></ng-content>
-      
-      <!-- <input type="number" placeholder="R$ 0,00" />
-  
-      <div class="cards">
-        <select>
-          <option selected>Cartão com final 0123</option>
-        </select>
-      </div>
-  
-      <button type="button" class="pay-button">
-        Pagar
-      </button> -->
     </div>
   </div>
 </ng-container>

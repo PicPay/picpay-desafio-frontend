@@ -6,17 +6,23 @@ import { TemplatesModule } from 'src/templates/templates.module';
 import { ListaUsuariosComponent } from './lista-usuarios/lista-usuarios.component';
 import { ItemUsuarioComponent } from './lista-usuarios/components/item-usuario/item-usuario.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SharedModule } from 'src/shared/shared.module';
+import { PagamentoComponent } from './pagamento/pagamento.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListaUsuariosComponent,
-    ItemUsuarioComponent
+    ItemUsuarioComponent,
+    PagamentoComponent
   ],
   imports: [
     BrowserModule,
     TemplatesModule,
-    HttpClientModule
+    SharedModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

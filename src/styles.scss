@@ -8,3 +8,21 @@ body {
   margin: 0;
   padding: 0;
 }
+
+button.pay-button {
+  margin-left: auto;
+  background-color: #fff;
+  color: #114c10;
+  padding: 10px 20px;
+  border: 1px solid #114c10;
+
+  &.is-big {
+    font-size: 32px;
+    height: 48px;
+    padding: 0 8px;
+  }
+}
+
+.highlight {
+  color: #cddc39;
+}

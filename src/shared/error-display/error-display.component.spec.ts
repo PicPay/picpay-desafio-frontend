@@ -4,7 +4,7 @@ import { By } from '@angular/platform-browser';
 
 import { ErrorDisplayComponent } from './error-display.component';
 
-fdescribe('ErrorDisplayComponent', () => {
+describe('ErrorDisplayComponent', () => {
   let component: ErrorDisplayComponent;
   let fixture: ComponentFixture<ErrorDisplayComponent>;
 

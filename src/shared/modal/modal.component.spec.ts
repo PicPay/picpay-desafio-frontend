@@ -3,7 +3,7 @@ import { By } from '@angular/platform-browser';
 
 import { ModalComponent } from './modal.component';
 
-fdescribe('ModalComponent', () => {
+describe('ModalComponent', () => {
   let component: ModalComponent;
   let fixture: ComponentFixture<ModalComponent>;
 

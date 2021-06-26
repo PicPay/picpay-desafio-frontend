@@ -1,0 +1,17 @@
+<form #form="ngForm" (submit)="pagar(form)">
+  <input ngModel class="valor-input" name="value" type="text" placeholder="R$ 0,00" maxlength="10"  required/>
+  <app-error-display name="value"></app-error-display>
+    
+  <div class="cards">
+    <select ngModel name="card" required>
+      <option [value]="null" disabled> Selecione </option>
+      <option [value]="cartao.cardId" *ngFor="let cartao of cartoes"> Cartão com final {{ cartao.card_number }} </option>
+    </select>
+    <app-error-display name="card"></app-error-display>
+  </div>
+  
+  <button id="pagar" type="submit" class="pay-button is-big" [disabled]="loading">
+    <ng-container *ngIf="!loading; else carregando"> Pagar </ng-container>
+    <ng-template #carregando> Processando... </ng-template>
+  </button>
+</form>
