@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from 'src/shared/shared.module';
 import { PagamentoComponent } from './pagamento/pagamento.component';
 import { FormsModule } from '@angular/forms';
+import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { FormsModule } from '@angular/forms';
     TemplatesModule,
     SharedModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgxMaskModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,14 @@
 <form #form="ngForm" (submit)="pagar(form)">
-  <input ngModel class="valor-input" name="value" type="text" placeholder="R$ 0,00" maxlength="10"  required/>
+  <input ngModel 
+    class="valor-input" 
+    name="value" 
+    type="text" 
+    placeholder="R$ 0,00" 
+    maxlength="10"  
+    mask="separator.2" 
+    thousandSeparator="."
+    prefix="R$"
+    required/>
   <app-error-display name="value"></app-error-display>
     
   <div class="cards">
