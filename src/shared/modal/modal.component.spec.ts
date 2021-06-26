@@ -37,7 +37,7 @@ describe('ModalComponent', () => {
     component.isModalVisivel = true;
     component.titulo = 'Título teste';
     fixture.detectChanges();
-    expect(fixture.debugElement.query(By.css('.title > span')).nativeElement.textContent.trim()).toBe('Título teste')
+    expect(fixture.debugElement.query(By.css('.title > div')).nativeElement.textContent.trim()).toBe('Título teste')
   })
 
   describe('Quando modal estiver aberto', () => {
@@ -54,8 +54,8 @@ describe('ModalComponent', () => {
       expect(fixture.debugElement.query(By.css('.modal'))).toBeFalsy();
     })
 
-    it('Deve ser fechado ao clicar no backdrop', () => {
-      const backdrop = fixture.debugElement.query(By.css('.modal-backdrop'));
+    it('Deve ser fechado ao clicar no close-area', () => {
+      const backdrop = fixture.debugElement.query(By.css('.close-area'));
       backdrop.nativeElement.click();
       fixture.detectChanges();
       expect(component.isModalVisivel).toBe(false);

@@ -1,12 +1,12 @@
 <div class="user">
-  <img [src]="usuario.img" [alt]="usuario.name"/>
+  <img [src]="usuario?.img" [alt]="usuario?.name"/>
   <div class="info-wrapper">
     <div class="user-name">
-      {{ usuario.name }}
+      {{ usuario?.name }}
     </div>
 
     <div class="user-id-username">
-      ID: {{ usuario.id }} - Username: {{ usuario.name }}
+      ID: {{ usuario?.id }} - Username: {{ usuario?.name }}
     </div>
   </div>
 
