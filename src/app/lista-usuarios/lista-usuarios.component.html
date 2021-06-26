@@ -4,6 +4,10 @@
 
 <div class="users">
   <div class="user-content" *ngFor="let usuario of usuarios">
-    <app-item-usuario [usuario]="usuario"></app-item-usuario>
+    <app-item-usuario [usuario]="usuario" (pagar)="modal.toggle()"></app-item-usuario>
   </div>  
 </div>
+
+<app-modal #modal>
+
+</app-modal>
