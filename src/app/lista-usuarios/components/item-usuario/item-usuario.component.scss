@@ -23,3 +23,13 @@
 .user > .info-wrapper {
   margin-left: 16px;
 }
+
+@media(max-width: 792px) {
+  .user {
+    padding: 20px;
+    flex-wrap: wrap;
+    > .info-wrapper {
+      flex-basis: 200px;
+    }
+  }
+}

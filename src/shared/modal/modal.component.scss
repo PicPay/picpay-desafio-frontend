@@ -31,10 +31,10 @@
 .modal {
   background: #fff;
   margin: 32px 0;
-  position: fixed;
-  top: 10%;
   width: 500px;
-  left: calc(50% - 250px)
+  max-width: 95%;
+  position: fixed;
+  z-index: 10;
 }
 
 .modal > .title {
@@ -64,4 +64,11 @@
 .modal > .content {
   padding: 32px;
   text-align: center;
+}
+
+.modal-backdrop > .close-area {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 9;
 }

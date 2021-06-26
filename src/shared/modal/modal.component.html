@@ -1,13 +1,15 @@
 <ng-container *ngIf="isModalVisivel">
-  <div class="modal-backdrop" (click)="close()"></div>
-  <div class="modal">
-    <div class="title">
-      <div [innerHtml]="titulo"></div>
-      <button type="button" class="close-button" (click)="close()"> X </button>
-    </div>
-  
-    <div class="content">
-      <ng-content></ng-content>
+  <div class="modal-backdrop">
+    <div class="close-area" (click)="close()"></div>
+    <div class="modal">
+      <div class="title">
+        <div [innerHtml]="titulo"></div>
+        <button type="button" class="close-button" (click)="close()"> X </button>
+      </div>
+    
+      <div class="content">
+        <ng-content></ng-content>
+      </div>
     </div>
   </div>
 </ng-container>
