@@ -2,6 +2,8 @@
   Nenhum usuário encontrado!
 </div>
 
+<app-barra-pesquisa (pesquisar)="handlePesquisa($event)"></app-barra-pesquisa>
+
 <div class="users">
   <div class="user-content" *ngFor="let usuario of usuarios">
     <app-item-usuario [usuario]="usuario" (pagar)="handlePagar(usuario)"></app-item-usuario>

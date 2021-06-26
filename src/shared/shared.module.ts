@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { ModalComponent } from './modal/modal.component';
 import { ErrorDisplayComponent } from './error-display/error-display.component';
 import { ModalNotificacaoComponent } from './modal-notificacao/modal-notificacao.component';
+import { BarraPesquisaComponent } from './barra-pesquisa/barra-pesquisa.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -10,15 +12,18 @@ import { ModalNotificacaoComponent } from './modal-notificacao/modal-notificacao
   declarations: [
     ModalComponent,
     ErrorDisplayComponent,
-    ModalNotificacaoComponent
+    ModalNotificacaoComponent,
+    BarraPesquisaComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   exports: [
     ModalComponent,
     ErrorDisplayComponent,
-    ModalNotificacaoComponent
+    ModalNotificacaoComponent,
+    BarraPesquisaComponent
   ]
 })
 export class SharedModule { }
