@@ -1,12 +1,12 @@
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { TestBed } from '@angular/core/testing';
+import { fakeAsync, TestBed } from '@angular/core/testing';
 import { TransactionPayload } from 'src/models/Transaction.payload';
 import { User } from 'src/models/User';
 import { URLS } from 'src/utils/constants';
 
 import { PagamentoService } from './pagamento.service';
 
-fdescribe('PagamentoService', () => {
+describe('PagamentoService', () => {
   let service: PagamentoService;
   let httpTestingController: HttpTestingController;
 
@@ -33,9 +33,16 @@ fdescribe('PagamentoService', () => {
     it('Deve retornar erro caso cartão inválido', () => {
       service.realizarPagamento(1, 3, {id: 1} as User).subscribe({
         error: (err) => {
-          expect(err.sucess).toBe(false);
+          expect(err.success).toBe(false);
         }
       })
     })
+
+    it('Deve ser sucesso se os parâmetros estiverem válidos', fakeAsync(() => {
+      service.realizarPagamento(10, 1, {id: 1} as User).subscribe(r => {
+        expect(r.success).toBeTruthy();
+      })
+      httpTestingController.expectOne(URLS.POST_REALIZAR_PAGAMENTO).flush({success: true})
+    }))
   })
 });

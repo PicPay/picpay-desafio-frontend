@@ -39,7 +39,6 @@ export class PagamentoService {
 
   realizarPagamento(valor: number, idCartao: number, usuario: User): Observable<any> {
     const card = this.cards.find(c => c.cardId == idCartao);
-
     if (!card) return throwError(new ApiError(false, 'Cartão não encontrado'))
 
     const request = new TransactionPayload().formatarParaApi(card, usuario, valor);
