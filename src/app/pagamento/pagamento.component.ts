@@ -1,4 +1,4 @@
-import { OnChanges, SimpleChanges } from '@angular/core';
+import { EventEmitter, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Card } from 'src/models/Card';
@@ -13,6 +13,7 @@ import { PagamentoService } from 'src/services/pagamento.service';
 })
 export class PagamentoComponent implements OnInit, OnChanges {
   @ViewChild(NgForm, { static: true }) form: NgForm;
+  @Output() pagamentoFinalizado = new EventEmitter();
   @Input() usuario: User;
 
   cartoes: Card[];
@@ -29,7 +30,7 @@ export class PagamentoComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.usuario) {
-      this.form.reset();
+      this.form.resetForm();
     }    
   }
 
@@ -38,14 +39,20 @@ export class PagamentoComponent implements OnInit, OnChanges {
       this.loading = true;
       this.pagamentoService.realizarPagamento(form.value.value, form.value.card, this.usuario).subscribe(response => {
         this.loading = false;
-        this.notificacaoService.notificar('Recibo de pagamento', 'O pagamento foi concluído com sucesso!')
+        this.notificacaoService.notificar('Recibo de pagamento', 'O pagamento foi concluído com sucesso!');
+        this.finalizarPagamento(true);
         console.log(response);
       }, error => {
         this.loading = false;
         this.notificacaoService.notificar('Recibo de pagamento', 'O pagamento <strong> não </strong> foi concluído com sucesso!')
+        this.finalizarPagamento(false);
         console.log(error);
       })
     }
+  }
+
+  finalizarPagamento(sucesso: boolean) {
+    this.pagamentoFinalizado.emit(sucesso);
   }
 
 }

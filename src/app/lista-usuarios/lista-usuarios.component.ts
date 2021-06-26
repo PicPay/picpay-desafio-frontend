@@ -42,6 +42,11 @@ export class ListaUsuariosComponent implements OnInit {
       return 'Pagamento para <span class="highlight">' + this.usuarioParaPagamento.name + '</span>';
     }
   }
+
+  handlePagamentoFinalizado() {
+    this.usuarioParaPagamento = null;
+    this.modal.close();
+  }
   
 
 }

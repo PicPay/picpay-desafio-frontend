@@ -9,5 +9,5 @@
 </div>
 
 <app-modal #modal [titulo]="getTituloModal()">
-  <app-pagamento [usuario]="usuarioParaPagamento"></app-pagamento>
+  <app-pagamento [usuario]="usuarioParaPagamento" (pagamentoFinalizado)="handlePagamentoFinalizado()"></app-pagamento>
 </app-modal>
