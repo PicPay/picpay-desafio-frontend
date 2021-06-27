@@ -7,22 +7,22 @@ import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
-  styleUrls: ['./users.component.scss']
+  styleUrls: ['./users.component.scss'],
 })
 export class UsersComponent implements OnInit {
   users: User[];
 
-  constructor(private usersService: UsersService, public dialog: MatDialog) { }
+  constructor(private usersService: UsersService, public dialog: MatDialog) {}
 
   ngOnInit() {
-    this.usersService.getUsers().subscribe(users => {
-      this.users = users
-    })
+    this.usersService.getUsers().subscribe((users) => {
+      this.users = users;
+    });
   }
 
   payUser(user: User): void {
     this.dialog.open(ModalPaymentComponent, {
-      data: {user: user}
+      data: { user },
     });
   }
 }

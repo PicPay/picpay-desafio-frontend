@@ -2,6 +2,9 @@
 
 .box {
   min-width: 250px;
+  @media (max-width: 320px) {
+    min-width: auto;
+  }
 }
 
 .form-payment {

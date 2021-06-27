@@ -1,1 +1,50 @@
 @import '../../../../../styles.scss';
+
+.container-payment-response {
+  text-align: center;
+  width: 100%;
+  max-width: 325px;
+
+  svg {
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+
+  h1 {
+    color: $grey-one;
+  }
+
+  p {
+    color: $grey-one;
+    font-size: 18px;
+  }
+
+  .close {
+    background-color: $primary;
+    color: $white;
+    font-size: 14px;
+    width: 80px;
+    height: 40px;
+    text-transform: uppercase;
+  }
+
+  .red {
+    background-color: $warn;
+  }
+
+  @media (max-width: 320px) {
+    width: 100%;
+    max-width: 250px;
+    p {
+      font-size: 12px;
+    }
+  }
+
+  @media (min-width: 321px) and (max-width: 500px) {
+    width: 100%;
+    max-width: 250px;
+    p {
+      font-size: 15px;
+    }
+  }
+}

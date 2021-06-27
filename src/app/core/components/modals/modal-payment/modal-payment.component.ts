@@ -9,15 +9,14 @@ import { ModalPaymentResponseComponent } from 'src/app/core/components/modals/mo
 @Component({
   selector: 'app-modal-payment',
   templateUrl: './modal-payment.component.html',
-  styleUrls: ['./modal-payment.component.scss']
+  styleUrls: ['./modal-payment.component.scss'],
 })
 export class ModalPaymentComponent implements OnInit {
-
   constructor(
     @Inject(MAT_DIALOG_DATA) public data,
     private transactionsService: TransactionsService,
     public dialog: MatDialog,
-    private fb: FormBuilder
+    private fb: FormBuilder,
   ) {
     this.createForm();
   }
@@ -26,7 +25,7 @@ export class ModalPaymentComponent implements OnInit {
   public valuePay: number;
   public cards = Cards;
   public cardsLastDigits = [];
-  
+
   formPayment: FormGroup;
 
   ngOnInit() {
@@ -34,41 +33,51 @@ export class ModalPaymentComponent implements OnInit {
   }
 
   cardLastDigits() {
-    for(var i = 0; i < this.cards.length; i++) {
+    for (let i = 0; i < this.cards.length; i++) {
       this.cardsLastDigits[i] = this.cards[i];
-      this.cardsLastDigits[i].lastDigits = this.cards[i].card_number.substr(12,4);
+      this.cardsLastDigits[i].lastDigits = this.cards[i].card_number.substr(
+        12,
+        4,
+      );
     }
   }
 
   createForm() {
     this.formPayment = this.fb.group({
-      valuePay: ['', Validators.required ],
-      selectedCard: ['', Validators.required ]
+      valuePay: ['', Validators.required],
+      selectedCard: ['', Validators.required],
     });
   }
 
   transaction() {
-    let payload: TransactionPayload = {
+    const payload: TransactionPayload = {
       card_number: this.selectedCard.card_number,
       cvv: this.selectedCard.cvv,
       expiry_date: this.selectedCard.expiry_date,
       destination_user_id: this.data.user.id,
       value: this.valuePay,
-    }
+    };
 
     this.transactionsService.payment(payload).subscribe(() => {
       this.dialog.closeAll();
 
-      if(payload.card_number === "1111111111111111") {
+      if (payload.card_number === '1111111111111111') {
         this.dialog.open(ModalPaymentResponseComponent, {
-          data: {success: true}
+          data: {
+            success: true,
+            value: this.valuePay,
+            username: this.data.user.username,
+          },
         });
       } else {
         this.dialog.open(ModalPaymentResponseComponent, {
-          data: {success: false}
+          data: {
+            success: false,
+            value: this.valuePay,
+            username: this.data.user.username,
+          },
         });
       }
-    })
+    });
   }
-
 }

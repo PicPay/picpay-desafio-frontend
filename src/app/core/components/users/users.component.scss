@@ -1,56 +1,60 @@
 @import '../../../../styles.scss';
 
-.container {
+.box-card {
   margin: 56px;
-}
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 
-.card-user {
-  background: $dark-one;
-  margin-bottom: 22px;
-  box-shadow: 0px -1px 10px 0px rgba($black, 0.2);
-  @include flex(row, space-between, center);
-
-  @media (max-width: 500px) {
+  &__user {
+    margin: 0 12.5px 25px 12.5px;
+    width: 100%;
+    max-width: 300px;
+    box-shadow: 0px 5px 10px 1px rgb(0 0 0 / 20%);
     @include flex(column, space-between, center);
-  }
-}
 
-.card-user-content {
-  @include flex(row, space-between, center);
-
-  > img {
-    width: 80px;
-    border-radius: 50%;
-  }
-}
-
-.card-user-info {
-  margin-left: 16px;
-
-  > p {
-    margin: 0;
-    color: $grey-one;
-
-    > strong {
-      font-weight: 500;
+    @media (max-width: 500px) {
+      margin: 0 0 25px 0px;
     }
+  }
 
-    &:first-child {
+  &__user-content {
+    @include flex(column, space-between, center);
+
+    > img {
+      border-radius: 50%;
+    }
+  }
+
+  &__user-info {
+    margin: 20px 0;
+    text-align: center;
+
+    .username {
+      margin: 0;
       font-size: 22px;
       font-weight: 700;
-      color: $white;
       line-height: 40px;
     }
+
+    .name {
+      margin: 0;
+      color: $grey-one;
+
+      > strong {
+        font-weight: 500;
+      }
+    }
   }
-}
 
-.card-button {
-  background: $primary;
-  color: $white;
-  padding: 2px 25px;
-  text-transform: uppercase;
+  &__button {
+    background: $primary;
+    color: $white;
+    padding: 2px 25px;
+    text-transform: uppercase;
 
-  @media (max-width: 500px) {
-    margin-top: 16px;
+    @media (max-width: 500px) {
+      margin-top: 16px;
+    }
   }
 }

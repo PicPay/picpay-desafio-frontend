@@ -5,7 +5,7 @@ export const Cards = [
     cvv: 789,
     expiry_date: '01/18',
   },
-  
+
   // invalid card
   {
     card_number: '4111111111111234',

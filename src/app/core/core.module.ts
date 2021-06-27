@@ -6,12 +6,14 @@ import { UsersComponent } from './components/users/users.component';
 import { ModalPaymentComponent } from './components/modals/modal-payment/modal-payment.component';
 import { ModalPaymentResponseComponent } from './components/modals/modal-payment-response/modal-payment-response.component';
 
-
-
 @NgModule({
-  declarations: [FooterComponent, HeaderComponent, UsersComponent, ModalPaymentComponent, ModalPaymentResponseComponent],
-  imports: [
-    CommonModule
-  ]
+  declarations: [
+    FooterComponent,
+    HeaderComponent,
+    UsersComponent,
+    ModalPaymentComponent,
+    ModalPaymentResponseComponent,
+  ],
+  imports: [CommonModule],
 })
-export class CoreModule { }
+export class CoreModule {}

@@ -18,20 +18,104 @@ $dark-one: #1d222b;
 
 html,
 body {
-  font-family: sans-serif;
+  margin: 0;
+  font-family: 'Nunito Sans', sans-serif;
+  background: $white;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   outline: 0;
-  height: 100%;
-}
-
-body {
-  margin: 0;
-  font-family: Roboto, 'Helvetica Neue', sans-serif;
-  background: $black;
 }
 
 button {
   cursor: pointer;
+}
+
+.night-mode {
+  background: $black;
+  .box-card__user {
+    background: $dark-one;
+  }
+  .username {
+    color: $white;
+  }
+}
+
+.light-mode {
+  .username {
+    color: $black;
+  }
+}
+
+.switch-button {
+  background: $grey-one;
+  border-radius: 30px;
+  overflow: hidden;
+  width: 130px;
+  font-size: 12px;
+  position: relative;
+  height: 30px;
+  position: relative;
+
+  &:before {
+    content: 'Dark';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 70px;
+    color: $black;
+    display: flex;
+    border-radius: 30px;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    pointer-events: none;
+  }
+
+  &-checkbox {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 2;
+
+    &:checked + .switch-button-label:before {
+      transform: translateX(60px);
+      transition: transform 300ms linear;
+      background: $white;
+    }
+
+    & + .switch-button-label {
+      position: relative;
+      padding: 7px 0px;
+      padding-left: 18px;
+      color: white;
+      text-align: start;
+      display: block;
+      user-select: none;
+      pointer-events: none;
+
+      &:before {
+        content: '';
+        background: $black;
+        border-radius: 30px;
+        height: 100%;
+        width: 70px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        transform: translateX(0px);
+        transition: transform 300ms;
+      }
+
+      .switch-button-label-span {
+        position: relative;
+      }
+    }
+  }
 }

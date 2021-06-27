@@ -1,4 +1,4 @@
 export interface ResponseTransaction {
-    success: boolean;
-    status: string;
+  success: boolean;
+  status: string;
 }
