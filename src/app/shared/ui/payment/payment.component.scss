@@ -1,0 +1,21 @@
+@import '~@angular/material/theming';
+
+
+.payment-container{
+  & .title{
+    font-size: 24px;
+    background-color: mat-color($mat-green, A400);
+  }
+}
+
+.value-field{
+  width: 100%;
+}
+
+.mat-dialog-container {
+  padding: 0;
+}
+
+.actions-wrapper{
+  padding-bottom: 24px;
+}

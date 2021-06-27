@@ -1,40 +1,40 @@
 <div class="home-container">
-<div class="user-table mat-elevation-z8">
-  <mat-table [dataSource]="usersList" matSort>
-    <ng-container matColumnDef="name">
-      <mat-header-cell class="title" *matHeaderCellDef mat-sort-header> User </mat-header-cell>
-      <mat-cell *matCellDef="let user"> 
-        <img [src]="user.img" class="profile-img">
-        <span>{{user.name}} </span>
-       </mat-cell>
-    </ng-container>
-    
-    <ng-container matColumnDef="id">
-      <mat-header-cell class="title" *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
-      <mat-cell *matCellDef="let user"> 
-        <span>{{user.id}} </span>
-      </mat-cell>
-    </ng-container>
+  <div class="user-table mat-elevation-z8">
+    <mat-table [dataSource]="usersList" matSort>
+      <ng-container matColumnDef="name">
+        <mat-header-cell class="title" *matHeaderCellDef mat-sort-header> User </mat-header-cell>
+        <mat-cell *matCellDef="let user">
+          <img [src]="user.img" class="profile-img">
+          <span>{{user.name}} </span>
+        </mat-cell>
+      </ng-container>
 
-    <ng-container matColumnDef="username">
-      <mat-header-cell class="title" *matHeaderCellDef mat-sort-header> Username </mat-header-cell>
-      <mat-cell *matCellDef="let user"> 
-        <span>{{user.username}} </span>
-      </mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="id">
+        <mat-header-cell class="title" *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+        <mat-cell *matCellDef="let user">
+          <span>{{user.id}} </span>
+        </mat-cell>
+      </ng-container>
 
-    <ng-container matColumnDef="actions">
-      <mat-header-cell class="title" *matHeaderCellDef mat-sort-header> Actions </mat-header-cell>
-      <mat-cell *matCellDef="let user"> 
-        <button mat-flat-button color="accent" (click)="setUser(user)">Pagar</button>
-      </mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="username">
+        <mat-header-cell class="title" *matHeaderCellDef mat-sort-header> Username </mat-header-cell>
+        <mat-cell *matCellDef="let user">
+          <span>{{user.username}} </span>
+        </mat-cell>
+      </ng-container>
 
-    <mat-header-row *matHeaderRowDef="userListColumns"></mat-header-row>
-    <mat-row *matRowDef="let user; columns: userListColumns;">
-    </mat-row>
-  </mat-table>
+      <ng-container matColumnDef="actions">
+        <mat-header-cell class="title" *matHeaderCellDef mat-sort-header> Actions </mat-header-cell>
+        <mat-cell *matCellDef="let user">
+          <button mat-flat-button color="accent" (click)="openModal(user)">Pagar</button>
+        </mat-cell>
+      </ng-container>
 
-  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
-</div>
+      <mat-header-row *matHeaderRowDef="userListColumns"></mat-header-row>
+      <mat-row *matRowDef="let user; columns: userListColumns;">
+      </mat-row>
+    </mat-table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  </div>
 </div>
