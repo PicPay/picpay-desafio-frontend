@@ -12,19 +12,19 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$picpay-desafio-frontend-primary: mat-palette($mat-gray, A400, A200, A700);
-$picpay-desafio-frontend-accent: mat-palette($mat-green, A400, A100, A700);
+$picpay-primary: mat-palette($mat-gray, A400, A200, A700);
+$picpay-accent: mat-palette($mat-green, A400, A400, A700);
 
 // The warn palette is optional (defaults to red).
-$picpay-desafio-frontend-warn: mat-palette($mat-orange);
+$picpay-warn: mat-palette($mat-orange);
 
 // Create the theme object (a Sass map containing all of the palettes).
-$picpay-desafio-frontend-theme: mat-light-theme($picpay-desafio-frontend-primary, $picpay-desafio-frontend-accent, $picpay-desafio-frontend-warn);
+$picpay-theme: mat-light-theme($picpay-primary, $picpay-accent, $picpay-warn);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-@include angular-material-theme($picpay-desafio-frontend-theme);
+@include angular-material-theme($picpay-theme);
 
 * {
   box-sizing: border-box;

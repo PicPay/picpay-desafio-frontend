@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeModule } from './modules/home/home.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import { HomeModule } from './modules/home/home.module';
   imports: [
     BrowserModule,
     NoopAnimationsModule,
+    HttpClientModule,
     HomeModule
   ],
   providers: [],

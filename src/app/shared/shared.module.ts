@@ -1,18 +1,32 @@
 import { NgModule } from '@angular/core';
-import { MatSliderModule } from '@angular/material/slider';
+
+import {MatSortModule} from '@angular/material/sort';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatButtonModule} from '@angular/material/button';
+import { PaymentComponent } from './ui/payment/payment.component';
 
 const materialModules = [
-  MatSliderModule
+  MatSortModule,
+  MatTableModule,
+  MatPaginatorModule,
+  MatButtonModule
+];
+
+const components = [
+  PaymentComponent
 ]
 
 
 @NgModule({
-  declarations: [],
+  declarations: [PaymentComponent],
   imports: [
-  ...materialModules
+  ...materialModules,
+  ...components,
   ],
-  exports: [ 
-  ...materialModules
+  exports: [
+  ...materialModules,
+  ...components
   ]
 })
 export class SharedModule { }
