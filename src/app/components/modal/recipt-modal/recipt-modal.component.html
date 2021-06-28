@@ -4,7 +4,7 @@
     </div>
 
     <div class="content">
-      <p *ngIf="transactionInfo.status">O pagamento foi concluido com sucesso.</p>
+      <p *ngIf="transactionInfo.status"><b>{{transactionInfo.receiver}}</b> recebeu seu pagamento de <b>{{transactionInfo.value | currency:'BRL'}}</b> com sucesso!</p>
       <p *ngIf="!transactionInfo.status">O pagamento <strong>não</strong> foi concluido com sucesso.</p>
       <button (click)="emitClose($event)">Fechar</button>
     </div>
