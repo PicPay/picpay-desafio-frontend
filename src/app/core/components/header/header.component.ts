@@ -23,7 +23,7 @@ export class HeaderComponent implements OnInit {
         ? document.body.classList.toggle('night-mode')
         : document.body.classList.toggle('light-mode');
 
-      if (nightMode) {
+      if (document.body.classList.contains('night-mode')) {
         localStorage.setItem('storageNightMode', 'true');
         return;
       }

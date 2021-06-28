@@ -64,7 +64,7 @@ button {
     bottom: 0;
     right: 0;
     width: 70px;
-    color: $black;
+    color: $white;
     display: flex;
     border-radius: 30px;
     align-items: center;
@@ -87,14 +87,13 @@ button {
     &:checked + .switch-button-label:before {
       transform: translateX(60px);
       transition: transform 300ms linear;
-      background: $white;
+      background: $primary;
     }
 
     & + .switch-button-label {
       position: relative;
-      padding: 7px 0px;
-      padding-left: 18px;
-      color: white;
+      padding: 7px 0px 7px 20px;
+      color: $white;
       text-align: start;
       display: block;
       user-select: none;
@@ -102,7 +101,7 @@ button {
 
       &:before {
         content: '';
-        background: $black;
+        background: $primary;
         border-radius: 30px;
         height: 100%;
         width: 70px;
