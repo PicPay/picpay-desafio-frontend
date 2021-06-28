@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
 
   getUsers(): void {
     this.usersService.getUsers()
-    .subscribe(users => this.users = users);
+    .subscribe((users) => this.users = users);
   }
 
   openTransactionModal(user: User): void {
