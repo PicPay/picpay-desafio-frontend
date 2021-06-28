@@ -1,24 +1,91 @@
-.user {
-    background: linear-gradient(186.5deg, var(--green) 0.83%, var(--green) 100%);
-    box-shadow: 0 1px 0 var(--dark-green), 0px -1px 0px var(--dark-green);
-    color: var(--white);
-    padding: 20px 40px;
-  
+.wraper{
+  width: 100vw;
+  height: 100vh;
+  min-width: 642px;
+  background-color: var(--white);
+
+  .container{
     display: flex;
     align-items: center;
+    flex-direction: column;
+  
+    .search{
+      input{
+        height: 48px;
+        width: 400px;
+        border: none;
+        border-bottom: 5px solid var(--green);
+        background-color: var(--white);
+        color: var(--dark-green);
+        font-size: 24px;
+        padding: 5px 5px 5px 15px;
 
-  img {
-    border-radius: 50%;
-    height: 80px;
-    width: 80px;
-  }
+        &::placeholder{
+          color: var(--dark-green);
+        }
+      }
+  
+      margin-top: 30px;
+    }
+  
+    .users{
+      margin-top: 30px;
+      max-height: calc(100vh - 108px);
+      overflow: scroll;
+      padding-bottom: 0;
+  
+      .user {
+        width: 65vw;  
+        background: linear-gradient(186.5deg, var(--green) 0.83%, var(--green) 100%);
+        box-shadow: 0 1px 0 var(--dark-green), 0px -1px 0px var(--dark-green);
+        color: var(--dark-green);
+        padding: 20px 40px;
+      
+        display: flex;
+        align-items: center;
+    
+        .user-pp{
+          border: 2px solid var(--white);
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
 
-  .info-wrapper {
-    margin-left: 16px;
-  }
+          img {
+            border-radius: 50%;
+            height: 80px;
+            width: 80px;
+  
+            border: 2px solid var(--green);
+          }
+        }
+    
+        .info-wrapper {
+          margin-left: 16px;
 
-  .pay-button {
-    margin-left: auto;
+          .user-name{
+            font-weight: bold;
+          }
+        }
+    
+        .pay-button {
+          margin-left: auto;
+          height: 48px;
+          width: 200px;
+          border: none;
+          background: var(--white);
+          color: var(--dark-green);
+          font-weight: bold;
+          border-radius: 6px;
+          cursor: pointer;
+
+          &:hover{
+          color: var(--white);
+          background: var(--dark-green);
+          }
+        }
+      }
+    }
   }
 }
 

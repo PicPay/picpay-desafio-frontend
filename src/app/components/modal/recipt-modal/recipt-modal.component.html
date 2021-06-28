@@ -4,9 +4,9 @@
     </div>
 
     <div class="content">
-      O pagamento foi concluido com sucesso.<br />
-      O pagamento <strong>não</strong> foi concluido com sucesso.
+      <p *ngIf="transactionInfo.status">O pagamento foi concluido com sucesso.</p>
+      <p *ngIf="!transactionInfo.status">O pagamento <strong>não</strong> foi concluido com sucesso.</p>
+      <button (click)="emitClose($event)">Fechar</button>
     </div>
 
-    <button (click)="emitClose($event)">Fechar</button>
 </div>

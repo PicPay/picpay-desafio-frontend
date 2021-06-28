@@ -1,20 +1,31 @@
-<div class="users">
-    <div class="user" *ngFor="let user of userList">
-      <img [src]="user.img" />
-      <div class="info-wrapper">
-        <div class="user-name">
-          {{user.name}}
-        </div>
-  
-        <div class="user-id-username">
-          {{user.username}}
-        </div>
-      </div>
-  
-      <button type="button" class="pay-button" (click)="selectToPay(user.id)">
-        Pagar
-      </button>
+<div class="wraper">
+  <div class="container">
+    <div class="search">
+      <input type="text" placeholder="Buscar..." (input)="onSearchChange($event.target.value)">
     </div>
+    
+    <div class="users">
+        <div class="user" *ngFor="let user of filteredList">
+          <div class="user-pp">
+            <img [src]="user.img" />
+          </div>
+
+          <div class="info-wrapper">
+            <div class="user-name">
+              {{user.name}}
+            </div>
+      
+            <div class="user-id-username">
+              {{user.username}}
+            </div>
+          </div>
+      
+          <button type="button" class="pay-button" (click)="selectToPay(user.id)">
+            Pagar
+          </button>
+        </div>
+    </div>
+  </div>
 </div>
 
 <div class="modal-backdrop" *ngIf="showModal">
@@ -22,5 +33,5 @@
 </div>
 
 <div class="modal-backdrop" *ngIf="showRecipt">
-  <app-recipt-modal [success]='success' (close)="receiveCloseReciptModal($event)"></app-recipt-modal>
+  <app-recipt-modal [transactionInfo]='transactionInfo' (close)="receiveCloseReciptModal($event)"></app-recipt-modal>
 </div>

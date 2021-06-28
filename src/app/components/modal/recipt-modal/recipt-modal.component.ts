@@ -8,12 +8,13 @@ import { EventEmitter } from '@angular/core';
 })
 export class ReciptModalComponent implements OnInit {
 
-  @Input() success;
+  @Input() transactionInfo;
   @Output() close = new EventEmitter;
 
   constructor() { }
 
   ngOnInit() {
+    console.log(this.transactionInfo);
   }
 
   emitClose(){

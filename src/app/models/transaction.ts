@@ -5,3 +5,11 @@ interface TransactionPayload {
     destination_user_id: number;
     value: number;
 }
+
+interface TransactionInfo{
+    'modal': boolean,
+    'recipt': boolean,
+    'status': boolean,
+    'receiver': string,
+    'value': string
+  }

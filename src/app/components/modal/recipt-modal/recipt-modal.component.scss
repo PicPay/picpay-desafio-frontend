@@ -1,48 +1,36 @@
 .modal {
-    background: #fff;
+    background: var(--white);
     margin: 32px 0;
     width: 420px;
-}
-  
-.modal > .title {
-    background: #474971;
-    color: #ffffff;
-    font-weight: 500;
-    font-size: 16px;
-    padding: 16px 24px;
-}
-  
-.modal > .title > span {
-    color: #cddc39;
-}
-  
-.modal > .content {
-    padding: 32px;
-    text-align: center;
-}
-  
-.modal > .content > input {
-    border: 1px solid #ccc;
     border-radius: 6px;
-    font-size: 32px;
-    height: 48px;
-    padding: 0 8px;
-}
-  
-.modal > .content > .cards > select {
-    background: #fff;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 32px;
-    height: 48px;
-    margin-top: 12px;
-}
-  
-.modal > .content > button {
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 32px;
-    height: 48px;
-    padding: 0 8px;
-    margin-top: 24px;
+
+    .title {
+        background: var(--green);
+        color: #ffffff;
+        font-weight: 500;
+        font-size: 16px;
+        padding: 16px 24px;
+    }
+
+    .content {
+        padding: 32px;
+        text-align: center;
+    }
+
+    button {
+        background: var(--green);
+        color: var(--white);
+        border: none;
+        border-radius: 6px;
+        font-size: 16px;
+        height: 48px;
+        width: 100%;
+        padding: 0 8px;
+        margin-top: 24px;
+        cursor: pointer;
+
+        &:hover{
+            background: var(--dark-green);
+        }
+    }
 }

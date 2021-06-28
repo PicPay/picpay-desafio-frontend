@@ -31,12 +31,14 @@ export class TransactionModalComponent implements OnInit {
     });
   }
 
-  emitClose(transactionStatus?: boolean){
+  emitClose(recipt?: boolean, transactionStatus?: boolean, transactionInfo?){
     this.close.emit(
       {
         'modal': false,
-        'recipt': true,
-        'status': transactionStatus
+        'recipt': recipt,
+        'status': transactionStatus,
+        'receiver': transactionInfo.receiver,
+        'value': transactionInfo.value
       }
     );
   }
@@ -63,16 +65,13 @@ export class TransactionModalComponent implements OnInit {
 
     transaction.value = this.transactionFormGroup.controls['value'].value;
 
-    this.transactionService.PostTransaction(transaction).subscribe(data => {
-      this.emitClose(true);
-      // this.showRecipt = true;
-      // this.reciptStatus = (data.success) ? true : false;
+    const transactionInfo = {
+      'receiver': this.receiver.username,
+      'value': transaction.value
+    }
 
-      // setTimeout(()=>{                           
-      //   this.showModal = false;
-      //   this.showRecipt = false;
-      //   this.transactionFormGroup.controls['value'].setValue(0);
-      // }, 3000);
+    this.transactionService.PostTransaction(transaction).subscribe(data => {
+      this.emitClose(true, true, transactionInfo);
     }, err => {
       console.log(err);
     })

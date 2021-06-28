@@ -1,5 +1,5 @@
 <div class="modal">
-    <div class="title">Pagamento para <span>{{receiver.name}}</span> <span class="close" (click)="emitClose()">x</span></div>
+    <div class="title">Pagamento para <span>{{receiver.name}}</span> <span class="close" (click)="emitClose(false)">x</span></div>
     <div class="content">
       <form [formGroup]="transactionFormGroup" (ngSubmit)="pay()">
         <div class="receiver-info">
@@ -10,9 +10,9 @@
         <input formControlName="value" placeholder="R$ 0,00" currencyMask type="string" [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align: 'left' }" [autofocus] required/>
 
         <div class="add-section">
-          <a class="add-button" (click)="add(10)">+10</a>
-          <a class="add-button" (click)="add(50)">+50</a>
-          <a class="add-button" (click)="add(100)">+100</a>
+          <a class="add-button" (click)="add(10)">+ R$10</a>
+          <a class="add-button" (click)="add(50)">+ R$50</a>
+          <a class="add-button" (click)="add(100)">+ R$100</a>
         </div>
 
         <div class="cards">

@@ -11,32 +11,36 @@ export class UserListComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   userList: User[] = new Array<User>();
+  filteredList: User[] = new Array<User>();
   selectedUser: User;
-  success: boolean;
   showModal: boolean = false;
   showRecipt: boolean = false;
+  transactionInfo: TransactionInfo;
 
   ngOnInit() {
     this.userService.GetUsers().subscribe(users => {
       this.userList = users;
+      this.filteredList = this.userList;
     });
   }
 
   selectToPay(id: number){
     this.selectedUser = this.userList.filter(user => user.id == id)[0];
     this.showModal = true;
-    console.log(this.selectedUser);
   }
 
   receiveCloseTransactionModal(response){
-    console.log(response.status);
     this.showModal = response.modal;
     this.showRecipt = response.recipt;
-    this.success = response.success;
+    this.transactionInfo = response;
   }
 
   receiveCloseReciptModal(response){
     this.showRecipt = response.recipt;
+  }
+
+  onSearchChange(searchValue: string): void {
+    this.filteredList = this.userList.filter(user => user.name.toLowerCase().includes(searchValue) || user.username.toLowerCase().includes(searchValue));
   }
 
 }
