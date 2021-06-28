@@ -32,15 +32,23 @@ export class TransactionModalComponent implements OnInit {
   }
 
   emitClose(recipt?: boolean, transactionStatus?: boolean, transactionInfo?) {
-    this.closeModal.emit(
-      {
-        modal: false,
-        recipt,
-        status: transactionStatus,
-        receiver: transactionInfo.receiver,
-        value: transactionInfo.value
-      }
-    );
+    if(!recipt){
+      this.closeModal.emit(
+        {
+          recipt
+        }
+      );
+    } else {
+      this.closeModal.emit(
+        {
+          modal: false,
+          recipt,
+          status: transactionStatus,
+          receiver: transactionInfo.receiver,
+          value: transactionInfo.value
+        }
+      );
+    }
   }
 
   add(add: number) {

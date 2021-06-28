@@ -41,7 +41,7 @@ export class UserListComponent implements OnInit {
 
   onSearchChange(searchValue: string): void {
     this.filteredList = this.userList.filter(user => {
-      return user.name.toLowerCase().includes(searchValue) || user.username.toLowerCase().includes(searchValue);
+      return user.name.toLowerCase().includes(searchValue.toLowerCase()) || user.username.toLowerCase().includes(searchValue.toLowerCase());
     });
   }
 
