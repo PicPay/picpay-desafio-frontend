@@ -14,11 +14,10 @@
     "typeRoots": [
       "node_modules/@types"
     ],
-    "types": [
-      "jest"
-    ],
+    "types": ["jest"],
     "lib": [
       "es2018",
+      "es2015",
       "dom"
     ]
   },

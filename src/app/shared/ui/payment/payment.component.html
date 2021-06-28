@@ -9,8 +9,7 @@
       matInput 
       formControlName="cash" 
       currencyMask 
-      [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align: 'left' }"  
-      [errorStateMatcher]="matcher"
+      [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align: 'left' }" 
       placeholder="R$ 0,00">
       <mat-error>Campo obrigatório</mat-error>
     </mat-form-field>
@@ -27,7 +26,7 @@
  
 </mat-dialog-content>
 <mat-dialog-actions class="actions-wrapper" align="center">
-	<button mat-flat-button color="accent" (click)="handlePayment()" tabindex="1" [disabled]="paymentForm.invalid">
+	<button class="payment-button" mat-flat-button color="accent" (click)="handlePayment()" tabindex="1" [disabled]="paymentForm.invalid">
   Pagar</button>
 	<button mat-stroked-button mat-dialog-close tabindex="-1"> Cancelar</button>
 </mat-dialog-actions>   

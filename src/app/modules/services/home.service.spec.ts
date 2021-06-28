@@ -18,9 +18,9 @@ describe('HomeService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports:[SharedModule, HttpClientModule],
-      providers: [HomeService,{provide: HttpService, useValue: httpServiceStub}]
+      providers: [HomeService, { provide: HttpService, useValue: httpServiceStub }]
     });
-    service = TestBed.get(HomeService);
+    service = TestBed.inject(HomeService);
   });
 
   it('should be created', () => {

@@ -1,10 +1,13 @@
+
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef, MatSnackBar } from '@angular/material';
+import { MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subscription } from 'rxjs';
 import { IUser } from 'src/app/modules/home/types';
 import { HomeService } from 'src/app/modules/services/home.service';
 import { INVALID_CARD, VALID_CARD } from 'src/app/utils/constants';
+import { currencyMask } from 'src/app/utils/masks';
 import { cards } from './cards';
 import { TransactionPayload } from './types';
 
@@ -34,7 +37,7 @@ export class PaymentComponent implements OnInit, OnDestroy {
 
   buildPaymentForm(): void {
     this.paymentForm = this.formBuilder.group({
-      cash: ['', Validators.required],
+      cash: ['', [Validators.required, Validators.pattern(currencyMask)]],
       card: ['', Validators.required],
     });
   }
@@ -57,23 +60,25 @@ export class PaymentComponent implements OnInit, OnDestroy {
     };
     this.homeService.submitPayment(this.transaction).subscribe(response => {
       if (response) {
-        this.handlingResponse();
-        this.dialogRef.close(true);
+        this.handleResponse();
       }
     }, error => error );
   }
 
-  handlingResponse(): void {
+  handleResponse(): void {
     const { value: {card}} = this.paymentForm;
     if (card === VALID_CARD.card_number) {
       this.snackBar.open('O pagamento foi feito com sucesso!', '', {
-        duration: 3000,
+        duration: 1500,
+        panelClass: ['success']
       });
+      this.dialogRef.close(true);
       return;
     }
     if (card === INVALID_CARD.card_number) {
       this.snackBar.open('Erro na transação!', '', {
-        duration: 3000,
+        duration: 1500,
+        panelClass: ['error']
       });
       return;
     }

@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { of, throwError } from 'rxjs';
 import { HttpService } from 'src/app/core/http.service';
@@ -10,18 +10,20 @@ import { httpServiceStub } from 'src/mock/tests/http-service';
 import { MatDialogMock } from 'src/mock/tests/mat-dialog-stub';
 import { usersStub } from 'src/mock/tests/users-stub';
 import { HomeService } from '../services/home.service';
-
 import { HomeComponent } from './home.component';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
+  let dialog: MatDialogMock;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [CommonModule, SharedModule, BrowserAnimationsModule],
       declarations: [ HomeComponent ],
-      providers: [HomeService, {provide: MatDialog, useClass: MatDialogMock}, {provide: HttpService, useValue: httpServiceStub}]
+      providers: [HomeService,
+        {provide: MatDialog, useClass: MatDialogMock},
+        {provide: HttpService, useValue: httpServiceStub}]
     })
       .compileComponents();
   }));
@@ -30,20 +32,30 @@ describe('HomeComponent', () => {
     fixture = TestBed.createComponent(HomeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    dialog = TestBed.get(MatDialog);
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should render users when service was called', async () => {
+  it('should render users when service was called', () => {
     const getUsers =  jest.spyOn(component.homeService, 'getUsersList').mockReturnValue(of(usersStub));
     component.ngOnInit();
     expect(getUsers).toHaveBeenCalledTimes(1);
     expect(component.usersList.data).toHaveLength(usersStub.length);
   });
 
-  it('should not render users when service was called and throws error', async () => {
+  it('should open modal when clicked in some button', () => {
+    jest.spyOn(component.homeService, 'getUsersList').mockReturnValue(of(usersStub));
+    jest.spyOn(component.homeService, 'updateSelectedUser').mockImplementation();
+    jest.spyOn(dialog, 'open').mockImplementation();
+    component.ngOnInit();
+    component.openModal(usersStub[0]);
+    expect(dialog.open).toHaveBeenCalled();
+  });
+
+  it('should not render users when service was called and throws error', () => {
     component.homeService.getUsersList = jest.fn(() => throwError(
       new HttpErrorResponse({status: 400, error: {message: 'This is an error'}})
     ));
