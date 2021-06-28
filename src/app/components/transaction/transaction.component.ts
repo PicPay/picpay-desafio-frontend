@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Card } from 'src/app/models/card/card.model';
 import { Transaction } from 'src/app/models/transaction/transaction.model';
 import { User } from 'src/app/models/user/user.model';
+import { TransactionService } from 'src/app/services/transaction/transaction.service';
 import { PaymentReceiptComponent } from './payment-receipt/payment-receipt.component';
 
 @Component({
@@ -34,7 +34,8 @@ export class TransactionComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     public dialogRef: MatDialogRef<TransactionComponent>,
-    @Inject(MAT_DIALOG_DATA) public data
+    @Inject(MAT_DIALOG_DATA) public data,
+    private transactionService: TransactionService
   ) {
     this.user = data.user;
     this.transaction = new Transaction();
@@ -46,11 +47,22 @@ export class TransactionComponent implements OnInit {
   sendTransaction(transaction: Transaction): void {
     this.transaction.card = this.cardControl.value;
     this.transaction.destination_user_id = this.user.id;
-
-    this.dialog.open(PaymentReceiptComponent, {
-      data: { transaction: transaction }
-    });
-
-    this.dialogRef.close();
+    
+    this.transactionService.postTransaction(transaction)
+    .subscribe(
+      (response) => {
+        this.dialogRef.close();
+        this.dialog.open(PaymentReceiptComponent, {
+          data: { success: response.success }
+        })
+      },
+      (err) => {
+        this.dialogRef.close();
+        this.dialog.open(PaymentReceiptComponent, {
+          data: { success: err.success }
+        })
+      }
+    );
+      
   }
 }
