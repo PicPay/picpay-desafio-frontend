@@ -51,5 +51,6 @@ export class TransactionComponent implements OnInit {
       data: { transaction: transaction }
     });
 
+    this.dialogRef.close();
   }
 }

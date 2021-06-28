@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule, MatSelectModule } from '@angular/material';
+import { CurrencyMaskModule } from 'ng2-currency-mask';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { MatDialogModule, MatSelectModule } from '@angular/material';
     BrowserAnimationsModule,
     MatDialogModule,
     ReactiveFormsModule,
-    MatSelectModule
+    MatSelectModule,
+    CurrencyMaskModule
   ],
   providers: [],
   bootstrap: [AppComponent],

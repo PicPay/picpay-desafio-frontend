@@ -6,6 +6,7 @@
         class="value" 
         [(ngModel)]="transaction.value" 
         placeholder="R$ 0,00" 
+        currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"
       />
 
       <div class="cards">
@@ -15,12 +16,13 @@
               Cartão com final {{card.card_number.slice(-4)}}
             </mat-option>
           </mat-select>
-
+          <mat-error *ngIf="cardControl.hasError('required')">Favor selecionar um cartão.</mat-error>
         </mat-form-field>
       </div>
 
       <button type="button" 
         class="pay-button" 
+        [disabled]="!cardControl.value || !(transaction.value > 0)"
         (click)="sendTransaction(transaction)"> 
         Pagar
       </button>
