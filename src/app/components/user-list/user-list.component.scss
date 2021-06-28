@@ -31,8 +31,9 @@
     .users{
       margin-top: 30px;
       max-height: calc(100vh - 108px);
-      overflow: scroll;
       padding-bottom: 0;
+      
+      overflow: scroll;
   
       .user {
         width: 65vw;  
@@ -43,6 +44,12 @@
       
         display: flex;
         align-items: center;
+
+        .not-found{
+          p{
+            font-size: 32px;
+          }
+        }
     
         .user-pp{
           border: 2px solid var(--white);

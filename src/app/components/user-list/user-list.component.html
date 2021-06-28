@@ -4,7 +4,9 @@
       <input type="text" placeholder="Buscar..." (input)="onSearchChange($event.target.value)">
     </div>
     
-    <div class="users">
+    <div class="users" [ngStyle]="{'overflow': filteredList.length == 0 ? 'hidden' : 'scroll' }">
+        <p class="not-found" *ngIf="filteredList.length == 0">Nenhum usuário com este nome foi encontrado. ): </p>
+
         <div class="user" *ngFor="let user of filteredList">
           <div class="user-pp">
             <img [src]="user.img" />
