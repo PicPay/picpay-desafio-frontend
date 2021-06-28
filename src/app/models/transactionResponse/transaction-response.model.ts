@@ -1,4 +1,4 @@
 export class TransactionResponse {
-	success: boolean;
+  success: boolean;
   status: string;
 }

@@ -9,8 +9,8 @@ import { UserService } from 'src/app/services/user/user.service';
 })
 export class UserComponent implements OnInit {
   @Input() user: User;
-  
-  @Output() onOpenModal = new EventEmitter<User>();
+
+  @Output() openModal = new EventEmitter<User>();
 
   constructor() {
   }
@@ -19,6 +19,6 @@ export class UserComponent implements OnInit {
   }
 
   openModalTransaction(user: User): void {
-    this.onOpenModal.emit(user);
+    this.openModal.emit(user);
   }
 }

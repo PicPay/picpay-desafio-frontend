@@ -1,6 +1,6 @@
 <div class="users">
   <div *ngFor="let user of users">
-    <app-user [user]="user" (onOpenModal)="openTransactionModal($event)">
+    <app-user [user]="user" (openModal)="openTransactionModal($event)">
     </app-user>
   </div>
 </div>

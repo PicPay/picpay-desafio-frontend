@@ -31,7 +31,7 @@ import { CurrencyMaskModule } from 'ng2-currency-mask';
   providers: [],
   bootstrap: [AppComponent],
   entryComponents: [
-    TransactionComponent, 
+    TransactionComponent,
     PaymentReceiptComponent
   ],
 })

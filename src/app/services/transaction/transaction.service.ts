@@ -14,11 +14,11 @@ export class TransactionService {
   constructor(private httpClient: HttpClient) { }
 
   postTransaction(transaction: Transaction): Observable<TransactionResponse> {
-    if (transaction.card.card_number === '4111111111111234'){
-      const errorResponse: TransactionResponse = { success: false, status: "Não Aprovada" };
+    if (transaction.card.cardNumber === '4111111111111234') {
+      const errorResponse: TransactionResponse = { success: false, status: 'Não Aprovada' };
       return throwError(errorResponse);
     }
-      
+
     return this.httpClient.post<TransactionResponse>(this.TRANSACTIONS_URL, transaction);
   }
 }

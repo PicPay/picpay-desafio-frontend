@@ -1,5 +1,5 @@
 export class Card {
-	card_number: string;
-	cvv: number;
-	expiry_date: string;
+  cardNumber: string;
+  cvv: number;
+  expiryate: string;
 }

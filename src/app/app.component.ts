@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TransactionComponent } from './components/transaction/transaction.component';
 import { User } from './models/user/user.model';
@@ -9,12 +9,10 @@ import { UserService } from './services/user/user.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'Desafio Picpay Front-end';
-  
-  user: User;
-  users : User[] = [];
-  
+  users: User[] = [];
+
   constructor(
     public dialog: MatDialog,
     private usersService: UserService) {
@@ -31,7 +29,7 @@ export class AppComponent {
 
   openTransactionModal(user: User): void {
     this.dialog.open(TransactionComponent, {
-      data: { user: user }
+      data: { user }
     });
   }
 

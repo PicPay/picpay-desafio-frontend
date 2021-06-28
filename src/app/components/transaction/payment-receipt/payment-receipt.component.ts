@@ -7,7 +7,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./payment-receipt.component.scss']
 })
 export class PaymentReceiptComponent implements OnInit {
-  success: boolean
+  success: boolean;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data

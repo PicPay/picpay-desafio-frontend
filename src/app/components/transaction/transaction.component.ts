@@ -11,7 +11,7 @@ import { PaymentReceiptComponent } from './payment-receipt/payment-receipt.compo
   templateUrl: './transaction.component.html',
   styleUrls: ['./transaction.component.scss']
 })
-export class TransactionComponent implements OnInit {
+export class TransactionComponent {
   user: User;
   transaction: Transaction;
 
@@ -41,28 +41,25 @@ export class TransactionComponent implements OnInit {
     this.transaction = new Transaction();
   }
 
-  ngOnInit() {
-  }
-
   sendTransaction(transaction: Transaction): void {
     this.transaction.card = this.cardControl.value;
-    this.transaction.destination_user_id = this.user.id;
-    
+    this.transaction.destinationUserId = this.user.id;
+
     this.transactionService.postTransaction(transaction)
     .subscribe(
       (response) => {
         this.dialogRef.close();
         this.dialog.open(PaymentReceiptComponent, {
           data: { success: response.success }
-        })
+        });
       },
       (err) => {
         this.dialogRef.close();
         this.dialog.open(PaymentReceiptComponent, {
           data: { success: err.success }
-        })
+        });
       }
     );
-      
+
   }
 }
