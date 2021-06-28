@@ -4,50 +4,16 @@
   width: 420px;
   margin: -24px;
 
-  > {
-    .title {
-      background: #474971;
-      color: #ffffff;
-      font-weight: 500;
-      font-size: 16px;
-      padding: 16px 24px;
+  &__title {
+    background: #474971;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 16px 24px;
+  }
 
-      > span {
-        color: #cddc39;
-      }
-    }
-
-    .content {
-      padding: 32px;
-      text-align: center;
-
-      > {
-        input {
-          border: 1px solid #ccc;
-          border-radius: 6px;
-          font-size: 32px;
-          height: 48px;
-          padding: 0 8px;
-        }
-
-        .cards > select {
-          background: #fff;
-          border: 1px solid #ccc;
-          border-radius: 6px;
-          font-size: 32px;
-          height: 48px;
-          margin-top: 12px;
-        }
-
-        button {
-          border: 1px solid #ccc;
-          border-radius: 6px;
-          font-size: 32px;
-          height: 48px;
-          padding: 0 8px;
-          margin-top: 24px;
-        }
-      }
-    }
+  &__content {
+    padding: 32px;
+    text-align: center;
   }
 }

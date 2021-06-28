@@ -1,15 +1,15 @@
   <div class="modal">
-    <div class="title">Pagamento para <span>{{user.name}}</span></div>
+    <div class="modal__title">Pagamento para <span>{{user.name}}</span></div>
 
-    <div class="content">
+    <div class="modal__content">
       <input 
-        class="value" 
+        class="modal__content--value" 
         [(ngModel)]="transaction.value" 
         placeholder="R$ 0,00" 
         currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"
       />
 
-      <div class="cards">
+      <div class="modal__content--cards-selected">
         <mat-form-field [floatLabel]="'never'">
           <mat-select [formControl]="cardControl" required placeholder="Selecione um cartão">
             <mat-option *ngFor="let card of cards" [value]="card">
@@ -21,7 +21,7 @@
       </div>
 
       <button type="button" 
-        class="pay-button" 
+        class="modal__content--pay-button" 
         [disabled]="!cardControl.value || !(transaction.value > 0)"
         (click)="sendTransaction(transaction)"> 
         Pagar
