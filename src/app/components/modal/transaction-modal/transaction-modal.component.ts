@@ -13,7 +13,7 @@ import { UserService } from 'src/app/services/user.service';
 export class TransactionModalComponent implements OnInit {
 
   @Input() receiver: User;
-  @Output() close = new EventEmitter();
+  @Output() closeModal = new EventEmitter();
 
   cardsList: Card[] = new Array<Card>();
 
@@ -31,27 +31,29 @@ export class TransactionModalComponent implements OnInit {
     });
   }
 
-  emitClose(recipt?: boolean, transactionStatus?: boolean, transactionInfo?){
-    this.close.emit(
+  emitClose(recipt?: boolean, transactionStatus?: boolean, transactionInfo?) {
+    this.closeModal.emit(
       {
-        'modal': false,
-        'recipt': recipt,
-        'status': transactionStatus,
-        'receiver': transactionInfo.receiver,
-        'value': transactionInfo.value
+        modal: false,
+        recipt,
+        status: transactionStatus,
+        receiver: transactionInfo.receiver,
+        value: transactionInfo.value
       }
     );
   }
 
-  add(add: number){
+  add(add: number) {
     const rawValue = this.transactionFormGroup.getRawValue();
     const newValue = (+rawValue.value) + add;
 
-    this.transactionFormGroup.controls['value'].setValue(newValue);
+    this.transactionFormGroup.patchValue({
+      value: newValue
+    });
   }
 
-  pay(){
-    let transaction: TransactionPayload = {
+  pay() {
+    const transaction: TransactionPayload = {
       card_number: null,
       cvv: null,
       expiry_date: null,
@@ -59,22 +61,26 @@ export class TransactionModalComponent implements OnInit {
       value: null
     };
 
-    transaction.card_number = this.transactionFormGroup.controls['selectedCard'].value;
-    transaction.cvv = this.cardsList.filter(card => card.card_number === this.transactionFormGroup.controls['selectedCard'].value)[0].cvv;
-    transaction.expiry_date = this.cardsList.filter(card => card.card_number === this.transactionFormGroup.controls['selectedCard'].value)[0].expiry_date;
+    transaction.card_number = this.transactionFormGroup.value.selectedCard;
+    transaction.cvv = this.cardsList.filter(card => {
+      return card.card_number === this.transactionFormGroup.value.selectedCard;
+    })[0].cvv;
+    transaction.expiry_date = this.cardsList.filter(card => {
+      return card.card_number === this.transactionFormGroup.value.selectedCard;
+    })[0].expiry_date;
 
-    transaction.value = this.transactionFormGroup.controls['value'].value;
+    transaction.value = this.transactionFormGroup.value.value;
 
     const transactionInfo = {
-      'receiver': this.receiver.username,
-      'value': transaction.value
-    }
+      receiver: this.receiver.username,
+      value: transaction.value
+    };
 
     this.transactionService.PostTransaction(transaction).subscribe(data => {
       this.emitClose(true, true, transactionInfo);
     }, err => {
       console.log(err);
-    })
+    });
   }
 
 }

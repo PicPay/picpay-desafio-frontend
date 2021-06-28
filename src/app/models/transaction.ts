@@ -6,10 +6,10 @@ interface TransactionPayload {
     value: number;
 }
 
-interface TransactionInfo{
-    'modal': boolean,
-    'recipt': boolean,
-    'status': boolean,
-    'receiver': string,
-    'value': string
-  }
+interface TransactionInfo {
+    modal: boolean;
+    recipt: boolean;
+    status: boolean;
+    receiver: string;
+    value: string;
+}

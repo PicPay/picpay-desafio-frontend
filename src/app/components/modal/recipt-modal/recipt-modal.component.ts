@@ -9,19 +9,19 @@ import { EventEmitter } from '@angular/core';
 export class ReciptModalComponent implements OnInit {
 
   @Input() transactionInfo: TransactionInfo;
-  @Output() close = new EventEmitter;
+  @Output() closeModal = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  emitClose(){
-    this.close.emit(
+  emitClose() {
+    this.closeModal.emit(
       {
-        'recipt': false
+        recipt: false
       }
-    )
+    );
   }
 
 }

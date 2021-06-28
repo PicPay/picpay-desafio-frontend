@@ -10,12 +10,12 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  GetUsers(): Observable<User[]>{
+  GetUsers(): Observable<User[]> {
     return this.http.get<User[]>('https://www.mocky.io/v2/5d531c4f2e0000620081ddce');
   }
 
-  GetCards(): Observable<Card[]>{
-    let cards = new BehaviorSubject([
+  GetCards(): Observable<Card[]> {
+    const cards = new BehaviorSubject([
       {
         card_number: '1111111111111111',
         cvv: 789,

@@ -31,9 +31,9 @@
 </div>
 
 <div class="modal-backdrop" *ngIf="showModal">
-  <app-transaction-modal [receiver]='selectedUser' (close)="receiveCloseTransactionModal($event)"></app-transaction-modal> 
+  <app-transaction-modal [receiver]='selectedUser' (closeModal)="receiveCloseTransactionModal($event)"></app-transaction-modal> 
 </div>
 
 <div class="modal-backdrop" *ngIf="showRecipt">
-  <app-recipt-modal [transactionInfo]='transactionInfo' (close)="receiveCloseReciptModal($event)"></app-recipt-modal>
+  <app-recipt-modal [transactionInfo]='transactionInfo' (closeModal)="receiveCloseReciptModal($event)"></app-recipt-modal>
 </div>

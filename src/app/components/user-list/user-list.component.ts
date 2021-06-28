@@ -13,8 +13,8 @@ export class UserListComponent implements OnInit {
   userList: User[] = new Array<User>();
   filteredList: User[] = new Array<User>();
   selectedUser: User;
-  showModal: boolean = false;
-  showRecipt: boolean = false;
+  showModal = false;
+  showRecipt = false;
   transactionInfo: TransactionInfo;
 
   ngOnInit() {
@@ -24,23 +24,25 @@ export class UserListComponent implements OnInit {
     });
   }
 
-  selectToPay(id: number){
-    this.selectedUser = this.userList.filter(user => user.id == id)[0];
+  selectToPay(id: number) {
+    this.selectedUser = this.userList.filter(user => user.id === id)[0];
     this.showModal = true;
   }
 
-  receiveCloseTransactionModal(response){
+  receiveCloseTransactionModal(response) {
     this.showModal = response.modal;
     this.showRecipt = response.recipt;
     this.transactionInfo = response;
   }
 
-  receiveCloseReciptModal(response){
+  receiveCloseReciptModal(response) {
     this.showRecipt = response.recipt;
   }
 
   onSearchChange(searchValue: string): void {
-    this.filteredList = this.userList.filter(user => user.name.toLowerCase().includes(searchValue) || user.username.toLowerCase().includes(searchValue));
+    this.filteredList = this.userList.filter(user => {
+      return user.name.toLowerCase().includes(searchValue) || user.username.toLowerCase().includes(searchValue);
+    });
   }
 
 }
