@@ -16,8 +16,8 @@ export class HomeComponent implements OnInit {
   public users: IUser[] | null = null;
   public usersList: MatTableDataSource<IUser> = null;
 
-  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
-  @ViewChild(MatSort, { static: false }) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor(
     public homeService: HomeService,
