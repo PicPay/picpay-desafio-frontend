@@ -1,7 +1,7 @@
+import { Card } from "../card/card.model";
+
 export class Transaction {
-	card_number: string;
-	cvv: number;
-	expiry_date: string;
+	card: Card;
 	destination_user_id: number;
 	value: number;
 }

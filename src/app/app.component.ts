@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { TransactionComponent } from './components/transaction/transaction.component';
 import { User } from './models/user/user.model';
 import { UserService } from './services/user/user.service';
 
@@ -10,9 +12,11 @@ import { UserService } from './services/user/user.service';
 export class AppComponent {
   title = 'Desafio Picpay Front-end';
   
+  user: User;
   users : User[] = [];
   
   constructor(
+    public dialog: MatDialog,
     private usersService: UserService) {
   }
 
@@ -24,4 +28,11 @@ export class AppComponent {
     this.usersService.getUsers()
     .subscribe(users => this.users = users);
   }
+
+  openTransactionModal(user: User): void {
+    this.dialog.open(TransactionComponent, {
+      data: { user: user }
+    });
+  }
+
 }

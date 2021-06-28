@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { User } from 'src/app/models/user/user.model';
 import { UserService } from 'src/app/services/user/user.service';
 
@@ -10,10 +10,15 @@ import { UserService } from 'src/app/services/user/user.service';
 export class UserComponent implements OnInit {
   @Input() user: User;
   
+  @Output() onOpenModal = new EventEmitter<User>();
+
   constructor() {
   }
 
   ngOnInit() {
   }
 
+  openModalTransaction(user: User): void {
+    this.onOpenModal.emit(user);
+  }
 }

@@ -1,15 +1,28 @@
-<div class="modal-backdrop">
   <div class="modal">
-    <div class="title">Pagamento para <span>Nome do Usuário</span></div>
+    <div class="title">Pagamento para <span>{{user.name}}</span></div>
 
     <div class="content">
-      <input type="number" placeholder="R$ 0,00" />
+      <input 
+        class="value" 
+        [(ngModel)]="transaction.value" 
+        placeholder="R$ 0,00" 
+      />
 
-			<app-creditcard-list></app-creditcard-list>
+      <div class="cards">
+        <mat-form-field [floatLabel]="'never'">
+          <mat-select [formControl]="cardControl" required placeholder="Selecione um cartão">
+            <mat-option *ngFor="let card of cards" [value]="card">
+              Cartão com final {{card.card_number.slice(-4)}}
+            </mat-option>
+          </mat-select>
 
-      <button type="button" class="pay-button">
+        </mat-form-field>
+      </div>
+
+      <button type="button" 
+        class="pay-button" 
+        (click)="sendTransaction(transaction)"> 
         Pagar
       </button>
     </div>
   </div>
-</div>
