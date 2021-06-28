@@ -1,11 +1,11 @@
-<div class="home-container">
+<div class="home-container" [ngClass]="!usersList ? 'none': 'flex' ">
   <div class="user-table mat-elevation-z8">
     <mat-table [dataSource]="usersList" matSort>
       <ng-container matColumnDef="name">
         <mat-header-cell class="title" *matHeaderCellDef mat-sort-header> User </mat-header-cell>
         <mat-cell *matCellDef="let user">
           <img [src]="user.img" class="profile-img">
-          <span>{{user.name}} </span>
+          <span class="name">{{user.name}} </span>
         </mat-cell>
       </ng-container>
 
@@ -26,7 +26,7 @@
       <ng-container matColumnDef="actions">
         <mat-header-cell class="title" *matHeaderCellDef mat-sort-header> Actions </mat-header-cell>
         <mat-cell *matCellDef="let user">
-          <button mat-flat-button color="accent" (click)="openModal(user)">Pagar</button>
+          <button mat-flat-button color="accent" class="open-modal" (click)="openModal(user)">Pagar</button>
         </mat-cell>
       </ng-container>
 

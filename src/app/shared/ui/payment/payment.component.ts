@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MatSnackBar } from '@angular/material';
 import { Subscription } from 'rxjs';
 import { IUser } from 'src/app/modules/home/types';
@@ -27,7 +27,7 @@ export class PaymentComponent implements OnInit, OnDestroy {
     private snackBar: MatSnackBar,
     public formBuilder: FormBuilder) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getSelectedUser();
     this.buildPaymentForm();
   }
@@ -79,7 +79,7 @@ export class PaymentComponent implements OnInit, OnDestroy {
     }
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.subscriptionUser.unsubscribe();
   }
 

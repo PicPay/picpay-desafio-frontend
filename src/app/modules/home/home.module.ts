@@ -11,7 +11,7 @@ import { HomeComponent } from './home.component';
     CommonModule,
     SharedModule
   ],
-  exports:[
+  exports: [
     HomeComponent
   ]
 })

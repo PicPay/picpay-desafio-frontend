@@ -1,12 +1,17 @@
 @import '~@angular/material/theming';
 
 .home-container{
-  display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 100vh;
   background-color: mat-color($mat-green, A400);
+  &.none{
+    display: none;
+  }
+  &.flex{
+    display: flex;
+  }
 }
 
 

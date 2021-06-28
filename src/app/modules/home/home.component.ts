@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild, ViewChildren } from '@angular/core';
-import { MatDialog, MatPaginator, MatSnackBar, MatSort, MatTableDataSource } from '@angular/material';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog, MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { PaymentComponent } from 'src/app/shared/ui/payment/payment.component';
 import { HomeService } from '../services/home.service';
 import { IUser } from './types';
@@ -13,8 +13,8 @@ import { IUser } from './types';
 export class HomeComponent implements OnInit {
 
   public userListColumns = ['id', 'name', 'username', 'actions'];
-  public users: IUser[] = [];
-  public usersList: MatTableDataSource<IUser>;
+  public users: IUser[] | null = null;
+  public usersList: MatTableDataSource<IUser> = null;
 
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort: MatSort;
@@ -22,14 +22,14 @@ export class HomeComponent implements OnInit {
   constructor(
     public homeService: HomeService,
     private dialog: MatDialog,
-    private snackBar: MatSnackBar
   ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getUsersList();
   }
 
-  getUsersList() {
+  getUsersList(): void {
+    // tslint:disable-next-line: deprecation
     this.homeService.getUsersList().subscribe((response: IUser[]) => {
       this.usersList = new MatTableDataSource(response);
       this.usersList.paginator = this.paginator;
@@ -39,11 +39,7 @@ export class HomeComponent implements OnInit {
 
   openModal(user: IUser): void {
     this.homeService.updateSelectedUser(user);
-    const modalRef = this.dialog.open(PaymentComponent);
-  }
-
-  setUser(user: IUser): void {
-    console.log(user);
+    this.dialog.open(PaymentComponent);
   }
 
 }

@@ -41,13 +41,13 @@ const components = [
     ...components
   ],
   imports: [
-  ...baseModules,
-  ...materialModules,
+    ...baseModules,
+    ...materialModules,
   ],
   exports: [
-  ...baseModules,
-  ...materialModules,
-  ...components
+    ...baseModules,
+    ...materialModules,
+    ...components
   ],
   entryComponents: [...components],
 })
