@@ -13,7 +13,7 @@
         <mat-form-field [floatLabel]="'never'">
           <mat-select [formControl]="cardControl" required placeholder="Selecione um cartão">
             <mat-option *ngFor="let card of cards" [value]="card">
-              Cartão com final {{card.card_number.slice(-4)}}
+              Cartão com final {{card.cardNumber.slice(-4)}}
             </mat-option>
           </mat-select>
           <mat-error *ngIf="cardControl.hasError('required')">Favor selecionar um cartão.</mat-error>

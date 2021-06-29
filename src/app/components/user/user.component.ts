@@ -1,18 +1,37 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { User } from 'src/app/models/user/user.model';
-import { UserService } from 'src/app/services/user/user.service';
+import { MatDialog } from '@angular/material/dialog';
+import { UserService } from '@app/services/user/user.service';
+import { User } from '@models/user/user.model';
+import { TransactionComponent } from '../modal/transaction/transaction.component';
 
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.scss']
 })
-export class UserComponent {
-  @Input() user: User;
+export class UserComponent implements OnInit {
+  user: User;
+  users: User[];
 
-  @Output() openModal = new EventEmitter<User>();
+  constructor(
+    public dialog: MatDialog,
+    private usersService: UserService
+  ) {}
+
+
+  ngOnInit() {
+    this.getUsers();
+  }
 
   openModalTransaction(user: User): void {
-    this.openModal.emit(user);
+    this.dialog.open(TransactionComponent, {
+      data: { user }
+    });
   }
+
+  getUsers(): void {
+    this.usersService.getUsers()
+    .subscribe((users) => this.users = users);
+  }
+
 }

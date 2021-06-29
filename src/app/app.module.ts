@@ -1,10 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppComponent } from './app.component';
-import { UserComponent } from './components/user/user.component';
-import { TransactionComponent } from './components/transaction/transaction.component';
-import { PaymentReceiptComponent } from './components/transaction/payment-receipt/payment-receipt.component';
+import { AppComponent } from '@app/app.component';
+import { UserComponent } from '@components/user/user.component';
+import { TransactionComponent } from '@app/components/modal/transaction/transaction.component';
+import { PaymentReceiptComponent } from '@app/components/modal/payment-receipt/payment-receipt.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';

@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { TransactionResponse } from 'src/app/models/transactionResponse/transaction-response.model';
-import { environment } from '../../../environments/environment';
-import { Transaction } from '../../models/transaction/transaction.model';
+import { TransactionResponse } from '@models/transactionResponse/transaction-response.model';
+import { environment } from 'environments/environment';
+import { Transaction } from '@models/transaction/transaction.model';
 
 @Injectable({
   providedIn: 'root'
