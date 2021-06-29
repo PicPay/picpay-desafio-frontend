@@ -5,8 +5,11 @@
   </div>
 
   <div class="modal__content">
-    <div *ngIf="success">O pagamento foi concluido com sucesso.<br /></div>
-    <div *ngIf="!success">O pagamento <strong>não</strong> foi concluido com sucesso.</div>
+    <div *ngIf="transaction.success">O pagamento foi concluido com sucesso.<br /></div>
+    <div *ngIf="!transaction.success">
+      O pagamento <strong>não</strong> foi concluido com sucesso.<br />
+      Motivo: {{transaction.status}}.
+    </div>
 
     <button (click)="closeModal()"> <span>Ok</span> </button>
   </div>

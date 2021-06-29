@@ -15,7 +15,7 @@ export class TransactionService {
 
   postTransaction(transaction: Transaction): Observable<TransactionResponse> {
     if (transaction.card.cardNumber === '4111111111111234') {
-      const errorResponse: TransactionResponse = { success: false, status: 'Não Aprovada' };
+      const errorResponse: TransactionResponse = { success: false, status: 'Cartão não aprovado' };
       return throwError(errorResponse);
     }
 

@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { TransactionResponse } from '@app/models/transactionResponse/transaction-response.model';
 
 @Component({
   selector: 'app-payment-receipt',
@@ -7,13 +8,13 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./payment-receipt.component.scss']
 })
 export class PaymentReceiptComponent implements OnInit {
-  success: boolean;
+  transaction: TransactionResponse;
 
   constructor(
     public dialogRef: MatDialogRef<PaymentReceiptComponent>,
     @Inject(MAT_DIALOG_DATA) public data
   ) {
-    this.success = data.success;
+    this.transaction = data.transaction;
   }
 
   ngOnInit() {

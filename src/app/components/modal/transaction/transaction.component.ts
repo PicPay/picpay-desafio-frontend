@@ -5,6 +5,7 @@ import { Transaction } from '@models/transaction/transaction.model';
 import { User } from '@models/user/user.model';
 import { TransactionService } from '@services/transaction/transaction.service';
 import { PaymentReceiptComponent } from '@app/components/modal/payment-receipt/payment-receipt.component';
+import { TransactionResponse } from '@app/models/transactionResponse/transaction-response.model';
 
 @Component({
   selector: 'app-transaction',
@@ -45,20 +46,20 @@ export class TransactionComponent {
     this.transaction.card = this.cardControl.value;
     this.transaction.destinationUserId = this.user.id;
 
-    this.dialogRef.close();
+    this.closeModal();
 
     this.transactionService.postTransaction(transaction)
     .subscribe(
       (response) => {
         this.dialog.open(PaymentReceiptComponent, {
           panelClass: 'closable-dialog',
-          data: { success: response.success }
+          data: { transaction: response }
         });
       },
       (err) => {
         this.dialog.open(PaymentReceiptComponent, {
           panelClass: 'closable-dialog',
-          data: { success: err.success }
+          data: { transaction: err as TransactionResponse }
         });
       }
     );
