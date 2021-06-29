@@ -1,4 +1,4 @@
-import { Card } from './card.model';
+import { Card } from '@models/card/card.model';
 
 describe('Card', () => {
   it('should create an instance', () => {

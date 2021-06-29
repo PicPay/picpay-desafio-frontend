@@ -1,4 +1,4 @@
-import { TransactionResponse } from './transaction-response.model';
+import { TransactionResponse } from '@models/transactionResponse/transaction-response.model';
 
 describe('TransactionResponse', () => {
   it('should create an instance', () => {

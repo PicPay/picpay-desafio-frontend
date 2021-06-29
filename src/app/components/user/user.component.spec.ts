@@ -1,6 +1,8 @@
+import { HttpClientModule } from '@angular/common/http';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatDialogModule } from '@angular/material';
 
-import { UserComponent } from './user.component';
+import { UserComponent } from '@components/user/user.component';
 
 describe('UserComponent', () => {
   let component: UserComponent;
@@ -8,7 +10,11 @@ describe('UserComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserComponent ]
+      declarations: [ UserComponent ],
+      imports: [
+        HttpClientModule,
+        MatDialogModule,
+      ]
     })
     .compileComponents();
   }));
@@ -21,5 +27,9 @@ describe('UserComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  afterEach(() => {
+    fixture.destroy();
   });
 });
