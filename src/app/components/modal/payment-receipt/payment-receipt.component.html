@@ -1,11 +1,14 @@
 <div class="modal">
   <div class="modal__title">
     Recibo de pagamento
+    <button (click)="closeModal()">x</button>
   </div>
 
   <div class="modal__content">
     <div *ngIf="success">O pagamento foi concluido com sucesso.<br /></div>
     <div *ngIf="!success">O pagamento <strong>não</strong> foi concluido com sucesso.</div>
+
+    <button (click)="closeModal()"> <span>Ok</span> </button>
   </div>
 
 </div>

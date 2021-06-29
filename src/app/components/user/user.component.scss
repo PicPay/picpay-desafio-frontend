@@ -8,19 +8,27 @@
   display: flex;
   align-items: center;
 
-  > {
     img {
       border-radius: 50%;
       height: 80px;
       width: 80px;
     }
 
-    .info-wrapper {
+    &__info-wrapper {
       margin-left: 16px;
     }
 
-    .pay-button {
+    button {
       margin-left: auto;
+
+      &:active {
+        background: #fff;
+        color: #3c3e64;
+      }
+
+      &:hover {
+        transform: scale(1.1);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
     }
-  }
 }

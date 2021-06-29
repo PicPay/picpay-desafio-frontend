@@ -1,8 +1,8 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { UserService } from '@app/services/user/user.service';
 import { User } from '@models/user/user.model';
-import { TransactionComponent } from '../modal/transaction/transaction.component';
+import { TransactionComponent } from '@app/components/modal/transaction/transaction.component';
 
 @Component({
   selector: 'app-user',
@@ -25,6 +25,7 @@ export class UserComponent implements OnInit {
 
   openModalTransaction(user: User): void {
     this.dialog.open(TransactionComponent, {
+      panelClass: 'closable-dialog',
       data: { user }
     });
   }

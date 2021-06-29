@@ -1,20 +1,16 @@
-<div class="users">
-  <div *ngFor="let user of users">
-    <div class="user">
-      <img src={{user.img}} />
-      <div class="info-wrapper">
-        <div class="user-name">
-          {{user.name}}
-        </div>
-  
-        <div class="user-id-username">
-          ID: {{user.id}} - Username: {{user.username}}
-        </div>
-      </div>
-  
-      <button type="button" class="pay-button" (click)="openModalTransaction(user)">
-        Pagar
-      </button>
+<div class="user" *ngFor="let user of users">
+  <img src={{user.img}} />
+  <div class="user__info-wrapper">
+    <div>
+      {{user.name}}
+    </div>
+
+    <div>
+      ID: {{user.id}} - Username: {{user.username}}
     </div>
   </div>
+
+  <button type="button" (click)="openModalTransaction(user)">
+    Pagar
+  </button>
 </div>

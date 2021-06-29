@@ -1,30 +1,30 @@
-  <div class="modal">
-    <div class="modal__title">Pagamento para <span>{{user.name}}</span></div>
-
-    <div class="modal__content">
-      <input 
-        class="modal__content--value" 
-        [(ngModel)]="transaction.value" 
-        placeholder="R$ 0,00" 
-        currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"
-      />
-
-      <div class="modal__content--cards-selected">
-        <mat-form-field [floatLabel]="'never'">
-          <mat-select [formControl]="cardControl" required placeholder="Selecione um cartão">
-            <mat-option *ngFor="let card of cards" [value]="card">
-              Cartão com final {{card.cardNumber.slice(-4)}}
-            </mat-option>
-          </mat-select>
-          <mat-error *ngIf="cardControl.hasError('required')">Favor selecionar um cartão.</mat-error>
-        </mat-form-field>
-      </div>
-
-      <button type="button" 
-        class="modal__content--pay-button" 
-        [disabled]="!cardControl.value || !(transaction.value > 0)"
-        (click)="sendTransaction(transaction)"> 
-        Pagar
-      </button>
-    </div>
+<div class="modal">
+  <div class="modal__title">Pagamento para <span>{{user.name}}</span>
+    <button (click)="closeModal()">x</button>
   </div>
+
+  <div class="modal__content">
+    <input 
+      [(ngModel)]="transaction.value" 
+      placeholder="R$ 0,00"
+      currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"
+    />
+
+    <div>
+      <mat-form-field [floatLabel]="'never'">
+        <mat-select [formControl]="cardControl" required placeholder="Selecione um cartão">
+          <mat-option *ngFor="let card of cards" [value]="card">
+            Cartão com final {{card.cardNumber.slice(-4)}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="cardControl.hasError('required')">Favor selecionar um cartão.</mat-error>
+      </mat-form-field>
+    </div>
+
+    <button type="button"
+      [disabled]="!cardControl.value || !(transaction.value > 0)"
+      (click)="sendTransaction(transaction)"> 
+      Pagar
+    </button>
+  </div>
+</div>

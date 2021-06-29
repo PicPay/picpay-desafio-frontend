@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Transaction } from '@models/transaction/transaction.model';
@@ -51,15 +51,20 @@ export class TransactionComponent {
     .subscribe(
       (response) => {
         this.dialog.open(PaymentReceiptComponent, {
+          panelClass: 'closable-dialog',
           data: { success: response.success }
         });
       },
       (err) => {
         this.dialog.open(PaymentReceiptComponent, {
+          panelClass: 'closable-dialog',
           data: { success: err.success }
         });
       }
     );
+  }
 
+  closeModal(): void {
+    this.dialogRef.close();
   }
 }
