@@ -1,7 +1,9 @@
 import { HttpClientModule } from '@angular/common/http';
-import { async, TestBed } from '@angular/core/testing';
+import { async, inject, TestBed } from '@angular/core/testing';
+import { User } from '@app/models/user/user.model';
+import { Observable } from 'rxjs';
 
-import { UserService } from './user.service';
+import { UserService } from '@services/user/user.service';
 
 describe('UserService', () => {
   beforeEach(async(() => {
@@ -17,4 +19,10 @@ describe('UserService', () => {
     const service: UserService = TestBed.get(UserService);
     expect(service).toBeTruthy();
   });
+
+  it('should not return null on getUsers()', inject([UserService], (userService: UserService) => {
+    const result: Observable<User[]> = userService.getUsers();
+    expect(result).not.toBeNull();
+  }));
+
 });
