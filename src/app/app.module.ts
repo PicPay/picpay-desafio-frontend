@@ -1,14 +1,22 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser'
+import { NgModule } from '@angular/core'
 
-import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http'
+import { AppComponent } from './app.component'
+import { UsersListComponent } from './pages/users-list/users-list.component'
+import { FeedbackModalComponent } from './components/feedback-modal/feedback-modal.component'
+import { PaymentModalComponent } from './components/payment-modal/payment-modal.component'
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    UsersListComponent,
+    FeedbackModalComponent,
+    PaymentModalComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
