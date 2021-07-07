@@ -19,7 +19,7 @@ export class GetUsersService  {
   constructor (private httpClient: HttpClient) {}
 
   getUsers() {
-    return this.httpClient.get(`${urlBase}`)
+    return this.httpClient.get<Users>(`${urlBase}`)
   }
 
 }
