@@ -6,6 +6,10 @@ import { AppComponent } from './app.component'
 import { UsersListComponent } from './pages/users-list/users-list.component'
 import { FeedbackModalComponent } from './components/feedback-modal/feedback-modal.component'
 import { PaymentModalComponent } from './components/payment-modal/payment-modal.component'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+
+//import ReactiveFormsModule here
+// import { ReactiveFormsModule } from '@angular/forms'
 
 @NgModule({
   declarations: [
@@ -16,7 +20,9 @@ import { PaymentModalComponent } from './components/payment-modal/payment-modal.
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule, 
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
