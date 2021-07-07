@@ -1,17 +1,29 @@
 <div class="modal">
-  <h1 class="title">Pagamento para <span>Nome do Usuário</span></h1>
+  <h1 class="title">Pagamento para <span>{{ userName }}</span></h1>
 
-  <section class="content">
-    <input type="number" placeholder="R$ 0,00" />
+  <form [formGroup]="form" class="content" (ngSubmit)="onFormSubmit(form.value)">
+    <label for="paymentValue">Valor do pagamento</label>
+    <input
+      id="paymentValue"
+      type="number"
+      placeholder="R$ 0,00"
+      formControlName="paymentValue"
+      required
+    />
 
     <div class="cards">
-      <select>
-        <option selected>Cartão com final 0123</option>
+      <select  formControlName="selectedCardOption" required>
+        <option selected disabled hidden [ngValue]="null">Escolha um cartão</option>
+        <option *ngFor="let card of cards" [value]="card.id">Cartão com final {{ card.card_number.substring(11, 15) }} </option>
       </select>
     </div>
 
-    <button type="button" class="pay-button">
+    <button type="button" class="pay-button" (click)="handleCancelPayment()">
+      Cancelar
+    </button>
+
+    <button type="submit" class="pay-button" [disabled]="form.invalid">
       Pagar
     </button>
-  </section>
+  </form>
 </div>
