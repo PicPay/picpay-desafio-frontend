@@ -10,20 +10,30 @@ export class UsersListComponent implements OnInit {
 
   // REVER TYPE DA VARIÁVEL
   // users: Users[] = []
-  users: any
-  isModalopen: boolean = false
+  users: object
+  errorMessage: string
+  userNameSelected: string
+  userIdSelected: number
 
   constructor(private usersService: GetUsersService) { }
 
   ngOnInit(): void {
-    this.usersService.getUsers().subscribe(users => {
-      this.users = users
+    this.usersService.getUsers().subscribe({
+      next: users => {
+        this.users = users
+      },
+      error: error => {
+        this.errorMessage = error.message
+        alert(`Houver um problema, ${this.errorMessage}. Tente novamente mais tarde.`)
+      }
     })
   }
 
-  handlePayment() {
-    console.log('PAYMENT')
-    this.isModalopen = true
+  handlePayment(userName: string, userId: number) {
+    this.userNameSelected = userName
+    this.userIdSelected = userId
+
+    document.querySelector('div.modal-backdrop.hidden').classList.remove('hidden')
   }
 
 }

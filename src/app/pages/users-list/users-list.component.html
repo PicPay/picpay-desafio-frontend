@@ -11,12 +11,12 @@
       </p>
     </div>
 
-    <button type="button" class="pay-button" (click)="handlePayment()">
+    <button type="button" class="pay-button" (click)="handlePayment(user.name, user.id)">
       Pagar
     </button>
   </div>
 </main>
 
-<div class="modal-backdrop">
-  <app-payment-modal *ngIf="isModalopen"></app-payment-modal>
+<div class="modal-backdrop hidden">
+  <payment-modal userName="{{ userNameSelected }}" userDestinationId="{{ userIdSelected }}"></payment-modal>
 </div>
