@@ -8,9 +8,7 @@ import { Users, GetUsersService } from '../../../services/getUsers.service'
 })
 export class UsersListComponent implements OnInit {
 
-  // REVER TYPE DA VARIÁVEL
-  // users: Users[] = []
-  users: object
+  users: Users
   errorMessage: string
   userNameSelected: string
   userIdSelected: number
