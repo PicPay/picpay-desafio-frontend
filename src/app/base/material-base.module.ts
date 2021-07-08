@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatIconModule, MatSidenavModule } from '@angular/material';
+import { MatBadgeModule, MatIconModule, MatSidenavModule } from '@angular/material';
 
 const modules = [
   MatIconModule,
   MatSidenavModule,
+  MatBadgeModule,
 ];
 
 @NgModule({
