@@ -1,15 +1,16 @@
 .modal {
   background: #fff;
-  margin: 32px 0;
-  width: 420px;
+  margin: 3.2rem 0;
+
+  width: 42rem;
 }
 
 .modal > .title {
   background: #474971;
   color: #ffffff;
   font-weight: 500;
-  font-size: 16px;
-  padding: 16px 24px;
+  font-size: 1.6rem;
+  padding: 1.6rem 2.4rem;
 }
 
 .modal > .title > span {
@@ -17,32 +18,40 @@
 }
 
 .modal > .content {
-  padding: 32px;
+  font-size: 2.2rem;
+  padding: 3.2rem;
   text-align: center;
 }
 
 .modal > .content > input {
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 32px;
-  height: 48px;
-  padding: 0 8px;
+  margin-top: 1.8rem;
 }
 
 .modal > .content > .cards > select {
   background: #fff;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 32px;
-  height: 48px;
-  margin-top: 12px;
+  margin-top: 1.2rem;
 }
 
 .modal > .content > button {
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 32px;
-  height: 48px;
-  padding: 0 8px;
-  margin-top: 24px;
+  margin-top: 2.4rem;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+.modal > .content > button:first-of-type {
+  margin-right: 2.4rem;
+}
+
+.modal > .close {
+  width: 100%;
+}
+
+.modal .basic-style {
+  border: .1rem solid #ccc;
+  border-radius: .6rem;
+  font-size: 2.2rem;
+  padding: 0 .8rem;
+  height: 4.2rem;
 }

@@ -2,26 +2,45 @@
 
 .user {
   background: linear-gradient(186.5deg, #3c3e64 0.83%, #1d1e2a 100%);
-  box-shadow: 0 1px 0 #ffffff, 0px -1px 0px #ffffff;
+  box-shadow: 0 .2rem .4rem 0 rgba(0,0,0,0.5);
+  border-radius: 0 .6rem .6rem;
   color: #fff;
-  padding: 20px 40px;
+  padding: 2rem 4rem;
+  margin: 0 auto;
+  margin-bottom: 2.4rem;
 
   display: flex;
   align-items: center;
+  
+  width: 65%;
+
+  transition: transform 0.25s ease, box-shadow .25s ease;
+
+  &:hover {
+    transform: scale(1.01);
+  }
 }
 
 .user > img {
   border-radius: 50%;
-  height: 80px;
-  width: 80px;
+
+  width: 8rem;
+  height: 8rem;
 }
 
 .user > .info-wrapper {
-  margin-left: 16px;
+  font-size: 1.6rem;
+  margin-left: 1.6rem;
 }
 
 .user > .pay-button {
+  border: .1rem solid #ccc;
+  border-radius: .6rem;
+  font-size: 1.8rem;
+  padding: 0 .8rem;
   margin-left: auto;
+
+  height: 3rem;
 }
 
 /* Payment Modal Backdrop */
