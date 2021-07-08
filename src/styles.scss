@@ -1,3 +1,5 @@
+@import './assets/scss/themes/theme';
+
 * {
   box-sizing: border-box;
 }
@@ -7,4 +9,11 @@ body {
   font-family: sans-serif;
   margin: 0;
   padding: 0;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  background: linear-gradient(to right, #52c234, #061700);
 }

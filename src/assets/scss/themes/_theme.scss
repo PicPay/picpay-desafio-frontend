@@ -1,0 +1,17 @@
+@import '~@angular/material/theming';
+@import './theme-pallet';
+
+@include mat-core();
+
+$picpay-desafio-frontend-primary: mat-palette($custom-primary-theme);
+$picpay-desafio-frontend-accent: mat-palette($mat-amber, A200, A100, A400);
+
+$picpay-desafio-frontend-warn: mat-palette($mat-red);
+
+$picpay-desafio-frontend-theme: mat-light-theme(
+    $picpay-desafio-frontend-primary,
+    $picpay-desafio-frontend-accent,
+    $picpay-desafio-frontend-warn
+);
+
+@include angular-material-theme($picpay-desafio-frontend-theme);

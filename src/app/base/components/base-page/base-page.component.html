@@ -1,1 +1,11 @@
-<p>base-page works!</p>
+<mat-drawer-container autosize>
+  <mat-drawer #drawer mode="over" position="end">
+    <p>cards</p>
+  </mat-drawer>
+
+  <div class="container">
+    <main>
+      <ng-content></ng-content>
+    </main>
+  </div>
+</mat-drawer-container>

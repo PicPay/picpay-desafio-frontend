@@ -1,0 +1,34 @@
+$text-color: #000;
+
+$custom-primary-theme: (
+  50: lighten(#52c234, 5%),
+  100: lighten(#52c234, 4%),
+  200: lighten(#52c234, 3%),
+  300: lighten(#52c234, 2%),
+  400: lighten(#52c234, 1%),
+  500: #52c234,
+  600: darken(#52c234, 1%),
+  700: darken(#52c234, 2%),
+  800: darken(#52c234, 3%),
+  900: darken(#52c234, 4%),
+  A100: darken(#52c234, 5%),
+  A200: darken(#52c234, 6%),
+  A400: darken(#52c234, 7%),
+  A700: darken(#52c234, 8%),
+  contrast: (
+    50: #061700,
+    100: #061700,
+    200: #061700,
+    300: #000,
+    400: $text-color,
+    500: $text-color,
+    600: $text-color,
+    700: $text-color,
+    800: $text-color,
+    900: $text-color,
+    A100: #061700,
+    A200: $text-color,
+    A400: $text-color,
+    A700: $text-color
+  )
+);
