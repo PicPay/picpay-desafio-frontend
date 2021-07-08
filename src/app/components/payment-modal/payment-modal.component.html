@@ -5,6 +5,7 @@
     <label for="paymentValue">Valor do pagamento</label>
     <input
       id="paymentValue"
+      class="basic-style"
       type="number"
       placeholder="R$ 0,00"
       formControlName="paymentValue"
@@ -12,17 +13,17 @@
     />
 
     <div class="cards">
-      <select  formControlName="selectedCardOption" required>
+      <select  class="basic-style" formControlName="selectedCardOption" required>
         <option selected disabled hidden [ngValue]="null">Escolha um cartão</option>
         <option *ngFor="let card of cards" [value]="card.id">Cartão com final {{ card.card_number.substring(11, 15) }} </option>
       </select>
     </div>
 
-    <button type="button" class="pay-button" (click)="handleCancelPayment()">
+    <button type="button" class="pay-button basic-style" (click)="handleCancelPayment()">
       Cancelar
     </button>
 
-    <button type="submit" class="pay-button" [disabled]="form.invalid">
+    <button type="submit" class="pay-button basic-style" [disabled]="form.invalid">
       Pagar
     </button>
   </form>
@@ -37,5 +38,5 @@
     O pagamento <strong *ngIf="!isPaymentValid">não</strong> foi concluido com sucesso.
   </div>
 
-  <button type="button" (click)="closeFeedbackModal()">Fechar</button>
+  <button class="basic-style close" type="button" (click)="closeFeedbackModal()">Fechar</button>
 </div>
