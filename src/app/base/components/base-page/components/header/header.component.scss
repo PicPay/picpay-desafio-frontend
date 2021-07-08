@@ -1,0 +1,28 @@
+:host {
+  header {
+    display: flex;
+    flex: 1;
+
+    align-items: center;
+
+    min-height: 45px;
+    padding: 0 15px;
+
+    background-color: #fff;
+    border-radius: 13px;
+
+    .mat-icon {
+      width: 32px;
+      height: 32px;
+      font-size: 32px;
+      cursor: default;
+
+      &:last-child {
+        margin-left: auto;
+        color: #52c234;
+
+        cursor: pointer;
+      }
+    }
+  }
+}

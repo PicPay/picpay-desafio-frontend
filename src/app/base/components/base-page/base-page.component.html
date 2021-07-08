@@ -4,6 +4,7 @@
   </mat-drawer>
 
   <div class="container">
+    <app-header (onCardButtonClick)="drawer.toggle()"></app-header>
     <main>
       <ng-content></ng-content>
     </main>
