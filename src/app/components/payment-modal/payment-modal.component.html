@@ -1,4 +1,4 @@
-<div class="modal">
+<div class="modal" *ngIf="!isOpenFeedbackModal">
   <h1 class="title">Pagamento para <span>{{ userName }}</span></h1>
 
   <form [formGroup]="form" class="content" (ngSubmit)="onFormSubmit(form.value)">
@@ -26,4 +26,16 @@
       Pagar
     </button>
   </form>
+</div>
+
+<div class="modal" *ngIf="isOpenFeedbackModal">
+  <h1 class="title">
+    Recibo de pagamento
+  </h1>
+
+  <div class="content">
+    O pagamento <strong *ngIf="!isPaymentValid">não</strong> foi concluido com sucesso.
+  </div>
+
+  <button type="button" (click)="closeFeedbackModal()">Fechar</button>
 </div>
