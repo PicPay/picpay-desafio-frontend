@@ -43,12 +43,14 @@ export class PaymentModalComponent implements OnInit {
   ]
 
   form: FormGroup
-  postPaymentResponse: object
-  errorMessage: string
-  selectedCardOption: string
-  cardNumber: string
-  expiryDate: string
-  cvv: number
+  postPaymentResponse: object = {}
+  errorMessage: string = ''
+  selectedCardOption: string = ''
+  cardNumber: string = ''
+  expiryDate: string = ''
+  cvv: number = null
+  isOpenFeedbackModal: boolean = false
+  isPaymentValid: boolean = false
 
   constructor(private paymentService: PostPaymentService) {
     this.criarFormulario()
@@ -98,7 +100,15 @@ export class PaymentModalComponent implements OnInit {
         }
     })
 
+    this.cardNumber === '1111111111111111' ? this.isPaymentValid = true : this.isPaymentValid = false
+
     this.form.reset()
+
+    this.isOpenFeedbackModal = true
+  }
+
+  closeFeedbackModal() {
+    this.isOpenFeedbackModal = false
     document.querySelector('div.modal-backdrop').classList.add('hidden')
   }
   
