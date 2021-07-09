@@ -5,7 +5,7 @@
 
     align-items: center;
 
-    min-height: 56px;
+    min-height: 63px;
     padding: 0 15px;
     margin-bottom: 25px;
 
@@ -13,17 +13,25 @@
     border-radius: 13px;
 
     .mat-icon {
-      width: 32px;
-      height: 32px;
-      font-size: 32px;
+      width: 34px;
+      height: 34px;
+      font-size: 34px;
       cursor: default;
+      margin-left: auto;
+      color: #00bd54;
 
-      &:last-child {
-        margin-left: auto;
-        color: #52c234;
+      cursor: pointer;
+    }
 
-        cursor: pointer;
-      }
+    img.account-circle {
+      width: 48px;
+      height: 48px;
+    }
+
+    h1 {
+      font-size: 21px;
+      margin-left: 10px;
+      font-weight: 500;
     }
   }
 }
