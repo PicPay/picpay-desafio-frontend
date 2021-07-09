@@ -7,9 +7,10 @@ import { PagesRoutingModule } from './dashboard-routing.module';
 import { SelectedCardComponent } from './components/selected-card/selected-card.component';
 import { ContactListComponent } from './components/contact-list/contact-list.component';
 import { ContactComponent } from './components/contact-list/components/contact/contact.component';
+import { CashbackInfoComponent } from './components/cashback-info/cashback-info.component';
 
 @NgModule({
-  declarations: [DashboardComponent, SelectedCardComponent, ContactListComponent, ContactComponent],
+  declarations: [DashboardComponent, SelectedCardComponent, ContactListComponent, ContactComponent, CashbackInfoComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,
