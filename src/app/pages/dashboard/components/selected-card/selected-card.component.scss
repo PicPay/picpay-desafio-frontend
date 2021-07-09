@@ -1,0 +1,33 @@
+:host {
+  section {
+    background-color: #fff;
+    border-radius: 13px;
+
+    padding: 0 20px 20px;
+
+    h1 {
+      display: inline-block;
+    }
+
+    .add-card-wrapper {
+      display: flex;
+      align-items: center;
+
+      .mat-stroked-button {
+        margin-left: 30px;
+        height: 174px;
+        width: 189px;
+
+        .mat-icon {
+          font-size: 38px;
+          height: 38px;
+          width: 38px;
+        }
+
+        span {
+          display: block;
+        }
+      }
+    }
+  }
+}

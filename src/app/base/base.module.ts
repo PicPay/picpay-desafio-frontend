@@ -23,6 +23,7 @@ const components = [
   ],
   exports: [
     [ ...components ],
+    MaterialBaseModule,
   ]
 })
 export class BaseModule { }

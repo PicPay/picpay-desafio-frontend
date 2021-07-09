@@ -4,9 +4,10 @@ import { BaseModule } from 'src/app/base/base.module';
 
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { PagesRoutingModule } from './dashboard-routing.module';
+import { SelectedCardComponent } from './components/selected-card/selected-card.component';
 
 @NgModule({
-  declarations: [DashboardComponent],
+  declarations: [DashboardComponent, SelectedCardComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,
