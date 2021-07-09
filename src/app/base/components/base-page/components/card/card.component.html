@@ -1,5 +1,5 @@
-<div class="card-wrapper">
-  <div class="card front mat-elevation-z11">
+<div class="card-wrapper" (click)="onClickCard()" [@cardFlip]="state">
+  <div class="card front mat-elevation-z8">
     <span class="number">4111 1111 1111 1111</span>
     <div class="owner-infos-wrapper">
       <span class="owner">José da Silva Reis</span> 
@@ -8,7 +8,7 @@
     <img class="logo__picpay" src="assets/logos/picpay-logo-card.png" alt="logo PicPay">
     <img class="logo__mastercard" src="assets/logos/mc_symbol.svg" alt="logo bandeira de cartão Mastercard">
   </div>
-  <div *ngIf="false" class="card back">
+  <div class="card back mat-elevation-z8">
     <div class="strip"></div>
     <div class="security-wrapper">
       <div class="signature"></div>

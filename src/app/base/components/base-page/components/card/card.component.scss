@@ -1,25 +1,34 @@
 :host {
+  display: block;
+  perspective: 600px;
+
   .card-wrapper {
-    display: flex;
-    flex: 1;
+    width: 375px;
+    height: 238px;
+
+    cursor: pointer;
+
+    transform-style: preserve-3d;
   }
 
   .card {
-    position: relative;
+    position: absolute;
     display: flex;
 
-    width: 375px;
-    height: 238px;
+    width: 100%;
+    height: 100%;
 
     padding: 30px;
 
     color: #fff;
     font: 16px/1.5 'Helvetica Neue', Helvetica, sans-serif;
-
+    
     border: 1px solid #00bd54;
     border-radius: 20px;
     background: #464648;
 
+    backface-visibility: hidden;
+    
     &.front {
       flex-direction: column;
       justify-content: flex-end;
@@ -31,7 +40,7 @@
         font-size: 35px;
         font-family: Orbitron, 'Orbitron', sans-serif;
 
-        margin-bottom: 25px;
+        margin: auto 0;
       }
 
       .owner-infos-wrapper {
@@ -78,6 +87,8 @@
       padding-left: 0;
       padding-right: 0;
 
+      transform: rotateX(180deg);
+
       .strip {
         background: #000;
         height: 50px;
@@ -102,6 +113,43 @@
           background: #fff;
           color: #111;
         }
+      }
+    }
+  }
+}
+
+:host(.small) {
+  .card-wrapper {
+    width: 330px;
+    height: 190px;
+  }
+
+  .owner {
+    font-size: 14px;
+  }
+
+  .card {
+
+    &.front {
+      .number {
+        font-size: 30px;
+      }
+    }
+
+    .logo {
+      &__picpay {
+        max-width: 76px;
+        max-height: 28px;
+
+        bottom: 42px;
+        right: -8px;
+      }
+
+      &__mastercard {
+        right: -5px;
+        top: 13px;
+        max-width: 62px;
+        max-height: 43px;
       }
     }
   }
