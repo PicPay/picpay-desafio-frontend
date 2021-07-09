@@ -1,0 +1,111 @@
+.card-wrapper {
+  display: flex;
+  flex: 1;
+
+  .card:first-child {
+    margin-right: 15px;
+  }
+}
+
+.card {
+  position: relative;
+  display: flex;
+
+  width: 375px;
+  height: 238px;
+
+  padding: 30px;
+  margin-bottom: 50px;
+
+  color: #fff;
+  font: 16px/1.5 'Helvetica Neue', Helvetica, sans-serif;
+
+  border: 1px solid #00bd54;
+  border-radius: 20px;
+  background: #464648;
+
+  &.front {
+    flex-direction: column;
+    justify-content: flex-end;
+
+    font-size: 16px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, .6);
+
+    .number {
+      font-size: 35px;
+      font-family: Orbitron, 'Orbitron', sans-serif;
+  
+      margin-bottom: 25px;
+    }
+  
+    .owner-infos-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+  
+      width: 100%;
+      padding-right: 50px;
+  
+      .date {
+        font-size: 14px;
+      }
+    
+      .owner {
+        text-transform: uppercase;
+      }
+    }
+  
+    .logo {
+      &__picpay {
+        position: absolute;
+        bottom: 62px;
+        right: -24px;
+        max-width: 123px;
+        max-height: 39px;
+        transform: rotate(-90deg);
+      }
+  
+      &__mastercard {
+        position: absolute;
+        right: -10px;
+        top: 16px;
+        max-width: 82px;
+        max-height: 58px;
+        transform: rotate(90deg);
+      }
+    }  
+  }
+
+  &.back {
+    flex-direction: column;
+
+    padding-left: 0;
+    padding-right: 0;
+
+    .strip {
+      background: #000;
+      height: 50px;
+      width: 100%;
+      margin-bottom: 30px;
+    }
+  
+    .security-wrapper {
+      display: flex;
+      align-items: center;
+
+      .signature {
+        width: 65%;
+        height: 40px;
+        margin-left: 10px;
+        background: #999;
+      }
+    
+      .ccv {
+        max-height: 28px;
+        padding: 2px 8px;
+        background: #fff;
+        color: #111;
+      }
+    }
+  }
+}
