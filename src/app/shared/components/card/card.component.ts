@@ -1,26 +1,11 @@
-import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
+import { cardFlip } from '../../animations/animations';
 
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss'],
-  animations: [
-    trigger('cardFlip', [
-      state('default', style({
-        transform: 'none'
-      })),
-      state('flipped', style({
-        transform: 'rotateX(180deg)'
-      })),
-      transition('default => flipped', [
-        animate('400ms')
-      ]),
-      transition('flipped => default', [
-        animate('200ms')
-      ])
-    ])
-  ],
+  animations: [cardFlip],
 })
 export class CardComponent implements OnInit {
 

@@ -3,14 +3,12 @@ import { CommonModule } from '@angular/common';
 import { BasePageComponent } from './components/base-page/base-page.component';
 import { BaseModalComponent } from './components/base-modal/base-modal.component';
 import { HeaderComponent } from './components/base-page/components/header/header.component';
-import { MaterialBaseModule } from './material-base.module';
-import { CardComponent } from './components/base-page/components/card/card.component';
+import { MaterialBaseModule } from './modules/material-base.module';
 
 const components = [
   BasePageComponent,
   BaseModalComponent,
   HeaderComponent,
-  CardComponent,
 ];
 
 @NgModule({
