@@ -1,5 +1,11 @@
 :host {
   .content-wrapper {
     display: flex;
+    flex-direction: column;
+
+    &.row {
+      flex-direction: row;
+      margin-bottom: 25px;
+    }
   }
 }

@@ -1,0 +1,48 @@
+:host {
+  img {
+    width: 68px;
+    height: 68px;
+  }
+
+  .contact-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    max-width: 144px;
+
+    .contact-name {
+      display: inline-block;
+      cursor: default;
+
+      width: 144px;
+
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      &:hover {
+        overflow: visible;
+      }
+    }
+
+    .pay-button {
+      cursor: pointer;
+
+      padding: 7px 10px;
+
+      background-color: transparent;
+      color: #52c234;
+
+      border: 1px solid #52c234;
+      border-radius: 16px;
+
+      transition: all 0.2s;
+
+      &:hover {
+        background-color: #52c234;
+        color: #fff;
+      }
+    }
+  }
+}
