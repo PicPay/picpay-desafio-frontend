@@ -1,0 +1,75 @@
+@import 'abstracts/variables';
+
+:host {
+    display: none;
+}
+
+:host(.open) {
+    display: block;
+}
+
+.modal {
+    &__backdrop {
+        display        : flex;
+        align-items    : center;
+        justify-content: center;
+        flex-direction : column;
+
+        position: fixed;
+        top     : 0;
+        left    : 0;
+
+        height: 100vh;
+        width : 100vw;
+
+        &:after {
+            content   : "";
+            background: rgba(0, 0, 0, 0.5);
+            position  : absolute;
+            top       : 0;
+            left      : 0;
+            height    : 100%;
+            width     : 100%;
+            z-index   : -1;
+        }
+    }
+
+    &__container {
+        background: #fff;
+        margin    : 32px 0;
+        width     : 500px;
+    }
+
+    &__title {
+        background     : #474971;
+        color          : #ffffff;
+        font-weight    : 500;
+        font-size      : $font-size-md;
+        padding        : 16px 24px;
+        display        : flex;
+        justify-content: space-between;
+
+        & h3 {
+            margin : 0;
+            display: inline-block;
+        }
+
+        & span {
+            color: #cddc39;
+        }
+    }
+
+    &__button-close {
+        color           : #fff;
+        background-color: transparent;
+        border          : none;
+        font-size       : 1.2rem;
+        font-weight     : 500;
+        cursor          : pointer;
+    }
+
+    &__content {
+        padding   : 32px;
+        text-align: center;
+    }
+}

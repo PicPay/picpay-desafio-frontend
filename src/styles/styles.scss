@@ -1,0 +1,59 @@
+@import 'base/reset';
+@import 'components/button';
+@import 'abstracts/variables';
+@import 'layout/forms';
+@import 'utils/animation';
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: sans-serif;
+  margin     : 0;
+  padding    : 0;
+}
+
+ul {
+  margin : 0;
+  padding: 0;
+}
+
+h3 {
+  margin : 0;
+  display: inline-block;
+}
+
+// loading button
+.loading {
+  position    : relative;
+  padding-left: 35px !important;
+
+  &:before {
+    content         : '';
+    background      : 0;
+    width           : 14px;
+    height          : 14px;
+    display         : inline-block;
+    position        : absolute;
+    left            : 10px;
+    top             : 8px;
+    margin          : auto;
+    border          : 4px solid transparent;
+    border-top-color: #000;
+    border-radius   : 50%;
+    animation       : spinner 1s ease infinite;
+  }
+}
+
+// Empty-list
+.empty-list {
+  height         : 100vh;
+  background     : linear-gradient(186.5deg, #3c3e64 0.83%, #1d1e2a 100%);
+  display        : flex;
+  align-items    : center;
+  justify-content: center;
+  font-size      : 1.5rem;
+  color          : #fff;
+}

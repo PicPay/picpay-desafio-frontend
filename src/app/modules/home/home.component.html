@@ -1,0 +1,16 @@
+<nav class="navbar__container">
+    <h1 class="navbar__brand">Pay</h1>
+    <div class="search__container">
+        <input class="search__input" type="text"  [formControl]="filter" placeholder="Buscar usuário...">
+    </div>
+</nav>
+<app-user-list [users]="filteredUsers$ | async" (userSelected)="openPaymentModal($event)">
+</app-user-list>
+
+<app-payment-modal id="payment-modal" [user]="userSelected" [isOpen]="isOpenedPayment"
+    (close)="closePaymentModal($event)">
+</app-payment-modal>
+
+<app-payment-receipt-modal id="payment-receipt-modal" [result]="receiptResult" [isOpen]="isOpenedReceiptPayment"
+    (close)="closePaymentReceiptModal($event)">
+</app-payment-receipt-modal>

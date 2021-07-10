@@ -1,0 +1,16 @@
+<div class="modal__backdrop">
+    <div class="modal__container">
+        <div class="modal__title">
+            <h3>Recibo de pagamento</h3>
+        </div>
+        <div class="modal__content">
+            <p *ngIf="result?.status== 'Aprovada'">O pagamento foi concluído com sucesso</p>
+            <p *ngIf="result?.status== 'Reprovada'">Não foi possível concluir o pagamento. Verifique os dados informados.
+            </p>
+            <p *ngIf="result?.error"> Não foi possível concluir o pagamento. Tente novamente mais tarde</p>
+            <button class="button button--rounded button--md" (click)="closeModal()">
+                Ok
+            </button>
+        </div>
+    </div>
+</div>

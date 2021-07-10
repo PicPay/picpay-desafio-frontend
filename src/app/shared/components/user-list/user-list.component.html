@@ -1,0 +1,22 @@
+<ul *ngIf="users?.length > 0" class="user__list">
+  <li *ngFor="let user of users" class="user__item">
+    <img class="user__img" [src]="user.img" />
+    <div class="user__infoWrapper">
+      <p class="user-name">
+        {{user.name}}
+      </p>
+
+      <div class="user-id-username">
+        ID: {{user.id}} - Username: {{user.username}}
+      </div>
+    </div>
+
+    <button type="button" class="user__button button button--white button--rounded" (click)="onUserSelected(user)">
+      Pagar
+    </button>
+  </li>
+</ul>
+
+<div *ngIf="users?.length == 0" class="empty-list">
+  Ops! Não encontramos nenhum resultado
+</div>

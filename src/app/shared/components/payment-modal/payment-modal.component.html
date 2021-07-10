@@ -1,0 +1,40 @@
+<div class="modal__backdrop">
+    <div class="modal__container">
+        <div class="modal__title">
+            <h3>Pagamento para <span>{{user?.name}}</span></h3>
+            <button class="modal__button-close" (click)="closeForm($event)">x</button>
+        </div>
+        <div class="modal__content">
+            <form [formGroup]="paymentForm" (ngSubmit)="onFormSubmit()">
+                <input currencyMask placeholder="R$ 0,00" formControlName="paymentValue" [ngClass]="{
+                    'has-error': paymentValue.errors && (submitted || paymentValue.dirty ||paymentValue.touched)
+                  }" />
+                <div *ngIf="paymentValue.invalid && ( submitted || paymentValue.dirty ||paymentValue.touched)"
+                    class="text-error">
+                    <div *ngIf="paymentValue.hasError('required') || paymentValue.hasError('min')">
+                        Informe um valor acima de R$ 0,00
+                    </div>
+                </div>
+                <div class="cards">
+                    <select formControlName="card" [ngClass]="{
+                        'has-error': card.errors && (submitted || card.dirty ||card.touched)
+                      }">
+                        <option [ngValue]="null" disabled>Selecione um cartão</option>
+                        <option *ngFor="let card of cards$ | async" [ngValue]="card">
+                            Cartão com final {{ card.card_number | slice : -4 }}
+                        </option>
+                    </select>
+                    <div *ngIf="card.invalid && ( submitted || card.dirty ||card.touched)" class="text-error">
+                        <div *ngIf="card.hasError('required')">
+                            Selecione um cartão de crédito.
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" [disabled]="isBusy" class="button button--rounded button--md" [ngClass]="{'loading': (isLoading)}">
+                    Pagar
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
