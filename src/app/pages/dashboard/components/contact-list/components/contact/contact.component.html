@@ -1,8 +1,8 @@
 <div class="contact-wrapper">
   <img
-    src="assets/icons/gentleman.svg"
+    [src]="user.img"
     alt="Fotografia do rosto atribuído a um contato"
   />
-  <p class="contact-name">Sebastião Machado</p>
+  <p class="contact-name">{{ user.name }}</p>
   <button matRipple class="pay-button">Pagar $</button>
 </div>

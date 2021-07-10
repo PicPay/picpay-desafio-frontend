@@ -1,6 +1,9 @@
 <section class="container mat-elevation-z11">
   <h1>Lista de contatos</h1>
   <div class="list">
-    <app-contact></app-contact>
+    <app-contact
+      *ngFor="let user of users; trackBy: trackByIdFn"
+      [user]="user"
+    ></app-contact>
   </div>
 </section>

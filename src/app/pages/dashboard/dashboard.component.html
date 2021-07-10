@@ -5,7 +5,7 @@
       <app-cashback-info></app-cashback-info>
     </div>
     <div class="content-wrapper row">
-      <app-contact-list></app-contact-list>
+      <app-contact-list [users]="(users$ | async)"></app-contact-list>
     </div>
   </article>
 </app-base-page>

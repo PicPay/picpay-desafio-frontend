@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { User } from '../models/user.model';
+import { User } from '../entities/user.model';
 
 export abstract class UserInterface {
   abstract getAll(): Observable<User[]>;
