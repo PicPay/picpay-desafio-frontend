@@ -5,11 +5,11 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { UsersComponent } from './pages/users/users.component';
-import { PaymentComponent } from './pages/payment/payment.component';
+import { TransactionComponent } from './pages/transaction/transaction.component';
 import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
-  declarations: [AppComponent, UsersComponent, PaymentComponent],
+  declarations: [AppComponent, UsersComponent, TransactionComponent],
   imports: [BrowserModule, FormsModule, HttpClientModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
