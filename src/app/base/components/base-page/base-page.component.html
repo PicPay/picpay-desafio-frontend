@@ -1,6 +1,6 @@
 <mat-drawer-container autosize>
   <mat-drawer #drawer mode="over" position="end">
-    <app-card></app-card>
+    <app-card *ngFor="let card of (cards$ | async)" [card]="card"></app-card>
   </mat-drawer>
 
   <div class="container">

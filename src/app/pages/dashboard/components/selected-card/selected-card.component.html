@@ -1,7 +1,7 @@
 <section class="container mat-elevation-z11">
   <h1>Cartão selecionado:</h1>
   <div class="add-card-wrapper">
-    <app-card></app-card>
+    <app-card [card]="selectedCard"></app-card>
     <button mat-stroked-button color="primary">
       <mat-icon>add_box</mat-icon>
       <span>Adicionar novo cartão</span>

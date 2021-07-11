@@ -12,6 +12,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { PaymentFormComponent } from './components/dialogs/payment-form/payment-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxCurrencyModule } from 'ngx-currency';
+import { AddCardComponent } from './components/dialogs/add-card/add-card.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { NgxCurrencyModule } from 'ngx-currency';
     ContactComponent,
     CashbackInfoComponent,
     PaymentFormComponent,
+    AddCardComponent,
   ],
   imports: [
     CommonModule,

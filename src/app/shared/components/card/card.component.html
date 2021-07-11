@@ -1,9 +1,9 @@
 <div class="card-wrapper" (click)="onClickCard()" [@cardFlip]="state">
   <div class="card front mat-elevation-z8">
-    <span class="number">4111 1111 1111 1111</span>
+    <span class="number">{{ card?.card_number | creditCardNumber }}</span>
     <div class="owner-infos-wrapper">
       <span class="owner">José da Silva Reis</span> 
-      <span class="date">08/26</span>
+      <span class="date">{{ card?.expiry_date }}</span>
     </div>
     <img class="logo picpay" src="assets/logos/picpay-logo-card.png" alt="logo PicPay">
     <img class="logo mastercard" src="assets/logos/mc_symbol.svg" alt="logo bandeira de cartão Mastercard">
@@ -12,7 +12,7 @@
     <div class="strip"></div>
     <div class="security-wrapper">
       <div class="signature"></div>
-      <span class="ccv">303</span>
+      <span class="cvv">{{ card?.cvv }}</span>
     </div>
   </div>
 </div>

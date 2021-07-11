@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Card } from 'src/app/core/entities/card.model';
 import { cardFlip } from '../../animations/animations';
 
 @Component({
@@ -8,6 +9,8 @@ import { cardFlip } from '../../animations/animations';
   animations: [cardFlip],
 })
 export class CardComponent implements OnInit {
+  @Input()
+  card: Card;
 
   state: 'flipped' | 'default' = 'default';
 
