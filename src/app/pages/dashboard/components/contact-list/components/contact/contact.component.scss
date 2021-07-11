@@ -11,13 +11,9 @@
     flex-direction: column;
     align-items: center;
 
-    max-width: 144px;
-
     .contact-name {
       display: inline-block;
       cursor: default;
-
-      width: 144px;
 
       white-space: nowrap;
       overflow: hidden;

@@ -1,3 +1,17 @@
 :host {
   flex: 1;
+
+  section {
+    padding: 0 0 20px;
+
+    h1 {
+      margin: 20px;
+    }
+
+    .list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 20px;
+    }
+  }
 }
