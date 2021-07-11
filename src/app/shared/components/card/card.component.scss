@@ -3,8 +3,8 @@
   perspective: 600px;
 
   .card-wrapper {
-    width: 375px;
-    height: 238px;
+    width: 315px;
+    height: 166px;
 
     cursor: pointer;
 
@@ -18,17 +18,17 @@
     width: 100%;
     height: 100%;
 
-    padding: 30px;
+    padding: 22px;
 
     color: #fff;
     font: 16px/1.5 'Helvetica Neue', Helvetica, sans-serif;
-    
+
     border: 1px solid #00bd54;
     border-radius: 20px;
     background: #464648;
 
     backface-visibility: hidden;
-    
+
     &.front {
       flex-direction: column;
       justify-content: flex-end;
@@ -37,7 +37,7 @@
       text-shadow: 0 1px 1px rgba(0, 0, 0, 0.6);
 
       .number {
-        font-size: 35px;
+        font-size: 31px;
         font-family: Orbitron, 'Orbitron', sans-serif;
 
         margin: auto 0;
@@ -51,7 +51,8 @@
         width: 100%;
         padding-right: 50px;
 
-        .date {
+        .date,
+        .owner {
           font-size: 14px;
         }
 
@@ -61,22 +62,21 @@
       }
 
       .logo {
-        &__picpay {
-          position: absolute;
-          bottom: 54px;
-          right: -15px;
-          max-width: 100px;
-          max-height: 39px;
-          transform: rotate(-90deg);
+        position: absolute;
+        transform: rotate(-90deg);
+
+        &.picpay {
+          bottom: 40px;
+          right: -11px;
+          max-width: 71px;
+          max-height: 22px;
         }
 
-        &__mastercard {
-          position: absolute;
-          right: -10px;
-          top: 16px;
-          max-width: 82px;
-          max-height: 58px;
-          transform: rotate(90deg);
+        &.mastercard {
+          right: -8px;
+          top: 13px;
+          max-width: 64px;
+          max-height: 45px;
         }
       }
     }
@@ -93,7 +93,7 @@
         background: #000;
         height: 50px;
         width: 100%;
-        margin-bottom: 30px;
+        margin-bottom: 22px;
       }
 
       .security-wrapper {
@@ -113,43 +113,6 @@
           background: #fff;
           color: #111;
         }
-      }
-    }
-  }
-}
-
-:host(.small) {
-  .card-wrapper {
-    width: 330px;
-    height: 190px;
-  }
-
-  .owner {
-    font-size: 14px;
-  }
-
-  .card {
-
-    &.front {
-      .number {
-        font-size: 30px;
-      }
-    }
-
-    .logo {
-      &__picpay {
-        max-width: 76px;
-        max-height: 28px;
-
-        bottom: 42px;
-        right: -8px;
-      }
-
-      &__mastercard {
-        right: -5px;
-        top: 13px;
-        max-width: 62px;
-        max-height: 43px;
       }
     }
   }

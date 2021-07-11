@@ -5,12 +5,24 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+
+    padding: 0 20px;
 
     height: 100%;
 
     h1 {
       width: 100%;
+
       text-align: center;
+      letter-spacing: 2px;
+      font-size: 26px;
+
+      margin-top: 0;
+
+      span {
+        display: inline-block;
+      }
     }
 
     .icon-wrapper {
@@ -35,9 +47,13 @@
 
     p {
       text-align: center;
-      a {
-        color: #00bd54;
-      }
+      letter-spacing: 1px;
+    }
+
+    .mat-raised-button {
+      width: 100%;
+      border-radius: 11px;
+
     }
   }
 }

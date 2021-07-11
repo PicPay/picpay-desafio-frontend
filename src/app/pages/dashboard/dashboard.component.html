@@ -1,11 +1,13 @@
 <app-base-page>
   <article class="content-wrapper">
     <div class="content-wrapper row">
-      <app-selected-card></app-selected-card>
-      <app-cashback-info></app-cashback-info>
-    </div>
-    <div class="content-wrapper row">
-      <app-contact-list [users]="(users$ | async)"></app-contact-list>
+      <div class="content-wrapper">
+        <app-selected-card></app-selected-card>
+        <app-contact-list [users]="(users$ | async)"></app-contact-list>
+      </div>
+      <div class="content-wrapper">
+        <app-cashback-info></app-cashback-info>
+      </div>
     </div>
   </article>
 </app-base-page>

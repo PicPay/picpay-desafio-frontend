@@ -12,6 +12,41 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-gap: 20px;
+
+      max-height: 252px;
+      overflow: auto;
+
+      margin-right: 5px;
     }
+  }
+
+  ::-webkit-scrollbar {
+    width: 9px;
+    background-color: #f7f5f5;
+  }
+
+  ::-moz-scrollbar {
+    width: 9px;
+    scrollbar-color: #f7f5f5;
+  }
+
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 1px 3px 0 #c9c9c9;
+    border-radius: 5.5px;
+  }
+
+  ::-moz-scrollbar-track {
+    scrollbar-shadow-color: inset 0 1px 3px 0 #c9c9c9;
+    border-radius: 5.5px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #238662;
+    border-radius: 4.5px;
+  }
+
+  ::-moz-scrollbar-thumb {
+    background-color: #238662;
+    border-radius: 4.5px;
   }
 }
