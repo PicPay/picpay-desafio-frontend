@@ -1,0 +1,63 @@
+@import "../../app.component.scss";
+
+.list {
+
+    &__item {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        margin-bottom: 3px;
+        border-left: 10px solid $green;
+        background-color: $light-gray;
+    }
+
+    &__item:hover {
+        background-color: $gray;
+    }
+
+    &__content {
+        display: flex;
+        align-items: center;
+        color: $black;
+    }
+
+    &__userinfo {
+        h2 {
+            margin: 0;
+        }
+
+        span {
+            font-style: italic;
+        }
+    }
+
+    &__image {
+        transition: all .2s ease-in-out;
+        border-radius: 50%;
+    }
+
+    &__item:hover &__image {
+        border-radius: 0;
+    }
+
+    &__userinfo {
+        margin: 0 20px;
+    }
+
+    &__button {
+        background-color: $blue;
+        color: white;
+        padding: 10px 30px;
+        margin-right: 40px;
+        border: none;
+        border-radius: 9999px;
+        font-weight: bold;
+        cursor: pointer;
+        
+        &:focus {
+            outline:0;
+        }
+    }    
+}

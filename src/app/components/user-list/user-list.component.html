@@ -1,0 +1,24 @@
+<div data-test="list" class="list">
+
+    <div data-test="list-item" class="list__item" *ngFor="let user of users">
+
+        <div data-test="list-content" class="list__content">
+
+            <img data-test="list-image" class="list__image" 
+                src={{user.img}} alt="">
+
+            <div class="list__userinfo">
+
+                <h2 data-test="list-name">{{ user.name }}</h2>
+                
+                <span data-test="list-username">{{ user.username }}</span>
+
+            </div>        
+            
+        </div>
+
+        <button data-test="list-button" class="list__button" (click)="selectUser(user)">{{ labelBtnPay }}</button>
+        
+    </div>
+
+</div>
