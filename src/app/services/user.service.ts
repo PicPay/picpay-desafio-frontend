@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+
 import { Observable } from 'rxjs';
 import { shareReplay, map } from 'rxjs/operators';
+
 
 import { User } from 'src/app/models/user.model';
 
