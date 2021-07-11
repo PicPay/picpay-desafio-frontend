@@ -1,0 +1,69 @@
+@import "../../app.component.scss";
+
+.modal-backdrop {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    height: 100vh;
+    width: 100vw;
+
+    &:after {
+        content: "";
+
+        background: rgba(0, 0, 0, 0.5);
+
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        z-index: -1;
+    }
+
+}
+
+.modal {
+    background: $light-gray;
+    width: 420px;
+
+    text-align: center;
+
+    h3 { margin: 0 }
+
+    .title {
+        background: $green;
+        color: #ffffff;
+        font-weight: 500;
+        font-size: 16px;
+        padding: 16px 24px;
+    }
+
+    .content {
+        padding: 40px;
+        color: $black;
+    }
+
+    &__footer {
+        padding: 20px;
+    }
+
+    &__button {
+        background-color: $dark-gray;
+        color: white;
+        padding: 10px 30px;
+        border: none;
+        border-radius: 9999px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    &__button:focus {
+        outline:0;
+    }
+}

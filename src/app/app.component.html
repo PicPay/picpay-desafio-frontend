@@ -7,5 +7,12 @@
   *ngIf="showPaymentModal" 
   [user]="user" 
   (close)="tooglePaymentModal()"
+  (payment)="payment($event)"
   >
 </app-payment-modal>
+
+<app-response-modal
+  *ngIf="showResponseModal"
+  [content]="response"
+  (closeResponseModal)="closeResponseModal()"
+  ></app-response-modal>

@@ -1,0 +1,21 @@
+<div class="modal-backdrop">
+
+    <div class="modal">
+
+        <div class="title">
+            <h3 data-test="title">{{ TITLE }}</h3>
+        </div>
+
+        <div class="content">
+            <h1>{{ content.status == status.APROVADA  ? ': )' : ': (' }}</h1>
+            <h3 data-test="status">{{ content.status }}</h3>
+            <p data-test="msg" [innerHTML]="message[content.status]"></p>
+        </div>
+
+        <div class="modal__footer">
+            <button data-test="button" class="modal__button" (click)="close()">{{ btnClose }}</button>
+        </div>
+        
+    </div>
+    
+</div>

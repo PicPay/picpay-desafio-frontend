@@ -1,10 +1,10 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { PaymentService } from 'src/app/services/payment/payment.service';
 import { ICard } from 'src/app/interfaces/card.interface';
 import { IResponseModal } from 'src/app/interfaces/response-modal.interface';
 import { ITransactionPayload } from 'src/app/interfaces/transaction-payload.interface';
 import { IUser } from 'src/app/interfaces/user.interface';
+import { PaymentService } from 'src/app/services/payment/payment.service';
 
 @Component({
   selector: 'app-payment-modal',

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IResponseModal } from './interfaces/response-modal.interface';
 import { IUser } from './interfaces/user.interface';
 
 @Component({
@@ -10,12 +11,18 @@ import { IUser } from './interfaces/user.interface';
 export class AppComponent implements OnInit {
 
   showPaymentModal: boolean = false;
+  showResponseModal: boolean = false;
 
   user: IUser;
+  response: IResponseModal;
 
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit() { 
+    this.response = {
+      success: true,
+      status: 'Aprovada'
+    }
   }
 
   userSelected(emittedUser: IUser) {
@@ -27,8 +34,22 @@ export class AppComponent implements OnInit {
     this.user = user
   }
 
+  setResponse(response: IResponseModal) {
+    this.response = response;
+  }
+
   tooglePaymentModal() {
     this.showPaymentModal = !this.showPaymentModal;
+  }
+
+  closeResponseModal() {
+    this.showResponseModal = false;
+  }
+
+  payment(response: IResponseModal) {
+    this.tooglePaymentModal()
+    this.setResponse(response);
+    this.showResponseModal = true;
   }
 
 }

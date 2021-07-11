@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { PaymentModalComponent } from './components/payment-modal/payment-modal.component';
+import { ResponseModalComponent } from './components/response-modal/response-modal.component';
 import { NgxCurrencyModule } from 'ngx-currency';
 
 @NgModule({
@@ -13,6 +14,7 @@ import { NgxCurrencyModule } from 'ngx-currency';
     AppComponent,
     UserListComponent,
     PaymentModalComponent,
+    ResponseModalComponent,
   ],
   imports: [
     BrowserModule,
