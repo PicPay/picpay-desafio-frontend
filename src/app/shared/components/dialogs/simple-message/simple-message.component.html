@@ -1,0 +1,10 @@
+<section>
+  <h1>{{ title }}</h1>
+  <ng-container *ngIf="allowHtmlMessage; else justTextTemplate">
+    <span [innerHTML]="safeHtml"></span>
+  </ng-container>
+  <ng-template #justTextTemplate>
+    <span>{{ message }}</span>
+  </ng-template>
+  <button mat-raised-button color="primary" (click)="close()">Ok</button>
+</section>

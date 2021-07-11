@@ -34,7 +34,7 @@ export class PaymentFormComponent {
     const control = this.formGroup.get('value');
 
     return control.hasError('required')
-      ? 'Preenchimento obrigatório'
+      ? 'Preenchimento obrigatório.'
       : control.hasError('higherThanZeroError')
       ? 'O valor precisa ser maior que zero.'
       : '';

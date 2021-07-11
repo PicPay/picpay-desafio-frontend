@@ -1,0 +1,16 @@
+:host {
+  section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    span {
+      display: block;
+      margin-bottom: 20px;
+    }
+
+    button {
+      min-width: 140px;
+    }
+  }
+}
