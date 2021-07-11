@@ -1,0 +1,158 @@
+@import "../../app.component.scss";
+
+/* Payment Modal */
+.modal-backdrop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  height: 100vh;
+  width: 100vw;
+
+  &:after {
+      content: "";
+
+      background: rgba(0, 0, 0, 0.5);
+
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      z-index: -1;
+  }
+
+}
+.modal {
+    h2 { margin: 0; }
+
+    background: $light-gray;
+    width: 420px;
+    text-align: center;
+
+    &__header {
+
+        h3 { margin: 0 }
+
+        background: $green;
+        color: #ffffff;
+        font-weight: 500;
+        font-size: 16px;
+        padding: 16px 24px;
+    }
+
+    &__close {
+        
+        color: $dark-gray;
+        margin-top: 10px;
+        cursor: pointer;
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 40px;
+    }
+
+    &__userinfo {
+        color: $black;
+    }
+
+    &__img {
+        margin-bottom: 10px;
+    }
+
+    &__input {
+        border: none;
+        background: none;
+        border-bottom: 2px solid #56c871;
+        padding: 15px;
+        font-size: 20px;
+        width: 200px;
+        text-align: center !important;
+    }
+
+    &__input, &__select {
+        margin-top: 25px;
+        color: $black;
+    }
+
+    &__input-error {
+        border-bottom: 2px solid red !important;
+    }
+    &__select-error {
+        border: 1px solid red !important;
+    }
+
+    &__select {
+        padding: 10px;
+        border-radius: 5px;
+        background-color: white;
+        border: 1px solid #56c871;
+    }
+
+    &__input:focus, &__select:focus {
+        outline: 0;
+    }
+
+    &__footer {
+        padding: 20px;
+    }
+
+    &__button {
+        color: white;
+        padding: 10px 30px;
+        margin-top: 25px;
+        border: none;
+        border-radius: 9999px;
+        font-weight: bold;
+        cursor: pointer;
+
+        &:focus {
+            outline:0;
+        }
+    }
+
+    &__button--blue {
+        @extend .modal__button;
+        background-color: $blue;
+    }
+
+    &__button--disabled {
+        @extend .modal__button;
+        background-color: $gray !important;
+        cursor: default !important;
+    }
+
+    &__error {
+        display: block;
+        margin-top: 5px;
+        color: red;
+    }
+
+}
+
+.loader {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.loading {
+    border: 4px solid $gray;
+    border-top: 4px solid $green;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

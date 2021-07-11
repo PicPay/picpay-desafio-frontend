@@ -1,0 +1,92 @@
+<div class="modal-backdrop">
+
+    <div class="modal">
+
+        <div class="modal__header">
+            <h3 data-test="header">
+                Pagamento para {{ user.name }}
+            </h3>
+        </div>
+
+        <div class="modal__content">
+            
+            <div class="modal__userinfo">
+
+                <img 
+                    data-test="image" 
+                    class="modal__img" 
+                    src="{{ user.img }}" 
+                    alt="{{ user.name }}">
+
+                <h2 data-test="name">{{ user.name }}</h2>
+                
+                <span data-test="username">{{ user.username }}</span>
+
+                <div><small data-test="id">ID: {{ user.id }}</small></div>
+
+            </div> 
+
+            <form [formGroup]="form" (ngSubmit)="pay()">
+                
+                <input
+                    data-test="input"
+                    class="modal__input" 
+                    [ngClass]="{'modal__input-error': (value.errors)}" 
+                    placeholder="Digite o valor" 
+                    formControlName="value" 
+                    currencyMask 
+                    [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"/>
+
+                <small class="modal__error" *ngIf="value.errors">
+                    {{ INPUT_REQUIRED_MSG }}
+                </small>
+
+                <select
+                    data-test="select"
+                    class="modal__select" 
+                    [ngClass]="{'modal__select-error': (credit_card.errors)}" 
+                    formControlName="credit_card">
+
+                    <option *ngFor="let card of cards" [ngValue]="card">
+                        Cartão com final {{ lastFourDigits(card.card_number) }}
+                    </option>
+
+                </select>
+
+                <small class="modal__error" *ngIf="credit_card.errors">
+                    {{ SELECT_REQUIRED_MSG }}
+                </small>
+
+                <div>
+                    <button
+                        data-test="button"
+                        class="modal__button--blue" 
+                        type="submit" 
+                        [ngClass]="{'modal__button--disabled': (form.invalid)}" 
+                        [disabled]="form.invalid"
+                        *ngIf="!loading"> {{ labelBtnPay }}
+                        
+                    </button>
+
+                    <div class="modal__close" 
+                        (click)="cancel()"
+                        *ngIf="!loading">
+                        
+                        <small>cancelar</small>
+                    </div>
+
+                </div>
+
+                <div class="loader" *ngIf="loading">
+                    <div class="loading"></div>
+                </div>
+
+            </form>
+
+        </div>
+
+        
+
+    </div>
+
+</div>

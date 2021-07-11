@@ -2,3 +2,10 @@
   (emitUserEvent)="userSelected($event)"
   >
 </app-user-list>
+
+<app-payment-modal
+  *ngIf="showPaymentModal" 
+  [user]="user" 
+  (close)="tooglePaymentModal()"
+  >
+</app-payment-modal>

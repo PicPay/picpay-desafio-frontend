@@ -9,19 +9,26 @@ import { IUser } from './interfaces/user.interface';
 
 export class AppComponent implements OnInit {
 
+  showPaymentModal: boolean = false;
+
   user: IUser;
 
   constructor() { }
 
-  ngOnInit() { 
+  ngOnInit() {
   }
 
   userSelected(emittedUser: IUser) {
     this.setUser(emittedUser);
+    this.tooglePaymentModal();
   }
 
   setUser(user: IUser) {
     this.user = user
+  }
+
+  tooglePaymentModal() {
+    this.showPaymentModal = !this.showPaymentModal;
   }
 
 }
