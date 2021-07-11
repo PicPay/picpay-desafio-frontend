@@ -9,6 +9,9 @@ import { ContactListComponent } from './components/contact-list/contact-list.com
 import { ContactComponent } from './components/contact-list/components/contact/contact.component';
 import { CashbackInfoComponent } from './components/cashback-info/cashback-info.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { PaymentFormComponent } from './components/dialogs/payment-form/payment-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxCurrencyModule } from 'ngx-currency';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,19 @@ import { SharedModule } from 'src/app/shared/shared.module';
     ContactListComponent,
     ContactComponent,
     CashbackInfoComponent,
+    PaymentFormComponent,
   ],
-  imports: [CommonModule, PagesRoutingModule, BaseModule, SharedModule],
+  imports: [
+    CommonModule,
+    PagesRoutingModule,
+    BaseModule,
+    SharedModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgxCurrencyModule,
+  ],
+  entryComponents: [
+    PaymentFormComponent,
+  ],
 })
 export class DashboardModule {}

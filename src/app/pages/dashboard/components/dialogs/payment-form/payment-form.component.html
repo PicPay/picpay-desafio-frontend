@@ -1,0 +1,25 @@
+<section>
+  <h1>Pagamento para {{ user?.name }}</h1>
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup)">
+    <mat-form-field>
+      <input
+        matInput
+        currencyMask
+        formControlName="value"
+        placeholder="Informe o valor do pagamento"
+        [options]="{
+          prefix: 'R$ ',
+          thousands: '.',
+          decimal: ',',
+          align: 'left',
+          allowNegative: false
+        }"
+      />
+      <mat-error *ngIf="formGroup.get('value').invalid">
+        {{ getErrorMessage() }}
+      </mat-error>
+    </mat-form-field>
+
+    <button type="submit" mat-raised-button color="primary">Pagar</button>
+  </form>
+</section>

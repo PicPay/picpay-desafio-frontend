@@ -1,0 +1,15 @@
+:host {
+  h1 {
+    font-size: 18px;
+    margin: 0 0 20px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  button {
+    margin-top: 20px;
+  }
+}
