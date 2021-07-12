@@ -11,12 +11,20 @@
       align-items: center;
       justify-content: space-between;
 
+      @media screen and (max-width: 558px) {
+        flex-direction: column;
+      }
+
       .mat-stroked-button {
         margin-right: 20px;
         height: 121px;
         width: 162px;
 
         color: #238662;
+
+        @media screen and (max-width: 558px) {
+          margin: 20px 0 0;
+        }
 
         .mat-icon {
           font-size: 38px;

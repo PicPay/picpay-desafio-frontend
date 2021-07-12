@@ -17,6 +17,10 @@
       overflow: auto;
 
       margin-right: 5px;
+
+      @media screen and (max-width: 558px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
   }
 

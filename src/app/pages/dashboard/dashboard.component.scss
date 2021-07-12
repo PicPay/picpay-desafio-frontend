@@ -5,6 +5,9 @@
 
     &.row {
       flex-direction: row;
+      @media screen and (max-width: 728px) {
+        flex-direction: column;
+      }
 
       .content-wrapper {
         margin-bottom: 20px;
@@ -12,6 +15,11 @@
         &:first-child {
           flex: 2;
           margin-right: 20px;
+
+          @media screen and (max-width: 728px) {
+            flex: 1;
+            margin-right: 0;
+          }
         }
 
         &:last-child {
