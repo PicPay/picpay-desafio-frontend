@@ -46,6 +46,8 @@ export class SelectedCardComponent implements OnInit, OnDestroy {
       modal.afterClosed()
         .subscribe((event: Card) => {
           if (event) {
+            event.selected = false;
+            event.valid = true;
             this.cardHandlerService.cardState = [event, ...this.allCards];
             
             const config = new MatDialogConfig();

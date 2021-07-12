@@ -7,6 +7,7 @@ import { TransactionControllerService } from 'src/app/pages/controllers/transact
 import { SimpleMessageComponent } from 'src/app/shared/components/dialogs/simple-message/simple-message.component';
 import { CardHandlerService } from 'src/app/shared/services/card-handler/card-handler.service';
 import { PaymentFormComponent } from '../../../dialogs/payment-form/payment-form.component';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-contact',
@@ -45,22 +46,31 @@ export class ContactComponent implements OnDestroy {
   }
 
   private sendRequestTransaction(user: User, value: number) {
-    const { id } = user;
+    const { id: destination_user_id } = user;
 
     this.subscriptions.add(
-      this.cardHandlerService.cardsState$.subscribe((cards) => {
+      this.cardHandlerService.cardsState$.pipe(take(1)).subscribe((cards) => {
         const findedCard = cards.find((card) => card.selected);
 
         if (findedCard) {
           const cardInfos = findedCard;
 
-          delete cardInfos.selected;
-          delete cardInfos.valid;
+          if (!cardInfos.valid) {
+            this.openSimpleMessageModal('error', {
+              message: 'O cartão selecionado está <b>inválido</b>.',
+              title: 'Ops!',
+            });
+            return;
+          }
+
+          const { card_number, expiry_date, cvv } = cardInfos;
 
           const payload: TransactionPayload = {
-            ...cardInfos,
+            card_number,
+            expiry_date,
+            cvv,
             value,
-            destination_user_id: id,
+            destination_user_id,
           };
 
           this.subscriptions.add(
@@ -78,17 +88,17 @@ export class ContactComponent implements OnDestroy {
     );
   }
 
-  openSimpleMessageModal(mode: 'success' | 'error'): void {
+  openSimpleMessageModal(mode: 'success' | 'error', customMessage?: { message: string, title: string }): void {
     const config = new MatDialogConfig();
-    config.data = { title: 'Recibo de pagamento' }
+    config.data = { title: customMessage ? customMessage.title : 'Recibo de pagamento' }
 
     if (mode === 'success') {
-      config.data.message = 'O pagamento foi concluido com sucesso.';
+      config.data.message = customMessage ? customMessage.message : 'O pagamento foi concluido com sucesso.';
       config.data.allowHtmlMessage = false;
 
       this.dialog.open(SimpleMessageComponent, config);
     } else {
-      config.data.message = 'O pagamento <b>não</b> foi concluido com sucesso.';
+      config.data.message = customMessage ? customMessage.message : 'O pagamento <b>não</b> foi concluido com sucesso.';
       config.data.allowHtmlMessage = true;
 
       this.dialog.open(SimpleMessageComponent, config);
