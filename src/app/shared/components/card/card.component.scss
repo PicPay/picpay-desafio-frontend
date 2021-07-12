@@ -91,9 +91,9 @@
 
       .strip {
         background: #000;
-        height: 50px;
+        height: 35px;
         width: 100%;
-        margin-bottom: 22px;
+        margin-bottom: 20px;
       }
 
       .security-wrapper {
@@ -102,16 +102,18 @@
 
         .signature {
           width: 65%;
-          height: 40px;
+          height: 33px;
           margin-left: 10px;
           background: #999;
         }
 
         .cvv {
-          max-height: 28px;
-          padding: 2px 8px;
+          max-height: 24px;
+          padding: 3px 8px;
           background: #fff;
           color: #111;
+
+          font-size: 12px;
         }
       }
     }
