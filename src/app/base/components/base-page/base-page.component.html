@@ -1,5 +1,18 @@
 <mat-drawer-container autosize>
-  <mat-drawer #drawer mode="over" position="end" (closedStart)="closeVerify(drawer)">
+  <mat-drawer
+    #drawer
+    mode="over"
+    position="end"
+    (closedStart)="closeVerify(drawer)"
+  >
+    <button
+      mat-icon-button
+      color="primary"
+      aria-label="Botão para fechar a aba lateral (Sinal de X)"
+      (click)="drawer.close()"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
     <div class="card-wrapper" *ngFor="let card of cards; let i = index">
       <app-card [card]="card"></app-card>
       <mat-slide-toggle
