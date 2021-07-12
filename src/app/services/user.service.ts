@@ -15,22 +15,15 @@ const API_ENDPOINT = 'https://www.mocky.io/v2/5d531c4f2e0000620081ddce';
 })
 
 export class UserService {
-  private cache$: Observable<Array<User>>;
+  private users$: Observable<Array<User>>;
 
-  constructor(private httpClient: HttpClient) { }
-
-  get users() {
-    if (!this.cache$) {
-      this.cache$ = this.requestUsers().pipe(
-        shareReplay(CACHE_SIZE)
-      );
-    }
-
-    return this.cache$;
+  constructor(private httpClient: HttpClient) {
+    this.users$ = this.httpClient.get<Array<User>>(API_ENDPOINT).pipe(
+      shareReplay(CACHE_SIZE)
+    );
   }
 
-  private requestUsers() {
-    return this.httpClient.get<Array<User>>(API_ENDPOINT).pipe(
-      map(response => response));
+  get users() {
+    return this.users$;
   }
 }

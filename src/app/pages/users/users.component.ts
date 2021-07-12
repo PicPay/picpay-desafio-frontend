@@ -14,13 +14,14 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class UsersComponent implements OnInit {
   users$: Observable<Array<User>>;
+  users: User[];
 
   constructor(private spinnerService: NgxSpinnerService, private service: UserService) { }
 
   ngOnInit(): void {
     this.spinnerService.show();
-    this.service.users.subscribe(() => {
-      this.users$ = this.service.users;
+    this.service.users.subscribe((user) => {
+      this.users = user;
       this.spinnerService.hide();
     });
   }
