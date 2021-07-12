@@ -5,6 +5,7 @@ import { TransactionPayload } from 'src/app/core/entities/payloads/transaction-p
 import { User } from 'src/app/core/entities/user.model';
 import { TransactionControllerService } from 'src/app/pages/controllers/transaction-controller/transaction-controller.service';
 import { SimpleMessageComponent } from 'src/app/shared/components/dialogs/simple-message/simple-message.component';
+import { CardHandlerService } from 'src/app/shared/services/card-handler/card-handler.service';
 import { PaymentFormComponent } from '../../../dialogs/payment-form/payment-form.component';
 
 @Component({
@@ -20,7 +21,8 @@ export class ContactComponent implements OnDestroy {
 
   constructor(
     public dialog: MatDialog,
-    private transactionControllerService: TransactionControllerService
+    private transactionControllerService: TransactionControllerService,
+    private cardHandlerService: CardHandlerService,
   ) {}
 
   ngOnDestroy(): void {
@@ -44,23 +46,35 @@ export class ContactComponent implements OnDestroy {
 
   private sendRequestTransaction(user: User, value: number) {
     const { id } = user;
-    const payload: TransactionPayload = {
-      card_number: '4111111111111234',
-      cvv: 123,
-      expiry_date: '01/20',
-      destination_user_id: id,
-      value,
-    };
 
     this.subscriptions.add(
-      this.transactionControllerService.send(payload).subscribe(
-        () => {
-          this.openSimpleMessageModal('success');
-        },
-        () => {
-          this.openSimpleMessageModal('error');
+      this.cardHandlerService.cardsState$.subscribe((cards) => {
+        const findedCard = cards.find((card) => card.selected);
+
+        if (findedCard) {
+          const cardInfos = findedCard;
+
+          delete cardInfos.selected;
+          delete cardInfos.valid;
+
+          const payload: TransactionPayload = {
+            ...cardInfos,
+            value,
+            destination_user_id: id,
+          };
+
+          this.subscriptions.add(
+            this.transactionControllerService.send(payload).subscribe(
+              () => {
+                this.openSimpleMessageModal('success');
+              },
+              () => {
+                this.openSimpleMessageModal('error');
+              }
+            )
+          );
         }
-      )
+      })
     );
   }
 
