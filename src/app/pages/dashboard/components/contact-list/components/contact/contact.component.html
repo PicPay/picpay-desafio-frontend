@@ -1,5 +1,7 @@
 <div class="contact-wrapper">
   <img [src]="user.img" alt="Fotografia do rosto atribuído a um contato" />
   <p class="contact-name">{{ user.name }}</p>
+  <p class="user-name">{{ user.username }}</p>
+  <p class="user-id">{{ 'ID: ' + user.id }}</p>
   <button matRipple class="pay-button" (click)="pay(user)">Pagar $</button>
 </div>
