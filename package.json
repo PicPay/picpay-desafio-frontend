@@ -5,9 +5,58 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "test": "ng test",
+    "test": "jest --runInBand --ci",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "updateSnapshot": "jest --updateSnapshot"
+  },
+  "jest": {
+    "verbose": true,
+    "testURL": "http://localhost/",
+    "globals": {
+      "ts-jest": {
+        "tsConfig": "./tsconfig.spec.json"
+      }
+    },
+    "preset": "jest-preset-angular",
+    "collectCoverage": true,
+    "coverageDirectory": "dist/test-coverage",
+    "collectCoverageFrom": [
+      "src/app/**/*.ts"
+    ],
+    "coveragePathIgnorePatterns": [
+      "src/libs/elements/",
+      "main.ts",
+      "polyfills.ts",
+      "public_api.ts",
+      ".module.ts",
+      ".interface.ts",
+      ".utils.ts",
+      ".story.ts"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "statements": 95,
+        "branches": 92,
+        "functions": 99,
+        "lines": 99
+      },
+      "./**/*.ts": {
+        "statements": 95,
+        "branches": 50,
+        "functions": 95,
+        "lines": 95
+      }
+    },
+    "testPathIgnorePatterns": [
+      "<rootDir>/libs/elements",
+      "<rootDir>/dist/",
+      "<rootDir>/node_modules/",
+      "<rootDir>/libs/schematics"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>/jest-setup.ts"
+    ]
   },
   "private": true,
   "dependencies": {
@@ -21,6 +70,7 @@
     "@angular/platform-browser": "~8.2.13",
     "@angular/platform-browser-dynamic": "~8.2.13",
     "@angular/router": "~8.2.13",
+    "@ngneat/spectator": "^7.2.0",
     "hammerjs": "^2.0.8",
     "ngx-currency": "^2.5.2",
     "ngx-mask": "8.0.0",
@@ -33,18 +83,13 @@
     "@angular/cli": "~8.3.18",
     "@angular/compiler-cli": "~8.2.13",
     "@angular/language-service": "~8.2.13",
+    "@types/jest": "^26.0.24",
+    "@types/jest-axe": "^3.5.2",
     "@types/node": "~8.9.4",
-    "@types/jasmine": "~3.3.8",
-    "@types/jasminewd2": "~2.0.3",
     "codelyzer": "^5.0.0",
-    "jasmine-core": "~3.4.0",
-    "jasmine-spec-reporter": "~4.2.1",
-    "karma": "~4.1.0",
-    "karma-chrome-launcher": "~2.2.0",
-    "karma-coverage-istanbul-reporter": "~2.0.1",
-    "karma-jasmine": "~2.0.1",
-    "karma-jasmine-html-reporter": "^1.4.0",
-    "protractor": "~5.4.0",
+    "jest": "^27.0.6",
+    "jest-axe": "^5.0.1",
+    "jest-preset-angular": "^9.0.4",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
     "typescript": "~3.5.3"
