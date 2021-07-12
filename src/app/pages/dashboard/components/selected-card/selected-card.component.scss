@@ -22,6 +22,10 @@
 
         color: #238662;
 
+        @media screen and (max-width: 840px) {
+          margin-right: 0;
+        }
+
         @media screen and (max-width: 558px) {
           margin: 20px 0 0;
         }
