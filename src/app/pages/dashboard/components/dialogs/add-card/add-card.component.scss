@@ -1,0 +1,16 @@
+:host {
+  form {
+    display: flex;
+    flex-direction: column;
+
+    .mat-form-field {
+      margin-bottom: 20px;
+    }
+
+    .middle-wrapper {
+      .mat-form-field:first-child {
+        margin-right: 10px;
+      }
+    }
+  }
+}

@@ -2,6 +2,10 @@
   flex: 2;
 
   section {
+    h1 {
+      margin: 10px 20px;
+    }
+
     .add-card-wrapper {
       display: flex;
       align-items: center;
@@ -9,7 +13,7 @@
 
       .mat-stroked-button {
         margin-right: 20px;
-        height: 142px;
+        height: 121px;
         width: 162px;
 
         color: #238662;

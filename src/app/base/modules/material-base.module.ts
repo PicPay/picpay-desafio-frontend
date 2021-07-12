@@ -7,6 +7,7 @@ import {
   MatInputModule,
   MatSidenavModule,
   MatDialogModule,
+  MatSlideToggleModule,
 } from '@angular/material';
 
 const modules = [
@@ -16,6 +17,7 @@ const modules = [
   MatButtonModule,
   MatInputModule,
   MatDialogModule,
+  MatSlideToggleModule,
 ];
 
 @NgModule({

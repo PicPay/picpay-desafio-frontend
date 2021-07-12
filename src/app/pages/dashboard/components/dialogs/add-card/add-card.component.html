@@ -1,0 +1,45 @@
+<section>
+  <h1>Adicionar cartão</h1>
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup)">
+    <mat-form-field>
+      <input
+        matInput
+        formControlName="card_number"
+        placeholder="Número do cartão de crédito"
+        mask="0000 0000 0000 0000"
+      />
+      <mat-error *ngIf="formGroup.get('card_number').invalid">
+        {{ getControlErrorMessage('card_number') }}
+      </mat-error>
+    </mat-form-field>
+    <div class="middle-wrapper">
+      <mat-form-field>
+        <input
+          matInput
+          formControlName="expiry_date"
+          placeholder="Data de expiração"
+          mask="00/00"
+          [dropSpecialCharacters]="false"
+        />
+        <mat-error *ngIf="formGroup.get('expiry_date').invalid">
+          {{ getControlErrorMessage('expiry_date') }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+          matInput
+          formControlName="cvv"
+          placeholder="CVV"
+          type="number"
+          mask="000"
+        />
+        <mat-error *ngIf="formGroup.get('cvv').invalid">
+          {{ getControlErrorMessage('cvv') }}
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <button type="submit" mat-raised-button color="primary">Adicionar</button>
+  </form>
+</section>

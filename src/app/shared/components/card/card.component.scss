@@ -3,8 +3,8 @@
   perspective: 600px;
 
   .card-wrapper {
-    width: 315px;
-    height: 166px;
+    width: 281px;
+    height: 138px;
 
     cursor: pointer;
 
@@ -18,7 +18,7 @@
     width: 100%;
     height: 100%;
 
-    padding: 22px;
+    padding: 16px;
 
     color: #fff;
     font: 16px/1.5 'Helvetica Neue', Helvetica, sans-serif;
@@ -37,7 +37,7 @@
       text-shadow: 0 1px 1px rgba(0, 0, 0, 0.6);
 
       .number {
-        font-size: 27px;
+        font-size: 19px;
         font-family: Orbitron, 'Orbitron', sans-serif;
 
         margin: auto 0;
@@ -53,7 +53,7 @@
 
         .date,
         .owner {
-          font-size: 14px;
+          font-size: 13px;
         }
 
         .owner {
@@ -66,17 +66,17 @@
         transform: rotate(-90deg);
 
         &.picpay {
-          bottom: 40px;
-          right: -11px;
-          max-width: 71px;
-          max-height: 22px;
+          bottom: 32px;
+          right: -7px;
+          max-width: 55px;
+          max-height: 18px;
         }
 
         &.mastercard {
-          right: -8px;
-          top: 13px;
-          max-width: 64px;
-          max-height: 45px;
+          right: -6px;
+          top: 12px;
+          max-width: 51px;
+          max-height: 36px;
         }
       }
     }

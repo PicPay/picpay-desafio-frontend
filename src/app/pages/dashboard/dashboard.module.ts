@@ -13,6 +13,7 @@ import { PaymentFormComponent } from './components/dialogs/payment-form/payment-
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxCurrencyModule } from 'ngx-currency';
 import { AddCardComponent } from './components/dialogs/add-card/add-card.component';
+import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -32,9 +33,11 @@ import { AddCardComponent } from './components/dialogs/add-card/add-card.compone
     FormsModule,
     ReactiveFormsModule,
     NgxCurrencyModule,
+    NgxMaskModule.forChild(),
   ],
   entryComponents: [
     PaymentFormComponent,
+    AddCardComponent,
   ],
 })
 export class DashboardModule {}

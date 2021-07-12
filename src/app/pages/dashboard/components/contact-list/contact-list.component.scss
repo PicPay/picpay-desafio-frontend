@@ -5,7 +5,7 @@
     padding: 0 0 20px;
 
     h1 {
-      margin: 20px;
+      margin: 10px 20px;
     }
 
     .list {
@@ -13,7 +13,7 @@
       grid-template-columns: repeat(3, 1fr);
       grid-gap: 20px;
 
-      max-height: 217px;
+      max-height: 204px;
       overflow: auto;
 
       margin-right: 5px;

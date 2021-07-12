@@ -1,6 +1,13 @@
 <mat-drawer-container autosize>
-  <mat-drawer #drawer mode="over" position="end">
-    <app-card *ngFor="let card of (cards$ | async)" [card]="card"></app-card>
+  <mat-drawer #drawer mode="over" position="end" (closedStart)="closeVerify(drawer)">
+    <div class="card-wrapper" *ngFor="let card of cards; let i = index">
+      <app-card [card]="card"></app-card>
+      <mat-slide-toggle
+        color="primary"
+        [checked]="card.selected"
+        (change)="toggleHandler(i, $event)"
+      ></mat-slide-toggle>
+    </div>
   </mat-drawer>
 
   <div class="container">
