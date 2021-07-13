@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ModalService } from 'src/app/services/modal.service';
 
@@ -8,6 +8,8 @@ import { ModalService } from 'src/app/services/modal.service';
   styleUrls: ['./transaction.component.scss']
 })
 export class TransactionComponent implements OnInit {
+  @Input() userName: string;
+
   display$: Observable<'open' | 'close'>;
 
   constructor(private modalService: ModalService) { }

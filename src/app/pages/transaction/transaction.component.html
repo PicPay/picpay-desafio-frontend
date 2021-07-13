@@ -3,7 +3,7 @@
     <div (click)="$event.stopPropagation()">
       <button class="close" type="button" (click)="close()">X</button>
 
-      <div class="title">Pagamento para <span>Nome do Usuário</span></div>
+      <div class="title">Pagamento para <span>{{ userName }} </span></div>
       
       <div class="content">
         <input type="number" placeholder="R$ 0,00" />

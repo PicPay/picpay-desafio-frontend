@@ -9,8 +9,9 @@
         ID: {{ user?.id }} - Username: {{ user?.username }}
       </div>
     </div>
-    <button type="button" (click)="openModal()">Pagar</button>
+    <button type="button" (click)="openModal(user.name)">Pagar</button>
   </div>
+</div>
 
-  <app-transaction></app-transaction>
+  <app-transaction [userName]="userName"></app-transaction>
   <ngx-spinner></ngx-spinner>

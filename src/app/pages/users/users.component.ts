@@ -16,6 +16,7 @@ import { ModalService } from 'src/app/services/modal.service';
 export class UsersComponent implements OnInit {
   users$: Observable<Array<User>>;
   users: User[];
+  userName?: string;
 
   constructor(private modalService: ModalService, private spinnerService: NgxSpinnerService, private service: UserService) { }
 
@@ -27,7 +28,8 @@ export class UsersComponent implements OnInit {
     });
   }
 
-  openModal() {
+  openModal(value: string) {
+    this.userName = value;
     this.modalService.open();
   }
 }
