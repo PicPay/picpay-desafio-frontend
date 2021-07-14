@@ -1,0 +1,53 @@
+.pp-list{
+    @include prefix(display, grid, webkit ms);
+    @include prefix(column-gap, 60px, webkit ms);
+    @include prefix(grid-template-columns, repeat(1, 1fr), webkit ms);
+    @include respond-to('xl'){
+        @include prefix(grid-template-columns, repeat(2, 1fr), webkit ms);
+    }
+    
+    margin: 50px 0 0 0;
+
+    >.pp-list-item{
+        @include prefix(display, flex, webkit ms);
+        @include prefix(justify-content, space-between, webkit ms);
+        padding: 1rem;
+        margin: 1rem 0 0 0;
+        border-radius: 4px;
+        box-shadow: 0 2px 1px -1px rgb(0 0 0 / 20%), 0 1px 1px 0 rgb(0 0 0 / 14%), 0 1px 3px 0 rgb(0 0 0 / 12%);
+        
+        .pp-list-info{
+            @include prefix(display, flex, webkit ms);
+
+            >.pp-img {
+                width: 80px;
+                height: 80px;
+                margin-right: 10px;
+                border-radius: 50%;
+            }
+            >.pp-title {
+                width: 100%;
+                @include prefix(display, block, webkit ms);
+                @include weight(700);
+                font-size: 16px;
+                line-height: 24px;
+                color:$green-700;
+                @include respond-to('xl') {
+                    font-size: 18px;
+                }
+            }
+
+            >.pp-subtitle{
+                width: 100%;
+                @include prefix(display, block, webkit ms);
+               
+                @include weight(300);
+                font-size: 12px;
+                color: $black-100;
+                @include respond-to('xl') {
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+}
