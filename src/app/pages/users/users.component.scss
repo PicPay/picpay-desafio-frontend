@@ -30,8 +30,8 @@
     }
 
     .username {
-      color: var(--grey);
       font-weight: bold;
+      color: var(--grey);
     }
   }
 
@@ -46,7 +46,7 @@
 
     &.pay-button:hover {
       background-color: var(--secondary);
-      transition: all 1 ease;
+      transition: all 0.2s ease-in;
     }
   }
 }

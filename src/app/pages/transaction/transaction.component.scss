@@ -29,10 +29,31 @@ section {
 
   .content > .transaction-value {
     margin-bottom: 12px;
+
+    input {
+      box-shadow: 1px 4px 10px -2px rgb(0 0 0 / 20%);
+      border: 1px solid var(--white);
+      background: var(--white);
+
+      &input[type="number"] {
+      -moz-appearance:textfield;
+      }
+
+      &input::-webkit-outer-spin-button,
+      &input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+      }
+    }
   }
 
   .content > .cards {
     margin-bottom: 20px;
+
+    select {
+      box-shadow: 1px 4px 10px -2px rgb(0 0 0 / 20%);
+      border: 1px solid var(--white);
+      background: var(--white);
+    }
   }
 
   .pay-button {
@@ -47,7 +68,7 @@ section {
 
     &.pay-button:hover {
       background-color: var(--secondary);
-      transition: all 1 ease;
+      transition: all 0.2s ease-in;
     }
   }
 
