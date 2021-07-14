@@ -1,23 +1,29 @@
 <ng-container *ngIf="display$ | async as display">
   <section [class.open]="display === 'open'" (click)="close()">
     <div (click)="$event.stopPropagation()">
-      <button class="close" type="button" (click)="close()">X</button>
+      <button class="close" type="button" (click)="close()">x</button>
 
-      <div class="title">Pagamento para <span>{{ userName }} </span></div>
-      
-      <div class="content">
-        <input type="number" placeholder="R$ 0,00" />
-      
-        <div class="cards">
-          <select>
-            <option selected>Cartão com final 0123</option>
-          </select>
+      <h1 class="title">Pagamento para <span>{{ userName }} </span></h1>
+
+      <form (ngSubmit)="submit()">
+        <div class="content">
+          <div class="transaction-value">
+            <span>Insira um valor: </span>
+            <input type="number" id="transactionValue" placeholder="R$ 0,00" [(ngModel)]="transactionValue"
+              name="transactionValue" />
+          </div>
+          <div class="cards">
+            Cartão com final
+            <select (change)="changeCreditCard($event)">
+              <option *ngFor="let card of cards" [ngValue]="cards">
+                {{ card.card_number | slice:12:16}}</option>
+            </select>
+          </div>
         </div>
-      
-        <button type="button" class="pay-button">
+       <button type="submit" class="pay-button">
           Pagar
         </button>
-      </div>
+      </form>
     </div>
   </section>
 </ng-container>

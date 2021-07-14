@@ -8,13 +8,11 @@ section {
   }
 
   display: block;
-
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-
   background: rgba(0, 0, 0, 0.2);
   transition: opacity 250ms ease-in;
 
@@ -23,26 +21,43 @@ section {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-
-    height: 200px;
-    width: 300px;
-
-    background: white;
+    background: var(--white);
     padding: 64px;
-
     border-radius: 8px;
-
     box-shadow: 0 0 8px 4px rgba(0, 0, 0, 0.1);
   }
 
-  button.close {
-    background: none;
-    color: inherit;
+  .content > .transaction-value {
+    margin-bottom: 12px;
+  }
+
+  .content > .cards {
+    margin-bottom: 20px;
+  }
+
+  .pay-button {
+    outline: none;
     border: none;
-    font: inherit;
+    background-color: var(--primary);
+    padding: 7px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: var(--white);
+    width: 100%;
+
+    &.pay-button:hover {
+      background-color: var(--secondary);
+      transition: all 1 ease;
+    }
+  }
+
+  button.close {
+    font-family: sans-serif;
+    background: none;
+    color: var(--grey);
+    border: none;
     cursor: pointer;
     outline: none;
-
     position: absolute;
     top: 0;
     left: 0;
