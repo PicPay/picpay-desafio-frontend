@@ -14,7 +14,15 @@ import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [AppComponent, UsersComponent, TransactionComponent],
-  imports: [BrowserModule, FormsModule, HttpClientModule, AppRoutingModule, LazyLoadImageModule, NgxSpinnerModule, BrowserAnimationsModule],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpClientModule,
+    AppRoutingModule,
+    LazyLoadImageModule,
+    NgxSpinnerModule,
+    BrowserAnimationsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
