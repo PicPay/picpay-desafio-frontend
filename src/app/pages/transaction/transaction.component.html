@@ -3,19 +3,19 @@
     <div (click)="$event.stopPropagation()">
       <button class="close" type="button" (click)="close()">x</button>
 
-      <h1 class="title">Pagamento para <span>{{ userName }} </span></h1>
+      <h1 class="title">Pagamento para <span>{{ userName }}</span></h1>
 
-      <form (ngSubmit)="submit()">
+      <form #f="ngForm" (ngSubmit)="submit(f.value)">
         <div class="content">
           <div class="transaction-value">
             <span>Insira um valor: </span>
-            <input type="number" id="transactionValue" placeholder="R$ 0,00" [(ngModel)]="transactionValue"
-              name="transactionValue" />
+            <input type="number" id="transactionValue" placeholder="R$ 0,00" [(ngModel)]="transaction.value"
+              name="transactionValue" required />
           </div>
           <div class="cards">
             Cartão com final
-            <select (change)="changeCreditCard($event)">
-              <option *ngFor="let card of cards" [ngValue]="cards">
+            <select [(ngModel)]="transaction.creditCard" name="creditCard">
+              <option *ngFor="let card of cards" [ngValue]="card" required>
                 {{ card.card_number | slice:12:16}}</option>
             </select>
           </div>
