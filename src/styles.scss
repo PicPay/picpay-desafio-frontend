@@ -2,9 +2,19 @@
   box-sizing: border-box;
 }
 
+:root {
+  --primary: #369c38;
+  --secondary: #006600;
+  --black: #000;
+  --white: #fff;
+  --grey: #808080;
+}
+
 html,
 body {
-  font-family: sans-serif;
+  font-family: Roboto;
   margin: 0;
   padding: 0;
+  background-color: var(--primary);
+  background-image: linear-gradient(315deg, var(--secondary) 0%, var(--primary) 74%);
 }
