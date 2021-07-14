@@ -3,8 +3,8 @@ import { EventEmitter } from 'events';
 
 import { Observable } from 'rxjs';
 
-import { ModalService } from 'src/app/services/modal.service';
-import { TransactionService } from 'src/app/services/transaction.service';
+import { ModalService } from 'src/app/services/modal/modal.service';
+import { TransactionService } from 'src/app/services/transaction/transaction.service';
 
 import { Transaction } from 'src/app/models/transaction.model';
 import { TransactionPayload } from 'src/app/models/transaction-payload.model';
