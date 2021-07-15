@@ -1,18 +1,13 @@
 
-/* Imports for basic settings*/
-@import 'src/assets/Settings/_colors.scss';
 @import 'src/assets/Settings/_font.scss';
-/* Imports for mixins and functions*/
+@import 'src/assets/Settings/_colors.scss';
 @import 'src/assets/Tools/_mixins.scss';
-/* Imports for generic*/
-@import 'src/assets/Generic/_reset.scss';
 
-/* Imports for base selectors*/
-@import 'src/assets/Base/_base.scss';
 
-/* OOCSS */
-@import 'src/assets/Objects/_buttons.scss';
-@import 'src/assets/Objects/_list.scss';
-
-/* Trumps */
-@import 'src/assets/Trumps/helpers.scss';
+.content {
+    width: 100%;
+    min-height: calc(100vh - 101px);
+    @include respond-to('xl'){
+        min-height: calc(100vh - 138px);
+    }
+}

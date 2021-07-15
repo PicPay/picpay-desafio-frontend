@@ -1,0 +1,65 @@
+
+@import 'src/assets/Settings/_font.scss';
+@import 'src/assets/Settings/_colors.scss';
+@import 'src/assets/Tools/_mixins.scss';
+
+.pp-footer{
+    padding: 2.5rem 0.5rem 3.5rem;
+    background-color: $green-400;
+
+    >.pp-content{
+        width: 100%;
+        @include prefix(display, flex, webkit ms);
+        @include prefix(align-items, center, webkit ms);
+        @include prefix(justify-content, center, webkit ms);
+        flex-direction: column;
+        @include respond-to('xl') {
+            @include prefix(justify-content, space-between, webkit ms);
+            flex-direction: row;
+        }
+       
+        padding: auto 2rem;
+        margin: 0 auto;
+
+        >.pp-logo{
+
+            width: 250px;
+            @include respond-to('xl'){
+                width: 400px;
+            }
+            height: 48px;
+            @include prefix(display, block, webkit ms);
+            margin: 1.25rem;
+   
+        }
+        >.pp-social{
+            width: 100vw;
+            @include prefix(display, flex, webkit ms);
+            @include prefix(justify-content, center, webkit ms);
+            padding: 0;
+            margin: 0;
+            overflow: auto;
+            @include respond-to('xl'){
+                @include prefix(justify-content, flex-end, webkit ms);
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+                
+            }
+
+            
+
+            .pp-social-item{
+                @include prefix(display, inline-flex, webkit ms);
+                padding: 0.2rem;
+                @include respond-to('xl'){
+                    padding: 0.3rem;
+                }
+                .link{
+                    width: 2.75rem;
+                    height: 2.75rem;
+                    @include prefix(display, inline-flex, webkit ms);
+                }
+            }
+        }
+    }
+}

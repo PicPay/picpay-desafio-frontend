@@ -1,0 +1,35 @@
+
+@import 'src/assets/Settings/_font.scss';
+@import 'src/assets/Settings/_colors.scss';
+@import 'src/assets/Tools/_mixins.scss';
+
+.pp-header{
+    position: sticky;
+    width: 100%;
+    top: 0px;
+    padding: 1rem 1.5rem;
+    background-color: $green-400;
+    z-index: 50;
+    @include prefix(box-sizing, border-box, webkit ms);
+
+    >.pp-content{
+        @include prefix(display, flex, webkit ms);
+        @include prefix(flex-wrap, wrap, webkit ms);
+        @include prefix(align-items, center, webkit ms);
+        @include prefix(justify-content, space-between, webkit ms);
+        
+        .pp-logo{
+            @include prefix(display, flex, webkit ms);
+            @include prefix(align-items, center, webkit ms);
+            @include prefix(flex-shrink, 0, webkit ms);
+            margin-right: 1.5rem;
+        
+
+            >.pp-link{
+                @include prefix(display, inline-flex, webkit ms);
+            }
+        }
+        
+    }
+}
+
