@@ -56,6 +56,13 @@ section {
     }
   }
 
+  .error {
+    font-size: 13px;
+    color: var(--red);
+    border-radius: 3px;
+    padding: 10px;
+  }
+
   .pay-button {
     outline: none;
     border: none;
@@ -69,6 +76,15 @@ section {
     &.pay-button:hover {
       background-color: var(--secondary);
       transition: all 0.2s ease-in;
+    }
+
+    &.pay-button:disabled {
+        background-color: var(--grey);
+
+      &:hover {
+        background-color: var(--grey);
+        transition: all 0.2s ease-in;
+      }
     }
   }
 

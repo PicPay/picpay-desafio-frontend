@@ -5,22 +5,32 @@
 
       <h1 class="title">Pagamento para <span>{{ userName }}</span></h1>
 
-      <form #f="ngForm" (ngSubmit)="submit(f.value)">
+      <form [formGroup]="transactionForm" (ngSubmit)="submit(transactionForm)">
         <div class="content">
           <div class="transaction-value">
             <span>Insira um valor: </span>
-            <input type="number" id="transactionValue" placeholder="R$ 0,00" [(ngModel)]="transaction.value"
-              name="transactionValue" required />
+            <input
+              type="number"
+              id="transactionValue"
+              placeholder="R$ 0,00"
+              formControlName="transactionValue"
+            />
+          </div>
+          <div class="error" *ngIf="transactionForm.get('transactionValue').hasError('required') && transactionForm.get('transactionValue').touched">
+            É necessário inserir um valor
           </div>
           <div class="cards">
             Cartão com final
-            <select [(ngModel)]="transaction.creditCard" name="creditCard">
-              <option *ngFor="let card of cards" [ngValue]="card" required>
+            <select formControlName="creditCard">
+              <option *ngFor="let card of cards" [ngValue]="card">
                 {{ card.card_number | slice:12:16}}</option>
             </select>
+            <div class="error" *ngIf="transactionForm.get('creditCard').hasError('required') && transactionForm.get('creditCard').touched">
+              É necessário escolher um cartão
+            </div>
           </div>
         </div>
-       <button type="submit" class="pay-button">
+       <button type="submit" [disabled]="transactionForm.invalid" class="pay-button">
           Pagar
         </button>
       </form>

@@ -6,8 +6,8 @@ import { Observable } from 'rxjs';
 import { ModalService } from 'src/app/services/modal/modal.service';
 import { TransactionService } from 'src/app/services/transaction/transaction.service';
 
-import { Transaction } from 'src/app/models/transaction.model';
 import { TransactionPayload } from 'src/app/models/transaction-payload.model';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-transaction',
@@ -25,10 +25,6 @@ export class TransactionComponent implements OnInit {
   @Input() userName: string;
   @Output() handleTransaction = new EventEmitter();
 
-  transaction: Transaction = {
-    value: null
-  };
-
   cards = [
     {
       card_number: '1111111111111111',
@@ -42,36 +38,36 @@ export class TransactionComponent implements OnInit {
     },
   ];
 
+  transactionForm = new FormGroup({
+    transactionValue: new FormControl('', [Validators.required]),
+    creditCard: new FormControl('', [Validators.required])
+  });
+
 
   ngOnInit() {
     this.display$ = this.modalService.watch();
   }
 
-  submit(value) {
-    console.log(value);
-    if (value.creditCard.card_number === this.cards[1].card_number) {
+  submit(form) {
+    if (form.controls.creditCard.value.card_number === this.cards[1].card_number) {
       throw Error('credit card is not valid');
     }
 
     const payload: TransactionPayload = {
-      card_number: value.creditCard.card_number,
-      cvv: value.creditCard.cvv,
-      expiry_date: value.creditCard.expiry_date,
-      value: value.transactionValue
+      card_number: form.controls.creditCard.value.card_number,
+      cvv: form.controls.creditCard.value.cvv,
+      expiry_date: form.controls.creditCard.value.expiry_date,
+      value: form.controls.transactionValue.value
     };
 
     this.service.payUser(payload).subscribe((result) => {
-      this.clear();
+      this.transactionForm.reset(form.controls.transactionValue.value);
+      this.close();
     },
     (error) => console.error(error));
   }
 
-  close() {
+  private close() {
     this.modalService.close();
-    this.clear();
-  }
-
-  private clear() {
-    this.transaction.value = null;
   }
 }
