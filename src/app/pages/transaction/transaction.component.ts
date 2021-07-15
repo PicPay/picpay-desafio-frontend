@@ -66,6 +66,7 @@ export class TransactionComponent implements OnInit {
       this.transactionForm.reset(form.controls.transactionValue.value);
       this.result = result;
       if (this.result.success) {
+        this.close();
         alert('O pagamento foi concluído com sucesso');
       }
     });
