@@ -6,13 +6,14 @@ import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select'; 
 
 import { AppComponent } from './app.component';
-import { CardPaymentComponent } from './card-payment/card-payment.component';
+import { CardPaymentComponent, ModalAlert } from './card-payment/card-payment.component';
 import { CardPaymentService } from './card-payment/card-payment.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CardPaymentComponent
+    CardPaymentComponent,
+    ModalAlert
   ],
   imports: [
     BrowserModule,
@@ -28,6 +29,7 @@ import { CardPaymentService } from './card-payment/card-payment.service';
       useValue: {}
     }
   ],
+  entryComponents: [ModalAlert],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { CardPaymentService } from './card-payment.service';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-card-payment',
   templateUrl: './card-payment.component.html',
   styleUrls: ['./card-payment.component.scss']
 })
+
 
 
 export class CardPaymentComponent implements OnInit {
@@ -52,9 +53,38 @@ export class CardPaymentComponent implements OnInit {
   paymentCard(card){
     return this.service.payment(card).subscribe(data => {
       console.log(data);
+      this.dialog.open(ModalAlert, {
+        width: '250px',
+        data: {
+          content: 'O pagamento foi concluido com sucesso.',
+        },
+      });
+
     }, err => {
+      this.dialog.open(ModalAlert, {
+        width: '250px',
+        data: {
+          content: 'O pagamento <strong>não</strong> foi concluido com sucesso.',
+        },
+      });
       console.log(err);
     })
+  }
+
+}
+
+@Component({
+  selector: 'modal-alert',
+  templateUrl: 'modal-alert.component.html',
+})
+export class ModalAlert {
+
+  constructor(
+    public dialogRef: MatDialogRef<ModalAlert>,
+    @Inject(MAT_DIALOG_DATA) public data: any) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 
 }
