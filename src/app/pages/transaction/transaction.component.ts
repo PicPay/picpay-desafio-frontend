@@ -16,13 +16,14 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class TransactionComponent implements OnInit {
   display$: Observable<'open' | 'close'>;
+  result: any;
 
   constructor(
     private service: TransactionService,
     private modalService: ModalService
     ) {}
 
-  @Input() userName: string;
+  @Input() userName: string; userId: number;
   @Output() handleTransaction = new EventEmitter();
 
   cards = [
@@ -49,22 +50,25 @@ export class TransactionComponent implements OnInit {
   }
 
   submit(form) {
-    if (form.controls.creditCard.value.card_number === this.cards[1].card_number) {
-      throw Error('credit card is not valid');
-    }
-
     const payload: TransactionPayload = {
       card_number: form.controls.creditCard.value.card_number,
       cvv: form.controls.creditCard.value.cvv,
       expiry_date: form.controls.creditCard.value.expiry_date,
+      destination_user_id: this.userId,
       value: form.controls.transactionValue.value
     };
 
     this.service.payUser(payload).subscribe((result) => {
+      if (form.controls.creditCard.value.card_number === this.cards[1].card_number) {
+        alert('O pagamento não foi concluído com sucesso');
+        throw Error;
+      }
       this.transactionForm.reset(form.controls.transactionValue.value);
-      this.close();
-    },
-    (error) => console.error(error));
+      this.result = result;
+      if (this.result.success) {
+        alert('O pagamento foi concluído com sucesso');
+      }
+    });
   }
 
   private close() {
