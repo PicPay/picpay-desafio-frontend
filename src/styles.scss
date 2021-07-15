@@ -12,6 +12,13 @@
 /* OOCSS */
 @import 'src/assets/Objects/_buttons.scss';
 @import 'src/assets/Objects/_list.scss';
+@import 'src/assets/Objects/_pagination.scss';
+@import 'src/assets/Objects/_forms.scss';
+@import 'src/assets/Objects/_customModal.scss';
 
 /* Trumps */
 @import 'src/assets/Trumps/helpers.scss';
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

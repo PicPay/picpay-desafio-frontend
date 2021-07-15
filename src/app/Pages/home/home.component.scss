@@ -1,0 +1,23 @@
+@import 'src/assets/Settings/_colors.scss';
+@import 'src/assets/Settings/_font.scss';
+@import 'src/assets/Tools/_mixins.scss';
+
+.users-welcome {
+    background: $bg-gradient;
+    padding: 1rem 0;
+    margin: 0 0 1rem 0;
+
+    @include respond-to('xl'){
+        padding: 1.5rem 0;
+        margin: 0 0 1.5rem 0;
+    }
+
+    .description {
+        @include weight(700);
+        color: $green-700;
+
+        &:not(:first-child){
+            @include weight(300); 
+        }
+    }
+}

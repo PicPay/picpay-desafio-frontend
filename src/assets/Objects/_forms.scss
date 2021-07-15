@@ -1,0 +1,18 @@
+.mat-input-element {
+    caret-color: $green-700;
+  }
+  
+  .mat-form-field.mat-focused .mat-form-field-label,
+  .mat-primary .mat-option.mat-selected:not(.mat-option-disabled),
+  .mat-form-field.mat-focused.mat-primary .mat-select-arrow {
+    color: $green-700;
+  }
+  
+  .mat-form-field.mat-focused .mat-form-field-ripple {
+    background-color: $black;
+  }
+  
+  .disabled.mat-form-field {
+    pointer-events: none;
+    opacity: 0.8;
+  }

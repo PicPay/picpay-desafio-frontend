@@ -1,0 +1,80 @@
+.custom-modal {
+    max-width: 100vw !important;
+    width: 100%;
+    height: 100%;
+  
+    @include respond-to('xl') {
+      max-width: 456px !important;
+      max-height: 80vh;
+      min-height: 280px;
+      height: auto;
+    }
+  
+    .description {
+      margin-bottom: 20px;
+    }
+  
+    .mat-dialog-container {
+      border-radius: 0;
+      padding: 0;
+      background: #fff;
+  
+      .mat-dialog-title {
+        color: #fff;
+        background-color: rgba(25, 25, 25, 0.8);
+        padding: 20px;
+        position: relative;
+  
+        @include respond-to('xl') {
+          padding: 20px 50px;
+        }
+  
+        & > span {
+          color: $green-700;
+        }
+  
+        .close-modal {
+          position: absolute;
+          right: 10px;
+          top: 17px;
+          height: 36px;
+          width: 36px;
+          font-size: 36px;
+          cursor: pointer;
+        }
+      }
+  
+      .mat-dialog-actions {
+        padding: 20px;
+      }
+  
+      .mat-dialog-content {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 20px;
+  
+        @include respond-to('xl') {
+          padding: 20px 50px;
+        }
+      }
+    }
+  }
+
+
+  .title {
+    color: $black;
+    font-size: 24px;
+    margin-bottom: 10px;
+    font-weight: bold;
+  
+    @include respond-to('xl') {
+      font-size: 30px;
+      margin-bottom: 15px;
+    }
+  }
+  
+  .description {
+    color: $green-400;
+    margin-bottom: 0;
+    border: 0;
+  }

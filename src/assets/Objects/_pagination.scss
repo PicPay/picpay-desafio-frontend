@@ -1,0 +1,73 @@
+.pagination {
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    border-radius: 0.25rem;
+    @include weight(300);
+
+.angular-bs4-pagination[_ngcontent-kup-c8] .disabled[_ngcontent-kup-c8] {
+    pointer-events: none;
+}
+
+.page-item.disabled .page-link {
+    color: #6c757d;
+    pointer-events: none;
+    cursor: auto;
+    background-color: #ffffff;
+    border-color: #dee2e6;
+}
+.page-item:first-child .page-link {
+    margin-left: 0;
+    border-top-left-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+}
+
+.page-link {
+    position: relative;
+    display: block;
+    padding: 0.5rem 0.75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #11c76f;
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+}
+
+a {
+    color: #11c76f;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.page-item.active .page-link {
+    z-index: 3;
+    color: #ffffff;
+    background-color: #11c76f;
+    border-color: #11c76f;
+}
+
+.page-link {
+    position: relative;
+    display: block;
+    padding: 0.5rem 0.75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #11c76f;
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+}
+.page-link {
+    position: relative;
+    display: block;
+    padding: 0.5rem 0.75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #11c76f;
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+}
+.page-item:last-child .page-link {
+    border-top-right-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+}
+}

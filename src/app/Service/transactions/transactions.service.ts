@@ -16,9 +16,21 @@ export class TransactionsService {
 
   constructor( private httpClient: HttpClient) { }
 
-  sendPayment($payloadParams) : Observable<ITransactions> {
-    const body = {...$payloadParams}
+  sendPayment($payloadParams) {
+    return new Promise(resolve => {
+      debugger
+      if ($payloadParams.card_number.slice(-4) === '1234')
+        return resolve({ success: false, status: 'Reprovada' })
+      this.httpClient.post(environment.sendPayment, $payloadParams).subscribe(
+        data => {
+          return resolve(data)
+        },
+        error => {
+          return resolve({ success: false, status: 'Reprovada' })
+        }
+      );
+    });
+  
+}
 
-    return this.httpClient.post<ITransactions>(environment.sendPayment, { body });
-  }
 }

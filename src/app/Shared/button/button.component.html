@@ -1,1 +1,2 @@
-<p>button works!</p>
+<button [type]="type" class="btn" [ngClass]="{'btn-outline': outline, 'btn-loading': status === 'loading'}" (click)="onBtnClick()" [disabled]="disabled">{{text}}</button>
+

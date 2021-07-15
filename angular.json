@@ -27,9 +27,7 @@
               "src/favicon.ico",
               "src/assets"
             ],
-            "styles": [
-              "src/styles.scss"
-            ],
+            "styles": ["./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css", "src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -92,9 +90,7 @@
               "src/favicon.ico",
               "src/assets"
             ],
-            "styles": [
-              "src/styles.scss"
-            ],
+            "styles": ["./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css", "src/styles.scss"],
             "scripts": []
           }
         },
@@ -124,6 +120,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "picpay-desafio-frontend"
 }

@@ -1,0 +1,47 @@
+
+@import 'src/assets/Settings/_font.scss';
+@import 'src/assets/Settings/_colors.scss';
+@import 'src/assets/Tools/_mixins.scss';
+:ng-deep {
+    .simple-modal {
+      .mat-dialog-container {
+        .mat-dialog-content {
+          display: flex;
+          align-items: center;
+  
+          .mat-icon {
+            height: 50px;
+            width: 50px;
+            font-size: 50px;
+            color: $green-400;
+            margin-right: 20px;
+  
+            &.fail {
+              color: red;
+            }
+          }
+  
+          & > p {
+            margin: 0;
+          }
+        }
+      }
+      .app-button {
+        width: 100%;
+  
+        @include respond-to('xl') {
+          padding: 0 50px;
+          display: flex;
+          justify-content: center;
+        }
+  
+        .btn {
+          max-width: 100%;
+  
+          @include respond-to('xl') {
+            max-width: 200px;
+          }
+        }
+      }
+    }
+  }

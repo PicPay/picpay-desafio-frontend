@@ -1,1 +1,31 @@
-<p>list works!</p>
+<ul class="pp-list">
+    <li class="pp-list-item" data-aos="zoom-in" *ngFor="let item of items | angularPaginator: { currentPage: currentPage }; let i = index" >
+        <div class="pp-list-info">
+            <img class="pp-img" [src]="item.img"  [alt]=" 'foto do usuário' + ' ' + item.name" loading="lazy" decoding="async"/>
+        </div>
+        <div class="pp-list-info">
+            <p class="pp-title">{{ item.name }}
+                <span >   </span>
+            </p>
+            <p class="pp-title">{{ item.username }}
+                <span >   </span>
+            </p>
+            <p class="pp-subtitle">
+                ID: {{ item.id}}
+                <span >   </span>
+            </p>
+        </div>
+        
+
+        <app-button [text]="'Pagar'" [outline]="true" class="pp-list-btn" (clickBtn)="clickItem(item)"></app-button>
+    </li>
+   
+</ul>
+
+<angular-paginator [boundaryLinks]="false" [directionLinks]="true" maxSize="10" [rotate]="true"
+  [boundaryLinkNumbers]="false" [forceEllipses]="false" size="sm" id="ANGULAR_PAGINATOR_DEFAULT" firstText="Primeira"
+  previousText="Anterior" nextText="Próxima" lastText="Última" screenReaderFirstText="Primeira"
+  screenReaderPreviousText="Anterior" screenReaderNextText="Próxima" screenReaderLastText="Última"
+  screenReaderPageText="Página" screenReaderCurrentPageText="" screenReaderPaginationLabel="Paginação"
+  className="ANGULAR_PAGINATOR_DEFAULT" [autoHide]="false" [disabled]="false" (pageChange)="currentPage = $event">
+</angular-paginator>

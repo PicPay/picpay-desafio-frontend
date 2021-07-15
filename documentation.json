@@ -1,0 +1,2494 @@
+{
+    "pipes": [],
+    "interfaces": [
+        {
+            "name": "FeedbackModal",
+            "id": "interface-FeedbackModal-5c2f582a4fdb769c4b92a9ebb8df1059",
+            "file": "src/app/Pages/home/home.component.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import { Component, Inject, OnInit } from '@angular/core';\nimport { IUser } from 'src/app/Models/IUsers';\nimport { UsersService } from 'src/app/Service/users/users.service';\nimport { MatDialogRef } from '@angular/material';\nimport { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';\nimport { FormBuilder, Validators, FormGroup } from '@angular/forms';\nimport { ModalComponent } from 'src/app/Shared/modal/modal.component';\nimport { TransactionsService } from 'src/app/Service/transactions/transactions.service';\n\nexport interface FeedbackModal {\n  id: number;\n  name: string;\n  img: string;\n  username: string;\n}\n\n\n@Component({\n  selector: 'app-home',\n  templateUrl: './home.component.html',\n  styleUrls: ['./home.component.scss']\n})\nexport class HomeComponent implements OnInit {\n  users: Array<IUser>\n  textFeedback: string;\n  constructor( private _usersService: UsersService,public dialog: MatDialog) { }\n\n  ngOnInit() {\n    this.getUsers();\n  }\n\n  private getUsers(): void {\n    this._usersService.getAllInfos().subscribe((_users) => {\n      console.log(_users)\n      this.users = _users\n    })\n  }\n\n  handleItem(event): void {\n    this.openPaymentDialog(event.data);\n  }\n\n  openPaymentDialog(user): void {\n    const dialogRef = this.dialog.open(DialogTransaction, {\n      panelClass: ['transaction-dialog', 'custom-modal'],\n      data: { user: user }\n    });\n\n    /** Após a transação, abre modal de feedback com response */\n    dialogRef.afterClosed().subscribe(result => {\n      if (result) {\n        this.textFeedback = result.success\n          ? 'O pagamento foi concluído com sucesso!'\n          : 'O pagamento <strong>não</strong> foi concluído com sucesso.';\n        this.openFeedbackDialog(result);\n      }\n    });\n  }\n\n  openFeedbackDialog(feedback): void {\n    this.dialog.open(ModalComponent, {\n      panelClass: ['feedback-dialog', 'simple-modal', 'custom-modal'],\n      data: {\n        title: 'Recibo de Pagamento',\n        text: this.textFeedback,\n        success: feedback.success,\n        status: feedback.status,\n        btn: 'Ok'\n      }\n    });\n  }\n}\n\n\n\n\n@Component({\n  selector: 'dialog-transaction',\n  templateUrl: 'modal-transaction.html'\n})\nexport class DialogTransaction {\n  transactionForm: FormGroup;\n  loading = false;\n  cards = [\n    // valid card\n    {\n      card_number: '1111111111111111',\n      cvv: 789,\n      expiry_date: '01/18'\n    },\n    // invalid card\n    {\n      card_number: '4111111111111234',\n      cvv: 123,\n      expiry_date: '01/20'\n    }\n  ];\n\n  constructor(\n    public dialogRef: MatDialogRef<DialogTransaction>,\n    @Inject(MAT_DIALOG_DATA) public data: FeedbackModal,\n    private _formBuilder: FormBuilder,\n    private _transactionService: TransactionsService\n  ) {\n    // Formulário de pagamento e validações\n    this.transactionForm = this._formBuilder.group({\n      paymentValue: [0, [Validators.required]],\n      creditCard: ['', [Validators.required]]\n    });\n  }\n\n  closeModal(): void {\n    this.dialogRef.close();\n  }\n\n  async onSubmit() {\n    this.loading = true;\n    let creditCardNumber = this.transactionForm.get('creditCard').value,\n      paymentValue = this.transactionForm.get('paymentValue').value,\n      paymentData = this.cards.find(\n        card => creditCardNumber === card.card_number.slice(-4)\n      );\n\n    paymentData['destination_user_id'] = this.data['user'].id;\n    paymentData['value'] = paymentValue;\n\n    let response = await this._transactionService.sendPayment(paymentData);\n    this.loading = false;\n    this.clearForm();\n    this.dialogRef.close(response);\n  }\n\n  onChange(e): void {\n    this.transactionForm.controls[e.target.name].markAsTouched;\n\n    // Garante que o campo de valor terá o valor monetário limpo\n    this.transactionForm.controls[e.target.name].setValue(\n      this.transactionForm.controls[e.target.name].value\n    );\n  }\n\n  clearForm(): void {\n    this.transactionForm.reset();\n    this.transactionForm.markAsUntouched();\n    this.transactionForm.markAsPristine();\n    Object.keys(this.transactionForm.controls).forEach(name => {\n      let control = this.transactionForm.controls[name];\n      control.setErrors({ invalid: null });\n    });\n  }\n}\n",
+            "properties": [
+                {
+                    "name": "id",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 11
+                },
+                {
+                    "name": "img",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 13
+                },
+                {
+                    "name": "name",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 12
+                },
+                {
+                    "name": "username",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 14
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 163,
+            "methods": []
+        },
+        {
+            "name": "ITransactions",
+            "id": "interface-ITransactions-fda028a60de220a566513b6338eef54d",
+            "file": "src/app/Models/ITransactions.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "export interface ITransactions {\r\n    card_number: string;\r\n    cvv: number;\r\n    expiry_date: string;\r\n    destination_user_id: number;\r\n    value: number;\r\n}",
+            "properties": [
+                {
+                    "name": "card_number",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
+                },
+                {
+                    "name": "cvv",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 3
+                },
+                {
+                    "name": "destination_user_id",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 5
+                },
+                {
+                    "name": "expiry_date",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 4
+                },
+                {
+                    "name": "value",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 6
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 163,
+            "methods": []
+        },
+        {
+            "name": "IUser",
+            "id": "interface-IUser-5c9d492cc59d5bfeaa9e5f29e54e101f",
+            "file": "src/app/Models/IUsers.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "export interface IUser {\r\n    id: number;\r\n    name: string;\r\n    img: string;\r\n    username: string;\r\n}",
+            "properties": [
+                {
+                    "name": "id",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
+                },
+                {
+                    "name": "img",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 4
+                },
+                {
+                    "name": "name",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 3
+                },
+                {
+                    "name": "username",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 5
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 163,
+            "methods": []
+        },
+        {
+            "name": "SimpleModal",
+            "id": "interface-SimpleModal-02178c2b73f1fafd7e921a9bf17bd363",
+            "file": "src/app/Shared/modal/modal.component.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import { Component, Inject, OnInit } from '@angular/core';\nimport { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';\n\n\nexport interface SimpleModal {\n  title: string;\n  text: string;\n  success: boolean;\n  status: string;\n  btn: string;\n}\n\n@Component({\n  selector: 'app-modal',\n  templateUrl: './modal.component.html',\n  styleUrls: ['./modal.component.scss']\n})\nexport class ModalComponent implements OnInit {\n\n  constructor(\n    public dialogRef: MatDialogRef<ModalComponent>,\n    @Inject(MAT_DIALOG_DATA) public data: SimpleModal\n  ) {}\n\n\n  ngOnInit() {\n  }\n  closeModal(): void {\n    this.dialogRef.close();\n  }\n}\n",
+            "properties": [
+                {
+                    "name": "btn",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 10
+                },
+                {
+                    "name": "status",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 9
+                },
+                {
+                    "name": "success",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 8
+                },
+                {
+                    "name": "text",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 7
+                },
+                {
+                    "name": "title",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 6
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 163,
+            "methods": []
+        }
+    ],
+    "injectables": [
+        {
+            "name": "TransactionsService",
+            "id": "injectable-TransactionsService-9819055faaca21e236596e281bc549c2",
+            "file": "src/app/Service/transactions/transactions.service.ts",
+            "properties": [],
+            "methods": [
+                {
+                    "name": "sendPayment",
+                    "args": [
+                        {
+                            "name": "$payloadParams",
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 19,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "$payloadParams",
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\n\n\nimport { Observable } from 'rxjs';\nimport { HttpClient } from '@angular/common/http';\n\nimport { ITransactions } from 'src/app/Models/ITransactions';\n\nimport { environment } from 'src/environments/environment';\n\n\n@Injectable({\n  providedIn: 'root'\n})\nexport class TransactionsService {\n\n  constructor( private httpClient: HttpClient) { }\n\n  sendPayment($payloadParams) {\n    return new Promise(resolve => {\n      debugger\n      if ($payloadParams.card_number.slice(-4) === '1234')\n        return resolve({ success: false, status: 'Reprovada' })\n      this.httpClient.post(environment.sendPayment, $payloadParams).subscribe(\n        data => {\n          return resolve(data)\n        },\n        error => {\n          return resolve({ success: false, status: 'Reprovada' })\n        }\n      );\n    });\n  \n}\n\n}",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "httpClient",
+                        "type": "HttpClient",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 15,
+                "jsdoctags": [
+                    {
+                        "name": "httpClient",
+                        "type": "HttpClient",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "type": "injectable"
+        },
+        {
+            "name": "UsersService",
+            "id": "injectable-UsersService-53b0b589ea2d1494dc8c63afe8fdfaa6",
+            "file": "src/app/Service/users/users.service.ts",
+            "properties": [],
+            "methods": [
+                {
+                    "name": "getAllInfos",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "Observable<IUser[]>",
+                    "typeParameters": [],
+                    "line": 17,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\n\n\nimport { Observable } from 'rxjs';\nimport { HttpClient } from '@angular/common/http';\n\n\nimport { environment } from 'src/environments/environment';\nimport { IUser } from 'src/app/Models/IUsers';\n@Injectable({\n  providedIn: 'root'\n})\nexport class UsersService {\n\n  constructor( private httpClient: HttpClient) { }\n\n  getAllInfos(): Observable<IUser[]> {\n    return this.httpClient.get<IUser[]>(environment.getUserInfo);\n   }\n}",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "httpClient",
+                        "type": "HttpClient",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 13,
+                "jsdoctags": [
+                    {
+                        "name": "httpClient",
+                        "type": "HttpClient",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "type": "injectable"
+        }
+    ],
+    "guards": [],
+    "interceptors": [],
+    "classes": [
+        {
+            "name": "AppPage",
+            "id": "class-AppPage-7979ed501e6fb74fbc17b793cfbb5718",
+            "file": "e2e/src/app.po.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "class",
+            "sourceCode": "import { browser, by, element } from 'protractor';\r\n\r\nexport class AppPage {\r\n  navigateTo() {\r\n    return browser.get(browser.baseUrl) as Promise<any>;\r\n  }\r\n\r\n  getTitleText() {\r\n    return element(by.css('app-root .content span')).getText() as Promise<string>;\r\n  }\r\n}\r\n",
+            "properties": [],
+            "methods": [
+                {
+                    "name": "getTitleText",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 8,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "navigateTo",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 4,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "indexSignatures": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": []
+        }
+    ],
+    "directives": [],
+    "components": [
+        {
+            "name": "AppComponent",
+            "id": "component-AppComponent-50dc35f959388b918fd7937f1e191ec3",
+            "file": "src/app/app.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-root",
+            "styleUrls": [
+                "./app.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./app.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "title",
+                    "defaultValue": "'Desafio Picpay Front-end'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 9
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-root',\r\n  templateUrl: './app.component.html',\r\n  styleUrls: ['./app.component.scss']\r\n})\r\nexport class AppComponent {\r\n  title = 'Desafio Picpay Front-end';\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "\r\n@import 'src/assets/Settings/_font.scss';\r\n@import 'src/assets/Settings/_colors.scss';\r\n@import 'src/assets/Tools/_mixins.scss';\r\n\r\n\r\n.content {\r\n    width: 100%;\r\n    min-height: calc(100vh - 101px);\r\n    @include respond-to('xl'){\r\n        min-height: calc(100vh - 138px);\r\n    }\r\n}",
+                    "styleUrl": "./app.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "<app-header></app-header>\r\n<main class=\"content\">\r\n  <router-outlet></router-outlet>\r\n</main>\r\n<app-footer></app-footer>"
+        },
+        {
+            "name": "ButtonComponent",
+            "id": "component-ButtonComponent-642c6c4e474cd5a0ac760dfda26b2fc9",
+            "file": "src/stories/button.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "storybook-button",
+            "styleUrls": [
+                "./button.css"
+            ],
+            "styles": [],
+            "template": "<button   type=\"button\"\n   (click)=\"onClick.emit($event)\"\n   [ngClass]=\"classes\"\n   [ngStyle]=\"{ 'background-color': backgroundColor }\"\n >\n   {{ label }}\n </button>",
+            "templateUrl": [],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "backgroundColor",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "What background color to use",
+                    "description": "<p>What background color to use</p>\n",
+                    "line": 26,
+                    "type": "string"
+                },
+                {
+                    "name": "label",
+                    "defaultValue": "'Button'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "pos": 711,
+                            "end": 724,
+                            "flags": 4227072,
+                            "modifierFlagsCache": 0,
+                            "transformFlags": 0,
+                            "kind": 317,
+                            "tagName": {
+                                "pos": 712,
+                                "end": 720,
+                                "flags": 4227072,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 78,
+                                "escapedText": "required"
+                            },
+                            "comment": ""
+                        }
+                    ],
+                    "rawdescription": "Button contents",
+                    "description": "<p>Button contents</p>\n",
+                    "line": 40,
+                    "type": "string"
+                },
+                {
+                    "name": "primary",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "Is this the principal call to action on the page?",
+                    "description": "<p>Is this the principal call to action on the page?</p>\n",
+                    "line": 20,
+                    "type": "boolean"
+                },
+                {
+                    "name": "size",
+                    "defaultValue": "'medium'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "How large should the button be?",
+                    "description": "<p>How large should the button be?</p>\n",
+                    "line": 32,
+                    "type": "\"small\" | \"medium\" | \"large\""
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "onClick",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nOptional click handler\n",
+                    "description": "<p>Optional click handler</p>\n",
+                    "line": 46,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'storybook-button',\n  template: ` <button\n    type=\"button\"\n    (click)=\"onClick.emit($event)\"\n    [ngClass]=\"classes\"\n    [ngStyle]=\"{ 'background-color': backgroundColor }\"\n  >\n    {{ label }}\n  </button>`,\n  styleUrls: ['./button.css'],\n})\nexport default class ButtonComponent {\n  /**\n   * Is this the principal call to action on the page?\n   */\n  @Input()\n  primary = false;\n\n  /**\n   * What background color to use\n   */\n  @Input()\n  backgroundColor?: string;\n\n  /**\n   * How large should the button be?\n   */\n  @Input()\n  size: 'small' | 'medium' | 'large' = 'medium';\n\n  /**\n   * Button contents\n   *\n   * @required\n   */\n  @Input()\n  label = 'Button';\n\n  /**\n   * Optional click handler\n   */\n  @Output()\n  onClick = new EventEmitter<Event>();\n\n  public get classes(): string[] {\n    const mode = this.primary ? 'storybook-button--primary' : 'storybook-button--secondary';\n\n    return ['storybook-button', `storybook-button--${this.size}`, mode];\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".storybook-button {\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  font-weight: 700;\n  border: 0;\n  border-radius: 3em;\n  cursor: pointer;\n  display: inline-block;\n  line-height: 1;\n}\n.storybook-button--primary {\n  color: white;\n  background-color: #1ea7fd;\n}\n.storybook-button--secondary {\n  color: #333;\n  background-color: transparent;\n  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;\n}\n.storybook-button--small {\n  font-size: 12px;\n  padding: 10px 16px;\n}\n.storybook-button--medium {\n  font-size: 14px;\n  padding: 11px 20px;\n}\n.storybook-button--large {\n  font-size: 16px;\n  padding: 12px 24px;\n}\n",
+                    "styleUrl": "./button.css"
+                }
+            ],
+            "stylesData": "",
+            "accessors": {
+                "classes": {
+                    "name": "classes",
+                    "getSignature": {
+                        "name": "classes",
+                        "type": "[]",
+                        "returnType": "string[]",
+                        "line": 48
+                    }
+                }
+            }
+        },
+        {
+            "name": "ButtonComponent",
+            "id": "component-ButtonComponent-6ee30e3a45c0fe6744484d767fb8f2cd-1",
+            "file": "src/app/Shared/button/button.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-button",
+            "styleUrls": [
+                "./button.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./button.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "disabled",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 14,
+                    "type": "boolean"
+                },
+                {
+                    "name": "outline",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 13,
+                    "type": "boolean"
+                },
+                {
+                    "name": "status",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 12,
+                    "type": "string"
+                },
+                {
+                    "name": "text",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 11,
+                    "type": "string"
+                },
+                {
+                    "name": "type",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 10,
+                    "type": "string"
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "clickBtn",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 15,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 20,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "onBtnClick",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 27,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';\n\n@Component({\n  selector: 'app-button',\n  templateUrl: './button.component.html',\n  styleUrls: ['./button.component.scss']\n})\nexport class ButtonComponent implements OnInit {\n\n  @Input() type: string;\n  @Input() text: string;\n  @Input() status: string;\n  @Input() outline: boolean;\n  @Input() disabled: boolean;\n  @Output() clickBtn = new EventEmitter();\n\n  \n  constructor() { }\n\n  ngOnInit() {\n    this.type = this.type ? this.type : 'button';\n    this.text = this.type ? this.text : 'Enviar';\n    this.outline = this.outline ? this.outline : false;\n    this.status = this.status ? this.status : '';\n  }\n\n  onBtnClick(){\n    this.clickBtn.emit();\n  }\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./button.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 15
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "isDuplicate": true,
+            "duplicateId": 1,
+            "duplicateName": "ButtonComponent-1",
+            "templateData": "<button [type]=\"type\" class=\"btn\" [ngClass]=\"{'btn-outline': outline, 'btn-loading': status === 'loading'}\" (click)=\"onBtnClick()\" [disabled]=\"disabled\">{{text}}</button>\n\n"
+        },
+        {
+            "name": "DialogTransaction",
+            "id": "component-DialogTransaction-5c2f582a4fdb769c4b92a9ebb8df1059",
+            "file": "src/app/Pages/home/home.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "dialog-transaction",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "modal-transaction.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "cards",
+                    "defaultValue": "[\n    // valid card\n    {\n      card_number: '1111111111111111',\n      cvv: 789,\n      expiry_date: '01/18'\n    },\n    // invalid card\n    {\n      card_number: '4111111111111234',\n      cvv: 123,\n      expiry_date: '01/20'\n    }\n  ]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 84
+                },
+                {
+                    "name": "data",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "FeedbackModal",
+                    "optional": false,
+                    "description": "",
+                    "line": 101,
+                    "decorators": [
+                        {
+                            "name": "Inject",
+                            "stringifiedArguments": "MAT_DIALOG_DATA"
+                        }
+                    ],
+                    "modifierKind": [
+                        122
+                    ]
+                },
+                {
+                    "name": "dialogRef",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "MatDialogRef<DialogTransaction>",
+                    "optional": false,
+                    "description": "",
+                    "line": 100,
+                    "modifierKind": [
+                        122
+                    ]
+                },
+                {
+                    "name": "loading",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 83
+                },
+                {
+                    "name": "transactionForm",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "FormGroup",
+                    "optional": false,
+                    "description": "",
+                    "line": 82
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "clearForm",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 142,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "closeModal",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 112,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "onChange",
+                    "args": [
+                        {
+                            "name": "e",
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 133,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "e",
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "onSubmit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 116,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        129
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Inject, OnInit } from '@angular/core';\nimport { IUser } from 'src/app/Models/IUsers';\nimport { UsersService } from 'src/app/Service/users/users.service';\nimport { MatDialogRef } from '@angular/material';\nimport { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';\nimport { FormBuilder, Validators, FormGroup } from '@angular/forms';\nimport { ModalComponent } from 'src/app/Shared/modal/modal.component';\nimport { TransactionsService } from 'src/app/Service/transactions/transactions.service';\n\nexport interface FeedbackModal {\n  id: number;\n  name: string;\n  img: string;\n  username: string;\n}\n\n\n@Component({\n  selector: 'app-home',\n  templateUrl: './home.component.html',\n  styleUrls: ['./home.component.scss']\n})\nexport class HomeComponent implements OnInit {\n  users: Array<IUser>\n  textFeedback: string;\n  constructor( private _usersService: UsersService,public dialog: MatDialog) { }\n\n  ngOnInit() {\n    this.getUsers();\n  }\n\n  private getUsers(): void {\n    this._usersService.getAllInfos().subscribe((_users) => {\n      console.log(_users)\n      this.users = _users\n    })\n  }\n\n  handleItem(event): void {\n    this.openPaymentDialog(event.data);\n  }\n\n  openPaymentDialog(user): void {\n    const dialogRef = this.dialog.open(DialogTransaction, {\n      panelClass: ['transaction-dialog', 'custom-modal'],\n      data: { user: user }\n    });\n\n    /** Após a transação, abre modal de feedback com response */\n    dialogRef.afterClosed().subscribe(result => {\n      if (result) {\n        this.textFeedback = result.success\n          ? 'O pagamento foi concluído com sucesso!'\n          : 'O pagamento <strong>não</strong> foi concluído com sucesso.';\n        this.openFeedbackDialog(result);\n      }\n    });\n  }\n\n  openFeedbackDialog(feedback): void {\n    this.dialog.open(ModalComponent, {\n      panelClass: ['feedback-dialog', 'simple-modal', 'custom-modal'],\n      data: {\n        title: 'Recibo de Pagamento',\n        text: this.textFeedback,\n        success: feedback.success,\n        status: feedback.status,\n        btn: 'Ok'\n      }\n    });\n  }\n}\n\n\n\n\n@Component({\n  selector: 'dialog-transaction',\n  templateUrl: 'modal-transaction.html'\n})\nexport class DialogTransaction {\n  transactionForm: FormGroup;\n  loading = false;\n  cards = [\n    // valid card\n    {\n      card_number: '1111111111111111',\n      cvv: 789,\n      expiry_date: '01/18'\n    },\n    // invalid card\n    {\n      card_number: '4111111111111234',\n      cvv: 123,\n      expiry_date: '01/20'\n    }\n  ];\n\n  constructor(\n    public dialogRef: MatDialogRef<DialogTransaction>,\n    @Inject(MAT_DIALOG_DATA) public data: FeedbackModal,\n    private _formBuilder: FormBuilder,\n    private _transactionService: TransactionsService\n  ) {\n    // Formulário de pagamento e validações\n    this.transactionForm = this._formBuilder.group({\n      paymentValue: [0, [Validators.required]],\n      creditCard: ['', [Validators.required]]\n    });\n  }\n\n  closeModal(): void {\n    this.dialogRef.close();\n  }\n\n  async onSubmit() {\n    this.loading = true;\n    let creditCardNumber = this.transactionForm.get('creditCard').value,\n      paymentValue = this.transactionForm.get('paymentValue').value,\n      paymentData = this.cards.find(\n        card => creditCardNumber === card.card_number.slice(-4)\n      );\n\n    paymentData['destination_user_id'] = this.data['user'].id;\n    paymentData['value'] = paymentValue;\n\n    let response = await this._transactionService.sendPayment(paymentData);\n    this.loading = false;\n    this.clearForm();\n    this.dialogRef.close(response);\n  }\n\n  onChange(e): void {\n    this.transactionForm.controls[e.target.name].markAsTouched;\n\n    // Garante que o campo de valor terá o valor monetário limpo\n    this.transactionForm.controls[e.target.name].setValue(\n      this.transactionForm.controls[e.target.name].value\n    );\n  }\n\n  clearForm(): void {\n    this.transactionForm.reset();\n    this.transactionForm.markAsUntouched();\n    this.transactionForm.markAsPristine();\n    Object.keys(this.transactionForm.controls).forEach(name => {\n      let control = this.transactionForm.controls[name];\n      control.setErrors({ invalid: null });\n    });\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "dialogRef",
+                        "type": "MatDialogRef<DialogTransaction>",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "data",
+                        "type": "FeedbackModal",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "_formBuilder",
+                        "type": "FormBuilder",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "_transactionService",
+                        "type": "TransactionsService",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 97,
+                "jsdoctags": [
+                    {
+                        "name": "dialogRef",
+                        "type": "MatDialogRef<DialogTransaction>",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "data",
+                        "type": "FeedbackModal",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "_formBuilder",
+                        "type": "FormBuilder",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "_transactionService",
+                        "type": "TransactionsService",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "templateData": "<div mat-dialog-content>\r\n    <form class=\"transaction-form\" id=\"transactionForm\" [formGroup]=\"transactionForm\" *ngIf=\"transactionForm\">\r\n      <fieldset class=\"description\">Insira os dados para efetuar o pagamento:</fieldset>\r\n  \r\n      <mat-form-field class=\"example-full-width\" [ngClass]=\"{'disabled': loading}\">\r\n        <mat-label>Valor</mat-label>\r\n        <input type=\"tel\" name=\"paymentValue\" currencyMask [options]=\"{ prefix: 'R$ ', thousands: '.', decimal: ',' }\"\r\n          matInput formControlName=\"paymentValue\" placeholder=\"R$ 0,00\" min=\"0.01\"\r\n          (change)=\"onChange($event)\">\r\n        <mat-error *ngIf=\"transactionForm.controls['paymentValue'].errors\">\r\n          O valor é <strong>obrigatório</strong>\r\n        </mat-error>\r\n      </mat-form-field>\r\n  \r\n      <mat-form-field class=\"select example-full-width\" [ngClass]=\"{'disabled': loading}\">\r\n        <mat-label>Cartão de Crédito</mat-label>\r\n        <mat-select formControlName=\"creditCard\" name=\"creditCard\">\r\n          <mat-option value=\"\" disabled>Selecione</mat-option>\r\n          <mat-option *ngFor=\"let card of cards\" [value]=\"card.card_number.slice(-4)\">\r\n            Cartão final {{ card.card_number.slice(-4) }}\r\n          </mat-option>\r\n        </mat-select>\r\n      </mat-form-field>\r\n  \r\n    </form>\r\n  \r\n  </div>\r\n  <div mat-dialog-actions>\r\n    <app-button [type]=\"'submit'\" class=\"app-button\" [text]=\"'Pagar'\" [disabled]=\"transactionForm.invalid || loading\"\r\n      [status]=\"loading ? 'loading' : ''\" (click)=\"onSubmit()\"></app-button>\r\n  </div>"
+        },
+        {
+            "name": "FooterComponent",
+            "id": "component-FooterComponent-cfc655db1860da23e08a2af26660a239",
+            "file": "src/app/Shared/footer/footer.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-footer",
+            "styleUrls": [
+                "./footer.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./footer.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 12,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'app-footer',\n  templateUrl: './footer.component.html',\n  styleUrls: ['./footer.component.scss']\n})\nexport class FooterComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit() {\n  }\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "\r\n@import 'src/assets/Settings/_font.scss';\r\n@import 'src/assets/Settings/_colors.scss';\r\n@import 'src/assets/Tools/_mixins.scss';\r\n\r\n.pp-footer{\r\n    padding: 2.5rem 0.5rem 3.5rem;\r\n    background-color: $green-400;\r\n\r\n    >.pp-content{\r\n        width: 100%;\r\n        @include prefix(display, flex, webkit ms);\r\n        @include prefix(align-items, center, webkit ms);\r\n        @include prefix(justify-content, center, webkit ms);\r\n        flex-direction: column;\r\n        @include respond-to('xl') {\r\n            @include prefix(justify-content, space-between, webkit ms);\r\n            flex-direction: row;\r\n        }\r\n       \r\n        padding: auto 2rem;\r\n        margin: 0 auto;\r\n\r\n        >.pp-logo{\r\n\r\n            width: 250px;\r\n            @include respond-to('xl'){\r\n                width: 400px;\r\n            }\r\n            height: 48px;\r\n            @include prefix(display, block, webkit ms);\r\n            margin: 1.25rem;\r\n   \r\n        }\r\n        >.pp-social{\r\n            width: 100vw;\r\n            @include prefix(display, flex, webkit ms);\r\n            @include prefix(justify-content, center, webkit ms);\r\n            padding: 0;\r\n            margin: 0;\r\n            overflow: auto;\r\n            @include respond-to('xl'){\r\n                @include prefix(justify-content, flex-end, webkit ms);\r\n                padding-left: 1.5rem;\r\n                padding-right: 1.5rem;\r\n                \r\n            }\r\n\r\n            \r\n\r\n            .pp-social-item{\r\n                @include prefix(display, inline-flex, webkit ms);\r\n                padding: 0.2rem;\r\n                @include respond-to('xl'){\r\n                    padding: 0.3rem;\r\n                }\r\n                .link{\r\n                    width: 2.75rem;\r\n                    height: 2.75rem;\r\n                    @include prefix(display, inline-flex, webkit ms);\r\n                }\r\n            }\r\n        }\r\n    }\r\n}",
+                    "styleUrl": "./footer.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 8
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<footer class=\"pp-footer\">\n    <div class=\"pp-content container\">\n        <div class=\"pp-logo\">\n            <a aria-label=\"Logo PicPay\" href=\"/\" target=\"_blank\" rel=\"noreferrer\" class=\"link\">\n                <img src=\"..\\..\\..\\assets\\Images\\logo-footer.svg\" alt=\"Logo PicPay\" loading=\"lazy\" decoding=\"async\" /> \n             </a>\n        </div>\n        <ul class=\"pp-social\">\n            <li class=\"pp-social-item\">\n                <a aria-label=\"Facebook\" href=\"https://www.facebook.com/PicPayBrasil\" target=\"_blank\" rel=\"noreferrer\" class=\"link\">\n                   <img src=\"..\\..\\..\\assets\\Images\\facebook.svg\" alt=\"Logo Facebook\" loading=\"lazy\" decoding=\"async\" width=\"42\" height=\"43\" /> \n                </a>\n            </li>\n            <li class=\"pp-social-item\">\n                <a aria-label=\"Instagram\" href=\"https://instagram.com/picpay\" target=\"_blank\" rel=\"noreferrer\" class=\"link\">\n                    <img src=\"..\\..\\..\\assets\\Images\\instagram.svg\" alt=\"Logo Instagram\" loading=\"lazy\" decoding=\"async\" width=\"42\" height=\"43\" />\n                </a>\n            </li>\n            <li class=\"pp-social-item\">                \n                <a aria-label=\"Twitter\" href=\"https://twitter.com/picpay\" target=\"_blank\" rel=\"noreferrer\" class=\"link\">\n                    <img src=\"..\\..\\..\\assets\\Images\\twitter.svg\" alt=\"Logo Facebook\" loading=\"lazy\" decoding=\"async\" width=\"42\" height=\"43\" />\n                </a>\n            </li>\n            <li class=\"pp-social-item\">                \n                <a aria-label=\"LinkedIn\" href=\"https://www.linkedin.com/company/picpay/\" target=\"_blank\" rel=\"noreferrer\" class=\"link\">\n                    <img src=\"..\\..\\..\\assets\\Images\\LinkedIn.svg\" alt=\"Logo LinkedIn\" loading=\"lazy\" decoding=\"async\" width=\"42\" height=\"43\" /> \n                </a>\n            </li>\n            <li class=\"pp-social-item\">                \n                <a aria-label=\"Tik Tok\" href=\"https://www.tiktok.com/@picpay\" target=\"_blank\" rel=\"noreferrer\" class=\"link\">\n                    <img src=\"..\\..\\..\\assets\\Images\\tiktok.svg\" alt=\"Logo Tik Tok\" loading=\"lazy\" decoding=\"async\" width=\"42\" height=\"43\" />\n                </a>\n            </li>\n            <li class=\"pp-social-item\">                \n                <a aria-label=\"Youtube\" href=\"https://www.youtube.com/user/PicPay\" target=\"_blank\" rel=\"noreferrer\" class=\"link\">\n                    <img src=\"..\\..\\..\\assets\\Images\\youtube.svg\" alt=\"Logo Youtube\" loading=\"lazy\" decoding=\"async\" width=\"42\" height=\"43\" />\n            </a>\n            </li>\n        </ul>\n    </div>\n</footer>"
+        },
+        {
+            "name": "HeaderComponent",
+            "id": "component-HeaderComponent-246e2a69dc126a3bd76c6328dd3b93e2",
+            "file": "src/stories/header.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "storybook-header",
+            "styleUrls": [
+                "./header.css"
+            ],
+            "styles": [],
+            "template": "<header>    <div class=\"wrapper\">\n      <div>\n        <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M10 0h12a10 10 0 0110 10v12a10 10 0 01-10 10H10A10 10 0 010 22V10A10 10 0 0110 0z\"\n              fill=\"#FFF\"\n            />\n            <path\n              d=\"M5.3 10.6l10.4 6v11.1l-10.4-6v-11zm11.4-6.2l9.7 5.5-9.7 5.6V4.4z\"\n              fill=\"#555AB9\"\n            />\n            <path\n              d=\"M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z\"\n              fill=\"#91BAF8\"\n            />\n          </g>\n        </svg>\n        <h1>Acme</h1>\n      </div>\n      <div>\n        <storybook-button\n          *ngIf=\"user\"\n          size=\"small\"\n          (onClick)=\"onLogout.emit($event)\"\n          label=\"Log out\"\n        ></storybook-button>\n        <storybook-button\n          *ngIf=\"!user\"\n          size=\"small\"\n          (onClick)=\"onLogin.emit($event)\"\n          label=\"Log in\"\n        ></storybook-button>\n        <storybook-button\n          *ngIf=\"!user\"\n          primary\n          size=\"small\"\n          (onClick)=\"onCreateAccount.emit($event)\"\n          label=\"Sign up\"\n        ></storybook-button>\n      </div>\n    </div>\n  </header>",
+            "templateUrl": [],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "user",
+                    "defaultValue": "null",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 53,
+                    "type": ""
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "onCreateAccount",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 62,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "onLogin",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 56,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "onLogout",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 59,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'storybook-header',\n  template: `<header>\n    <div class=\"wrapper\">\n      <div>\n        <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M10 0h12a10 10 0 0110 10v12a10 10 0 01-10 10H10A10 10 0 010 22V10A10 10 0 0110 0z\"\n              fill=\"#FFF\"\n            />\n            <path\n              d=\"M5.3 10.6l10.4 6v11.1l-10.4-6v-11zm11.4-6.2l9.7 5.5-9.7 5.6V4.4z\"\n              fill=\"#555AB9\"\n            />\n            <path\n              d=\"M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z\"\n              fill=\"#91BAF8\"\n            />\n          </g>\n        </svg>\n        <h1>Acme</h1>\n      </div>\n      <div>\n        <storybook-button\n          *ngIf=\"user\"\n          size=\"small\"\n          (onClick)=\"onLogout.emit($event)\"\n          label=\"Log out\"\n        ></storybook-button>\n        <storybook-button\n          *ngIf=\"!user\"\n          size=\"small\"\n          (onClick)=\"onLogin.emit($event)\"\n          label=\"Log in\"\n        ></storybook-button>\n        <storybook-button\n          *ngIf=\"!user\"\n          primary\n          size=\"small\"\n          (onClick)=\"onCreateAccount.emit($event)\"\n          label=\"Sign up\"\n        ></storybook-button>\n      </div>\n    </div>\n  </header>`,\n  styleUrls: ['./header.css'],\n})\nexport default class HeaderComponent {\n  @Input()\n  user: unknown = null;\n\n  @Output()\n  onLogin = new EventEmitter<Event>();\n\n  @Output()\n  onLogout = new EventEmitter<Event>();\n\n  @Output()\n  onCreateAccount = new EventEmitter<Event>();\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".wrapper {\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\n  padding: 15px 20px;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n\nsvg {\n  display: inline-block;\n  vertical-align: top;\n}\n\nh1 {\n  font-weight: 900;\n  font-size: 20px;\n  line-height: 1;\n  margin: 6px 0 6px 10px;\n  display: inline-block;\n  vertical-align: top;\n}\n\nbutton + button {\n  margin-left: 10px;\n}\n",
+                    "styleUrl": "./header.css"
+                }
+            ],
+            "stylesData": ""
+        },
+        {
+            "name": "HeaderComponent",
+            "id": "component-HeaderComponent-0a59e73a7665c0c0c87483769be7954e-1",
+            "file": "src/app/Shared/header/header.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-header",
+            "styleUrls": [
+                "./header.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./header.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 12,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'app-header',\n  templateUrl: './header.component.html',\n  styleUrls: ['./header.component.scss']\n})\nexport class HeaderComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit() {\n  }\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "\r\n@import 'src/assets/Settings/_font.scss';\r\n@import 'src/assets/Settings/_colors.scss';\r\n@import 'src/assets/Tools/_mixins.scss';\r\n\r\n.pp-header{\r\n    position: sticky;\r\n    width: 100%;\r\n    top: 0px;\r\n    padding: 1rem 1.5rem;\r\n    background-color: $green-400;\r\n    z-index: 50;\r\n    @include prefix(box-sizing, border-box, webkit ms);\r\n\r\n    >.pp-content{\r\n        @include prefix(display, flex, webkit ms);\r\n        @include prefix(flex-wrap, wrap, webkit ms);\r\n        @include prefix(align-items, center, webkit ms);\r\n        @include prefix(justify-content, space-between, webkit ms);\r\n        \r\n        .pp-logo{\r\n            @include prefix(display, flex, webkit ms);\r\n            @include prefix(align-items, center, webkit ms);\r\n            @include prefix(flex-shrink, 0, webkit ms);\r\n            margin-right: 1.5rem;\r\n        \r\n\r\n            >.pp-link{\r\n                @include prefix(display, inline-flex, webkit ms);\r\n            }\r\n        }\r\n        \r\n    }\r\n}\r\n\r\n",
+                    "styleUrl": "./header.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 8
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "isDuplicate": true,
+            "duplicateId": 1,
+            "duplicateName": "HeaderComponent-1",
+            "templateData": "<header class=\"pp-header\">\n    <div class=\"pp-content container\">\n        <div class=\"pp-logo\">\n            <a href=\"/\" class=\"pp-link\">\n                <img src=\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjkgNDQiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDEyOSA0NCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBhdGggZD0iTTI4IDM0LjNoNS44VjE3LjRIMjh2MTYuOXptNy44LTI4LjRoLTMuOXYzLjloMy45VjUuOXpNMTMuOSA3LjhIOC4zdjQuOWg1LjJjMy4zIDAgNS4yIDEuNiA1LjIgNC42UzE2LjggMjIgMTMuNSAyMkg4LjN2LTkuMkgyLjV2MjEuNWg1Ljh2LTcuNGg1LjVjNi43IDAgMTAuNi0zLjYgMTAuNi05LjggMC01LjgtMy44LTkuMy0xMC41LTkuM3pNMzkuNyAySDI4djExLjdoMTEuN1Yyem0tMS45IDkuN0gzMFYzLjloNy44djcuOHptMzQtMy45aC01LjN2NC45aDVjMy4zIDAgNS4yIDEuNiA1LjIgNC42Uzc0LjggMjIgNzEuNSAyMmgtNXYtOS4yaC01Ljh2MjEuNWg1Ljh2LTcuNGg1LjNjNi43IDAgMTAuNi0zLjYgMTAuNi05LjggMC01LjgtMy45LTkuMy0xMC42LTkuM3ptNDguNyA2LjItNSAxMi42LTUtMTIuNmgtNmw4IDIwLjMtMy4xIDcuN2g2LjFsMTEtMjhoLTZ6bS0yNi0uMWMtMy41IDAtNi4yLjgtOS4yIDIuM2wxLjggNGMyLjEtMS4yIDQuMi0xLjggNi4xLTEuOCAyLjggMCA0LjIgMS4yIDQuMiAzLjR2LjRoLTUuNmMtNSAwLTcuNyAyLjMtNy43IDYuMSAwIDMuNyAyLjYgNi4zIDcgNi4zIDIuOCAwIDQuOC0xIDYuNC0yLjd2Mi4yaDUuN1YyMC45Yy0uMi00LjMtMy4zLTctOC43LTd6bTMuNCAxMy42Yy0uNiAxLjctMi4zIDMuMS00LjcgMy4xLTIgMC0zLjItMS0zLjItMi42czEuMS0yLjMgMy4zLTIuM2g0LjZ2MS44em0tNDkuMyAyLjRjLTIuOCAwLTQuOC0yLjItNC44LTUuNSAwLTMuMiAyLTUuNCA0LjgtNS40IDIgMCAzLjUuOCA0LjYgMi4ybDMuOS0yLjhjLTEuOC0yLjctNC45LTQuMy04LjgtNC4zQzQyLjIgMTQgMzggMTguMiAzOCAyNC40czQuMiAxMC4zIDEwLjMgMTAuM2M0LjIgMCA3LjMtMS43IDktNC41bC00LTIuN2MtMSAxLjYtMi42IDIuNC00LjcgMi40eiIgc3R5bGU9ImZpbGw6I2YwZjFlOCIvPjwvc3ZnPg==\" alt=\"Logo do PicPay\" loading=\"lazy\" decoding=\"async\" width=\"120\" height=\"40\"/>\n            </a>\n        </div>\n    </div>\n</header>"
+        },
+        {
+            "name": "HomeComponent",
+            "id": "component-HomeComponent-5c2f582a4fdb769c4b92a9ebb8df1059",
+            "file": "src/app/Pages/home/home.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-home",
+            "styleUrls": [
+                "./home.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./home.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "dialog",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "MatDialog",
+                    "optional": false,
+                    "description": "",
+                    "line": 26,
+                    "modifierKind": [
+                        122
+                    ]
+                },
+                {
+                    "name": "textFeedback",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 25
+                },
+                {
+                    "name": "users",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Array<IUser>",
+                    "optional": false,
+                    "description": "",
+                    "line": 24
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "getUsers",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 32,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        120
+                    ]
+                },
+                {
+                    "name": "handleItem",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 39,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 28,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "openFeedbackDialog",
+                    "args": [
+                        {
+                            "name": "feedback",
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 60,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "feedback",
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "openPaymentDialog",
+                    "args": [
+                        {
+                            "name": "user",
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 43,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "user",
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Inject, OnInit } from '@angular/core';\nimport { IUser } from 'src/app/Models/IUsers';\nimport { UsersService } from 'src/app/Service/users/users.service';\nimport { MatDialogRef } from '@angular/material';\nimport { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';\nimport { FormBuilder, Validators, FormGroup } from '@angular/forms';\nimport { ModalComponent } from 'src/app/Shared/modal/modal.component';\nimport { TransactionsService } from 'src/app/Service/transactions/transactions.service';\n\nexport interface FeedbackModal {\n  id: number;\n  name: string;\n  img: string;\n  username: string;\n}\n\n\n@Component({\n  selector: 'app-home',\n  templateUrl: './home.component.html',\n  styleUrls: ['./home.component.scss']\n})\nexport class HomeComponent implements OnInit {\n  users: Array<IUser>\n  textFeedback: string;\n  constructor( private _usersService: UsersService,public dialog: MatDialog) { }\n\n  ngOnInit() {\n    this.getUsers();\n  }\n\n  private getUsers(): void {\n    this._usersService.getAllInfos().subscribe((_users) => {\n      console.log(_users)\n      this.users = _users\n    })\n  }\n\n  handleItem(event): void {\n    this.openPaymentDialog(event.data);\n  }\n\n  openPaymentDialog(user): void {\n    const dialogRef = this.dialog.open(DialogTransaction, {\n      panelClass: ['transaction-dialog', 'custom-modal'],\n      data: { user: user }\n    });\n\n    /** Após a transação, abre modal de feedback com response */\n    dialogRef.afterClosed().subscribe(result => {\n      if (result) {\n        this.textFeedback = result.success\n          ? 'O pagamento foi concluído com sucesso!'\n          : 'O pagamento <strong>não</strong> foi concluído com sucesso.';\n        this.openFeedbackDialog(result);\n      }\n    });\n  }\n\n  openFeedbackDialog(feedback): void {\n    this.dialog.open(ModalComponent, {\n      panelClass: ['feedback-dialog', 'simple-modal', 'custom-modal'],\n      data: {\n        title: 'Recibo de Pagamento',\n        text: this.textFeedback,\n        success: feedback.success,\n        status: feedback.status,\n        btn: 'Ok'\n      }\n    });\n  }\n}\n\n\n\n\n@Component({\n  selector: 'dialog-transaction',\n  templateUrl: 'modal-transaction.html'\n})\nexport class DialogTransaction {\n  transactionForm: FormGroup;\n  loading = false;\n  cards = [\n    // valid card\n    {\n      card_number: '1111111111111111',\n      cvv: 789,\n      expiry_date: '01/18'\n    },\n    // invalid card\n    {\n      card_number: '4111111111111234',\n      cvv: 123,\n      expiry_date: '01/20'\n    }\n  ];\n\n  constructor(\n    public dialogRef: MatDialogRef<DialogTransaction>,\n    @Inject(MAT_DIALOG_DATA) public data: FeedbackModal,\n    private _formBuilder: FormBuilder,\n    private _transactionService: TransactionsService\n  ) {\n    // Formulário de pagamento e validações\n    this.transactionForm = this._formBuilder.group({\n      paymentValue: [0, [Validators.required]],\n      creditCard: ['', [Validators.required]]\n    });\n  }\n\n  closeModal(): void {\n    this.dialogRef.close();\n  }\n\n  async onSubmit() {\n    this.loading = true;\n    let creditCardNumber = this.transactionForm.get('creditCard').value,\n      paymentValue = this.transactionForm.get('paymentValue').value,\n      paymentData = this.cards.find(\n        card => creditCardNumber === card.card_number.slice(-4)\n      );\n\n    paymentData['destination_user_id'] = this.data['user'].id;\n    paymentData['value'] = paymentValue;\n\n    let response = await this._transactionService.sendPayment(paymentData);\n    this.loading = false;\n    this.clearForm();\n    this.dialogRef.close(response);\n  }\n\n  onChange(e): void {\n    this.transactionForm.controls[e.target.name].markAsTouched;\n\n    // Garante que o campo de valor terá o valor monetário limpo\n    this.transactionForm.controls[e.target.name].setValue(\n      this.transactionForm.controls[e.target.name].value\n    );\n  }\n\n  clearForm(): void {\n    this.transactionForm.reset();\n    this.transactionForm.markAsUntouched();\n    this.transactionForm.markAsPristine();\n    Object.keys(this.transactionForm.controls).forEach(name => {\n      let control = this.transactionForm.controls[name];\n      control.setErrors({ invalid: null });\n    });\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@import 'src/assets/Settings/_colors.scss';\r\n@import 'src/assets/Settings/_font.scss';\r\n@import 'src/assets/Tools/_mixins.scss';\r\n\r\n.users-welcome {\r\n    background: $bg-gradient;\r\n    padding: 1rem 0;\r\n    margin: 0 0 1rem 0;\r\n\r\n    @include respond-to('xl'){\r\n        padding: 1.5rem 0;\r\n        margin: 0 0 1.5rem 0;\r\n    }\r\n\r\n    .description {\r\n        @include weight(700);\r\n        color: $green-700;\r\n\r\n        &:not(:first-child){\r\n            @include weight(300); \r\n        }\r\n    }\r\n}",
+                    "styleUrl": "./home.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "_usersService",
+                        "type": "UsersService",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "dialog",
+                        "type": "MatDialog",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 25,
+                "jsdoctags": [
+                    {
+                        "name": "_usersService",
+                        "type": "UsersService",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "dialog",
+                        "type": "MatDialog",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<section class=\"users\">\n    <div class=\"users-welcome\">\n       <div class=\"container\">\n         <h1 class=\"description\">Pagar</h1>\n         <h6 class=\"description\">Escolha um amigo para enviar um dinheiro ;)</h6>\n       </div>\n    </div>\n    <div class=\"container\">\n        <app-list [items]=\"users\" (itemSelected)=\"handleItem($event)\"></app-list>\n    </div>\n</section>"
+        },
+        {
+            "name": "ListComponent",
+            "id": "component-ListComponent-52c7e43dd9c2436cd9287dfc162b1263",
+            "file": "src/app/Shared/list/list.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-list",
+            "styleUrls": [
+                "./list.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./list.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "items",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 12,
+                    "type": "Array<IUser>"
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "itemSelected",
+                    "defaultValue": "new EventEmitter<{ data: any}>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 13,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "clickItem",
+                    "args": [
+                        {
+                            "name": "item",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 21,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "item",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 18,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';\nimport { IUser } from 'src/app/Models/IUsers';\n\n@Component({\n  selector: 'app-list',\n  templateUrl: './list.component.html',\n  styleUrls: ['./list.component.scss']\n})\n\n\nexport class ListComponent implements OnInit {\n  @Input() items: Array<IUser>;\n  @Output() itemSelected = new EventEmitter<{ data: any}>();\n\n  \n    constructor() { }\n  \n    ngOnInit() {\n    }\n  \n    clickItem(item: any){\n      this.itemSelected.emit({ data: item })\n    }\n  }\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@import 'src/assets/Tools/_mixins.scss';\r\n\r\n::ng-deep {\r\n    .pagination {\r\n      justify-content: center;\r\n      margin: 30px 0;\r\n  \r\n      @include respond-to('desktop') {\r\n        margin: 50px 0 70px;\r\n      }\r\n    }\r\n  }",
+                    "styleUrl": "./list.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 13
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<ul class=\"pp-list\">\n    <li class=\"pp-list-item\" data-aos=\"zoom-in\" *ngFor=\"let item of items | angularPaginator: { currentPage: currentPage }; let i = index\" >\n        <div class=\"pp-list-info\">\n            <img class=\"pp-img\" [src]=\"item.img\"  [alt]=\" 'foto do usuário' + ' ' + item.name\" loading=\"lazy\" decoding=\"async\"/>\n        </div>\n        <div class=\"pp-list-info\">\n            <p class=\"pp-title\">{{ item.name }}\n                <span >   </span>\n            </p>\n            <p class=\"pp-title\">{{ item.username }}\n                <span >   </span>\n            </p>\n            <p class=\"pp-subtitle\">\n                ID: {{ item.id}}\n                <span >   </span>\n            </p>\n        </div>\n        \n\n        <app-button [text]=\"'Pagar'\" [outline]=\"true\" class=\"pp-list-btn\" (clickBtn)=\"clickItem(item)\"></app-button>\n    </li>\n   \n</ul>\n\n<angular-paginator [boundaryLinks]=\"false\" [directionLinks]=\"true\" maxSize=\"10\" [rotate]=\"true\"\n  [boundaryLinkNumbers]=\"false\" [forceEllipses]=\"false\" size=\"sm\" id=\"ANGULAR_PAGINATOR_DEFAULT\" firstText=\"Primeira\"\n  previousText=\"Anterior\" nextText=\"Próxima\" lastText=\"Última\" screenReaderFirstText=\"Primeira\"\n  screenReaderPreviousText=\"Anterior\" screenReaderNextText=\"Próxima\" screenReaderLastText=\"Última\"\n  screenReaderPageText=\"Página\" screenReaderCurrentPageText=\"\" screenReaderPaginationLabel=\"Paginação\"\n  className=\"ANGULAR_PAGINATOR_DEFAULT\" [autoHide]=\"false\" [disabled]=\"false\" (pageChange)=\"currentPage = $event\">\n</angular-paginator>"
+        },
+        {
+            "name": "ModalComponent",
+            "id": "component-ModalComponent-02178c2b73f1fafd7e921a9bf17bd363",
+            "file": "src/app/Shared/modal/modal.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-modal",
+            "styleUrls": [
+                "./modal.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./modal.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "data",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "SimpleModal",
+                    "optional": false,
+                    "description": "",
+                    "line": 22,
+                    "decorators": [
+                        {
+                            "name": "Inject",
+                            "stringifiedArguments": "MAT_DIALOG_DATA"
+                        }
+                    ],
+                    "modifierKind": [
+                        122
+                    ]
+                },
+                {
+                    "name": "dialogRef",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "MatDialogRef<ModalComponent>",
+                    "optional": false,
+                    "description": "",
+                    "line": 21,
+                    "modifierKind": [
+                        122
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "closeModal",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 28,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 26,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Inject, OnInit } from '@angular/core';\nimport { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';\n\n\nexport interface SimpleModal {\n  title: string;\n  text: string;\n  success: boolean;\n  status: string;\n  btn: string;\n}\n\n@Component({\n  selector: 'app-modal',\n  templateUrl: './modal.component.html',\n  styleUrls: ['./modal.component.scss']\n})\nexport class ModalComponent implements OnInit {\n\n  constructor(\n    public dialogRef: MatDialogRef<ModalComponent>,\n    @Inject(MAT_DIALOG_DATA) public data: SimpleModal\n  ) {}\n\n\n  ngOnInit() {\n  }\n  closeModal(): void {\n    this.dialogRef.close();\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "\r\n@import 'src/assets/Settings/_font.scss';\r\n@import 'src/assets/Settings/_colors.scss';\r\n@import 'src/assets/Tools/_mixins.scss';\r\n:ng-deep {\r\n    .simple-modal {\r\n      .mat-dialog-container {\r\n        .mat-dialog-content {\r\n          display: flex;\r\n          align-items: center;\r\n  \r\n          .mat-icon {\r\n            height: 50px;\r\n            width: 50px;\r\n            font-size: 50px;\r\n            color: $green-400;\r\n            margin-right: 20px;\r\n  \r\n            &.fail {\r\n              color: red;\r\n            }\r\n          }\r\n  \r\n          & > p {\r\n            margin: 0;\r\n          }\r\n        }\r\n      }\r\n      .app-button {\r\n        width: 100%;\r\n  \r\n        @include respond-to('xl') {\r\n          padding: 0 50px;\r\n          display: flex;\r\n          justify-content: center;\r\n        }\r\n  \r\n        .btn {\r\n          max-width: 100%;\r\n  \r\n          @include respond-to('xl') {\r\n            max-width: 200px;\r\n          }\r\n        }\r\n      }\r\n    }\r\n  }",
+                    "styleUrl": "./modal.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "dialogRef",
+                        "type": "MatDialogRef<ModalComponent>",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "data",
+                        "type": "SimpleModal",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 18,
+                "jsdoctags": [
+                    {
+                        "name": "dialogRef",
+                        "type": "MatDialogRef<ModalComponent>",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "data",
+                        "type": "SimpleModal",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<p mat-dialog-title>{{ data.title }}</p>\n<div mat-dialog-content>\n  <mat-icon data-aos=\"zoom-out\" data-aos-duration=\"2000\" aria-hidden=\"false\" [ngClass]=\"{'fail': !data.success}\">{{ data.success ? 'check_circle_outline' : 'highlight_off'}}</mat-icon>\n  <p [innerHTML]=\"data.text\"></p>\n</div>\n<div mat-dialog-actions>\n  <app-button class=\"app-button\" [text]=\"data.btn\" (click)=\"closeModal()\"></app-button>\n</div>"
+        },
+        {
+            "name": "PageComponent",
+            "id": "component-PageComponent-8f196770333aa216860a88c0b6b221aa",
+            "file": "src/stories/page.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "storybook-page",
+            "styleUrls": [
+                "./page.css"
+            ],
+            "styles": [],
+            "template": "<article>    <storybook-header\n      [user]=\"user\"\n      (onLogout)=\"onLogout.emit($event)\"\n      (onLogin)=\"onLogin.emit($event)\"\n      (onCreateAccount)=\"onCreateAccount.emit($event)\"\n    ></storybook-header>\n    <section>\n      <h2>Pages in Storybook</h2>\n      <p>\n        We recommend building UIs with a\n        <a href=\"https://componentdriven.org\" target=\"_blank\" rel=\"noopener noreferrer\">\n          <strong>component-driven</strong>\n        </a>\n        process starting with atomic components and ending with pages.\n      </p>\n      <p>\n        Render pages with mock data. This makes it easy to build and review page states without\n        needing to navigate to them in your app. Here are some handy patterns for managing page data\n        in Storybook:\n      </p>\n      <ul>\n        <li>\n          Use a higher-level connected component. Storybook helps you compose such data from the\n          \"args\" of child component stories\n        </li>\n        <li>\n          Assemble data in the page component from your services. You can mock these services out\n          using Storybook.\n        </li>\n      </ul>\n      <p>\n        Get a guided tutorial on component-driven development at\n        <a href=\"https://storybook.js.org/tutorials/\" target=\"_blank\" rel=\"noopener noreferrer\">\n          Storybook tutorials\n        </a>\n        . Read more in the\n        <a href=\"https://storybook.js.org/docs\" target=\"_blank\" rel=\"noopener noreferrer\"> docs </a>\n        .\n      </p>\n      <div class=\"tip-wrapper\">\n        <span class=\"tip\">Tip</span> Adjust the width of the canvas with the\n        <svg width=\"10\" height=\"10\" viewBox=\"0 0 12 12\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M1.5 5.2h4.8c.3 0 .5.2.5.4v5.1c-.1.2-.3.3-.4.3H1.4a.5.5 0 01-.5-.4V5.7c0-.3.2-.5.5-.5zm0-2.1h6.9c.3 0 .5.2.5.4v7a.5.5 0 01-1 0V4H1.5a.5.5 0 010-1zm0-2.1h9c.3 0 .5.2.5.4v9.1a.5.5 0 01-1 0V2H1.5a.5.5 0 010-1zm4.3 5.2H2V10h3.8V6.2z\"\n              id=\"a\"\n              fill=\"#999\"\n            />\n          </g>\n        </svg>\n        Viewports addon in the toolbar\n      </div>\n    </section>\n  </article>",
+            "templateUrl": [],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "user",
+                    "defaultValue": "null",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 64,
+                    "type": ""
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "onCreateAccount",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 73,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "onLogin",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 67,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "onLogout",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 70,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'storybook-page',\n  template: `<article>\n    <storybook-header\n      [user]=\"user\"\n      (onLogout)=\"onLogout.emit($event)\"\n      (onLogin)=\"onLogin.emit($event)\"\n      (onCreateAccount)=\"onCreateAccount.emit($event)\"\n    ></storybook-header>\n    <section>\n      <h2>Pages in Storybook</h2>\n      <p>\n        We recommend building UIs with a\n        <a href=\"https://componentdriven.org\" target=\"_blank\" rel=\"noopener noreferrer\">\n          <strong>component-driven</strong>\n        </a>\n        process starting with atomic components and ending with pages.\n      </p>\n      <p>\n        Render pages with mock data. This makes it easy to build and review page states without\n        needing to navigate to them in your app. Here are some handy patterns for managing page data\n        in Storybook:\n      </p>\n      <ul>\n        <li>\n          Use a higher-level connected component. Storybook helps you compose such data from the\n          \"args\" of child component stories\n        </li>\n        <li>\n          Assemble data in the page component from your services. You can mock these services out\n          using Storybook.\n        </li>\n      </ul>\n      <p>\n        Get a guided tutorial on component-driven development at\n        <a href=\"https://storybook.js.org/tutorials/\" target=\"_blank\" rel=\"noopener noreferrer\">\n          Storybook tutorials\n        </a>\n        . Read more in the\n        <a href=\"https://storybook.js.org/docs\" target=\"_blank\" rel=\"noopener noreferrer\"> docs </a>\n        .\n      </p>\n      <div class=\"tip-wrapper\">\n        <span class=\"tip\">Tip</span> Adjust the width of the canvas with the\n        <svg width=\"10\" height=\"10\" viewBox=\"0 0 12 12\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M1.5 5.2h4.8c.3 0 .5.2.5.4v5.1c-.1.2-.3.3-.4.3H1.4a.5.5 0 01-.5-.4V5.7c0-.3.2-.5.5-.5zm0-2.1h6.9c.3 0 .5.2.5.4v7a.5.5 0 01-1 0V4H1.5a.5.5 0 010-1zm0-2.1h9c.3 0 .5.2.5.4v9.1a.5.5 0 01-1 0V2H1.5a.5.5 0 010-1zm4.3 5.2H2V10h3.8V6.2z\"\n              id=\"a\"\n              fill=\"#999\"\n            />\n          </g>\n        </svg>\n        Viewports addon in the toolbar\n      </div>\n    </section>\n  </article>`,\n  styleUrls: ['./page.css'],\n})\nexport default class PageComponent {\n  @Input()\n  user: unknown = null;\n\n  @Output()\n  onLogin = new EventEmitter<Event>();\n\n  @Output()\n  onLogout = new EventEmitter<Event>();\n\n  @Output()\n  onCreateAccount = new EventEmitter<Event>();\n}\n\n// export const Page = ({ user, onLogin, onLogout, onCreateAccount }) => (\n//   <article>\n//     <Header user={user} onLogin={onLogin} onLogout={onLogout} onCreateAccount={onCreateAccount} />\n\n// );\n// Page.propTypes = {\n//   user: PropTypes.shape({}),\n//   onLogin: PropTypes.func.isRequired,\n//   onLogout: PropTypes.func.isRequired,\n//   onCreateAccount: PropTypes.func.isRequired,\n// };\n\n// Page.defaultProps = {\n//   user: null,\n// };\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "section {\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  font-size: 14px;\n  line-height: 24px;\n  padding: 48px 20px;\n  margin: 0 auto;\n  max-width: 600px;\n  color: #333;\n}\n\nh2 {\n  font-weight: 900;\n  font-size: 32px;\n  line-height: 1;\n  margin: 0 0 4px;\n  display: inline-block;\n  vertical-align: top;\n}\n\np {\n  margin: 1em 0;\n}\n\na {\n  text-decoration: none;\n  color: #1ea7fd;\n}\n\nul {\n  padding-left: 30px;\n  margin: 1em 0;\n}\n\nli {\n  margin-bottom: 8px;\n}\n\n.tip {\n  display: inline-block;\n  border-radius: 1em;\n  font-size: 11px;\n  line-height: 12px;\n  font-weight: 700;\n  background: #e7fdd8;\n  color: #66bf3c;\n  padding: 4px 12px;\n  margin-right: 10px;\n  vertical-align: top;\n}\n\n.tip-wrapper {\n  font-size: 13px;\n  line-height: 20px;\n  margin-top: 40px;\n  margin-bottom: 40px;\n}\n\n.tip-wrapper svg {\n  display: inline-block;\n  height: 12px;\n  width: 12px;\n  margin-right: 4px;\n  vertical-align: top;\n  margin-top: 3px;\n}\n\n.tip-wrapper svg path {\n  fill: #1ea7fd;\n}\n",
+                    "styleUrl": "./page.css"
+                }
+            ],
+            "stylesData": ""
+        }
+    ],
+    "modules": [
+        {
+            "name": "AppModule",
+            "id": "module-AppModule-a7b14af4660dc0463539ad3ef8f7a55f",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "src/app/app.module.ts",
+            "methods": [],
+            "sourceCode": "import { BrowserModule } from '@angular/platform-browser';\r\nimport { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';\r\n\r\nimport { AppComponent } from './app.component';\r\nimport { AppRoutingModule } from './app-routing.module';\r\nimport { DialogTransaction, HomeComponent } from './Pages/home/home.component';\r\nimport { SharedModule } from './Shared/shared.module';\r\n\r\nimport { HttpClientModule } from '@angular/common/http';\r\nimport { BrowserAnimationsModule } from '@angular/platform-browser/animations';\r\nimport { ErrorStateMatcher, MatDialogModule, MatIconModule, MatInputModule, MatOptionModule, MatSelectModule, ShowOnDirtyErrorStateMatcher } from '@angular/material';\r\nimport { CurrencyMaskConfig, CurrencyMaskModule, CURRENCY_MASK_CONFIG } from 'ng2-currency-mask';\r\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\r\n\r\nexport const CustomCurrencyMaskConfig: CurrencyMaskConfig = {\r\n  align: 'left',\r\n  allowNegative: false,\r\n  decimal: ',',\r\n  precision: 2,\r\n  prefix: 'R$ ',\r\n  suffix: '',\r\n  thousands: '.'\r\n};\r\n\r\n@NgModule({\r\n  declarations: [\r\n    AppComponent,\r\n    HomeComponent,\r\n    DialogTransaction,\r\n    \r\n  ],\r\n  imports: [\r\n    BrowserModule,\r\n    AppRoutingModule,\r\n    SharedModule,\r\n    HttpClientModule,\r\n    BrowserAnimationsModule,\r\n    MatDialogModule,\r\n    FormsModule,\r\n    MatInputModule,\r\n    CurrencyMaskModule,\r\n    MatOptionModule,\r\n    MatSelectModule,\r\n    MatIconModule,\r\n    ReactiveFormsModule\r\n  ],\r\n  schemas: [NO_ERRORS_SCHEMA],\r\n  bootstrap: [AppComponent],\r\n  entryComponents: [DialogTransaction],\r\n  providers: [\r\n    { provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher },\r\n    { provide: CURRENCY_MASK_CONFIG, useValue: CustomCurrencyMaskConfig }\r\n  ]\r\n})\r\nexport class AppModule { }\r\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "AppComponent"
+                        },
+                        {
+                            "name": "DialogTransaction"
+                        },
+                        {
+                            "name": "HomeComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": [
+                        {
+                            "name": "AppRoutingModule"
+                        },
+                        {
+                            "name": "SharedModule"
+                        }
+                    ]
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": [
+                        {
+                            "name": "AppComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "AppRoutingModule",
+            "id": "module-AppRoutingModule-8074bc0b63464eb3a2bd43eceb3f19e3",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "src/app/app-routing.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { RouterModule, Routes } from '@angular/router';\nimport { HomeComponent } from './Pages/home/home.component';\n\nconst routes: Routes = [\n  { path: '', redirectTo: '/home', pathMatch: 'full'},\n  { path: 'home', component: HomeComponent }\n];\n\n@NgModule({\n  declarations: [],\n  imports: [\n    CommonModule,\n    RouterModule.forRoot(routes)\n  ],\n  exports: [RouterModule]\n})\nexport class AppRoutingModule { }\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": []
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "SharedModule",
+            "id": "module-SharedModule-801a36bc0759b2cec6f1380ee2498c97",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "src/app/Shared/shared.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { FooterComponent } from './footer/footer.component';\nimport { HeaderComponent } from './header/header.component';\nimport { ButtonComponent } from './button/button.component';\nimport { ModalComponent } from './modal/modal.component';\nimport { ListComponent } from './list/list.component';\nimport { AngularPaginatorModule } from 'angular-paginator';\nimport { MatDialogModule, MatDialogRef, MatIconModule, MAT_DIALOG_DATA } from '@angular/material';\nimport { FormsModule } from '@angular/forms';\n\n@NgModule({\n  declarations: [FooterComponent, HeaderComponent, ButtonComponent, ModalComponent, ListComponent],\n  imports: [\n    CommonModule,\n    AngularPaginatorModule,\n    FormsModule,\n    MatIconModule,\n    MatDialogModule\n  ],\n  \n  exports: [FooterComponent, HeaderComponent, ButtonComponent, ModalComponent, ListComponent ],\n  entryComponents: [ModalComponent],\n  providers: [\n    { provide: MatDialogRef, useValue: {} },\n    { provide: MAT_DIALOG_DATA, useValue: [] }\n  ]\n})\nexport class SharedModule { }\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "ButtonComponent"
+                        },
+                        {
+                            "name": "FooterComponent"
+                        },
+                        {
+                            "name": "HeaderComponent"
+                        },
+                        {
+                            "name": "ListComponent"
+                        },
+                        {
+                            "name": "ModalComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "FooterComponent"
+                        },
+                        {
+                            "name": "ListComponent"
+                        },
+                        {
+                            "name": "ModalComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        }
+    ],
+    "miscellaneous": {
+        "variables": [
+            {
+                "name": "context",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/test.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+            },
+            {
+                "name": "CustomCurrencyMaskConfig",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/app.module.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "CurrencyMaskConfig",
+                "defaultValue": "{\r\n  align: 'left',\r\n  allowNegative: false,\r\n  decimal: ',',\r\n  precision: 2,\r\n  prefix: 'R$ ',\r\n  suffix: '',\r\n  thousands: '.'\r\n}"
+            },
+            {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/environments/environment.prod.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\r\n  production: true,\r\n  sendPayment: 'https://run.mocky.io/v3/533cd5d7-63d3-4488-bf8d-4bb8c751c989',\r\n  getUserInfo: 'https://www.mocky.io/v2/5d531c4f2e0000620081ddce'\r\n}"
+            },
+            {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/environments/environment.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\r\n  production: false,\r\n  sendPayment: 'https://run.mocky.io/v3/533cd5d7-63d3-4488-bf8d-4bb8c751c989',\r\n  getUserInfo: 'https://www.mocky.io/v2/5d531c4f2e0000620081ddce'\r\n}"
+            },
+            {
+                "name": "Large",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "LoggedIn",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Header.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "LoggedIn",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Page.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "LoggedOut",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Header.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "LoggedOut",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Page.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "require",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/test.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "any"
+            },
+            {
+                "name": "Secondary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Small",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<Button>",
+                "defaultValue": "(args: Button) => ({\n  props: args,\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Header.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<Header>",
+                "defaultValue": "(args: Header) => ({\n  props: args,\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Page.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<Page>",
+                "defaultValue": "(args: Page) => ({\n  props: args,\n})"
+            }
+        ],
+        "functions": [],
+        "typealiases": [],
+        "enumerations": [],
+        "groupedVariables": {
+            "src/test.ts": [
+                {
+                    "name": "context",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/test.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+                },
+                {
+                    "name": "require",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/test.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any"
+                }
+            ],
+            "src/app/app.module.ts": [
+                {
+                    "name": "CustomCurrencyMaskConfig",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/app.module.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "CurrencyMaskConfig",
+                    "defaultValue": "{\r\n  align: 'left',\r\n  allowNegative: false,\r\n  decimal: ',',\r\n  precision: 2,\r\n  prefix: 'R$ ',\r\n  suffix: '',\r\n  thousands: '.'\r\n}"
+                }
+            ],
+            "src/environments/environment.prod.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/environments/environment.prod.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\r\n  production: true,\r\n  sendPayment: 'https://run.mocky.io/v3/533cd5d7-63d3-4488-bf8d-4bb8c751c989',\r\n  getUserInfo: 'https://www.mocky.io/v2/5d531c4f2e0000620081ddce'\r\n}"
+                }
+            ],
+            "src/environments/environment.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/environments/environment.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\r\n  production: false,\r\n  sendPayment: 'https://run.mocky.io/v3/533cd5d7-63d3-4488-bf8d-4bb8c751c989',\r\n  getUserInfo: 'https://www.mocky.io/v2/5d531c4f2e0000620081ddce'\r\n}"
+                }
+            ],
+            "src/stories/Button.stories.ts": [
+                {
+                    "name": "Large",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Secondary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Small",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<Button>",
+                    "defaultValue": "(args: Button) => ({\n  props: args,\n})"
+                }
+            ],
+            "src/stories/Header.stories.ts": [
+                {
+                    "name": "LoggedIn",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Header.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "LoggedOut",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Header.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Header.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<Header>",
+                    "defaultValue": "(args: Header) => ({\n  props: args,\n})"
+                }
+            ],
+            "src/stories/Page.stories.ts": [
+                {
+                    "name": "LoggedIn",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Page.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "LoggedOut",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Page.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Page.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<Page>",
+                    "defaultValue": "(args: Page) => ({\n  props: args,\n})"
+                }
+            ]
+        },
+        "groupedFunctions": {},
+        "groupedEnumerations": {},
+        "groupedTypeAliases": {}
+    },
+    "routes": {
+        "name": "<root>",
+        "kind": "module",
+        "className": "AppModule",
+        "children": [
+            {
+                "name": "routes",
+                "filename": "src/app/app-routing.module.ts",
+                "module": "AppRoutingModule",
+                "children": [
+                    {
+                        "path": "",
+                        "redirectTo": "/home",
+                        "pathMatch": "full"
+                    },
+                    {
+                        "path": "home",
+                        "component": "HomeComponent"
+                    }
+                ],
+                "kind": "module"
+            }
+        ]
+    },
+    "coverage": {
+        "count": 2,
+        "status": "low",
+        "files": [
+            {
+                "filePath": "e2e/src/app.po.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "AppPage",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/Models/ITransactions.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "ITransactions",
+                "coveragePercent": 0,
+                "coverageCount": "0/6",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/Models/IUsers.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "IUser",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/Pages/home/home.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "DialogTransaction",
+                "coveragePercent": 0,
+                "coverageCount": "0/11",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/Pages/home/home.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "HomeComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/10",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/Pages/home/home.component.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "FeedbackModal",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/Service/transactions/transactions.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "TransactionsService",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/Service/users/users.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "UsersService",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/Shared/button/button.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ButtonComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/10",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/Shared/footer/footer.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "FooterComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/Shared/header/header.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "HeaderComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/Shared/list/list.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ListComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/6",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/Shared/modal/modal.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ModalComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/6",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/Shared/modal/modal.component.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "SimpleModal",
+                "coveragePercent": 0,
+                "coverageCount": "0/6",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/app.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AppComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/app.module.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "CustomCurrencyMaskConfig",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/environments/environment.prod.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "environment",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/environments/environment.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "environment",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Large",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Secondary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Small",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Header.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "LoggedIn",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Header.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "LoggedOut",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Header.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Page.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "LoggedIn",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Page.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "LoggedOut",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Page.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/button.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ButtonComponent",
+                "coveragePercent": 83,
+                "coverageCount": "5/6",
+                "status": "very-good"
+            },
+            {
+                "filePath": "src/stories/header.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "HeaderComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/page.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "PageComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/test.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "context",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/test.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "require",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            }
+        ]
+    }
+}

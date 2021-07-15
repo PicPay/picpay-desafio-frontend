@@ -1,87 +1,75 @@
-.btn {
-    width: 100%;
-    padding: 1.5rem;
-    @include weight(500);
-    font-size: 16px;
-    text-align: center;
-    border: 0;
-    color: $black;
-    transition: 0.25s ease-in;
-    cursor: pointer;
-}
 
 .btn {
-    border: 0;
-    border-radius: 40px;
-    color: #fff;
-    width: 100%;
-    line-height: 40px;
-    padding: 2px 16px;
-    font-size: 16px;
-    font-weight: bold;
-    max-width: 154px;
-    text-align: center;
-    transition: 0.25s ease-in;
-    cursor: pointer;
-  
-    &.loading {
-      position: relative;
-  
+  width: 100%;
+  max-width: 154px;
+  padding: 0.1rem 1rem;
+  @include weight(700);
+  text-align: center;
+  font-size: 16px;
+  text-align: center;
+  line-height: 40px;
+  border: 0;
+  border-radius: 40px;
+  color: $black;
+  transition: 0.25s ease-in;
+  cursor: pointer;
+  &.loading {
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 25px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+  }
+
+  &:not(.btn-outline) {
+    background: $green-700;
+
+    &.btn-sloading {
       &::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border-radius: 25px;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: contain;
-       // background-image: url(src/assets/images/loading-white.gif);
+        background-color: $black;
       }
     }
-  
-    &:not(.btn-outline) {
-      background: $black;
-  
-      &.btn-sloading {
-        &::before {
-          background-color: $black;
-        }
-      }
-  
-      @include respond-to('xl') {
-        &:hover {
-          background: $white;
-  
-          &.btn-loading {
-            &::before {
-              background-color: $white;
-            }
+
+    @include respond-to('xl') {
+      &:hover {
+        background: $white;
+
+        &.btn-loading {
+          &::before {
+            background-color: $white;
           }
         }
       }
     }
-  
-    &.btn-outline {
-      border: 2px solid $black;
-      color: $black;
-  
-      &.btn-loading {
-        background: $black;
-        color: #fff;
-  
-        &::before {
-          background-color: $black;
-        }
+  }
+
+  &.btn-outline {
+    border: 2px solid $black;
+    color: $black;
+
+    &.btn-loading {
+      background: $black;
+      color: $white;
+
+      &::before {
+        background-color: $black;
       }
-  
-      @include respond-to('xl') {
-        &:hover {
-          background: $black;
-          color: #fff;
-        }
+    }
+
+    @include respond-to('xl') {
+      &:hover {
+        background: $black;
+        color: $white;
       }
     }
   }
+}

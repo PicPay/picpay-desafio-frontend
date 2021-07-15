@@ -1,1 +1,11 @@
-<p>home works!</p>
+<section class="users">
+    <div class="users-welcome">
+       <div class="container">
+         <h1 class="description">Pagar</h1>
+         <h6 class="description">Escolha um amigo para enviar um dinheiro ;)</h6>
+       </div>
+    </div>
+    <div class="container">
+        <app-list [items]="users" (itemSelected)="handleItem($event)"></app-list>
+    </div>
+</section>
