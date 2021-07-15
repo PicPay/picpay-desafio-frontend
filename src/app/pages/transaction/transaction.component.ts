@@ -61,7 +61,7 @@ export class TransactionComponent implements OnInit {
     this.service.payUser(payload).subscribe((result) => {
       if (form.controls.creditCard.value.card_number === this.cards[1].card_number) {
         alert('O pagamento não foi concluído com sucesso');
-        throw Error;
+        throw new Error('Número do cartão inválido');
       }
       this.transactionForm.reset(form.controls.transactionValue.value);
       this.result = result;
