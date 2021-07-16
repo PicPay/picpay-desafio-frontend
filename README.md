@@ -40,7 +40,7 @@ Ao finalizar a requisição exibe uma lista de usuários, com informações de n
 
 <img src="./screenshots/lista-usuarios.png" alt="Lista de usuários" style="width: 100%; max-width: 400px;">
 
-Por existir muitos usuários e fotos de cada usuário, foi feito um sistema de cacheamento para que torne a aplicação mais perfomática, evitando que faça múltiplas requisições desnecessárias. As imagens também utilizam Lady Loading com o mesmo propósito.
+Por existir muitos usuários e fotos de cada usuário, foi feito um sistema de cacheamento para que torne a aplicação mais perfomática, evitando que faça múltiplas requisições desnecessárias. As imagens também utilizam Lazy Loading com o mesmo propósito.
 
 O estilo da página foi modificado para as cores do PicPay e foi criado variáveis de todas as cores que estão sendo utilizadas na aplicação para fácil e rápida manuntenção.
 
@@ -63,6 +63,8 @@ As validações de campo foram feitas utilizando a biblioteca do Angular Forms.
 <img src="./screenshots/modal-pagamento.png" alt="Modal de pagamento" style="width: 100%; max-width: 400px;">
 
 Com os dados validados, as mensagens de erro desaparecem e o usuário pode concluir sua transferência.
+
+### Mensagem de feedback
 
 Ao clicar em "Pagar", será exibido um alerta com mensagem dependendo da escolha do cartão, podendo ser um alerta de sucesso ou de erro:
 
