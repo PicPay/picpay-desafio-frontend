@@ -1,4 +1,4 @@
-<div class="users">
+<section class="users">
     <div class="user" *ngFor="let user of users">
       <img src={{user.img}} />
       <div class="info-wrapper">
@@ -15,29 +15,26 @@
         Pagar
       </button>
     </div>
-</div>
+  </section>
   
   <ng-template class="modal-backdrop" #payByCard>
     <div class="modal">
       <div class="title">Pagamento para <span>{{user.username}}</span></div>
   
-      <div class="content">
-        <input type="number" placeholder="R$ 0,00" />
+      <form class="content" [formGroup]="payCard">
+        <input type="number" placeholder="R$ 0,00" formControlName="value" />
   
         <div class="cards">
-          <mat-form-field>
-            <mat-label>Escolha o cartão</mat-label>
-            <mat-select>
+            <mat-select placeholder="Escolha o cartão" formControlName="card_number">
               <mat-option *ngFor="let card of cards" [value]="card.card_number">
                 Cartão com final {{ lastFourNumbers(card.card_number) }}
               </mat-option>
             </mat-select>
-          </mat-form-field>
         </div>
   
-        <button type="button" class="pay-button" (click)="paymentCard(user)">
+        <button type="button" class="pay-button" (click)="paymentCard()">
           Pagar
         </button>
-      </div>
+      </form>
     </div>
 </ng-template>

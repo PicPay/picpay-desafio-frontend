@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { CardPaymentService } from './card-payment.service';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-card-payment',
@@ -8,12 +9,12 @@ import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dial
   styleUrls: ['./card-payment.component.scss']
 })
 
-
-
 export class CardPaymentComponent implements OnInit {
 
   users;
   user;
+
+  payCard: FormGroup;
 
   cards = [
     {
@@ -28,8 +29,16 @@ export class CardPaymentComponent implements OnInit {
     },
   ];
   
-  constructor(private service: CardPaymentService, public dialog: MatDialog) { }
-  
+  constructor(
+    private service: CardPaymentService, 
+    public dialog: MatDialog, 
+    private fb: FormBuilder 
+  ){ 
+    this.payCard = this.fb.group({
+      card_number: ['', Validators.required],
+      value: ['', Validators.required],
+    })
+  }
   
   ngOnInit() {
     this.loadUsers();
@@ -50,11 +59,10 @@ export class CardPaymentComponent implements OnInit {
     if(card) return card.substr(12);
   }
 
-  paymentCard(card){
-    return this.service.payment(card).subscribe(data => {
+  paymentCard(){
+    return this.service.payment(this.payCard.value).subscribe(data => {
       console.log(data);
       this.dialog.open(ModalAlert, {
-        width: '250px',
         data: {
           content: 'O pagamento foi concluido com sucesso.',
         },
@@ -62,7 +70,6 @@ export class CardPaymentComponent implements OnInit {
 
     }, err => {
       this.dialog.open(ModalAlert, {
-        width: '250px',
         data: {
           content: 'O pagamento <strong>não</strong> foi concluido com sucesso.',
         },
@@ -75,7 +82,8 @@ export class CardPaymentComponent implements OnInit {
 
 @Component({
   selector: 'modal-alert',
-  templateUrl: 'modal-alert.component.html',
+  templateUrl: 'modal/modal-alert.component.html',
+  styleUrls: ['modal/modal-alert.component.scss']
 })
 export class ModalAlert {
 

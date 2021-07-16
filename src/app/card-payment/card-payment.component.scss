@@ -87,7 +87,7 @@
     padding: 0 8px;
   }
   
-  .modal > .content > .cards > select {
+  .modal > .content > .cards > mat-select {
     background: #fff;
     border: 1px solid #ccc;
     border-radius: 6px;
@@ -103,5 +103,9 @@
     height: 48px;
     padding: 0 8px;
     margin-top: 24px;
+  }
+
+  button {
+    cursor: pointer;
   }
   
