@@ -1,142 +1,96 @@
 # Desafio Front-end PicPay
 
-Primeiramente, obrigado pelo seu interesse em trabalhar na melhor plataforma de pagamentos do mundo!
-Abaixo você encontrará todos as informações necessárias para iniciar o seu teste.
+Desafio utilizando as seguintes tecnologias: RxJs para requisição HTTP, pacote LazyLoadImage para carregamento das imagens de maneira perfomática, a bilioteca NgxSpinner para exibição e gerenciamento de carregamento de tela.
 
-## Avisos antes de começar
-
-- Para a entrega do teste você precisará ter two factor habilitado na sua conta do GitHub, você poderá ver o passo a passo nesse tutorial: https://help.github.com/pt/github/authenticating-to-github/configuring-two-factor-authentication
-- Com two factor habilitado, você precisa configurar a chave SSH: https://help.github.com/pt/github/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account
-- Para iniciar o teste, crie uma branch a partir da `master` nesse padrão de nomenclatura: dd-mm-yy/nome-sobrenome (por exemplo, 30-04-20/meu-nome)
-- Você poderá consultar o Google, Stackoverflow ou algum projeto particular na sua máquina.
-- Fique à vontade para perguntar qualquer dúvida aos recrutadores.
-- Fique tranquilo, respire, assim como você, também já passamos por essa etapa. Boa sorte! :)
-
-## Setup do projeto
+## Setup do Projeto
 
 - Angular CLI: 8.3.18
 - Node: 10.15.3
 - Angular: 8.2.14
 
-## Como Rodar?
+## Bibliotecas instaladas
 
-- Instale as dependências usando o comando `npm install`
-- Na raiz do repositório, rode este comando `ng serve` para iniciar o servidor de desenvolvimento.
-- A Aplicação estará disponível na porta `http://localhost:4200/`
+- NgxSpinner: 9.0.2
+- Ng LazyLoad Image: 9.1
 
-## Como submeter?
+## Como rodar?
 
-- Commite suas alterações de forma organizada;
-- Após o prazo dado para a realização do teste, será dada permissão para fazer o push/ abrir a pull request, abra uma pull request da sua branch para a master com a nomenclatura: Nome Sobrenome - dd-mm-yy
+- Instale as dependências usando o comando `npm install` ou `npm i`
+- Na raíz do repositório, rode este comando `ng serve` ou `ng s` para iniciar o servidor de desenvolvimento.
+- A aplicação estará disponível na porta `http://localhost:4200/`
+- Para executar a aplicação e abrir o navegador automaticamente, rode o comando `ng serve -o` ou `ng s -o`.
 
-_Obs: Caso não tenha recebido permissão para realizar o push da branch entre em contato com o recrutador e envie seu usuário do GitHub_
+## Testes unitários
 
-## Objetivo
+Foram feitos testes dos componentes `Users` e `Transaction` assim como seus respectivos serviços utilizando Jasmine e Karma, garantindo que as requisições estejam sendo realizadas corretamente.
 
-O objetivo é construir uma aplicação que simula o envio de dinheiro para uma outra pessoa, via cartão de crédito.
+Para executar os testes, rode o comando `ng test` ou `ng t`.
 
-## Fluxo das telas
+## Aplicação e screenshots
 
-Na primeira tela terá uma listagem de usuários, onde a pessoa pode clicar em algum usuário da lista para realizar o pagamento. Quando clicado em um usuário é então aberto um modal de pagamento, contendo as informações do usuário de destino, a opção de selecionar um cartão de crédito e um botão de pagar. O usuário deve então digitar o valor, escolher o cartão e clicar em pagar. Para realização do pagamento deve-se chamar um endpoint de pagamento que aprovará/recusará a transação. E então deve-se mostrar na tela o modal de pagamento concluído com sucesso ou o de erro.
+Ao iniciar a aplicação ou recarregar a página, aparece um layout de carregamento enquanto a requisição que busca os usuários da API não finaliza.
 
-## Screenshots
+### Carregamento
+
+<img src="./screenshots/carregamento.png" alt="Carregamento inicial" style="width: 100%; max-width: 400px;">
+
+Ao finalizar a requisição exibe uma lista de usuários, com informações de nome, foto, username e id, bem como um botão de pagar para cada um deles.
 
 ### Lista de usuários
 
-<img src="./screenshots/lista-usuarios.png" alt="Lista de usuários" style="width: 100%; max-width: 500px;">
+<img src="./screenshots/lista-usuarios.png" alt="Lista de usuários" style="width: 100%; max-width: 400px;">
 
-### Modal de pagamento e listagem de cartões
+Por existir muitos usuários e fotos de cada usuário, foi feito um sistema de cacheamento para que torne a aplicação mais perfomática, evitando que faça múltiplas requisições desnecessárias. As imagens também utilizam Lady Loading com o mesmo propósito.
+
+O estilo da página foi modificado para as cores do PicPay e foi criado variáveis de todas as cores que estão sendo utilizadas na aplicação para fácil e rápida manuntenção.
+
+### Modal de pagamento
+
+<img src="./screenshots/modal-pagamento-desativado.png" alt="Modal desativado" style="width: 100%; max-width: 400px;">
+
+Ao clicar em "Pagar", é exibido um modal com o nome do usuário. No conteúdo do modal, temos um input que aceita apenas número, representando o valor a ser transferido e embaixo, é um select com duas opções a serem escolhidas, que são os dois cartões disponíveis. No primeiro momento, o botão de "Pagar" dentro do Modal está inativo para não permitir que o usuário faça uma transferência sem registrar um valor de transferência e cartão.
+
+<img src="./screenshots/modal-pagamento-alerta.png" alt="Modal com alerta e desativado" style="width: 100%; max-width: 400px;">
+
+Ao clicar no input de valor e não digitar um número, é exibido uma mensagem de erro solicitando que o usuário digite um número. O botão de "Pagar" continua travado.
+
+<img src="./screenshots/modal-pagamento-alerta-desativado.png" alt="Modal com alerta e desativado" style="width: 100%; max-width: 400px;">
+
+O mesmo comportamento ocorre com o select, caso o usuário abra as opções e não selecione nenhum.
+
+As validações de campo foram feitas utilizando a biblioteca do Angular Forms.
 
 <img src="./screenshots/modal-pagamento.png" alt="Modal de pagamento" style="width: 100%; max-width: 400px;">
 
-### Modal de pagamento concluído com sucesso
+Com os dados validados, as mensagens de erro desaparecem e o usuário pode concluir sua transferência.
 
-<img src="./screenshots/modal-sucesso.png" alt="Modal de pagamento com sucesso" style="width: 100%; max-width: 400px;">
+Ao clicar em "Pagar", será exibido um alerta com mensagem dependendo da escolha do cartão, podendo ser um alerta de sucesso ou de erro:
 
-### Modal de erro no pagamento
+<img src="./screenshots/alerta-de-sucesso.png" alt="Alerta de sucesso" style="width: 100%; max-width: 400px;">
 
-<img src="./screenshots/modal-falha.png" alt="Modal de erro no pagamento" style="width: 100%; max-width: 400px;">
+Após fechar o alerta, o modal é fechado automaticamente.
 
-#
+<img src="./screenshots/alerta-de-erro.png" alt="Alerta de erro" style="width: 100%; max-width: 400px;">
 
-## Cartões para exibir
+Após exibir a mensagem de erro, o modal não é fechado para que o usuário possa escolher o cartão válido com mais rapidez.
 
-O cartão válido vai aprovar a transação no backend;
+# Sugestão de melhoria
+Acredito que para definir que um cartão seja válido ou inválido com os cartões a serem trabalhados, possamos trabalhar da seguinte maneira:
 
-```javascript
-let cards = [
-  // valid card
-  {
-    card_number: '1111111111111111',
-    cvv: 789,
-    expiry_date: '01/18',
-  },
-  // invalid card
-  {
-    card_number: '4111111111111234',
-    cvv: 123,
-    expiry_date: '01/20',
-  },
-];
-```
+Caso o `expiry_date` seja inferior ao ano atual, ao clicar em "Pagar", a transação não é concluída e dispara uma mensagem de erro pro usuário.
 
-#
+Dessa forma trará mais sentido para termos um cartão válido e outro inválido.
 
-## Transação
 
-### Endpoint: https://run.mocky.io/v3/533cd5d7-63d3-4488-bf8d-4bb8c751c989
 
-### Método: POST
 
-```typescript
-// Payload:
 
-interface TransactionPayload {
-  // Card Info
-  card_number: string;
-  cvv: number;
-  expiry_date: string;
 
-  // Destination User ID
-  destination_user_id: number;
 
-  // Value of the Transaction
-  value: number;
-}
-```
 
-_Obs: Por se tratar de um mock o endpoint sempre retornará o mesmo payload, sucesso no pagamento, independente do cartão_
 
-#
 
-## Usuários
 
-### Endpoint: https://www.mocky.io/v2/5d531c4f2e0000620081ddce
 
-### Método: GET
 
-```typescript
-// Payload:
 
-interface User {
-  id: number;
-  name: string;
-  img: string;
-  username: string;
-}
-```
-
-#
-
-## Diferenciais
-
-- Teste unitário / E2E
-- Melhoria no estilo da aplicação
-- Validação de formulários e máscaras
-- Organização do código
-
-#
-
-Estamos sempre em busca de melhoria, por isso, caso tenha alguma sugestão fique a vontade pra compartilhar com a gente!
-
-Mais uma vez, boa sorte! :green_heart:
