@@ -32,7 +32,7 @@
             </mat-select>
         </div>
   
-        <button type="button" class="pay-button" (click)="paymentCard()">
+        <button type="button" class="pay-button" (click)="paymentCard()" [disabled]="!payCard.valid">
           Pagar
         </button>
       </form>

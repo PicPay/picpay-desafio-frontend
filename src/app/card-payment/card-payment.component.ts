@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { CardPaymentService } from './card-payment.service';
+import { CardPaymentService } from './service/card-payment.service';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -71,7 +71,7 @@ export class CardPaymentComponent implements OnInit {
     }, err => {
       this.dialog.open(ModalAlert, {
         data: {
-          content: 'O pagamento <strong>não</strong> foi concluido com sucesso.',
+          content: 'O pagamento não foi concluido com sucesso.',
         },
       });
       console.log(err);
@@ -81,9 +81,9 @@ export class CardPaymentComponent implements OnInit {
 }
 
 @Component({
-  selector: 'modal-alert',
-  templateUrl: 'modal/modal-alert.component.html',
-  styleUrls: ['modal/modal-alert.component.scss']
+  selector: 'alert',
+  templateUrl: 'dialog/alert.component.html',
+  styleUrls: ['dialog/alert.component.scss']
 })
 export class ModalAlert {
 
