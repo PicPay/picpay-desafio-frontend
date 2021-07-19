@@ -77,7 +77,6 @@ export class CardPaymentComponent implements OnInit {
       });
     })
   }
-
 }
 
 @Component({

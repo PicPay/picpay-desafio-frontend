@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CurrencyMaskModule } from "ng2-currency-mask";
 
 import { AppComponent } from './app.component';
 import { CardPaymentComponent, Alert } from './card-payment/card-payment.component';
@@ -22,6 +23,7 @@ import { MaterialModule } from './material.module';
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
+    CurrencyMaskModule
   ],
   providers: [
     CardPaymentService,

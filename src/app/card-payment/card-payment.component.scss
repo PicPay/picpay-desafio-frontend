@@ -18,6 +18,7 @@
     border-radius: 50%;
     height: 80px;
     width: 80px;
+    border: 3px solid #fff;
   }
   
   .user > .info-wrapper {
@@ -99,6 +100,8 @@
     height: 48px;
     padding: 0 8px;
     margin-top: 24px;
+    background: #32cd32;
+    color: #fff;
   }
   
   .mat-raised-button.mat-button-disabled:not([class*="mat-elevation-z"]) {

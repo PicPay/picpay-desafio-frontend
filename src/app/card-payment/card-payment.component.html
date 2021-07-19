@@ -1,4 +1,5 @@
 <section class="users">
+
     <div class="user" *ngFor="let user of users">
       <img src={{user.img}} alt="Foto"/>
       <div class="info-wrapper">
@@ -15,6 +16,7 @@
         Pagar
       </button>
     </div>
+
   </section>
   
   <ng-template class="modal-backdrop" #payByCard>
@@ -24,8 +26,14 @@
       </header>
   
       <form class="content" [formGroup]="formPay">
-        <input type="number" min=0 placeholder="R$ 0,00" formControlName="value" />
-  
+
+        <input 
+          currencyMask 
+          placeholder="R$ 0,00" 
+          formControlName="value" 
+          [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' , align: 'left'}" 
+          />
+
         <div class="cards">
             <mat-select placeholder="Escolha o cartão" formControlName="card_number">
               <mat-option *ngFor="let card of cards" [value]="card">
@@ -34,9 +42,15 @@
             </mat-select>
         </div>
   
-        <button mat-raised-button class="pay-button" (click)="paymentCard()" [disabled]="!formPay.valid">
+        <button 
+          mat-raised-button 
+          class="pay-button" 
+          (click)="paymentCard()" 
+          [disabled]="!formPay.valid">
           Pagar
         </button>
+
       </form>
+
     </div>
 </ng-template>
