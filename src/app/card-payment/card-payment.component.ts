@@ -14,7 +14,7 @@ export class CardPaymentComponent implements OnInit {
   users;
   user;
 
-  payCard: FormGroup;
+  formPay: FormGroup;
 
   cards = [
     {
@@ -31,12 +31,13 @@ export class CardPaymentComponent implements OnInit {
   
   constructor(
     private service: CardPaymentService, 
-    public dialog: MatDialog, 
+    public dialog: MatDialog,
     private fb: FormBuilder 
   ){ 
-    this.payCard = this.fb.group({
+    this.formPay = this.fb.group({
       card_number: ['', Validators.required],
       value: ['', Validators.required],
+      destination_user_id: ['']
     })
   }
   
@@ -50,7 +51,7 @@ export class CardPaymentComponent implements OnInit {
     })
   }
 
-  openModal(template, row): void {
+  openDialog(template, row): void {
     this.user = row
     this.dialog.open(template);
   }
@@ -60,21 +61,20 @@ export class CardPaymentComponent implements OnInit {
   }
 
   paymentCard(){
-    return this.service.payment(this.payCard.value).subscribe(data => {
-      console.log(data);
-      this.dialog.open(ModalAlert, {
+    this.formPay.value.destination_user_id = this.user.id
+    return this.service.payment(this.formPay.value).subscribe(data => {
+      this.dialog.closeAll();     
+      this.dialog.open(Alert, {
         data: {
           content: 'O pagamento foi concluido com sucesso.',
         },
       });
-
     }, err => {
-      this.dialog.open(ModalAlert, {
+      this.dialog.open(Alert, {
         data: {
           content: 'O pagamento não foi concluido com sucesso.',
         },
       });
-      console.log(err);
     })
   }
 
@@ -85,14 +85,10 @@ export class CardPaymentComponent implements OnInit {
   templateUrl: 'dialog/alert.component.html',
   styleUrls: ['dialog/alert.component.scss']
 })
-export class ModalAlert {
+export class Alert {
 
   constructor(
-    public dialogRef: MatDialogRef<ModalAlert>,
+    public dialogRef: MatDialogRef<Alert>,
     @Inject(MAT_DIALOG_DATA) public data: any) {}
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
 
 }

@@ -3,18 +3,17 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
-import { MatSelectModule } from '@angular/material/select'; 
 
 import { AppComponent } from './app.component';
-import { CardPaymentComponent, ModalAlert } from './card-payment/card-payment.component';
-import { CardPaymentService } from './card-payment/card-payment.service';
+import { CardPaymentComponent, Alert } from './card-payment/card-payment.component';
+import { CardPaymentService } from './card-payment/service/card-payment.service';
+import { MaterialModule } from './material.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     CardPaymentComponent,
-    ModalAlert
+    Alert
   ],
   imports: [
     BrowserModule,
@@ -22,17 +21,12 @@ import { CardPaymentService } from './card-payment/card-payment.service';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    MatDialogModule,
-    MatSelectModule
+    MaterialModule,
   ],
   providers: [
-    CardPaymentService, 
-    {
-      provide: MatDialogRef,
-      useValue: {}
-    }
+    CardPaymentService,
   ],
-  entryComponents: [ModalAlert],
+  entryComponents: [Alert],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

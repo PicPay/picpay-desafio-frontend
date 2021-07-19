@@ -1,7 +1,7 @@
 /* List of Users */
 
 .user {
-    background: linear-gradient(186.5deg, #3c3e64 0.83%, #1d1e2a 100%);
+    background: linear-gradient(186.5deg, #32cd32 0.83%, #134e13 100%);
     box-shadow: 0 1px 0 #ffffff, 0px -1px 0px #ffffff;
     color: #fff;
     padding: 20px 40px;
@@ -9,7 +9,10 @@
     display: flex;
     align-items: center;
   }
-  
+
+  .user-name{
+    font-weight: bold;
+  }
 
   .user > img {
     border-radius: 50%;
@@ -40,26 +43,28 @@
   
   .modal-backdrop:after {
     content: "";
-  
     background: rgba(0, 0, 0, 0.5);
   }
   
   .modal {
     background: #fff;
-    margin: 32px 0;
     width: 420px;
   }
+
+  ::ng-deep.mat-dialog-container{
+    padding: 0px !important;
+  }
   
-  .modal > .title {
-    background: #474971;
+  .modal > header > .title {
+    background: #134e13;
     color: #ffffff;
     font-weight: 500;
     font-size: 16px;
     padding: 16px 24px;
   }
   
-  .modal > .title > span {
-    color: #cddc39;
+  .modal > header > .title > span {
+    color: #7adc39;
   }
   
   .modal > .content {
@@ -70,30 +75,32 @@
   .modal > .content > input {
     border: 1px solid #ccc;
     border-radius: 6px;
-    font-size: 32px;
+    font-size: 20px;
     height: 48px;
-    padding: 0 8px;
+    padding: 5px 20px;
   }
   
   .modal > .content > .cards > mat-select {
     background: #fff;
     border: 1px solid #ccc;
     border-radius: 6px;
-    font-size: 32px;
+    font-size: 18px;
     height: 48px;
     margin-top: 12px;
+    padding: 10px 20px;
+    width: 73%;
   }
+
   
   .modal > .content > button {
     border: 1px solid #ccc;
     border-radius: 6px;
-    font-size: 32px;
+    font-size: 20px;
     height: 48px;
     padding: 0 8px;
     margin-top: 24px;
   }
-
-  button {
-    cursor: pointer;
-  }
   
+  .mat-raised-button.mat-button-disabled:not([class*="mat-elevation-z"]) {
+    opacity: 60%;
+  }

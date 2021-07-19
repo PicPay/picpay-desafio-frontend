@@ -1,20 +1,15 @@
 
  .modal {
   background: #fff;
-  margin: 32px 0;
   width: 420px;
 }
 
 .modal > .title {
-  background: #474971;
+  background: #134e13;
   color: #ffffff;
   font-weight: 500;
   font-size: 16px;
   padding: 16px 24px;
-}
-
-.modal > .title > span {
-  color: #cddc39;
 }
 
 .modal > .content {
@@ -22,10 +17,6 @@
   text-align: center;
 }
 
-.modal > .content > input {
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 32px;
-  height: 48px;
-  padding: 0 8px;
+::ng-deep.mat-dialog-container{
+  padding: 0px !important;
 }

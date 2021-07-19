@@ -1,6 +1,6 @@
 <section class="users">
     <div class="user" *ngFor="let user of users">
-      <img src={{user.img}} />
+      <img src={{user.img}} alt="Foto"/>
       <div class="info-wrapper">
         <div class="user-name">
           {{ user.name}}
@@ -11,7 +11,7 @@
         </div>
       </div>
   
-      <button type="button" class="pay-button" (click)="openModal(payByCard, user)">
+      <button mat-raised-button class="pay-button" (click)="openDialog(payByCard, user)">
         Pagar
       </button>
     </div>
@@ -19,20 +19,22 @@
   
   <ng-template class="modal-backdrop" #payByCard>
     <div class="modal">
-      <div class="title">Pagamento para <span>{{user.username}}</span></div>
+      <header>
+        <div class="title">Pagamento para <span>{{user.username}}</span></div>
+      </header>
   
-      <form class="content" [formGroup]="payCard">
-        <input type="number" placeholder="R$ 0,00" formControlName="value" />
+      <form class="content" [formGroup]="formPay">
+        <input type="number" min=0 placeholder="R$ 0,00" formControlName="value" />
   
         <div class="cards">
             <mat-select placeholder="Escolha o cartão" formControlName="card_number">
-              <mat-option *ngFor="let card of cards" [value]="card.card_number">
+              <mat-option *ngFor="let card of cards" [value]="card">
                 Cartão com final {{ lastFourNumbers(card.card_number) }}
               </mat-option>
             </mat-select>
         </div>
   
-        <button type="button" class="pay-button" (click)="paymentCard()" [disabled]="!payCard.valid">
+        <button mat-raised-button class="pay-button" (click)="paymentCard()" [disabled]="!formPay.valid">
           Pagar
         </button>
       </form>
